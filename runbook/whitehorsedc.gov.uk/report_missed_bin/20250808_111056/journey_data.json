@@ -1,0 +1,642 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T11:10:56+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "whitehorsedc.gov.uk",
+                "Council Name": "Vale of White Horse District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed bins - Vale of White Horse District Council",
+                        "link": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/recycling-rubbish-and-waste/when-is-your-collection-day/missed-bins/",
+                        "snippet": "You can report it as a missed collection. You have until 5pm on the next working day after your scheduled collection day to report it."
+                    },
+                    {
+                        "title": "Garden waste - Vale of White Horse District Council",
+                        "link": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/recycling-rubbish-and-waste/garden-waste/",
+                        "snippet": "Garden collections start at 6am. If your bin was not emptied \u2013 please report a missed bin collection. If your bin is broken or missing please contact the\u00a0..."
+                    },
+                    {
+                        "title": "Complaints - Vale of White Horse District Council",
+                        "link": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/get-in-touch/comments-suggestions-and-complaints/",
+                        "snippet": "Most concerns can be resolved without you needing to make a formal complaint. These include missed bins, noise concerns and planning enforcement."
+                    },
+                    {
+                        "title": "Garden Waste Collection Service - Terms and Conditions - Vale of ...",
+                        "link": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/recycling-rubbish-and-waste/garden-waste/garden-waste-service-terms-and-conditions/",
+                        "snippet": "Missed collections must be reported by 5 pm of the following working day after your scheduled collection day. The Council will not issue refunds for missed\u00a0..."
+                    },
+                    {
+                        "title": "Waste leaflet 2024-25 all in one v1",
+                        "link": "https://www.whitehorsedc.gov.uk/wp-content/uploads/sites/3/2024/03/Waste-leaflet-2024-25-VALE.pdf",
+                        "snippet": "All bins should be put out for collection before 6am with the lids firmly closed. You can report a missed collection via our website."
+                    },
+                    {
+                        "title": "Contact us - Vale of White Horse District Council",
+                        "link": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/get-in-touch/contact-us/",
+                        "snippet": "The council's emergency helpline on 01235 422420 is available after office hours to assist with a homeless issue, to report a dangerous structure, flooding, a\u00a0..."
+                    },
+                    {
+                        "title": "Get in touch - Vale of White Horse District Council",
+                        "link": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/get-in-touch/",
+                        "snippet": "If you are unhappy about something you can also make a formal complaint. Or if ... Missed bin collections \u00b7 Needles and sharp objects \u00b7 Noise and nuisance\u00a0..."
+                    },
+                    {
+                        "title": "Complaints Policy and Procedure",
+                        "link": "https://www.whitehorsedc.gov.uk/wp-content/uploads/sites/3/2022/11/Corporate-Complaints-Policy-and-Procedure-Nov-2022.pdf",
+                        "snippet": "FORMAL CORPORATE COMPLAINTS PROCEDURE. 6. Minor service dissatisfaction or failures, for example a missed bin collection, are dealt with directly by the\u00a0..."
+                    },
+                    {
+                        "title": "Appendix 1 South Oxfordshire and Vale of White Horse District ...",
+                        "link": "http://democratic.whitehorsedc.gov.uk/documents/s13560/Policy.pdf",
+                        "snippet": "Provided your bins have been presented correctly and you report a missed collection before noon on the collection day. The bin will be collected by the end of\u00a0..."
+                    },
+                    {
+                        "title": "Version/change control Waste collection & recycling collection policy ...",
+                        "link": "https://www.whitehorsedc.gov.uk/wp-content/uploads/sites/3/2020/10/Joint-waste-and-recycling-policy-v2.pdf",
+                        "snippet": "Jun 1, 2017 ... If your bin goes missing or is damaged, you are responsible for reporting it to the call centre. The council will repair or replace bins that\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/recycling-rubbish-and-waste/when-is-your-collection-day/missed-bins/",
+                        "title": "Missed bins - Vale of White Horse District Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Offers a direct method to report missed bin collections",
+                            "Provides clear instructions on how to report missed collections"
+                        ],
+                        "reasoning": "The title and snippet of the link indicate that it is about reporting missed bins, a common customer information need. The content also provides steps on what to do when the bin collection is missed.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed bins - Vale of White Horse District Council",
+                                "Source": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/recycling-rubbish-and-waste/when-is-your-collection-day/missed-bins/",
+                                "Key Strengths": [
+                                    "Offers a direct method to report missed bin collections",
+                                    "Provides clear instructions on how to report missed collections"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title and snippet of the link indicate that it is about reporting missed bins, a common customer information need. The content also provides steps on what to do when the bin collection is missed."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Complaints - Vale of White Horse District Council",
+                                "Source": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/get-in-touch/comments-suggestions-and-complaints/",
+                                "Key Strengths": [
+                                    "Covers a wide range of customer complaints and suggestions",
+                                    "Includes options for missed bin collections"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The link covers general complaints and suggestions, which can include missed bin collections. The snippet also mentioned that missed bins are among the concerns that can be resolved without a formal complaint."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Get in touch - Vale of White Horse District Council",
+                                "Source": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/get-in-touch/",
+                                "Key Strengths": [
+                                    "Provides multiple methods to contact the council",
+                                    "Covers a wide range of customer concerns, including missed bin collections"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "The link offers various ways to contact the council and mentions that you can report issues like missed bin collections."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Appendix 1 South Oxfordshire and Vale of White Horse District ...",
+                                "Source": "http://democratic.whitehorsedc.gov.uk/documents/s13560/Policy.pdf",
+                                "Key Strengths": [
+                                    "Offers detailed information about waste collection policies",
+                                    "Contains specific mention of missed bin collections"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The link provides a detailed policy document that includes information on the procedure for dealing with missed bin collections."
+                            }
+                        ],
+                        "Analysis Notes": "Some links provide general customer service contact information although they don't focus exclusively on council customer information, but they can still be used as resources for customer questions or concerns.",
+                        "Recommendations Notes": "Links that offer a direct method to report missed bin collections and comprehensive information about the policy around them are given higher priority."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 77.5,
+                    "max_confidence": "85"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "Missed bins - Vale of White Horse District Council",
+                        "Source": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/recycling-rubbish-and-waste/when-is-your-collection-day/missed-bins/",
+                        "Reasoning": "The title and snippet of the link indicate that it is about reporting missed bin collections, a direct method to report missed bin collections and provides clear instructions on how to do so.",
+                        "Confidence": "85"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/recycling-rubbish-and-waste/when-is-your-collection-day/missed-bins/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/recycling-rubbish-and-waste/when-is-your-collection-day/missed-bins/",
+                        "analysis": {
+                            "url": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/recycling-rubbish-and-waste/when-is-your-collection-day/missed-bins/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T11:10:56+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T11:11:16+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 78436,
+                            "response_time": 0.496,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.496s)",
+                                    "Content successfully retrieved (78436 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.4986450672149658,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/recycling-rubbish-and-waste/when-is-your-collection-day/missed-bins/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/recycling-rubbish-and-waste/when-is-your-collection-day/missed-bins/",
+                        "content": "```html\n<h1>Missed bins</h1> \n<h2>Missed collections</h2>\n\n<p>If you put your bins out before 6am (<strong>waste collections start at 6am</strong>) on your scheduled collection day, and we haven't emptied them by 6pm, you can report it as a missed collection.</p>\n\n<p>You have until 5pm on the next working day after your scheduled collection day to report it.</p>\n\n<p>Before reporting \u2013 please check with your neighbours: if everyone else on your street has had their bins emptied but you have not, then it may have been missed.</p>\n\n<p>Before you do, check your collection day hasn\u2019t changed due to <a href=\"https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/recycling-rubbish-and-waste/when-is-your-collection-day/changes-to-collection-days/\">bank holiday changes</a>.</p>\n\n<p>If bad weather has affected lots of waste collections, you do not need to report it \u2013 see below.</p>\n\n<h2>How to report a missed bin</h2>\n\n<p><strong>Please <a href=\"https://www.whitehorsedc.gov.uk/java/support/formcall.jsp?F=MISSED_BINS\">click here to report a missed bin online</a>.</strong></p>\n\n<p>Alternatively, you can contact our waste contractor, Biffa, by emailing admin.vale@biffa.co.uk or by calling 03000 610610<strong>.</strong></p>\n\n<h2>Collections affected by weather conditions</h2>\n\n<p><strong>In the winter</strong> we may be prevented from emptying your bins when the roads are unsafe due to bad weather, eg snow, ice or high winds.</p>\n\n<p><strong>In the summer</strong> very high temperatures may mean the crews stop working at the hottest time of the day \u2013 but before the rounds are finished.</p>\n\n<h3>What to do</h3>\n\n<p>Please leave your bins out for two days after your scheduled collection day and we\u2019ll aim to catch up.</p>\n\n<h2>Contact us - Biffa</h2>\n\n<p><a href=\"tel:03000%20610610\">03000 610610</a><br>(Text phone users add 18001 before dialing)</p>\n\n<p><a href=\"mailto:admin.vale@biffa.co.uk\">admin.vale@biffa.co.uk</a></p>\n\n<p>c/o Vale of White Horse District Council<br> Abbey House<br> Abbey Close<br> Abingdon<br> OX14 3JE</p>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 8.397805213928223,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/recycling-rubbish-and-waste/when-is-your-collection-day/missed-bins/",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 5.138827085494995,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/recycling-rubbish-and-waste/when-is-your-collection-day/missed-bins/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_111056-whitehorsedc.gov.uk",
+                    "analysis_timestamp": "2025-08-08T11:11:30+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.5666666666666667,
+                            "tokens_consumed": 14619,
+                            "tokens_remaining": 15381,
+                            "token_utilization_percentage": 48.73,
+                            "average_tokens_per_step": 2436.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 51.27,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 6,
+                            "consumption_rate": 2436.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 8.1,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.5666666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_111056-whitehorsedc.gov.uk",
+                        "start_time": "2025-08-08T11:10:56+01:00",
+                        "current_time": "2025-08-08T11:11:30+01:00",
+                        "duration_seconds": 34,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 14619,
+                        "tokens_remaining": 15381,
+                        "token_utilization_percentage": 48.73,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 11323,
+                                "avg_per_call": 5661.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3296,
+                                "avg_per_call": 1648
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 2436.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_111056-whitehorsedc.gov.uk",
+                    "start_time": "2025-08-08T11:10:56+01:00",
+                    "current_time": "2025-08-08T11:11:30+01:00",
+                    "duration_seconds": 34,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 14619,
+                    "tokens_remaining": 15381,
+                    "token_utilization_percentage": 48.73,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 11323,
+                            "avg_per_call": 5661.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3296,
+                            "avg_per_call": 1648
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 2436.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

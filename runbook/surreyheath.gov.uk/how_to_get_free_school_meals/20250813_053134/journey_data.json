@@ -1,0 +1,735 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T05:31:34+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "surreyheath.gov.uk",
+                "Council Name": "Surrey Heath Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Club Dean | Surrey Heath Borough Council",
+                        "link": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/club-dean",
+                        "snippet": "The scheme provides up to \u00a3150 per child to cover all, or part of a club sports membership. It is available to young people in receipt of free school meals,\u00a0..."
+                    },
+                    {
+                        "title": "Join In scheme | Surrey Heath Borough Council",
+                        "link": "https://www.surreyheath.gov.uk/community/grants-and-funding/join-scheme",
+                        "snippet": "We'd also like to set anonymised analytics cookies that help us make improvements by measuring how you use the site. ... in receipt of free school meals and/or\u00a0..."
+                    },
+                    {
+                        "title": "Activities for everyone | Surrey Heath Borough Council",
+                        "link": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/keep-active/low-cost-ways-be-active/activities-everyone",
+                        "snippet": "The scheme provides up to \u00a3150 per child to cover all, or part of a club sports membership. It is available to young people in receipt of free school meals,\u00a0..."
+                    },
+                    {
+                        "title": "Basingstoke Canal Canoe Club | Surrey Heath Borough Council",
+                        "link": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/sports-and-leisure-directory/basingstoke-canal-canoe-club",
+                        "snippet": "We'd also like to set anonymised analytics cookies that help us make ... It is available to young people in receipt of free school meals, and/or whose parents are\u00a0..."
+                    },
+                    {
+                        "title": "Camberley Cricket Club | Surrey Heath Borough Council",
+                        "link": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/sports-and-leisure-directory/camberley-cricket-club",
+                        "snippet": "We'd also like to set anonymised analytics cookies that help us make ... It is available to young people in receipt of free school meals, and/or whose parents are\u00a0..."
+                    },
+                    {
+                        "title": "Camberley and Farnborough Hockey Club | Surrey Heath Borough ...",
+                        "link": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/sports-and-leisure-directory/camberley-and-farnborough-hockey-club",
+                        "snippet": "We'd also like to set anonymised analytics cookies that help us make ... It is available to young people in receipt of free school meals, and/or whose parents are\u00a0..."
+                    },
+                    {
+                        "title": "Activities for children | Surrey Heath Borough Council",
+                        "link": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/keep-active/low-cost-ways-be-active/activities-children",
+                        "snippet": "We'd also like to set anonymised analytics cookies that help us make ... It is available to young people in receipt of free school meals, and/or whose parents are\u00a0..."
+                    },
+                    {
+                        "title": "Annex B DISCRETIONARY FEES AND CHARGES BASIC VAT ...",
+                        "link": "https://www.surreyheath.gov.uk/sites/default/files/2023-06/Fees%20%26%20Charges%202022-23.pdf",
+                        "snippet": "Dance School Fit Up, Rehearsal, Get-In (rate per hour). 80.00. SR. 102.00 ... a) View Register. Free. - n/a b) Surrender of unsound food. RB. SR. RB n/a. RB\u00a0..."
+                    },
+                    {
+                        "title": "Events | Surrey Heath Borough Council",
+                        "link": "https://www.surreyheath.gov.uk/events",
+                        "snippet": "We'd also like to set anonymised analytics cookies that help us make improvements by measuring how you use the site. ... Free, Chargeable. Category. - Any -."
+                    },
+                    {
+                        "title": "CONSULTATION STATEMENT LIGHTWATER VILLAGE DESIGN ...",
+                        "link": "https://www.surreyheath.gov.uk/sites/default/files/2023-05/Lightwater%20Consultation%20Statement.pdf",
+                        "snippet": "We have 2 clubs, a pub which serves meals and Lightwater Leisure ... Provide free transport for pupils of Collingwood School. More frequent police\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "005_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/club-dean",
+                        "title": "Club Dean | Surrey Heath Borough Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Provides sports membership fund for children receiving free school meals.",
+                            "The offer is up to \u00a3150 per child, which can cover all or part of a club sports membership."
+                        ],
+                        "reasoning": "The resource directly pertains to sports clubs in the area and explicitly mentions free school meals as a criteria for financial assistance.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Club Dean | Surrey Heath Borough Council",
+                                "Source": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/club-dean",
+                                "Key Strengths": [
+                                    "Provides sports membership fund for children receiving free school meals.",
+                                    "The offer is up to \u00a3150 per child, which can cover all or part of a club sports membership."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The resource directly pertains to sports clubs in the area and explicitly mentions free school meals as a criteria for financial assistance."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Join In scheme | Surrey Heath Borough Council",
+                                "Source": "https://www.surreyheath.gov.uk/community/grants-and-funding/join-scheme",
+                                "Key Strengths": [
+                                    "Provides opportunities for young people receiving free school meals and/or whose parents are in receipt of certain benefits.",
+                                    "The scheme may provide financial support for various leisure activities, although further details are needed."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Though the snippet mentions 'free school meals and/or', it is less clear cut than the first recommendation, but still potentially relevant to customer information needs."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Activities for everyone | Surrey Heath Borough Council",
+                                "Source": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/keep-active/low-cost-ways-be-active/activities-everyone",
+                                "Key Strengths": [
+                                    "Offers low-cost ways to be active for everyone.",
+                                    "The resource focuses on helping individuals find affordable activities, although they may not specifically target those in need."
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "Even though this source provides low-cost ways to be active, it is less focused on catering to the council's customer information needs regarding financial assistance for certain groups."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Camberley and Farnborough Hockey Club | Surrey Heath Borough...",
+                                "Source": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/sports-and-leisure-directory/camberley-and-farnborough-hockey-club",
+                                "Key Strengths": [
+                                    "Mentions assistance for young people in receipt of free school meals or certain benefits.",
+                                    "The hockey club's page implies the possibility of financial aid, but more information is needed on this subject."
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "While this resource mentions assistance for disadvantaged children, it could not be confirmed that they offer specific support for those receiving free school meals."
+                            }
+                        ],
+                        "Analysis Notes": "All sources are from the same domain (Surrey Heath Borough Council), indicating a consistent level of reliability. However, the information provided about financial assistance for those in need varied between websites and required additional exploration.",
+                        "Recommendations Notes": "The first two recommendations focus on sources that explicitly provide funding or support for young people receiving free school meals. The last three recommendations provide opportunities but may require more digging to fully understand their eligibility criteria."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "75",
+                        "65",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 72.5,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Club Dean | Surrey Heath Borough Council",
+                            "Source": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/club-dean",
+                            "Reasoning": "Provides a clear and confirmed offer of sports membership fund for children receiving free school meals, which addresses the research objective and offers valuable information.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Join In scheme | Surrey Heath Borough Council",
+                            "Source": "https://www.surreyheath.gov.uk/community/grants-and-funding/join-scheme",
+                            "Reasoning": "While not as clear-cut, the Join In scheme still seems to cater to young people receiving free school meals or whose parents are in receipt of certain benefits and offers potential financial support.",
+                            "Confidence": "75"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Activities for everyone | Surrey Heath Borough Council",
+                            "Source": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/keep-active/low-cost-ways-be-active/activities-everyone",
+                            "Reasoning": "Though this source focuses on low-cost activities, it may not specifically target those in need of financial assistance related to free school meals.",
+                            "Confidence": "65"
+                        }
+                    ],
+                    "max_confidence": "90",
+                    "average_confidence": 75
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "007_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/club-dean"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/club-dean",
+                        "analysis": {
+                            "url": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/club-dean",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T05:31:34+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T05:32:53+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 45216,
+                            "response_time": 1.062,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (1.062s)",
+                                    "Content successfully retrieved (45216 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 1.0647850036621094,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "008_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/club-dean"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/club-dean",
+                        "content": " The cleaned, semantically structured HTML containing the central editorial content of the page would be as follows:\n\n```html\n<article class=\"localgov-services-page node node--type-localgov-services-page node--with-restricted-width node--view-mode-full\">\n  <div class=\"lgd-container padding-horizontal\">\n    <div class=\"localgov-services-page__content node__content\">\n      <div class=\"field field--name-body field--type-text-with-summary field--label-hidden field__item\">\n        <p>Club Dean is a free evening youth club for 11 to 16 year olds. Sessions are split into age groups meeting fortnightly.</p>\n        <p>Club Dean is being led by 'Camberley Youth for Christ'.</p>\n        <p>The weekly activities include sports, video games, craft, workshops and more.</p>\n        <p>You can find out what's coming up on the <a class=\"external-link\" href=\"https://camberley.yfc.co.uk/club-dean/\">Camberley Youth For Christ website (external link)</a>.</p>\n        <h2 id=\"session-details\">Session details</h2>\n        <p>Club Dean is open during term time.</p>\n        <p>Day: Tuesday&nbsp;</p>\n        <p>Time: 6pm until 7:30pm</p>\n        <p>Place: Surrey Heath Young People and Family Centre, Kingston Road, Camberley GU15 4AF</p>\n        <h3 id=\"dates\">Dates</h3>\n        <p>School years 7, 8 and 9: 23 May, 6 June, 20 June, 4 July, 18 July</p>\n        <p>School years 10 and 11: 16 May, 30 May, 13 June, 27 June, 11 July</p>\n        <h2 id=\"sign-up-information\">Sign up information</h2>\n        <p>You do not need to book. Please arrive at a sessions between 6pm and 7:30pm.</p>\n        <p>We will need:</p>\n        <ul>\n          <li>permission from a parent</li>\n          <li>an emergency contact&nbsp;</li>\n        </ul>\n        <p>The club is run by a group of great volunteers: Camberley Youth For Christ, St Martins Camberley, Old Dean Community Group and Surrey Heath Borough Council.</p>\n      </div>\n      <!-- The following field (field--name-localgov-page-components) has been removed as it does not contain essential content related to the main body.-->\n    </div>\n  </div>\n</article>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 14.3453209400177,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "009_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/club-dean",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 20.362810134887695,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.surreyheath.gov.uk/leisure-sports-and-culture/sports-and-physical-activity/club-dean"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "010_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_053134-surreyheath.gov.uk",
+                    "analysis_timestamp": "2025-08-13T05:33:29+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_no_progress",
+                    "confidence": 80,
+                    "reasoning": "No progress detected - journey stagnating",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 9,
+                            "duration_minutes": 1.9166666666666667,
+                            "tokens_consumed": 12977,
+                            "tokens_remaining": 17023,
+                            "token_utilization_percentage": 43.26,
+                            "average_tokens_per_step": 1441.89
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 56.74,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 11,
+                            "consumption_rate": 1441.89,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 9,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 5
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 27.38,
+                            "steps_fatigue_percentage": 75,
+                            "overall_fatigue_score": 75,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.9166666666666667,
+                            "total_steps": 9,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy"
+                        ],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "try_chat",
+                        "optimize_strategy"
+                    ],
+                    "risk_factors": [
+                        "Wasted resources",
+                        "User frustration"
+                    ],
+                    "next_step_suggestions": [
+                        "Try ChatScout for AI-generated content",
+                        "Revise search terms"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_053134-surreyheath.gov.uk",
+                        "start_time": "2025-08-13T05:31:34+01:00",
+                        "current_time": "2025-08-13T05:33:29+01:00",
+                        "duration_seconds": 115,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 12977,
+                        "tokens_remaining": 17023,
+                        "token_utilization_percentage": 43.26,
+                        "token_status": "available",
+                        "total_steps": 9,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 5,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 9
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2245,
+                                "avg_per_call": 1122.5
+                            },
+                            "analyst": {
+                                "calls": 5,
+                                "tokens": 10732,
+                                "avg_per_call": 2146.4
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1441.89
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_no_progress",
+                    "confidence": 80,
+                    "reasoning": "No progress detected - journey stagnating"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_053134-surreyheath.gov.uk",
+                    "start_time": "2025-08-13T05:31:34+01:00",
+                    "current_time": "2025-08-13T05:33:29+01:00",
+                    "duration_seconds": 115,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 12977,
+                    "tokens_remaining": 17023,
+                    "token_utilization_percentage": 43.26,
+                    "token_status": "available",
+                    "total_steps": 9,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 5,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 9
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2245,
+                            "avg_per_call": 1122.5
+                        },
+                        "analyst": {
+                            "calls": 5,
+                            "tokens": 10732,
+                            "avg_per_call": 2146.4
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1441.89
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_no_progress"
+            }
+        }
+    }
+]

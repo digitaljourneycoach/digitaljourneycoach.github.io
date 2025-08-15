@@ -1,0 +1,559 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T06:16:09+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "wiganmbc.gov.uk",
+                "Council Name": "Wigan Metropolitan Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Citizen Portal - Register an account",
+                        "link": "https://ems.wiganmbc.gov.uk/CitizenPortal_LIVE/en/Account/Register",
+                        "snippet": "Apply for school places for your child; Apply for home to school transport for your child; Apply for free school meals for your child; Apply for training\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://ems.wiganmbc.gov.uk/CitizenPortal_LIVE/en/Account/Register",
+                        "title": "Citizen Portal - Register an account",
+                        "confidence": 90,
+                        "strengths": [
+                            "This link leads to a citizen portal where users can register an account.",
+                            "The provided snippet suggests that the portal enables users to apply for various council services such as school places, home-to-school transport, and free school meals."
+                        ],
+                        "reasoning": "This link appears to be a gateway for Wigan residents to access essential council services. The snippet provided clearly indicates that the portal is intended for account registration and offers multiple council-related applications which aligns with our customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "1",
+                            "recommendations": "1"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Citizen Portal - Register an account",
+                                "Source": "https://ems.wiganmbc.gov.uk/CitizenPortal_LIVE/en/Account/Register",
+                                "Key Strengths": [
+                                    "This link leads to a citizen portal where users can register an account.",
+                                    "The provided snippet suggests that the portal enables users to apply for various council services such as school places, home-to-school transport, and free school meals."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link appears to be a gateway for Wigan residents to access essential council services. The snippet provided clearly indicates that the portal is intended for account registration and offers multiple council-related applications which aligns with our customer information needs."
+                            }
+                        ],
+                        "Analysis Notes": "The search results returned one item that seems relevant to council customer information. Upon inspection, it appears that this resource would indeed help fulfill the customer's requirements.",
+                        "Recommendations Notes": "While we can only analyze search results, I encourage users to visit the linked portal and explore all available services for a tailored council experience."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    }
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Citizen Portal - Register an account",
+                            "Source": "https://ems.wiganmbc.gov.uk/CitizenPortal_LIVE/en/Account/Register",
+                            "Reasoning": "This link appears to be a gateway for Wigan residents to access essential council services. The snippet provided clearly indicates that the portal is intended for account registration and offers multiple council-related applications which aligns with our customer information needs.",
+                            "Confidence": "90"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://ems.wiganmbc.gov.uk/CitizenPortal_LIVE/en/Account/Register"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://ems.wiganmbc.gov.uk/CitizenPortal_LIVE/en/Account/Register",
+                        "analysis": {
+                            "url": "https://ems.wiganmbc.gov.uk/CitizenPortal_LIVE/en/Account/Register",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T06:16:09+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T06:16:18+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 88101,
+                            "response_time": 2.772,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 80,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Acceptable response time (2.772s)",
+                                    "Content successfully retrieved (88101 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 70,
+                                "component_scores": {
+                                    "technical": 80,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 2.7754929065704346,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://ems.wiganmbc.gov.uk/CitizenPortal_LIVE/en/Account/Register"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://ems.wiganmbc.gov.uk/CitizenPortal_LIVE/en/Account/Register",
+                        "content": "```html\n<h1>Data protection</h1>\n<p>You must provide consent for us to continue to use the information you have provided. If you do not provide consent, you cannot create an account.</p>\n<p>The information provided on this form will be processed in accordance with the Local Authority\u2019s School Admissions and Appeals Service Privacy Notice. Information will be treated as confidential and will be used only for the purpose of processing your child\u2019s application for a school place in accordance with the School Admissions Code 2021.</p>\n<p>The Privacy Notice is in line with our duties as set out in the Data Protection Act 2018 and GDPR. The legislation gives rights to those individuals whose data is held. These include:</p>\n<ul>\n    <li>The right to request access to the data that is being held by contacting the Council Data Protection Officer \u2013 dataprotectionofficer@wigan.gov.uk</li>\n    <li>The right to request the reason why the data is being held and what it is being used for.</li>\n    <li>The right to request data to be removed (although without the information, your application for a school place cannot be processed).</li>\n    <li>The right to request the Local Authority to correct or amend any incorrect information.</li>\n    <li>The right to know who the data may be shared with.</li>\n    <li>The right to know how long the data can be held before it is destroyed.</li>\n</ul>\n<p>A copy of the full Privacy Notice is available by following this link \u2013 <a href=\"https://www.wigan.gov.uk/Docs/PDF/Council/Data-Protection-FOI/Privacy-notices/Education/School-Admissions-and-Appeals-Privacy-Notice.pdf\" target=\"_blank\">School Admissions and Appeals Service Privacy Notice</a>. </p>\n<p>By submitting your application you are declaring that you have read and understood the terms of the notice.</p>\n<button id=\"btnAgreementContinue\" type=\"button\">Continue</button>\n\n<h2>Notice</h2>\n<p>You must provide consent for us to use the information you provide before you can register an account.</p>\n<button id=\"btnAgreementReturn\" type=\"button\">Return to consent screen</button>\n<button id=\"btnAgreementDeclined\" type=\"button\">I do not consent</button>\n\n<h2>Declined</h2>\n<p>Consent not provided.</p>\n<p>You cannot create an account.</p>\n<p>You can register a new account if you need to submit a new application.</p>\n\n<h1>Register an account</h1>\n<p>Create an account to</p>\n<ul>\n    <li>Apply for funding for early education for your 2-year-old child</li>\n    <li>Apply for up to 30 hours of free childcare for your child</li>\n    <li>Apply for school places for your child</li>\n    <li>Apply for home to school transport for your child</li>\n    <li>Apply for free school meals for your child</li>\n    <li>Apply for training courses</li>\n    <li>Tell us about special education needs or disabilities for either yourself or your child</li>\n</ul>\n\n<p>Use the Post Office's <a href=\"http://www.postoffice.co.uk/postcode-finder\" target=\"_blank\">Postcode Finder</a> if you don't know your postcode.</p>\n\n<p>Provide a phone number where you can be contacted during normal office hours, if necessary</p>\n```\n",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 10.089210033416748,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://ems.wiganmbc.gov.uk/CitizenPortal_LIVE/en/Account/Register",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 5.308507204055786,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://ems.wiganmbc.gov.uk/CitizenPortal_LIVE/en/Account/Register"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_061609-wiganmbc.gov.uk",
+                    "analysis_timestamp": "2025-08-13T06:16:37+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.4666666666666667,
+                            "tokens_consumed": 14204,
+                            "tokens_remaining": 15796,
+                            "token_utilization_percentage": 47.35,
+                            "average_tokens_per_step": 2367.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 52.65,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 6,
+                            "consumption_rate": 2367.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 6.67,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.4666666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_061609-wiganmbc.gov.uk",
+                        "start_time": "2025-08-13T06:16:09+01:00",
+                        "current_time": "2025-08-13T06:16:37+01:00",
+                        "duration_seconds": 28,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 14204,
+                        "tokens_remaining": 15796,
+                        "token_utilization_percentage": 47.35,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 11903,
+                                "avg_per_call": 5951.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 2301,
+                                "avg_per_call": 1150.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 2367.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_061609-wiganmbc.gov.uk",
+                    "start_time": "2025-08-13T06:16:09+01:00",
+                    "current_time": "2025-08-13T06:16:37+01:00",
+                    "duration_seconds": 28,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 14204,
+                    "tokens_remaining": 15796,
+                    "token_utilization_percentage": 47.35,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 11903,
+                            "avg_per_call": 5951.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 2301,
+                            "avg_per_call": 1150.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 2367.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

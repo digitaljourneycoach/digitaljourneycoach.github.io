@@ -1,0 +1,689 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T13:30:45+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "torfaen.gov.uk",
+                "Council Name": "Torfaen County Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed bin/recycling collection | Torfaen County Borough ...",
+                        "link": "https://www.torfaen.gov.uk/en/Forms/Report/Missed-bin-recycling-collection/Missed-Collection.aspx",
+                        "snippet": "May 28, 2025 ... If your waste/recycling was at its collection point at the correct time but was not collected, you should contact us. If you wish to report\u00a0..."
+                    },
+                    {
+                        "title": "Report It | Torfaen County Borough Council",
+                        "link": "https://www.torfaen.gov.uk/en/Forms/Report/Report-It.aspx",
+                        "snippet": "If you would like to report your issue without logging in or ... Bins - missed bin/recycling collection \u00b7 Bins - purple lidded bin enquiry \u00b7 Blue\u00a0..."
+                    },
+                    {
+                        "title": "Bins and Recycling | Torfaen County Borough Council",
+                        "link": "https://www.torfaen.gov.uk/en/RubbishAndRecycling/Rubbish-and-Recycling.aspx",
+                        "snippet": "Bins and Recycling \u00b7 Find your waste/recycling collection day \u00b7 Report a missed bin/recycling collection \u00b7 Request a new purple lidded bin \u00b7 Request a new green bin\u00a0..."
+                    },
+                    {
+                        "title": "Green Bin | Torfaen County Borough Council",
+                        "link": "https://www.torfaen.gov.uk/en/RubbishAndRecycling/Householdwaste-domesticbins/GreenBin/Green-Bin.aspx",
+                        "snippet": "Jan 16, 2025 ... Green Bin. Find your waste/recycling collection day \u00b7 Report a missed collection \u00b7 Request a new green bin. Green Bin. How often is the green\u00a0..."
+                    },
+                    {
+                        "title": "Red Bag | Torfaen County Borough Council",
+                        "link": "https://www.torfaen.gov.uk/en/RubbishAndRecycling/Householdwaste-domesticbins/RedBag/Red-Bag.aspx",
+                        "snippet": "Jul 4, 2025 ... Rubbish and Recycling \u00b7 Household waste - domestic bins; Red Bag. Find your waste/recycling collection day \u00b7 Report a missed collection. Red Bag."
+                    },
+                    {
+                        "title": "Bin collection days | Torfaen County Borough Council",
+                        "link": "https://www.torfaen.gov.uk/en/RubbishAndRecycling/Householdwaste-rubbishcollections/Bin-Collection-Days.aspx",
+                        "snippet": "Jan 16, 2025 ... Report a missed collection. Bin collection days. In the last 12 months, Torfaen council has carried out more than 5,000,000 bin collections."
+                    },
+                    {
+                        "title": "Service Directory | Torfaen County Borough Council",
+                        "link": "https://www.torfaen.gov.uk/en/ServiceDirectory/ServiceDirectory.aspx?AZListing_AtoZLetter=R",
+                        "snippet": "Oct 10, 2022 ... Report a Lost Dog \u00b7 Report a missed bin/recycling collection \u00b7 Report a Pest Control Issue \u00b7 Report a problem with a housing association\u00a0..."
+                    },
+                    {
+                        "title": "Report incidents of off-road biking | Torfaen County Borough Council",
+                        "link": "https://www.torfaen.gov.uk/en/Forms/Report/Off-road-biking/Off-road-biking.aspx",
+                        "snippet": "Bins - abandoned/damaged bin or container \u00b7 Bins - mess / bags left after collection \u00b7 Bins - missed bin/recycling collection \u00b7 Bins - purple lidded bin enquiry\u00a0..."
+                    },
+                    {
+                        "title": "Purple Lidded Bin | Torfaen County Borough Council",
+                        "link": "https://www.torfaen.gov.uk/en/RubbishAndRecycling/Householdwaste-domesticbins/BlackBin/Black-Bin.aspx",
+                        "snippet": "Jul 3, 2025 ... Find your waste/recycling collection day \u00b7 Report a missed collection \u00b7 Request a new purple lidded bin \u00b7 Request a weekly purple lidded bin\u00a0..."
+                    },
+                    {
+                        "title": "Black Box | Torfaen County Borough Council",
+                        "link": "https://www.torfaen.gov.uk/en/RubbishAndRecycling/Householdwaste-domesticbins/BlackBox/Black-Box.aspx",
+                        "snippet": "Jan 16, 2025 ... Rubbish and Recycling \u00b7 Household waste - domestic bins; Black Box. Find your waste/recycling collection day \u00b7 Report a missed collection. Black\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.torfaen.gov.uk/en/Forms/Report/Missed-bin-recycling-collection/Missed-Collection.aspx",
+                        "title": "Report a missed bin/recycling collection | Torfaen County Borough ...",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly reports missed bin or recycling collection to the council",
+                            "Provides an official platform for residents to lodge complaints about missed collections"
+                        ],
+                        "reasoning": "This link is specifically designed for residents to report missed bin or recycling collections, making it straightforward and easy for them to communicate any issues with their service.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed bin/recycling collection | Torfaen County Borough ...",
+                                "Source": "https://www.torfaen.gov.uk/en/Forms/Report/Missed-bin-recycling-collection/Missed-Collection.aspx",
+                                "Key Strengths": [
+                                    "Directly reports missed bin or recycling collection to the council",
+                                    "Provides an official platform for residents to lodge complaints about missed collections"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link is specifically designed for residents to report missed bin or recycling collections, making it straightforward and easy for them to communicate any issues with their service."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Report It | Torfaen County Borough Council",
+                                "Source": "https://www.torfaen.gov.uk/en/Forms/Report/Report-It.aspx",
+                                "Key Strengths": [
+                                    "Multiple options for reporting issues, including missed bin collections",
+                                    "Does not require residents to log in to report problems"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This website serves as a comprehensive platform for reporting various council-related issues, and the option to report missed bin collections is one of them."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Bins and Recycling | Torfaen County Borough Council",
+                                "Source": "https://www.torfaen.gov.uk/en/RubbishAndRecycling/Rubbish-and-Recycling.aspx",
+                                "Key Strengths": [
+                                    "Provides information about bin collection days and options for reporting missed collections",
+                                    "Covers both waste and recycling bins"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This page offers residents useful information about their bin collection schedules while also allowing them to report any missed collections."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Bin collection days | Torfaen County Borough Council",
+                                "Source": "https://www.torfaen.gov.uk/en/RubbishAndRecycling/Householdwaste-rubbishcollections/Bin-Collection-Days.aspx",
+                                "Key Strengths": [
+                                    "Displays residents' bin collection days",
+                                    "Allows reporting of missed collections"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link provides bin collection schedules and offers residents the ability to report any missed collections."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Service Directory | Torfaen County Borough Council",
+                                "Source": "https://www.torfaen.gov.uk/en/ServiceDirectory/ServiceDirectory.aspx?AZListing_AtoZLetter=R",
+                                "Key Strengths": [
+                                    "Provides easy access to various council services, including reporting a missed bin collection",
+                                    "Offers filterable search options for residents"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This service directory provides quick access to numerous council services, allowing residents to report missed bin collections with relative ease."
+                            }
+                        ],
+                        "Analysis Notes": "The provided links are all related to waste management and recycling services offered by Torfaen County Borough Council. Many of the options provide multiple solutions for residents to address issues with their collection service, making some entries overlap in terms of functionality but not content.",
+                        "Recommendations Notes": "While there are many useful links for council customer information needs regarding waste management, only five links were deemed most relevant and promising for users searching for information about reporting a missed bin or recycling collection. Additional options may also be useful depending on the specific issues a resident is trying to address."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Report a missed bin/recycling collection | Torfaen County Borough ...",
+                            "Source": "https://www.torfaen.gov.uk/en/Forms/Report/Missed-bin-recycling-collection/Missed-Collection.aspx",
+                            "Reasoning": "This link is specifically designed for residents to report missed bin or recycling collections directly and quickly, making it the optimal choice.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Report It | Torfaen County Borough Council",
+                            "Source": "https://www.torfaen.gov.uk/en/Forms/Report/Report-It.aspx",
+                            "Reasoning": "While it offers multiple options for reporting issues, including missed bin collections, the dedicated link might be less straightforward for those with a specific issue regarding missed collections.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Bins and Recycling | Torfaen County Borough Council",
+                            "Source": "https://www.torfaen.gov.uk/en/RubbishAndRecycling/Rubbish-and-Recycling.aspx",
+                            "Reasoning": "This page offers residents useful information about their bin collection schedules while also allowing them to report any missed collections, but it may not be as direct as the dedicated missed collection reporting link.",
+                            "Confidence": "80"
+                        }
+                    ],
+                    "selected_options": {
+                        "max_selections": 3,
+                        "min_confidence": 0.6
+                    },
+                    "average_confidence": 86.67
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.torfaen.gov.uk/en/Forms/Report/Missed-bin-recycling-collection/Missed-Collection.aspx"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.torfaen.gov.uk/en/Forms/Report/Missed-bin-recycling-collection/Missed-Collection.aspx",
+                        "analysis": {
+                            "url": "https://www.torfaen.gov.uk/en/Forms/Report/Missed-bin-recycling-collection/Missed-Collection.aspx",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T13:30:45+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T13:31:22+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 19553,
+                            "response_time": 0.365,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.365s)",
+                                    "Content successfully retrieved (19553 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.36562299728393555,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.torfaen.gov.uk/en/Forms/Report/Missed-bin-recycling-collection/Missed-Collection.aspx"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.torfaen.gov.uk/en/Forms/Report/Missed-bin-recycling-collection/Missed-Collection.aspx",
+                        "content": " The provided HTML code is for a webpage of Torfaen County Borough Council, which allows users to report missed bin/recycling collections. The content of the page includes:\n1. Contact information such as the address of the council, phone number, social media links, and ways to get involved with consultations;\n2. A form for reporting a missed bin/recycling collection;\n3. Footer section that mentions the copyright text;\n4. Hidden input fields for ASP.NET application state values.\n\nThe HTML also includes CSS styles and various links to other resources such as fonts, javascript libraries, and iFrames. However, without context, it is hard to determine the purpose of some elements in the code.\n\nSince the primary focus of this prompt was on generating a report, here's a summary of the information regarding reporting missed bin/recycling collections:\n- Users should contact the council if their waste/recycling was at its collection point at the correct time but was not collected;\n- The form to report a missed purple lidded bin collection is located on the page and can be found within an iFrame (though it is commented out in this provided HTML code);\n- Additional waste, which cannot fit inside the purple lidded bin, will not be collected if the reported form shows a missed collection;\n- Users are advised to retain the waste and put it back out on the next collection day if an investigation by the Waste Department is needed;\n- The page includes some helpful recommendations for users regarding the contact form loading based on their cookie preferences.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 9.979330062866211,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.torfaen.gov.uk/en/Forms/Report/Missed-bin-recycling-collection/Missed-Collection.aspx",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content very well addresses this concern. It provides clear instructions on how to report a missed bin/recycling collection.",
+                                    "confidence": "95%",
+                                    "reasoning": "The webpage presents an easy-to-use form for reporting a missed purple lidded bin collection and offers specific advice about what to do if the waste needs to be investigated by the Waste Department.",
+                                    "next_actions": "I would fill out the provided form to report my missed bin collection."
+                                }
+                            ],
+                            "overall_assessment": "The content appears well-designed for a council resident seeking information on how to report missed bin/recycling collections. The content is easy to understand, and the instructions are clear and concise. However, there are some parts of the HTML code that may feel confusing due to various links to other resources and commented out elements. A simpler version of the page, focusing solely on reporting missed collections without unnecessary distractions, would improve the user experience."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.416250944137573,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.torfaen.gov.uk/en/Forms/Report/Missed-bin-recycling-collection/Missed-Collection.aspx"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_133045-torfaen.gov.uk",
+                    "analysis_timestamp": "2025-08-08T13:31:38+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8833333333333333,
+                            "tokens_consumed": 7120,
+                            "tokens_remaining": 22880,
+                            "token_utilization_percentage": 23.73,
+                            "average_tokens_per_step": 1186.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 76.27,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 19,
+                            "consumption_rate": 1186.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "95",
+                            "quality_scores": [
+                                "95"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "95",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 12.62,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_133045-torfaen.gov.uk",
+                        "start_time": "2025-08-08T13:30:45+01:00",
+                        "current_time": "2025-08-08T13:31:38+01:00",
+                        "duration_seconds": 53,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7120,
+                        "tokens_remaining": 22880,
+                        "token_utilization_percentage": 23.73,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3737,
+                                "avg_per_call": 1868.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3383,
+                                "avg_per_call": 1691.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1186.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_133045-torfaen.gov.uk",
+                    "start_time": "2025-08-08T13:30:45+01:00",
+                    "current_time": "2025-08-08T13:31:38+01:00",
+                    "duration_seconds": 53,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7120,
+                    "tokens_remaining": 22880,
+                    "token_utilization_percentage": 23.73,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3737,
+                            "avg_per_call": 1868.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3383,
+                            "avg_per_call": 1691.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1186.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

@@ -1,0 +1,643 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-12T22:05:42+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "southhams.gov.uk",
+                "Council Name": "South Hams District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Untitled",
+                        "link": "https://www.southhams.gov.uk/support-directory/money-and-debt-advice",
+                        "snippet": "JavaScript is disabled. In order to continue, we need to verify that you're not a robot. This requires JavaScript. Enable JavaScript and then reload the page."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://www.southhams.gov.uk/housing/housing-needs-survey-results/brixton-parish-profile",
+                        "snippet": "JavaScript is disabled. In order to continue, we need to verify that you're not a robot. This requires JavaScript. Enable JavaScript and then reload the page."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 2
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 2
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "005_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.southhams.gov.uk/support-directory/money-and-debt-advice",
+                        "title": "Untitled - Money and Debt Advice",
+                        "confidence": 70,
+                        "strengths": [
+                            "Possible to be a resource providing information about customer finances, debt advice etc.",
+                            "Related to council services as it is under Southhams local government's website"
+                        ],
+                        "reasoning": "The page seems to deal with financial support and advice which could be relevant for a customer seeking help in that area. Furthermore, the source is associated with the council's official webpage.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "2",
+                            "recommendations": "1"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Untitled - Money and Debt Advice",
+                                "Source": "https://www.southhams.gov.uk/support-directory/money-and-debt-advice",
+                                "Key Strengths": [
+                                    "Possible to be a resource providing information about customer finances, debt advice etc.",
+                                    "Related to council services as it is under Southhams local government's website"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The page seems to deal with financial support and advice which could be relevant for a customer seeking help in that area. Furthermore, the source is associated with the council's official webpage."
+                            }
+                        ],
+                        "Analysis Notes": "The provided search results appear to focus on different topics such as a housing needs survey report and financial assistance. However, based on the given instruction, only one result seems potentially relevant for providing customer information, although some confirmation would be required.",
+                        "Recommendations Notes": "While the other link contains a parish profile which is more related to housing and demographics, it might not directly provide useful information to customers. It is suggested to verify the content of the initially identified page before reaching a final judgment."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    }
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Untitled - Money and Debt Advice",
+                            "Source": "https://www.southhams.gov.uk/support-directory/money-and-debt-advice",
+                            "Reasoning": "The page seems to deal with financial support and advice which could be relevant for a customer seeking help in that area. Furthermore, the source is associated with the council's official webpage.",
+                            "Confidence": "70"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "006_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.southhams.gov.uk/support-directory/money-and-debt-advice"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.southhams.gov.uk/support-directory/money-and-debt-advice",
+                        "analysis": {
+                            "url": "https://www.southhams.gov.uk/support-directory/money-and-debt-advice",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-12T22:05:42+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-12T22:06:00+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 42903,
+                            "response_time": 0.447,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.447s)",
+                                    "Content successfully retrieved (42903 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.45072507858276367,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "007_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.southhams.gov.uk/support-directory/money-and-debt-advice"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.southhams.gov.uk/support-directory/money-and-debt-advice",
+                        "content": " Here is the extracted clean, readable body content from the HTML page, which includes all meaningful structural elements and strips out non-essential page furniture:\n\n```html\n<article class=\"node node--type-localgov-subsites-page node--view-mode-full\">\n  <h2>Money and debt advice</h2>\n  <div class=\"field field--name-localgov-subsites-content field--type-entity-reference-revisions field--label-hidden field__items\">\n    <div class=\"field__item\">\n      <div class=\"lgd-page-section lgd-container padding-horizontal lgd-page-section--no-bg-colour paragraph paragraph--type--page-section paragraph--view-mode--default\">\n        <div class=\"layout layout--onecol layout--onecol__flexible\">\n          <div class=\"layout__region layout__region--content\">\n            <div class=\"paragraph paragraph--type--localgov-text paragraph--view-mode--default\">\n              <!-- Main body content here -->\n              <h1>Money and debt advice</h1>\n              <h2>Benefits, grants and support</h2>\n              <ul>\n                <li>Most <a href=\"https://www.gov.uk/browse/benefits\"><strong>benefits claims</strong></a><strong>&nbsp;</strong>are dealt with by the Department for Work and Pensions (DWP), but there are some occasions where people need to claim Housing Benefit from the Council. Please see our <a href=\"/benefits-and-support/other-available-support\" data-entity-type=\"node\" data-entity-uuid=\"7113b6ba-6faf-4af3-a61e-a1997cc0db4d\" data-entity-substitution=\"canonical\" title=\"Other available support\"><strong>available benefits and support&nbsp;page</strong></a><strong>&nbsp;</strong>for more information, or go to the Gov.UK website.</li>\n                <li><a href=\"https://www.devon.gov.uk/educationandfamilies/school-information/school-meals/\"><strong>Free school meals</strong></a>&nbsp;are administered by Devon County Council for all Devon maintained schools. They&nbsp;are also responsible through a traded agreement for free school meals with Devon academies. You can also call 0345 155 1019.</li>\n                <li>The DWP offer <a href=\"https://www.gov.uk/budgeting-help-benefits\"><strong>Budgeting Loans</strong></a><strong>&nbsp;</strong>to people in receipt of benefits to help cover the costs of unexpected expenses. This could be furniture and household goods, costs linked to moving house, funerals or maternity costs. They are interest-free and repayments are taken from your benefits.</li>\n                <li>The <a href=\"/benefits-and-support/other-available-support/household-support-fund\" data-entity-type=\"node\" data-entity-uuid=\"6f863565-39a3-4dba-bfea-7bd54043f0cc\" data-entity-substitution=\"canonical\" title=\"Household Support Fund\"><strong>Household Support Fund</strong></a>&nbsp;can help if you are facing hardship or emergency, including struggling to pay bills or afford food.</li>\n                <li>You can find help to buy food and milk for children under four or mothers over 10 weeks pregnant at <a href=\"https://www.healthystart.nhs.uk/\"><strong>Healthy Start website</strong></a></li>\n                <li><a href=\"https://www.cabdevon.org.uk/advice/\"><strong>Citizens Advice</strong></a>&nbsp;has a range of information if you are struggling financially. You can get help with the cost of living, help with debt, budgeting, mortgage problems and much more.</li>\n                <li><a href=\"https://www.foodaidnetwork.org.uk/cash-first-leaflets\"><strong>The Independent Food Aid network</strong></a>&nbsp;has produced a series of referral leaflets to help people identify who is best to contact for help.</li>\n                <li>Friends of the Elderly provides <a href=\"https://www.fote.org.uk/our-charity-work/grants-2/\"><strong>grants to older people</strong></a><strong>&nbsp;</strong>living on low incomes.</li>\n                <li><a href=\"https://www.cosaraf.org/what-we-do/hardship-grants/\"><strong>COSARAF (Children of Sheikh Abdul Rashid and Fahmida) Charitable Foundation</strong></a>&nbsp;can provide grants of up to &pound;2,000 from its hardship fund.</li>\n              </ul>\n              <h2>Debt advice</h2>\n              <ul>\n                <li>The government <a href=\"https://www.moneyhelper.org.uk/\">MoneyHelper website</a>&nbsp;has guidance and advice on managing your money in uncertain times, along with <a href=\"https://www.moneyhelper.org.uk/en/blog/everyday-money/government-cost-of-living-support-package-to-help-with-energy-bills\">everything you need to know about the cost of living support package</a>&nbsp;as well as advisors who can support you.</li>\n                <li><a href=\"https://www.nationaldebtline.org/\">National Debtline</a>&nbsp;is a debt advice charity run by the Money Advice Trust with a free and confidential debt advice service.</li>\n                <li><a href=\"https://www.moneysavingexpert.com/\">Money Saving Expert</a>&nbsp;is a consumer website that provides lots of advice on how to cut costs and save money, including a cost of living crisis survival guide.</li>\n                <li><a href=\"https://www.turn2us.org.uk/\">Turn2us</a>&nbsp;is a national charity that helps people in financial need gain access to welfare benefits, charitable grants, and other financial help.</li>\n              </ul>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</article>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 32.94319987297058,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "008_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.southhams.gov.uk/support-directory/money-and-debt-advice",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "To understand how to apply for free school meals",
+                                    "answer_quality": "The content partially addresses this need as it provides information about who administers free school meals, but does not detail the application process or eligibility criteria.",
+                                    "confidence": "70%",
+                                    "reasoning": "While the content mentions that free school meals are administered by Devon County Council, it does not provide specific details about how to apply for these meals or the qualifying criteria. However, the link provided to Devon County Council's website suggests there may be more detailed information available there.",
+                                    "next_actions": "The resident would need to visit the Devon County Council's website and search for information specifically regarding applying for free school meals."
+                                },
+                                {
+                                    "need": "To understand how quickly they will find out if they are eligible",
+                                    "answer_quality": "The content does not directly address this need.",
+                                    "confidence": "0%",
+                                    "reasoning": "The content does not provide any information regarding the speed at which eligibility for free school meals can be determined.",
+                                    "next_actions": "The resident would need to contact Devon County Council or visit their website for more specific information."
+                                },
+                                {
+                                    "need": "To understand who to contact if they have questions or need help",
+                                    "answer_quality": "The content partially addresses this need as it provides several contacts and resources for debt advice and financial support.",
+                                    "confidence": "80%",
+                                    "reasoning": "The content includes information about Citizens Advice, National Debtline, Money Saving Expert, Turn2us, and other organizations that provide financial advice or assistance. There is also a phone number provided for Devon County Council's benefits service.",
+                                    "next_actions": "The resident could contact one of the provided resources for help with their specific question or problem."
+                                }
+                            ],
+                            "overall_assessment": "While the content provides some useful information about various financial support options and resources, it does not adequately address the resident's need for clear steps on how to apply for free school meals or an understanding of how quickly eligibility will be determined. The resident would likely need to search further for this information."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 11.441233158111572,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.southhams.gov.uk/support-directory/money-and-debt-advice"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "009_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250812_220542-southhams.gov.uk",
+                    "analysis_timestamp": "2025-08-12T22:06:45+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 8,
+                            "duration_minutes": 1.05,
+                            "tokens_consumed": 8331,
+                            "tokens_remaining": 21669,
+                            "token_utilization_percentage": 27.77,
+                            "average_tokens_per_step": 1041.38
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 72.23,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 20,
+                            "consumption_rate": 1041.38,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 8,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 4
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "80",
+                            "quality_scores": [
+                                "70",
+                                "0",
+                                "80"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "80",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 15,
+                            "steps_fatigue_percentage": 66.67,
+                            "overall_fatigue_score": 66.67,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.05,
+                            "total_steps": 8,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved",
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250812_220542-southhams.gov.uk",
+                        "start_time": "2025-08-12T22:05:42+01:00",
+                        "current_time": "2025-08-12T22:06:45+01:00",
+                        "duration_seconds": 63,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 8331,
+                        "tokens_remaining": 21669,
+                        "token_utilization_percentage": 27.77,
+                        "token_status": "available",
+                        "total_steps": 8,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 4,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 8
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3535,
+                                "avg_per_call": 1767.5
+                            },
+                            "analyst": {
+                                "calls": 4,
+                                "tokens": 4796,
+                                "avg_per_call": 1199
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1041.38
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250812_220542-southhams.gov.uk",
+                    "start_time": "2025-08-12T22:05:42+01:00",
+                    "current_time": "2025-08-12T22:06:45+01:00",
+                    "duration_seconds": 63,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 8331,
+                    "tokens_remaining": 21669,
+                    "token_utilization_percentage": 27.77,
+                    "token_status": "available",
+                    "total_steps": 8,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 4,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 8
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3535,
+                            "avg_per_call": 1767.5
+                        },
+                        "analyst": {
+                            "calls": 4,
+                            "tokens": 4796,
+                            "avg_per_call": 1199
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1041.38
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

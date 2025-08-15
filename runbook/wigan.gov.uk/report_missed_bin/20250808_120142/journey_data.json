@@ -1,0 +1,220 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T12:01:42+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "wigan.gov.uk",
+                "Council Name": "Wigan Metropolitan Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed bin",
+                        "link": "https://www.wigan.gov.uk/Resident/Bins-Recycling/Missed-bins.aspx",
+                        "snippet": "If your bin has not been collected on your scheduled day you can report it as missed."
+                    },
+                    {
+                        "title": "Report a Missed Bin",
+                        "link": "https://wasteforms.wigan.gov.uk/MissedBins/Default.aspx",
+                        "snippet": "Forms to report or apply for waste related activities such as reporting missed bin, reporting a damaged bin or applying for a waste and recycling permit."
+                    },
+                    {
+                        "title": "Bins and recycling",
+                        "link": "https://www.wigan.gov.uk/resident/bins-recycling/bins-and-recycling.aspx",
+                        "snippet": "Which bin to use, putting your bin out, bin collection dates, missed ... Report a missed binWhat to do if your bin has not been collected \u00b7 Bulky waste\u00a0..."
+                    },
+                    {
+                        "title": "Request a replacement bin/caddy",
+                        "link": "https://www.wigan.gov.uk/Resident/Bins-Recycling/Request-a-replacement-bin.aspx",
+                        "snippet": "If your bin has gone missing on collection day, please check with your ... Report a missed bin \u00b7 Bin collection dates \u00b7 Bulky waste collections \u00b7 Donating\u00a0..."
+                    },
+                    {
+                        "title": "Report bins and litter",
+                        "link": "https://www.wigan.gov.uk/Resident/Environmental-Problems/Rubbish-and-Litter/Rubbish-and-Litter.aspx",
+                        "snippet": "Missed binReport if your bin has not been emptied \u00b7 Street litter binIf a public bin needs emptying or is damaged let us know \u00b7 Abandoned binsReport a bin that\u00a0..."
+                    },
+                    {
+                        "title": "A-Z",
+                        "link": "https://www.wigan.gov.uk/A-Z.aspx?WiganAtoZ_AtoZLetter=R",
+                        "snippet": "Tell us about a change in your circumstances that may affect the amount of housing benefit you receive. Report a missed bin. If your bin has not been collected\u00a0..."
+                    },
+                    {
+                        "title": "Council complaints",
+                        "link": "https://www.wigan.gov.uk/Council/Contact-us/Council-Complaints.aspx",
+                        "snippet": "Council complaints \u00b7 How do I report an issue for the first time? e.g. pothole, fly tipping,missed bin, housing repair. \u00b7 Complaints about councillors\u00a0..."
+                    },
+                    {
+                        "title": "Report a bin issue | Reporter details \u2013 Wigan Council",
+                        "link": "https://forms.wigan.gov.uk/xfp/form/415",
+                        "snippet": "Report an abandoned, left out or contaminated bin."
+                    },
+                    {
+                        "title": "Putting your bin out for collection",
+                        "link": "https://www.wigan.gov.uk/Resident/Bins-Recycling/Putting-your-bin-out-for-collection.aspx",
+                        "snippet": "When you put your bins out on your collection day: \u00b7 Bins left on the pavement \u00b7 I need help putting my bin out \u00b7 Report a missed bin \u00b7 Cleaning your bin \u00b7 Top tasks\u00a0..."
+                    },
+                    {
+                        "title": "My Account \u2013 Wigan Council",
+                        "link": "https://forms.wigan.gov.uk/myaccount",
+                        "snippet": "My Neighbourhood. MyNeighbourhood - Enter your postcode to find your bin collection calendar, local councillors and more ... Report a missed bin \u00b7 Request a bulky\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed bin",
+                                "Source": "https://www.wigan.gov.uk/Resident/Bins-Recycling/Missed-bins.aspx",
+                                "Key Strengths": [
+                                    "Direct link to reporting a missed bin",
+                                    "Includes information about the process"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The provided link directly leads to a page specifically dedicated to reporting a missed bin, making it the most relevant option for council customer's information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Report Missed Bin",
+                                "Source": "https://wasteforms.wigan.gov.uk/MissedBins/Default.aspx",
+                                "Key Strengths": [
+                                    "Provides forms to report missed bins",
+                                    "Includes other waste-related activities"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While the link does require additional navigation, it offers more than just reporting a missed bin, which may be useful for further inquiries."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Request a replacement bin/caddy",
+                                "Source": "https://www.wigan.gov.uk/Resident/Bins-Recycling/Request-a-replacement-bin.aspx",
+                                "Key Strengths": [
+                                    "Direct link for requesting replacement bins or caddies",
+                                    "Includes information about other bin issues"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The link provides a specific page where residents can request replacements for their missing or damaged bins, making it relevant to customers needing that service."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Report bins and litter",
+                                "Source": "https://www.wigan.gov.uk/Resident/Environmental-Problems/Rubbish-and-Litter/Rubbish-and-Litter.aspx",
+                                "Key Strengths": [
+                                    "Covers both missed bins and litter in the area",
+                                    "Includes reporting abandoned bins"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though the link covers more than just missed bins, it also provides relevant information regarding litter and abandoned bins."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Report a bin issue | Reporter details \u2013 Wigan Council",
+                                "Source": "https://forms.wigan.gov.uk/xfp/form/415",
+                                "Key Strengths": [
+                                    "Provides form to report various bin issues",
+                                    "Easy-to-use online form"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "The link offers form-based reporting for a range of bin issues, though it requires additional navigation to access the service."
+                            }
+                        ],
+                        "Analysis Notes": "While all search results include information relevant to customers' needs, options 1 and 2 ranked highest due to their directness towards the specific customer need.",
+                        "Recommendations Notes": "The analysis aimed to provide the most accessible and efficient options for reporting missed or damaged bins."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "80",
+                        "80",
+                        "70",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 76,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

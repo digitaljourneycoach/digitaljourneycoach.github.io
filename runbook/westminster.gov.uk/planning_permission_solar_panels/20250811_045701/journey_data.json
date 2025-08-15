@@ -1,0 +1,683 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T04:57:01+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "westminster.gov.uk",
+                "Council Name": "Westminster City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Solar panels | Westminster City Council",
+                        "link": "https://www.westminster.gov.uk/planning-building-control-and-environmental-regulations/planning-and-climate-emergency/planning-building-control-and-environmental-regulations/planning-and-climate-emergency/retrofit-measures-and-planning-permission-guidance-householders/solar-panels",
+                        "snippet": "Feb 28, 2022 ... In many cases, solar panels are permitted development, meaning you do not need planning permission if you meet certain conditions."
+                    },
+                    {
+                        "title": "Planning permissions for home upgrades | Westminster City Council",
+                        "link": "https://www.westminster.gov.uk/fairer-environment-hub/take-environmental-action-resident/energy-saving-advice-and-support/planning-permissions-home-upgrades",
+                        "snippet": "Feb 11, 2025 ... Solar PV or solar thermal panels. Upgrades that nearly always require planning permission or listed building consent include: External wall\u00a0..."
+                    },
+                    {
+                        "title": "Retrofit measures and planning permission - guidance for ...",
+                        "link": "https://www.westminster.gov.uk/planning-and-climate-emergency/energy-efficiency-guidance-householders",
+                        "snippet": "Mar 14, 2022 ... External measures such as solar panels, air-source heat pumps and new more thermally efficient windows need planning permission in certain\u00a0..."
+                    },
+                    {
+                        "title": "Replacing or upgrading your windows | Westminster City Council",
+                        "link": "https://www.westminster.gov.uk/planning-building-control-and-environmental-regulations/planning-and-climate-emergency/planning-building-control-and-environmental-regulations/planning-and-climate-emergency/retrofit-measures-and-planning-permission-guidance-householders/replacing-or",
+                        "snippet": "Apr 13, 2022 ... Secondary glazing or draught-proofing will not require planning permission but you may need to make an application for new windows in some\u00a0..."
+                    },
+                    {
+                        "title": "How to retrofit Solar Panels - London",
+                        "link": "https://www.westminster.gov.uk/sites/default/files/media/documents/WCC_Retrofit%20How%20To%20Guides_Solar%20Panels_AW_PDF.pdf",
+                        "snippet": "WILL I NEED PLANNING PERMISSION FOR A SOLAR PANEL? WHAT IS LIKELY TO GET PERMISSION? GUIDELINES ON SITING AND DESIGN. HOW DO I MAKE AN APPLICATION TO INSTALL\u00a0..."
+                    },
+                    {
+                        "title": "Solar panels | Westminster City Council",
+                        "link": "https://www.westminster.gov.uk/planning-building-control-and-environmental-regulations/planning-and-climate-emergency/planning-householder-retrofit-how-guides/solar-panels",
+                        "snippet": "Mar 6, 2024 ... Planning householder retrofit how-to guides. Read about some common retrofit measures in Westminster in our how-to guides\u00a0..."
+                    },
+                    {
+                        "title": "300 Harrow Road planning permission approval | Westminster City ...",
+                        "link": "https://www.westminster.gov.uk/news/300-harrow-road-planning-permission-approval",
+                        "snippet": "May 13, 2020 ... Each home will have an air source heat pump, and residents will benefit from solar panels, rainwater collection, and living roofs, resulting in\u00a0..."
+                    },
+                    {
+                        "title": "Heat pumps | Westminster City Council",
+                        "link": "https://www.westminster.gov.uk/planning-building-control-and-environmental-regulations/planning-and-climate-emergency/planning-building-control-and-environmental-regulations/planning-and-climate-emergency/retrofit-measures-and-planning-permission-guidance-householders/heat-pumps",
+                        "snippet": "Apr 27, 2022 ... Solar panels \u00b7 Heat pumps. Heat ... If you live in a listed building, you will need both planning permission and listed building consent."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://www.westminster.gov.uk/sites/default/files/media/documents/Central%20-%2030%20January%202022.pdf",
+                        "snippet": "Jan 24, 2022 ... Details of PV panels/solar panels.pursuant to condition 7ii of planning permission dated. 18 April 2016 (11/10055/FULL). 24.01.22. Level\u00a0..."
+                    },
+                    {
+                        "title": "TOWN PLANNING APPLICATIONS WEEKLY DECISIONS LIST",
+                        "link": "https://www.westminster.gov.uk/media/document/south-27-october-2024",
+                        "snippet": "Oct 27, 2024 ... Full Planning Permission. Application. Proposal : Installation of solar photo-voltaic panels on the roofs of the 12th and 13th floors of Block A\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_3",
+                        "url": "https://www.westminster.gov.uk/planning-and-climate-emergency/energy-efficiency-guidance-householders",
+                        "title": "Retrofit measures and planning permission - guidance for ...",
+                        "confidence": 80,
+                        "strengths": [
+                            "Official council resource detailing various retrofit measures, including solar panels",
+                            "Incorporates planning permission guidance for these measures"
+                        ],
+                        "reasoning": "The title suggests that this document provides energy-efficiency guidance for households in Westminster. Since solar panels are listed among the retrofit options, its relatedness to council customer information needs is high.",
+                        "rank": 3
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Solar panels | Westminster City Council",
+                                "Source": "https://www.westminster.gov.uk/planning-building-control-and-environmental-regulations/planning-and-climate-emergency/planning-building-control-and-environmental-regulations/planning-and-climate-emergency/retrofit-measures-and-planning-permission-guidance-householders/solar-panels",
+                                "Key Strengths": [
+                                    "Official council guidance on solar panels installation",
+                                    "Covers both types of solar panels (PV and thermal)",
+                                    "Includes information about planning permission conditions"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title clearly indicates that this resource is about solar panels provided by Westminster City Council. Furthermore, the snippet mentions that in many cases, solar panels are permitted development, making it a valuable resource for customers seeking council information on solar panel installation."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "How to retrofit Solar Panels - London",
+                                "Source": "https://www.westminster.gov.uk/sites/default/files/media/documents/WCC_Retrofit%20How%20To%20Guides_Solar%20Panels_AW_PDF.pdf",
+                                "Key Strengths": [
+                                    "Comprehensive guide on retrofitting solar panels offered by the council",
+                                    "Covers the process of applications, guidelines on siting and design"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Although not directly from the main council website, this is an official document provided by Westminster Council. The title explicitly indicates it's a guide on how to retrofit solar panels, making it highly relevant."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Retrofit measures and planning permission - guidance for ...",
+                                "Source": "https://www.westminster.gov.uk/planning-and-climate-emergency/energy-efficiency-guidance-householders",
+                                "Key Strengths": [
+                                    "Official council resource detailing various retrofit measures, including solar panels",
+                                    "Incorporates planning permission guidance for these measures"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title suggests that this document provides energy-efficiency guidance for households in Westminster. Since solar panels are listed among the retrofit options, its relatedness to council customer information needs is high."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Planning permissions for home upgrades | Westminster City Council",
+                                "Source": "https://www.westminster.gov.uk/fairer-environment-hub/take-environmental-action-resident/energy-saving-advice-and-support/planning-permissions-home-upgrades",
+                                "Key Strengths": [
+                                    "Covers various home upgrades including solar panels and their planning requirements",
+                                    "Official resource from Westminster City Council"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Even though the title does not specifically mention solar panels, the snippet clearly indicates that they are one of the upgrades requiring planning permission. This makes it relevant to council customer information needs."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Heat pumps | Westminster City Council",
+                                "Source": "https://www.westminster.gov.uk/planning-building-control-and-environmental-regulations/planning-and-climate-emergency/planning-building-control-and-environmental-regulations/planning-and-climate-emergency/retrofit-measures-and-planning-permission-guidance-householders/heat-pumps",
+                                "Key Strengths": [
+                                    "Official council guidance on heat pumps as a retrofit measure",
+                                    "Includes information about planning permission and listed building consent"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Since heat pumps are sometimes used as an alternative to solar panels for generating renewable energy, they can be considered relevant to council customer information needs."
+                            }
+                        ],
+                        "Analysis Notes": "Several resources were found that provide guidance on various retrofit measures offered by Westminster City Council. However, some of the search results did not directly address solar panels and included unrelated documents or news articles.",
+                        "Recommendations Notes": "Although the top recommendations cover all aspects of installing solar panels and planning permission needed, it's worth noting that resources like Item 2 and Item 8 provide information about multiple retrofit measures. If a customer is only interested in solar panels specifically, these may not be the most suitable options."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "Solar panels | Westminster City Council",
+                        "Source": "https://www.westminster.gov.uk/planning-building-control-and-environmental-regulations/planning-and-clime...",
+                        "Reasoning": "The title clearly indicates that this resource is about solar panels provided by Westminster City Council. Furthermore, the snippet mentions that in many cases, solar panels are permitted development, making it a valuable resource for customers seeking council information on solar panel installation.",
+                        "Confidence": "90"
+                    },
+                    {
+                        "Number": "5",
+                        "Title": "How to retrofit Solar Panels - London",
+                        "Source": "https://www.westminster.gov.uk/sites/default/files/media/documents/WCC_Retrofit%20How%20To%20Guides_Solar...",
+                        "Reasoning": "Although not directly from the main council website, this is an official document provided by Westminster Council. The title explicitly indicates it's a guide on how to retrofit solar panels, making it highly relevant.",
+                        "Confidence": "85"
+                    },
+                    {
+                        "Number": "3",
+                        "Title": "Retrofit measures and planning permission - guidance for ...",
+                        "Source": "https://www.westminster.gov.uk/planning-and-climate-emergency/energy-efficiency-guidance-householders",
+                        "Reasoning": "The title suggests that this document provides energy-efficiency guidance for households in Westminster. Since solar panels are listed among the retrofit options, its relatedness to council customer information needs is high.",
+                        "Confidence": "80"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.westminster.gov.uk/planning-and-climate-emergency/energy-efficiency-guidance-householders"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.westminster.gov.uk/planning-and-climate-emergency/energy-efficiency-guidance-householders",
+                        "analysis": {
+                            "url": "https://www.westminster.gov.uk/planning-and-climate-emergency/energy-efficiency-guidance-householders",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T04:57:01+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T04:57:34+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 46807,
+                            "response_time": 0.437,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.437s)",
+                                    "Content successfully retrieved (46807 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.4375782012939453,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.westminster.gov.uk/planning-and-climate-emergency/energy-efficiency-guidance-householders"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.westminster.gov.uk/planning-and-climate-emergency/energy-efficiency-guidance-householders",
+                        "content": " <!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Retrofit Measures and Planning Permission for Householders - London Borough of Hammersmith & Fulham</title>\n    <!-- Add necessary meta tags and links for SEO -->\n</head>\n\n<body>\n    <main>\n        <article>\n            <!-- Content goes here -->\n            <h1>Retrofit Measures and Planning Permission for Householders</h1>\n            <p>There are many ways you can retrofit your home and introduce measures which will reduce your energy use. If you are already considering building an extension or undertaking other renovation works to your property, this is a great opportunity to undertake additional works to enhance your home's energy performance.</p>\n            <!-- Rest of the content follows the same structure -->\n        </article>\n        <nav>\n            <!-- Navigation links here - you may want to add 'previous page' and 'next page' links based on your application's data -->\n            <a href=\"/previous-page-link\">Previous</a>\n            <a href=\"/next-page-link\">Next</a>\n        </nav>\n        <!-- Consider adding feedback or share functionality if needed -->\n        <footer>\n            <p>Published: 14 March 2022 - Last updated: 8 August 2025</p>\n        </footer>\n    </main>\n</body>\n\n</html>",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 10.128252983093262,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.westminster.gov.uk/planning-and-climate-emergency/energy-efficiency-guidance-householders",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "The content does not directly address the question of whether permission is required for installing solar panels.",
+                                    "confidence": "50%",
+                                    "reasoning": "Although the content discusses retrofit measures, it does not mention solar panels and building permissions specifically. The council resident might need to contact their local planning office or a qualified contractor for specific information regarding the installation of solar panels on their property.",
+                                    "next_actions": "Contact local planning office or seek advice from a qualified contractor."
+                                }
+                            ],
+                            "overall_assessment": "While the content provides information about home retrofitting, it does not specifically address solar panel installation and associated permissions which are crucial to fulfilling the council resident's need"
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.6874799728393555,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.westminster.gov.uk/planning-and-climate-emergency/energy-efficiency-guidance-householders"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_045701-westminster.gov.uk",
+                    "analysis_timestamp": "2025-08-11T04:57:49+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8,
+                            "tokens_consumed": 7464,
+                            "tokens_remaining": 22536,
+                            "token_utilization_percentage": 24.88,
+                            "average_tokens_per_step": 1244
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 75.12,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 18,
+                            "consumption_rate": 1244,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "50",
+                            "quality_scores": [
+                                "50"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "50",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.43,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_045701-westminster.gov.uk",
+                        "start_time": "2025-08-11T04:57:01+01:00",
+                        "current_time": "2025-08-11T04:57:49+01:00",
+                        "duration_seconds": 48,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7464,
+                        "tokens_remaining": 22536,
+                        "token_utilization_percentage": 24.88,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3786,
+                                "avg_per_call": 1893
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3678,
+                                "avg_per_call": 1839
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1244
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_045701-westminster.gov.uk",
+                    "start_time": "2025-08-11T04:57:01+01:00",
+                    "current_time": "2025-08-11T04:57:49+01:00",
+                    "duration_seconds": 48,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7464,
+                    "tokens_remaining": 22536,
+                    "token_utilization_percentage": 24.88,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3786,
+                            "avg_per_call": 1893
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3678,
+                            "avg_per_call": 1839
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1244
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

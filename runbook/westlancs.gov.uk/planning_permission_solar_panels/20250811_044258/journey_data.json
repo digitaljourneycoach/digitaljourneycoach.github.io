@@ -1,0 +1,687 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T04:42:58+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "westlancs.gov.uk",
+                "Council Name": "West Lancashire District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Do I need planning permission? - West Lancashire Borough Council",
+                        "link": "https://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/do-i-need-planning-permission.aspx",
+                        "snippet": "Jan 2, 2025 ... You can make some minor changes to your house without needing to apply for planning permission. These are called permitted development rights."
+                    },
+                    {
+                        "title": "Applying for planning permission - West Lancashire Borough Council",
+                        "link": "https://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/applying-for-planning-permission.aspx",
+                        "snippet": "May 1, 2024 ... You usually need planning permission if you are proposing building or engineering works or changing the use of buildings or land. You may also\u00a0..."
+                    },
+                    {
+                        "title": "Delegated Decisions",
+                        "link": "https://democracy.westlancs.gov.uk/documents/s45923/Delegated%20Decisions%20-May%202025.pdf",
+                        "snippet": "May 2, 2025 ... WARD:- Rural West Ward. Application: 2025/0205/FUL Decision: Planning Permission Granted. Proposal: Proposed Installation of Solar Panels."
+                    },
+                    {
+                        "title": "Delegated Decisions",
+                        "link": "https://democracy.westlancs.gov.uk/Data/Planning%20Members%20Updates/20120209/Agenda/022414_Delegated%20Decisions%20January%202012.pdf",
+                        "snippet": "WARD:- Tarleton. Application: 2011/1188/FUL Decision: Planning Permission Granted. Proposal: Installation of 51 photovoltaic solar panels to roof of building."
+                    },
+                    {
+                        "title": "(Public Pack)Agenda Document for Planning Members Updates ...",
+                        "link": "https://democracy.westlancs.gov.uk/documents/g3635/Public%20reports%20pack%2011th-Apr-2025%20Planning%20Members%20Updates%20Not%20a%20Meeting.pdf?T=10",
+                        "snippet": "Apr 15, 2025 ... Proposal: Application for determination as to whether prior approval of details is required for the installation of roof mounted solar PV panels\u00a0..."
+                    },
+                    {
+                        "title": "(Public Pack)Agenda Document for Planning Members Updates, 06 ...",
+                        "link": "https://democracy.westlancs.gov.uk/documents/g3003/Public%20reports%20pack%2006th-Jan-2023%2011.28%20Planning%20Members%20Updates.pdf?T=10",
+                        "snippet": "Jan 10, 2023 ... WARD:- Bickerstaffe. Application: 2022/0795/FUL Decision: Planning Permission Granted. Proposal: Retrospective change of use of land to\u00a0..."
+                    },
+                    {
+                        "title": "Delegated Decisions",
+                        "link": "https://democracy.westlancs.gov.uk/Data/Planning%20Members%20Updates/20111006/Agenda/021355_Delegated%20Decisions%20September%202011.pdf",
+                        "snippet": "Application: 2011/0682/FUL Decision: Planning Permission REFUSED. Proposal: First ... Installation of solar panels to roof. Location: 17 Gladden Place\u00a0..."
+                    },
+                    {
+                        "title": "Delegated Decisions",
+                        "link": "https://democracy.westlancs.gov.uk/Data/Planning%20Members%20Updates/20120517/Agenda/022998_Delegated%20Decisions%20May%202012.pdf",
+                        "snippet": "Application: 2012/0157/FUL Decision: Planning Permission Granted. Proposal ... Installation of solar panels on west elevation of existing building."
+                    },
+                    {
+                        "title": "Delegated Decisions",
+                        "link": "https://democracy.westlancs.gov.uk/documents/s13483/Delegated%20Decisions%20February%202019.pdf",
+                        "snippet": "Application: 2018/1256/FUL Decision: Planning Permission Granted ... Listed Building Consent - Addition of further solar panels to outbuilding roof."
+                    },
+                    {
+                        "title": "Delegated Decisions",
+                        "link": "https://democracy.westlancs.gov.uk/documents/s46634/Delegated%20Decisions%20-June%202025.pdf",
+                        "snippet": "May 30, 2025 ... Application: 2025/0127/FUL Decision: Planning Permission REFUSED ... New roof covering with integrated solar panels. Composite fencing to\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/do-i-need-planning-permission.aspx",
+                        "title": "Do I need planning permission? - West Lancashire Borough Council",
+                        "confidence": 80,
+                        "strengths": [
+                            "Provides information on when planning permission is required",
+                            "Clearly explains permitted development rights"
+                        ],
+                        "reasoning": "This link provides a comprehensive guide for understanding if one needs planning permission, which is directly related to the customer inquiry.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Do I need planning permission? - West Lancashire Borough Council",
+                                "Source": "https://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/do-i-need-planning-permission.aspx",
+                                "Key Strengths": [
+                                    "Provides information on when planning permission is required",
+                                    "Clearly explains permitted development rights"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link provides a comprehensive guide for understanding if one needs planning permission, which is directly related to the customer inquiry."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Applying for planning permission - West Lancashire Borough Council",
+                                "Source": "https://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/applying-for-planning-permission.aspx",
+                                "Key Strengths": [
+                                    "Detailed information on the procedure for applying for planning permission"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link provides a detailed guide on how to apply for planning permission, which is useful for customers who are seeking to submit an application."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "(Public Pack)Agenda Document for Planning Members Updates ...",
+                                "Source": "https://democracy.westlancs.gov.uk/documents/g3635/Public%20reports%20pack%2011th-Apr-2025%20Planning%20Members%20Updates%20Not%20a%20Meeting.pdf?T=10",
+                                "Key Strengths": [
+                                    "Provides information on a solar PV panels installation application"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "While not a direct guide, this link contains details of a specific solar panel application review, offering insights into the planning process for such projects."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Delegated Decisions",
+                                "Source": "https://democracy.westlancs.gov.uk/documents/s13483/Delegated%20Decisions%20February%202019.pdf",
+                                "Key Strengths": [
+                                    "Details of a previously granted permission for solar panels installation on a listed building"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "This link provides an example of planning permission being granted for the addition of solar panels to a listed building, demonstrating that it can be done with approval."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Delegated Decisions",
+                                "Source": "https://democracy.westlancs.gov.uk/documents/s46634/Delegated%20Decisions%20-June%202025.pdf",
+                                "Key Strengths": [
+                                    "Details of a recently refused permission application for solar PV panels installation"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though the application was denied, this link offers insights into the reasons for refusal and might help customers plan more effectively."
+                            }
+                        ],
+                        "Analysis Notes": "Several links provide details on various planning application decisions. Although they do not specifically address solar panel installation information requirements directly, they still offer relevant examples and procedural guidelines that may be useful to customers.",
+                        "Recommendations Notes": "Ideally, a dedicated guide for solar panel installations or similar direct resources would provide better answers to the customer's inquiry. However, the provided links are still valuable as they offer real-life examples of applications and planning outcomes."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "80",
+                        "65",
+                        "60",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 71,
+                    "max_confidence": "80"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Do I need planning permission? - West Lancashire Borough Council",
+                            "Source": "https://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/do-i-need-planning-permission.aspx",
+                            "Reasoning": "This link provides a comprehensive guide for understanding if one needs planning permission, which is directly related to the customer inquiry and has the highest confidence score.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Applying for planning permission - West Lancashire Borough Council",
+                            "Source": "https://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/applying-for-planning-permission.aspx",
+                            "Reasoning": "This link provides a detailed guide on how to apply for planning permission, which is useful for customers who are seeking to submit an application and has the second highest confidence score.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "(Public Pack)Agenda Document for Planning Members Updates ...",
+                            "Source": "https://democracy.westlancs.gov.uk/documents/g3635/Public%20reports%20pack%2011th-Apr-2025%20Planning%20Members%20Updates%20Not%20a%20Meeting.pdf?T=10",
+                            "Reasoning": "Though not a direct guide, this link offers details of a specific solar PV panels installation application and has a decent confidence score.",
+                            "Confidence": "65"
+                        },
+                        {
+                            "Number": "10",
+                            "Title": "Delegated Decisions",
+                            "Source": "https://democracy.westlancs.gov.uk/documents/s46634/Delegated%20Decisions%20-June%202025.pdf",
+                            "Reasoning": "This link details a recent refused permission application for solar PV panels installation, which might help customers to plan more effectively even though it was denied.",
+                            "Confidence": "70"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/do-i-need-planning-permission.aspx"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/do-i-need-planning-permission.aspx",
+                        "analysis": {
+                            "url": "https://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/do-i-need-planning-permission.aspx",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T04:42:58+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T04:43:29+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 18194,
+                            "response_time": 0.228,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.228s)",
+                                    "Content successfully retrieved (18194 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.2287750244140625,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/do-i-need-planning-permission.aspx"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/do-i-need-planning-permission.aspx",
+                        "content": " Here's the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<!-- Insert necessary head elements here, if any -->\n</head>\n<body>\n\t<main>\n\t\t<h1>Do I need planning permission?</h1>\n\t\t<p>To find out whether planning permission is required for householder developments, including extensions and additions to a dwelling or within the residential boundaries of a dwelling, you will need to submit an application for a <a href=\"http://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/applying-for-planning-permission/planning-application-forms/lawful-development-certificate.aspx\" title=\"Lawful development certificate\">certificate of lawfulness for proposed development.</a> &nbsp; &nbsp; &nbsp;</p>\n\t\t<p>It is in your own interest that you submit a formal application to find out if planning permission is required for your proposal. This will avoid possible enforcement action being taken should development be carried out which requires planning permission and it provides the necessary documentation required for both mortgage/loan providers and future prospective buyers.</p>\n\t\t<h2>Permitted development rights</h2>\n\t\t<p>You can make some minor changes to your house without needing to apply for planning permission. These are called \"permitted development rights\". The permitted development rights which apply to many common projects for houses do not apply to flats, maisonettes or other buildings.</p>\n\t\t<p>You should also note that the Local Planning Authority may have removed some of your permitted development rights by issuing an Article 4 Direction or by way of planning condition on the original planning permission for the property. This will mean that you have to submit a planning application for work which normally does not need one.</p>\n\t\t<p>To learn more about the need for planning permission, further information and advice can be found on the Planning Portal website using the <a href=\"https://www.planningportal.co.uk/info/200125/do_you_need_permission/90/interactive_house\" title=\"Planning Portal (external link)\">interactive tool (external link)</a> and by accessing <a href=\"https://www.planningportal.co.uk/info/200130/common_projects\" title=\"Planning Portal (external link)\">common projects (external link</a>). Additionally, <a rel=\"noopener\" href=\"https://www.gov.uk/government/publications/permitted-development-rights-for-householders-technical-guidance\" target=\"_blank\" title=\"External link to: GOV.UK\">technical guidance on permitted development rights for householders</a> is available from GOV.UK.</p>\n\t</main>\n\t<!-- Add footer and other necessary elements here, if any -->\n</body>\n</html>\n```\nIn this example, I removed all structure that wasn't relevant to the main content (navbars, ads, sidebars, etc.) and kept only the text and links inside `<main>`. The links within the text are preserved for accessibility purposes.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 17.585453033447266,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/do-i-need-planning-permission.aspx",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "Install solar panels on my house, want to know if I need permission.",
+                                    "answer_quality": "The content does answer this question but not directly. It guides the resident to find and use an interactive tool provided by Planning Portal which will determine whether planning permission is required for the installation of solar panels.",
+                                    "confidence": "70",
+                                    "reasoning": "While the content doesn't specifically mention solar panels, it provides a reliable method to check for planning permission via a certificate of lawfulness application and references an interactive tool from Planning Portal that could be used for any development, including solar panel installation.",
+                                    "next_actions": "Access the Planning Portal interactive tool and submit a certificate of lawfulness application."
+                                }
+                            ],
+                            "overall_assessment": "The content is helpful in guiding council residents on checking whether planning permission is required for certain developments. However, it misses an opportunity to directly address and provide specific information about common projects like solar panel installation. This could further simplify the process for residents."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.483547925949097,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.westlancs.gov.uk/planning/how-to-apply-for-planning-permission/do-i-need-planning-permission.aspx"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_044258-westlancs.gov.uk",
+                    "analysis_timestamp": "2025-08-11T04:43:52+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.9,
+                            "tokens_consumed": 6913,
+                            "tokens_remaining": 23087,
+                            "token_utilization_percentage": 23.04,
+                            "average_tokens_per_step": 1152.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 76.96,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 20,
+                            "consumption_rate": 1152.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 12.86,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.9,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_044258-westlancs.gov.uk",
+                        "start_time": "2025-08-11T04:42:58+01:00",
+                        "current_time": "2025-08-11T04:43:52+01:00",
+                        "duration_seconds": 54,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6913,
+                        "tokens_remaining": 23087,
+                        "token_utilization_percentage": 23.04,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3237,
+                                "avg_per_call": 1618.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3676,
+                                "avg_per_call": 1838
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1152.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_044258-westlancs.gov.uk",
+                    "start_time": "2025-08-11T04:42:58+01:00",
+                    "current_time": "2025-08-11T04:43:52+01:00",
+                    "duration_seconds": 54,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6913,
+                    "tokens_remaining": 23087,
+                    "token_utilization_percentage": 23.04,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3237,
+                            "avg_per_call": 1618.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3676,
+                            "avg_per_call": 1838
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1152.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

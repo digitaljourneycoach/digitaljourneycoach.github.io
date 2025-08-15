@@ -1,0 +1,673 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T04:40:02+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "tandridge.gov.uk",
+                "Council Name": "Tandridge District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Last weeks planning applications",
+                        "link": "https://tdcplanningsearch.tandridge.gov.uk/PlanningApplicationsLastWeek",
+                        "snippet": "Installation of solar panels and roof lights and relocate door. Changes to ... planning permission 2024/442 dated 10 June 2024. (Demolition of existing\u00a0..."
+                    },
+                    {
+                        "title": "Planning applications and enforcement | Planning and building ...",
+                        "link": "https://www.tandridge.gov.uk/planning-and-building/planning-applications-and-enforcement",
+                        "snippet": "Explore Tandridge District Council planning application and enforcement information including committee information & guidelines for submitting an\u00a0..."
+                    },
+                    {
+                        "title": "TLP Part 2: Detailed Policies 2014-2029",
+                        "link": "https://www.tandridge.gov.uk/Portals/0/Documents/Planning%20and%20building/Planning%20strategies%20and%20policies/Current%20and%20adopted%20planning%20policies/Core%20strategy/Local-Plan-part-2-Detailed-policies.pdf",
+                        "snippet": "Wind turbines and large banks of solar panels will need to be assessed at an early ... Planning permission granted on Number of applications permitted on. Zero."
+                    },
+                    {
+                        "title": "Making and submitting a planning application | Planning ...",
+                        "link": "https://www.tandridge.gov.uk/planning-and-building/planning-applications-and-enforcement/making-and-submitting-a-planning-application",
+                        "snippet": "Submit your application, apply for planning permission, what do you need to submit with your application, other information, what happens once your application\u00a0..."
+                    },
+                    {
+                        "title": "Weeks planning applications",
+                        "link": "https://tdcplanningsearch.tandridge.gov.uk/generateweeklylistpdf",
+                        "snippet": "Mar 13, 2025 ... ... solar roof panels ( following demolition of the existing garage). ... and Condition 8 (obscure glass) of planning permission ref: 2024/725\u00a0..."
+                    },
+                    {
+                        "title": "Energy savings advice and grants",
+                        "link": "https://www.tandridge.gov.uk/Housing/Private-housing/Energy-savings-advice-and-grants",
+                        "snippet": "Action Surrey helps find out if you are eligible for grants or other financial contributions towards the cost of installing wall or loft insulation, solar panel\u00a0..."
+                    },
+                    {
+                        "title": "WARLINGHAM VILLAGE DESIGN STATEMENT",
+                        "link": "https://www.tandridge.gov.uk/Portals/0/Documents/Planning%20and%20building/Planning%20strategies%20and%20policies/Current%20and%20adopted%20planning%20policies/Supplementary%20planning%20guidance/Warlingham-Village-Design-St.pdf",
+                        "snippet": "Where such devices are visible, such as wind turbines, solar panels or photo-voltaic arrays, ... procedures for obtaining planning permission and ensuring\u00a0..."
+                    },
+                    {
+                        "title": "Limpsfield Village Conservation Area Appraisal and Management ...",
+                        "link": "https://www.tandridge.gov.uk/Portals/0/Documents/Planning%20and%20building/Planning%20strategies%20and%20policies/Current%20and%20adopted%20planning%20policies/Supplementary%20planning%20guidance/Limpsfield-Village-CAAMP.pdf?ver=WyrQ_zqqwVi2_VYLUcvIng%3D%3D",
+                        "snippet": "\u2022 The installation of surface mounted solar panels on a wall which fronts a ... determining if works require planning permission. The above is not an."
+                    },
+                    {
+                        "title": "Tatsfield Neighbourhood Plan - Regulation 16 Consultation",
+                        "link": "https://www.tandridge.gov.uk/Portals/0/Documents/Planning%20and%20building/Planning%20strategies%20and%20policies/Parish-Council-(neighbourhood)-plans/TatsfieldNP/TNP-1-Tatsfield-Neighbourhood-Plan-Regulation-16-November-2023.pdf?ver=uRMgODfO249LNJ3zsezfUg%3D%3D",
+                        "snippet": "Where planning permission is required ... d) All new development should incorporate on-site energy generation from renewable sources such as solar panels."
+                    },
+                    {
+                        "title": "Water. People. Places. - A guide for master planning sustainable ...",
+                        "link": "https://www.tandridge.gov.uk/Portals/0/Documents/Planning%20and%20building/Planning%20strategies%20and%20policies/Local%20plan/Local%20plan%202033/Examination%20library/WTR/WTR14.pdf",
+                        "snippet": "Depending on the local provisions and context, the adopter could be the SuDS. Approval Body (SAB) under the Flood and Water Management. Act, a local authority,\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://tdcplanningsearch.tandridge.gov.uk/PlanningApplicationsLastWeek",
+                        "title": "Last weeks planning applications",
+                        "confidence": 85,
+                        "strengths": [
+                            "Provides a list of the latest applications in the district council",
+                            "Allows users to view specific application details"
+                        ],
+                        "reasoning": "This resource provides a recent list of planning applications, which can help customers interested in seeing recent developments in their area.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Last weeks planning applications",
+                                "Source": "https://tdcplanningsearch.tandridge.gov.uk/PlanningApplicationsLastWeek",
+                                "Key Strengths": [
+                                    "Provides a list of the latest applications in the district council",
+                                    "Allows users to view specific application details"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource provides a recent list of planning applications, which can help customers interested in seeing recent developments in their area."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Planning applications and enforcement | Planning ...",
+                                "Source": "https://www.tandridge.gov.uk/planning-and-building/planning-applications-and-enforcement",
+                                "Key Strengths": [
+                                    "Encompasses both planning applications and enforcement information",
+                                    "Includes committee information, guidelines for application submission"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This comprehensive resource covers all council services related to planning and enforcement. By providing the necessary information and guidance for submitting an application, it can help customers efficiently deal with council matters."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Making and submitting a planning application | Planning ...",
+                                "Source": "https://www.tandridge.gov.uk/planning-and-building/planning-applications-and-enforcement/making-and-submitting-a-planning-application",
+                                "Key Strengths": [
+                                    "Outlines the process of making and submitting planning applications",
+                                    "Provides information required to be submitted with an application"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "With detailed guidance on how to submit a planning application, this resource is extremely useful for customers looking to do so."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Weeks planning applications",
+                                "Source": "https://tdcplanningsearch.tandridge.gov.uk/generateweeklylistpdf",
+                                "Key Strengths": [
+                                    "Provides a list of recent planning applications in PDF format",
+                                    "Includes details about the applications, such as their status"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This PDF resource provides customers with an easy-to-view overview of planning applications from the past week, which may be useful for keeping up with local developments."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Tatsfield Neighbourhood Plan - Regulation 16 Consultation",
+                                "Source": "https://www.tandridge.gov.uk/Portals/0/Documents/Planning%20and%20building/Planning%20strategies%20and%20policies/Parish-Council-(neighbourhood)-plans/TatsfieldNP/TNP-1-Tatsfield-Neighbourhood-Plan-Regulation-16-November-2023.pdf?ver=uRMgODfO249LNJ3zsezfUg%3D%3D",
+                                "Key Strengths": [
+                                    "Outlines planning policies and guidelines for the Tatsfield Neighbourhood Plan",
+                                    "Includes development recommendations and regulations"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "For customers interested in developments specific to the Tatsfield neighborhood, this resource provides detailed planning guidelines and policies for the region."
+                            }
+                        ],
+                        "Analysis Notes": "While several resources focused on planning application submissions, only the top five were deemed most relevant based on their applicability to a wider audience.",
+                        "Recommendations Notes": "The remaining resources offered information related to specific neighboring regions (e.g., Warlingham, Limpsfield), particular policy documents, or other niche topics."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "90",
+                        "80",
+                        "80",
+                        "90"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "2",
+                            "Title": "Planning applications and enforcement | Planning ...",
+                            "Source": "https://www.tandridge.gov.uk/planning-and-building/planning-applications-and-enforcement",
+                            "Reasoning": "This comprehensive resource covers all council services related to planning and enforcement. By providing the necessary information and guidance for submitting an application, it can help customers efficiently deal with all council matters related to planning.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "1",
+                            "Title": "Last weeks planning applications",
+                            "Source": "https://tdcplanningsearch.tandridge.gov.uk/PlanningApplicationsLastWeek",
+                            "Reasoning": "This resource provides a recent list of planning applications, which can help customers interested in seeing recent developments in their area.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Making and submitting a planning application | Planning ...",
+                            "Source": "https://www.tandridge.gov.uk/planning-and-building/planning-applications-and-enforcement/making-and-submitting-a-planning-application",
+                            "Reasoning": "With detailed guidance on how to submit a planning application, this resource is extremely useful for customers looking to do so.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://tdcplanningsearch.tandridge.gov.uk/PlanningApplicationsLastWeek"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://tdcplanningsearch.tandridge.gov.uk/PlanningApplicationsLastWeek",
+                        "analysis": {
+                            "url": "https://tdcplanningsearch.tandridge.gov.uk/PlanningApplicationsLastWeek",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T04:40:02+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T04:40:29+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 56372,
+                            "response_time": 2.182,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 80,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Acceptable response time (2.182s)",
+                                    "Content successfully retrieved (56372 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 70,
+                                "component_scores": {
+                                    "technical": 80,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 2.184378147125244,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://tdcplanningsearch.tandridge.gov.uk/PlanningApplicationsLastWeek"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://tdcplanningsearch.tandridge.gov.uk/PlanningApplicationsLastWeek",
+                        "content": "```html\n<h2>Week's planning applications</h2>\n<h3>from\n    <label>04 August 2025</label>\n    to\n    <label>10 August 2025</label>\n</h3>\n<a href=\"GenerateWeeklyListPDF.aspx\" target=\"_blank\">Download as a PDF</a>\n<table class=\"table table-hover table-striped\">\n    <thead class=\"thead-dark\">\n        <tr>\n            <th>Application number</th>\n            <th>Address</th>\n            <th>Planning officer</th>\n            <th>Applicant</th>\n            <th>Parish</th>\n            <th>Ward</th>\n            <th>Description</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>\n                <a>2025/621</a>\n            </td>\n            <td>10 Bower Hill Close, South Nutfield, Redhill, Surrey, RH1 5NQ</td>\n            <td>Grant Rogers</td>\n            <td>Matt Ayley</td>\n            <td>Nutfield</td>\n            <td>Bletchingley and Nutfield</td>\n            <td>Lawful Development Certificate (LDC) proposed for: Loft conversion with the introduction of a dormer and two roof lights together with ground floor rear elevational alterations.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/661</a>\n            </td>\n            <td>Ivy Dene, 53 Crescent Road, Caterham, Surrey, CR3 6LH</td>\n            <td>Samuel Odell</td>\n            <td>Shevanti Jacinth Sandrasagra Andrew Pratheep Sandrasagra</td>\n            <td>Caterham Valley</td>\n            <td>Harestone</td>\n            <td>Proposed single storey rear extension, front extension, partial garage conversion and external alterations.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2024/442/Cond2</a>\n            </td>\n            <td>Atherfield, Park View Road, Woldingham, Caterham, Surrey, CR3 7DJ</td>\n            <td>Joss Miller</td>\n            <td>Ian Grant</td>\n            <td>Woldingham</td>\n            <td>Woldingham</td>\n            <td>Details pursuant to Condition 8 (Boundary treatment) and condition 9 (Landscaping) of planning permission 2024/442 dated 10 June 2024. (Demolition of existing dwelling house and erection of four dwelling houses and associated development)</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/702</a>\n            </td>\n            <td>6 Detillens Lane, Limpsfield, Oxted, Surrey, RH8 0DJ</td>\n            <td>Grant Rogers</td>\n            <td>Roger Watts</td>\n            <td>Limpsfield</td>\n            <td>Limpsfield</td>\n            <td>Demolition of existing garage and erection of replacement garage.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2024/1256/Cond1</a>\n            </td>\n            <td>Land on West side of Downlands Lane, Opposite Kerlyn Farm, Copthorne, RH10 3HX</td>\n            <td>Joss Miller</td>\n            <td>John Hilden</td>\n            <td>Burstow</td>\n            <td>Burstow, Horne and Outwood</td>\n            <td>Details pursuant to Condition 4 (landscaping, biodiversity, vehicle parking and cycle/refuse storage) of planning permission 2024/1256 dated 14.05.2025 (Change of use of land for the siting of 6 static residential caravans occupied by Gypsies and Travellers plus 6 touring caravans and 3 detached day room buildings, the laying of a driveway and creation of a hardstanding (Partly Retrospective)</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/846/NH</a>\n            </td>\n            <td>31 Leazes Avenue, Chaldon, Caterham, Surrey, CR3 5AG</td>\n            <td>Samuel Odell</td>\n            <td>Tristan Wallis</td>\n            <td>Chaldon</td>\n            <td>Chaldon</td>\n            <td>Erection of single storey rear extension which would extend beyond the rear wall of the original house by 8.00 metres, for which the maximum height would be 4.00 metres, and for which the height of the eaves would be 2.50 metres (Notification of a Proposed Larger Home extension) The Town and Country Planning (General Permitted Development) (England) Order 2015 (as amended) - Schedule 2, Part 1, Class A</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/880/NH</a>\n            </td>\n            <td>Mirabilis, 65 Paynesfield Road, Tatsfield, Westerham, Surrey, TN16 2BG</td>\n            <td>Joss Miller</td>\n            <td>Broadbent</td>\n            <td>Tatsfield</td>\n            <td>Tatsfield and Titsey</td>\n            <td>Proposed additional storey extension. (Notification of enlargement of a dwellinghouse by construction of additional storeys under Schedule 2, Part1, Class AA)</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2016/1855/NMA2</a>\n            </td>\n            <td>Old Lodge, London Road, Felbridge, East Grinstead, Surrey, RH19 2RA</td>\n            <td>Joss Miller</td>\n            <td>Arno Arno</td>\n            <td>Felbridge</td>\n            <td>Dormansland and Felbridge</td>\n            <td>Non Material Amendment to planning permission 2016/1855 (Erection of single storey extension to west elevation, single storey extension to north elevation and new entrance gates to front of property. Installation of solar panels and roof lights and relocate door. Changes to fenestration including removal/installation of windows and doors.) in order to (1) North elevation: cover the alleyway in between two pitch roofs with a flat roof and roof light and relocate door. (2) South elevation: relocate window (3) east elevation: fenestration alterations and (4) provision of roof light to bedroom 4 (amended description).</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/912/TPO</a>\n            </td>\n            <td>2 Tupwood Gardens, Caterham, Surrey, CR3 6EW</td>\n            <td>Alastair Durkin</td>\n            <td>Sarah Armstrong</td>\n            <td>Caterham Valley</td>\n            <td>Harestone</td>\n            <td>1) - Chestnut group by gates - Reduce the lower canopy over driveway by up to 1.5 metres up to 6 metres high. 2) - Elm and Yew RHS of drive - Reduce encroachment over driveway by up to 2 metres 9x7m down to 9x5m works to allow high sided vehicles in to the estate. 3) - Norway Maple - Remove major deadwood greater than 25mm diameter Exempt works. 4) - Yews beneath large Lime - Sever Climbing plant (Old man's beard) and sever Ivy at ground level and remove as much of the old man's beard as possible without causing damage to the tree Exempt works 5) - Lime and Yew - Crown Lift to provide 5 metres clearance from ground level over the garden of no. 2 25x18m. 7) - Ash on boundary - Carefully climb and dismantle to as close to ground level as possible and treat stump to inhibit regrowth 15x9m.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/580</a>\n            </td>\n            <td>17 Auckland Road, Caterham, Surrey, CR3 5TU</td>\n            <td>Grant Rogers</td>\n            <td>Madeleine Trotter</td>\n            <td>Caterham-on-the-Hill</td>\n            <td>Portley and Queens Park</td>\n            <td>Single storey rear extension / orangery 3x4m.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/639</a>\n            </td>\n            <td>Unit 1, Pinewood House, Chaldon Road, Caterham, Surrey, CR3 5PE</td>\n            <td>James Kidger</td>\n            <td>Errol Woodhouse</td>\n            <td>Caterham-on-the-Hill</td>\n            <td>Portley and Queens Park</td>\n            <td>Erection of ground floor lean-to shelter for outdoor seating</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/678</a>\n            </td>\n            <td>Cotters Hill Farm, Bug Hill, Woldingham, Caterham, Surrey, CR3 7LB</td>\n            <td>Janeske Delport</td>\n            <td>Fuller Consultancy Ltd</td>\n            <td>Warlingham</td>\n            <td>Warlingham West</td>\n            <td>Demolition of existing mobile home dwelling and erection of self-build chalet bungalow dwelling, together with associated car parking.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/732</a>\n            </td>\n            <td>95 Godstone Road, Whyteleafe, Surrey, CR3 0EJ</td>\n            <td>Lydia Hemsley</td>\n            <td>Gocheva</td>\n            <td>Whyteleafe</td>\n            <td>Whyteleafe</td>\n            <td>Erection of double storey side extension with hip to gable roof, and extension of width of single storey ground floor rear extension. Erection of garden room, alterations to retaining wall, the removal of two trees in the garden and formation of dropped kerb.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/766</a>\n            </td>\n            <td>2a Paddock Way, Hurst Green, Oxted, Surrey, RH8 0LF</td>\n            <td>Grant Rogers</td>\n            <td>Edwards</td>\n            <td>Oxted</td>\n            <td>Oxted South</td>\n            <td>Lawful Development Certificate (proposed): Demolish conservatory and erection of single storey ground floor rear extension.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/826</a>\n            </td>\n            <td>Lambs Business Park, Terracotta Road, South Godstone, Godstone, Surrey, RH9 8LJ</td>\n            <td>James Kidger</td>\n            <td>Richard Ford</td>\n            <td>Godstone</td>\n            <td>Godstone</td>\n            <td>Application for Lawful Development Certificate (LDC) - Existing use: Ready-mix concrete batching plant, cement storage silos, water storage tanks, aggregate stock bays, offices and employee welfare facilities (Class B2 (General Industrial)).</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/907/NH</a>\n            </td>\n            <td>Gresham Place, 9 Portley Wood Road, Whyteleafe, Surrey, CR3 0BQ</td>\n            <td>Janeske Delport</td>\n            <td>D Singh</td>\n            <td>Whyteleafe</td>\n            <td>Whyteleafe</td>\n            <td>Erection of single storey rear extension which would extend beyond the rear wall of the original house by 7.99 metres, for which the maximum height would be 3.99 metres, and for which the height of the eaves would be 3.79 metres (Notification of a Proposed Larger Home extension) The Town and Country Planning (General Permitted Development) (England) Order 2015 (as amended) - Schedule 2, Part 1, Class A</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/914/TPO</a>\n            </td>\n            <td>The Penthouse, 14 Timpani Hill, Warlingham, Surrey, CR6 9BS</td>\n            <td>Alastair Durkin</td>\n            <td>Torreson</td>\n            <td>Warlingham</td>\n            <td>Warlingham West</td>\n            <td>Please refer to tree survey report for trees and locations</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/597</a>\n            </td>\n            <td>Court Langley, Westerham Road, Limpsfield, Oxted, Surrey, RH8 0ED</td>\n            <td>Samuel Odell</td>\n            <td>Gibbard</td>\n            <td>Limpsfield</td>\n            <td>Limpsfield</td>\n            <td>Erection of first floor side extension.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/609</a>\n            </td>\n            <td>Day Room At 86-94, Holland Road, Coldshott, Oxted, Surrey, RH8 9BH</td>\n            <td>Lydia Hemsley</td>\n            <td>Sarah Martin</td>\n            <td>Oxted</td>\n            <td>Oxted South</td>\n            <td>Refurbishment of existing ground floor communal facilities for the surrounding associated housing blocks, to create 1 no., 2 bedroom bungalow for Tandridge District Council, including revised fenestration and new fenestration.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/611</a>\n            </td>\n            <td>Bungalow North Of 45-51, Lindley Road, Godstone, Surrey, RH9 8AS</td>\n            <td>Lydia Hemsley</td>\n            <td>Sarah Martin</td>\n            <td>Godstone</td>\n            <td>Godstone</td>\n            <td>Refurbishment of existing semi-detached bungalow containing communal facilities for the surrounding associated housing blocks, to create no. 1 bedroom bungalow for Tandridge District Council.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/612</a>\n            </td>\n            <td>Bungalow At Land Rear Of 10-28 Harcourt Way, South Godstone, Surrey, RH9 8HS</td>\n            <td>Lydia Hemsley</td>\n            <td>Sarah Martin</td>\n            <td>Godstone</td>\n            <td>Godstone</td>\n            <td>Refurbishment of existing detached bungalow containing the communal facilities for the surrounding associated housing blocks, to create 1 no., 2 bedroom bungalow for Tandridge District Council, including revised and new fenestration, fencing and a designated disabled parking space.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/615</a>\n            </td>\n            <td>Land At Grid Reference 537104 158885 Chelsham Common Road, Surrey, CR6 9PB</td>\n            <td>Amit Patel</td>\n            <td>Ashley &amp; Victoria Garling &amp; Kay</td>\n            <td>Chelsham and Farleigh</td>\n            <td>Warlingham East and Chelsham and Farleigh</td>\n            <td>Erection of a detached dwelling (self build/custom build) in garden land</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/648</a>\n            </td>\n            <td>35 Tithepit Shaw Lane, Warlingham, Surrey, CR6 9AS</td>\n            <td>John Robinson</td>\n            <td>T Hurstwyn</td>\n            <td>Whyteleafe</td>\n            <td>Warlingham West</td>\n            <td>Erection of a single-storey front extension to provide a new entrance porch and study; associated external alterations including remodelling of the existing driveway to improve access and parking layout.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2024/1225/Cond1</a>\n            </td>\n            <td>Olive Tree Farm, Bowerland Lane, Lingfield, Surrey,</td>\n            <td>Hannah Middleton</td>\n            <td>Thomas Hall</td>\n            <td>Crowhurst</td>\n            <td>Lingfield, Crowhurst &amp; Tandridge</td>\n            <td>Details pursuant to Condition 3 (materials) of planning permission 2024/1225 dated 27.01.2025</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/722</a>\n            </td>\n            <td>John Fisher Sports Ground, Limpsfield Road, Warlingham.,,</td>\n            <td>Hannah Middleton</td>\n            <td>c/o agent</td>\n            <td>Warlingham</td>\n            <td>Warlingham West</td>\n            <td>Construction of a sports facility to provide 4 padel courts and 2 pickle courts with screens and fencing, log cabin, bike store and fence around the site at sports grounds at Land to the West Limpsfield Road, Warlingham.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/760</a>\n            </td>\n            <td>45 Tower Place, Chelsham, Warlingham, Surrey, CR6 9PW</td>\n            <td>John Robinson</td>\n            <td>THOMPSON</td>\n            <td></td>\n            <td></td>\n            <td>Erection of single storey rear extension. (Certificate of lawfulness for proposed use or development)</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/813</a>\n            </td>\n            <td>9 Woodland Rise, Oxted, Surrey, RH8 9HW</td>\n            <td>Tianjiao Ma</td>\n            <td>Sharp</td>\n            <td>Oxted</td>\n            <td>Oxted North</td>\n            <td>Addition of pitched roof over three no. existing front facing dormer windows</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/855/NH</a>\n            </td>\n            <td>Mirabilis, 65 Paynesfield Road, Tatsfield, Westerham, Surrey, TN16 2BG</td>\n            <td>Samuel Odell</td>\n            <td>Ryan Broadbent</td>\n            <td>Tatsfield</td>\n            <td>Tatsfield and Titsey</td>\n            <td>Erection of 2 rear extensions for which (extension 1) would extend beyond the rear wall of the original house by not more than 5 metres, for which the maximum height would be 3.99 metres, and for which the height of the eaves would be 2.61 metres and (...)\n</tr>\n        <tr>\n            <td>\n                <a>2025/620</a>\n            </td>\n            <td>Corner Gables, The Chestnuts, Haxted Road, Lingfield, Surrey, RH7 6DD</td>\n            <td>Amit Patel</td>\n            <td>Maria Cornwell</td>\n            <td>Dormansland</td>\n            <td>Dormansland and Felbridge</td>\n            <td>Use as two flats. (Certificate of Lawfulness for an Existing use)</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/710</a>\n            </td>\n            <td>Squash Courts At Rca Kenley Aerodrome, Whyteleafe Hill, Whyteleafe, Surrey, CR3 0AJ</td>\n            <td>James Kidger</td>\n            <td>Richard McKeown</td>\n            <td>Caterham-on-the-Hill</td>\n            <td>Portley and Queens Park</td>\n            <td>Refurbishment and repair of existing Squash Court building, including reinstation of slate roof and rooflights.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/729</a>\n            </td>\n            <td>Court Farm, Tithepit Shaw Lane, Warlingham, Surrey, CR6 9AT</td>\n            <td>James Kidger</td>\n            <td>Barnes</td>\n            <td>Warlingham</td>\n            <td>Warlingham West</td>\n            <td>Certificate of lawfulness under Section 192 for the temporary use of land (not more than 28 days in any calendar year) for helicopter take-offs and landings.</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/768</a>\n            </td>\n            <td>Cherry Hinton, Domewood, Copthorne, Crawley, Surrey, RH10 3HD</td>\n            <td>Janeske Delport</td>\n            <td>Giles Dakin</td>\n            <td>Felbridge</td>\n            <td>Dormansland and Felbridge</td>\n            <td>Conversion of existing garage to 1 Bedroom Annexe with installation of a door and roof light</td>\n        </tr>\n        <tr>\n            <td>\n                <a>2025/924/TPO</a>\n            </td>\n            <td>Tandridge Priory Lodge, Godstone Road, Oxted, Surrey, RH8 9JU</td>\n            <td>Alastair Durkin</td>\n            <td>Christine Reason</td>\n            <td>Tandridge</td>\n            <td>Lingfield, Crowhurst &amp; Tandridge</td>\n            <td>T1- Eucalyptus tree- to prune back lateral branches over hanging highway by 2 metres, leaving a residual branch length of 6 metres. All pruning cuts to be made at suitable growth points and branch tracery maintained where possible T2- Eucalyptus tree- to prune back lowest limb on south side of crown (growing over highway) reducing in length by 3.5 metres, leaving a residual branch length of 15 metres, pruning back to suitable growth points</td>\n        </tr>\n    </tbody>\n</table>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 52.385233879089355,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://tdcplanningsearch.tandridge.gov.uk/PlanningApplicationsLastWeek",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 9.735428810119629,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://tdcplanningsearch.tandridge.gov.uk/PlanningApplicationsLastWeek"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_044002-tandridge.gov.uk",
+                    "analysis_timestamp": "2025-08-11T04:41:34+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.5333333333333334,
+                            "tokens_consumed": 24260,
+                            "tokens_remaining": 5740,
+                            "token_utilization_percentage": 80.87,
+                            "average_tokens_per_step": 4043.33
+                        },
+                        "token_analysis": {
+                            "status": "conservative",
+                            "remaining_percentage": 19.13,
+                            "urgency_score": 60,
+                            "estimated_remaining_steps": 1,
+                            "consumption_rate": 4043.33,
+                            "should_conserve": true,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 21.9,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.5333333333333334,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 50,
+                            "efficiency_factors": [
+                                "High token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": false,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": [
+                            "Use more selective search strategies to conserve tokens"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_044002-tandridge.gov.uk",
+                        "start_time": "2025-08-11T04:40:02+01:00",
+                        "current_time": "2025-08-11T04:41:34+01:00",
+                        "duration_seconds": 92,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 24260,
+                        "tokens_remaining": 5740,
+                        "token_utilization_percentage": 80.87,
+                        "token_status": "low",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 16321,
+                                "avg_per_call": 8160.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 7939,
+                                "avg_per_call": 3969.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 4043.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_044002-tandridge.gov.uk",
+                    "start_time": "2025-08-11T04:40:02+01:00",
+                    "current_time": "2025-08-11T04:41:34+01:00",
+                    "duration_seconds": 92,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 24260,
+                    "tokens_remaining": 5740,
+                    "token_utilization_percentage": 80.87,
+                    "token_status": "low",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 16321,
+                            "avg_per_call": 8160.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 7939,
+                            "avg_per_call": 3969.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 4043.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

@@ -1,0 +1,679 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T05:01:15+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "tmbc.gov.uk",
+                "Council Name": "Tonbridge & Malling Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Help with food \u2013 Tonbridge and Malling Borough Council",
+                        "link": "https://www.tmbc.gov.uk/community-services/help-food",
+                        "snippet": "... receive certain benefits, you may be able to get free school meals for them. You can apply online at Kent County Council. See Apply for free school meals\u00a0..."
+                    },
+                    {
+                        "title": "Parking Proposals and Fees & Charges 02 April 2024 Annex 15 ...",
+                        "link": "https://democracy.tmbc.gov.uk/documents/s77093/01.15+Off-street+Parking+Changes+-+Evenings+Sundays+BH+responses.pdf",
+                        "snippet": "Apr 2, 2024 ... to have an excellent choice of places to go out for a meal in Tonbridge and free parking certainly makes a difference when people are\u00a0..."
+                    },
+                    {
+                        "title": "Essential information for Ukrainians arriving in Kent under the ...",
+                        "link": "https://www.tmbc.gov.uk/downloads/file/2082/welcome-to-kent-tonbridge-and-malling-version",
+                        "snippet": "Apr 5, 2022 ... State provided education is free and compulsory for ... You can get free support from trained advisers to make a Universal Credit claim."
+                    },
+                    {
+                        "title": "On Street Parking Proposals \u2013 Annex 9.2 (West Malling P&D ...",
+                        "link": "https://democracy.tmbc.gov.uk/documents/s76070/03.09.2%20Annex%2009.02%20WM%20PD%20redacted%20responses.pdf",
+                        "snippet": "I regularly pop into West Malling to meet with people or for brief trips to Library/Local shops/have a quick lunch etc. The benefit of free parking for that\u00a0..."
+                    },
+                    {
+                        "title": "Cost of living support \u2013 Tonbridge and Malling Borough Council",
+                        "link": "https://www.tmbc.gov.uk/cost-of-living",
+                        "snippet": "Need help with the cost of living crisis. We've pulled together some suggestions and tips for getting you through this winter."
+                    },
+                    {
+                        "title": "Housing Allocation Scheme - January 2025",
+                        "link": "https://www.tmbc.gov.uk/downloads/file/3123/housing-allocations-scheme-may-2023",
+                        "snippet": "This scheme explains how to apply to rent affordable housing in the borough of Tonbridge and Malling. It also explains who is entitled to apply for affordable\u00a0..."
+                    },
+                    {
+                        "title": "Respondent ID Agent ID Document Part Name Comment (plain text ...",
+                        "link": "https://www.tmbc.gov.uk/downloads/file/3268/27-regulation-18-local-plan-appendix-b-downs-mereworth-comments",
+                        "snippet": "... free up' land for development will be, especially in the absence of any ... take journeys of over 1 hour to get themselves to school using local transport."
+                    },
+                    {
+                        "title": "Housing Services Housing Allocation Scheme",
+                        "link": "https://democracy.tmbc.gov.uk/Data/Cabinet/201306191930/Agenda/$Annex%202%20-%20att14633.doc.pdf",
+                        "snippet": "May 2, 2013 ... This scheme explains how to apply to rent affordable housing in the borough of. Tonbridge and Malling. It also explains who is entitled to apply\u00a0..."
+                    },
+                    {
+                        "title": "Area 2 - Planning Committee Part 1 Public West Malling TM/24 ...",
+                        "link": "https://democracy.tmbc.gov.uk/documents/s82722/Report%20of%20Director%20of%20Planning%20Housing%20and%20Environmental%20Health.pdf",
+                        "snippet": "Aug 7, 2024 ... Convenient for those families who already have children at the primary school. ... to the safe or free flow of traffic. Therefore, on\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.tmbc.gov.uk/community-services/help-food",
+                        "title": "Help with food \u2013 Tonbridge and Malling Borough Council",
+                        "confidence": 80,
+                        "strengths": [
+                            "Relevant for individuals in need of assistance with food",
+                            "Provision of online application for free school meals"
+                        ],
+                        "reasoning": "This resource appears to directly address the customer's information needs regarding help with food and provides a means for applying for benefits that can give eligibility for free school meals.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "9",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Help with food \u2013 Tonbridge and Malling Borough Council",
+                                "Source": "https://www.tmbc.gov.uk/community-services/help-food",
+                                "Key Strengths": [
+                                    "Relevant for individuals in need of assistance with food",
+                                    "Provision of online application for free school meals"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This resource appears to directly address the customer's information needs regarding help with food and provides a means for applying for benefits that can give eligibility for free school meals."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Essential information for Ukrainians arriving in Kent under the \u2026",
+                                "Source": "https://www.tmbc.gov.uk/downloads/file/2082/welcome-to-kent-tonbridge-and-malling-version",
+                                "Key Strengths": [
+                                    "Relevant for Ukrainian immigrants to the area",
+                                    "Offers free support and advice about making a Universal Credit claim"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource provides essential information specifically for Ukrainians arriving in Kent, which aligns with the given customer's information needs. Additionally, it offers assistance with finances and welfare benefits."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Cost of living support \u2013 Tonbridge and Malling Borough Council",
+                                "Source": "https://www.tmbc.gov.uk/cost-of-living",
+                                "Key Strengths": [
+                                    "Relevant for those affected by the cost of living crisis",
+                                    "Provides suggestions and tips for managing finances during the crisis"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This resource directly addresses the current cost of living crisis, providing valuable information and practical advice to help individuals manage their finances during this challenging time."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Housing Allocation Scheme - January 2025",
+                                "Source": "https://www.tmbc.gov.uk/downloads/file/3123/housing-allocations-scheme-may-2023",
+                                "Key Strengths": [
+                                    "Relevant for individuals seeking affordable housing in the borough of Tonbridge and Malling",
+                                    "Provides details about the application process"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This resource outlines the Housing Allocation Scheme, which is relevant for those interested in renting affordable housing in the borough. It offers details about the application process."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "On Street Parking Proposals \u2013 Annex 9.2 (West Malling P&D ...",
+                                "Source": "https://democracy.tmbc.gov.uk/documents/s76070/03.09.2%20Annex%2009.02%20WM%20PD%20redacted%20responses.pdf",
+                                "Key Strengths": [
+                                    "Relevant for individuals seeking parking information in West Malling, specifically about Pay & Display zones",
+                                    "Offers insights into public feedback and proposed changes"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This resource pertains to the parking arrangements in West Malling. Although it may not directly address customer's basic needs, it provides valuable information about parking proposals and public responses, which could influence their experience in the area."
+                            }
+                        ],
+                        "Analysis Notes": "The search results contained a mix of relevant resources related to council services, such as food assistance, housing, cost of living support, and parking. However, there were also some resources that were less relevant and primarily focused on other topics like local plans and development proposals.",
+                        "Recommendations Notes": "Based on the given search results, the recommendations provided offer useful information for council customers in need of assistance with food, housing, and coping with the cost of living crisis. The remaining recommended resource pertains to parking proposals in West Malling. It is less directly relevant but could still provide valuable insights."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "85",
+                        "90",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Help with food \u2013 Tonbridge and Malling Borough Council",
+                            "Source": "https://www.tmbc.gov.uk/community-services/help-food",
+                            "Reasoning": "This resource appears to directly address the customer's information needs regarding help with food and provides a means for applying for benefits that can give eligibility for free school meals.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Essential information for Ukrainians arriving in Kent under the \u2026",
+                            "Source": "https://www.tmbc.gov.uk/downloads/file/2082/welcome-to-kent-tonbridge-and-malling-version",
+                            "Reasoning": "This resource provides essential information specifically for Ukrainians arriving in Kent, which aligns with the given customer's information needs. Additionally, it offers assistance with finances and welfare benefits.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Cost of living support \u2013 Tonbridge and Malling Borough Council",
+                            "Source": "https://www.tmbc.gov.uk/cost-of-living",
+                            "Reasoning": "This resource directly addresses the current cost of living crisis, providing valuable information and practical advice to help individuals manage their finances during this challenging time.",
+                            "Confidence": "90"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.tmbc.gov.uk/community-services/help-food"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.tmbc.gov.uk/community-services/help-food",
+                        "analysis": {
+                            "url": "https://www.tmbc.gov.uk/community-services/help-food",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T05:01:15+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T05:01:44+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 42271,
+                            "response_time": 0.408,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.408s)",
+                                    "Content successfully retrieved (42271 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.4113121032714844,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.tmbc.gov.uk/community-services/help-food"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.tmbc.gov.uk/community-services/help-food",
+                        "content": " Here is the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<main class=\"site-main\" id=\"content\" tabindex=\"-1\" aria-label=\"Main Site Content\">\n\t<div class=\"editor\">\n\t\t<h2>Local food banks</h2>\n\t\t<p>Food banks are charities that collect donated food and distribute it to people in need. Each has different ways of working, so contact your local branch to find out how to use it. The table below lists local food banks or you can <a href=\"https://www.kent.gov.uk/leisure-and-community/cost-of-living-support/urgent-financial-help-and-extra-support/food-or-energy-in-a-crisis/find-a-food-bank\">Search for a food bank</a> (Kent County Council).</p>\n\t\t<table style=\"width:100%\" class=\"table\">\n        \t<thead>\n\t\t\t<tr>\n\t\t\t\t<th scope=\"col\">Name</th>\n\t\t\t\t<th scope=\"col\">Contact</th>\n\t\t\t</tr>\n        \t</thead>\n\t\t\t<tbody>\n        \t\t<!-- Table rows containing data about local food banks -->\n        \t</tbody>\n    \t</table>\n\n    \t<!-- Additional content related to Healthy Start card, Household support fund, Home essentials in a crisis, Free school meals, Discounts and offers, Cheap or free food -->\n\t</div>\n</main>\n```\nRemoved non-essential page furniture such as headers, footers, navigation menus, sidebars, cookie banners, newsletter sign-up blocks, site-wide search, login links, social media footers, and decorative or boilerplate elements. Preserved meaningful structural elements including headings (h1 to h6), paragraphs (p), important in-text links (a) for the article, central user actions like button, lists (ul, ol, li), and blockquotes if they are part of the main content, and stripped out any other non-content elements.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 12.462998867034912,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.tmbc.gov.uk/community-services/help-food",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content does not directly answer this question; it provides information on local food banks instead.",
+                                    "confidence": "20%",
+                                    "reasoning": "The content is about local food banks, and while they might offer certain assistance, free school meals are not mentioned as a service provided by them. No details about eligibility criteria or timeframe for applications are presented.",
+                                    "next_actions": "I would contact the Local Authority's welfare advice team to inquire about free school meal eligibility and application procedures."
+                                }
+                            ],
+                            "overall_assessment": "The content provides information on local food banks, but it does not meet the need of a council resident who wants to know how to apply for free school meals or understand criteria and timeframes. This might lead to further confusion and require additional effort to gather relevant information."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.450201988220215,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.tmbc.gov.uk/community-services/help-food"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_050115-tmbc.gov.uk",
+                    "analysis_timestamp": "2025-08-13T05:02:02+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7833333333333333,
+                            "tokens_consumed": 6311,
+                            "tokens_remaining": 23689,
+                            "token_utilization_percentage": 21.04,
+                            "average_tokens_per_step": 1051.83
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 78.96,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 22,
+                            "consumption_rate": 1051.83,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "20",
+                            "quality_scores": [
+                                "20"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "20",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.19,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_050115-tmbc.gov.uk",
+                        "start_time": "2025-08-13T05:01:15+01:00",
+                        "current_time": "2025-08-13T05:02:02+01:00",
+                        "duration_seconds": 47,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6311,
+                        "tokens_remaining": 23689,
+                        "token_utilization_percentage": 21.04,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2910,
+                                "avg_per_call": 1455
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3401,
+                                "avg_per_call": 1700.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1051.83
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_050115-tmbc.gov.uk",
+                    "start_time": "2025-08-13T05:01:15+01:00",
+                    "current_time": "2025-08-13T05:02:02+01:00",
+                    "duration_seconds": 47,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6311,
+                    "tokens_remaining": 23689,
+                    "token_utilization_percentage": 21.04,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2910,
+                            "avg_per_call": 1455
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3401,
+                            "avg_per_call": 1700.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1051.83
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

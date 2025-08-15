@@ -1,0 +1,220 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T04:01:57+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "suffolk.gov.uk",
+                "Council Name": "Suffolk County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Apply for free school meals - Suffolk County Council",
+                        "link": "https://www.suffolk.gov.uk/children-families-and-learning/schools/school-meals-uniforms-and-trips/apply-for-free-school-meals",
+                        "snippet": "You can apply online for free school meals. You'll get an immediate response and confirmation email after you've completed your application."
+                    },
+                    {
+                        "title": "School meals, uniforms and trips - Suffolk County Council",
+                        "link": "https://www.suffolk.gov.uk/children-families-and-learning/schools/school-meals-uniforms-and-trips",
+                        "snippet": "About school meals and how to pay online for school meals, trips and uniforms. Apply for free school meals. Find out if your child is eligible for free\u00a0..."
+                    },
+                    {
+                        "title": "Household Support Fund - Suffolk County Council",
+                        "link": "https://www.suffolk.gov.uk/community-and-safety/communities/healthier/cost-of-living-support/household-support-fund",
+                        "snippet": "Your child's school will contact you directly with information on how to apply. If your child is eligible for Free School Meals, but not currently on a school\u00a0..."
+                    },
+                    {
+                        "title": "Suffolk InfoLink | Holiday Activity and Food (HAF) programme 2025 ...",
+                        "link": "https://infolink.suffolk.gov.uk/haf",
+                        "snippet": "HAF enables children and young people to access enriching and fun activities who receive benefit related free school meals or have support needs."
+                    },
+                    {
+                        "title": "Pay for school meals - Suffolk County Council",
+                        "link": "https://www.suffolk.gov.uk/children-families-and-learning/schools/school-meals-uniforms-and-trips/school-meals",
+                        "snippet": "Find out how to register for free school meals in Suffolk. Information for schools. Set up your school. To sign your school up to the online payments system for\u00a0..."
+                    },
+                    {
+                        "title": "FSM guidance for parents - June 2025",
+                        "link": "https://www.suffolk.gov.uk/asset-library/FSM-guidance-for-parents-June-2025.pdf",
+                        "snippet": "Jun 24, 2025 ... If you have any questions or would like further clarification, please email the Free School Meals. Team: freeschoolmeals@suffolk.gov.uk. We\u00a0..."
+                    },
+                    {
+                        "title": "Schools - Suffolk County Council",
+                        "link": "https://www.suffolk.gov.uk/children-families-and-learning/schools",
+                        "snippet": "Find a list of schools, school attendances, school meals, school transport, term dates and how to apply for a primary or secondary school place."
+                    },
+                    {
+                        "title": "Paying for the cost of your child's learning - Suffolk County Council",
+                        "link": "https://www.suffolk.gov.uk/children-families-and-learning/schools/paying-for-the-cost-of-your-childs-learning",
+                        "snippet": "Working families of 9 months old may get 15 hours of funded early education a week for 38 weeks a year. ... Find out how to apply for free school meals. School\u00a0..."
+                    },
+                    {
+                        "title": "Citizen Portal - Suffolk County Council",
+                        "link": "https://www.suffolk.gov.uk/about/online-services/citizen-portal",
+                        "snippet": "You can apply for: a primary or secondary school place; free school meals; home to school travel (including opt-in for funded school travel); and also\u00a0..."
+                    },
+                    {
+                        "title": "Children, families and learning - Suffolk County Council",
+                        "link": "https://www.suffolk.gov.uk/children-families-and-learning",
+                        "snippet": "Find out if your child is eligible for free school meals, how to apply online, what happens after you apply, as well as frequently asked questions about free\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Apply for free school meals - Suffolk County Council",
+                                "Source": "https://www.suffolk.gov.uk/children-families-and-learning/schools/school-meals-uniforms-and-trips/apply-for-free-school-meals",
+                                "Key Strengths": [
+                                    "Directs users to the page where they can apply for free school meals.",
+                                    "Provides an immediate response and confirmation email."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link directly leads users to the application page for free school meals, a key requirement for council customer information needs. The website also mentions an immediate response which indicates a user-friendly platform."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Household Support Fund - Suffolk County Council",
+                                "Source": "https://www.suffolk.gov.uk/community-and-safety/communities/healthier/cost-of-living-support/household-support-fund",
+                                "Key Strengths": [
+                                    "Information on how to apply for help with household bills.",
+                                    "Mentions support for families who receive Free School Meals but are not currently on a school."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides information about the Household Support Fund, which could be relevant to council customer's financial needs. The description also suggests that it may help families who receive Free School Meals, making it particularly applicable to our search criteria."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Suffolk InfoLink | Holiday Activity and Food (HAF) programme 2025 ...",
+                                "Source": "https://infolink.suffolk.gov.uk/haf",
+                                "Key Strengths": [
+                                    "Enables children to access enriching activities during holidays.",
+                                    "Applies to children who receive benefit-related free school meals or have support needs."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link provides information about holiday activities and food programmes that cater specifically to students from families receiving free school meals. Such a programme could be useful for families during holidays."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Pay for school meals - Suffolk County Council",
+                                "Source": "https://www.suffolk.gov.uk/children-families-and-learning/schools/school-meals-uniforms-and-trips/school-meals",
+                                "Key Strengths": [
+                                    "Provides information on how to register for free school meals.",
+                                    "Contains information for schools regarding the online payments system."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link provides information about paying for school meals, which may be useful for families who are not entitled to free ones. Additionally, it contains information that could be relevant for schools."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Children, families and learning - Suffolk County Council",
+                                "Source": "https://www.suffolk.gov.uk/children-families-and-learning",
+                                "Key Strengths": [
+                                    "Information on eligibility for free school meals.",
+                                    "Contains frequently asked questions about free school meals."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This link discusses eligibility and frequently asked questions about free school meals, which directly address the customer information needs. However, it does not provide an immediate solution or process."
+                            }
+                        ],
+                        "Analysis Notes": "The list provided is a collection of search results related to schools, school meals, payments, applications, and related support funds from Suffolk County Council's website. Most of the search results are linked to school-related resources. Only the selected five recommendations directly address or provide information about council customer needs for free school meal applications and related support services.",
+                        "Recommendations Notes": "The provided list contains useful resources focused on schools, including school meals, school attendance, and school transport. However, not all links are suitable for the given instruction. Instead, I focused on items that addressed or directly provided information about council customer needs for free school meal applications and related support services."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

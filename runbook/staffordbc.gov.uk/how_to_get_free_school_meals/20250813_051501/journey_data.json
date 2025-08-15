@@ -1,0 +1,181 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T05:15:01+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "staffordbc.gov.uk",
+                "Council Name": "Stafford Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Statement of Intent for ECO4 and Great British Insulation Scheme Flex",
+                        "link": "https://www.staffordbc.gov.uk/statement-of-intent-version-8",
+                        "snippet": "Oct 25, 2023 ... Proxy 4) A child living at the premises is eligible for free school meals, due to low-income5. Proxy 5) A person living at the premises is\u00a0..."
+                    },
+                    {
+                        "title": "Stafford Borough Council ECO4 Flexible Eligibility Statement of ...",
+                        "link": "https://www.staffordbc.gov.uk/Flexible-Eligibility-Statement-of-Intent-Version-6",
+                        "snippet": "Nov 14, 2022 ... Only one from the list can be used, excludes the proxy 'low income'. Proxy 4) A householder receiving free school meals due to low-income."
+                    },
+                    {
+                        "title": "Local Food Banks - Information and Opening Times | Stafford ...",
+                        "link": "https://www.staffordbc.gov.uk/local-food-banks-information-and-opening-times",
+                        "snippet": "Mar 3, 2025 ... Elim Hope Food Bank. Elim Hope Church, The Ark, Sash Street, Stafford, ST16 2PS. We offer emergency parcels in partnership with Local Schools,\u00a0..."
+                    },
+                    {
+                        "title": "Your Council Tax Explained 2024 - 2025",
+                        "link": "https://www.staffordbc.gov.uk/sites/default/files/cme/DocMan1/Council_Tax_and_NNDR/Your-Council-Tax-Explained-2024-2025.pdf",
+                        "snippet": "Young people for whom child benefit is payable and 18/19 year olds who have just left school or college. > Patients resident in hospital or being looked\u00a0..."
+                    },
+                    {
+                        "title": "Stone Neighbourhood Plan 2019-2031",
+                        "link": "https://www.staffordbc.gov.uk/sites/default/files/cme/DocMan1/Planning%20Policy/Neighbourhood%20Planning/Stone%20Town/Stone%20Neighbourhood%20Plan%202019-2031.pdf",
+                        "snippet": "Significant development in the Walton area of the town may require improvement of existing school sites in the locality. 16.6 Electricity providers have\u00a0..."
+                    },
+                    {
+                        "title": "Community Wellbeing Scrutiny Committee Agenda for 5 September ...",
+                        "link": "https://www.staffordbc.gov.uk/sites/default/files/cme/DocMan1/Committee-Agenda-23-24/Community%20Wellbeing/Community-Wellbeing-Scrutiny-Committee-5-September-2023-Agenda-Public.pdf",
+                        "snippet": "Sep 5, 2023 ... \u2022 'Refer a Friend' and get a month free. Social Media posts on ... Education to deliver the Holiday Activities and Food project at Doxey School\u00a0..."
+                    },
+                    {
+                        "title": "Licensing Sub Committee - 21 March 2025 - Agenda",
+                        "link": "https://www.staffordbc.gov.uk/sites/default/files/cme/DocMan1/Committee-Agenda-24-25/Licensing-Sub/Licensing-Sub-Committee-21-March-2025-Agenda.pdf",
+                        "snippet": "Mar 21, 2025 ... authority concerned, or (ii) the school or (iii) the health care provider for the hospital. ... and get two free\u201d and \u201cBuy one cocktail and get a\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "7",
+                            "recommendations": "3"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Statement of Intent for ECO4 and Great British Insulation Scheme Flex",
+                                "Source": "https://www.staffordbc.gov.uk/statement-of-intent-version-8",
+                                "Key Strengths": [
+                                    "Mentions council customer assistance programs (ECO4 and Great British Insulation Scheme)",
+                                    "Relevant use of terms such as 'free school meals' as a potential indicator of council customer eligibility"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title and snippet mention direct assistance programs offered by Stafford Borough Council to residents, which aligns with the requirement for council customer information. The snippet also mentions 'free school meals', a potential indicator of low-income households that may qualify for other council services."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Stafford Borough Council ECO4 Flexible Eligibility Statement of ...",
+                                "Source": "https://www.staffordbc.gov.uk/Flexible-Eligibility-Statement-of-Intent-Version-6",
+                                "Key Strengths": [
+                                    "Mentions council customer assistance programs (ECO4)",
+                                    "Relevant use of terms such as 'free school meals' as a potential indicator of council customer eligibility"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title and snippet mention the flexible eligibility statement for ECO4 offered by Stafford Borough Council, which aligns with the requirement for council customer information. The snippet also mentions 'free school meals', a potential indicator of low-income households that may qualify for other council services."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Your Council Tax Explained 2024 - 2025",
+                                "Source": "https://www.staffordbc.gov.uk/sites/default/files/cme/DocMan1/Council_Tax_and_NNDR/Your-Council-Tax-Explained-2024-2025.pdf",
+                                "Key Strengths": [
+                                    "Directly related to a council service (Council Tax)",
+                                    "Mentions potential qualifications for council assistance based on child benefit and hospital residency"
+                                ],
+                                "Confidence": "88",
+                                "Reasoning": "The title directly mentions 'Council Tax' and the link provided directs to a detailed document that provides an explanation of Council Tax. The snippet mentions potential qualifications for council assistance based on child benefit and hospital residency, which aligns with the customer information needs."
+                            }
+                        ],
+                        "Analysis Notes": "These recommendations were chosen for their relevance to the given instruction by the presence of direct mention or inference of council customer services or relevant qualifying indicators.",
+                        "Recommendations Notes": "It should be noted that while other items do discuss aspects of Stafford Borough Council, they do not directly mention relevant council customer information or assistance services."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "88"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 84.33333333333333,
+                    "max_confidence": "88"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

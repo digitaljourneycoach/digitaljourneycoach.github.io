@@ -1,0 +1,700 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T05:47:00+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "west-norfolk.gov.uk",
+                "Council Name": "Borough Council of King's Lynn & West Norfolk"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Help (if you have children) | Borough Council of King's Lynn & West ...",
+                        "link": "https://www.west-norfolk.gov.uk/info/370/help_with_food_costs/1006/help_if_you_have_children",
+                        "snippet": "If you have a child who is eligible for free school meals you will receive a monthly cost of living voucher, which can be spent on essentials in supermarkets."
+                    },
+                    {
+                        "title": "Discounts and offers | Borough Council of King's Lynn & West Norfolk",
+                        "link": "https://www.west-norfolk.gov.uk/info/366/help_with_billsmoney_worries/1000/discounts_and_offers",
+                        "snippet": "If you have an Alive Concession Card (free if your child is eligible for free school meals) there are sessions available during the holidays from 50p. Help with\u00a0..."
+                    },
+                    {
+                        "title": "Statement of Intent - EC04 & Great British - Insulation Scheme",
+                        "link": "https://www.west-norfolk.gov.uk/download/downloads/id/5197/eco_flexibility_eligibility_statement_of_intent.pdf",
+                        "snippet": "Sep 1, 2023 ... Proxy 4) A child living at the premises is eligible for free school meals due to low-income. Page 2. Proxy 5) A person living at the premises\u00a0..."
+                    },
+                    {
+                        "title": "eco flexible eligibility assessment form",
+                        "link": "https://www.west-norfolk.gov.uk/download/downloads/id/5196/eco_flexibility_eligibility_application_form.pdf",
+                        "snippet": "\u2022 Proxy 4) Householder receiving free school meals due to low-income. ... Under data protection law you have the right to request access to, rectification,\u00a0..."
+                    },
+                    {
+                        "title": "Summer of play | Borough Council of King's Lynn & West Norfolk",
+                        "link": "https://www.west-norfolk.gov.uk/info/20195/events/898/summer_of_play",
+                        "snippet": "school life disrupted; challenges to social interaction with ... Freedom - We will support children to have space, time, and opportunities for free play\u00a0..."
+                    },
+                    {
+                        "title": "Small steps to making a big difference | Borough Council of King's ...",
+                        "link": "https://www.west-norfolk.gov.uk/info/20095/climate_change/918/small_steps_to_making_a_big_difference",
+                        "snippet": "Food. Find out what measures you can take to help reduce food related carbon emissions. Food emissions. Greenhouse gas emissions come from all aspects of\u00a0..."
+                    },
+                    {
+                        "title": "DWP Household Support Fund | Borough Council of King's Lynn ...",
+                        "link": "https://www.west-norfolk.gov.uk/info/20007/people_and_communities/990/dwp_household_support_fund",
+                        "snippet": "If you currently have contact with voluntary organisations, community organisations, housing, income or other services within the council, they may be able to\u00a0..."
+                    },
+                    {
+                        "title": "creating communities north lynn leaflet 2025",
+                        "link": "https://www.west-norfolk.gov.uk/download/downloads/id/9323/creating_communities_north_lynn_leaflet_2025.pdf",
+                        "snippet": "Benjamin Foundation provides free youth groups for young people. These sessions will have many activities offering a time to be creative, play games, play\u00a0..."
+                    },
+                    {
+                        "title": "Castle Acre Neighbourhood Plan 2022-2036",
+                        "link": "https://www.west-norfolk.gov.uk/download/downloads/id/7028/castle_acre_neighbourhood_development_plan_-_feb_2022.pdf",
+                        "snippet": "Feb 10, 2022 ... \u25cb Village amenities such as the school, shop, caf\u00e9/tea shop, church and pub are ... free up parking space in the village centre and also help\u00a0..."
+                    },
+                    {
+                        "title": "East Wisbech",
+                        "link": "https://democracy.west-norfolk.gov.uk/documents/s24062/Final%20BCP%20Version%20for%20Cabinet%2029-5-18.pdf",
+                        "snippet": "May 3, 2018 ... Concept Plan (BCP), that is linked to the timely delivery of key infrastructure.\u201d The policy precludes. Page 7. 7 piece meal development coming\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.west-norfolk.gov.uk/info/370/help_with_food_costs/1006/help_if_you_have_children",
+                        "title": "Help (if you have children) | Borough Council of King's Lynn & West Norfolk",
+                        "confidence": 85,
+                        "strengths": [
+                            "Provides monthly vouchers for essential items if you have a child who is eligible for free school meals.",
+                            "The information specifically addresses the immediate concern of council customers regarding food costs."
+                        ],
+                        "reasoning": "The snippet clearly indicates that this page provides vouchers to help with food costs, and it is likely to be relevant for families struggling financially. The council's website is also a trusted source for local government information.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Help (if you have children) | Borough Council of King's Lynn & West Norfolk",
+                                "Source": "https://www.west-norfolk.gov.uk/info/370/help_with_food_costs/1006/help_if_you_have_children",
+                                "Key Strengths": [
+                                    "Provides monthly vouchers for essential items if you have a child who is eligible for free school meals.",
+                                    "The information specifically addresses the immediate concern of council customers regarding food costs."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The snippet clearly indicates that this page provides vouchers to help with food costs, and it is likely to be relevant for families struggling financially. The council's website is also a trusted source for local government information."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Discounts and offers | Borough Council of King's Lynn & West Norfolk",
+                                "Source": "https://www.west-norfolk.gov.uk/info/366/help_with_billsmoney_worries/1000/discounts_and_offers",
+                                "Key Strengths": [
+                                    "Offers discounted activities for children during school holidays for those with an Alive Concession Card, which is free if your child is eligible for free school meals.",
+                                    "The snippet suggests that the page may provide additional support beyond just vouchers."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While not explicitly about food costs like recommendation 1, this offers discounted activities which can help alleviate financial burden and provide a service for families with children eligible for free school meals."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Statement of Intent - EC04 & Great British - Insulation Scheme",
+                                "Source": "https://www.west-norfolk.gov.uk/download/downloads/id/5197/eco_flexibility_eligibility_statement_of_intent.pdf",
+                                "Key Strengths": [
+                                    "Includes proxy 4, which is a child living at the premises being eligible for free school meals due to low-income.",
+                                    "The insulation scheme may help reduce energy costs, thereby alleviating some financial burden on council customers."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "While not directly related to immediate food costs or discounts for families, the insulation scheme can have a long-term impact on reducing energy bills, which may help with overall finances. However, the confidence score is lower due to the lack of explicit mention of immediate relief."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "eco flexible eligibility assessment form",
+                                "Source": "https://www.west-norfolk.gov.uk/download/downloads/id/5196/eco_flexibility_eligibility_application_form.pdf",
+                                "Key Strengths": [
+                                    "Includes proxy 4, which is a householder receiving free school meals due to low-income.",
+                                    "The eco flexibility eligibility form may lead to financial assistance via energy efficiency grants and improvements."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Like recommendation 3, this resource can help reduce long-term costs through energy efficiency upgrades. However, the confidence score is lower because the immediate focus seems to be on insulation rather than food or bills."
+                            },
+                            {
+                                "Number": "NO SUITABLE OPTIONS",
+                                "Title": "",
+                                "Source": "",
+                                "Key Strengths": [],
+                                "Confidence": "0",
+                                "Reasoning": "The remaining recommendations do not explicitly address the immediate needs of council customers for information regarding food costs or financial assistance."
+                            }
+                        ],
+                        "Analysis Notes": "All items were analyzed based on their relevance and potential ability to help with council customer's immediate and long-term needs in terms of food costs, bills, and overall financial relief.",
+                        "Recommendations Notes": "The top four recommendations are strongly related to the council customer information needs while the 'NO SUITABLE OPTIONS' recommendation indicates that items not meeting the specific criteria or confidence threshold were not included."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "70",
+                        "75",
+                        "0"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 62,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Help (if you have children) | Borough Council of King's Lynn & West Norfolk",
+                            "Source": "https://www.west-norfolk.gov.uk/info/370/help_with_food_costs/1006/help_if_you_have_children",
+                            "Reasoning": "This link has the highest relevance and credibility, providing monthly vouchers for essential items if you have a child who is eligible for free school meals. As it addresses an immediate concern of financial distress, it's a valuable next step.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "eco flexible eligibility assessment form",
+                            "Source": "https://www.west-norfolk.gov.uk/download/downloads/id/5196/eco_flexibility_eligibility_application_form.pdf",
+                            "Reasoning": "Although not explicitly focused on immediate food costs, this link offers a long-term solution for financial relief by providing energy efficiency grants and improvements, which can help reduce energy bills over time.",
+                            "Confidence": "75"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Discounts and offers | Borough Council of King's Lynn & West Norfolk",
+                            "Source": "https://www.west-norfolk.gov.uk/info/366/help_with_billsmoney_worries/1000/discounts_and_offers",
+                            "Reasoning": "Offering discounted activities during school holidays for families with an Alive Concession Card, this link may help alleviate financial burden in the short term even if it doesn't directly address food costs.",
+                            "Confidence": "80"
+                        }
+                    ],
+                    "total_recommendations": 3,
+                    "total_options": 2,
+                    "min_confidence": 0.6
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.west-norfolk.gov.uk/info/370/help_with_food_costs/1006/help_if_you_have_children"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.west-norfolk.gov.uk/info/370/help_with_food_costs/1006/help_if_you_have_children",
+                        "analysis": {
+                            "url": "https://www.west-norfolk.gov.uk/info/370/help_with_food_costs/1006/help_if_you_have_children",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T05:47:00+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T05:47:39+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 42791,
+                            "response_time": 0.787,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.787s)",
+                                    "Content successfully retrieved (42791 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.7905459403991699,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.west-norfolk.gov.uk/info/370/help_with_food_costs/1006/help_if_you_have_children"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.west-norfolk.gov.uk/info/370/help_with_food_costs/1006/help_if_you_have_children",
+                        "content": " Here is the clean, semantically structured HTML containing the main body content of the page:\n\n```html\n<!DOCTYPE html>\n<html class=\"no-js\" lang=\"en\">\n<head></head>\n    <body>\n        <main class=\"site-main\">\n            <div class=\"container\">\n                <h1 class=\"page-heading\">Help (if you have children)</h1>\n                <div class=\"site-content\">\n                    <article class=\"site-article\" id=\"content\" tabindex=\"-1\">\n                        <div class=\"editor\">\n                            <p><strong>Information on help you can receive if you have children</strong></p>\n\n                            <h2>Food schemes for families</h2>\n                            <p>All children in years R, 1 and 2 automatically get free school meals if they go to school. If you have children older than this and you receive certain benefits, your child could be eligible for free school meals. Apply on the <a href=\"https://www.norfolk.gov.uk/education-and-learning/schools/school-meals-and-milk\">Norfolk County Council website</a>.</p>\n\n                            <p>If you have a child who is eligible for free school meals you will receive a monthly cost of living voucher, which can be spent on essentials in supermarkets. Find out more about cost of living vouchers on <a href=\"https://www.norfolk.gov.uk/what-we-do-and-how-we-work/campaigns/help-with-living-costs/cost-of-living-vouchers\">Norfolk County Council's website</a>.</p>\n\n                            <p>If you're more than 10 weeks pregnant or have a child younger than five, you could get Healthy Start vouchers which help buy fruit, vegetables and milk. Find out more on the <a href=\"https://www.healthystart.nhs.uk/\">Healthy Start website</a>.</p>\n\n                            <h2>Food banks</h2>\n                            <p>If you\u2019re struggling to afford enough food, or don't have access to a fridge or cooker, then your nearest food bank might be able to help. The Trussell Trust runs a network of more than 1,200 local food banks across the UK. Find out if there is a Trussell Trust food bank near you by visiting their website at <a href=\"https://www.trusselltrust.org/get-help\">Help</a>.</p>\n\n                            <h2>Left-over food</h2>\n                            <p>Also check out online communities where you can find food that's being given away for free, such as on the Olio app or Nextdoor social network. Some supermarkets offer left over unsold food for free at closing time.</p>\n                        </div>\n                    </article>\n                </div>\n            </div>\n        </main>\n    </body>\n</html>\n```\n\nThis stripped-down version of the original HTML focuses on keeping only the main body content, header and footer elements are removed as they were not relevant to the article. The remaining elements within the `<article>` tag define the structure and semantics of the page with headings (`<h1>`, `<h2>`) and links (`<a>`).",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 18.762269973754883,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.west-norfolk.gov.uk/info/370/help_with_food_costs/1006/help_if_you_have_children",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals",
+                                    "answer_quality": "The content partially meets this need as it explains where and how to apply for free school meals but does not provide specific criteria",
+                                    "confidence": "60",
+                                    "reasoning": "The article provides a link to the Norfolk County Council website to apply for free school meals, however it does not mention what benefits are necessary to be eligible.",
+                                    "next_actions": "Visit the Norfolk County Council website and search for the specific criteria for eligibility."
+                                },
+                                {
+                                    "need": "I'm keen to know what is the criteria for free school meals",
+                                    "answer_quality": "The content does not fully meet this need as it provides no specific criteria.",
+                                    "confidence": "50",
+                                    "reasoning": "Although the article mentions that certain benefits may make children eligible, it does not specify what those benefits are.",
+                                    "next_actions": "Contact the Norfolk County Council directly to inquire about eligibility criteria."
+                                },
+                                {
+                                    "need": "I want to know how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content does not meet this need as it does not provide any information about the processing time.",
+                                    "confidence": "50",
+                                    "reasoning": "There is no mention of waiting times or anticipated response times for free school meal eligibility inquiries.",
+                                    "next_actions": "Contact the Norfolk County Council directly to ask about average waiting times."
+                                }
+                            ],
+                            "overall_assessment": "The content partially meets the needs of a council resident seeking information on how to apply for free school meals and some additional resources. However, it falls short in providing specific criteria for eligibility and time expectations. It is essential to contact the Norfolk County Council directly for more accurate information."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 9.373959064483643,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.west-norfolk.gov.uk/info/370/help_with_food_costs/1006/help_if_you_have_children"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_054700-west-norfolk.gov.uk",
+                    "analysis_timestamp": "2025-08-13T05:48:08+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.1333333333333333,
+                            "tokens_consumed": 7698,
+                            "tokens_remaining": 22302,
+                            "token_utilization_percentage": 25.66,
+                            "average_tokens_per_step": 1283
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 74.34,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 17,
+                            "consumption_rate": 1283,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60",
+                                "50",
+                                "50"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 16.19,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.1333333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_054700-west-norfolk.gov.uk",
+                        "start_time": "2025-08-13T05:47:00+01:00",
+                        "current_time": "2025-08-13T05:48:08+01:00",
+                        "duration_seconds": 68,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7698,
+                        "tokens_remaining": 22302,
+                        "token_utilization_percentage": 25.66,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3622,
+                                "avg_per_call": 1811
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 4076,
+                                "avg_per_call": 2038
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1283
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_054700-west-norfolk.gov.uk",
+                    "start_time": "2025-08-13T05:47:00+01:00",
+                    "current_time": "2025-08-13T05:48:08+01:00",
+                    "duration_seconds": 68,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7698,
+                    "tokens_remaining": 22302,
+                    "token_utilization_percentage": 25.66,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3622,
+                            "avg_per_call": 1811
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 4076,
+                            "avg_per_call": 2038
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1283
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

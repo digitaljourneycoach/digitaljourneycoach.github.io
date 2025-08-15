@@ -1,0 +1,711 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T06:10:02+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "wolverhampton.gov.uk",
+                "Council Name": "Wolverhampton City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Free school meals | City Of Wolverhampton Council",
+                        "link": "https://www.wolverhampton.gov.uk/education-and-schools/free-school-meals",
+                        "snippet": "Jul 15, 2025 ... "
+                    },
+                    {
+                        "title": "Free school meals | Wolverhampton Information Network",
+                        "link": "https://win.wolverhampton.gov.uk/kb5/wolverhampton/directory/advice.page?id=flzDaI25Wd4",
+                        "snippet": "This site uses cookies to make the site simpler. Find out more about cookies ... Free school meals. Free school meals. City of Wolverhampton Council. Here\u00a0..."
+                    },
+                    {
+                        "title": "Free School Meals (FSM) Eligibility Checking Service ...",
+                        "link": "https://wves.wolverhampton.gov.uk/Services/5055",
+                        "snippet": "As well as identifying more than \u00a315m additional FSM and EYPP Pupil Premium for settings since 2020, the Service continues to receive 100% positive feedback (\u00a0..."
+                    },
+                    {
+                        "title": "Director of Public Health Annual Report 2024",
+                        "link": "https://www.wolverhampton.gov.uk/sites/default/files/2024-12/Public%20Health%20Annual%20Report%202024%20%28Ward%20Profiles%29%20%281%29.pdf",
+                        "snippet": "free school meals. Children attending mainstream Primary. & Secondary Schools ... You can get this information in large print, braille, audio or in\u00a0..."
+                    },
+                    {
+                        "title": "FSM Eligibility Checking Service 2025-28 | Wolverhampton ...",
+                        "link": "https://www.wves.wolverhampton.gov.uk/Article/169104",
+                        "snippet": "FSM Eligibility Checking Service 2025-28. Wednesday, 05/02/2025 | Free School Meals ... please don't hesitate to get in touch \u2013 I'm here and happy to help!"
+                    },
+                    {
+                        "title": "SECONDARY APPLICATION FORM 2026/27 Student Information",
+                        "link": "https://www.wolverhampton.gov.uk/sites/default/files/2025-07/The-Royal-SIF-2025-26.pdf",
+                        "snippet": "Has your child been registered as eligible for free school meals. (FSM) at any point in the last six years (not universal infant free school meals). Yes. No."
+                    },
+                    {
+                        "title": "EATIN WV",
+                        "link": "https://www.wolverhampton.gov.uk/sites/default/files/2022-09/primary-school-menu-2022-2023.pdf",
+                        "snippet": "school meals for free. Children in Year 3 and above may be eligible to claim for free school meals*. To apply, contact your child's school or the Local."
+                    },
+                    {
+                        "title": "Student Information",
+                        "link": "https://www.wolverhampton.gov.uk/sites/default/files/2024-11/The%20Royal%20School%20Wolverhampton%20-%20Primary%20SIF_0.pdf",
+                        "snippet": "To be eligible for admission to The Royal School, Wolverhampton, all applicants (or their parents/legal guardian) must have a full UK passports or have other\u00a0..."
+                    },
+                    {
+                        "title": "Schools Health Education Unit 1",
+                        "link": "https://www.wolverhampton.gov.uk/sites/default/files/2024-10/wolverhampton-safe-2024.pdf",
+                        "snippet": "Free school meals. Young carer. English is 2nd language. Female. Male. All Y10 ... Feel safe at school Know where to get help with friendships. Violence at\u00a0..."
+                    },
+                    {
+                        "title": "Job Description: Job Title: Attendance / Administration Officer ...",
+                        "link": "https://www.wolverhampton.gov.uk/sites/default/files/2019-05/Job%20ref%20LEC153%20-%20Job%20description%20and%20person%20specification.pdf",
+                        "snippet": "To collect, collate and distribute leaflets ... To be responsible for the completion of all catering returns for school meals and free school meals."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.wolverhampton.gov.uk/education-and-schools/free-school-meals",
+                        "title": "Free school meals | City Of Wolverhampton Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Direct link to the official council page for free school meals information",
+                            "Page title clearly indicates it is related to city council and free school meals"
+                        ],
+                        "reasoning": "The title and URL of this page specifically mention 'City Of Wolverhampton Council' and 'Free School Meals', making it a suitable recommendation for council customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Free school meals | City Of Wolverhampton Council",
+                                "Source": "https://www.wolverhampton.gov.uk/education-and-schools/free-school-meals",
+                                "Key Strengths": [
+                                    "Direct link to the official council page for free school meals information",
+                                    "Page title clearly indicates it is related to city council and free school meals"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title and URL of this page specifically mention 'City Of Wolverhampton Council' and 'Free School Meals', making it a suitable recommendation for council customer information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Free school meals | Wolverhampton Information Network",
+                                "Source": "https://win.wolverhampton.gov.uk/kb5/wolverhampton/directory/advice.page?id=flzDaI25Wd4",
+                                "Key Strengths": [
+                                    "Link provided by Wolverhampton Information Network which is an additional information resource of the city council",
+                                    "The title and URL include 'Free School Meals' which aligns closely with the given instruction"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Although not directly on the city council website, this link is provided by a reliable information resource operated by Wolverhampton City Council themselves."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Free School Meals (FSM) Eligibility Checking Service ...",
+                                "Source": "https://wves.wolverhampton.gov.uk/Services/5055",
+                                "Key Strengths": [
+                                    "Direct link to the free school meals eligibility checking service of Wolverhampton's school admissions service",
+                                    "Service has identified additional FSM and EYPP Pupil Premium for settings since 2020"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title suggests this is a specific eligibility checking service related to Wolverhampton's schools, and the fact that it identifies additional funding makes it likely to be useful for council customers."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "FSM Eligibility Checking Service 2025-28 | Wolverhampton ...",
+                                "Source": "https://www.wves.wolverhampton.gov.uk/Article/169104",
+                                "Key Strengths": [
+                                    "Direct link to the free school meals eligibility checking service for 2025-28",
+                                    "Service continuing to receive 100% positive feedback"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This resource provides information about the FSM eligibility checking service specifically for the years 2025-28, making it pertinent for users seeking council customer advice."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Job Description: Job Title: Attendance / Administration Officer ...",
+                                "Source": "https://www.wolverhampton.gov.uk/sites/default/files/2019-05/Job%20ref%20LEC153%20-%20Job%20description%20and%20person%20specification.pdf",
+                                "Key Strengths": [
+                                    "Provides information about a job role related to school administration",
+                                    "Possibility of this role including responsibilities for 'completion of all catering returns for school meals and free school meals'"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "Although not directly related to council customer information needs, there is a connection between the job role advertised and school meals (including free school meals), which may still be relevant."
+                            }
+                        ],
+                        "Analysis Notes": "The search results contained information about various services and resources offered by Wolverhampton City Council. Many of these items had some relationship to school meals or administration, some more direct than others.",
+                        "Recommendations Notes": "Recommendations were selected based on their relevance to council customer needs and clarity that they would provide valuable information about free school meals."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 79,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Free school meals | City Of Wolverhampton Council",
+                            "Source": "https://www.wolverhampton.gov.uk/education-and-schools/free-school-meals",
+                            "Reasoning": "The title and URL of this page specifically mention 'City Of Wolverhampton Council' and 'Free School Meals', making it a suitable recommendation for council customer information needs.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Free School Meals (FSM) Eligibility Checking Service ...",
+                            "Source": "https://wves.wolverhampton.gov.uk/Services/5055",
+                            "Reasoning": "The title suggests this is a specific eligibility checking service related to Wolverhampton's schools, and the fact that it identifies additional funding makes it likely to be useful for council customers.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Free school meals | Wolverhampton Information Network",
+                            "Source": "https://win.wolverhampton.gov.uk/kb5/wolverhampton/directory/advice.page?id=flzDaI25Wd4",
+                            "Reasoning": "Although not directly on the city council website, this link is provided by a reliable information resource operated by Wolverhampton City Council themselves.",
+                            "Confidence": "85"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "005_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.wolverhampton.gov.uk/education-and-schools/free-school-meals"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.wolverhampton.gov.uk/education-and-schools/free-school-meals",
+                        "analysis": {
+                            "url": "https://www.wolverhampton.gov.uk/education-and-schools/free-school-meals",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T06:10:02+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T06:10:48+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 77374,
+                            "response_time": 1.103,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (1.103s)",
+                                    "Content successfully retrieved (77374 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 1.1080191135406494,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "006_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.wolverhampton.gov.uk/education-and-schools/free-school-meals"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.wolverhampton.gov.uk/education-and-schools/free-school-meals",
+                        "content": "```html\n<h1>Free school meals</h1>\n<p>You may be able to claim benefits-related Free School Meals (FSM) for your child/ren if you meet the Government's eligibility criteria.</p>\n<p>Alongside the Holiday Activities and Food (HAF) Programme (as detailed at <a href=\"https://www.yowolves.co.uk\">www.yowolves.co.uk</a>), there is other help and support available to the City\u2019s residents. There is more information about this under \u201c<strong>Other help and support +</strong>\u201d below.<br>City of Wolverhampton Council hasn\u2019t issued free school meals vouchers during the school holidays since February half-term 2021, in line with Government recommendation for a return to food-based support at that time.</p>\n<h2>Free School Meals application</h2>\n<p>City of Wolverhampton Council can check your FSM application, if your child is at a school that uses our <a href=\"/node/19562\">FSM Eligibility Checking Service</a>.</p>\n<p>If your child has a protected FSM claim in place, you do not need to apply again.</p>\n<p>If you aren\u2019t sure if your child has an FSM claim in place, please ask your child\u2019s school.</p>\n<p>If your child does not already have an FSM claim in place, the easiest way to apply is through your child\u2019s school.</p>\n<p><strong>Updated Government guidance as of 5 June 2025</strong></p>\n<p>Transitional protections have been extended until the end of the 2025/26 school year. All pupils becoming eligible for free school meals under the benefits-based criteria, should continue to receive this entitlement, regardless of any change in household circumstances or phase of education until the end of the 2025/26 school year.</p>\n<p>From the start of the 2026/27 school year, the Department for Education will introduce new eligibility criteria meaning that all children from households in receipt of Universal Credit will be entitled to receive a free meal. It is our intention to end transitional protections alongside this change in threshold, with eligibility for all pupils reverting to whether they meet the eligibility criteria regardless of whether they were previously protected. We will issue further guidance ahead of September 2026.</p>\n<p>This does not apply to families that are eligible for free school meals under Part VI of the Immigration and Asylum Act 1999 or the guarantee element of the Pension Credit, nor to those with no recourse to public funds (NRPF).</p>\n<p>If you have any questions about school meals, please contact your child/ren\u2019s school/s. Menus, prices and arrangements vary from school to school.</p>\n<p>There is more information about \u201cOther help and support +\u201d available below.</p>\n<h2>Am I eligible?</h2>\n<p>These are the Government\u2019s eligibility criteria for benefits-related Free School Meals (FSM):</p>\n<ul>\n    <li>Income Support</li>\n    <li>Income-based Jobseeker's Allowance</li>\n    <li>Income-related Employment and Support Allowance</li>\n    <li>Support under Part VI of the Immigration and Asylum Act 1999</li>\n    <li>The guaranteed element of Pension Credit</li>\n    <li>Child Tax Credit (provided you're not also entitled to Working Tax Credit) and have an annual gross income of no more than \u00a316,190</li>\n    <li>Working Tax Credit run-on - paid for 4 weeks after you stop qualifying for Working Tax Credit</li>\n    <li>Universal Credit - if you apply on or after 1 April 2018, your household income must be less than \u00a37,400 a year. This is equal to \u00a3616.67 a month (after tax and not including any benefits you get) to qualify for benefits-related Free School Meals (FSM)</li>\n</ul>\n<p>If you are entitled to Working Tax Credit (apart from during the four-week run-on period), you will not qualify for FSM, even if you have a low income.</p>\n<p>If you are receiving Child Tax Credit only, your annual income must be less than \u00a316,190 to qualify.</p>\n<p>If your family has No Recourse to Public Funds (NRPF), you may also be entitled to free meals. Please speak with your child\u2019s school about this.</p>\n<h2>Apply for free school meals</h2>\n<p>To apply for Free School Meals, please speak with your child's school.</p>\n<p>You will need to provide the school with:</p>\n<ul>\n    <li>your full name</li>\n    <li>your date of birth and</li>\n    <li>your National Insurance (NI) number or asylum support reference number</li>\n</ul>\n<p>Your child's school will then share your details with City of Wolverhampton Council. We check eligibility using a secure Government website.</p>\n<p>If we find you eligible for FSM, your child's school will let you know. If we don\u2019t find you eligible, we will continue to check your eligibility.</p>\n<p>Schools receive valuable Government funding (Pupil Premium) for every child registered for FSM. Even if your child chooses not to eat school meals, we would still encourage you to register.</p>\n<h2>Starting or moving school</h2>\n<p>If your child is due to start school in Reception in September, or any other year group and they don\u2019t already have a benefits-related Free School Meals (FSM) claim in place, you will need to provide your details (full name, date of birth and National Insurance (NI) or asylum support reference number) to your child\u2019s school. Your details will be shared with us for eligibility checking in readiness for the start of the new academic year.</p>\n<p>If your child is due to move school and already has a benefits-related Free School Meals (FSM) claim in place, you do not need to apply again.</p>\n<p>Your child\u2019s entitlement to free meals should be communicated between schools through their Common Transfer File (CTF). Schools in Wolverhampton can also contact us to confirm any claims on our secure database.</p>\n<p>Your child\u2019s new school may request additional information from you for your child\u2019s claim to be recorded.</p>\n<p>Please contact your child\u2019s school with any questions about school meals. Menus, providers and arrangements vary from school to school.</p>\n<h2>Help with school uniform</h2>\n<p>City of Wolverhampton Council does not provide uniform grants. In partnership with the Wolverhampton City Credit Union (WCCU) <a href=\"https://wccul.co.uk/savings\">Child Savers Account</a>, match funding of up to \u00a375 is available towards the cost of purchasing a school uniform. Uniform policies and costs vary from school to school. Please contact your child\u2019s school with any questions about school uniform.</p>\n<h2>Support during school holidays</h2>\n<p>For information about activities and food during school holidays, please visit <a href=\"https://yowolves.co.uk\">yowolves.co.uk</a></p>\n<p>If you have any questions about the Holiday Activities and Food (HAF) Programme available during the main school holidays (Summer, Christmas, Easter), please call the helpline \u2013 01902 916994 (during office hours Mondays to Fridays, excluding Bank Holidays) \u2013 which opens shortly before the main school holidays.</p>\n<h2>Other help and support</h2>\n<p>For information about support available for all City of Wolverhampton residents, please visit:</p>\n<ul>\n    <li><a href=\"/node/18336\">Cost of Living Support</a></li>\n    <li><a href=\"/node/15211\">Stay Safe Be Kind</a></li>\n    <li><a href=\"https://www.moneyhelper.org.uk/en\" target=\"_blank\">Money Helper Service</a></li>\n    <li><a href=\"https://www.citizensadvice.org.uk/\" target=\"_blank\">Citizens Advice</a></li>\n</ul>\n<p>Please visit <a href=\"https://www.localofferwolves.co.uk\">www.localofferwolves.co.uk</a> for information about the Wolverhampton Local Offer and how it can help support children and young people aged between 0-25 with Special Educational Needs and Disabilities (SEND).</p>\n<p>Please visit <a href=\"https://www.yowolves.co.uk\">www.yowolves.co.uk</a> for events and services within Wolverhampton that support children, young people and their parents/carers.</p>\n<p>If you need urgent help with providing food for your child/ren, please contact your child/ren\u2019s school/s. Or, email Stay Safe Be Kind: <a href=\"mailto:staysafebekind@wolverhampton.gov.uk\">staysafebekind@wolverhampton.gov.uk</a> or call <strong>01902 290241</strong>. The helpline is open during office hours, Mondays to Fridays, excluding Bank Holidays.</p>\n<h2>Transitional Protection</h2>\n<p>Transitional protections apply from 1 April 2018, until the end of the 2025/26 school year. Pupils becoming eligible for free school meals under the benefits-based criteria in this time, will continue to receive free meals until the end of the 2025/26 school year.</p>\n<p>This applies, regardless of any change in household circumstances, including an increase in earnings above the eligibility threshold.</p>\n<p>From the start of the 2026/27 academic year, it is the Department for Education\u2019s intention that all protections will be discontinued, alongside an extension to the eligibility criteria for free school meals. From this point, households must meet the eligibility criteria to be entitled to free school meals.</p>\n<p>While transitional protections are in effect, schools and local authorities do not need to keep eligibility for free school meals under continued review. This applies until the end of the 2025/26 school year.</p>\n<p>It is the Department for Education\u2019s intention to discontinue transitional protections from the start of the 2026/27 school year. From this point, households will need to meet the eligibility criteria in order to be entitled to a free meal.</p>\n<p>From the beginning of the 2026/27 academic year, schools and local authorities will need to keep free school meal eligibility under continued review. Schools and local authorities should recheck eligibility for all pupils in receipt of free meals, ahead of the October census.</p>\n<p>The Department does not expect rechecks of eligibility to be carried out more than once a year to prevent families from experiencing any sudden loss of entitlement during the school year.</p>\n<p>If you no longer qualify through NASS or Pension Credit, you should tell your child\u2019s school or the FSM Eligibility Checking Service direct. We will then recheck your eligibility.</p>\n<p>Transitional Protection does not apply to siblings who don\u2019t have a claim registered in their own name. This means some of your children may be entitled to free meals but others aren\u2019t.</p>\n<h2>Universal Infant Free School Meals (UIFSM)</h2>\n<p>Under the Government\u2019s UIFSM scheme, all children in Reception, Years 1 and 2 can enjoy school meals during term-time for free, regardless of their family\u2019s financial circumstances.</p>\n<p>UIFSM are not the same as benefits-related Free School Meals (FSM).</p>\n<p>You do not need to register for UIFSM.</p>\n<p>Your child's school may ask if your child will be taking meals so that they can make the necessary arrangements.</p>\n<h2>School menus</h2>\n<p>Please ask your child/ren\u2019s school/s any questions you have about your child/ren\u2019s school meals.</p>\n<p>Arrangements and school meal providers vary across the City.</p>\n<p>Please visit <a href=\"/node/10952\">School Menus</a> for information about school meals provided by the Council.</p>\n<h2>Contact us</h2>\n<p>If you have any other questions about free meals, please email: <a href=\"mailto:freeschoolmeals@wolverhampton.gov.uk\">freeschoolmeals@wolverhampton.gov.uk</a> or contact your child\u2019s school.</p>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 37.361364126205444,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "007_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.wolverhampton.gov.uk/education-and-schools/free-school-meals",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content answers this question partially, as it provides the criteria for benefits-related Free School Meals (FSM) but does not specify how quickly one can find out if they are eligible after applying.",
+                                    "confidence": "70%",
+                                    "reasoning": "While the source lists eligibility requirements, it does not directly address the question about a timeline for finding out if an individual is eligible. However, the content implies that schools communicate eligibility results to applicants.",
+                                    "next_actions": "Speak with your child's school regarding the application process and potential timelines for receiving decision updates."
+                                }
+                            ],
+                            "overall_assessment": "The content provides a comprehensive outline of benefits-related Free School Meals (FSM) criteria, eligibility checks, and application process. However, it falls short on addressing the specific need concerning a potential timeline for determining one's eligibility after applying.",
+                            "overall_assessment_summary": "The content mostly meets its purpose of explaining FSM eligibility and the application process, but lacks details on response times after submitting applications."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 9.309643030166626,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.wolverhampton.gov.uk/education-and-schools/free-school-meals"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "008_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_061002-wolverhampton.gov.uk",
+                    "analysis_timestamp": "2025-08-13T06:11:36+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 7,
+                            "duration_minutes": 1.5666666666666667,
+                            "tokens_consumed": 21199,
+                            "tokens_remaining": 8801,
+                            "token_utilization_percentage": 70.66,
+                            "average_tokens_per_step": 3028.43
+                        },
+                        "token_analysis": {
+                            "status": "moderate",
+                            "remaining_percentage": 29.34,
+                            "urgency_score": 30,
+                            "estimated_remaining_steps": 2,
+                            "consumption_rate": 3028.43,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 7,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 3
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 22.38,
+                            "steps_fatigue_percentage": 58.33,
+                            "overall_fatigue_score": 58.33,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.5666666666666667,
+                            "total_steps": 7,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 50,
+                            "efficiency_factors": [
+                                "High token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": false,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved",
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_061002-wolverhampton.gov.uk",
+                        "start_time": "2025-08-13T06:10:02+01:00",
+                        "current_time": "2025-08-13T06:11:36+01:00",
+                        "duration_seconds": 94,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 21199,
+                        "tokens_remaining": 8801,
+                        "token_utilization_percentage": 70.66,
+                        "token_status": "available",
+                        "total_steps": 7,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 3,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 7
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 13223,
+                                "avg_per_call": 6611.5
+                            },
+                            "analyst": {
+                                "calls": 3,
+                                "tokens": 7976,
+                                "avg_per_call": 2658.6666666666665
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 3028.43
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_061002-wolverhampton.gov.uk",
+                    "start_time": "2025-08-13T06:10:02+01:00",
+                    "current_time": "2025-08-13T06:11:36+01:00",
+                    "duration_seconds": 94,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 21199,
+                    "tokens_remaining": 8801,
+                    "token_utilization_percentage": 70.66,
+                    "token_status": "available",
+                    "total_steps": 7,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 3,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 7
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 13223,
+                            "avg_per_call": 6611.5
+                        },
+                        "analyst": {
+                            "calls": 3,
+                            "tokens": 7976,
+                            "avg_per_call": 2658.6666666666665
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 3028.43
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

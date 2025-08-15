@@ -1,0 +1,660 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T04:20:48+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "southandvale.gov.uk",
+                "Council Name": "South Oxfordshire District Council and Vale of White Horse District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Land Between A34 Milton Interchange, And B4015 North Of Clifton ...",
+                        "link": "https://www.southandvale.gov.uk/app/uploads/2025/03/LPA06-Decision-on-granting-planning-permission-for-the-HIF1-infrastructure-scheme.pdf",
+                        "snippet": "Dec 11, 2024 ... She has decided to permit the application and grant planning permission. The Inspector's Report (IR) is attached. All references to paragraph\u00a0..."
+                    },
+                    {
+                        "title": "Binfield Heath",
+                        "link": "https://theconversation.southandvale.gov.uk/planning/binfieldheath-submission-consultation/supporting_documents/2%20App%20A%20Design%20Guidance%20and%20Codes.pdf",
+                        "snippet": "Oct 4, 2023 ... do not need planning permission. These rights do not ... Attractive options to Solar Panels are Solar shingles and Photovoltaic slates."
+                    },
+                    {
+                        "title": "DBE01 Joint Design Guide",
+                        "link": "https://www.southandvale.gov.uk/app/uploads/2024/12/DBE01-Joint-Design-Guide.pdf",
+                        "snippet": "It is unlikely that planning permission will be granted for development proposals that do not demonstrate consistency with the principles set out in the design\u00a0..."
+                    },
+                    {
+                        "title": "NDP28 Joint Henley and Harpsden Neighbourhood Development ...",
+                        "link": "https://www.southandvale.gov.uk/app/uploads/2024/12/NDP28-Joint-Henley-and-Harpsden-Neighbourhood-Development-Plan-Review.pdf",
+                        "snippet": "are covered by Article 4 Directions and some energy improvement measures may also require planning permission as a result. ... incorporating Solar photovoltaic\u00a0..."
+                    },
+                    {
+                        "title": "Haseley Trading Estate - South Oxfordshire District Council and ...",
+                        "link": "https://www.southandvale.gov.uk/haseley-trading-estate/",
+                        "snippet": "We plan to use direct electrical heating, supported by the solar panel installation that will be added on to the building. ... planning permission. Like\u00a0..."
+                    },
+                    {
+                        "title": "HES12 Developers handbook for Community Employment Plan",
+                        "link": "https://www.southandvale.gov.uk/app/uploads/2024/12/HES12-Developers-handbook-for-Community-Employment-Plan.pdf",
+                        "snippet": "as air source heat pumps, solar panels or EV charging units? ... detailed by condition X of the development site outline planning permission (reference number X)."
+                    },
+                    {
+                        "title": "NDP39 Sonning Common Neighbourhood Development Plan Review",
+                        "link": "https://www.southandvale.gov.uk/app/uploads/2024/12/NDP39-Sonning-Common-Neighbourhood-Development-Plan-Review.pdf",
+                        "snippet": "charging points and solar panels where appropriate. ... Planning law requires that applications for planning permission be determined in accordance with the."
+                    },
+                    {
+                        "title": "South Oxfordshire and Vale of White Horse Renewable Energy Study",
+                        "link": "https://www.southandvale.gov.uk/app/uploads/2024/09/South-Oxfordshire-and-Vale-of-White-Horse-Renewable-Energy-Study.pdf",
+                        "snippet": "Sep 18, 2024 ... turbines, a planning application for wind energy development involving one or ... to solar PV development, since solar panels may be\u00a0..."
+                    },
+                    {
+                        "title": "THAME NEIGHBOURHOOD PLAN (TNP2) 2020-2041",
+                        "link": "https://theconversation.southandvale.gov.uk/planning/thame-review-submission-consultation/supporting_documents/TNP2_SubmissionVersion_LR.pdf",
+                        "snippet": "Solar. Photovoltaic panels can also be utilised. Roof tiles and panels ... Outline Application \u2013 A general application for planning permission to establish."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://www.southandvale.gov.uk/app/uploads/2025/04/Haseley-Trading-Estate-Virtual-Exhibition-PDF.pdf",
+                        "snippet": "... solar panel installation that will be added on to the building. Which Council will determine the planning application? South Oxfordshire and Vale of White\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.southandvale.gov.uk/haseley-trading-estate/",
+                        "title": "Haseley Trading Estate - South Oxfordshire District Council and ...",
+                        "confidence": 90,
+                        "strengths": [
+                            "Provides information on a specific development with solar panel installation",
+                            "Mentions the plan to use solar panels for heating"
+                        ],
+                        "reasoning": "The item contains specific information about a development that plans to incorporate solar panels for direct electrical heating, making it relevant to council customer needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Haseley Trading Estate - South Oxfordshire District Council and ...",
+                                "Source": "https://www.southandvale.gov.uk/haseley-trading-estate/",
+                                "Key Strengths": [
+                                    "Provides information on a specific development with solar panel installation",
+                                    "Mentions the plan to use solar panels for heating"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The item contains specific information about a development that plans to incorporate solar panels for direct electrical heating, making it relevant to council customer needs."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "NDP28 Joint Henley and Harpsden Neighbourhood Development ...",
+                                "Source": "https://www.southandvale.gov.uk/app/uploads/2024/12/NDP28-Joint-Henley-and-Harpsden-Neighbourhood-Development-Plan-Review.pdf",
+                                "Key Strengths": [
+                                    "Offers information about renewable energy measures and the potential need for planning permission",
+                                    "Includes solar panels as a possible energy improvement measure"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The item provides insights regarding the possibility of requiring planning permission for solar panel installations in conjunction with renewable energy measures."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "South Oxfordshire and Vale of White Horse Renewable Energy Study",
+                                "Source": "https://www.southandvale.gov.uk/app/uploads/2024/09/South-Oxfordshire-and-Vale-of-White-Horse-Renewable-Energy-Study.pdf",
+                                "Key Strengths": [
+                                    "Presents a study on renewable energy in South Oxfordshire and Vale of White Horse",
+                                    "Discusses solar PV development as an option"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The item investigates renewable energy solutions, discussing solar PV development which may be relevant for council customers interested in renewable energy options."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "THAME NEIGHBOURHOOD PLAN (TNP2) 2020-2041",
+                                "Source": "https://theconversation.southandvale.gov.uk/planning/thame-review-submission-consultation/supporting_documents/TNP2_SubmissionVersion_LR.pdf",
+                                "Key Strengths": [
+                                    "Presents a neighborhood plan with renewable energy sections",
+                                    "Mentions the use of solar photovoltaic panels"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "The item provides information on a neighborhood plan including the consideration of solar panels, potentially useful for council customers interested in their area's renewable energy strategy."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Untitled",
+                                "Source": "https://www.southandvale.gov.uk/app/uploads/2025/04/Haseley-Trading-Estate-Virtual-Exhibition-PDF.pdf",
+                                "Key Strengths": [
+                                    "Mentions the solar panel installation as part of a development",
+                                    "Provides information about the council evaluating the planning application"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "While not directly discussing council customer needs, this item provides valuable context for understanding how the council handles a specific solar panel installation application."
+                            }
+                        ],
+                        "Analysis Notes": "All search results focus on planning applications or studies related to renewable energy and solar panels. However, most findings lack clear direct relevance to meeting the specific needs of council customers.",
+                        "Recommendations Notes": "Top recommendations provide information about developments incorporating solar panel installations or discuss potential application of solar panels in neighborhood plans. The remaining results are informative but indirectly relevant."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.southandvale.gov.uk/haseley-trading-estate/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.southandvale.gov.uk/haseley-trading-estate/",
+                        "analysis": {
+                            "url": "https://www.southandvale.gov.uk/haseley-trading-estate/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T04:20:48+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T04:21:22+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 42049,
+                            "response_time": 0.807,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.807s)",
+                                    "Content successfully retrieved (42049 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.8095159530639648,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.southandvale.gov.uk/haseley-trading-estate/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.southandvale.gov.uk/haseley-trading-estate/",
+                        "content": " The provided HTML content appears to contain the structure of a webpage that discusses a planning application for a vehicle depot located at a specific site. The page includes various sections discussing aspects such as noise, lighting, energy efficiency, and consultation with statutory authorities. There is also a section dedicated to answering if the page was helpful for the visitor, but it seems that the functional parts for this (e.g., JavaScript and CSS) are not included in the provided HTML content.\n\nTo fully understand how the page functions when running on a web browser, I would recommend including missing assets like the relevant stylesheets and scripts in the `head` section of the HTML or integrating them through external sources. Additionally, the \"Helpful Check\" section requires a working JavaScript function to be implemented for toggling responses based on the visitor's selection.\n\nEnsure your development environment has all required components installed to execute this HTML content correctly. Happy coding!",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 7.461010932922363,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.southandvale.gov.uk/haseley-trading-estate/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "The provided content does not address or answer this question directly as it pertains to a planning application for a vehicle depot, not residential property with the intention of solar panel installation.",
+                                    "confidence": "0%",
+                                    "reasoning": "While the content discusses energy efficiency and consultations with statutory authorities, it does not provide specific guidance related to homeowners installing solar panels. This lack of information makes me feel uncomfortable about seeking answers regarding my situation from this content.",
+                                    "next_actions": "I would look for dedicated resources or contact my local council directly for more specific information on obtaining permits and guidelines for residential solar panel installation."
+                                }
+                            ],
+                            "overall_assessment": "The provided content does not meet the needs of a council resident who is interested in installing solar panels as it pertains to a commercial planning application rather than residential applications. To help improve, the content could include a section or direct links to information on obtaining permits and guidelines for residential properties."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.529128074645996,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.southandvale.gov.uk/haseley-trading-estate/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_042048-southandvale.gov.uk",
+                    "analysis_timestamp": "2025-08-11T04:21:36+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8,
+                            "tokens_consumed": 7227,
+                            "tokens_remaining": 22773,
+                            "token_utilization_percentage": 24.09,
+                            "average_tokens_per_step": 1204.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 75.91,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 18,
+                            "consumption_rate": 1204.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.43,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_042048-southandvale.gov.uk",
+                        "start_time": "2025-08-11T04:20:48+01:00",
+                        "current_time": "2025-08-11T04:21:36+01:00",
+                        "duration_seconds": 48,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7227,
+                        "tokens_remaining": 22773,
+                        "token_utilization_percentage": 24.09,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3878,
+                                "avg_per_call": 1939
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3349,
+                                "avg_per_call": 1674.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1204.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_042048-southandvale.gov.uk",
+                    "start_time": "2025-08-11T04:20:48+01:00",
+                    "current_time": "2025-08-11T04:21:36+01:00",
+                    "duration_seconds": 48,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7227,
+                    "tokens_remaining": 22773,
+                    "token_utilization_percentage": 24.09,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3878,
+                            "avg_per_call": 1939
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3349,
+                            "avg_per_call": 1674.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1204.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

@@ -1,0 +1,658 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T06:25:02+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "southwark.gov.uk",
+                "Council Name": "Southwark Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Planning permission for renewable energy sources | Southwark ...",
+                        "link": "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-permission-guidance/planning-2",
+                        "snippet": "Apr 30, 2025 ... You can usually install renewable energy and heating systems, such as photovoltaic (PV) panels and air or ground-source heat pumps, without needing planning\u00a0..."
+                    },
+                    {
+                        "title": "Draft Householder Development SPD",
+                        "link": "https://cdn.southwark.gov.uk/docs/Householder_Development_SPD_1.pdf",
+                        "snippet": "You will need planning permission and Listed Building Consent for the installation of ASHPs ... Is permission required for solar panels? Solar photovoltaic panels\u00a0..."
+                    },
+                    {
+                        "title": "Pre-application advice service | Southwark Council",
+                        "link": "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-services/pre-application-advice-service",
+                        "snippet": "Oct 15, 2024 ... ... permission, use our ... application planning advice for renewable energy, heat and retrofit projects. This includes installing solar panels\u00a0..."
+                    },
+                    {
+                        "title": "Install a renewable energy source | Southwark Council",
+                        "link": "https://www.southwark.gov.uk/education-and-training/environmental-education/install-renewable-energy-source",
+                        "snippet": "Oct 10, 2024 ... Solar panels. Facts about solar power for schools: solar power ... Planning permission may be necessary. Page last updated: 10 October\u00a0..."
+                    },
+                    {
+                        "title": "Planning permission guidance | Southwark Council",
+                        "link": "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-permission-guidance",
+                        "snippet": "Oct 14, 2024 ... Guidance for homeowners and businesses. Making changes to listed buildings. Development in conservation areas. Installing renewable energy\u00a0..."
+                    },
+                    {
+                        "title": "Householder applications | Southwark Council",
+                        "link": "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-services/pre-application-advice-1-1",
+                        "snippet": "Telephone conversation or email exchange with a planning officer for assistance on permitted development rights and application process for solar panels\u00a0..."
+                    },
+                    {
+                        "title": "Householder development SPD",
+                        "link": "https://www.southwark.gov.uk/sites/default/files/2025-08/Householder%20SPD%202025.pdf",
+                        "snippet": "You will need planning permission and Listed Building Consent for the installation of ASHPs ... Is permission required for solar panels? Solar photovoltaic panels\u00a0..."
+                    },
+                    {
+                        "title": "Livesey Conservation Area Appraisal | Southwark Council",
+                        "link": "https://services.southwark.gov.uk/assets/attach/32338/Livesey-Conservation-Area-Appraisal.pdf",
+                        "snippet": "Nov 2, 2021 ... ... planning or listed building applications. ... energy installations (solar or photovoltaic panels, micro generators) require planning permission."
+                    },
+                    {
+                        "title": "Trafalgar Avenue Conservation Area Appraisal",
+                        "link": "https://services.southwark.gov.uk/assets/attach/10964/Trafalgar-Avenue-CA-final-draft.pdf",
+                        "snippet": "May 5, 2019 ... Renewable Energy. Most renewable energy installations (solar or. 5.5.28 photovoltaic panels, micro generators) require planning permission."
+                    },
+                    {
+                        "title": "Thomas A'Becket & High Street",
+                        "link": "https://services.southwark.gov.uk/assets/attach/70571/Thomas-A-Becket-and-High-Street-CAA-20211102.pdf",
+                        "snippet": "Nov 2, 2021 ... ... planning or listed building applications. ... energy installations (solar or photovoltaic panels, micro generators) require planning permission."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-permission-guidance/planning-2",
+                        "title": "Planning permission for renewable energy sources | Southwark ...",
+                        "confidence": 85,
+                        "strengths": [
+                            "Comprehensive guidance on planning permission for renewable energy sources",
+                            "Information on PV panels and air or ground-source heat pumps"
+                        ],
+                        "reasoning": "This link provides clear information about planning permission requirements for various renewable energy systems, which is directly relevant to the customer's needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Planning permission for renewable energy sources | Southwark ...",
+                                "Source": "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-permission-guidance/planning-2",
+                                "Key Strengths": [
+                                    "Comprehensive guidance on planning permission for renewable energy sources",
+                                    "Information on PV panels and air or ground-source heat pumps"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides clear information about planning permission requirements for various renewable energy systems, which is directly relevant to the customer's needs."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Pre-application advice service | Southwark Council",
+                                "Source": "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-services/pre-application-advice-service",
+                                "Key Strengths": [
+                                    "Pre-application advice for renewable energy, heat and retrofit projects",
+                                    "Assistance on the application process for solar panels"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This service offers personalized pre-application advice that can help individuals or businesses navigate the specific requirements and procedures when planning to install solar panels."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Planning permission guidance | Southwark Council",
+                                "Source": "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-permission-guidance",
+                                "Key Strengths": [
+                                    "Guidance for homeowners and businesses on making changes to listed buildings and developments in conservation areas",
+                                    "Information on installing renewable energy"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This comprehensive planning permission guidance includes information about renewable energy installation. However, it might require navigating the document thoroughly to find specific details regarding solar panels."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Householder applications | Southwark Council",
+                                "Source": "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-services/pre-application-advice-1-1",
+                                "Key Strengths": [
+                                    "Telephone conversation or email exchange with a planning officer for assistance on permitted development rights and application process for solar panels"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though the link doesn't explicitly mention solar panels, it offers pre-application advice through phone calls or emails which could help understand the requirements for solar panel installations better."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Livesey Conservation Area Appraisal | Southwark Council",
+                                "Source": "https://services.southwark.gov.uk/assets/attach/32338/Livesey-Conservation-Area-Appraisal.pdf",
+                                "Key Strengths": [
+                                    "Information on renewable energy installations (solar or photovoltaic panels, micro generators) requiring planning permission"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "Though this document is a conservation area appraisal, the information regarding renewable energy systems requiring planning permission can still provide context and understanding for customers."
+                            }
+                        ],
+                        "Analysis Notes": "All links seem to be related to Southwark Council's planning, construction, or environmental services. Some documents are specific to certain areas within the council district.",
+                        "Recommendations Notes": "The above recommendations were chosen based on relevance and clarity regarding information about renewable energy installations for customers residing in Southwark."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 75,
+                    "max_confidence": "85"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-permission-guidance/planning-2"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-permission-guidance/planning-2",
+                        "analysis": {
+                            "url": "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-permission-guidance/planning-2",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T06:25:02+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T06:25:31+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 43805,
+                            "response_time": 1.328,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (1.328s)",
+                                    "Content successfully retrieved (43805 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 1.3288440704345703,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-permission-guidance/planning-2"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-permission-guidance/planning-2",
+                        "content": " The cleaned, semantically structured HTML containing the central editorial content of the page:\n\n<article about=\"/planning-environment-and-building-control/planning/planning-permission-guidance/planning-2\">\n<div class=\"lgd-container padding-horizontal\">\n    <a href=\"/planning-environment-and-building-control/planning/planning-permission-guidance\" class=\"link-back\">Back</a>\n    <div class=\"lgd-container-guides-overview\">\n        <div class=\"block block-localgov-core block-localgov-page-header-block\">\n            <div class=\"lgd-page-title-block\">\n                <h1 class=\"lgd-page-title-block__title\">\n                    Planning permission guidance\n                </h1>\n                <p class=\"lgd-page-title-block__subheader\">Guidance for homeowners and businesses. Making changes to listed buildings. Development in conservation areas. Installing renewable energy sources.</p>\n            </div>\n        </div>\n        <div class=\"block-localgov-guides-contents--navigation-horizontal block block-localgov-guides block-localgov-guides-contents\">\n            <div class=\"lgd-container padding-horizontal\">\n                <h2 class=\"guide_title\">Contents</h2>\n                <ul>\n                    <li><a href=\"#planning-permission-for-renewable-energy-sources\">Planning permission for renewable energy sources</a></li>\n                </ul>\n            </div>\n        </div>\n    </div>\n</div>\n<div class=\"lgd-container padding-horizontal\">\n    <h2 id=\"planning-permission-for-renewable-energy-sources\">Planning permission for renewable energy sources</h2>\n    <div class=\"field field--name-localgov-body-text field--type-text-long field--label-hidden field__item\">\n        <p>Through the<a href=\"https://www.gov.uk/apply-boiler-upgrade-scheme\">&nbsp;Boiler upgrade scheme</a>, you could get a grant to cover part of the cost of replacing fossil fuel heating systems with a heat pump or biomass boiler.</p>\n        <div class=\"field field--name-localgov-body-text field--type-text-long field--label-hidden field__item\">\n            <p>If you want to install solar panels on your home, they should be fitted as close to the roof as possible, and must not be higher than the pitch of the roof. You can apply for a lawful development certificate to make sure your panels are permitted development.</p>\n            <p>If you want to install solar panels and live in a conservation area or a listed building, you will need to apply for planning permission.</p>\n            <p>When installing solar panels on your property, consider:</p>\n            <ul>\n                <li>installing panels on south, east or west-facing roofs (don't fit them on a north-facing roof as it gets too little sunlight)</li>\n                <li>if anything is blocking the light, for example, a large tree or a nearby building (this could limit the amount of energy generated by the panels)</li>\n                <li>installing only if your roof pitch angle is between 30 and 40 degrees (if you want to install panels to a flat roof, you may need planning permission)</li>\n            </ul>\n        </div>\n        <div class=\"field field--name-localgov-body-text field--type-text-long field--label-hidden field__item\">\n            <p>You do not usually need planning permission to install a heat pump at your home. Air source heat pump installation must comply with the Microgeneration Certification Scheme Planning Standards and the pump must be at least one metre from your property boundary. <a href=\"//www.planningportal.co.uk/permission/common-projects/heat-pumps/planning-permission-air-source-heat-pump\">Check the other conditions you need to meet</a>.&nbsp;</p>\n            <p>If your property is in a conservation area, then the pump must not be visible from the public highway.</p>\n        </div>\n    </div>\n    <div class=\"field field--name-localgov-body-text field--type-text-long field--label-hidden field__item\">\n        <h3 id=\"community-energy-london\">Community Energy London</h3>\n        <p><a href=\"https://www.communityenergy.london/\">Community Energy London</a> helps individuals, voluntary groups and businesses to share knowledge and enthusiasm for reducing energy waste.</p>\n    </div>\n    <div class=\"field field--name-localgov-body-text field--type-text-long field--label-hidden field__item\">\n        <h3 id=\"boiler-upgrade-scheme\">Boiler upgrade scheme</h3>\n        <p>Through the<a href=\"https://www.gov.uk/apply-boiler-upgrade-scheme\">&nbsp;Boiler upgrade scheme </a>, you could get a grant to cover part of the cost of replacing fossil fuel heating systems with a heat pump or biomass boiler.</p>\n    </div>\n    <div class=\"field field--name-localgov-body-text field--type-text-long field--label-hidden field__item\">\n        <h3 id=\"adding-solar-panels-to-your-property\">Adding solar panels to your property</h3>\n        <p>You do not usually need planning permission to install solar panels on your home. The panels should be fitted as close to the roof as possible, and must not be higher than the pitch of the roof. You can apply for a lawful development certificate to make sure your panels are permitted development.</p>\n        <p>If you want to install solar panels and live in a conservation area or a listed building, you will need to apply for planning permission.</p>\n    </div>\n    <div class=\"field field--name-localgov-body-text field--type-text-long field--label-hidden field__item\">\n        <h3 id=\"adding-a-heat-pump-to-your-property\">Adding a heat pump to your property</h3>\n        <p>You do not usually need planning permission to install a heat pump at your home. Air source heat pump installation must comply with the Microgeneration Certification Scheme Planning Standards and the pump must be at least one metre from your property boundary. <a href=\"//www.planningportal.co.uk/permission/common-projects/heat-pumps/planning-permission-air-source-heat-pump\">Check the other conditions you need to meet</a>.&nbsp;</p>\n    </div>\n</div>",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 34.50864601135254,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-permission-guidance/planning-2",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "The content partially addresses this question as it explains that homeowners usually do not need planning permission for solar panel installation but advises applying for a lawful development certificate and specifies requirements such as installation close to the roof and within an allowable pitch angle. However, exceptions are outlined for conservation areas or listed buildings where planning permission is required.",
+                                    "confidence": "85%",
+                                    "reasoning": "The content acknowledges the general rule of not requiring planning permission for solar panel installation but specifies conditions for homeowners which can guide residents on whether they might need it. However, more specific details about the application process and potential complications could be provided.",
+                                    "next_actions": "Research the application process for a lawful development certificate and contact the Council Planning department for additional advice if living in a conservation area or listed building."
+                                }
+                            ],
+                            "overall_assessment": "The content provides useful information on planning permission requirements for renewable energy sources, specifically solar panels. However, it could benefit from more detailed explanations about the application process or potential complications that might arise in certain situations. The Council Resident should feel informed enough to proceed with seeking further guidance."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 7.471101999282837,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.southwark.gov.uk/planning-environment-and-building-control/planning/planning-permission-guidance/planning-2"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_062502-southwark.gov.uk",
+                    "analysis_timestamp": "2025-08-11T06:26:14+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.2,
+                            "tokens_consumed": 9183,
+                            "tokens_remaining": 20817,
+                            "token_utilization_percentage": 30.61,
+                            "average_tokens_per_step": 1530.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 69.39,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 13,
+                            "consumption_rate": 1530.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "85",
+                            "quality_scores": [
+                                "85"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "85",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 17.14,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.2,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_062502-southwark.gov.uk",
+                        "start_time": "2025-08-11T06:25:02+01:00",
+                        "current_time": "2025-08-11T06:26:14+01:00",
+                        "duration_seconds": 72,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 9183,
+                        "tokens_remaining": 20817,
+                        "token_utilization_percentage": 30.61,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 4530,
+                                "avg_per_call": 2265
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 4653,
+                                "avg_per_call": 2326.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1530.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_062502-southwark.gov.uk",
+                    "start_time": "2025-08-11T06:25:02+01:00",
+                    "current_time": "2025-08-11T06:26:14+01:00",
+                    "duration_seconds": 72,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 9183,
+                    "tokens_remaining": 20817,
+                    "token_utilization_percentage": 30.61,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 4530,
+                            "avg_per_call": 2265
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 4653,
+                            "avg_per_call": 2326.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1530.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

@@ -1,0 +1,670 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T11:11:40+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "york.gov.uk",
+                "Council Name": "York City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed waste collections \u2013 City of York Council",
+                        "link": "https://www.york.gov.uk/household-waste/missed-waste-collections",
+                        "snippet": "If you report a missed bin, we'll collect extra bags of household waste during your next scheduled collection. You can put out additional bags equivalent to\u00a0..."
+                    },
+                    {
+                        "title": "Household waste collections \u2013 City of York Council",
+                        "link": "https://www.york.gov.uk/household-waste/household-waste-collections",
+                        "snippet": "Check our waste collection updates before reporting a missed bin. Any missed collections should be reported: after 4.00pm on your collection day; within 1\u00a0..."
+                    },
+                    {
+                        "title": "Waste collection updates \u2013 City of York Council",
+                        "link": "https://www.york.gov.uk/waste-recycling/waste-collection-updates",
+                        "snippet": "... collection has been missed at your property, and your area is not mentioned in today's update, report a missed collection. Alternatively, find out what we\u00a0..."
+                    },
+                    {
+                        "title": "Bags to Bins Scheme \u2013 City of York Council",
+                        "link": "https://www.york.gov.uk/household-waste/bags-bins-scheme",
+                        "snippet": "Do not report missed collections before 4.00pm on the scheduled collection day. If you report a missed bin, we'll collect extra bags of household waste\u00a0..."
+                    },
+                    {
+                        "title": "Replacement waste containers \u2013 City of York Council",
+                        "link": "https://www.york.gov.uk/ReplacementBins",
+                        "snippet": "replacement wheelie bins for garden waste, if you've registered for the Garden Waste Subscription Scheme. Also see. Recycling collections \u00b7 Missed waste\u00a0..."
+                    },
+                    {
+                        "title": "Garden Waste Subscription Scheme \u2013 City of York Council",
+                        "link": "https://www.york.gov.uk/homepage/166/garden-waste-subscription-scheme",
+                        "snippet": "... waste bin); the bin lid is fully closed. In these circumstances, please report a missed waste collection. Garden bins we cannot collect. You cannot report a\u00a0..."
+                    },
+                    {
+                        "title": "Replacement waste containers \u2013 City of York Council",
+                        "link": "https://www.york.gov.uk/household-waste/replacement-waste-containers/2",
+                        "snippet": "Replacement waste container deliveries \u00b7 have signs of normal 'wear and tear' \u00b7 have been lost or stolen \u00b7 were missing when you moved in \u00b7 were not bought from us\u00a0..."
+                    },
+                    {
+                        "title": "Reporting litter \u2013 City of York Council",
+                        "link": "https://www.york.gov.uk/street-care-cleaning/reporting-litter",
+                        "snippet": "Litter bin problems. You can report issues with litter bins or dog waste bins. damaged or missing bins will be repaired or replaced as soon as possible; full\u00a0..."
+                    },
+                    {
+                        "title": "Waste and recycling \u2013 City of York Council",
+                        "link": "https://www.york.gov.uk/waste-recycling",
+                        "snippet": "... bins and recycling boxes \u00b7 Missed waste collections \u00b7 Preventing problems with your bins ... bin \u00b7 Report a problem with a dog waste bin \u00b7 Waste collection\u00a0..."
+                    },
+                    {
+                        "title": "Report problems online \u2013 City of York Council",
+                        "link": "https://www.york.gov.uk/homepage/22/report-problems-online",
+                        "snippet": "Report road and pavement problems \u00b7 Report a pothole \u00b7 Report problems with kerbs and verges \u00b7 Report a cycle path problem \u00b7 Report salt bin problems\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.york.gov.uk/household-waste/missed-waste-collections",
+                        "title": "Missed waste collections \u2013 City of York Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Reports a missed bin",
+                            "Describes what to do if a bin is missed"
+                        ],
+                        "reasoning": "This link directly addresses the user's need for council customer information regarding missed waste collections, providing clear instructions on how to report missed bins and what they should do.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed waste collections \u2013 City of York Council",
+                                "Source": "https://www.york.gov.uk/household-waste/missed-waste-collections",
+                                "Key Strengths": [
+                                    "Reports a missed bin",
+                                    "Describes what to do if a bin is missed"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link directly addresses the user's need for council customer information regarding missed waste collections, providing clear instructions on how to report missed bins and what they should do."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Household waste collections \u2013 City of York Council",
+                                "Source": "https://www.york.gov.uk/household-waste/household-waste-collections",
+                                "Key Strengths": [
+                                    "Checks for waste collection updates before reporting a missed bin",
+                                    "Provides the time to report missed collections"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides useful information for users who want to check if their waste collection has been updated before reporting a missed bin, ensuring they follow the correct procedure."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Waste collection updates \u2013 City of York Council",
+                                "Source": "https://www.york.gov.uk/waste-recycling/waste-collection-updates",
+                                "Key Strengths": [
+                                    "Allows users to check if their waste collection has been missed and reported in today's update",
+                                    "Provides guidance on what to do if a collection is missed"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link helps users determine if their missed collection has already been addressed and offers guidance on alternative actions."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Bags to Bins Scheme \u2013 City of York Council",
+                                "Source": "https://www.york.gov.uk/household-waste/bags-bins-scheme",
+                                "Key Strengths": [
+                                    "Avoids reporting missed collections before 4 pm on scheduled collection day",
+                                    "Offers an alternative to reporting a missed bin"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Although this link primarily discusses the Bags to Bins Scheme, it includes valuable information that can help users avoid unnecessary collections reports."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Waste and recycling \u2013 City of York Council",
+                                "Source": "https://www.york.gov.uk/waste-recycling",
+                                "Key Strengths": [
+                                    "Provides an overview of waste and recycling services",
+                                    "Links to various other relevant sections like missed waste collections, litter reporting, and dog waste bin problems"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Although this link may not directly address the specific need for council customer information about missed waste collections, it provides a comprehensive resource for users seeking general waste and recycling information."
+                            }
+                        ],
+                        "Analysis Notes": "The search results primarily focused on waste collection services. The top recommendations provide direct information or resources to address the user's query of finding council customer information related to missed waste collections.",
+                        "Recommendations Notes": "Although other links were informative, they did not explicitly address the specific need for council customer information about missed waste collections directly."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Missed waste collections \u2013 City of York Council",
+                            "Source": "https://www.york.gov.uk/household-waste/missed-waste-collections",
+                            "Reasoning": "This link directly addresses the user's need for council customer information regarding missed waste collections, providing clear instructions on how to report missed bins and what they should do.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Household waste collections \u2013 City of York Council",
+                            "Source": "https://www.york.gov.uk/household-waste/household-waste-collections",
+                            "Reasoning": "This link provides useful information for users who want to check if their waste collection has been updated before reporting a missed bin, ensuring they follow the correct procedure.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Waste collection updates \u2013 City of York Council",
+                            "Source": "https://www.york.gov.uk/waste-recycling/waste-collection-updates",
+                            "Reasoning": "This link helps users determine if their missed collection has already been addressed and offers guidance on alternative actions.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.york.gov.uk/household-waste/missed-waste-collections"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.york.gov.uk/household-waste/missed-waste-collections",
+                        "analysis": {
+                            "url": "https://www.york.gov.uk/household-waste/missed-waste-collections",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T11:11:40+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T11:12:05+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 75905,
+                            "response_time": 0.771,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.771s)",
+                                    "Content successfully retrieved (75905 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.7719810009002686,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.york.gov.uk/household-waste/missed-waste-collections"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.york.gov.uk/household-waste/missed-waste-collections",
+                        "content": "```html\n<div class=\"editor\">\n    <p>Find out how we deal with:</p>\n\n    <ul>\n        <li><a href=\"#missedhouseholdwaste\">missed household waste collections</a></li>\n        <li><a href=\"#missedrecycling\">missed recycling collections</a></li>\n        <li><a href=\"#missedgardenwaste\">missed garden waste collections</a></li>\n        <li><a href=\"#missedassist\">missed assisted waste collections</a></li>\n        <li><a href=\"#missedbulky\">missed bulky waste collections</a></li>\n        <li><a href=\"#missedclinical\">missed clinical waste collections</a></li>\n        <li><a href=\"#missedstreets\">missed collections for entire streets or communal bins</a></li>\n        <li><a href=\"#excess\">excess waste due to missed collections</a></li>\n    </ul>\n\n    <p>See details of any <strong>known service issues</strong> or <strong>known missed streets</strong>:</p>\n\n    <p><a class=\"button button--primary\" href=\"/WasteCollectionUpdates\">waste collection updates</a></p>\n\n    <hr>\n    <h2 id=\"missedhouseholdwaste\">Missed household waste collections</h2>\n\n    <p>If we haven't collected your household waste, check the following:</p>\n\n    <ul>\n        <li>our <a href=\"/WasteCollectionUpdates\">waste collection updates</a> page to see details of any known service issues</li>\n        <li>you placed your bin/bags in the correct place <strong>by 7.00am</strong> on your collection day</li>\n        <li>your bin wasn't too heavy</li>\n        <li>you put your bin/bags out on the correct day/week</li>\n        <li>whether our waste collection team left a sticker explaining there was a problem</li>\n        <li>whether your bin contained items not suitable for disposal in your household waste, which should instead be disposed of at a Household Waste Recycling Centre, for example;\n        <ul>\n            <li>asbestos</li>\n            <li>batteries</li>\n            <li>bricks</li>\n            <li>chemicals</li>\n            <li>DIY waste</li>\n            <li>electrical items</li>\n            <li>gas cylinders</li>\n            <li>plasterboard</li>\n            <li>rubble</li>\n            <li>soil</li>\n            <li>turf</li>\n        </ul>\n        </li>\n    </ul>\n\n    <p>Contact the <a href=\"#contact\">Waste Services Team</a> to report your missed bin:</p>\n\n    <ul>\n        <li>only if none of the above points apply</li>\n        <li>after 4.00pm on your collection day</li>\n        <li>within 1 working day of your normal collection</li>\n    </ul>\n\n    <p>If you report a missed bin, we'll collect extra bags of household waste during your next scheduled collection. You can put out additional bags equivalent to your usual bin size or black sack collection for example, a 180 litre bin will usually hold 3 black bin bags (60 litre bags).</p>\n\n    <p>See details of how to report <a href=\"#missedassist\">missed assisted waste collections</a>, if you're registered for an assisted collection for your household waste.</p>\n\n    <p class=\"text_align_right\" style=\"text-align: right;\"><a href=\"#content\">Top of page</a></p>\n\n    <hr>\n    <h2 id=\"missedrecycling\">Missed recycling collections</h2>\n\n    <p>We will only return for a missed recycling collection if you've subscribed for our <a href=\"/AssistedWasteCollection\">assisted collection</a> service, or when collections have been missed for an entire street or communal bin.</p>\n\n    <p>See details of how to report <a href=\"#missedassist\">missed assisted waste collections</a>, if you're registered for an assisted collection for your recycling.</p>\n\n    <p>See how we deal with <a href=\"#missedstreets\">missed collections for entire streets or communal bins</a>.</p>\n\n    <p>If we've missed a recycling collection at your property only, and you are not registered for assisted collections, you should check:</p>\n\n    <ul>\n        <li>our <a href=\"/WasteCollectionUpdates\">waste collection updates</a> page to see details of any known service issues</li>\n        <li>your boxes contain only the correct items</li>\n        <li>your boxes were put out at your collection point <strong>before 7.00am</strong></li>\n        <li>whether we have left a sticker explaining there was a problem</li>\n    </ul>\n\n    <p>You do not need to call us to report missed recycling at your property unless you have an assisted collection.</p>\n\n    <p>You can put out any extra recycling resulting from a missed collection at your <strong>next</strong> scheduled collection.</p>\n\n    <p>Please ensure that your recycling is sorted and presented correctly, and that any excess recycling is presented in line with our guidelines regarding <a href=\"/ExcessAndAdditionalRecycling\">excess and additional recycling</a>.</p>\n\n    <p class=\"text_align_right\" style=\"text-align: right;\"><a href=\"#content\">Top of page</a></p>\n\n    <hr>\n    <h2 id=\"missedgardenwaste\">Missed garden waste collections</h2>\n\n    <p>We can't return for a missed garden waste collection unless it's:</p>\n\n    <ul>\n        <li>an <a href=\"/AssistedWasteCollection\">assisted collection</a></li>\n        <li>paid for through our <a href=\"/GardenWasteSubscriptionScheme\">garden waste subscription scheme</a></li>\n    </ul>\n\n    <p>If you've subscribed to our scheme but your bin has not been emptied during your scheduled garden waste collection, first check our <a href=\"/WasteCollectionUpdates\">waste collection updates</a>, to see details of any known service issues.</p>\n\n    <p>Next check:</p>\n\n    <ul>\n        <li>you put your green bin out, at the correct location, by 7.00am on your scheduled collection day</li>\n        <li>your bin does not contain inappropriate or heavy materials (see: <a href=\"https://www.york.gov.uk/GardenWasteSubscriptionScheme#items\">what you can put in your garden waste bin</a>)</li>\n        <li>your waste is inside the bin, and the lid fully closed</li>\n    </ul>\n\n    <p>In these circumstances, contact the <a href=\"#contact\">Waste Services Team</a> by telephone, to report your missed paid for garden bins:</p>\n\n    <ul>\n        <li>after 4.00pm on your collection day</li>\n        <li>within 1 working day of your collection day</li>\n    </ul>\n\n    <p>Once we've logged your missed collection, we'll return at the earliest opportunity, this could be as early as the next day, including Saturday.</p>\n\n    <p>You cannot report a missed bin if your garden waste wasn't collected because:</p>\n\n    <ul>\n        <li>your bin wasn't at the correct location by 7.00am on your scheduled collection day</li>\n        <li>your bin contained inappropriate materials (known as contamination)</li>\n        <li>the bin was too heavy for our Waste Team to move safely</li>\n        <li>the bin lid was not fully closed</li>\n        <li>there was additional garden waste which didn't fit into your bin</li>\n    </ul>\n\n    <p>In these circumstances, we will not return ahead of schedule. You'll need to put out your garden waste correctly for the next collection, or take your garden waste to <a href=\"https://www.york.gov.uk/HazelCourtHWRC\">Hazel Court HWRC</a> or <a href=\"https://www.york.gov.uk/TowthorpeStrensallHWRC\">Towthorpe and Strensall HWRC</a>.</p>\n\n    <p style=\"text-align: right;\"><a href=\"#content\">Top of page</a></p>\n\n    <hr>\n    <h2 id=\"missedassist\">Missed assisted waste collections</h2>\n\n    <p>If we haven't carried out your <a href=\"/AssistedWasteCollection\">assisted collection</a> (household, recycling or garden waste), check the following:</p>\n\n    <ul>\n        <li>our <a href=\"/WasteCollectionUpdates\">waste collection updates</a> page to see details of any known service issues</li>\n        <li>your bins, boxes or bags were <strong>in the agreed location by 7.00am</strong> on your collection day</li>\n        <li>your bins, boxes or bags weren't too heavy</li>\n        <li>when your bins, boxes or bags are due to be collected</li>\n        <li>your bins, boxes or bags didn't contain 'unsuitable items', for example: bricks, rubble, plasterboard</li>\n        <li>your boxes were not contaminated, for example: plastic mixed with paper or cardboard</li>\n        <li>you've paid for a garden waste subscription and your sticker is attached to your garden waste bin</li>\n        <li>whether our waste collection team left a sticker explaining there was a problem</li>\n    </ul>\n\n    <p>Contact the <a href=\"#contact\">Waste, Highways and Environmental Services Team</a> to report your missed assisted collection:</p>\n\n    <ul>\n        <li>if none of the above points apply</li>\n        <li><strong>after 4.00pm on your collection day</strong></li>\n        <li>within <strong>5 working days</strong> of your normal collection time</li>\n    </ul>\n\n    <p>Once we've logged your missed assisted collection, we'll return at the earliest opportunity. This could be as early as the next day (<strong>please note:</strong> this could be a Saturday).</p>\n\n    <p class=\"text_align_right\" style=\"text-align: right;\"><a href=\"#content\">Top of page</a></p>\n\n    <hr>\n    <h2 id=\"missedbulky\">Missed bulky waste collections</h2>\n\n    <p>You're able to arrange bulky collections from your address for:</p>\n\n    <ul>\n        <li><a href=\"/BulkyWaste\">bulky waste</a></li>\n        <li><a href=\"/FridgeFreezerRemoval\">fridges and freezers</a></li>\n        <li><a href=\"/AsbestosCollection\">asbestos</a></li>\n    </ul>\n\n    <p>We collect bulky items on certain days according to the area where you live.</p>\n\n    <p>Contact the <a href=\"#contact\">Waste, Highways and Environmental Services Team</a> <strong>the next working day</strong> following the agreed collection date to report a missed bulky collection.</p>\n\n    <p>You can't report a missed bulky collection on the day that the collection has been agreed, as the collection crews may still attend after our contact centre has closed.</p>\n\n    <p>Once we've logged your missed bulky collection, we'll return on <strong>the next scheduled collection day for your area</strong>. This will usually be the following week.</p>\n\n    <p class=\"text_align_right\" style=\"text-align: right;\"><a href=\"#content\">Top of page</a></p>\n\n    <hr>\n    <h2 id=\"missedclinical\">Missed clinical waste collections</h2>\n\n    <p>You are able to arrange <a href=\"/ClinicalWasteCollection\">clinical waste collections</a> from your address for bagged medical waste or for sharps boxes.</p>\n\n    <p>Contact the <a href=\"#contact\">Waste, Highways and Environmental Services Team</a> <strong>the next working day</strong> following the agreed collection date to report a missed clinical waste collection.</p>\n\n    <p>You can't report a missed clinical waste collection on the day that the collection has been agreed, as the collection crews may still attend after our contact centre has closed.</p>\n\n    <p>Once we've logged your missed clinical waste collection, we'll return on <strong>the next available collection day for your area</strong>.</p>\n\n    <p class=\"text_align_right\" style=\"text-align: right;\"><a href=\"#content\">Top of page</a></p>\n\n    <hr>\n    <h2 id=\"missedstreets\">Missed streets and communal bins</h2>\n\n    <p>If we've missed waste collections for a <strong>whole street</strong>, or for <strong>communal bins</strong> at a block of flats, this will usually be due to known:</p>\n\n    <ul>\n        <li><strong>service issues</strong> or</li>\n        <li><strong>access issues</strong></li>\n    </ul>\n\n    <p><strong>Check our <a href=\"/WasteCollectionUpdates\">waste collection updates</a> page to see details of any known service issues.</strong></p>\n\n    <p>We'll always try to revisit at the next opportunity (usually the following day) when an entire street or a communal bin has been missed. Make sure your waste is put out by <strong>7.00am</strong>, after the initial missed collection.</p>\n\n    <p>Contact the <a href=\"#contact\">Waste, Highways and Environmental Services Team</a> to report a missed street:</p>\n\n    <ul>\n        <li>if all properties in the street have been missed</li>\n        <li>if your street is not listed on the waste collection updates page</li>\n        <li><strong>after 4.00pm on your collection day</strong></li>\n        <li><strong>within 1 working day</strong> of your normal collection time</li>\n    </ul>\n\n    <p>You may need to wait until your next scheduled collection date if we're unable to return to collect your waste due to access issues, such as:</p>\n\n    <ul>\n        <li>road works</li>\n        <li>badly parked vehicles</li>\n    </ul>\n\n    <p>In this case, make sure your waste is not left at the kerbside - take it back in until your next collection date.</p>\n\n    <p class=\"text_align_right\" style=\"text-align: right;\"><a href=\"#content\">Top of page</a></p>\n\n    <hr>\n    <h2 id=\"excess\">Excess waste due to missed collections</h2>\n\n    <p>Dispose of any excess waste, or waste resulting from a missed collection, at either of our household waste recycling centres (HWRCs) or recycle bank locations:</p>\n\n    <ul>\n        <li><a href=\"/HazelCourtHWRC\">Hazel Court HWRC</a></li>\n        <li><a href=\"/TowthorpeStrensallHWRC\">Towthorpe/Strensall HWRC</a></li>\n        <li><a href=\"https://www.recycle-more.co.uk/\">recycle banks</a></li>\n    </ul>\n\n    <p>Contact the <a href=\"#contact\">Waste, Highways and Environmental Services Team</a> to report an excessive build up of waste due to a missed collection or access issues for a communal bin.</p>\n\n    <p class=\"text_align_right\" style=\"text-align: right;\"><a href=\"#content\">Top of page</a></p>\n\n    <hr>\n    <h2>Also see</h2>\n\n    <ul>\n        <li><a href=\"/HouseholdWaste\">Household waste collections</a></li>\n        <li><a href=\"/RecyclingCollections\">Recycling collections</a></li>\n        <li><a href=\"/GardenWasteSubscriptionScheme\">Garden waste subscription scheme</a></li>\n    </ul>\n\n    <p><span class=\"snippet\"><span id=\"contact\" title=\"Waste, Highways and Environmental Services Team contact details\"></span><!-- rel:snippet --></span></p>\n</div>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 32.28315591812134,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.york.gov.uk/household-waste/missed-waste-collections",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 9.762333154678345,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.york.gov.uk/household-waste/missed-waste-collections"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_111140-york.gov.uk",
+                    "analysis_timestamp": "2025-08-08T11:12:48+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.1333333333333333,
+                            "tokens_consumed": 15141,
+                            "tokens_remaining": 14859,
+                            "token_utilization_percentage": 50.47,
+                            "average_tokens_per_step": 2523.5
+                        },
+                        "token_analysis": {
+                            "status": "moderate",
+                            "remaining_percentage": 49.53,
+                            "urgency_score": 30,
+                            "estimated_remaining_steps": 5,
+                            "consumption_rate": 2523.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 16.19,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.1333333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_111140-york.gov.uk",
+                        "start_time": "2025-08-08T11:11:40+01:00",
+                        "current_time": "2025-08-08T11:12:48+01:00",
+                        "duration_seconds": 68,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 15141,
+                        "tokens_remaining": 14859,
+                        "token_utilization_percentage": 50.47,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 8766,
+                                "avg_per_call": 4383
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 6375,
+                                "avg_per_call": 3187.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 2523.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_111140-york.gov.uk",
+                    "start_time": "2025-08-08T11:11:40+01:00",
+                    "current_time": "2025-08-08T11:12:48+01:00",
+                    "duration_seconds": 68,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 15141,
+                    "tokens_remaining": 14859,
+                    "token_utilization_percentage": 50.47,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 8766,
+                            "avg_per_call": 4383
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 6375,
+                            "avg_per_call": 3187.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 2523.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

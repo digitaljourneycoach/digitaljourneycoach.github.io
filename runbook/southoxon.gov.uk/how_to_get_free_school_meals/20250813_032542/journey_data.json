@@ -1,0 +1,668 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T03:25:42+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "southoxon.gov.uk",
+                "Council Name": "South Oxfordshire District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "New vouchers will help people with winter essentials - South ...",
+                        "link": "https://www.southoxon.gov.uk/covid-19/new-vouchers-will-help-people-with-winter-essentials/",
+                        "snippet": "People in both South Oxfordshire and the Vale can get in touch with Citizens Advice for more information or to apply. ... eligible for free school meals from the\u00a0..."
+                    },
+                    {
+                        "title": "Active Communities - activities for everyone - South Oxfordshire ...",
+                        "link": "https://www.southoxon.gov.uk/south-oxfordshire-district-council/sports-and-activities/active-communities/",
+                        "snippet": "If your child or children are in receipt of benefits-related free school meals ... Move Together provides personalised support for people that have long term\u00a0..."
+                    },
+                    {
+                        "title": "YouMove - South Oxfordshire District Council",
+                        "link": "https://www.southoxon.gov.uk/south-oxfordshire-district-council/sports-and-activities/active-communities/youmove/",
+                        "snippet": "... eligible families with children 0-18 years old across Oxfordshire. If your family receives benefits related free school meals, Universal Credit, Personal\u00a0..."
+                    },
+                    {
+                        "title": "Free fun for all the family this half term - South Oxfordshire District ...",
+                        "link": "https://www.southoxon.gov.uk/cost-of-living/free-fun-for-all-the-family-this-half-term/",
+                        "snippet": "Wednesday 26 October: Berinsfield Recreation Ground, OX10 7NX. YouMove. YouMove is a scheme for families with children on benefits related free school meals,\u00a0..."
+                    },
+                    {
+                        "title": "More help for people to pay food and energy bills - South ...",
+                        "link": "https://www.southoxon.gov.uk/south-oxfordshire-district-council/more-help-for-people-to-pay-food-and-energy-bills/",
+                        "snippet": "... eligible for free school meals through the holidays. Funding is limited and the scheme is open initially to people who have not had support from it before."
+                    },
+                    {
+                        "title": "ECO4 Flexible Eligibility Statement of Intent",
+                        "link": "https://www.southoxon.gov.uk/wp-content/uploads/sites/2/2023/06/V4_South-Oxfordshire-District-Council-ECO-4-Statement-of-Intent-MS-signed.pdf",
+                        "snippet": "Jun 2, 2023 ... Only one from the list can be used, excludes the proxy 'low income'. Proxy 4) A householder receiving free school meals due to low-income. Proxy\u00a0..."
+                    },
+                    {
+                        "title": "Active Communities strategy",
+                        "link": "https://www.southoxon.gov.uk/wp-content/uploads/sites/2/2022/10/Active-Communities-Strategy-Final.pdf",
+                        "snippet": "a targeted programme of discounted and free activities for children eligible for free school meals. Page 3. Theme 2 - Create healthier communities through\u00a0..."
+                    },
+                    {
+                        "title": "GFO Oxfordshire Food Strategy",
+                        "link": "https://democratic.southoxon.gov.uk/documents/s28081/Appendix%201%20-%20Oxfordshire%20Food%20Strategy%202022.pdf",
+                        "snippet": "Play:Full is a response to tackle holiday hunger experienced by many children who rely on Free School. Meals during term-time. The evidence suggests that\u00a0..."
+                    },
+                    {
+                        "title": "Your council tax explained",
+                        "link": "https://www.southoxon.gov.uk/occ-council-tax-2021-22/",
+                        "snippet": "for each child eligible for free school meals over the Christmas,. February and. Easter holidays. Made over 10,000 phone calls providing support and advice to\u00a0..."
+                    },
+                    {
+                        "title": "Household Support Voucher Scheme Policy",
+                        "link": "http://democratic.southoxon.gov.uk/documents/s32492/Appendix%202-%20Household%20Support%20Voucher%20Policy_to%20be%20updated.pdf",
+                        "snippet": "HUGGG food vouchers to students eligible for free school meals and therefore the holiday food provision offered by Oxfordshire County Council who attend\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.southoxon.gov.uk/covid-19/new-vouchers-will-help-people-with-winter-essentials/",
+                        "title": "New vouchers will help people with winter essentials - South ...",
+                        "confidence": 85,
+                        "strengths": [
+                            "Directly targets help for people with winter essentials.",
+                            "Information provided is specifically about new vouchers."
+                        ],
+                        "reasoning": "The title and snippet indicate that this link provides information on a new voucher system intended to assist individuals in need during the winter months. Additionally, it appears that eligibility for these vouchers could be linked to free school meals, making it relevant for council customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "New vouchers will help people with winter essentials - South ...",
+                                "Source": "https://www.southoxon.gov.uk/covid-19/new-vouchers-will-help-people-with-winter-essentials/",
+                                "Key Strengths": [
+                                    "Directly targets help for people with winter essentials.",
+                                    "Information provided is specifically about new vouchers."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title and snippet indicate that this link provides information on a new voucher system intended to assist individuals in need during the winter months. Additionally, it appears that eligibility for these vouchers could be linked to free school meals, making it relevant for council customer information needs."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "YouMove - South Oxfordshire District Council",
+                                "Source": "https://www.southoxon.gov.uk/south-oxfordshire-district-council/sports-and-activities/active-communities/youmove/",
+                                "Key Strengths": [
+                                    "Targeted towards families with children on benefits related free school meals.",
+                                    "Offers personalized support to applicants."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link directs users to a program specifically designed for eligible families that receive benefits-related free school meals. The snippet indicates the age range of children (0-18 years old) and various forms of support the program provides."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Free fun for all the family this half term - South Oxfordshire District ...",
+                                "Source": "https://www.southoxon.gov.uk/cost-of-living/free-fun-for-all-the-family-this-half-term/",
+                                "Key Strengths": [
+                                    "Offers free activities for families during half term.",
+                                    "Explicit mention of YouMove, a program for eligible families."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title and snippet suggest that this link offers free activities for families during the half term, making it relevant to those in need. Additionally, the snippet mentions YouMove, a previously recommended program."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "More help for people to pay food and energy bills - South ...",
+                                "Source": "https://www.southoxon.gov.uk/south-oxfordshire-district-council/more-help-for-people-to-pay-food-and-energy-bills/",
+                                "Key Strengths": [
+                                    "Provides assistance for people to pay food and energy bills.",
+                                    "Eligibility may be linked to free school meals through the holidays."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "The title suggests this link offers aid for individuals struggling with food and energy costs. While there is less explicit information about free school meals, the snippet does mention support during holiday periods which may indicate eligibility."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Household Support Voucher Scheme Policy",
+                                "Source": "http://democratic.southoxon.gov.uk/documents/s32492/Appendix%202-%20Household%20Support%20Voucher%20Policy_to%20be%20updated.pdf",
+                                "Key Strengths": [
+                                    "Reveals policy details for household support vouchers.",
+                                    "Directly mentions eligibility criteria for students eligible for free school meals."
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "This link provides a policy document for the Household Support Voucher Scheme, with explicit mention of eligibility based on free school meal status. This is highly relevant to council customer information needs."
+                            }
+                        ],
+                        "Analysis Notes": "Although links 2 and 6 may offer some resources or programs of interest to individuals in need, they do not directly address the search criteria for 'council customer information needs' and have a slightly lower confidence score due to less explicit snippets.",
+                        "Recommendations Notes": "Upon analysis of the provided JSON list, it was determined that links 1, 3, 4, 5, and 10 are most relevant to the given instruction for council customer information needs, with confident scores ranging from 75-95. It is important to note that recommendations 2 and 6 may still offer useful resources but do not meet the search criteria as directly."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "90",
+                        "80",
+                        "75",
+                        "95"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "95"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "New vouchers will help people with winter essentials - South ...",
+                        "Source": "https://www.southoxon.gov.uk/covid-19/new-vouchers-will-help-people-with-winter-essentials/",
+                        "Reasoning": "The link directly targets help for people with winter essentials and provides information specifically about new vouchers, which aligns with council customer information needs regarding financial aid.",
+                        "Confidence": "85"
+                    },
+                    {
+                        "Number": "3",
+                        "Title": "YouMove - South Oxfordshire District Council",
+                        "Source": "https://www.southoxon.gov.uk/south-oxfordshire-district-council/sports-and-activities/active-communities/youmove/",
+                        "Reasoning": "The link offers personalized support to eligible families, making it relevant for council customer information needs.",
+                        "Confidence": "90"
+                    },
+                    {
+                        "Number": "4",
+                        "Title": "Free fun for all the family this half term - South Oxfordshire District ...",
+                        "Source": "https://www.southoxon.gov.uk/cost-of-living/free-fun-for-all-the-family-this-half-term/",
+                        "Reasoning": "The link provides free activities for families, which align with council customer information needs.",
+                        "Confidence": "80"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.southoxon.gov.uk/covid-19/new-vouchers-will-help-people-with-winter-essentials/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.southoxon.gov.uk/covid-19/new-vouchers-will-help-people-with-winter-essentials/",
+                        "analysis": {
+                            "url": "https://www.southoxon.gov.uk/covid-19/new-vouchers-will-help-people-with-winter-essentials/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T03:25:42+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T03:26:12+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 80317,
+                            "response_time": 0.846,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.846s)",
+                                    "Content successfully retrieved (80317 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.8507170677185059,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.southoxon.gov.uk/covid-19/new-vouchers-will-help-people-with-winter-essentials/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.southoxon.gov.uk/covid-19/new-vouchers-will-help-people-with-winter-essentials/",
+                        "content": "```html\n<h1>New vouchers will help people with winter essentials</h1>\n<p>Help is at hand this winter for people who may struggle to pay for heating, food or other essentials \u2013 thanks to a new voucher scheme that has launched in South Oxfordshire and Vale of the White Horse.</p>\n<p>The new, targeted programme set up by South Oxfordshire and Vale of White Horse District Councils will help people with their food, energy and water bills and other household essentials.</p>\n<p>The funding to pay for the voucher scheme is part of a \u00a33.4 million package of support allocated to Oxfordshire County Council from the government\u2019s Household Support Fund. South Oxfordshire and Vale of White Horse and the other district and city councils are working in partnership with the voluntary and community sector to make best use of the funding and get the right help to those who need it.</p>\n<p>People in both South Oxfordshire and the Vale can get in touch with Citizens Advice for more information or to apply. In the Vale, the voluntary organisation Vale Community Impact are also ready to help people with vouchers. The county council also is providing support for children and young people eligible for free school meals from the same government fund.</p>\n<p>To find out about the scheme or seek help:</p>\n<ul>\n    <li>Residents can call Citizens Advice on 0808 278 7907</li>\n    <li>Vale of the White Horse residents can also call Vale Community Impact on 01235 765 348</li>\n</ul>\n<p>Cllr Maggie Filipova-Rivers, Cabinet Member for Community Wellbeing at South Oxfordshire District Council said: \u201cThe effects of the pandemic are ongoing for many residents, so it\u2019s essential we offer help for those who are struggling with every-day costs. Paying for things like energy bills or for warm clothes can cause extra financial pressure over the cold winter months \u2013 the vouchers will help those who may find it hard to afford essential things.</p>\n<p>\u201cWe don\u2019t want anyone to be worrying about how they can afford to keep their home warm or pay for their food shopping this winter. We encourage people to reach out for assistance \u2013 we are here to help.\u201d</p>\n<p>Cllr Helen Pighills, Cabinet Member for Healthy Communities at Vale of White Horse District Council said: \u201cAsking for help can be difficult \u2013 especially for those who have suddenly found themselves struggling financially, which can be for so many different reasons.</p>\n<p>\u201cPlease don\u2019t hesitate to get in touch if you find yourself in financial difficulty this winter or struggling at all to afford household bills. Winter can be a particularly difficult time with heating costs and other essentials adding up, so the vouchers are in place to help relieve financial pressure and take away the worry that it can cause.\u201d</p>\n<p>The scheme will end in March 2022, unless funds are spent sooner.</p>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 15.502717018127441,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.southoxon.gov.uk/covid-19/new-vouchers-will-help-people-with-winter-essentials/",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 6.713764905929565,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.southoxon.gov.uk/covid-19/new-vouchers-will-help-people-with-winter-essentials/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_032542-southoxon.gov.uk",
+                    "analysis_timestamp": "2025-08-13T03:26:35+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8833333333333333,
+                            "tokens_consumed": 15675,
+                            "tokens_remaining": 14325,
+                            "token_utilization_percentage": 52.25,
+                            "average_tokens_per_step": 2612.5
+                        },
+                        "token_analysis": {
+                            "status": "moderate",
+                            "remaining_percentage": 47.75,
+                            "urgency_score": 30,
+                            "estimated_remaining_steps": 5,
+                            "consumption_rate": 2612.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 12.62,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_032542-southoxon.gov.uk",
+                        "start_time": "2025-08-13T03:25:42+01:00",
+                        "current_time": "2025-08-13T03:26:35+01:00",
+                        "duration_seconds": 53,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 15675,
+                        "tokens_remaining": 14325,
+                        "token_utilization_percentage": 52.25,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 11719,
+                                "avg_per_call": 5859.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3956,
+                                "avg_per_call": 1978
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 2612.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_032542-southoxon.gov.uk",
+                    "start_time": "2025-08-13T03:25:42+01:00",
+                    "current_time": "2025-08-13T03:26:35+01:00",
+                    "duration_seconds": 53,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 15675,
+                    "tokens_remaining": 14325,
+                    "token_utilization_percentage": 52.25,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 11719,
+                            "avg_per_call": 5859.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3956,
+                            "avg_per_call": 1978
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 2612.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]
