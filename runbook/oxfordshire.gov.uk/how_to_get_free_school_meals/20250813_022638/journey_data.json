@@ -1,0 +1,216 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T02:26:38+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "oxfordshire.gov.uk",
+                "Council Name": "Oxfordshire County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "School meals | Oxfordshire County Council",
+                        "link": "https://www.oxfordshire.gov.uk/schools/school/school-meals",
+                        "snippet": "Find out where hot lunches are on offer and if your child is eligible for free school dinners. If you are on a qualifying benefit and do not already receive\u00a0..."
+                    },
+                    {
+                        "title": "Free School Meals",
+                        "link": "https://schools.oxfordshire.gov.uk/sites/default/files/2024-07/Free%20School%20Meals%20HT%20presentation.pptx",
+                        "snippet": "* We may reach the point where families may have one child eligible and another not. EOTAS. We expect local authorities to consider making equivalent food\u00a0..."
+                    },
+                    {
+                        "title": "Pupil premium funding | Oxfordshire County Council",
+                        "link": "https://www.oxfordshire.gov.uk/schools/school/pupil-premium-funding",
+                        "snippet": "If you are eligible, your child will automatically receive free school meals when they reach Key Stage 2. What happens if your financial situation changes."
+                    },
+                    {
+                        "title": "The Holiday Activities and Food (HAF) Programme | Oxfordshire ...",
+                        "link": "https://www.oxfordshire.gov.uk/children-and-families/information-parents/holiday-activities-and-food",
+                        "snippet": "... free holiday clubs for Reception to year 11 pupils in receipt of benefits-related free school meals. The camps will take place across Oxfordshire over the\u00a0..."
+                    },
+                    {
+                        "title": "At school | Oxfordshire County Council",
+                        "link": "https://www.oxfordshire.gov.uk/schools/school",
+                        "snippet": "Starting school, lateness, absences, exclusions, meals and religious education ... lunches are on offer and if your child is eligible for free school dinners."
+                    },
+                    {
+                        "title": "Holiday Activities and Food (HAF) programme | Oxfordshire Schools",
+                        "link": "https://schools.oxfordshire.gov.uk/schools-news/2025/holiday-activities-and-food-haf-programme",
+                        "snippet": "Jun 19, 2025 ... Vulnerable children who do not receive benefits-related free school meals must be referred by a school, social worker, or health\u00a0..."
+                    },
+                    {
+                        "title": "Free home to school travel assistance | Oxfordshire County Council",
+                        "link": "https://www.oxfordshire.gov.uk/schools/travelling-school/eligibility-free-and-paid-travel-school/free-home-school-travel",
+                        "snippet": "Eligibility for free school transport. We will consider: children who are statutory school age (Reception to Year 11); children who will become statutory school\u00a0..."
+                    },
+                    {
+                        "title": "Help with rising living costs | Oxfordshire County Council",
+                        "link": "https://www.oxfordshire.gov.uk/council/help-rising-living-costs",
+                        "snippet": "Children and young people in early years settings, schools and colleges will continue to receive free school meal equivalent support ahead of school holiday\u00a0..."
+                    },
+                    {
+                        "title": "Family Information Service | Paying for Childcare",
+                        "link": "https://fisd.oxfordshire.gov.uk/kb5/oxfordshire/directory/families.page?familieschannel=300",
+                        "snippet": "... meal for children in Reception to Year 11 who are in receipt of benefits-related free school meals. These activities take place in the long school holidays\u00a0..."
+                    },
+                    {
+                        "title": "6 FEBRUARY 2019 EDUCATIONAL PERFORMANCE KEY ...",
+                        "link": "https://mycouncil.oxfordshire.gov.uk/documents/s44739/ESC_FEB0619R02%20-%20Education%20Perfomance.pdf",
+                        "snippet": "Feb 6, 2019 ... where the performance in Oxfordshire falls below that of the same groups of pupils nationally. a. Free School Meals (FSM). Cohort. % at least\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "School meals | Oxfordshire County Council",
+                                "Source": "https://www.oxfordshire.gov.uk/schools/school/school-meals",
+                                "Key Strengths": [
+                                    "Relates to council customer's information needs about school meals",
+                                    "Provides details about free school dinners eligibility"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides directly relevant content related to school meals, including whether a child is eligible for free school dinners."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "The Holiday Activities and Food (HAF) Programme | Oxfordshire ...",
+                                "Source": "https://www.oxfordshire.gov.uk/children-and-families/information-parents/holiday-activities-and-food",
+                                "Key Strengths": [
+                                    "Relates to council customer's information needs about holiday activities and food programs for children receiving benefits-related free school meals"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link discusses free holiday clubs for Reception to year 11 pupils in receipt of benefits-related free school meals."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Pupil premium funding | Oxfordshire County Council",
+                                "Source": "https://www.oxfordshire.gov.uk/schools/school/pupil-premium-funding",
+                                "Key Strengths": [
+                                    "Relates to council customer's information needs about pupil premium funding"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "While this link does not explicitly discuss free school meals, it mentions automatic free school meals for eligible children in Key Stage 2."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Family Information Service | Paying for Childcare",
+                                "Source": "https://fisd.oxfordshire.gov.uk/kb5/oxfordshire/directory/families.page?familieschannel=300",
+                                "Key Strengths": [
+                                    "Relates to council customer's information needs about paying for childcare"
+                                ],
+                                "Confidence": "68",
+                                "Reasoning": "This link discusses free school meal support ahead of school holidays, although it is not the main focus of the page."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "The Holiday Activities and Food (HAF) Programme | Oxfordshire Schools",
+                                "Source": "https://schools.oxfordshire.gov.uk/schools-news/2025/holiday-activities-and-food-haf-programme",
+                                "Key Strengths": [
+                                    "Relates to council customer's information needs about holiday activities and food programs for children"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "Although this link does not directly discuss free school meals, it provides information on the Holiday Activities and Food (HAF) Programme."
+                            }
+                        ],
+                        "Analysis Notes": "Items 2, 5, 6, 7, and 10 do not provide relevant content related to council customer's information needs about school meals or related services.",
+                        "Recommendations Notes": "The top recommendations were selected based on their direct relevance to the council customer's information needs about school meals and related services. Although items 3, 9, and 10 did not provide explicit details about free school meals, they still offer additional context or indirectly connect with the topic."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "68",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 74.6,
+                    "max_confidence": "85"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

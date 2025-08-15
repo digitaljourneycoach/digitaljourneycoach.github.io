@@ -1,0 +1,665 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T21:58:08+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "ceredigion.gov.uk",
+                "Council Name": "Ceredigion County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Energy Efficiency Schemes - Ceredigion County Council",
+                        "link": "https://www.ceredigion.gov.uk/resident/housing/financial-assistance/energy-efficiency-schemes/",
+                        "snippet": "Welsh Government Building regulations: heat pumps. Planning Permission and Building Regulations: Solar Panels. Welsh Government Planning permission: solar\u00a0..."
+                    },
+                    {
+                        "title": "Supplementary Planning Guidance Renewable Energy | Ceredigion ...",
+                        "link": "https://www.ceredigion.gov.uk/media/rjwjfkbd/renewable-energy-spg-eng.pdf",
+                        "snippet": "Jan 2, 2015 ... Planning permission and solar scheme size. Solar Thermal and Photovoltaic systems come in many sizes. This SPG applies the size designations\u00a0..."
+                    },
+                    {
+                        "title": "Committee Agenda Report for Committee Hearing on 10-07-2024",
+                        "link": "https://council.ceredigion.gov.uk/documents/s6963/DELEGATED%20item.pdf?LLL=0",
+                        "snippet": "Jul 2, 2024 ... of planning permission -. A220798 - Construction. Environmental ... solar panels to rear elevation roof. 2 Lon Hendre,. Waunfawr\u00a0..."
+                    },
+                    {
+                        "title": "Planning Guidance for Retail, Financial & Professional Services",
+                        "link": "https://www.ceredigion.gov.uk/media/4q4dzzws/2021-planning-guidance-for-retail-financial-professional-services-and-industry-leaflet.pdf",
+                        "snippet": "Similarly, an A3 (Food and. Drink) establishment may be changed to either an A1 or A2 use without planning permission. ... - The installation of solar panels and\u00a0..."
+                    },
+                    {
+                        "title": "Planning Guidance for Retail, Financial and Professional Services ...",
+                        "link": "https://ceredigion.gov.uk/media/yawji5lo/2021-planning-guidance-for-retail-financial-and-professional-services-and-industry.pdf",
+                        "snippet": "\u2022 The surface area of the solar panels, forming part of the stand-alone ... The easiest way to apply for planning permission is through Planning Portal. Wales."
+                    },
+                    {
+                        "title": "Committee Agenda Report for Committee Hearing on 14-05-2025",
+                        "link": "https://council.ceredigion.gov.uk/documents/s8894/DELEGATED%20HRAN.pdf?LLL=0",
+                        "snippet": "May 7, 2025 ... planning permission. A021471 - approved plans. Brynddewi, Aberarth,. Aberaeron. ... of solar panels. Pantyffynnon, Penrhyncoch,. SY23 3EX."
+                    },
+                    {
+                        "title": "Committee Agenda Report for Committee Hearing on 13-03-2024",
+                        "link": "https://council.ceredigion.gov.uk/documents/s6568/DELEGATED+RHAN.pdf?LLL=0",
+                        "snippet": "Mar 6, 2024 ... to planning permission -. A120564 - Amendments to site levels ... and new solar panels to flat roof. Additional minor changes to\u00a0..."
+                    },
+                    {
+                        "title": "Committee Agenda Report for Committee Hearing on 09-07-2025",
+                        "link": "https://cyngor.ceredigion.gov.uk/documents/s9254/Wedi%20dirprwyo.pdf?LLL=1",
+                        "snippet": "Jul 2, 2025 ... planning permission 810846 ... SA44. 4TJ. Dychwelwyd yn annilys /. Returned Invalid. 11-06-2025. 70 / 76. Page 4. solar panels and a biodigester\u00a0..."
+                    },
+                    {
+                        "title": "Committee Agenda Report for Committee Hearing on 12-04-2023",
+                        "link": "https://cyngor.ceredigion.gov.uk/documents/s4872/3%20Dirprwyedig%20Delegated.pdf?LLL=1",
+                        "snippet": "Mar 31, 2023 ... solar panels and battery storage into the building. Maes Mwldan, Bath ... of planning permission -. A220353 Ecology. Blaengors, Dihewyd\u00a0..."
+                    },
+                    {
+                        "title": "Committee Agenda Report for Committee Hearing on 09-04-2025",
+                        "link": "https://council.ceredigion.gov.uk/documents/s8748/DELEGATED%20RHAN.pdf?LLL=0",
+                        "snippet": "Apr 1, 2025 ... from planning permission. A211167 (Construction Site. & Traffic Plan) ... solar PV panels and associated infrastructure on flat roof of\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.ceredigion.gov.uk/resident/housing/financial-assistance/energy-efficiency-schemes/",
+                        "title": "Energy Efficiency Schemes - Ceredigion County Council",
+                        "confidence": 80,
+                        "strengths": [
+                            "Discusses energy efficiency schemes, including Building regulations for heat pumps and solar panels.",
+                            "Provides information about Planning Permission requirements for solar panel installation."
+                        ],
+                        "reasoning": "This link directly discusses energy efficiency schemes which are related to the council customer's need for information on renewable energy sources. The page also provides details regarding Building regulations and planning permission, making it highly relevant.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Energy Efficiency Schemes - Ceredigion County Council",
+                                "Source": "https://www.ceredigion.gov.uk/resident/housing/financial-assistance/energy-efficiency-schemes/",
+                                "Key Strengths": [
+                                    "Discusses energy efficiency schemes, including Building regulations for heat pumps and solar panels.",
+                                    "Provides information about Planning Permission requirements for solar panel installation."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link directly discusses energy efficiency schemes which are related to the council customer's need for information on renewable energy sources. The page also provides details regarding Building regulations and planning permission, making it highly relevant."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Supplementary Planning Guidance Renewable Energy | Ceredigion ...",
+                                "Source": "https://www.ceredigion.gov.uk/media/rjwjfkbd/renewable-energy-spg-eng.pdf",
+                                "Key Strengths": [
+                                    "Detailed guide on renewable energy, including solar panel size designations and planning permission requirements.",
+                                    "Addresses the subject of Planning permission and solar scheme size."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This document offers extensive guidance on renewable energy sources and planning permission. Its focus on solar thermal and photovoltaic systems, as well as providing designations for varying solar panel sizes, makes it valuable to council customers seeking information about solar panels."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Planning Guidance for Retail, Financial & Professional Services",
+                                "Source": "https://www.ceredigion.gov.uk/media/4q4dzzws/2021-planning-guidance-for-retail-financial-professional-services-and-industry-leaflet.pdf",
+                                "Key Strengths": [
+                                    "Discusses planning guidance for various industries, including installations of solar panels.",
+                                    "Offers insight into changing an A3 (Food and Drink) establishment to either an A1 or A2 use without planning permission."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "While this link's primary focus is on various industries, it does give relevant information about planning requirements for solar panel installations. Additionally, the guidance provided regarding changing uses without planning permission can be beneficial to a customer looking to incorporate solar panels into their business premises."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Planning Guidance for Retail, Financial and Professional Services ...",
+                                "Source": "https://ceredigion.gov.uk/media/yawji5lo/2021-planning-guidance-for-retail-financial-and-professional-services-and-industry.pdf",
+                                "Key Strengths": [
+                                    "Discusses planning guidance for various industries, including installations of solar panels.",
+                                    "Provides information on the easiest way to apply for planning permission through Planning Portal."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Similar to recommendation #4, this link offers relevant information about planning requirements for solar panel installations. Additionally, the guidance on applying for planning permissions through the Planning Portal makes it easier for customers to take action based on the provided information."
+                            }
+                        ],
+                        "Analysis Notes": "Out of the analyzed items, some discussed various industries and did not exclusively focus on customer needs related to council services. Despite this, they offer valuable information about regulations regarding solar panel installations which can still be useful for council customers.",
+                        "Recommendations Notes": "The top recommendations prioritize links directly discussing energy efficiency schemes or renewable energy, as these are the most relevant and valuable sources of information for council customers seeking advice on solar panels."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "85",
+                        "70",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 77.5,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "2",
+                            "Title": "Supplementary Planning Guidance Renewable Energy | Ceredigion ...",
+                            "Source": "https://www.ceredigion.gov.uk/media/rjwjfkbd/renewable-energy-spg-eng.pdf",
+                            "Reasoning": "This document offers extensive guidance on renewable energy sources and planning permission, with a specific focus on solar thermal and photovoltaic systems. Its high relevance to the customer's needs makes it the optimal recommendation.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "1",
+                            "Title": "Energy Efficiency Schemes - Ceredigion County Council",
+                            "Source": "https://www.ceredigion.gov.uk/resident/housing/financial-assistance/energy-efficiency-schemes/",
+                            "Reasoning": "Although less extensive than option 2, this link directlty discusses energy efficiency schemes which are related to the council customer\u2019s need for information on renewable energy sources. The page also provides details regarding Building regulations and planning permission, making it highly relevant.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Planning Guidance for Retail, Financial & Professional Services",
+                            "Source": "https://www.ceredigion.gov.uk/media/4q4dzzws/2021-planning-guidance-for-retail-financial-professional-services-and-industry-leaflet.pdf",
+                            "Reasoning": "While this link's primary focus is on various industries, it does give relevant information about planning requirements for solar panel installations, thus making it a valuable resource for the customer.",
+                            "Confidence": "70"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Planning Guidance for Retail, Financial and Professional Services ...",
+                            "Source": "https://ceredigion.gov.uk/media/yawji5lo/2021-planning-guidance-for-retail-financial-and-professional-services.pdf",
+                            "Reasoning": "This guide provides information on planning guidance for various industries, including solar panel installations and the easiest way to apply for planning permission through Planning Portal.",
+                            "Confidence": "75"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.ceredigion.gov.uk/resident/housing/financial-assistance/energy-efficiency-schemes/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.ceredigion.gov.uk/resident/housing/financial-assistance/energy-efficiency-schemes/",
+                        "analysis": {
+                            "url": "https://www.ceredigion.gov.uk/resident/housing/financial-assistance/energy-efficiency-schemes/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T21:58:08+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T21:58:40+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 22858,
+                            "response_time": 0.305,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.305s)",
+                                    "Content successfully retrieved (22858 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.3057398796081543,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.ceredigion.gov.uk/resident/housing/financial-assistance/energy-efficiency-schemes/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.ceredigion.gov.uk/resident/housing/financial-assistance/energy-efficiency-schemes/",
+                        "content": " <html lang=\"en-gb\">\n<body>\n    <section id=\"main-content\" class=\"my-3\">\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"col-md-8\">\n                    <div class=\"rte-content\">\n                        <h1 id=\"mainPageTitle\" class=\"main-title\">Energy Efficiency Schemes</h1>\n                        <p class=\"lead\">Below is a list of schemes currently available in Ceredigion, together with a link to energy discounts and other grants.</p>\n                        <div class=\"umb-block-list\">\n                            <ul>\n                                <li><a href=\"/resident/housing/financial-assistance/energy-efficiency-schemes/eco-flexibility-funding/\">ECO4 Flex Funding</a></li>\n                                <li><a href=\"/resident/housing/financial-assistance/energy-efficiency-schemes/great-british-insulation-scheme/\">Great British Insulation Scheme (GBIS) Flex</a></li>\n                                <li><a href=\"/resident/housing/financial-assistance/energy-efficiency-schemes/ceredigion-citizens-advice-service/\">Ceredigion Citizens Advice Service</a></li>\n                                <li><a href=\"/resident/housing/financial-assistance/energy-efficiency-schemes/nest/\">Nest: Warm Homes Scheme</a></li>\n                                <li><a href=\"/resident/housing/financial-assistance/energy-efficiency-schedules/severn-wye-community-advice-scheme/\">Severn Wye Community Advice Scheme</a></li>\n                                <li><a href=\"/resident/housing/financial-assistance/energy-efficiency-schemes/supervisory-service/\">Supervisory Service</a></li>\n                                <li><a href=\"/resident/housing/financial-assistance/national-empty-homes-grant/\">National Empty Homes Grant</a></li>\n                            </ul>\n                        </div>\n\n                        <!-- Additional content in the original HTML has been removed for brevity -->\n                    </div>\n                </div>\n            </div>\n        </div>\n    </section>\n</body>\n</html>",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 14.638597965240479,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.ceredigion.gov.uk/resident/housing/financial-assistance/energy-efficiency-schemes/",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 4.519917011260986,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.ceredigion.gov.uk/resident/housing/financial-assistance/energy-efficiency-schemes/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_215808-ceredigion.gov.uk",
+                    "analysis_timestamp": "2025-08-10T21:58:59+01:00",
+                    "analysis_duration": 0.002,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.85,
+                            "tokens_consumed": 7038,
+                            "tokens_remaining": 22962,
+                            "token_utilization_percentage": 23.46,
+                            "average_tokens_per_step": 1173
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 76.54,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 19,
+                            "consumption_rate": 1173,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 12.14,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.85,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_215808-ceredigion.gov.uk",
+                        "start_time": "2025-08-10T21:58:08+01:00",
+                        "current_time": "2025-08-10T21:58:59+01:00",
+                        "duration_seconds": 51,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7038,
+                        "tokens_remaining": 22962,
+                        "token_utilization_percentage": 23.46,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3515,
+                                "avg_per_call": 1757.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3523,
+                                "avg_per_call": 1761.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1173
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_215808-ceredigion.gov.uk",
+                    "start_time": "2025-08-10T21:58:08+01:00",
+                    "current_time": "2025-08-10T21:58:59+01:00",
+                    "duration_seconds": 51,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7038,
+                    "tokens_remaining": 22962,
+                    "token_utilization_percentage": 23.46,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3515,
+                            "avg_per_call": 1757.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3523,
+                            "avg_per_call": 1761.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1173
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

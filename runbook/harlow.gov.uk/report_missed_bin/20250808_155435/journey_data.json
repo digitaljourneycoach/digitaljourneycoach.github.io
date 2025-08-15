@@ -1,0 +1,635 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T15:54:35+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "harlow.gov.uk",
+                "Council Name": "Harlow District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Contact us - bin collection information | Harlow Council",
+                        "link": "https://www.harlow.gov.uk/contact-us-bin-collection-information",
+                        "snippet": "Missed bins You can report a missed bin to us online."
+                    },
+                    {
+                        "title": "Missed waste and recycling collections - Harlow Council",
+                        "link": "https://selfserve.harlow.gov.uk/service/Missed_waste_and_recycling_collection",
+                        "snippet": "Signing up means your details will be automatically entered in future every time you complete a form. You can also see all the reports you have made. Sign up\u00a0..."
+                    },
+                    {
+                        "title": "Bins and recycling | Harlow Council",
+                        "link": "https://www.harlow.gov.uk/bins-and-recycling",
+                        "snippet": "Report a missed bin \u00b7 Link to the content. Book a bulky waste collection \u00b7 What ... Includes our bulky waste, green waste, clinical waste, textile, battery or\u00a0..."
+                    },
+                    {
+                        "title": "Council reports improved bin collections performance | Harlow Council",
+                        "link": "https://www.harlow.gov.uk/news/council-reports-improved-bin-collections-performance",
+                        "snippet": "Dec 5, 2024 ... The performance of Harlow's bin collections continues to improve with the number of missed collections dropping for the third month in a row\u00a0..."
+                    },
+                    {
+                        "title": "Order a new bin | Harlow Council",
+                        "link": "https://www.harlow.gov.uk/bins-and-recycling/order-new-bin",
+                        "snippet": "order a new: recycling bin or box non-recycling bin or purple bags outdoor kitchen caddy. ... Report a missed bin \u00b7 Putting your bins out \u00b7 What goes in each bin\u00a0..."
+                    },
+                    {
+                        "title": "Putting your bins out | Harlow Council",
+                        "link": "https://www.harlow.gov.uk/bins-and-recycling/putting-your-bins-out",
+                        "snippet": "We recommend you put your waste loose into your recycling and non-recycling bins ... Report a missed bin \u00b7 Order a new bin \u00b7 What goes in each bin \u00b7 Check your\u00a0..."
+                    },
+                    {
+                        "title": "Harlow Council",
+                        "link": "https://selfserve.harlow.gov.uk/",
+                        "snippet": "If your collection has been missed you can report this to us up to two working days after the scheduled date . Collections. Register Login Choose an address\u00a0..."
+                    },
+                    {
+                        "title": "MyServices - Harlow Council",
+                        "link": "https://selfserve.harlow.gov.uk/MyServices",
+                        "snippet": "Litter report \u00b7 Lost and found dog or lost cat report. M. Makers Market expression of interest form \u00b7 Missed waste and recycling collection \u00b7 My Profile. N."
+                    },
+                    {
+                        "title": "Assisted bin collections | Harlow Council",
+                        "link": "https://www.harlow.gov.uk/bins-and-recycling/assisted-bin-collections",
+                        "snippet": "Bins and recycling; Assisted bin collections. Assisted bin collections. We ... Report a missed bin \u00b7 Putting your bins out \u00b7 Order a new bin \u00b7 What goes in each\u00a0..."
+                    },
+                    {
+                        "title": "Commercial waste | Harlow Council",
+                        "link": "https://www.harlow.gov.uk/bins-and-recycling/commercial-waste",
+                        "snippet": "There are no recycling centres in Harlow that accept commercial waste. Related pages: Report a missed bin \u00b7 Putting your bins out \u00b7 Order a new bin \u00b7 What goes\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.harlow.gov.uk/contact-us-bin-collection-information",
+                        "title": "Contact us - bin collection information | Harlow Council",
+                        "confidence": 100,
+                        "strengths": [
+                            "Direct link to contact council for bin collection information",
+                            "Includes option to report a missed bin"
+                        ],
+                        "reasoning": "This link directly leads to the council's page specifically designed for bin collection inquiries, including the option to report a missed bin, making it suitable for customers seeking information about their bins.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Contact us - bin collection information | Harlow Council",
+                                "Source": "https://www.harlow.gov.uk/contact-us-bin-collection-information",
+                                "Key Strengths": [
+                                    "Direct link to contact council for bin collection information",
+                                    "Includes option to report a missed bin"
+                                ],
+                                "Confidence": "100",
+                                "Reasoning": "This link directly leads to the council's page specifically designed for bin collection inquiries, including the option to report a missed bin, making it suitable for customers seeking information about their bins."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Missed waste and recycling collections - Harlow Council",
+                                "Source": "https://selfserve.harlow.gov.uk/service/Missed_waste_and_recycling_collection",
+                                "Key Strengths": [
+                                    "Allows users to report missed waste and recycling collections online, reducing manual effort"
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "This link provides an online service for reporting missed waste and recycling collections, which is convenient for customers and helps streamline the council's workflow."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Bins and recycling | Harlow Council",
+                                "Source": "https://www.harlow.gov.uk/bins-and-recycling",
+                                "Key Strengths": [
+                                    "Provides information about bin collections, missed bins report, ordering new bins, and what to put in each bin"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link offers comprehensive information about council bin services, allowing customers to find answers to various common questions related to waste disposal."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Order a new bin | Harlow Council",
+                                "Source": "https://www.harlow.gov.uk/bins-and-recycling/order-new-bin",
+                                "Key Strengths": [
+                                    "Allows users to order a new bin or collection service online"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Individuals needing a new bin can use this link to order one online, making the process easier and more efficient."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Putting your bins out | Harlow Council",
+                                "Source": "https://www.harlow.gov.uk/bins-and-recycling/putting-your-bins-out",
+                                "Key Strengths": [
+                                    "Offers guidance on how to properly put out bins for collection"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "By following the tips provided in this link, customers can ensure their bins are emptied and help minimize any potential issues."
+                            }
+                        ],
+                        "Analysis Notes": "All provided links were related to bin and recycling services provided by Harlow Council. They could assist customers with various requirements such as reporting missed collections, ordering new bins, and finding information about specific collection procedures.",
+                        "Recommendations Notes": "The top recommendation is the most direct link for contacting the council regarding bin collection issues. The recommended links provide valuable information and services that should help meet the general needs of customers."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "100",
+                        "95",
+                        "90",
+                        "85",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 90,
+                    "max_confidence": "100"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Contact us - bin collection information | Harlow Council",
+                            "Source": "https://www.harlow.gov.uk/contact-us-bin-collection-information",
+                            "Reasoning": "This link has the highest confidence score (100) and offers a direct contact method for council services. Its relevance to the user's query is high, making it an optimal next step.",
+                            "Confidence": "100"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Missed waste and recycling collections - Harlow Council",
+                            "Source": "https://selfserve.harlow.gov.uk/service/Missed_waste_and_recycling_collection",
+                            "Reasoning": "This link provides an online service for reporting missed waste and recycling collections with a high confidence score of 95, making it suitable for quick, efficient service.",
+                            "Confidence": "95"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Order a new bin | Harlow Council",
+                            "Source": "https://www.harlow.gov.uk/bins-and-recycling/order-new-bin",
+                            "Reasoning": "With a confidence score of 85, this link allows users to order a new bin online, improving the convenience and efficiency for the customer.",
+                            "Confidence": "85"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.harlow.gov.uk/contact-us-bin-collection-information"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.harlow.gov.uk/contact-us-bin-collection-information",
+                        "analysis": {
+                            "url": "https://www.harlow.gov.uk/contact-us-bin-collection-information",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T15:54:35+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T15:55:05+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 45700,
+                            "response_time": 0.421,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.421s)",
+                                    "Content successfully retrieved (45700 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.4223899841308594,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [],
+                "content_types": [],
+                "retrieved_content": []
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analysis_skipped"
+            },
+            "output_data": {
+                "action": "content_analysis_skipped",
+                "reason": "no_retrieved_content",
+                "tokens_used": 25,
+                "metadata": {
+                    "next_state": "journey_decision",
+                    "step_skipped": true
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "next_state": "journey_decision",
+                "step_skipped": true
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_155435-harlow.gov.uk",
+                    "analysis_timestamp": "2025-08-08T15:55:35+01:00",
+                    "analysis_duration": 0.003,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1,
+                            "tokens_consumed": 1943,
+                            "tokens_remaining": 28057,
+                            "token_utilization_percentage": 6.48,
+                            "average_tokens_per_step": 323.83
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 93.52,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 86,
+                            "consumption_rate": 323.83,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "no_content_data": true
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 14.29,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_155435-harlow.gov.uk",
+                        "start_time": "2025-08-08T15:54:35+01:00",
+                        "current_time": "2025-08-08T15:55:35+01:00",
+                        "duration_seconds": 60,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 1943,
+                        "tokens_remaining": 28057,
+                        "token_utilization_percentage": 6.48,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 1943,
+                                "avg_per_call": 971.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 323.83
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_155435-harlow.gov.uk",
+                    "start_time": "2025-08-08T15:54:35+01:00",
+                    "current_time": "2025-08-08T15:55:35+01:00",
+                    "duration_seconds": 60,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 1943,
+                    "tokens_remaining": 28057,
+                    "token_utilization_percentage": 6.48,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 1943,
+                            "avg_per_call": 971.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 323.83
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

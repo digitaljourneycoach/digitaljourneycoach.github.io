@@ -1,0 +1,220 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T02:42:38+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "sandwell.gov.uk",
+                "Council Name": "Sandwell Metropolitan Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Free school meals | Sandwell Council",
+                        "link": "https://www.sandwell.gov.uk/freeschoolmeals",
+                        "snippet": "Under new arrangements, families will receive two vouchers \u2013 one in July 2025 to cover Easter and Whitsun holidays (backdated) and the six-week summer holiday (\u00a0..."
+                    },
+                    {
+                        "title": "Free School Meals Application Form | Sandwell Council",
+                        "link": "https://www.sandwell.gov.uk/downloads/file/377/free-school-meals-application-form-gdpr-compliant",
+                        "snippet": "To qualify if you are in receipt of Universal Credit, your net earned income (after taxes and deductions. 'take home pay') must be below \u00a3616 per month under\u00a0..."
+                    },
+                    {
+                        "title": "School meals | Sandwell Council",
+                        "link": "https://www.sandwell.gov.uk/schools-education/school-meals",
+                        "snippet": "SIPS Education Ltd provides meals in most primary schools, and some secondary schools. Find out if you can get free school meals."
+                    },
+                    {
+                        "title": "Free school meals - MySandwell",
+                        "link": "https://my.sandwell.gov.uk/service/Free_school_meals",
+                        "snippet": "Sign up for a MySandwell account to manage your service requests and accounts with us. Creating an account saves you time with auto-completion of your contact\u00a0..."
+                    },
+                    {
+                        "title": "Free school meals application form | Sandwell Council",
+                        "link": "https://www.sandwell.gov.uk/downloads/download/193/free-school-meals-application-form",
+                        "snippet": "Application form to apply for assistance with the cost of school meals. Free School Meals Application Form 'GDPR' Compliant. PDF; 239kB; Download."
+                    },
+                    {
+                        "title": "Household Support Fund | Sandwell Council",
+                        "link": "https://www.sandwell.gov.uk/householdsupportfund",
+                        "snippet": "\u00a33million on providing vouchers for pupils who get benefits-related Free School Meals \u2013 worth \u00a3130 per child, per year. \u00b7 \u00a31.2million on helping council and\u00a0..."
+                    },
+                    {
+                        "title": "School meal holiday vouchers to continue for Sandwell children plus ...",
+                        "link": "https://www.sandwell.gov.uk/news/article/638/school-meal-holiday-vouchers-to-continue-for-sandwell-children-plus-cash-for-families-in-crisis",
+                        "snippet": "Jul 8, 2025 ... \u00a33million on providing vouchers for pupils who get benefits-related Free School Meals \u2013 worth \u00a3130 per child, per year. \u00b7 \u00a31.2million on helping\u00a0..."
+                    },
+                    {
+                        "title": "[IL0: UNCLASSIFIED] Free School Meals \u2013 Privacy Notice Data ...",
+                        "link": "https://www.sandwell.gov.uk/downloads/file/1166/free-school-meal-privacy-notice",
+                        "snippet": "You can choose whether to make an application for Free school meals for your child and you will be asked for consent for the use of the information required as\u00a0..."
+                    },
+                    {
+                        "title": "Education Benefits - Family Information Service Hub",
+                        "link": "https://fis.sandwell.gov.uk/kb5/sandwell/directory/advice.page?id=e1xFTxuZLPk",
+                        "snippet": "Mar 5, 2024 ... Many families in Sandwell could get free school meals but don't claim for them. Find out more about how to apply for free school meals,\u00a0..."
+                    },
+                    {
+                        "title": "Food vouchers for eligible families in Sandwell this half-term ...",
+                        "link": "https://www.sandwell.gov.uk/news/article/295/food-vouchers-for-eligible-families-in-sandwell-this-half-term",
+                        "snippet": "Oct 26, 2023 ... ... eligible for free school meals. Each eligible child will get \u00a315 per week in food vouchers that parents can spend at their local supermarket."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Free school meals | Sandwell Council",
+                                "Source": "https://www.sandwell.gov.uk/freeschoolmeals",
+                                "Key Strengths": [
+                                    "Provides information about free school meals and the new arrangements for 2025",
+                                    "Contains details about the vouchers for Easter, Whitsun holidays, and the summer holiday"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The snippet mentions that families will receive two vouchers under new arrangements, making it a relevant resource for council customer information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Free School Meals Application Form | Sandwell Council",
+                                "Source": "https://www.sandwell.gov.uk/downloads/file/377/free-school-meals-application-form-gdpr-compliant",
+                                "Key Strengths": [
+                                    "Direct application form for free school meals",
+                                    "Includes eligibility criteria and the requirement of Universal Credit"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The snippet describes that the form is for families who are in receipt of Universal Credit, making it clear that this resource pertains to free school meals."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Free school meals application form | Sandwell Council",
+                                "Source": "https://www.sandwell.gov.uk/downloads/download/193/free-school-meals-application-form",
+                                "Key Strengths": [
+                                    "Direct application form for free school meals",
+                                    "Easy to access and download PDf"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The resource is an application form for free school meals, making it a valuable option for council customers in search of this information."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Education Benefits - Family Information Service Hub",
+                                "Source": "https://fis.sandwell.gov.uk/kb5/sandwell/directory/advice.page?id=e1xFTxuZLPk",
+                                "Key Strengths": [
+                                    "Provides information about free school meals and eligibility criteria",
+                                    "Offers guidance on how to apply for free school meals"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The snippet mentions that the resource has information on applying for free school meals, making it a pertinent option for council customers."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Food vouchers for eligible families in Sandwell this half-term ...",
+                                "Source": "https://www.sandwell.gov.uk/news/article/295/food-vouchers-for-eligible-families-in-sandwell-this-half-term",
+                                "Key Strengths": [
+                                    "Offers food vouchers for eligible families in Sandwell",
+                                    "Provides details on eligibility and the amount of each voucher"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title and snippet indicate that this resource provides food vouchers for eligible families, making it a valuable option for council customers in need."
+                            }
+                        ],
+                        "Analysis Notes": "Some results provide information about free school meals or offer resources related to the application process, which meet the search criteria quite well. The provided list includes various forms of resources from direct application forms to news articles discussing food vouchers.",
+                        "Recommendations Notes": "Items 1-5 were selected based on relevance and strength in providing clear information about free school meals or offering an application resource."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "90",
+                        "80",
+                        "80",
+                        "85"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 84,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

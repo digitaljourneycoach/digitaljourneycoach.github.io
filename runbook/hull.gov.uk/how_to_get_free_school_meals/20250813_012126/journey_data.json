@@ -1,0 +1,691 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T01:21:26+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "hull.gov.uk",
+                "Council Name": "Hull City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Free school meals | Hull",
+                        "link": "https://www.hull.gov.uk/schools-2/free-school-meals",
+                        "snippet": "You can apply for free school meals if your child attends a Hull school or sixth form on a full-time basis. This includes Hull College 14 to 16 direct entry,\u00a0..."
+                    },
+                    {
+                        "title": "Children receiving free school meals to be given a \u00a315 voucher for ...",
+                        "link": "https://news.hull.gov.uk/20/10/2021/children-receiving-free-school-meals-to-be-given-a-15-voucher-for-october-half-term/",
+                        "snippet": "Oct 20, 2021 ... ... school meals will be given a \u00a315 voucher for this October half term. Around 12,500 families currently receive free school meals in Hull."
+                    },
+                    {
+                        "title": "Home to school transport | Hull",
+                        "link": "https://www.hull.gov.uk/schools-2/home-school-transport",
+                        "snippet": "children going to primary school can get free travel to their nearest suitable school with a place. ... For instance, families who qualify for free school meals\u00a0..."
+                    },
+                    {
+                        "title": "Children and families \u2013 Hull",
+                        "link": "https://www.hull.gov.uk/children-families",
+                        "snippet": "Free school meals \u00b7 Children \u00b7 Children's health \u00b7 Family support \u00b7 Fostering ... Sign up for our free email alerts and have news stories delivered to your inbox."
+                    },
+                    {
+                        "title": "Free school meal vouchers will continue over February half term ...",
+                        "link": "https://news.hull.gov.uk/21/01/2021/free-school-meal-vouchers-will-continue-over-february-half-term/",
+                        "snippet": "Jan 21, 2021 ... Children who live in Hull and are currently receiving free school meals will receive food vouchers worth \u00a315 over the February half term week."
+                    },
+                    {
+                        "title": "Help with food | Cost of Living | Hull",
+                        "link": "https://www.hull.gov.uk/financial-legal-general-advice/cost-living/3",
+                        "snippet": "You can find out how to get help from community food aid providers. You can apply for free school meals if your child attends a Hull school or sixth form\u00a0..."
+                    },
+                    {
+                        "title": "Free school meal vouchers for 12500 families to help with cost of living",
+                        "link": "https://news.hull.gov.uk/24/05/2022/free-school-meal-vouchers-for-12500-families-to-help-with-cost-of-living/",
+                        "snippet": "May 24, 2022 ... Children who live in Hull and are currently receiving free school meals will receive food vouchers worth \u00a315 over the May half-term week."
+                    },
+                    {
+                        "title": "Free school meals Archives - Hull CC News",
+                        "link": "https://news.hull.gov.uk/tag/free-school-meals/",
+                        "snippet": "Children who live in Hull and are currently receiving free school meals will receive food vouchers worth \u00a315 over the May half-term week."
+                    },
+                    {
+                        "title": "Free School Meals",
+                        "link": "https://synergy.hull.gov.uk/synergy/live/synergyweb/Enquiries/Citizen/FreeSchoolMeals.aspx",
+                        "snippet": "You must be signed in with a Registered Parent/Carer Account in order to perform a Free School Meals application. Please sign in or sign up for a new\u00a0..."
+                    },
+                    {
+                        "title": "Children receiving free school meals to be given \u00a315 a week ...",
+                        "link": "https://news.hull.gov.uk/09/07/2021/children-receiving-free-school-meals-to-be-given-15-a-week-vouchers-over-summer/",
+                        "snippet": "Jul 9, 2021 ... ... meals will be given vouchers of \u00a315 a week throughout the summer holidays. Around 12,500 families currently receive free school meals in Hull."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.hull.gov.uk/schools-2/free-school-meals",
+                        "title": "Free school meals | Hull",
+                        "confidence": 85,
+                        "strengths": [
+                            "Provides detailed information about applying for free school meals in Hull",
+                            "Offers an official city council resource"
+                        ],
+                        "reasoning": "This link directs users to the Hull City Council's own website, specifically the section dedicated to free school meals. It offers a straightforward process for applying, making it one of the most suitable options for council customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Free school meals | Hull",
+                                "Source": "https://www.hull.gov.uk/schools-2/free-school-meals",
+                                "Key Strengths": [
+                                    "Provides detailed information about applying for free school meals in Hull",
+                                    "Offers an official city council resource"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link directs users to the Hull City Council's own website, specifically the section dedicated to free school meals. It offers a straightforward process for applying, making it one of the most suitable options for council customer information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Children receiving free school meals to be given a \u00a315 voucher for ...",
+                                "Source": "https://news.hull.gov.uk/20/10/2021/children-receiving-free-school-meals-to-be-given-a-15-voucher-for-october-half-term/",
+                                "Key Strengths": [
+                                    "Specifically addresses the free school meal distribution for October half term",
+                                    "Source is an official Hull City Council news page"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This article from the Hull City Council's news page provides important information about the distribution of free school meal vouchers during a particular half term. This details can be crucial for families during this period."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Free school meal vouchers will continue over February half term ...",
+                                "Source": "https://news.hull.gov.uk/21/01/2021/free-school-meal-vouchers-will-continue-over-february-half-term/",
+                                "Key Strengths": [
+                                    "Informs users that free school meal vouchers will continue during the February half term",
+                                    "Source is an official Hull City Council news page"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This article addresses the continuation of free school meal vouchers during a specific half term. The information given can be useful for families seeking assistance with food costs."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Help with food | Cost of Living | Hull",
+                                "Source": "https://www.hull.gov.uk/financial-legal-general-advice/cost-living/3",
+                                "Key Strengths": [
+                                    "Offers help and resources for those needing assistance with food costs",
+                                    "Provides information about free school meals alongside other community aid"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Although not explicitly dedicated to free school meals, this resource offers a general guide on available resources to help combat food poverty. This can still be useful for families seeking assistance with food costs."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Free School Meals",
+                                "Source": "https://synergy.hull.gov.uk/synergy/live/synergyweb/Enquiries/Citizen/FreeSchoolMeals.aspx",
+                                "Key Strengths": [
+                                    "Direct users to the application process for free school meals on the Hull City Council website",
+                                    "Requires user authentication, ensuring only registered citizens can access this resource"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This link directs users to a specific application for Free School Meals on the Hull City Council's website. The requirement of user authentication ensures the tool is intended for use by local residents, adding legitimacy to the resource."
+                            }
+                        ],
+                        "Analysis Notes": "The search results were primarily focused on news or informational articles related to free school meals in Hull rather than direct resources for applied application processes. However, some links provided guidance on application procedures and voucher distribution schedules.",
+                        "Recommendations Notes": "Although there are multiple suitable options within the search results, it is recommended to prioritize those with explicit information about applying for free school meals or those from a trusted source (Hull City Council)."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 78,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Free school meals | Hull",
+                            "Source": "https://www.hull.gov.uk/schools-2/free-school-meals",
+                            "Reasoning": "This link provides detailed information about the application process for free school meals in Hull, making it the most suitable choice for council customer needs.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "9",
+                            "Title": "Free School Meals",
+                            "Source": "https://synergy.hull.gov.uk/synergy/live/synergyweb/Enquiries/Citizen/FreeSchoolMeals.aspx",
+                            "Reasoning": "Although it only provides the application process, this resource is from a trusted source (Hull City Council) and requires user authentication.",
+                            "Confidence": "70"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Free school meal vouchers will continue over February half term ...",
+                            "Source": "https://news.hull.gov.uk/21/01/2021/free-school-meal-vouchers-will-continue-over-february-half-term/",
+                            "Reasoning": "This article provides important information about the continuation of free school meal vouchers during a specific half term, which can be crucial for families seeking assistance with food costs.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Children receiving free school meals to be given a \u00a315 voucher for October half term ...",
+                            "Source": "https://news.hull.gov.uk/20/10/2021/children-receiving-free-school-meals-to-be-given-a-pound15-voucher-for-october-half-term/",
+                            "Reasoning": "This article specifically addresses the distribution of free school meal vouchers during a particular half term, providing important details for families.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.hull.gov.uk/schools-2/free-school-meals"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.hull.gov.uk/schools-2/free-school-meals",
+                        "analysis": {
+                            "url": "https://www.hull.gov.uk/schools-2/free-school-meals",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T01:21:26+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T01:21:58+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 27229,
+                            "response_time": 0.59,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.59s)",
+                                    "Content successfully retrieved (27229 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.5923471450805664,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.hull.gov.uk/schools-2/free-school-meals"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.hull.gov.uk/schools-2/free-school-meals",
+                        "content": " Here is the extracted body content containing the central editorial content of the page:\n\n```html\n<main class=\"site-main\" id=\"content\">\n        <div class=\"container\">\n\n            <h1 class=\"page-heading\">\n    Free school meals\n</h1>\n\n            <div class=\"page-content\">\n                <div class=\"page-content-inner\">\n\n                    <p>You can apply for free school meals if your child attends a Hull school or sixth form on a full-time basis. This includes Hull College 14 to 16 direct entry, academies and free schools. To do so by register on the My School Portal and complete the online form. You must be in receipt of one of the following benefits -</p>\n\n                    <ul>\n                        <li>income support</li>\n                        <li>income based jobseeker's allowance</li>\n                        <li>income related employment and support allowance (ESA -&nbsp;IR)</li>\n                        <li>universal credit if the household is earning less than &pound;7,400 per year</li>\n                        <li>asylum seekers receiving support under Part VI of the Immigration and Asylum Act 1999</li>\n                        <li>the guaranteed element of state pension credit</li>\n                        <li>child tax credit with an annual income of no more than &pound;16,190 as assessed by the Inland Revenue.&nbsp;If also in receipt of working tax credit you will not be eligible</li>\n                        <li>working tax credit run on - paid for 4 weeks after you stop qualifying for working tax credit</li>\n                    </ul>\n\n                    <p>You can claim if you are over&nbsp;16 years of age and are receiving one of the above&nbsp;qualifying benefits.</p>\n\n                    <p>If your child is&nbsp;attending an East Riding school,&nbsp;apply to the <a href=\"http://www2.eastriding.gov.uk/learning/schools-colleges-and-academies/school-meals/free-school-meals/\" target=\"_blank\">East Riding of Yorkshire Council</a>.</p>\n\n                    <p>For more information about providing free school meals to families with no recourse to public funds, visit&nbsp;<a href=\"https://www.gov.uk/government/publications/free-school-meals-guidance-for-schools-and-local-authorities/providing-free-school-meals-to-families-with-no-recourse-to-public-funds-nrpf\" target=\"_blank\">GOV.UK</a>.</p>\n\n                    <p>If you think you are eligible for free school meals you can apply online -</p>\n\n                    <p style=\"text-align: center;\"><a class=\"button\" href=\"https://hull.cloud.servelec-synergy.com/Synergy/Live/SynergyWeb/\" target=\"_blank\">Apply for free school meals(opens in a new window)</a></p>\n\n                    <p>You will find out the decision of your application by letter&nbsp;within 7 days.&nbsp;The school will be notified electronically if approved.</p>\n\n                    <p>The school the child attends will give out free school meals vouchers during school holidays.</p>\n\n                    <p>If you have not received this,&nbsp;speak to the school directly.</p>\n\n                    <h3>General Enquiries</h3>\n\n                    <p>For general enquiries contact -</p>\n\n                    <ul>\n                        <li>email - <a href=\"mailto:fsm@hullcc.gov.uk\">fsm@hullcc.gov.uk</a></li>\n                    </ul>\n\n                </div>\n            </div>\n        </div>\n    </main>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 18.942567825317383,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.hull.gov.uk/schools-2/free-school-meals",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content does adequately address this need by providing a list of qualifying benefits and stating that an application can be made online through My School Portal and decision letters are sent within 7 days.",
+                                    "confidence": "85%",
+                                    "reasoning": "The article clearly outlines the conditions for eligibility, specifies how to apply, and gives a timeframe for when the applicant will receive a decision. However, it doesn't explicitly mention if being unemployed qualifies as one of the benefits.",
+                                    "next_actions": "Apply for free school meals by registering on the My School Portal."
+                                }
+                            ],
+                            "overall_assessment": "The content provides clear and concise information regarding eligibility, application process, and timeline, making it helpful to those in need of free school meals. However, clarifying whether being unemployed qualifies as one of the benefits could further improve the user experience."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.1869471073150635,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.hull.gov.uk/schools-2/free-school-meals"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_012126-hull.gov.uk",
+                    "analysis_timestamp": "2025-08-13T01:22:24+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.9666666666666667,
+                            "tokens_consumed": 6373,
+                            "tokens_remaining": 23627,
+                            "token_utilization_percentage": 21.24,
+                            "average_tokens_per_step": 1062.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 78.76,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 22,
+                            "consumption_rate": 1062.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "85",
+                            "quality_scores": [
+                                "85"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "85",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 13.81,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.9666666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_012126-hull.gov.uk",
+                        "start_time": "2025-08-13T01:21:26+01:00",
+                        "current_time": "2025-08-13T01:22:24+01:00",
+                        "duration_seconds": 58,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6373,
+                        "tokens_remaining": 23627,
+                        "token_utilization_percentage": 21.24,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2505,
+                                "avg_per_call": 1252.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3868,
+                                "avg_per_call": 1934
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1062.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_012126-hull.gov.uk",
+                    "start_time": "2025-08-13T01:21:26+01:00",
+                    "current_time": "2025-08-13T01:22:24+01:00",
+                    "duration_seconds": 58,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6373,
+                    "tokens_remaining": 23627,
+                    "token_utilization_percentage": 21.24,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2505,
+                            "avg_per_call": 1252.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3868,
+                            "avg_per_call": 1934
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1062.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

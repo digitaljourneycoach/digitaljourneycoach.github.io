@@ -1,0 +1,661 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-12T20:50:56+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "sirddinbych.gov.uk",
+                "Council Name": "Denbighshire County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Supplementary Planning Guidance Note: Renewable Energy",
+                        "link": "https://www.sirddinbych.gov.uk/en/documents/planning-and-building-regulations/ldp/supplementary-planning-guidance/adopted-spg-documents/renewable-energy.pdf",
+                        "snippet": "Apr 20, 2016 ... in particular for solar electricity (pv) and solar thermal panels, permitted ... solar thermal and/or PV without the need for planning permission."
+                    },
+                    {
+                        "title": "Search applications",
+                        "link": "https://cynllunio.sirddinbych.gov.uk/planning/search-applications?civica.query.decision_dateFrom=24%2F07%2F2022&civica.query.decision_dateTo=30%2F07%2F2022",
+                        "snippet": "... installation of solar panels onto the roof. Planning Application 01 ... planning permission code no. 07/2021/0684. Planning Application\u00a0..."
+                    },
+                    {
+                        "title": "Supplementary Planning Guidance Note: West Rhyl Regeneration ...",
+                        "link": "https://www.sirddinbych.gov.uk/en/documents/planning-and-building-regulations/ldp/supplementary-planning-guidance/adopted-spg-documents/west-rhyl-regeneration-area.pdf",
+                        "snippet": "source heat pumps) and solar thermal panels. The ... before installing any renewable energy technology to confirm whether or not planning permission is."
+                    },
+                    {
+                        "title": "Supplementary Planning Guidance Note - Clwydian Range and Dee ...",
+                        "link": "https://www.sirddinbych.gov.uk/en/documents/planning-and-building-regulations/ldp/supplementary-planning-guidance/adopted-spg-documents/clwydian-range-and-dee-valley-area-of-outstanding-natural-beauty.pdf",
+                        "snippet": "installations or biomass/combined heat and power system flues on buildings require permission if fronting a highway. Stand-alone solar/thermal PV equipment\u00a0..."
+                    },
+                    {
+                        "title": "Search and comment on Planning applications | Denbighshire ...",
+                        "link": "https://www.sirddinbych.gov.uk/en/planning-and-building-regulations/search-and-comment-on-planning-applications.aspx",
+                        "snippet": "Opposition to the principle of development when this has been settled by an outline planning permission or appeal; Applicant's personal circumstances (unless\u00a0..."
+                    },
+                    {
+                        "title": "Supplementary Planning Guidance Note: Conservation Areas",
+                        "link": "https://www.sirddinbych.gov.uk/en/documents/planning-and-building-regulations/ldp/supplementary-planning-guidance/adopted-spg-documents/conservation-areas.pdf",
+                        "snippet": "Mar 18, 2015 ... alterations may need planning permission. These would include adding ... and solar panels, and laying paving or building walls. 5.4. All\u00a0..."
+                    },
+                    {
+                        "title": "Levelling Up Fund: Loggerheads | Denbighshire County Council",
+                        "link": "https://www.sirddinbych.gov.uk/en/community-and-living/community-development/levelling-up-fund/round-2-clwyd-west/loggerheads/loggerheads.aspx",
+                        "snippet": "Planning permission has been granted for the Loggerheads visitor centre and caf\u00e9 improvements. ... Solar panels are scheduled to be installed on the roof\u00a0..."
+                    },
+                    {
+                        "title": "Search applications",
+                        "link": "https://cynllunio.sirddinbych.gov.uk/planning/search-applications?civica.query.valid_dateFrom=17%2F01%2F2021&civica.query.valid_dateTo=23%2F01%2F2021",
+                        "snippet": "... planning permission code number 41/2019/0801/PO. Planning Application 01 ... installation of solar panels and associated works. Planning Application 31\u00a0..."
+                    },
+                    {
+                        "title": "Annual Monitoring Report 2023 | Denbighshire County Council",
+                        "link": "https://www.sirddinbych.gov.uk/en/documents/planning-and-building-regulations/ldp/evidence-monitoring-and-information/local-development-plan-2006-2021-annual-monitoring-report-2023.pdf",
+                        "snippet": "Oct 5, 2023 ... The delay in granting planning permission for new residential development has an impact on the Council's ambition to address local housing need."
+                    },
+                    {
+                        "title": "Denbighshire County Council Dealing With Trees - A Guide for the ...",
+                        "link": "https://www.sirddinbych.gov.uk/en/documents/planning-and-building-regulations/planning/dealing-with-trees-a-guide-for-the-public.pdf",
+                        "snippet": "the local planning authority's permission. Further information and ... Shading of Solar Panels. TP4: The Council will not fell or prune Council owned\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://cynllunio.sirddinbych.gov.uk/planning/search-applications?civica.query.decision_dateFrom=24%2F07%2F2022&civica.query.decision_dateTo=30%2F07%2F2022",
+                        "title": "Search applications (for Solar Panel-related information)",
+                        "confidence": 85,
+                        "strengths": [
+                            "Contains specific instances of solar panel installation applications (found in snippet)",
+                            "Provides detailed information about individual cases, including planning permission code numbers"
+                        ],
+                        "reasoning": "The provided search result directly relates to a list of application results that explicitly mention installations of solar panels. Given the date range of these results and the general council-related source, it's likely they will provide useful information for understanding solar panel regulations with respect to customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Search applications (for Solar Panel-related information)",
+                                "Source": "https://cynllunio.sirddinbych.gov.uk/planning/search-applications?civica.query.decision_dateFrom=24%2F07%2F2022&civica.query.decision_dateTo=30%2F07%2F2022",
+                                "Key Strengths": [
+                                    "Contains specific instances of solar panel installation applications (found in snippet)",
+                                    "Provides detailed information about individual cases, including planning permission code numbers"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The provided search result directly relates to a list of application results that explicitly mention installations of solar panels. Given the date range of these results and the general council-related source, it's likely they will provide useful information for understanding solar panel regulations with respect to customer information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Search applications (for older data)",
+                                "Source": "https://cynllunio.sirddinbych.gov.uk/planning/search-applications?civica.query.valid_dateFrom=17%2F01%2F2021&civica.query.valid_dateTo=23%2F01%2F2021",
+                                "Key Strengths": [
+                                    "Covers solar panel-related applications outside of the provided date range in Recommendation 1",
+                                    "Can help understand long-term trends and regulations related to solar panels"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This search result, though not the most recent, still contains information on solar panel installations. By examining these cases, it may be possible to glean valuable insights into how such projects have been handled by the council in the past."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Supplementary Planning Guidance Note: Renewable Energy",
+                                "Source": "https://www.sirddinbych.gov.uk/en/documents/planning-and-building-regulations/ldp/supplementary-planning-guidance/adopted-spg-documents/renewable-energy.pdf",
+                                "Key Strengths": [
+                                    "Detailed guidance on renewable energy technologies, including solar panels",
+                                    "Offers an informative perspective on relevant council regulations and exceptions"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This document offers comprehensive information about various renewable energy technologies, including details about solar panels and necessary approvals. Examining this resource will provide a thorough understanding of the local regulations governing solar panel installations."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Levelling Up Fund: Loggerheads | Denbighshire County Council",
+                                "Source": "https://www.sirddinbych.gov.uk/en/community-and-living/community-development/levelling-up-fund/round-2-clwyd-west/loggerheads/loggerheads.aspx",
+                                "Key Strengths": [
+                                    "Planning permission has been granted for solar panel installation on a visitor centre and caf\u00e9",
+                                    "Demonstrates that solar panels can be installed in community projects with successful council approval"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This resource showcases an actual case of solar panel installation being approved by the council, providing valuable evidence to demonstrate that these installations can be supported under certain conditions."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Search and comment on Planning applications | Denbighshire County Council",
+                                "Source": "https://www.sirddinbych.gov.uk/en/planning-and-building-regulations/search-and-comment-on-planning-applications.aspx",
+                                "Key Strengths": [
+                                    "Allows stakeholders to comment on proposed planning applications",
+                                    "Can help identify potential objections or support for solar panel installations"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Communities and residents can voice their opinions on planning applications through this resource. By browsing current and past cases, it's possible to find discussions about solar panel installations and their potential impact."
+                            }
+                        ],
+                        "Analysis Notes": "All items in the provided list come from Denbighshire Council resources related to planning regulations, development projects or information. This focuses on local government-related topics which cover both renewable energy technologies and other infrastructural or community developments.",
+                        "Recommendations Notes": "When making recommendations, I prioritized items containing direct and detailed information regarding solar panel installations, and those offering a broader understanding of the council's stance on these projects. Relevant resources such as supplementary planning guidance documents and individual project information were considered when generating recommendations."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "70",
+                        "90",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://cynllunio.sirddinbych.gov.uk/planning/search-applications?civica.query.decision_dateFrom=24%2F07%2F2022&civica.query.decision_dateTo=30%2F07%2F2022"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://cynllunio.sirddinbych.gov.uk/planning/search-applications?civica.query.decision_dateFrom=24%2F07%2F2022&civica.query.decision_dateTo=30%2F07%2F2022",
+                        "analysis": {
+                            "url": "https://cynllunio.sirddinbych.gov.uk/planning/search-applications?civica.query.decision_dateFrom=24%2F07%2F2022&civica.query.decision_dateTo=30%2F07%2F2022",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-12T20:50:56+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-12T20:51:29+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 14894,
+                            "response_time": 0.238,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.238s)",
+                                    "Content successfully retrieved (14894 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.24007201194763184,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://cynllunio.sirddinbych.gov.uk/planning/search-applications?civica.query.decision_dateFrom=24%2F07%2F2022&civica.query.decision_dateTo=30%2F07%2F2022"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://cynllunio.sirddinbych.gov.uk/planning/search-applications?civica.query.decision_dateFrom=24%2F07%2F2022&civica.query.decision_dateTo=30%2F07%2F2022",
+                        "content": " The cleaned semantically structured HTML containing the central editorial content of the page:\n```typescript\n<div role=\"main\">\n    <div id=\"civica-planningsearchandview\" class=\"civica-content\"></div>\n</div>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 1.9939229488372803,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://cynllunio.sirddinbych.gov.uk/planning/search-applications?civica.query.decision_dateFrom=24%2F07%2F2022&civica.query.decision_dateTo=30%2F07%2F2022",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "To understand if permission is required to install solar panels on a house",
+                                    "answer_quality": "Very Poor",
+                                    "confidence": "10",
+                                    "reasoning": "The provided content does not provide any information regarding the installation of solar panels, nor whether permission is necessary. The content only contains coding structure and no relevant information about the subject.",
+                                    "next_actions": "Search for information from local council planning or renewable energy websites or contact the local council directly."
+                                }
+                            ],
+                            "overall_assessment": "The provided content does not offer any useful information to a council resident seeking to understand if permission is required for installing solar panels. The content provides no insights into the process, who to contact, or estimated time frame, making it inadequate and unhelpful for residential solar installation considerations."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.156355857849121,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://cynllunio.sirddinbych.gov.uk/planning/search-applications?civica.query.decision_dateFrom=24%2F07%2F2022&civica.query.decision_dateTo=30%2F07%2F2022"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250812_205056-sirddinbych.gov.uk",
+                    "analysis_timestamp": "2025-08-12T20:51:35+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.65,
+                            "tokens_consumed": 4829,
+                            "tokens_remaining": 25171,
+                            "token_utilization_percentage": 16.1,
+                            "average_tokens_per_step": 804.83
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 83.9,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 31,
+                            "consumption_rate": 804.83,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "10",
+                            "quality_scores": [
+                                "10"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "10",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.29,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.65,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250812_205056-sirddinbych.gov.uk",
+                        "start_time": "2025-08-12T20:50:56+01:00",
+                        "current_time": "2025-08-12T20:51:35+01:00",
+                        "duration_seconds": 39,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 4829,
+                        "tokens_remaining": 25171,
+                        "token_utilization_percentage": 16.1,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 1384,
+                                "avg_per_call": 692
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3445,
+                                "avg_per_call": 1722.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 804.83
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250812_205056-sirddinbych.gov.uk",
+                    "start_time": "2025-08-12T20:50:56+01:00",
+                    "current_time": "2025-08-12T20:51:35+01:00",
+                    "duration_seconds": 39,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 4829,
+                    "tokens_remaining": 25171,
+                    "token_utilization_percentage": 16.1,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 1384,
+                            "avg_per_call": 692
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3445,
+                            "avg_per_call": 1722.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 804.83
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

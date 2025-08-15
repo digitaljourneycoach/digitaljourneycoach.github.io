@@ -1,0 +1,686 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T11:02:28+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "gravesham.gov.uk",
+                "Council Name": "Gravesham Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed bins and sacks \u2013 Gravesham Borough Council",
+                        "link": "https://www.gravesham.gov.uk/bins-recycling/missed-bins-sacks",
+                        "snippet": "Unfortunately sometimes your bin doesn't get collected when it's meant to. There could be a number of reasons for this. Before you can report a missed bin you\u00a0..."
+                    },
+                    {
+                        "title": "Report a missed bin or sack - MyGravesham",
+                        "link": "https://my.gravesham.gov.uk/service/Report_a_missed_bin_or_sack",
+                        "snippet": "A MyGravesham account allows you to make report, apply and make payments for a range of services online."
+                    },
+                    {
+                        "title": "Report a missed bin or sack - Your collection - MyGravesham",
+                        "link": "https://my.gravesham.gov.uk/en/AchieveForms/?mode=fill&consentMessage=yes&form_uri=sandbox-publish://AF-Process-1ea8f9b5-5f3e-4518-9b35-c5dfbffc5241/AF-Stage-8ec41919-673d-4abe-8670-000d722ceed1/definition.json&process=1&process_uri=sandbox-processes://AF-Process-1ea8f9b5-5f3e-4518-9b35-c5dfbffc5241&process_id=AF-Process-1ea8f9b5-5f3e-4518-9b35-c5dfbffc5241&noLoginPrompt=1",
+                        "snippet": "Report a missed bin or sack ... Your collection. When was your collection due? *."
+                    },
+                    {
+                        "title": "MyServices - MyGravesham",
+                        "link": "https://my.gravesham.gov.uk/en/MyServices",
+                        "snippet": "Missed commercial trade waste bin or sack collection \u00b7 Moving in, out or within ... Report a missed bin or sack \u00b7 Report a noise complaint \u00b7 Report an empty\u00a0..."
+                    },
+                    {
+                        "title": "Make an official complaint \u2013 Gravesham Borough Council",
+                        "link": "https://www.gravesham.gov.uk/contact-us/make-official-complaint",
+                        "snippet": "If it's an initial request for a service. For example to report fly-tipping, report a missed bin or something else that's service related; Complaints where\u00a0..."
+                    },
+                    {
+                        "title": "Bin days \u2013 Gravesham Borough Council",
+                        "link": "https://www.gravesham.gov.uk/bins-recycling/bin-days",
+                        "snippet": "To find out more information about missed collections please see our be found on our missed bin page where you'll also be able to report the issue online."
+                    },
+                    {
+                        "title": "Waste Management Policy | Gravesham Borough Council",
+                        "link": "https://www.gravesham.gov.uk/downloads/file/871/waste-management-policy",
+                        "snippet": "If the bin is reported as missed after more than two working days, the waste will not be collected until next scheduled bin collection day. 6.4. Once a report\u00a0..."
+                    },
+                    {
+                        "title": "Gravesham Borough Council: Gravesham Homepage",
+                        "link": "https://www.gravesham.gov.uk/",
+                        "snippet": "Gravesham Borough Council - Home page ; Bins and recycling \u00b7 Check your bin day \u00b7 Garden waste \u00b7 Report a missed bin ; Streets and open spaces. Parks and play\u00a0..."
+                    },
+                    {
+                        "title": "Bins and Recycling - Garden waste - Terms and Conditions",
+                        "link": "https://www.gravesham.gov.uk/garden-waste/terms-conditions",
+                        "snippet": "If the bin goes missing or is affected by fair wear and tear, we will replace it within 10 working days of you reporting it. You can order bins and sacks online\u00a0..."
+                    },
+                    {
+                        "title": "Order bins and sacks \u2013 Gravesham Borough Council",
+                        "link": "https://www.gravesham.gov.uk/bins-recycling/order-bins-sacks",
+                        "snippet": "Order a new, extra or replacement bin. Or find out how to order more sacks."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://my.gravesham.gov.uk/service/Report_a_missed_bin_or_sack",
+                        "title": "Report a missed bin or sack - MyGravesham",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly reports missed bin or sack issues",
+                            "Requires minimal user interaction and navigation"
+                        ],
+                        "reasoning": "This link takes the user to a dedicated page for reporting missed bin collection, which is specific to the council's waste management service.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed bin or sack - MyGravesham",
+                                "Source": "https://my.gravesham.gov.uk/service/Report_a_missed_bin_or_sack",
+                                "Key Strengths": [
+                                    "Directly reports missed bin or sack issues",
+                                    "Requires minimal user interaction and navigation"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link takes the user to a dedicated page for reporting missed bin collection, which is specific to the council's waste management service."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Report a missed bin or sack - Your collection - MyGravesham",
+                                "Source": "https://my.gravesham.gov.uk/en/AchieveForms/?mode=fill&consentMessage=yes&form_uri=sandbox-publish://AF-Process-1ea8f9b5-5f3e-4518-9b35-c5dfbffc5241/AF-Stage-8ec41919-673d-4abe-8670-000d722ceed1/definition.json&process=1&process_uri=sandbox-processes://AF-Process-1ea8f9b5-5f3e-4518-9b35-c5dfbffc5241&process_id=AF-Process-1ea8f9b5-5f3e-4518-9b35-c5dfbffc5241&noLoginPrompt=1",
+                                "Key Strengths": [
+                                    "A user can report a missed collection with ease",
+                                    "Allows for specific time or date details to be provided"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link takes the user to an interactive form dedicated to reporting a missed bin collection with the option of specifying the collection's exact date."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Missed bins and sacks \u2013 Gravesham Borough Council",
+                                "Source": "https://www.gravesham.gov.uk/bins-recycling/missed-bins-sacks",
+                                "Key Strengths": [
+                                    "Offers general information about missed collections",
+                                    "Includes steps for reporting a missed collection"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Though not directly taking the user to the report form, this link offers comprehensive information about missed collections and how to report them."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Order bins and sacks \u2013 Gravesham Borough Council",
+                                "Source": "https://www.gravesham.gov.uk/bins-recycling/order-bins-sacks",
+                                "Key Strengths": [
+                                    "Allows users to order additional bins or sacks",
+                                    "Has a clear and simple layout"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Though not directly related to reporting missed collection, this link is still relevant as it provides information about council's waste management services."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Bin days \u2013 Gravesham Borough Council",
+                                "Source": "https://www.gravesham.gov.uk/bins-recycling/bin-days",
+                                "Key Strengths": [
+                                    "Provides up-to-date information about bin collection schedule",
+                                    "Offers a missed collections page that users can access"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though finding the report form requires navigating further, this link still provides valuable information on council's waste management services."
+                            }
+                        ],
+                        "Analysis Notes": "Some items in the list offered useful but indirect paths to reach the specific goal of reporting missed bin collections. These indirect options have been included due to their relevance and potential value to users who might benefit from additional context about the council's waste management services.",
+                        "Recommendations Notes": "The top recommendations aim to balance directness with contextual information that could aid users in navigating the council's website. Lower-ranked options may also prove valuable, given their relevance and potential user benefits."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Report a missed bin or sack - MyGravesham",
+                            "Source": "https://my.gravesham.gov.uk/service/Report_a_missed_bin_or_sack",
+                            "Reasoning": "This link takes the user to a dedicated page for reporting missed bin collection, which is specific to the council's waste management service with minimal interaction required.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Report a missed bin or sack - Your collection - MyGravesham",
+                            "Source": "https://my.gravesham.gov.uk/en/AchieveForms/?mode=fill&consentMessage=yes&form_uri=sandbox-publish://AF-Process-1ea8f9b5-5f3e-4518-9b35-c5dfbffc5241/AF-Stage-8ec41919-673d-4abe-8670-000d722ceed1/definition.json&process=1&process_uri=sandbox-processes://AF-Process-1ea8f9b5-5f3e-4518-9b35-c5dfbffc5241&process_id=AF-Process-1ea8f9b5-5f3e-4518-9b35-c5dfbffc5241&noLoginPrompt=1",
+                            "Reasoning": "This link takes the user to an interactive form dedicated to reporting a missed bin collection with the option of specifying the collection's exact date.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Missed bins and sacks \u2013 Gravesham Borough Council",
+                            "Source": "https://www.gravesham.gov.uk/bins-recycling/missed-bins-sacks",
+                            "Reasoning": "Though not directly taking the user to the report form, this link offers comprehensive information about missed collections and how to report them.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://my.gravesham.gov.uk/service/Report_a_missed_bin_or_sack"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://my.gravesham.gov.uk/service/Report_a_missed_bin_or_sack",
+                        "analysis": {
+                            "url": "https://my.gravesham.gov.uk/service/Report_a_missed_bin_or_sack",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T11:02:28+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T11:03:01+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 15596,
+                            "response_time": 4.95,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 80,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Acceptable response time (4.95s)",
+                                    "Content successfully retrieved (15596 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 70,
+                                "component_scores": {
+                                    "technical": 80,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 4.951488971710205,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://my.gravesham.gov.uk/service/Report_a_missed_bin_or_sack"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://my.gravesham.gov.uk/service/Report_a_missed_bin_or_sack",
+                        "content": " The main body content of the HTML page, with non-essential elements stripped out, is:\n```\n<div id=\"self-content\" class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-sm-12 text-center\">\n      <!-- registration and login blocks -->\n      <h1>Register or sign in to begin</h1>\n      <p class=\"registration-text\"></p>\n      <div>\n        <p>A MyGravesham account allows you to make report, apply and make payments for a range of services online.</p>\n        <p>When you sign in to your account, you can save you time with auto-completion of your contact information when filling in forms and the ability to view a history of your requests</p>\n      </div>\n      <!-- registration, login, and anonymous access buttons -->\n    </div>\n  </div>\n</div>\n```\nThis semantically structured HTML contains the central editorial content of the page: the heading \"Register or sign in to begin\", a couple of paragraphs about MyGravesham accounts, and registration and login/anonymous access buttons.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 8.519078016281128,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://my.gravesham.gov.uk/service/Report_a_missed_bin_or_sack",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content does not answer this question/meet this need as there is no information about reporting a missed bin",
+                                    "confidence": "0%",
+                                    "reasoning": "The provided content focuses on registering and signing in to an account on the Gravesham council website rather than providing immediate assistance for reporting a missed bin.",
+                                    "next_actions": "Look for a separate section or contact details to report a missed bin, or explore other pages on the website to find this information."
+                                }
+                            ],
+                            "overall_assessment": "This content does not provide helpful information about reporting a missed bin as a council resident. There are no immediate steps to take or contact details provided.",
+                            "overall_satisfaction_level": "Very Unsatisfactory"
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.512803077697754,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://my.gravesham.gov.uk/service/Report_a_missed_bin_or_sack"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_110228-gravesham.gov.uk",
+                    "analysis_timestamp": "2025-08-08T11:03:19+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.85,
+                            "tokens_consumed": 4506,
+                            "tokens_remaining": 25494,
+                            "token_utilization_percentage": 15.02,
+                            "average_tokens_per_step": 751
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 84.98,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 33,
+                            "consumption_rate": 751,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 12.14,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.85,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_110228-gravesham.gov.uk",
+                        "start_time": "2025-08-08T11:02:28+01:00",
+                        "current_time": "2025-08-08T11:03:19+01:00",
+                        "duration_seconds": 51,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 4506,
+                        "tokens_remaining": 25494,
+                        "token_utilization_percentage": 15.02,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 1438,
+                                "avg_per_call": 719
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3068,
+                                "avg_per_call": 1534
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 751
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_110228-gravesham.gov.uk",
+                    "start_time": "2025-08-08T11:02:28+01:00",
+                    "current_time": "2025-08-08T11:03:19+01:00",
+                    "duration_seconds": 51,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 4506,
+                    "tokens_remaining": 25494,
+                    "token_utilization_percentage": 15.02,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 1438,
+                            "avg_per_call": 719
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3068,
+                            "avg_per_call": 1534
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 751
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

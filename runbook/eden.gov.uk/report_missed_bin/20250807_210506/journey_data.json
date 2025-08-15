@@ -1,0 +1,678 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T21:05:06+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "eden.gov.uk",
+                "Council Name": "Eden District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed bin | Westmorland and Furness Council",
+                        "link": "https://www.eden.gov.uk/bins-and-recycling/missed-refuse-recycling-and-garden-waste/",
+                        "snippet": "Report a missed bin online. Contact the Bin and Recycling team. Find your local area. Enter postcode or street name. Search."
+                    },
+                    {
+                        "title": "Missed refuse, recycling or garden waste collection",
+                        "link": "https://selfservice.eden.gov.uk/renderform.aspx?t=446&k=CEFEA79A18D811C1EE66059BD53920122CCFEB5F",
+                        "snippet": "Missed refuse, recycling or garden waste collection. Which collection are you reporting as missed? {Please select}, Refuse, Recycling boxes and bags\u00a0..."
+                    },
+                    {
+                        "title": "Blue bag refuse collection problem report form",
+                        "link": "https://www.eden.gov.uk/bins-and-recycling/household-refuse/household-refuse-collection/blue-bag-refuse-collection-problem-report-form/",
+                        "snippet": "Use this form to report a problem with the supply of blue bags or blue bags being set out too early or in the wrong place. Your title. First name. Last name."
+                    },
+                    {
+                        "title": "Refuse comments and complaints report form",
+                        "link": "https://www.eden.gov.uk/bins-and-recycling/household-refuse/household-refuse-collection/refuse-comments-and-complaints-report-form/",
+                        "snippet": "There are separate forms to report: No bags were left to replace the ones collected - Blue bag refuse collection problem; Blue bags which were missed in the\u00a0..."
+                    },
+                    {
+                        "title": "Blue bag household refuse collection",
+                        "link": "https://www.eden.gov.uk/bins-and-recycling/household-refuse/household-refuse-collection/",
+                        "snippet": "Use this form to report blue bags, set out by 6am, which were missed in the refuse collection. Blue refuse bags for households of six or more occupants request\u00a0..."
+                    },
+                    {
+                        "title": "Report and prevent littering | Westmorland and Furness Council",
+                        "link": "https://www.eden.gov.uk/environment/street-care-and-cleaning/litter/",
+                        "snippet": "Report littering or a full litter bin in your area and help organise litter picking."
+                    },
+                    {
+                        "title": "Arrange a bulky waste collection in the Eden area | Westmorland ...",
+                        "link": "https://www.eden.gov.uk/bins-and-recycling/household-refuse/bulky-household-waste-collection/",
+                        "snippet": "You will need to use a different service. How to dispose of trade waste. Report a missed bulky waste collection. Contact Customer Services or if you would\u00a0..."
+                    },
+                    {
+                        "title": "Arrange a household electrical appliance collection (Eden only ...",
+                        "link": "https://www.eden.gov.uk/bins-and-recycling/household-refuse/household-appliance-collection/",
+                        "snippet": "... Waste Recycling Centre. Find your local Household Waste Recycling Centre. Reporting a missed household electrical appliance collection. If you would prefer to\u00a0..."
+                    },
+                    {
+                        "title": "About My Account with Westmorland and Furness Council",
+                        "link": "https://www.eden.gov.uk/council-business/about-my-account/",
+                        "snippet": "Reporting: Missed bin collections; Graffiti; Dog fouling; Fly-tipping; Littering; Full drop-off recycling bins; Full or damaged litter bins; Abandoned vehicles\u00a0..."
+                    },
+                    {
+                        "title": "Recycling bag and box for plastics, paper, card, glass and tins",
+                        "link": "https://www.eden.gov.uk/bins-and-recycling/recycling-and-composting/recycling-bag-and-box/",
+                        "snippet": "Recycling bags and box not emptied report form. Use this form to report bags and box, set out by 7am, which were missed in the recycling collection."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.eden.gov.uk/bins-and-recycling/missed-refuse-recycling-and-garden-waste/",
+                        "title": "Report a missed bin | Westmorland and Furness Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Offers online reporting of missed bin collections",
+                            "Has an easy-to-search feature for your local area"
+                        ],
+                        "reasoning": "This link provides a user-friendly interface to report missed bin collections. Additionally, it has geolocation features, making it convenient for users to find their local area and report any issues related to waste collection.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed bin | Westmorland and Furness Council",
+                                "Source": "https://www.eden.gov.uk/bins-and-recycling/missed-refuse-recycling-and-garden-waste/",
+                                "Key Strengths": [
+                                    "Offers online reporting of missed bin collections",
+                                    "Has an easy-to-search feature for your local area"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link provides a user-friendly interface to report missed bin collections. Additionally, it has geolocation features, making it convenient for users to find their local area and report any issues related to waste collection."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Missed refuse, recycling or garden waste collection",
+                                "Source": "https://selfservice.eden.gov.uk/renderform.aspx?t=446&k=CEFEA79A18D811C1EE66059BD53920122CCFEB5F",
+                                "Key Strengths": [
+                                    "Specifically designed for reporting missed collections of refuse, recycling, and garden waste"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Although not as user-friendly or detailed as the first recommendation, this link provides a form to report specific issues regarding missed collections of refuse, recycling or garden waste."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Blue bag refuse collection problem report form",
+                                "Source": "https://www.eden.gov.uk/bins-and-recycling/household-refuse/household-refuse-collection/blue-bag-refuse-collection-problem-report-form/",
+                                "Key Strengths": [
+                                    "Focuses on reporting problems with the supply or placement of blue bags for refuse collection"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This recommendation addresses specific issues related to collection of blue bags, which may be more relevant for certain types of waste. However, it lacks some features found in other recommendations, such as geolocation or specific categories of waste."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Refuse comments and complaints report form",
+                                "Source": "https://www.eden.gov.uk/bins-and-recycling/household-refuse/household-refuse-collection/refuse-comments-and-complaints-report-form/",
+                                "Key Strengths": [
+                                    "Offers multiple categories to report issues related to refuse collection"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link provides various options for reporting comments and complaints about refuse collections, including specific issues such as missed or damaged bags. However, it lacks some of the convenience features found in other recommendations."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Recycling bag and box for plastics, paper, card, glass and tins",
+                                "Source": "https://www.eden.gov.uk/bins-and-recycling/recycling-and-composting/recycling-bag-and-box/",
+                                "Key Strengths": [
+                                    "Focuses on reporting problems related to recycling bags and boxes"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "While not as comprehensive as other options, this link addresses specific issues related to recycling bags and boxes, which may be necessary for users interested in recycling-related concerns."
+                            }
+                        ],
+                        "Analysis Notes": "All items are relevant to council customer information needs. However, the first two recommendations were prioritized due to their ability to easily report missed collections online.",
+                        "Recommendations Notes": "For users who experience specific issues with blue bags or recycling bags and boxes, the third and tenth recommendations may provide helpful resources."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "Report a missed bin | Westmorland and Furness Council",
+                        "Source": "https://www.eden.gov.uk/bins-and-recycling/missed-refuse-recycling-and-garden-waste/",
+                        "Reasoning": "This link offers an easy-to-search and user-friendly interface for reporting missed bin collections with geolocation features, making it the optimal next step based on relevance (30% weight), information potential (30% weight), accessibility (20% weight), and credibility (15%) factors.",
+                        "Confidence": "90"
+                    },
+                    {
+                        "Number": "2",
+                        "Title": "Missed refuse, recycling or garden waste collection",
+                        "Source": "https://selfservice.eden.gov.uk/renderform.aspx?t=446&k=CEFEA79A18D811C1EE66059BD53920122CCFEB5F",
+                        "Reasoning": "Although not as user-friendly or detailed as the first recommendation, this link provides a form for reporting missed collections specifically of refuse, recycling and garden waste. While its credibility (15%) score may be lower compared to the first option, it is still relevant and useful for users seeking solutions to their problem.",
+                        "Confidence": "85"
+                    },
+                    {
+                        "Number": "4",
+                        "Title": "Refuse comments and complaints report form",
+                        "Source": "https://www.eden.gov.uk/bins-and-recycling/household-refuse/household-refuse-collection/refuse-comments-and-complaints-report-form/",
+                        "Reasoning": "This link provides various options for reporting comments and complaints about refuse collections, including specific issues such as missed or damaged bags. While its accessibility (20%) score may be lower when compared to the first and second recommendations, it is still a valid option for users with different waste collection concerns.",
+                        "Confidence": "75"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.eden.gov.uk/bins-and-recycling/missed-refuse-recycling-and-garden-waste/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.eden.gov.uk/bins-and-recycling/missed-refuse-recycling-and-garden-waste/",
+                        "analysis": {
+                            "url": "https://www.eden.gov.uk/bins-and-recycling/missed-refuse-recycling-and-garden-waste/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T21:05:06+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T21:05:36+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 49750,
+                            "response_time": 0.276,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.276s)",
+                                    "Content successfully retrieved (49750 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.27709102630615234,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.eden.gov.uk/bins-and-recycling/missed-refuse-recycling-and-garden-waste/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.eden.gov.uk/bins-and-recycling/missed-refuse-recycling-and-garden-waste/",
+                        "content": " The extracted main body content with semantically structured HTML is as follows:\n```html\n<article class=\"localgov-services-page node node--type-localgov-services-page node--with-restricted-width node--view-mode-full signposting\">\n  <div>\n     <div class=\"node__restricted-width-section\">\n       <div class=\"localgov-services-page__content node__content\">\n         <div class=\"field field--name-body field--type-text-with-summary field--label-hidden field__item\">\n           <h2>Before you report a missed bin</h2>\n           <p>Before you report a missed bin check whether:</p>\n           <ul>\n             <li>it was put out on the right day, <a href=\"/bins-recycling-and-street-cleaning/bin-collections/check-your-bin-collection-day\" data-entity-type=\"node\" data-entity-uuid=\"2f85b8c8-fedc-41d5-ae8b-060f3828eae2\" data-entity-substitution=\"canonical\">find your bin collection day</a></li>\n             <li>it was placed at the kerbside and could be clearly seen</li>\n             <li>it contained the correct items</li>\n             <li>the crew haven't put a sticker on your bin explaining why it was not emptied</li>\n             <li>the lid was closed \u2013 if the bin is so full that the bin does not close properly it will not be collected</li>\n           </ul>\n           <p class=\"alert alert-info\">Sometimes we might not have collected your bin because of issues like flooding, snow and ice, a blocked road or a vehicle breakdown.<br>Before you report a missed bin check if we already know about it and are planning to come back to you by looking at our <a href=\"https://www.westmorlandandfurness.gov.uk/bins-recycling-and-street-cleaning/status\">service status updates</a>.</p>\n           <h2>How to report a missed bin</h2>\n           <p>Report a missed bin in the area you live in.</p>\n           <h3>Barrow area</h3>\n           <p><a class=\"lgd-action-link\" href=\"https://itouchvision.app/portal/itouchvision/r/gds/category_link?cuid=EFB175BC902B362C5B8E055434D070A8C0BA5F5C&amp;lang=EN&amp;P_LANG=en\">Report a missed bin online</a></p>\n           <p><a class=\"lgd-action-link\" href=\"https://itouchvision.app/portal/itouchvision/r/gds/category_link?cuid=BF6DDBD3C90692052823E0985634D008A8C0A939&amp;lang=EN&amp;P_LANG=en\">Report a missed bulky waste collection</a></p>\n           <h3>Eden area</h3>\n           <p><a class=\"lgd-action-link\" href=\"https://selfservice.eden.gov.uk/renderform.aspx?t=446&amp;k=1AD1AB77330B6EEB0919D5876EEDBB67D196C647\">Report a missed bin online</a></p>\n           <h3>South Lakeland area</h3>\n           <p><a class=\"lgd-action-link\" href=\"https://selfservice.southlakeland.gov.uk/renderform.aspx?t=156&amp;k=1AD1AB77330B6EEB0919D5876EEDBB67D196C647\">Report a missed bin online</a></p>\n         </div>\n       </div>\n     </div>\n   </div>\n</article>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 22.44109606742859,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.eden.gov.uk/bins-and-recycling/missed-refuse-recycling-and-garden-waste/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content provides clear instructions for reporting a missed bin online for the Barrow, Eden, and South Lakeland areas.",
+                                    "confidence": "90%",
+                                    "reasoning": "The content includes step-by-step guidance on how to report a missed bin online for each area. However, it does not provide phone numbers for reporting a missed bin, which might be a concern for residents who do not have access to the internet or prefer to use a traditional method of communication.",
+                                    "next_actions": "If the resident does not have internet access, they may need to find alternative ways such as contacting their local council office by phone."
+                                }
+                            ],
+                            "overall_assessment": "The content is useful as it provides clear steps for reporting a missed bin online. However, it could be improved by including phone numbers for reporting a missed bin, which would make the content more accessible and user-friendly."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.768835067749023,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.eden.gov.uk/bins-and-recycling/missed-refuse-recycling-and-garden-waste/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_210506-eden.gov.uk",
+                    "analysis_timestamp": "2025-08-07T21:06:05+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.9833333333333333,
+                            "tokens_consumed": 6802,
+                            "tokens_remaining": 93198,
+                            "token_utilization_percentage": 6.8,
+                            "average_tokens_per_step": 1133.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 93.2,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 82,
+                            "consumption_rate": 1133.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "90",
+                            "quality_scores": [
+                                "90"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "90",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 14.05,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.9833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_210506-eden.gov.uk",
+                        "start_time": "2025-08-07T21:05:06+01:00",
+                        "current_time": "2025-08-07T21:06:05+01:00",
+                        "duration_seconds": 59,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 6802,
+                        "tokens_remaining": 93198,
+                        "token_utilization_percentage": 6.8,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3189,
+                                "avg_per_call": 1594.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3613,
+                                "avg_per_call": 1806.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1133.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_210506-eden.gov.uk",
+                    "start_time": "2025-08-07T21:05:06+01:00",
+                    "current_time": "2025-08-07T21:06:05+01:00",
+                    "duration_seconds": 59,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 6802,
+                    "tokens_remaining": 93198,
+                    "token_utilization_percentage": 6.8,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3189,
+                            "avg_per_call": 1594.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3613,
+                            "avg_per_call": 1806.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1133.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

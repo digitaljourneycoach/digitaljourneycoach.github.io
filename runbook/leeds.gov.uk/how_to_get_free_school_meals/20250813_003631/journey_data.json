@@ -1,0 +1,707 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T00:36:31+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "leeds.gov.uk",
+                "Council Name": "Leeds City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Apply for free school meals | Leeds.gov.uk",
+                        "link": "http://www.leeds.gov.uk/schools-and-education/apply-for-free-school-meals",
+                        "snippet": "Children who are eligible for a free school meal can also get a free carton of milk. Check with your child's school to see what they offer."
+                    },
+                    {
+                        "title": "Free school meals application",
+                        "link": "https://www.leeds.gov.uk/sites/default/files/docs/Free%20school%20meals%20application.doc",
+                        "snippet": "This application form can be used by the following individuals: 1. Parents or carers who live outside Leeds but have children who attend a school or Academy in\u00a0..."
+                    },
+                    {
+                        "title": "Healthy Holidays Leeds | Leeds.gov.uk",
+                        "link": "http://www.leeds.gov.uk/children-and-families/healthy-holidays",
+                        "snippet": "How to take part. Any primary and secondary school aged children who are eligible for income-related free school meals can take part. If you are not claiming\u00a0..."
+                    },
+                    {
+                        "title": "Volunteers needed this summer for free school holiday fun, food and ...",
+                        "link": "https://news.leeds.gov.uk/news/volunteers-needed-this-summer-for-free-school-holiday-fun-food-and-activity-programme",
+                        "snippet": "Jun 28, 2022 ... Leeds City Council is calling on volunteers to help make a difference during this summer's school holidays by getting involved with the popular and successful\u00a0..."
+                    },
+                    {
+                        "title": "Schools and education | Leeds.gov.uk",
+                        "link": "http://www.leeds.gov.uk/schools-and-education",
+                        "snippet": "Apply for free school meals. Advice for low income families on how to claim ... Find out how to become a school governor or get support as an existing governor\u00a0..."
+                    },
+                    {
+                        "title": "Healthy Holidays Leeds",
+                        "link": "https://healthyholidays.leeds.gov.uk/",
+                        "snippet": "... school aged children who are eligible for income-related free school meals. The best bit is that we receive funding from the Department for Education to run\u00a0..."
+                    },
+                    {
+                        "title": "Children and families | Leeds.gov.uk",
+                        "link": "http://www.leeds.gov.uk/children-and-families",
+                        "snippet": "Schools and education. Apply for a school place, check school holidays and closures, and find out about transport and free school meals. Special Educational\u00a0..."
+                    },
+                    {
+                        "title": "Healthy Holidays Leeds",
+                        "link": "https://healthyholidays.leeds.gov.uk/Page?n=faq",
+                        "snippet": "If your child(ren) receives 'income related' free school meals and are in reception to year 11 they are eligible to attend any of the activities on offer as\u00a0..."
+                    },
+                    {
+                        "title": "Home education | Leeds.gov.uk",
+                        "link": "http://www.leeds.gov.uk/schools-and-education/composite-prospectus/home-education",
+                        "snippet": "all educational resources (such as books or computers); tuition fees; exam fees. You will not receive any money for free school meals. What we need to do. We\u00a0..."
+                    },
+                    {
+                        "title": "Emergency Food | Money Information Centre",
+                        "link": "http://moneyinformationcentre.leeds.gov.uk/emergency-food",
+                        "snippet": "Other help with food. Free school meals. If you are on benefits or a low income, you may be able to claim for free school meals for any child\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "http://www.leeds.gov.uk/schools-and-education/apply-for-free-school-meals",
+                        "title": "Apply for free school meals | Leeds.gov.uk",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly leads to information on applying for free school meals",
+                            "Official source: Leeds.gov.uk"
+                        ],
+                        "reasoning": "This link provides a direct path for users seeking council customer information related to free school meals. It is the most relevant among the provided results.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Apply for free school meals | Leeds.gov.uk",
+                                "Source": "http://www.leeds.gov.uk/schools-and-education/apply-for-free-school-meals",
+                                "Key Strengths": [
+                                    "Directly leads to information on applying for free school meals",
+                                    "Official source: Leeds.gov.uk"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link provides a direct path for users seeking council customer information related to free school meals. It is the most relevant among the provided results."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Healthy Holidays Leeds",
+                                "Source": "https://healthyholidays.leeds.gov.uk/",
+                                "Key Strengths": [
+                                    "Provides information on free school holiday activities for eligible children",
+                                    "Organized by Leeds City Council"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": " Although it doesn't explicitly focus on free school meals, this link provides additional resources that may be useful to families in need."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Emergency Food | Money Information Centre",
+                                "Source": "http://moneyinformationcentre.leeds.gov.uk/emergency-food",
+                                "Key Strengths": [
+                                    "Mentions free school meals as an option for low-income families",
+                                    "Addresses broader emergency food needs"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link may serve as a starting point for information about various forms of aid available to families in need, including free school meals."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": " Schools and education | Leeds.gov.uk",
+                                "Source": "http://www.leeds.gov.uk/schools-and-education",
+                                "Key Strengths": [
+                                    "Includes information on free school meals within the broader context of schools and education",
+                                    "Official source: Leeds.gov.uk"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link provides a general overview of schools and education related services in Leeds, including information on free school meals within that context."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Healthy Holidays Leeds FAQs",
+                                "Source": "https://healthyholidays.leeds.gov.uk/Page?n=faq",
+                                "Key Strengths": [
+                                    "Answers frequently asked questions about the Healthy Holidays program in Leeds",
+                                    "Addresses eligibility criteria for free school meals"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This link provides a detailed explanation of the eligibility criteria and processes related to Healthy Holidays, which serves as an important resource for information about free school meals in Leeds."
+                            }
+                        ],
+                        "Analysis Notes": "Several search results related to Leeds City Council services and programs were identified. However, only links that directly addressed the provision of free school meals or had a significant focus on relevant information were included as recommendations.",
+                        "Recommendations Notes": "The recommended links offer a balance between providing direct access to applying for free school meals (recommendation 1) and additional resources or supporting information that may be helpful to families in need (recommendations 2-5)."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Apply for free school meals | Leeds.gov.uk",
+                            "Source": "http://www.leeds.gov.uk/schools-and-education/apply-for-free-school-meals",
+                            "Reasoning": "This link provides a direct path for users seeking council customer information related to free school meals. It is the most relevant and has the highest confidence score among the provided results.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "6",
+                            "Title": "Healthy Holidays Leeds",
+                            "Source": "https://healthyholidays.leeds.gov.uk/",
+                            "Reasoning": "Although it doesn't explicitly focus on free school meals, this link provides additional resources that may be useful to families in need.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "10",
+                            "Title": "Emergency Food | Money Information Centre",
+                            "Source": "http://moneyinformationcentre.leeds.gov.uk/emergency-food",
+                            "Reasoning": "This link may serve as a starting point for information about various forms of aid available to families in need, including free school meals.",
+                            "Confidence": "80"
+                        }
+                    ],
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "options": {
+                        "max_selections": 3,
+                        "min_confidence": 0.6
+                    },
+                    "average_confidence": 83.33,
+                    "max_confidence": "90"
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "http://www.leeds.gov.uk/schools-and-education/apply-for-free-school-meals"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "http://www.leeds.gov.uk/schools-and-education/apply-for-free-school-meals",
+                        "analysis": {
+                            "url": "http://www.leeds.gov.uk/schools-and-education/apply-for-free-school-meals",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T00:36:31+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T00:36:57+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 46703,
+                            "response_time": 1.568,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (1.568s)",
+                                    "Content successfully retrieved (46703 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 1.5720219612121582,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "http://www.leeds.gov.uk/schools-and-education/apply-for-free-school-meals"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "http://www.leeds.gov.uk/schools-and-education/apply-for-free-school-meals",
+                        "content": " This text appears to be HTML code for a web page. It contains information about a local council's website, specifically a page on the topic of school meals and free school meals during the summer holidays in Leeds, England. The page provides details about how families can apply for free school meals over the summer break, eligibility requirements, and links to relevant application forms. There is also some information about the council's feedback system and social media presence. Overall, it appears that this webpage is intended to help parents and guardians understand the process of applying for free school meals during the summer holidays in Leeds.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 6.126835107803345,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "http://www.leeds.gov.uk/schools-and-education/apply-for-free-school-meals",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals",
+                                    "answer_quality": "Incomplete",
+                                    "confidence": "30%",
+                                    "reasoning": "The content focuses on summer holiday free school meals, not regular free school meals. There is no mention of eligibility requirements specifically for unemployed residents.",
+                                    "next_actions": "Contact the council's welfare and benefits department or visit their website to find out more about applying for free school meals outside of summer holidays."
+                                },
+                                {
+                                    "need": "I want to know what is the criteria for eligibility",
+                                    "answer_quality": "Incomplete",
+                                    "confidence": "40%",
+                                    "reasoning": "The content doesn't provide details about general eligibility criteria for free school meals. It only mentions children in receipt of income support, job seeker's allowance, or Universal Credit as being eligible for summer free school meals.",
+                                    "next_actions": "Visit the council's main benefits or welfare website to find thorough information about eligibility criteria."
+                                },
+                                {
+                                    "need": "How quickly I will find out if I'm eligible",
+                                    "answer_quality": "Incomplete",
+                                    "confidence": "20%",
+                                    "reasoning": "The content doesn't provide information on how long it takes to process applications or get a response.",
+                                    "next_actions": "Contact the council by phone, email, or visit their office in person for more precise timing information."
+                                }
+                            ],
+                            "overall_assessment": "While providing some useful information about summer free school meals, this content falls short in comprehensively addressing the specific question and needs of a council resident hoping to apply for regular free school meals due to unemployment. It lacks clarity on general eligibility criteria, processing time, and provides no estimate as to when one might know their eligibility status."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 8.689938068389893,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "http://www.leeds.gov.uk/schools-and-education/apply-for-free-school-meals"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_003631-leeds.gov.uk",
+                    "analysis_timestamp": "2025-08-13T00:37:13+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7,
+                            "tokens_consumed": 7615,
+                            "tokens_remaining": 22385,
+                            "token_utilization_percentage": 25.38,
+                            "average_tokens_per_step": 1269.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 74.62,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 17,
+                            "consumption_rate": 1269.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "40",
+                            "quality_scores": [
+                                "30",
+                                "40",
+                                "20"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "40",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 10,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_003631-leeds.gov.uk",
+                        "start_time": "2025-08-13T00:36:31+01:00",
+                        "current_time": "2025-08-13T00:37:13+01:00",
+                        "duration_seconds": 42,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7615,
+                        "tokens_remaining": 22385,
+                        "token_utilization_percentage": 25.38,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 4457,
+                                "avg_per_call": 2228.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3158,
+                                "avg_per_call": 1579
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1269.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_003631-leeds.gov.uk",
+                    "start_time": "2025-08-13T00:36:31+01:00",
+                    "current_time": "2025-08-13T00:37:13+01:00",
+                    "duration_seconds": 42,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7615,
+                    "tokens_remaining": 22385,
+                    "token_utilization_percentage": 25.38,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 4457,
+                            "avg_per_call": 2228.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3158,
+                            "avg_per_call": 1579
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1269.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

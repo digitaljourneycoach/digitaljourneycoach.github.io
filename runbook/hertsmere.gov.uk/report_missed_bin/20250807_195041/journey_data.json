@@ -1,0 +1,674 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T19:50:41+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "hertsmere.gov.uk",
+                "Council Name": "Hertsmere Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed collections - Hertsmere Borough Council",
+                        "link": "https://www.hertsmere.gov.uk/environment-bins-and-recycling/bins-and-recycling/missed-collections",
+                        "snippet": "If your bin hasn't been collected by 4pm on your collection day, please contact us. You must report it within 48 hours in order for us to arrange a return."
+                    },
+                    {
+                        "title": "Bins and recycling - Hertsmere Borough Council",
+                        "link": "https://www.hertsmere.gov.uk/environment-bins-and-recycling/bins-and-recycling",
+                        "snippet": "Bins and recycling - report a missed bin, find out all about recycling, bin collections and locate recycling centres."
+                    },
+                    {
+                        "title": "Report It - Hertsmere Borough Council",
+                        "link": "https://www.hertsmere.gov.uk/report-it",
+                        "snippet": "Please report it to Action Fraud online or by calling 0300 123 2040. ... Graffiti \u00b7 Missed bin \u00b7 Noise nuisance \u00b7 Street cleaning. Report to Hertfordshire\u00a0..."
+                    },
+                    {
+                        "title": "Service Rules",
+                        "link": "https://www.hertsmere.gov.uk/Documents/04-Environment-Refuse--Recycling/Recycling--Waste/Service-Rules.pdf",
+                        "snippet": "Missed bins reported outside of 48 hours will be collected during the next normal scheduled collection. Any bins/boxes not collected due to an over-loaded bin,."
+                    },
+                    {
+                        "title": "Comments, Complaints and Compliments FAQs - Hertsmere ...",
+                        "link": "https://www.hertsmere.gov.uk/your-council/how-the-council-works/comments-complaints-and-compliments/comments-complaints-and-compliments-faqs",
+                        "snippet": "How do I report everyday concerns for example a missed bin? Contact us - our details are listed below, or report online using Report Missed Collection form."
+                    },
+                    {
+                        "title": "Search Results - Hertsmere Borough Council",
+                        "link": "https://www.hertsmere.gov.uk/search-results.aspx?search_keywords=problem&SearchResults_List_GoToPage=2",
+                        "snippet": "Missed collections. Description: Report a missed bin, either by phone, email ... /Environment-Refuse-and-Recycling/Recycling--Waste/Missed-collections.aspx\u00a0..."
+                    },
+                    {
+                        "title": "Search Results - Hertsmere Borough Council",
+                        "link": "https://www.hertsmere.gov.uk/search-results.aspx?search_keywords=collection",
+                        "snippet": "Report a missed bin, either by phone, email or online and find out the ... /Environment-Refuse-and-Recycling/Recycling--Waste/Bin-collection-service-updates.aspx\u00a0..."
+                    },
+                    {
+                        "title": "Comments, Complaints and Compliments - Hertsmere Borough ...",
+                        "link": "https://www.hertsmere.gov.uk/your-council/how-the-council-works/comments-complaints-and-compliments",
+                        "snippet": "These are dealt with by Hertfordshire County Council. report everyday problems, such as abandoned cars, fly-tipping ,missed bins,vandalism,and complaints about\u00a0..."
+                    },
+                    {
+                        "title": "No excuse for abuse - Hertsmere Borough Council",
+                        "link": "https://www.hertsmere.gov.uk/your-council/no-excuse-for-abuse",
+                        "snippet": "report everyday problems, such as abandoned cars, fly-tipping, missed bins, vandalism, andcomplaints about food; challenge a penalty charge notice; challenge\u00a0..."
+                    },
+                    {
+                        "title": "Terms and Conditions of the Green Waste Subscription Service",
+                        "link": "https://www.hertsmere.gov.uk/Documents/04-Environment-Refuse--Recycling/Recycling--Waste/Garden-Waste-T-and-Cs-pdf-1.98mb.pdf",
+                        "snippet": "Missed collections must be reported within 48 hours of the scheduled collection otherwise the bin(s)will not be emptied until the next scheduled collection\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.hertsmere.gov.uk/environment-bins-and-recycling/bins-and-recycling/missed-collections",
+                        "title": "Missed collections - Hertsmere Borough Council",
+                        "confidence": 95,
+                        "strengths": [
+                            "Directly addresses missed bin collections",
+                            "Provides a specific link to report missed collections within 48 hours"
+                        ],
+                        "reasoning": "The webpage title and snippet clearly indicate that this resource will help address the customer's need for council customer information regarding missed bin collections, providing a straightforward solution.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "4"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed collections - Hertsmere Borough Council",
+                                "Source": "https://www.hertsmere.gov.uk/environment-bins-and-recycling/bins-and-recycling/missed-collections",
+                                "Key Strengths": [
+                                    "Directly addresses missed bin collections",
+                                    "Provides a specific link to report missed collections within 48 hours"
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "The webpage title and snippet clearly indicate that this resource will help address the customer's need for council customer information regarding missed bin collections, providing a straightforward solution."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Report It - Hertsmere Borough Council",
+                                "Source": "https://www.hertsmere.gov.uk/report-it",
+                                "Key Strengths": [
+                                    "Broad resource for reporting issues to the council",
+                                    "Covers various concerns including missed bin collections"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While not specifically tailored to missed bin collections, this resource provides a one-stop form for reporting various council-related issues."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Comments, Complaints and Compliments FAQs - Hertsmere ...",
+                                "Source": "https://www.hertsmere.gov.uk/your-council/how-the-council-works/comments-compliments-and-complaints/comments-complaints-and-compliments-faqs",
+                                "Key Strengths": [
+                                    "Answers frequently asked questions about the council's processes",
+                                    "Includes details on reporting missed bin collections"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This resource serves as a useful guide for understanding the council's processes, while also providing relevant information about how to report missed bin collections."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Search Results - Hertsmere Borough Council",
+                                "Source": "https://www.hertsmere.gov.uk/search-results.aspx?search_keywords=problem&SearchResults_List_GoToPage=2",
+                                "Key Strengths": [
+                                    "Searches council resources based on a specific keyword 'problem'",
+                                    "Includes results for missed bin collections"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though not a direct link to reporting missed collections, this search can lead the user to relevant information about council customer services related to missed bins."
+                            }
+                        ],
+                        "Analysis Notes": "The given list primarily comprises resources for reporting various issues to the Hertsmere Borough Council, including missed bin collections. However, not all items in the JSON list focus explicitly on council customer information for missed bin collections.",
+                        "Recommendations Notes": "The provided JSON list offers multiple options that may help address customer needs for council customer information pertaining to missed bin collections. Item 1 provides the most direct solution while additional options offer alternatives for finding relevant information."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "95",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "95"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Missed collections - Hertsmere Borough Council",
+                            "Source": "https://www.hertsmere.gov.uk/environment-bins-and-recycling/bins-and-recycling/missed-collections",
+                            "Reasoning": "The webpage title and snippet clearly indicate that this resource will help address the customer's need for council customer information regarding missed bin collections, providing a straightforward solution.",
+                            "Confidence": "95"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Report It - Hertsmere Borough Council",
+                            "Source": "https://www.hertsmere.gov.uk/report-it",
+                            "Reasoning": "While not specifically tailored to missed bin collections, this resource provides a one-stop form for reporting various council-related issues.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Comments, Compliments and Complaints FAQs - Hertsmere ...",
+                            "Source": "https://www.hertsmere.gov.uk/your-council/how-the-council-works/comments-compliments-and-complaints/comments-complaints-and-compliments-faqs",
+                            "Reasoning": "This resource serves as a useful guide for understanding the council's processes, while also providing relevant information about how to report missed bin collections.",
+                            "Confidence": "75"
+                        }
+                    ],
+                    "max_selections": 3,
+                    "min_confidence": "0.6"
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.hertsmere.gov.uk/environment-bins-and-recycling/bins-and-recycling/missed-collections"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.hertsmere.gov.uk/environment-bins-and-recycling/bins-and-recycling/missed-collections",
+                        "analysis": {
+                            "url": "https://www.hertsmere.gov.uk/environment-bins-and-recycling/bins-and-recycling/missed-collections",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T19:50:41+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T19:51:06+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 104065,
+                            "response_time": 0.305,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.305s)",
+                                    "Content successfully retrieved (104065 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.30635905265808105,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.hertsmere.gov.uk/environment-bins-and-recycling/bins-and-recycling/missed-collections"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.hertsmere.gov.uk/environment-bins-and-recycling/bins-and-recycling/missed-collections",
+                        "content": " Here's a summary of the bin collection service rules in Hertsmere Borough Council:\n\n1. Your bin should be presented on your property boundary by 6:00 am on the scheduled collection day. The lid must be closed for efficient emptying.\n\n2. The appropriate bin should be used for specific waste types, such as green for garden waste, blue for recyclable materials, and black for general waste. Extra recycling bags can be purchased from council offices or libraries.\n\n3. Heavy or bulky items like furniture, mattresses, and electrical appliances cannot be placed in your bin. Instead, they should be booked for a bulky waste collection or taken to a local recycling center.\n\n4. Garden waste should only be put out for collection between March 31st and November 7th each year.\n\n5. If you wish to buy additional wheelie bins, please contact the council with your property details for an assessment.\n\n6. Bins should not be placed on pavements or roads during snowfall or icy conditions, as they can obstruct gritting and winter maintenance operations.\n\n7. On bank holiday collection days, collections will be one day later than scheduled across the week, with normal service resuming from the following Monday.\n\n8. If your bin has been missed and none of the above applies to your collection, please report it within two working days. You can do this via phone call, email, or using an online reporting system provided by Hertsmere Borough Council.\n\n9. For more information on the service rules, you can download the Bin Collection Service Rules PDF from their official website.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 10.398855209350586,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.hertsmere.gov.uk/environment-bins-and-recycling/bins-and-recycling/missed-collections",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content does provide a response for reporting missed collections, so it addresses this need.",
+                                    "confidence": "80%",
+                                    "reasoning": "The process to report a missed collection is outlined, including contact options and a timeframe for reporting (within 2 working days). However, I would have preferred more guidance on what information to include in the report, or clearer instructions if there's any specific action needed from me aside from reporting.",
+                                    "next_actions": "Report the missed collection through the given channels within two working days and await response from Hertsmere Borough Council."
+                                }
+                            ],
+                            "overall_assessment": "Overall, the content provides a comprehensive summary of bin collection service rules in Hertsmere Borough Council. Although it does answer my initial question about reporting a missed collection, some additional information such as more specific reporting guidelines could be added to enhance the guidance provided."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.250537872314453,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.hertsmere.gov.uk/environment-bins-and-recycling/bins-and-recycling/missed-collections"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_195041-hertsmere.gov.uk",
+                    "analysis_timestamp": "2025-08-07T19:51:22+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6833333333333333,
+                            "tokens_consumed": 9400,
+                            "tokens_remaining": 90600,
+                            "token_utilization_percentage": 9.4,
+                            "average_tokens_per_step": 1566.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 90.6,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 57,
+                            "consumption_rate": 1566.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "80",
+                            "quality_scores": [
+                                "80"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "80",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.76,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_195041-hertsmere.gov.uk",
+                        "start_time": "2025-08-07T19:50:41+01:00",
+                        "current_time": "2025-08-07T19:51:22+01:00",
+                        "duration_seconds": 41,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 9400,
+                        "tokens_remaining": 90600,
+                        "token_utilization_percentage": 9.4,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 6217,
+                                "avg_per_call": 3108.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3183,
+                                "avg_per_call": 1591.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1566.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_195041-hertsmere.gov.uk",
+                    "start_time": "2025-08-07T19:50:41+01:00",
+                    "current_time": "2025-08-07T19:51:22+01:00",
+                    "duration_seconds": 41,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 9400,
+                    "tokens_remaining": 90600,
+                    "token_utilization_percentage": 9.4,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 6217,
+                            "avg_per_call": 3108.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3183,
+                            "avg_per_call": 1591.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1566.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

@@ -1,0 +1,634 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T04:45:01+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "scambs.gov.uk",
+                "Council Name": "South Cambridgeshire District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Help with food costs - South Cambs District Council",
+                        "link": "https://www.scambs.gov.uk/cost-of-living/help-with-food-costs",
+                        "snippet": "Get food vouchers for school holidays through the holiday voucher scheme. Free activities and food for children during the school holidays is also available\u00a0..."
+                    },
+                    {
+                        "title": "Statement of Intent for ECO4 and Great British Insulation Scheme Flex",
+                        "link": "https://www.scambs.gov.uk/media/0hbpdip0/great-british-insulation-scheme-and-eco4-flex-statement-of-intent-scdc-v4.pdf",
+                        "snippet": "May 24, 2024 ... Proxy 4) A child living at the premises is eligible for free school meals, due to low-income. 5. Proxy 5) A person living at the premises is\u00a0..."
+                    },
+                    {
+                        "title": "Advice and support with money - South Cambs District Council",
+                        "link": "https://www.scambs.gov.uk/cost-of-living/advice-and-support-with-money",
+                        "snippet": "provides vouchers to families with children that are receiving free school meals for up to 3 children in any one family ... it is also worth checking with local\u00a0..."
+                    },
+                    {
+                        "title": "State of the District \u2013 South Cambridgeshire",
+                        "link": "https://www.scambs.gov.uk/media/e0wh03uq/state-of-the-district-south-cambridgeshire-1.pdf",
+                        "snippet": "a higher proportion, 36.2%, of those eligible for free school meals, attained this (15). ... get-data. 19. \u2014. Travel to work area analysis in Great Britain\u00a0..."
+                    },
+                    {
+                        "title": "260547 MIXED COMMS BROCHURE",
+                        "link": "https://www.scambs.gov.uk/media/t0if3vhz/balanced-and-mixed-communities-a-good-practice-guide.pdf",
+                        "snippet": "In 2002 children from very low income households and in receipt of free school meals (FSM) performed significantly less well at. GCSE than the national\u00a0..."
+                    },
+                    {
+                        "title": "What goes in which bin?",
+                        "link": "https://www.scambs.gov.uk/bins-and-recycling/what-goes-in-which-bin",
+                        "snippet": "Did you know most chewing gum contains plastic? It's therefore not food waste, and must go in the black bin. Chocolate and confectionery wrappers."
+                    },
+                    {
+                        "title": "Magazine",
+                        "link": "https://www.scambs.gov.uk/media/vkahmnmp/web-south-cambs-mag-spring-2025.pdf",
+                        "snippet": "Mar 23, 2025 ... Your local library or Parish Council hub can also help. To take advantage of this service, just call us on 01954 713 000. 4 scambs.gov.uk."
+                    },
+                    {
+                        "title": "Community projects - South Cambs District Council",
+                        "link": "https://www.scambs.gov.uk/bins-and-recycling/reducing-waste/community-projects",
+                        "snippet": "A Community Fridge is a space where anyone can share surplus food, and anyone else can take it to save food waste. ... school uniform, World Book Day outfits or\u00a0..."
+                    },
+                    {
+                        "title": "South Cambs Magazine Summer 2025",
+                        "link": "https://www.scambs.gov.uk/media/0vghtk33/south-cambs-mag-summer-2025-plain-text.pdf",
+                        "snippet": "confident getting to school. Later this summer, work will begin on widening ... Free listing on visitsouthcambs.co.uk. Page 21. 21. Businesses and event\u00a0..."
+                    },
+                    {
+                        "title": "Magazine",
+                        "link": "https://www.scambs.gov.uk/media/gmvht351/web-south-cambs-mag-summer-2025.pdf",
+                        "snippet": "\u201cA free space to work with access to WiFi.\u201d \u201cBeing able to borrow e ... more confident getting to school. Later this summer, work will begin on\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.scambs.gov.uk/cost-of-living/help-with-food-costs",
+                        "title": "Help with food costs - South Cambs District Council",
+                        "confidence": 100,
+                        "strengths": [
+                            "This link provides information about a program that offers food vouchers to families with children receiving free school meals.",
+                            "It is relevant as the search involves council customer information needs related to food costs."
+                        ],
+                        "reasoning": "The title and snippet both relate directly to help with food costs, specifically mentioning the eligibility for free school meals. This indicates a strong likelihood that this resource will be helpful for meeting the searcher's information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Help with food costs - South Cambs District Council",
+                                "Source": "https://www.scambs.gov.uk/cost-of-living/help-with-food-costs",
+                                "Key Strengths": [
+                                    "This link provides information about a program that offers food vouchers to families with children receiving free school meals.",
+                                    "It is relevant as the search involves council customer information needs related to food costs."
+                                ],
+                                "Confidence": "100",
+                                "Reasoning": "The title and snippet both relate directly to help with food costs, specifically mentioning the eligibility for free school meals. This indicates a strong likelihood that this resource will be helpful for meeting the searcher's information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Statement of Intent for ECO4 and Great British Insulation Scheme Flex",
+                                "Source": "https://www.scambs.gov.uk/media/0hbpdip0/great-british-insulation-scheme-and-eco4-flex-statement-of-intent-scdc-v4.pdf",
+                                "Key Strengths": [
+                                    "This document contains a statement of intent for energy-efficiency improvement programs, which may be relevant to those looking for ways to reduce costs or become more eco-friendly.",
+                                    "The eligibility criterion mentioned in the snippet (Proxy 4: A child living at the premises is eligible for free school meals, due to low-income) indirectly suggests relevance to council customer information needs."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While the title is not directly related to the search, the snippet suggests a possible link between energy efficiency programs and free school meals eligibility. Further examination of the document may confirm its relevance."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Advice and support with money - South Cambs District Council",
+                                "Source": "https://www.scambs.gov.uk/cost-of-living/advice-and-support-with-money",
+                                "Key Strengths": [
+                                    "This webpage offers advice and support for managing money during the cost of living crisis, which may be relevant to those seeking assistance.",
+                                    "The mention of vouchers for families with children receiving free school meals indicates a focus on supporting council customers."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title and relevant mentions in the snippet suggest that this resource may address the searcher's needs for advice on managing money, especially for families with children receiving free school meals."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "State of the District \u2013 South Cambridgeshire",
+                                "Source": "https://www.scambs.gov.uk/media/e0wh03uq/state-of-the-district-south-cambridgeshire-1.pdf",
+                                "Key Strengths": [
+                                    "This report includes data about the percentage of those eligible for free school meals, indicating a focus on socioeconomic issues within the council district.",
+                                    "While not directly relevant to managing costs, such information may be useful in understanding the broader context of financial challenges faced by council customers."
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "The title and snippet are not directly related to cost of living or support services for council customers. The resource's potential relevance depends on the searcher's particular information needs, but it might still contain useful data related to free school meals eligibility."
+                            }
+                        ],
+                        "Analysis Notes": "The search results focused on a variety of topics related to South Cambrige District Council. Some resources were directly relevant to managing costs and/or support services for council customers (e.g., food vouchers, energy efficiency programs), while others were more related to broader socioeconomic issues within the district.",
+                        "Recommendations Notes": "The top recommendations focus on direct assistance with managing costs and accessing support services. These resources offer clear benefits for council customers dealing with financial pressures during the cost of living crisis."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "100",
+                        "80",
+                        "85",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 81.25,
+                    "max_confidence": "100"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.scambs.gov.uk/cost-of-living/help-with-food-costs"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.scambs.gov.uk/cost-of-living/help-with-food-costs",
+                        "analysis": {
+                            "url": "https://www.scambs.gov.uk/cost-of-living/help-with-food-costs",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T04:45:01+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T04:45:32+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 77266,
+                            "response_time": 0.41,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.41s)",
+                                    "Content successfully retrieved (77266 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.41212987899780273,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.scambs.gov.uk/cost-of-living/help-with-food-costs"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.scambs.gov.uk/cost-of-living/help-with-food-costs",
+                        "content": " The requested main body content is as follows:\n```\n<main id=\"main-content\" class=\"\">\n    <div class=\"spinner-overlay\" id=\"spinner\" style=\"display: none\">\n        <div class=\"spinner\"></div>\n        <p class=\"loading-text\">Please wait, we are gathering your details...</p>\n    </div>\n\n    <div class=\"wrapper-title hide-for-print\">\n        <div class=\"grid-container\">\n            <div class=\"grid-x grid-padding-x align-center\">\n                <div class=\"medium-12 small-11 cell\">\n                    <div>\n\n                        <h1 class=\"title\">Help with food costs</h1>\n                     </div>\n                </div>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"wrapper-main wrapper-main--shallow \">\n        <div class=\"grid-container\">\n            <div class=\"grid-x grid-padding-x align-center\">\n                <div class=\"cell medium-11 large-10 small-12 print-full\">\n                    <article class=\"wysiwyg\">\n\n                        <h2>Food costs for children and families</h2>\n<p>If you&rsquo;re getting certain benefits, your child (including post-16 students at sixth form or college) may be entitled to<a rel=\"noopener\" href=\"https://www.cambridgeshire.gov.uk/residents/children-and-families/schools-learning/help-with-school-learning-costs/free-school-meals\" target=\"_blank\" title=\"Free school meals\" aria-label=\"Free school meals will open in a new browser window.\">free school meals</a>. Secondary school children who are entitled to free school meals might also qualify for help with<a rel=\"noopener\" href=\"https://www.citizensadvice.org.uk/family/education/help-with-school-costs/\" target=\"_blank\" title=\"School transport costs\" aria-label=\"School transport costs will open in a new browser window.\">school transport costs</a>.&nbsp;</p>\n<p>If you get a qualifying benefit you&rsquo;ll be able to get regular food and milk vouchers to help buy fruit, vegetables and milk for those who are pregnant or have a child under 4 through <a rel=\"noopener\" href=\"https://www.healthystart.nhs.uk/frequently-asked-questions/applying-for-healthy-start-faqs/\" target=\"_blank\" title=\"Healthy start\" aria-label=\"Healthy start will open in a new browser window.\">Healthy Start</a>.</p>\n<p>Get food vouchers for school holidays through the <a rel=\"noopener\" href=\"https://www.cambridgeshire.gov.uk/residents/children-and-families/schools-learning/help-with-school-learning-costs/cambridgeshire-holiday-voucher-scheme\" target=\"_blank\" title=\"Holiday voucher scheme\" aria-label=\"Holiday voucher scheme will open in a new browser window.\">holiday voucher scheme</a>.&nbsp;Free activities and food for children during the school holidays is also available through the <a rel=\"noopener\" href=\"https://www.cambridgeshire.gov.uk/residents/children-and-families/parenting-and-family-support/cambridgeshire-holiday-activities-and-food-haf-programme-2022\" target=\"_blank\" title=\"Cambridgeshire Holiday Activities and Food Programme\" aria-label=\"Cambridgeshire Holiday Activities and Food Programme will open in a new browser window.\">Cambridgeshire Holiday Activities and Food (HAF) Programme</a>.&nbsp;</p>\n<h2>Accessing affordable food</h2>\n<p>The vast majority of foodbanks and food hubs in South Cambridgeshire are easy to access, as you are able to turn up on the day and no voucher is required. For more information and to see details of your nearest foodbank or food hub, please visit our <a href=\"/cost-of-living/foodbanks-and-food-hubs\" title=\"Foodbanks and food hubs\" aria-label=\"Foodbanks and food hubs.\">dedicated foodbanks page</a>.</p>\n<p>For the foodbanks that you do need a voucher for, you can get this by emailing<a href=\"mailto:duty.communities@scambs.gov.uk\">duty.communities@scambs.gov.uk</a> us with your phone number.</p>\n<p>For more help with food, you may find the following apps helpful:</p>\n<ul>\n<li><a rel=\"noopener\" href=\"https://olioex.com/\" target=\"_blank\" title=\"Olio\" aria-label=\"Olio will open in a new browser window.\">OLIO</a>&nbsp;&ndash; this app gives you access to &lsquo;not needed&rsquo; food in Cambridge for free</li>\n<li><a rel=\"noopener\" href=\"https://toogoodtogo.co.uk/en-gb/consumer\" target=\"_blank\" title=\"Too good to go\" aria-label=\"Too good to go will open in a new browser window.\">Too Good To Go</a> &ndash; this app helps you to search for unsold food near you that you can buy at a lower price</li>\n<li>\n<p><a rel=\"noopener\" href=\"https://cambridgesustainablefood.org/food-waste-individuals\" target=\"_blank\" title=\"Cambridge sustainable food\" aria-label=\"Cambridge sustainable food will open in a new browser window.\">Cambridge Sustainable Food</a> &ndash; get tips on how to limit food waste at home</p>\n</li>\n</ul>\n<p class=\"highlight\">Please note that when we signpost or refer to external organisations for services this is<strong> not</strong> an endorsement or a recommendation of an external organisation or private individual by South Cambridgeshire District Council. We encourage residents to carry out their own research to compare different service providers to best meet their needs.</p>\n\n                    </article>\n                </div>\n            </div>\n        </div>\n    </div>\n</main>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 31.239696979522705,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.scambs.gov.uk/cost-of-living/help-with-food-costs",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 11.769906044006348,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.scambs.gov.uk/cost-of-living/help-with-food-costs"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_044501-scambs.gov.uk",
+                    "analysis_timestamp": "2025-08-13T04:46:16+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.25,
+                            "tokens_consumed": 7771,
+                            "tokens_remaining": 22229,
+                            "token_utilization_percentage": 25.9,
+                            "average_tokens_per_step": 1295.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 74.1,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 17,
+                            "consumption_rate": 1295.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 17.86,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.25,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_044501-scambs.gov.uk",
+                        "start_time": "2025-08-13T04:45:01+01:00",
+                        "current_time": "2025-08-13T04:46:16+01:00",
+                        "duration_seconds": 75,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7771,
+                        "tokens_remaining": 22229,
+                        "token_utilization_percentage": 25.9,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3084,
+                                "avg_per_call": 1542
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 4687,
+                                "avg_per_call": 2343.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1295.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_044501-scambs.gov.uk",
+                    "start_time": "2025-08-13T04:45:01+01:00",
+                    "current_time": "2025-08-13T04:46:16+01:00",
+                    "duration_seconds": 75,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7771,
+                    "tokens_remaining": 22229,
+                    "token_utilization_percentage": 25.9,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3084,
+                            "avg_per_call": 1542
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 4687,
+                            "avg_per_call": 2343.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1295.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

@@ -1,0 +1,684 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T10:21:31+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "havant.gov.uk",
+                "Council Name": "Havant Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Bin collections - Overview | Havant Borough Council",
+                        "link": "https://www.havant.gov.uk/bin-collections/bin-collections-overview",
+                        "snippet": "To report a missed bin, you will need to select the scheduled collection that has been missed within the portal calendar. If the status of the collection is '\u00a0..."
+                    },
+                    {
+                        "title": "Contact us | Havant Borough Council",
+                        "link": "https://www.havant.gov.uk/contact-us",
+                        "snippet": "Missed bin? Hampshire County Council; Staying updated. Share Facebook Twitter ... Sign up for our customer portal to report any missed waste collections."
+                    },
+                    {
+                        "title": "Frequently asked questions for the new garden waste customer ...",
+                        "link": "https://www.havant.gov.uk/bin-collections/frequently-asked-questions-new-garden-waste-customer-portal",
+                        "snippet": "You can manage your garden waste subscription, view your calendar for all your scheduled waste collections and report missed bins."
+                    },
+                    {
+                        "title": "Go online, save time | Havant Borough Council",
+                        "link": "https://www.havant.gov.uk/news/2025/go-online-save-time",
+                        "snippet": "Feb 28, 2025 ... The portal is open for customers to report any missed waste collections, check their bin collection calendar and subscribe to garden waste collections."
+                    },
+                    {
+                        "title": "Garden waste | Havant Borough Council",
+                        "link": "https://www.havant.gov.uk/bin-collections/garden-waste",
+                        "snippet": "Missed bins must be reported by 4pm on the next working day after your scheduled collection. I've let my licence lapse what do I do? If you do not have a\u00a0..."
+                    },
+                    {
+                        "title": "August bank holiday bin collections | Havant Borough Council",
+                        "link": "https://www.havant.gov.uk/news/2024/august-bank-holiday-bin-collections",
+                        "snippet": "Aug 21, 2024 ... Find your usual collection day here. You only need to report a missed bin (rubbish, recycling or garden waste) if you notice that your\u00a0..."
+                    },
+                    {
+                        "title": "Out of hours service | Havant Borough Council",
+                        "link": "https://www.havant.gov.uk/out-hours-service",
+                        "snippet": "Out of hours can be contacted via the Police control on 101 or the Hampshire County Council website. Next working day. Reporting a missed bin. Our customer\u00a0..."
+                    },
+                    {
+                        "title": "Bin collections | Havant Borough Council",
+                        "link": "https://www.havant.gov.uk/bin-collections",
+                        "snippet": "This will assist us in giving you a speedy service. If your bin (rubbish, recycling) has not been collected you only need to report it as a missed bin if\u00a0..."
+                    },
+                    {
+                        "title": "No change to rubbish and recycling services over Easter bank ...",
+                        "link": "https://www.havant.gov.uk/news/2023/no-change-rubbish-and-recycling-services-over-easter-bank-holiday-weekend",
+                        "snippet": "Apr 3, 2023 ... Please ensure your bin is out by 7am on your day of collection. ... Residents can report missed waste and recycling collections online."
+                    },
+                    {
+                        "title": "Turn over a new leaf with our new portal | Havant Borough Council",
+                        "link": "https://www.havant.gov.uk/news/2025/turn-over-new-leaf-our-new-portal",
+                        "snippet": "Feb 21, 2025 ... The new portal allows customers to manage their subscription, view their collection day and to report any missed waste collections."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.havant.gov.uk/bin-collections/bin-collections-overview",
+                        "title": "Bin collections - Overview | Havant Borough Council",
+                        "confidence": 80,
+                        "strengths": [
+                            "Offers an overview of bin collections.",
+                            "Includes instructions on how to report a missed bin."
+                        ],
+                        "reasoning": "This link directly relates to the council customer information needs for bin collections and highlights how to report a missed bin.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Bin collections - Overview | Havant Borough Council",
+                                "Source": "https://www.havant.gov.uk/bin-collections/bin-collections-overview",
+                                "Key Strengths": [
+                                    "Offers an overview of bin collections.",
+                                    "Includes instructions on how to report a missed bin."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link directly relates to the council customer information needs for bin collections and highlights how to report a missed bin."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Contact us | Havant Borough Council",
+                                "Source": "https://www.havant.gov.uk/contact-us",
+                                "Key Strengths": [
+                                    "Provides a general contact page.",
+                                    "Mentions the customer portal, where missed bin reports can be made."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "While this link doesn't specifically mention bin collections, it does provide information about the customer portal which is relevant to reporting a missed bin."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Frequently asked questions for the new garden waste customer ...",
+                                "Source": "https://www.havant.gov.uk/bin-collections/frequently-asked-questions-new-garden-waste-customer-portal",
+                                "Key Strengths": [
+                                    "Detailed frequently asked questions about the garden waste customer portal.",
+                                    "Includes instructions on how to manage subscriptions, check schedules and report missed bins."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link directly pertains to the topic of bin collections, focusing specifically on garden waste. Additionally, it offers a comprehensive guide about the customer portal's functionalities."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Go online, save time | Havant Borough Council",
+                                "Source": "https://www.havant.gov.uk/news/2025/go-online-save-time",
+                                "Key Strengths": [
+                                    "Details the benefits of using the customer portal.",
+                                    "Mentions reporting missed bins and checking schedules among its features."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This news post explains the advantages of using the city's online customer portal, which includes managing waste collections and reporting missed bins."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Garden waste | Havant Borough Council",
+                                "Source": "https://www.havant.gov.uk/bin-collections/garden-waste",
+                                "Key Strengths": [
+                                    "Focuses on garden waste bin collections.",
+                                    "Provides guidance on reporting a missed bin."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The content directly pertains to the topic of bin collections, with a focus on garden waste. It also offers information about missed bin reporting."
+                            }
+                        ],
+                        "Analysis Notes": "Several links focused on online services and resources offered by Havant Borough Council for managing waste collections, making it easier for users to access relevant information. Bin collection-specific information was abundant across the results.",
+                        "Recommendations Notes": "The top five recommendations highlight various ways to report missed bins or access useful waste management tools like online customer portals."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "70",
+                        "90",
+                        "85",
+                        "85"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Bin collections - Overview | Havant Borough Council",
+                            "Source": "https://www.havant.gov.uk/bin-collections/bin-collections-overview",
+                            "Reasoning": "This link directly relates to the council customer information needs for bin collections and highlights how to report a missed bin.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Frequently asked questions for the new garden waste customer ...",
+                            "Source": "https://www.havant.gov.uk/bin-collections/frequently-asked-questions-new-garden-waste-customer-portal",
+                            "Reasoning": "This link directly pertains to the topic of bin collections, focusing specifically on garden waste. Additionally, it offers a comprehensive guide about the customer portal's functionalities.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Garden waste | Havant Borough Council",
+                            "Source": "https://www.havant.gov.uk/bin-collections/garden-waste",
+                            "Reasoning": "The content directly pertains to the topic of bin collections, with a focus on garden waste. It also offers information about missed bin reporting.",
+                            "Confidence": "85"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.havant.gov.uk/bin-collections/bin-collections-overview"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.havant.gov.uk/bin-collections/bin-collections-overview",
+                        "analysis": {
+                            "url": "https://www.havant.gov.uk/bin-collections/bin-collections-overview",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T10:21:31+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T10:21:56+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 40352,
+                            "response_time": 0.268,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.268s)",
+                                    "Content successfully retrieved (40352 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.2683448791503906,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.havant.gov.uk/bin-collections/bin-collections-overview"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.havant.gov.uk/bin-collections/bin-collections-overview",
+                        "content": " This is an HTML code for a webpage that provides information about waste bin collections in Havant Borough. The page includes details on how to leave out your bins for collection, what happens if you forget or miss a bin collection, and the process of requesting an assisted bin collection. It also provides related links for bin collections over Christmas and New Year.\n\nThe HTML structure is divided into different sections, such as the header, main content, and footer. The main content includes an article that provides detailed information about the waste bin collection service in Havant Borough, with subheadings and bullet points to make it easier to read and understand.\n\nThere is also a related links section at the bottom of the page that offers links to additional relevant pages on the website. Finally, there are various CSS classes and IDs used throughout the code for styling purposes. Overall, this HTML code helps create an informative webpage about waste bin collections in Havant Borough that is easy for users to navigate.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 7.287148952484131,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.havant.gov.uk/bin-collections/bin-collections-overview",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content partially addresses this need by providing information on what to do when a bin has been missed. However, it does not explicitly provide a method for reporting a missed collection.",
+                                    "confidence": "60%",
+                                    "reasoning": "Though the content mentions that 'Missed collections can be reported online via MyHavant', this information is not immediately apparent and requires reading between the lines. A more direct statement could improve the user experience for residents who may need to urgently report a missed collection.",
+                                    "next_actions": "I would search for the 'MyHavant' service on Havant Borough Council's website to report the missed bin collection."
+                                }
+                            ],
+                            "overall_assessment": "The content is informative and easy to read, providing detailed information about waste bin collections in Havant Borough. However, for a Council Resident who needs to urgently report a missed bin collection, more direct statements or a prominent link would improve the user experience."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.319796085357666,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.havant.gov.uk/bin-collections/bin-collections-overview"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_102131-havant.gov.uk",
+                    "analysis_timestamp": "2025-08-08T10:22:09+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6333333333333333,
+                            "tokens_consumed": 7949,
+                            "tokens_remaining": 22051,
+                            "token_utilization_percentage": 26.5,
+                            "average_tokens_per_step": 1324.83
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 73.5,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 16,
+                            "consumption_rate": 1324.83,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.05,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6333333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_102131-havant.gov.uk",
+                        "start_time": "2025-08-08T10:21:31+01:00",
+                        "current_time": "2025-08-08T10:22:09+01:00",
+                        "duration_seconds": 38,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7949,
+                        "tokens_remaining": 22051,
+                        "token_utilization_percentage": 26.5,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 4897,
+                                "avg_per_call": 2448.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3052,
+                                "avg_per_call": 1526
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1324.83
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_102131-havant.gov.uk",
+                    "start_time": "2025-08-08T10:21:31+01:00",
+                    "current_time": "2025-08-08T10:22:09+01:00",
+                    "duration_seconds": 38,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7949,
+                    "tokens_remaining": 22051,
+                    "token_utilization_percentage": 26.5,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 4897,
+                            "avg_per_call": 2448.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3052,
+                            "avg_per_call": 1526
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1324.83
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

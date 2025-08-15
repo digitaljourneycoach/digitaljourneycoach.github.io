@@ -1,0 +1,654 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T09:44:14+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "basingstoke.gov.uk",
+                "Council Name": "Basingstoke and Deane Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Making a complaint",
+                        "link": "http://www.basingstoke.gov.uk/complaint",
+                        "snippet": "These include issues with bin collections, street care and maintenance, noise nuisance and other matters. However, if your complaint is about our standard of\u00a0..."
+                    },
+                    {
+                        "title": "Bins and recycling collections",
+                        "link": "http://www.basingstoke.gov.uk/bin-collections",
+                        "snippet": "Report a missed collection \u00b7 Report a bin collection issue \u00b7 Order new bins \u00b7 Garden waste collection \u00b7 Hazardous household waste \u00b7 Bulky or large items\u00a0..."
+                    },
+                    {
+                        "title": "Bins and recycling",
+                        "link": "http://www.basingstoke.gov.uk/bins",
+                        "snippet": "Report a missed bin \u00b7 Visit your local tip \u00b7 Bin collections. Rubbish and recycling collections, including clinical waste, and how to order new bins. Recycling."
+                    },
+                    {
+                        "title": "Check your collection day",
+                        "link": "http://www.basingstoke.gov.uk/bincollections",
+                        "snippet": "Report a missed collection \u00b7 Report a bin collection issue \u00b7 Garden waste collection \u00b7 Rubbish and recycling \u00b7 Food waste collections. Back to top. Help us\u00a0..."
+                    },
+                    {
+                        "title": "Garden Waste Collection",
+                        "link": "http://www.basingstoke.gov.uk/gardenwaste",
+                        "snippet": "Reporting a missed collection. In the event that a container has been ... Related. Check your collection day \u00b7 Report a bin collection issue \u00b7 Order a new\u00a0..."
+                    },
+                    {
+                        "title": "Report something to us",
+                        "link": "http://www.basingstoke.gov.uk/report",
+                        "snippet": "Report any issues such as bin collection, fly-tipping, tree problems, noise nuisance, abandoned vehicles, log-on issues, and more in Basingstoke and Deane."
+                    },
+                    {
+                        "title": "Order a replacement bin or box",
+                        "link": "http://www.basingstoke.gov.uk/replacement-bin",
+                        "snippet": "Check to see if this is covered by your house contents insurance. Bin type, Cost. Household waste bin replacement (black/grey) All waste bins will be supplied\u00a0..."
+                    },
+                    {
+                        "title": "Roads, footpaths and highways - who to contact",
+                        "link": "http://www.basingstoke.gov.uk/road-highways-contact",
+                        "snippet": "Your first point of contact when reporting a footpath, road or highway issue should be via Hampshire County Council website."
+                    },
+                    {
+                        "title": "Your Place Magazine",
+                        "link": "https://www.basingstoke.gov.uk/content/pagepdf/your-place-spring25.pdf",
+                        "snippet": "Residents with communal waste bins will empty their small indoor food waste caddy into their shared ... Report a missed bin \u276f. Page 4. Orange peel, banana skins,\u00a0..."
+                    },
+                    {
+                        "title": "Kerbside glass recycling service",
+                        "link": "http://www.basingstoke.gov.uk/glassrecycling",
+                        "snippet": "If you live in a flat or a maisonette and share waste and recycling bins ... Related. Report a bin collection issue \u00b7 Order new bins \u00b7 Recycling \u00b7 Recycling\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "http://www.basingstoke.gov.uk/complaint",
+                        "title": "Making a complaint",
+                        "confidence": 90,
+                        "strengths": [
+                            "Covers a wide range of issues (bin collections, street care, maintenance, noise nuisance etc.)",
+                            "Direct link to the page for making complaints"
+                        ],
+                        "reasoning": "This option stands out as it provides a direct link and covers various common council customer issues that might arise.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Making a complaint",
+                                "Source": "http://www.basingstoke.gov.uk/complaint",
+                                "Key Strengths": [
+                                    "Covers a wide range of issues (bin collections, street care, maintenance, noise nuisance etc.)",
+                                    "Direct link to the page for making complaints"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This option stands out as it provides a direct link and covers various common council customer issues that might arise."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Bins and recycling collections",
+                                "Source": "http://www.basingstoke.gov.uk/bin-collections",
+                                "Key Strengths": [
+                                    "Covers various issues related to bin collections such as reporting missed collection, bin collection issue, ordering new bins etc.",
+                                    "Direct link to the informative page"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This option offers a comprehensive list of services related to bin and recycling issues."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Check your collection day",
+                                "Source": "http://www.basingstoke.gov.uk/bincollections",
+                                "Key Strengths": [
+                                    "Specifically tailored for checking bin collection days",
+                                    "Addresses various types of waste and food waste collections"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This option allows customers to check their collection day easily, along with information about the types of waste being collected."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Garden Waste Collection",
+                                "Source": "http://www.basingstoke.gov.uk/gardenwaste",
+                                "Key Strengths": [
+                                    "Direct link to the page for garden waste collection",
+                                    "Coverage of related topics like missed collections"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This option is relevant as it offers information about garden waste collection and provides a direct link to the informative page."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Report something to us",
+                                "Source": "http://www.basingstoke.gov.uk/report",
+                                "Key Strengths": [
+                                    "Allows reporting issues such as bin collection, fly-tipping, tree problems etc.",
+                                    "Direct link to the page for reporting various issues"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This option appeals as it allows customers to report a wide range of council-related issues."
+                            }
+                        ],
+                        "Analysis Notes": "The provided list includes various resources that cover different aspects of customer information needs related to the council.",
+                        "Recommendations Notes": "Items with higher confidence scores are more appropriate and comprehensive for addressing customers' common questions and concerns about council services, especially those pertaining to waste management."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Making a complaint",
+                            "Source": "http://www.basingstoke.gov.uk/complaint",
+                            "Reasoning": "This option stands out as it provides a direct link and covers various common council customer issues that might arise.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Bins and recycling collections",
+                            "Source": "http://www.basingstoke.gov.uk/bin-collections",
+                            "Reasoning": "This option offers a comprehensive list of services related to bin and recycling issues.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Check your collection day",
+                            "Source": "http://www.basingstoke.gov.uk/bincollections",
+                            "Reasoning": "This option allows customers to check their collection day easily, along with information about the types of waste being collected.",
+                            "Confidence": "80"
+                        }
+                    ],
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "min_confidence": 60,
+                    "max_selections": 3,
+                    "selectedOptions": [
+                        {
+                            "Number": "1",
+                            "Title": "Making a complaint",
+                            "Source": "http://www.basingstoke.gov.uk/complaint",
+                            "Reasoning": "This option stands out as it provides a direct link and covers various common council customer issues that might arise.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Check your collection day",
+                            "Source": "http://www.basingstoke.gov.uk/bincollections",
+                            "Reasoning": "This option allows customers to check their collection day easily, along with information about the types of waste being collected.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Bins and recycling collections",
+                            "Source": "http://www.basingstoke.gov.uk/bin-collections",
+                            "Reasoning": "This option offers a comprehensive list of services related to bin and recycling issues.",
+                            "Confidence": "85"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "http://www.basingstoke.gov.uk/complaint"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "http://www.basingstoke.gov.uk/complaint",
+                        "analysis": {
+                            "url": "http://www.basingstoke.gov.uk/complaint",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T09:44:14+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T09:44:41+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": false,
+                            "http_status": null,
+                            "content_type": null,
+                            "content_length": 0,
+                            "response_time": 0,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 10,
+                                "max_score": 100,
+                                "issues": [
+                                    "No HTTP response received",
+                                    "No content retrieved"
+                                ],
+                                "strengths": [
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": null
+                            },
+                            "accessibility_assessment": {
+                                "score": 0,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": null,
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "investigate",
+                                "confidence": 50,
+                                "reason": "Analysis incomplete",
+                                "overall_score": 24,
+                                "component_scores": {
+                                    "technical": 10,
+                                    "accessibility": 0,
+                                    "match": 50
+                                },
+                                "next_steps": [],
+                                "alternatives_needed": false
+                            },
+                            "fetch_error": "Failed to fetch URL: cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://www.basingstoke.gov.uk/complaint"
+                        },
+                        "processing_time": 0.28931188583374023,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [],
+                "content_types": [],
+                "retrieved_content": []
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analysis_skipped"
+            },
+            "output_data": {
+                "action": "content_analysis_skipped",
+                "reason": "no_retrieved_content",
+                "tokens_used": 25,
+                "metadata": {
+                    "next_state": "journey_decision",
+                    "step_skipped": true
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "next_state": "journey_decision",
+                "step_skipped": true
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_094414-basingstoke.gov.uk",
+                    "analysis_timestamp": "2025-08-08T09:44:41+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.45,
+                            "tokens_consumed": 1806,
+                            "tokens_remaining": 28194,
+                            "token_utilization_percentage": 6.02,
+                            "average_tokens_per_step": 301
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 93.98,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 93,
+                            "consumption_rate": 301,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "no_content_data": true
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 6.43,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.45,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_094414-basingstoke.gov.uk",
+                        "start_time": "2025-08-08T09:44:14+01:00",
+                        "current_time": "2025-08-08T09:44:41+01:00",
+                        "duration_seconds": 27,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 1806,
+                        "tokens_remaining": 28194,
+                        "token_utilization_percentage": 6.02,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 1806,
+                                "avg_per_call": 903
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 301
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_094414-basingstoke.gov.uk",
+                    "start_time": "2025-08-08T09:44:14+01:00",
+                    "current_time": "2025-08-08T09:44:41+01:00",
+                    "duration_seconds": 27,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 1806,
+                    "tokens_remaining": 28194,
+                    "token_utilization_percentage": 6.02,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 1806,
+                            "avg_per_call": 903
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 301
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

@@ -1,0 +1,585 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T09:46:12+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "godalming-tc.gov.uk",
+                "Council Name": "Waverley Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a problem - Godalming Town Council",
+                        "link": "https://godalming-tc.gov.uk/report-a-problem/",
+                        "snippet": "Mar 21, 2025 ... Missed Bin Collection Waverley Borough Council. Noise Complaints \u2013 01483 523333. Waverley Borough Council. Pavement in Disrepair \u2013 03456 009\u00a0..."
+                    },
+                    {
+                        "title": "GODALMING TOWN COUNCIL",
+                        "link": "https://godalming-tc.gov.uk/wp-content/uploads/2024/08/0.-15-August-2024-EP-Committee-Agenda-EV.pdf",
+                        "snippet": "Aug 15, 2024 ... Close and adjustment of Bin Pick-up area. Green Mantle ... appears to be missing - it would have been one of the posts reported elsewhere."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://godalming-tc.gov.uk/report-a-problem/",
+                        "title": "Report a problem - Godalming Town Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Dedicated page for reporting problems directly to the council",
+                            "Includes various issue categories such as missed bin collection, noise complaints, and pavement repairs"
+                        ],
+                        "reasoning": "The title and snippet suggest that this link leads to a dedicated section for reporting issues, including problems with waste collection (missed bin collection) which aligns with the customer's information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "2",
+                            "recommendations": "2"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a problem - Godalming Town Council",
+                                "Source": "https://godalming-tc.gov.uk/report-a-problem/",
+                                "Key Strengths": [
+                                    "Dedicated page for reporting problems directly to the council",
+                                    "Includes various issue categories such as missed bin collection, noise complaints, and pavement repairs"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title and snippet suggest that this link leads to a dedicated section for reporting issues, including problems with waste collection (missed bin collection) which aligns with the customer's information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "GODALMING TOWN COUNCIL",
+                                "Source": "https://godalming-tc.gov.uk/wp-content/uploads/2024/08/0.-15-August-2024-EP-Committee-Agenda-EV.pdf",
+                                "Key Strengths": [
+                                    "Potential discussion of waste management and council issues within the meeting agenda",
+                                    "Mention of 'Close and adjustment of Bin Pick-up area' in the snippet suggests indirect relevance to waste issues"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "While the title doesn't imply it directly, the snippet mentions a potential discussion about bin pick-up area which could lead to information about council customer needs. However, the confidence is lower due to indirect relevance."
+                            }
+                        ],
+                        "Analysis Notes": "The search results provided contain two relevant items that may serve council customers' needs for information. The first item is more directly related to reporting issues, while the second item only indirectly includes waste management and council matters.",
+                        "Recommendations Notes": "Recommending the 'Report a problem - Godalming Town Council' page was based on its direct relevance to the customer's needs, but the second item also offers potential insights into council issues that could be of interest."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 75,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://godalming-tc.gov.uk/report-a-problem/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://godalming-tc.gov.uk/report-a-problem/",
+                        "analysis": {
+                            "url": "https://godalming-tc.gov.uk/report-a-problem/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T09:46:12+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T09:46:26+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 87523,
+                            "response_time": 11.055,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 70,
+                                "max_score": 100,
+                                "issues": [
+                                    "Slow response time (11.055s)"
+                                ],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Content successfully retrieved (87523 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 66,
+                                "component_scores": {
+                                    "technical": 70,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 11.057900190353394,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://godalming-tc.gov.uk/report-a-problem/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://godalming-tc.gov.uk/report-a-problem/",
+                        "content": " This text appears to be HTML code for a webpage that has been designed to inform users about cookies and their consent to various categories of cookies used for different purposes. Here's a brief explanation of the different parts:\n\n1. `<div id=\"cmplz-cookie-banner\">`: This is the main container of the cookie banner, which contains information about the cookies and allows users to manage their preferences.\n\n2. `<button class=\"cmplz-btn cmplz-accept\">Accept</button>`: A button for accepting all cookies.\n\n3. `<button class=\"cmplz-btn cmplz-deny\">Dismiss</button>`: A button for dismissing the cookie banner and continuing with the default settings (accepting all cookies).\n\n4. `<div class=\"cmplz-links cmplz-information\">`: This contains links to manage options, learn more about purposes, and manage third-party services and vendors associated with the cookies.\n\n5. `<div class=\"cmplz-divider cmplz-footer\">`: A divider separating the footer from the rest of the content.\n\n6. `<button class=\"cmplz-btn cmplz-view-preferences\">Preferences</button>` and `<button class=\"cmplz-btn cmplz-save-preferences\">Save preferences</button>`: Buttons to open and save preferences for the cookies.\n\n7. `<a id=\"pojo-a11y-skip-content\"...>`: An accessibility link that allows screen reader users or keyboard navigation users to skip the cookie banner and go directly to the main content of the page.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 14.533761978149414,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://godalming-tc.gov.uk/report-a-problem/",
+                        "analysis": {
+                            "persona": "PERSONAL PERSPECTIVE",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "0%",
+                                    "confidence": "0%",
+                                    "reasoning": "The provided content does not answer this question or meet this need as it pertains to council services and waste management specific information. The content focuses on cookie policies, not bin collection.",
+                                    "next_actions": "I would search for the relevant contact details or section on the council's website specifically for reporting missed bin collections."
+                                }
+                            ],
+                            "overall_assessment": "The content does not serve my needs related to waste management or bin collection. It focuses on cookie policies and has no information about what services are offered, who to contact, or how to report missed collections. A key gap is the lack of council services-related content."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.492526054382324,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://godalming-tc.gov.uk/report-a-problem/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_094612-godalming-tc.gov.uk",
+                    "analysis_timestamp": "2025-08-08T09:46:56+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7333333333333333,
+                            "tokens_consumed": 7682,
+                            "tokens_remaining": 22318,
+                            "token_utilization_percentage": 25.61,
+                            "average_tokens_per_step": 1280.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 74.39,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 17,
+                            "consumption_rate": 1280.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 10.48,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7333333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_094612-godalming-tc.gov.uk",
+                        "start_time": "2025-08-08T09:46:12+01:00",
+                        "current_time": "2025-08-08T09:46:56+01:00",
+                        "duration_seconds": 44,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7682,
+                        "tokens_remaining": 22318,
+                        "token_utilization_percentage": 25.61,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 5646,
+                                "avg_per_call": 2823
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 2036,
+                                "avg_per_call": 1018
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1280.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_094612-godalming-tc.gov.uk",
+                    "start_time": "2025-08-08T09:46:12+01:00",
+                    "current_time": "2025-08-08T09:46:56+01:00",
+                    "duration_seconds": 44,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7682,
+                    "tokens_remaining": 22318,
+                    "token_utilization_percentage": 25.61,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 5646,
+                            "avg_per_call": 2823
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 2036,
+                            "avg_per_call": 1018
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1280.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

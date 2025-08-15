@@ -1,0 +1,679 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T06:05:02+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "preston.gov.uk",
+                "Council Name": "Preston City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Food access - Preston City Council",
+                        "link": "https://www.preston.gov.uk/article/1096/Food-access",
+                        "snippet": "It can affect children who receive free school meals but also those families on low or insecure incomes. How we can help. We are working with schools, faith\u00a0..."
+                    },
+                    {
+                        "title": "Holiday Activity and Food Programme Summer 2025 - Preston City ...",
+                        "link": "https://www.preston.gov.uk/article/10612/Holiday-Activity-and-Food-Programme-Summer-2025",
+                        "snippet": "Jun 2, 2025 ... We have received Department for Education funding to deliver a free 24-day Holiday Activities and Food (HAF) programme for FSM-eligible and\u00a0..."
+                    },
+                    {
+                        "title": "Help in Preston Food Access",
+                        "link": "https://preston.gov.uk/media/9411/Food-Access-document-2021/pdf/Help_in_Preston_Food_Access_A4_Leaflet_-_November_2021.pdf?m=1639756644177",
+                        "snippet": "Free School Meals. If you are in receipt of benefits and you have children, they may be entitled to free school meals. You can apply by calling the number."
+                    },
+                    {
+                        "title": "Help in Preston Food Access A4 Leaflet - Dec 2020.indd",
+                        "link": "https://preston.gov.uk/media/4790/Help-in-Preston-Food-Access-leaflet/pdf/Help_in_Preston_Food_Access_A4_Leaflet_-_Dec_2020_002.pdf?m=1608050206980",
+                        "snippet": "Free School Meals. If you are in receipt of benefits and you have children, they may be entitled to free school meals. You can apply by calling the number."
+                    },
+                    {
+                        "title": "Benefit cap - Preston City Council",
+                        "link": "https://www.preston.gov.uk/article/968/Benefit-cap",
+                        "snippet": "The cap will not include one-off benefits, such as Social Fund loans, or non-cash benefits like free school meals. ... Can I get any help with my housing benefit\u00a0..."
+                    },
+                    {
+                        "title": "Holiday Activity and Food Programme agreed in Preston for 2025 ...",
+                        "link": "https://www.preston.gov.uk/article/10089/Holiday-Activity-and-Food-Programme-agreed-in-Preston-for-2025-2026",
+                        "snippet": "Feb 12, 2025 ... It is primarily aimed at children in receipt of benefits related free school meals but is not exclusively for them and successful providers\u00a0..."
+                    },
+                    {
+                        "title": "Statement of Intent for ECO4 and Great British Insulation Scheme ...",
+                        "link": "https://www.preston.gov.uk/article/7883/Statement-of-Intent-for-ECO4-and-Great-British-Insulation-Scheme",
+                        "snippet": "Proxy 4. A child living at the premises is eligible for free school meals, due to low-income5. Proxy 5. A person living at the premises is supported by a\u00a0..."
+                    },
+                    {
+                        "title": "Central Lancashire Local Plan 2023 to 2041 | Preston City Council",
+                        "link": "https://www.preston.gov.uk/media/20337/Appendix-One-Central-Lancashire-Local-Plan-2023-2041-Publication-Version/pdf/Appendix_One_Central_Lancashire_Local_Plan_2023-2041_Publication_Version.pdf?m=1737379011543",
+                        "snippet": "d) consider the local food environment, including access to local food shops and ... have planned for additional education provision, and this policy safeguards."
+                    },
+                    {
+                        "title": "Food Allergy & Intolerance Guidance for the Catering Industry",
+                        "link": "https://www.preston.gov.uk/media/1013/SafeFood-Food-allergy-and-intolerance-guide-for-the-food-catering-industry/pdf/Food-Allergy-Intolerance.pdf?m=1558701766387",
+                        "snippet": "Under the original standard, gluten-free foods must have less than 200 mg/kg (ppm) gluten. Foods manufactured under the 2009 standard can be called (1). 'gluten\u00a0..."
+                    },
+                    {
+                        "title": "Ecoli 0157",
+                        "link": "https://www.preston.gov.uk/media/235/E-coli-0157/pdf/Ecoli-0157.pdf?m=1584030995727",
+                        "snippet": "before handling food \u2013 particularly at home, in nurseries and infant schools. \u25ab Swimming or playing in contaminated water, such as ponds or streams\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.preston.gov.uk/article/1096/Food-access",
+                        "title": "Food access - Preston City Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Comprehensive information about food access in Preston, covering various aspects such as free school meals and assistance programs.",
+                            "Relevant snippet highlights the importance of food access for low-income families."
+                        ],
+                        "reasoning": "This link provides a detailed overview of food access in Preston, which is highly relevant to the customer's information needs about council resources regarding food. The link also offers information on how the council can help with food access, making it beneficial for users looking for assistance.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Food access - Preston City Council",
+                                "Source": "https://www.preston.gov.uk/article/1096/Food-access",
+                                "Key Strengths": [
+                                    "Comprehensive information about food access in Preston, covering various aspects such as free school meals and assistance programs.",
+                                    "Relevant snippet highlights the importance of food access for low-income families."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides a detailed overview of food access in Preston, which is highly relevant to the customer's information needs about council resources regarding food. The link also offers information on how the council can help with food access, making it beneficial for users looking for assistance."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Holiday Activity and Food Programme Summer 2025 - Preston City ...",
+                                "Source": "https://www.preston.gov.uk/article/10612/Holiday-Activity-and-Food-Programme-Summer-2025",
+                                "Key Strengths": [
+                                    "DFE funding for a free summer programme specifically targeted at families in receipt of benefits related free school meals.",
+                                    "Relevant snippet highlights the duration and eligibility criteria for the programme."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link offers a free holiday program focused on children who receive free school meals. It is particularly beneficial for families in need during summer breaks, aligning with the customer's search query."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Help in Preston Food Access",
+                                "Source": "https://preston.gov.uk/media/9411/Food-Access-document-2021/pdf/Help_in_Preston_Food_Access_A4_Leaflet_-_November_2021.pdf?m=1639756644177",
+                                "Key Strengths": [
+                                    "Comprehensive resource that contains information about free school meals, application process and contacts.",
+                                    "Relevant snippet mentions the application process for receiving free school meals."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides a helpful resource for users interested in learning more about food access and eligibility for free school meals. The document offers clear instructions on how to apply, making it beneficial for users seeking information about council resources for assistance."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Holiday Activity and Food Programme agreed in Preston for 2025 ...",
+                                "Source": "https://www.preston.gov.uk/article/10089/Holiday-Activity-and-Food-Programme-agreed-in-Preston-for-2025-2026",
+                                "Key Strengths": [
+                                    "Comprehensive overview of the HAF program, including eligibility and provider details.",
+                                    "Relevant snippet highlights that the program is not exclusively for children in receipt of free school meals."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link offers a detailed summary of the HAF program, as well as its eligibility criteria. The snippet also highlights that the program is not limited to families with children receiving free school meals, making it relevant for a broader audience."
+                            }
+                        ],
+                        "Analysis Notes": "The search results primarily focused on food assistance programs, including holiday activities and food support initiatives, as well as information about free school meals. However, other topics like benefit caps, local plans, and food safety guidelines were also present in the search results.",
+                        "Recommendations Notes": "The top recommendations aim to satisfy the user's essential needs for food assistance programs while providing helpful resources for various aspects of council resources regarding food."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "85",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82.5,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Food access - Preston City Council",
+                            "Source": "https://www.preston.gov.uk/article/1096/Food-access",
+                            "Reasoning": "This link provides the most comprehensive and relevant information about food access in Preston, covering various aspects such as free school meals and assistance programs. Its high confidence score, combined with its position as the top recommendation, makes it the optimal next step.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Holiday Activity and Food Programme Summer 2025 - Preston City ...",
+                            "Source": "https://www.preston.gov.uk/article/10612/Holiday-Activity-and-Food-Programme-Summer-2025",
+                            "Reasoning": "While this link provides information about a free summer program focusing on families in need, it is not the most comprehensive or relevant resource for users seeking general food assistance. Its lower confidence score also reflects its reduced priority compared to recommendation 1.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Help in Preston Food Access",
+                            "Source": "https://preston.gov.uk/media/9411/Food-Access-document-2021/pdf/Help_in_Preston_Food_Access_A4_Leaflet_-_November_2021.pdf?m=1639756644177",
+                            "Reasoning": "This link offers a helpful resource for users interested in learning more about food access, eligibility for free school meals, and the application process. However, its focus on a document rather than a web page reduces its relevance compared to recommendation 1.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Holiday Activity and Food Programme agreed in Preston for 2025 ...",
+                            "Source": "https://www.preston.gov.uk/article/10089/Holiday-Activity-and-Food-Programme-agreed-in-Preston-for-2025-2026",
+                            "Reasoning": "While this link offers detailed information about the HAF program and its eligibility criteria, it is not as comprehensive or relevant as recommendation 1 for users seeking general food assistance. Its lower confidence score also reflects its reduced priority.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.preston.gov.uk/article/1096/Food-access"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.preston.gov.uk/article/1096/Food-access",
+                        "analysis": {
+                            "url": "https://www.preston.gov.uk/article/1096/Food-access",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T06:05:02+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T06:05:34+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 33778,
+                            "response_time": 0.331,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.331s)",
+                                    "Content successfully retrieved (33778 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.33448195457458496,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.preston.gov.uk/article/1096/Food-access"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.preston.gov.uk/article/1096/Food-access",
+                        "content": " Here's the cleaned, semantically structured HTML containing the central editorial content of the given web page:\n\n```\n<main id=\"maincontent\" class=\"maincontent\">\n    <div class=\"container\">\n        <div class=\"a-heading a-heading--default\">\n            <h1 class=\"a-heading__title\">Food access</h1>\n        </div>\n        <div class=\"maincolumns\">\n            <div class=\"maincontent__left\">\n                <!-- Main content goes here -->\n                <div class=\"a-body a-body--default\">\n                    <p>We are committed to increasing access to good food in our communities. We know there are many reasons why families and individuals may not have enough food in their cupboards. As such we are also working to increase the financial security for all our residents.</p>\n                    <p>We are supporting schools, faith organisations, community organisations and charities to increase the scale of food projects across Preston.</p>\n                    <h2>Holiday Hunger</h2>\n                    <p>Holiday Hunger is a term used to describe a shortage of nutritious food for families and children during school holidays, which can put increased pressure on family budgets.</p>\n                    <h3>Who does it affect?</h3>\n                    <p>It can affect children who receive free school meals but also those families on low or insecure incomes.</p>\n                    <h3>How we can help</h3>\n                    <p>We are working with schools, faith and community organisations to deliver Holiday Markets for families over the school holidays.</p>\n                    <p>Contact us to find out where you can find your nearest holiday market:</p>\n                    <ul><li><strong>email -</strong>- <a href=\"mailto:communityinvolvementteam@preston.gov.uk\">communityinvolvementteam@preston.gov.uk</a></li></ul>\n                    <h3>How you can help</h3>\n                    <p>We are always looking for new schools, organizations, charities, businesses and individuals to get involved to help us ensure local people do not go hungry.</p>\n                    <p>If you have a project idea, want to volunteer or make a donation (of goods or services), please contact us:</p>\n                    <ul><li><strong>email \u2013 </strong>- <a href=\"mailto:communityinvolvementteam@preston.gov.uk\">communityinvolvementteam@preston.gov.uk</a>&nbsp;</li></ul>\n                    <h3>Emergency Food Aid</h3>\n                    <p>If you are in urgent need of a food parcel, please contact one of the Emergency Food Providers in Preston:</p>\n                    <ul><li><strong>Salvation Army \u2013 </strong>- <a href=\"tel:01772%20555425\">01772 555425</a></li>\n                        <li><strong>Luv Preston&nbsp;</strong>- <a href=\"tel:01772%20298107\">01772 298107</a></li>\n                        <li><strong>Noor Food bank </strong>&nbsp;- Any families requiring a food parcel will need to be referred through the <a href=\"http://www.noorfoodbank.co.uk\">Noor Food Bank website</a>&nbsp;or email -&nbsp;<a href=\"mailto:hello@noorfoodbank.co.uk\">hello@noorfoodbank.co.uk</a></li>\n                    </ul>\n                    <p>If you need a referral to a food bank, or any help and advice about accessing food in an emergency, please contact the Vulnerable Support Line on <a href=\"tel:01772%20906777\">01772 906777</a>.</p>\n                </div>\n            </div>\n        </div>\n    </div>\n</main>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 20.666678190231323,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.preston.gov.uk/article/1096/Food-access",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals.",
+                                    "answer_quality": "The content does not directly answer this question, but it provides information about a Holiday Hunger program that offers Holiday Markets, which might be relevant for families in need of food assistance during holidays. However, there is no mention or information about free school meals specifically.",
+                                    "confidence": "60%",
+                                    "reasoning": "While the content does not directly answer the question about free school meals, it provides some information that could potentially be useful for families in need of food assistance. The Holiday Hunger program offers Holiday Markets, which might provide food during school holidays when free school meals are not available. Additionally, the content mentions emergency food aid providers and a Vulnerable Support Line that could potentially provide help for food insecurity situations.",
+                                    "next_actions": "I would contact the Vulnerable Support Line (01772 906777) and ask if there's any assistance available for those who recently lost their jobs and are in need of free school meals. I would also investigate the Holiday Hunger program to see if it offers assistance during terms as well."
+                                }
+                            ],
+                            "overall_assessment": "While the content does provide some information that could potentially be useful for residents facing food insecurity, it lacks clarity on specific questions such as eligibility criteria and wait time for free school meals. The content would benefit from more explicit information about how residents can apply for these programs and what they can expect regarding eligibility and support."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 7.998380899429321,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.preston.gov.uk/article/1096/Food-access"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_060502-preston.gov.uk",
+                    "analysis_timestamp": "2025-08-13T06:06:04+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.0333333333333334,
+                            "tokens_consumed": 6674,
+                            "tokens_remaining": 23326,
+                            "token_utilization_percentage": 22.25,
+                            "average_tokens_per_step": 1112.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 77.75,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 20,
+                            "consumption_rate": 1112.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 14.76,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.0333333333333334,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_060502-preston.gov.uk",
+                        "start_time": "2025-08-13T06:05:02+01:00",
+                        "current_time": "2025-08-13T06:06:04+01:00",
+                        "duration_seconds": 62,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6674,
+                        "tokens_remaining": 23326,
+                        "token_utilization_percentage": 22.25,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2620,
+                                "avg_per_call": 1310
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 4054,
+                                "avg_per_call": 2027
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1112.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_060502-preston.gov.uk",
+                    "start_time": "2025-08-13T06:05:02+01:00",
+                    "current_time": "2025-08-13T06:06:04+01:00",
+                    "duration_seconds": 62,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6674,
+                    "tokens_remaining": 23326,
+                    "token_utilization_percentage": 22.25,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2620,
+                            "avg_per_call": 1310
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 4054,
+                            "avg_per_call": 2027
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1112.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

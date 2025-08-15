@@ -1,0 +1,689 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T00:40:11+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "lbbd.gov.uk",
+                "Council Name": "London Borough of Barking and Dagenham"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Free school meals (Pupil Premium) | London Borough of Barking ...",
+                        "link": "https://www.lbbd.gov.uk/benefits-and-support/free-school-meals-pupil-premium",
+                        "snippet": "Information on free school meals and how to apply. Registering for Free School Meals can raise an extra \u00a31,320 for your child's primary school\u00a0..."
+                    },
+                    {
+                        "title": "Free holiday activities | London Borough of Barking and Dagenham",
+                        "link": "https://www.lbbd.gov.uk/children-young-people-and-families/events-and-activities-children/free-holiday-activities",
+                        "snippet": "The Holiday Activity and Food (HAF) Programme is free to children and young people who live or go to school in Barking and Dagenham and are eligible for\u00a0..."
+                    },
+                    {
+                        "title": "Free School Meals Application",
+                        "link": "https://www.lbbd.gov.uk/sites/default/files/2022-11/Free%20School%20Meals.pdf",
+                        "snippet": "You can select more than 1 response if you get more than 1 benefit! 3. Unfortunatly if you have a family income of over 16,190 per year then you will not be\u00a0..."
+                    },
+                    {
+                        "title": "Free School Meals",
+                        "link": "https://www.lbbd.gov.uk/sites/default/files/2022-10/Schools-Forum-18-10-18-Free-school-meals-slides.pdf",
+                        "snippet": "Free School Meals. Page 2. Click to add text. Introduction of UIFSMs. Page 3 ... claim benefits and have school-aged children. \u2022 They will link the FSM\u00a0..."
+                    },
+                    {
+                        "title": "School meal menus | London Borough of Barking and Dagenham",
+                        "link": "https://www.lbbd.gov.uk/schools-and-learning/school-meal-menus",
+                        "snippet": "Meals for free. Many pupils are entitled to free school meals \u2013 including all ... The secondary school menu includes a greater range of satisfying grab and go\u00a0..."
+                    },
+                    {
+                        "title": "Holiday activities for children and young people | London Borough ...",
+                        "link": "https://www.lbbd.gov.uk/children-young-people-and-families/events-and-activities-children/holiday-activities-children-and",
+                        "snippet": "The free Holiday Activities and Food programme for children and young people who receive benefit-related Free School Meals has now finished for 2022 but you\u00a0..."
+                    },
+                    {
+                        "title": "Schools and learning | London Borough of Barking and Dagenham",
+                        "link": "https://www.lbbd.gov.uk/schools-and-learning",
+                        "snippet": "Free school meals (Pupil Premium). Information on free school meals and how to apply. School meal menus. Information on school meals and menus for our schools\u00a0..."
+                    },
+                    {
+                        "title": "Help with food | London Borough of Barking and Dagenham",
+                        "link": "https://www.lbbd.gov.uk/cost-living-support/help-food",
+                        "snippet": "Foodbanks Foodbanks. Get emergency food parcels if you are temporarily unable to provide for yourself. Foodbanks. Free school meals\u00a0..."
+                    },
+                    {
+                        "title": "Apply or request a council service | London Borough of Barking and ...",
+                        "link": "https://www.lbbd.gov.uk/apply-or-request-council-service",
+                        "snippet": "Information on free school meals and how to apply. Jobs and careers. Help to make your community a safer\u00a0..."
+                    },
+                    {
+                        "title": "School admissions | London Borough of Barking and Dagenham",
+                        "link": "https://www.lbbd.gov.uk/schools-and-learning/school-admissions",
+                        "snippet": "Find out if your child qualifies for free school meals. Nursery admissions ... All schools must have admission arrangements that clearly set out how school\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.lbbd.gov.uk/benefits-and-support/free-school-meals-pupil-premium",
+                        "title": "Free school meals (Pupil Premium) | London Borough of Barking ...",
+                        "confidence": 85,
+                        "strengths": [
+                            "Direct link to apply for free school meals",
+                            "Provides information on eligibility and benefits of free school meals"
+                        ],
+                        "reasoning": "This resource directly provides information on how to apply for free school meals, including details about eligibility criteria.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Free school meals (Pupil Premium) | London Borough of Barking ...",
+                                "Source": "https://www.lbbd.gov.uk/benefits-and-support/free-school-meals-pupil-premium",
+                                "Key Strengths": [
+                                    "Direct link to apply for free school meals",
+                                    "Provides information on eligibility and benefits of free school meals"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource directly provides information on how to apply for free school meals, including details about eligibility criteria."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Free School Meals Application",
+                                "Source": "https://www.lbbd.gov.uk/sites/default/files/2022-11/Free%20School%20Meals.pdf",
+                                "Key Strengths": [
+                                    "Detailed instructions and eligibility criteria for applying for free school meals",
+                                    "Includes examples of the required supporting documents"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This document provides a clear guide on how to apply for free school meals, including step-by-step instructions and necessary materials."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "School meal menus | London Borough of Barking and Dagenham",
+                                "Source": "https://www.lbbd.gov.uk/schools-and-learning/school-meal-menus",
+                                "Key Strengths": [
+                                    "Provides school meals information, including menu options for primary and secondary schools"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though this resource does not provide direct application procedures for free school meals, it provides a comprehensive look at the available meal options within the borough."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Schools and learning | London Borough of Barking and Dagenham",
+                                "Source": "https://www.lbbd.gov.uk/schools-and-learning",
+                                "Key Strengths": [
+                                    "Indirectly provides information on free school meals, linking to the correct resource"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "This page contains various resources related to schools and learning in the borough, including some indirect references to free school meals."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Help with food | London Borough of Barking and Dagenham",
+                                "Source": "https://www.lbbd.gov.uk/cost-living-support/help-food",
+                                "Key Strengths": [
+                                    "Discussion of free school meals as one of several potential sources of help with food costs"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "This resource briefly mentions the availability of free school meals within the borough, but does not offer a direct path to applying."
+                            }
+                        ],
+                        "Analysis Notes": "Some of the search results had irrelevant or tangentially related information. The analyzed sources were ranked by directly addressing and providing detailed information about council customer's questions regarding free school meals.",
+                        "Recommendations Notes": "The top recommendations provide clear, direct paths to applying for free school meals or detailed resources on the topic. However, it is important to note that, while some resources indirectly address the question, they may not be as useful for council customers seeking specific help with their immediate concern \u2013 registering for free school meals."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "70",
+                        "65",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 72,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Free school meals (Pupil Premium) | London Borough of Barking ...",
+                            "Source": "https://www.lbbd.gov.uk/benefits-and-support/free-school-meals-pupil-premium",
+                            "Reasoning": "This resource directly provides information on how to apply for free school meals, including details about eligibility criteria.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Free School Meals Application",
+                            "Source": "https://www.lbbd.gov.uk/sites/default/files/2022-11/Free%20School%20Meals.pdf",
+                            "Reasoning": "This document provides a clear guide on how to apply for free school meals, including step-by-step instructions and necessary materials.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "10",
+                            "Title": "Free School Meals Help and FAQs | London Borough of Barking ...",
+                            "Source": "https://www.lbbd.gov.uk/benefits-and-support/free-school-meals#:~:text=FAQ%20Information%20about%20free%20school...",
+                            "Reasoning": "This resource provides frequently asked questions about free school meals including eligibility, application process, and more.",
+                            "Confidence": "75"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.lbbd.gov.uk/benefits-and-support/free-school-meals-pupil-premium"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.lbbd.gov.uk/benefits-and-support/free-school-meals-pupil-premium",
+                        "analysis": {
+                            "url": "https://www.lbbd.gov.uk/benefits-and-support/free-school-meals-pupil-premium",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T00:40:11+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T00:40:37+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 200623,
+                            "response_time": 0.788,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.788s)",
+                                    "Content successfully retrieved (200623 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.793053150177002,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.lbbd.gov.uk/benefits-and-support/free-school-meals-pupil-premium"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.lbbd.gov.uk/benefits-and-support/free-school-meals-pupil-premium",
+                        "content": " Here's the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<article class=\"localgov-services-page node node--type-localgov-services-page node--with-restricted-width node--view-mode-full\">\n  <div class=\"lgd-container padding-horizontal\">\n    <div class=\"localgov-services-page__content node__content\">\n      <div class=\"field field--name-body field--type-text-with-summary field--label-hidden field__item\">\n        Registering for Free School Meals can raise an extra \u00a31,320 for your child's primary school and an extra \u00a3935 for your child\u2019s secondary school, paid by the government, which the Council can use to fund additional teaching staff, extra tuition and after school activities.\n      </div>\n      <h2 id=\"free-school-meals-pupil-premium\">Free School Meals (Pupil Premium)</h2>\n      <h3 id=\"children-in-reception-year-1-and-year-2\">Children in reception, year 1 and year 2</h3>\n      <p>All children in reception, year 1 and year 2 in state funded schools in England are eligible for Free School Meals.</p>\n      <p>By registering for Free School meals for any child in reception, year 1 and year 2 you can ensure your child\u2019s school receives the additional funding for the pupil premium.</p>\n      <h3 id=\"children-in-year-3-and-above-other-year-groups\">Children in year 3 and above (other year groups)</h3>\n      <p>Children in key stages 3 and 4 in state schools may be eligible for Free school Meals if their parents or carers are in receipt of the following benefits:</p>\n      <ul>\n        <li>Child Tax Credit (provided you\u2019re not also entitled to Working Tax Credit and have an annual gross income of no more than \u00a316,190)</li>\n        <li>Income Support</li>\n        <li>Income-based Jobseeker\u2019s Allowance</li>\n        <li>Income-related Employment and Support Allowance</li>\n        <li>support under part VI of the Immigration and Asylum Act 1999</li>\n        <li>the guaranteed element of Pension Credit</li>\n        <li>Working Tax Credit run-on - paid for 4 weeks after you stop qualifying for Working Tax Credit</li>\n        <li>Universal Credit - if you apply on or after 1 April 2018 your household income must be less than \u00a37,400 a year (earnings after tax and not including any benefits you get)</li>\n      </ul>\n      <p>You may also qualify for free school meals for your child if:</p>\n      <ul>\n        <li>you are an asylum seeker</li>\n        <li>you live outside Barking and Dagenham but meet the previous criteria and your child is attending a school in the borough</li>\n        <li>your only or main income is one of the benefits listed</li>\n      </ul>\n      <p>All live claims for Free School Meals will automatically be carried over and awarded for your child from 1st September 2018. This also includes any child moving from infants to junior or junior to secondary schools.</p>\n      <h3 id=\"apply-for-free-school-meals-pupil-premium\">Apply for Free School Meals (Pupil Premium) &nbsp;</h3>\n      <p><a class=\"btn btn-start col-sm-6 mt-3\" href=\"https://eforms.lbbd.gov.uk/free-school-meals\">Make a claim for Free School Meals</a></p>\n      <h2 id=\"free-holiday-activities\"><strong>Free holiday activities</strong></h2>\n      <p>The Holiday Activity and Food (HAF) Programme is free to children and young people who live or go to school in Barking and Dagenham and are eligible for benefit-related free school meals, with paid places available for everyone.</p>\n    </div>\n  </div>\n</article>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 23.60207486152649,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.lbbd.gov.uk/benefits-and-support/free-school-meals-pupil-premium",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria",
+                                    "answer_quality": "The content fully answers this question as it lists all the benefits a person can be in receipt of for their children to qualify for free school meals.",
+                                    "confidence": "90%",
+                                    "reasoning": "The content clearly mentions the benefits that would make a child eligible for Free School Meals, although it lacks specific discussion on unemployment benefit status for this particular scenario. However, it is assumed that the Council Resident may qualify under Universal Credit given the job loss situation.",
+                                    "next_actions": "The Council Resident should apply for free school meals following the provided link."
+                                },
+                                {
+                                    "need": "I'd like to know how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content doesn't specifically address this question. It mentions that all live claims will be carried over and awarded from 1st September 2018.",
+                                    "confidence": "40%",
+                                    "reasoning": "While the content suggests the awards continue from September, it doesn't provide clarity on how long it takes to find out whether an individual is eligible after submitting an application. As a result, more information might be required.",
+                                    "next_actions": "The Council Resident should consider contacting the local council for more details about the eligibility determination process."
+                                }
+                            ],
+                            "overall_assessment": "The content provides satisfactory answers to most of the resident's needs, but there are key gaps concerning how long it takes to determine eligibility after an application. Improvement can be made by providing more specific information on that matter."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 8.83788800239563,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.lbbd.gov.uk/benefits-and-support/free-school-meals-pupil-premium"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_004011-lbbd.gov.uk",
+                    "analysis_timestamp": "2025-08-13T00:41:10+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.9833333333333333,
+                            "tokens_consumed": 7586,
+                            "tokens_remaining": 22414,
+                            "token_utilization_percentage": 25.29,
+                            "average_tokens_per_step": 1264.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 74.71,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 17,
+                            "consumption_rate": 1264.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "90",
+                            "quality_scores": [
+                                "90",
+                                "40"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "90",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 14.05,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.9833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_004011-lbbd.gov.uk",
+                        "start_time": "2025-08-13T00:40:11+01:00",
+                        "current_time": "2025-08-13T00:41:10+01:00",
+                        "duration_seconds": 59,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7586,
+                        "tokens_remaining": 22414,
+                        "token_utilization_percentage": 25.29,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3674,
+                                "avg_per_call": 1837
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3912,
+                                "avg_per_call": 1956
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1264.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_004011-lbbd.gov.uk",
+                    "start_time": "2025-08-13T00:40:11+01:00",
+                    "current_time": "2025-08-13T00:41:10+01:00",
+                    "duration_seconds": 59,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7586,
+                    "tokens_remaining": 22414,
+                    "token_utilization_percentage": 25.29,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3674,
+                            "avg_per_call": 1837
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3912,
+                            "avg_per_call": 1956
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1264.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

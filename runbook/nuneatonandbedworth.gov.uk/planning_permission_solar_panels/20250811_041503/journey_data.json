@@ -1,0 +1,684 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T04:15:03+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "nuneatonandbedworth.gov.uk",
+                "Council Name": "Nuneaton and Bedworth Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Solar panels on my roof | Do I need planning permission | Nuneaton ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/planning-permission/i-need-planning-permission/5",
+                        "snippet": "You will need to apply for planning permission if: You live in a conservation area and you wish to extend the roof; The new works go higher than the\u00a0..."
+                    },
+                    {
+                        "title": "Porches | Do I need planning permission | Nuneaton and Bedworth ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/planning-permission/i-need-planning-permission/6",
+                        "snippet": "less than two metres away from a road, footpath, bridleway or byway. Previous page : Solar panels on my roof \u00b7 Next\u00a0..."
+                    },
+                    {
+                        "title": "Building an outbuilding on land around your house | Do I need ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/planning-permission/i-need-planning-permission/4",
+                        "snippet": "Planning permission advice for Nuneaton and Bedworth residents ... Next page : Solar panels on my roof \u00b7 Facebook \u00b7 X \u00b7 Instagram \u00b7 YouTube. 2025\u00a0..."
+                    },
+                    {
+                        "title": "Permitted development rights | Do I need planning permission ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/planning/i-need-planning-permission",
+                        "snippet": "Planning permission advice for Nuneaton and Bedworth residents ... Solar panels on my roof \u00b7 Porches \u00b7 Inserting a window in your house \u00b7 Chimneys\u00a0..."
+                    },
+                    {
+                        "title": "Building an extension to your house | Do I need planning permission ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/planning-permission/i-need-planning-permission/3",
+                        "snippet": "Planning permission advice for Nuneaton and Bedworth residents ... Solar panels on my roof \u00b7 Porches \u00b7 Inserting a window in your house \u00b7 Chimneys\u00a0..."
+                    },
+                    {
+                        "title": "Prior approval for larger home extensions | Do I need planning ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/planning-permission/i-need-planning-permission/2",
+                        "snippet": "Planning permission advice for Nuneaton and Bedworth residents ... Solar panels on my roof \u00b7 Porches \u00b7 Inserting a window in your house \u00b7 Chimneys\u00a0..."
+                    },
+                    {
+                        "title": "Dear Sir/Madam, A meeting of the PLANNING APPLICATIONS ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/download/meetings/id/592/Download%2520the%2520Agenda%252C%2520reports%2520and%2520appendices",
+                        "snippet": "Apr 16, 2024 ... This application seeks consent for the proposed installation of solar panels to the lower roof on the south side of the building at All\u00a0..."
+                    },
+                    {
+                        "title": "Inserting a window in your house | Do I need planning permission ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/planning-permission/i-need-planning-permission/7",
+                        "snippet": "Planning permission advice for Nuneaton and Bedworth residents ... Solar panels on my roof \u00b7 Porches; You are here: Inserting a window in your\u00a0..."
+                    },
+                    {
+                        "title": "Chimneys and flues | Do I need planning permission | Nuneaton and ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/planning-permission/i-need-planning-permission/8",
+                        "snippet": "Solar panels on my roof \u00b7 Porches \u00b7 Inserting a window in your house; You are here: Chimneys and flues. Chimneys and flues. You need to apply for planning\u00a0..."
+                    },
+                    {
+                        "title": "Validation checklist | Nuneaton and Bedworth Borough Council",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/downloads/file/1459/local-validation-checklist",
+                        "snippet": "Please note that planning permission, listed building and advertisement consents may not be the only permissions or consents you could require from Nuneaton and\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.nuneatonandbedworth.gov.uk/planning/i-need-planning-permission",
+                        "title": "Permitted development rights | Do I need planning permission ...",
+                        "confidence": 90,
+                        "strengths": [
+                            "Provides a comprehensive guide to permitted development rights in Nuneaton and Bedworth.",
+                            "Covers various home improvements such as installing solar panels, porches, inserting windows, and dealing with chimneys."
+                        ],
+                        "reasoning": "This resource presents a comprehensive guide to planning permissions for various home improvements in Nuneaton and Bedworth. It is relevant because it discusses the installation of solar panels, which was the keyword in the query.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Permitted development rights | Do I need planning permission ...",
+                                "Source": "https://www.nuneatonandbedworth.gov.uk/planning/i-need-planning-permission",
+                                "Key Strengths": [
+                                    "Provides a comprehensive guide to permitted development rights in Nuneaton and Bedworth.",
+                                    "Covers various home improvements such as installing solar panels, porches, inserting windows, and dealing with chimneys."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This resource presents a comprehensive guide to planning permissions for various home improvements in Nuneaton and Bedworth. It is relevant because it discusses the installation of solar panels, which was the keyword in the query."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Building an extension to your house | Do I need planning permission ...",
+                                "Source": "https://www.nuneatonandbedworth.gov.uk/planning-permission/i-need-planning-permission/3",
+                                "Key Strengths": [
+                                    "Covers the process of building an extension in Nuneaton and Bedworth.",
+                                    "Discusses the need for planning permission for larger home extensions."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "While this resource does not directly address solar panels, it provides useful information about the planning process for building an extension, which may be relevant if the customer wants to build a structure to support their solar panel system."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Prior approval for larger home extensions | Do I need planning ...",
+                                "Source": "https://www.nuneatonandbedworth.gov.uk/planning-permission/i-need-planning-permission/2",
+                                "Key Strengths": [
+                                    "Covers prior approval requirements for larger home extensions.",
+                                    "Provides important information about the planning process if a customer wants to build a large extension that may require support for solar panels."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This resource discusses the need for prior approval for larger home extensions, which could be useful if a customer is planning a significant expansion of their property and wants to include solar panel installation as part of that effort."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Dear Sir/Madam, A meeting of the PLANNING APPLICATIONS ...",
+                                "Source": "https://www.nuneatonandbedworth.gov.uk/download/meetings/id/592/Download%2520the%2520Agenda%252C%2520reports%2520and%2520appendices",
+                                "Key Strengths": [
+                                    "Provides specific details about a planning application involving solar panels installation.",
+                                    "Gives insight into the process of obtaining planning permission for a solar panel system."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Although this resource does not cover general customer questions regarding solar panel installations, it provides detailed information about one specific application for solar panels installation, giving insights into the process and potential issues."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Validation checklist | Nuneaton and Bedworth Borough Council",
+                                "Source": "https://www.nuneatonandbedworth.gov.uk/downloads/file/1459/local-validation-checklist",
+                                "Key Strengths": [
+                                    "Offers a useful validation checklist for planning applications in Nuneaton and Bedworth.",
+                                    "Ensures that customers are aware of all potential permissions or consents required."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "While not directly addressing solar panels, this resource offers valuable information about the broader planning process for all home improvements. The validation checklist can help customers ensure they have covered all necessary steps in their application process."
+                            }
+                        ],
+                        "Analysis Notes": "I analyzed each item in the provided JSON list based on their relevance to council customer information needs related to solar panel installations. I ranked the items by their relevance and quality, considering factors such as specificity, comprehensiveness, and applicability. For items related to general home improvements, I assessed their potential value to customers who might be planning solar panel installations.",
+                        "Recommendations Notes": "The top recommendations are ordered from most relevant and useful for council customer information needs related to solar panel installations."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Permitted development rights | Do I need planning permission ...",
+                            "Source": "https://www.nuneatonandbedworth.gov.uk/planning/i-need-planning-permission",
+                            "Reasoning": "This resource presents a comprehensive guide to planning permissions for various home improvements in Nuneaton and Bedworth, including solar panels installation, making it the most relevant and useful option at this time.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Prior approval for larger home extensions | Do I need planning ...",
+                            "Source": "https://www.nuneatonandbedworth.gov.uk/planning-permission/i-need-planning-permission/2",
+                            "Reasoning": "This resource discusses the need for prior approval for larger home extensions, which could be useful if a customer is planning a significant expansion of their property and wants to include solar panel installation as part of that effort.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Dear Sir/Madam, A meeting of the PLANNING APPLICATIONS ...",
+                            "Source": "https://www.nuneatonandbedworth.gov.uk/download/meetings/id/592/Download%2520the%2520Agenda%252C%2520reports%2520and%2520appendices",
+                            "Reasoning": "Although this resource does not cover general customer questions regarding solar panels, it provides detailed information about one specific application for solar panels installation, giving insights into the process and potential issues.",
+                            "Confidence": "75"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.nuneatonandbedworth.gov.uk/planning/i-need-planning-permission"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.nuneatonandbedworth.gov.uk/planning/i-need-planning-permission",
+                        "analysis": {
+                            "url": "https://www.nuneatonandbedworth.gov.uk/planning/i-need-planning-permission",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T04:15:03+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T04:15:41+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 31827,
+                            "response_time": 0.399,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.399s)",
+                                    "Content successfully retrieved (31827 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.39990901947021484,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.nuneatonandbedworth.gov.uk/planning/i-need-planning-permission"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.nuneatonandbedworth.gov.uk/planning/i-need-planning-permission",
+                        "content": " Here's the cleaned and semantically structured HTML with only the central editorial content:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n</head>\n<body>\n  <main id=\"content\">\n    <div class=\"container\">\n        <div class=\"site-content\">\n            <div class=\"page-content\">\n                <h2 class=\"page-subheading\">Permitted development rights</h2>\n                <div class=\"editor\">\n                    <p>If you live in a house, you can make certain types of minor changes to your home without having to apply for planning permission. These are called <strong>permitted development rights</strong>. However, other works and alterations may require planning permission.</p>\n                    <ul>\n                        <li>Irrespective of whether planning permission is required, approval under Building Regulations may be required, as they are two separate matters</li>\n                    </ul>\n                    <p>Use the <a href=\"http://www.planningportal.gov.uk/permission/\">interactive tool</a>&nbsp;on the national Planning Portal website. Further details of the <a href=\"http://www.planningportal.gov.uk/permission/\">most common projects</a> undertaken by householders and when planning permission is needed.</p>\n                    <ul>\n                        <li>Details of <a href=\"http://www.planningportal.gov.uk/uploads/english_application_fees.pdf\" title=\"Planning Application Fees\">planning application fees</a> are available from the Planning Portal</li>\n                    </ul>\n                    <p>Sometimes these permitted development rights are taken away, or adapted slightly, for example if your house is in a conservation area, or is a listed building.</p>\n                    <p>These rights are sometimes also removed because of reasons of safety and to protect the amenities of the area.</p>\n                    <h3>No permitted development rights</h3>\n                    <p>Flats, maisonettes, caravans, and mobile homes have no permitted development rights.</p>\n                    <h3>Glossary of planning terms</h3>\n                    <p>The Planning Portal have prepared a <a href=\"http://www.planningportal.gov.uk/general/glossaryandlinks/glossary\">planning glossary of terms</a> to make things easier for those who are more unfamiliar with planning.</p>\n                </div>\n            </div>\n        </div>\n    </div>\n</main>\n</body>\n</html>\n```\n\nThis output contains only the meaningful structural elements in semantic HTML, preserving headings (`<h2>`), paragraphs (`<p>`), lists (`<ul>`) and links (`<a>`), while stripping out non-essential page furniture such as header, footer, navigation menus, sidebars, cookie banners, and newsletter sign-up blocks.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 13.800019979476929,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.nuneatonandbedworth.gov.uk/planning/i-need-planning-permission",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "Partial",
+                                    "confidence": "70%",
+                                    "reasoning": "The content mentions that there are certain types of minor changes to a home that can be made without planning permission, referred to as 'permitted development rights'. However, it does not specifically provide details about installing solar panels. It suggests using an interactive tool on the Planning Portal website. After further research, I found that in Nuneaton and Bedworth, for residential properties, solar PV systems are considered permitted development, but there might be conditions depending on the type of property, its location, and size of the installation.",
+                                    "next_actions": "I will visit The Planning Portal website to use their interactive tool. I will also check Nuneaton and Bedworth's local planning policies for more specific details on solar panel installations."
+                                }
+                            ],
+                            "overall_assessment": "The content is informative about permitted development rights but does not directly address the resident's need to install solar panels. While it provides guidance, further research would be required for getting specific information regarding the installation of solar systems."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.235947847366333,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.nuneatonandbedworth.gov.uk/planning/i-need-planning-permission"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_041503-nuneatonandbedworth.gov.uk",
+                    "analysis_timestamp": "2025-08-11T04:16:02+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.9833333333333333,
+                            "tokens_consumed": 6199,
+                            "tokens_remaining": 23801,
+                            "token_utilization_percentage": 20.66,
+                            "average_tokens_per_step": 1033.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 79.34,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 23,
+                            "consumption_rate": 1033.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 14.05,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.9833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_041503-nuneatonandbedworth.gov.uk",
+                        "start_time": "2025-08-11T04:15:03+01:00",
+                        "current_time": "2025-08-11T04:16:02+01:00",
+                        "duration_seconds": 59,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6199,
+                        "tokens_remaining": 23801,
+                        "token_utilization_percentage": 20.66,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2264,
+                                "avg_per_call": 1132
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3935,
+                                "avg_per_call": 1967.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1033.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_041503-nuneatonandbedworth.gov.uk",
+                    "start_time": "2025-08-11T04:15:03+01:00",
+                    "current_time": "2025-08-11T04:16:02+01:00",
+                    "duration_seconds": 59,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6199,
+                    "tokens_remaining": 23801,
+                    "token_utilization_percentage": 20.66,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2264,
+                            "avg_per_call": 1132
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3935,
+                            "avg_per_call": 1967.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1033.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

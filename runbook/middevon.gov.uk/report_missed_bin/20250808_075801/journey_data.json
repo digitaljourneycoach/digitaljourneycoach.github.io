@@ -1,0 +1,684 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T07:58:01+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "middevon.gov.uk",
+                "Council Name": "Mid Devon District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed collection - MIDDEVON.GOV.UK",
+                        "link": "https://www.middevon.gov.uk/residents/recycling-rubbish/report-a-missed-collection/",
+                        "snippet": "Missed collections need to be reported within 48 hours of your scheduled collection. We will then investigate the missed collection."
+                    },
+                    {
+                        "title": "Report missed commercial waste - MIDDEVON.GOV.UK",
+                        "link": "https://www.middevon.gov.uk/do-it-online/waste-and-recycling/report-missed-commercial-waste/",
+                        "snippet": "If the missed refuse is in trade waste sacks we can send a small van to collect it. If it is in a wheeled bin then we need to send a proper bin lorry."
+                    },
+                    {
+                        "title": "Daily waste collection updates - MIDDEVON.GOV.UK",
+                        "link": "https://www.middevon.gov.uk/residents/recycling-rubbish/report-a-missed-collection/daily-waste-collection-updates/",
+                        "snippet": "Recycling & rubbish \u00b7 Report a missed collection; Daily waste collection updates. MIDDEVON.GOV.UK uses cookies which are essential for the site to work. We also\u00a0..."
+                    },
+                    {
+                        "title": "Recycling & rubbish - MIDDEVON.GOV.UK",
+                        "link": "https://www.middevon.gov.uk/residents/recycling-rubbish/",
+                        "snippet": "... Bin-it 123 collection service. Pots & Pans Recycling Trial. The Council is ... Report a missed collection. Tell us if we've missed your waste collection\u00a0..."
+                    },
+                    {
+                        "title": "Plymouth City Council",
+                        "link": "https://www.middevon.gov.uk/business-links/food-safety-hygiene/plymouth-city-council/",
+                        "snippet": "Bins, recycling and waste. Includes check your collection day, report a missed bin, recycling centres and garden waste. Births, marriages, deaths and\u00a0..."
+                    },
+                    {
+                        "title": "Contact us about recycling and rubbish - MIDDEVON.GOV.UK",
+                        "link": "https://www.middevon.gov.uk/residents/recycling-rubbish/contact-us-about-refuse-and-recycling/",
+                        "snippet": "Request a recycling container \u00b7 Request removal of brown bin \u00b7 Report spoilt, lost or damaged green waste permits \u00b7 Report missed commercial waste. A to Z of\u00a0..."
+                    },
+                    {
+                        "title": "Commercial waste & recycling - MIDDEVON.GOV.UK",
+                        "link": "https://www.middevon.gov.uk/business/commercial-waste-recycling/",
+                        "snippet": "... waste bin collected twice weekly where available. regular scheduled ... Report a missed collection. No disruptions to this service at this time\u00a0..."
+                    },
+                    {
+                        "title": "Bins, Recycling & Waste - My Mid Devon",
+                        "link": "https://my.middevon.gov.uk/binsrecyclingandwaste",
+                        "snippet": "Black Bin - Request / Change / Exchange a Bin \u00b7 Brown Bins \u00b7 Bulky Waste ... Commercial Waste - Report a Missed Collection. F. Fly Tipping. L. Litter Fines. G."
+                    },
+                    {
+                        "title": "Do it online - MIDDEVON.GOV.UK",
+                        "link": "https://www.middevon.gov.uk/do-it-online/",
+                        "snippet": "Request a recycling container \u00b7 Request removal of brown bin \u00b7 Report spoilt, lost or damaged green waste permits \u00b7 Report missed commercial waste. A to Z of\u00a0..."
+                    },
+                    {
+                        "title": "Assisted collections - MIDDEVON.GOV.UK",
+                        "link": "https://www.middevon.gov.uk/residents/recycling-rubbish/assisted-collections/",
+                        "snippet": "Related pages. Report a missed collection. Contact us. Contact us about recycling and rubbish. A to Z of Services. A \u00b7 B \u00b7 C \u00b7 D \u00b7 E \u00b7 F \u00b7 G \u00b7 H \u00b7 I \u00b7 J \u00b7 K \u00b7 L\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.middevon.gov.uk/residents/recycling-rubbish/report-a-missed-collection/",
+                        "title": "Report a missed collection - MIDDEVON.GOV.UK",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly related to council customer's information need about missed collections",
+                            "Detailed instructions on reporting a missed collection within 48 hours"
+                        ],
+                        "reasoning": "This link provides a service that the council customers are most likely looking for - reporting a missed collection. The site also offers detailed instructions, which makes it easier for users to use.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed collection - MIDDEVON.GOV.UK",
+                                "Source": "https://www.middevon.gov.uk/residents/recycling-rubbish/report-a-missed-collection/",
+                                "Key Strengths": [
+                                    "Directly related to council customer's information need about missed collections",
+                                    "Detailed instructions on reporting a missed collection within 48 hours"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link provides a service that the council customers are most likely looking for - reporting a missed collection. The site also offers detailed instructions, which makes it easier for users to use."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Contact us about recycling and rubbish - MIDDEVON.GOV.UK",
+                                "Source": "https://www.middevon.gov.uk/residents/recycling-rubbish/contact-us-about-refuse-and-recycling/",
+                                "Key Strengths": [
+                                    "Addresses a broad range of recycling and rubbish issues",
+                                    "Offers options for requesting a recycling container, reporting missed commercial waste"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "While not directly related to the specific issue of a missed collection, this link provides a comprehensive list of services and resources pertaining to recycling and rubbish issues. It offers several helpful options for council customers."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Do it online - MIDDEVON.GOV.UK",
+                                "Source": "https://www.middevon.gov.uk/do-it-online/",
+                                "Key Strengths": [
+                                    "Provides an overall gateway to various online services offered by the council",
+                                    "Includes the option to request a recycling container and report missed commercial waste"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Although not specifically geared toward missed collections, this link provides a useful platform for accessing various online council services. The inclusion of options for recycling containers and reporting missed commercial waste makes it relevant to our given instruction."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Commercial waste & recycling - MIDDEVON.GOV.UK",
+                                "Source": "https://www.middevon.gov.uk/business/commercial-waste-recycling/",
+                                "Key Strengths": [
+                                    "Directly addresses commercial waste and recycling needs",
+                                    "Offers information about collection schedules where available"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link provides useful information for businesses in Mid Devon in terms of waste management, including collection schedules when available. While it does not specifically cater to missed collections, it is still relevant due to the comprehensive nature of its content."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Assisted collections - MIDDEVON.GOV.UK",
+                                "Source": "https://www.middevon.gov.uk/residents/recycling-rubbish/assisted-collections/",
+                                "Key Strengths": [
+                                    "Addresses recycling and rubbish needs for residents requiring assistance",
+                                    "Provides information and a contact method for service inquiries"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "While not directly related to missed collections, this link provides valuable information and resources for residents who need assistance with recycling and rubbish. Although it may not be what the majority of council customers are looking for, some users might still find it useful based on their specific needs."
+                            }
+                        ],
+                        "Analysis Notes": "All items in the provided list relate to waste management, recycling, or customer service offered by Mid Devon Council. Some links offer comprehensive services while others focus more narrowly on specific issues (e.g., missed collections). Ultimately, four of the links provide direct relevance to council customers' information needs about missing collection, while one additional link provides broader relevant resources that customers might find useful. ",
+                        "Recommendations Notes": "In ranking the top recommendations, I considered factors such as the specificity and relevance of each link to the given instruction (missing collections), as well as the quality of available information and overall ease of use for users."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Report a missed collection - MIDDEVON.GOV.UK",
+                            "Source": "https://www.middevon.gov.uk/residents/recycling-rubbish/report-a-missed-collection/",
+                            "Reasoning": "This recommendation is the most directly related to the given instruction about missed collections, with detailed instructions on how to report one within 48 hours.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Contact us about recycling and rubbish - MIDDEVON.GOV.UK",
+                            "Source": "https://www.middevon.gov.uk/residents/recycling-rubbish/contact-us-about-refuse-and-recycling/",
+                            "Reasoning": "While not directly related to the specific issue of missed collections, this recommendation offers a comprehensive list of services and resources pertaining to recycling and rubbish issues.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Do it online - MIDDEVON.GOV.UK",
+                            "Source": "https://www.middevon.gov.uk/do-it-online/",
+                            "Reasoning": "This recommendation provides an overall gateway to various online services offered by the council, which includes options relevant to missed collections.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.middevon.gov.uk/residents/recycling-rubbish/report-a-missed-collection/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.middevon.gov.uk/residents/recycling-rubbish/report-a-missed-collection/",
+                        "analysis": {
+                            "url": "https://www.middevon.gov.uk/residents/recycling-rubbish/report-a-missed-collection/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T07:58:01+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T07:58:30+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 33710,
+                            "response_time": 0.188,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.188s)",
+                                    "Content successfully retrieved (33710 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.18906116485595703,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.middevon.gov.uk/residents/recycling-rubbish/report-a-missed-collection/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.middevon.gov.uk/residents/recycling-rubbish/report-a-missed-collection/",
+                        "content": " Here's the cleaned, semantically structured HTML containing only the central editorial content of the page:\n\n```html\n<main id=\"mainContentMd\" class=\"base-main page-top\">\n  <div class=\"alert-info item\">\n    <div class=\"container\">\n      <blockquote>\n        <div class=\"content-md\">\n          <p class=\"main-title\">\n            <span class=\"fa fa-info-circle\"></span>We're no longer collecting side waste\n          </p>\n          <div class=\"content-md\">\n            <p>We are no longer&nbsp;collecting any waste left next to, or on top of your wheelie bin or seagull sack. Please ensure you are recycling everything you can - if you are struggling to fit your waste in your container, please contact us for help.</p>\n          </div>\n        </blockquote>\n      </div>\n    </div>\n  </div>\n  <div class=\"container\">\n    <!-- cont -->\n    <div class=\"row-fluid\">\n      <div class=\"col-lg-8\">\n        <h1 class=\"main-title\">Report a missed collection</h1>\n        <p>&nbsp;</p>\n        <h2 id=\"before-reporting-a-missed-collection\">Before reporting a missed collection</h2>\n        <p>&nbsp;</p>\n        <p>First, please check our <a data-udi=\"umb://document/ddd80e23ba2b4423a97c2f89694ac078\" href=\"/residents/recycling-rubbish/report-a-missed-collection/daily-waste-collection-updates/\">Daily waste collection updates</a> page as we may already be aware of problems in your area. If your area has already been listed as missed, there is no need to contact us; please follow the advice provided or revisit the page for further updates.</p>\n        <p>&nbsp;</p>\n        <ul id=\"steps-to-follow\">\n          <li>did you put your bins, bags or boxes out<strong> either the night before or</strong><strong>&nbsp;by 6am on day of collection</strong>?</li>\n          <li>did you put the right bins, bags or boxes out on the <strong>right day</strong> and the&nbsp;<strong>right week</strong>? Most collections are fortnightly: check your dates using our&nbsp;<a rel=\"noopener noreferrer\" data-udi=\"umb://document/db12f01d781548b0af6d2b142a38c4f5\" href=\"/collectiondates/\" target=\"_blank\">Collection day lookup</a>&nbsp;facility</li>\n          <li>are you sure you put the <strong>right materials</strong> <strong>in the right containers</strong>? Check&nbsp;<a href=\"/residents/recycling-rubbish/what-can-you-put-out/\">What can you put out?</a>&nbsp;</li>\n          <li>did you put your bins, bags and boxes out <strong>at the kerbside</strong> and where they can <strong>be seen easily</strong>?</li>\n        </ul>\n        <p>&nbsp;</p>\n        <h2 id=\"what-to-do\">What to do</h2>\n        <p>&nbsp;</p>\n        <div class=\"form-container\">\n          <div class=\"form-area drop-shadow\">\n            <h2 id=\"report-a-missed-collection\">Report - Report a Missed Collection</h2>\n              <!-- Content within the form-container has been removed for brevity -->\n          </div>\n        </div>\n      </div>\n      <div class=\"col-lg-4\" style=\"margin-top:40px\">\n        <!-- related pages and contact us section has been removed for brevity -->\n      </div>\n    </div>\n  </div>\n</main>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 20.68475604057312,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.middevon.gov.uk/residents/recycling-rubbish/report-a-missed-collection/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content answers this question. The provided information tells the resident to check if their area has already been listed as missed before reporting, and then it provides a link to report a missed collection if they have followed the steps mentioned prior.",
+                                    "confidence": "80%",
+                                    "reasoning": "Although the content does not explicitly mention forgetting to put out the bin, it does provide guidance on how to report a missed collection which can be applied in this context as well. The resident is asked to confirm whether they put the bin out on time, on the right day and week, in the correct container, etc., implicitly allowing for mistakes like forgetting to put out the bin.",
+                                    "next_actions": "The resident should follow the steps mentioned in the 'Before reporting a missed collection' section, including checking the Daily Waste Collection Updates page and gathering the necessary information for reporting a missed collection if needed."
+                                }
+                            ],
+                            "overall_assessment": "The content effectively answers the question of what to do when a bin has been missed and meets the resident's needs by providing clear instructions on how to report it and check for any existing issues in their area. However, there is still a need for more explicit instructions for when forgetting to put out the bin may apply."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 7.164138078689575,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.middevon.gov.uk/residents/recycling-rubbish/report-a-missed-collection/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_075801-middevon.gov.uk",
+                    "analysis_timestamp": "2025-08-08T07:58:58+01:00",
+                    "analysis_duration": 0.002,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.95,
+                            "tokens_consumed": 6759,
+                            "tokens_remaining": 93241,
+                            "token_utilization_percentage": 6.76,
+                            "average_tokens_per_step": 1126.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 93.24,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 82,
+                            "consumption_rate": 1126.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "80",
+                            "quality_scores": [
+                                "80"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "80",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 13.57,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.95,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_075801-middevon.gov.uk",
+                        "start_time": "2025-08-08T07:58:01+01:00",
+                        "current_time": "2025-08-08T07:58:58+01:00",
+                        "duration_seconds": 57,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 6759,
+                        "tokens_remaining": 93241,
+                        "token_utilization_percentage": 6.76,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2848,
+                                "avg_per_call": 1424
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3911,
+                                "avg_per_call": 1955.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1126.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_075801-middevon.gov.uk",
+                    "start_time": "2025-08-08T07:58:01+01:00",
+                    "current_time": "2025-08-08T07:58:58+01:00",
+                    "duration_seconds": 57,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 6759,
+                    "tokens_remaining": 93241,
+                    "token_utilization_percentage": 6.76,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2848,
+                            "avg_per_call": 1424
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3911,
+                            "avg_per_call": 1955.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1126.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

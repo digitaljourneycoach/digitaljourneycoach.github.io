@@ -1,0 +1,220 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-12T22:48:52+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "elmbridge.gov.uk",
+                "Council Name": "Elmbridge Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Ensuring Surrey residents get access to the right benefits ...",
+                        "link": "https://elmbridge.gov.uk/news/2025/ensuring-surrey-residents-get-access-right-benefits",
+                        "snippet": "Jun 9, 2025 ... This could save families up to \u00a3500 per child per year in meal costs. For further information on eligibility for free school meals please visit\u00a0..."
+                    },
+                    {
+                        "title": "Sitewide search | Elmbridge Borough Council",
+                        "link": "https://elmbridge.gov.uk/search?s=%E2%9C%88%EF%B8%8Ftippo365.com%E2%9C%88%EF%B8%8Ffortune%20gems%20how%20to%20win%20jackpot&page=31",
+                        "snippet": "Ensuring Surrey residents get access to the right benefits. Free school meals ... Join us for a fun filled, free, shell-themed craft activities\u00a0..."
+                    },
+                    {
+                        "title": "Kids swim for free this August in Elmbridge | Elmbridge Borough ...",
+                        "link": "https://elmbridge.gov.uk/news/2025/kids-swim-free-august-elmbridge",
+                        "snippet": "Aug 1, 2025 ... Children who are eligible for free school meals will be entitled to free ... Get more Elmbridge news. Stay up-to-date on council and borough\u00a0..."
+                    },
+                    {
+                        "title": "News search | Elmbridge Borough Council",
+                        "link": "https://elmbridge.gov.uk/news/search?f%5B0%5D=category%3A14&page=1",
+                        "snippet": "Ensuring Surrey residents get access to the right benefits. Free school meals. 9 June 2025. Walton Centre for the Community entrance. Update on hot meals\u00a0..."
+                    },
+                    {
+                        "title": "Elmbridge Borough Council Cost of Living funding awards announced",
+                        "link": "https://www.elmbridge.gov.uk/news/2024/elmbridge-borough-council-cost-living-funding-awards-announced",
+                        "snippet": "Dec 16, 2024 ... Oasis Charity food vouchers: Oasis have received funding for 50 \u00a375 food vouchers to support families identified by local schools. This annual\u00a0..."
+                    },
+                    {
+                        "title": "About Elmbridge: statistics | Elmbridge Borough Council",
+                        "link": "https://elmbridge.gov.uk/vision/about-borough-elmbridge/about-elmbridge-statistics",
+                        "snippet": "Poverty. 13.4% of children are living in poverty (after housing costs), with over 1,700 children eligible for free school meals ... Get in touch. Contact us\u00a0..."
+                    },
+                    {
+                        "title": "Elmbridge Borough Council Statement of Intent for ECO4 and Great ...",
+                        "link": "https://elmbridge.gov.uk/sites/default/files/2024-08/ECO4%20and%20GBIS%20statement%20of%20intent.pdf",
+                        "snippet": "Aug 19, 2024 ... Proxy 4) A child living at the premises is eligible for free school meals, due to low-."
+                    },
+                    {
+                        "title": "News | Elmbridge Borough Council",
+                        "link": "https://elmbridge.gov.uk/news?page=4",
+                        "snippet": "Elmbridge Museum Explorers invite you to take part in their Shell-tacular creations event! Join us for a fun filled, free, shell-themed craft activities\u00a0..."
+                    },
+                    {
+                        "title": "Refuse, reduce, reuse, repurpose and recycle | Elmbridge Borough ...",
+                        "link": "https://www.elmbridge.gov.uk/sustainable-elmbridge-0/refuse-reduce-reuse-repurpose-and-recycle",
+                        "snippet": "reduce your food waste - buy only what you need, freeze food when you can and plan out your meals for the week; shop smartly \u2013 buy more durable reusable items\u00a0..."
+                    },
+                    {
+                        "title": "Centres Activity Programme",
+                        "link": "https://www.elmbridge.gov.uk/sites/default/files/2025-01/Centres%20Activity%20Programme%20Spring%202025.pdf",
+                        "snippet": "Jan 16, 2025 ... All Centres offer a daily lunch service, and also have a tea bar ... fun activities that might take you back to your own school days!"
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Ensuring Surrey residents get access to the right benefits ...",
+                                "Source": "https://elmbridge.gov.uk/news/2025/ensuring-surrey-residents-get-access-right-benefits",
+                                "Key Strengths": [
+                                    "Directly addresses council customer information needs",
+                                    "Includes information about free school meals eligibility"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This article directly discusses the access to benefits for Surrey residents, specifically related to free school meals eligibility. It is one of the few search results that directly relates to council customer information needs."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Kids swim for free this August in Elmbridge | Elmbridge Borough ...",
+                                "Source": "https://elmbridge.gov.uk/news/2025/kids-swim-free-august-elmbridge",
+                                "Key Strengths": [
+                                    "Includes information about a service relevant to council customers (children eligible for free school meals)",
+                                    "Direct source from the local council website"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This article discusses a specific benefits/services offered by the Elmbridge Borough Council, such as free swimming for children who are eligible for free school meals."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "News search | Elmbridge Borough Council",
+                                "Source": "https://elmbridge.gov.uk/news/search?f%5B0%5D=category%3A14&page=1",
+                                "Key Strengths": [
+                                    "Offers a comprehensive news search for the Elmbridge Borough Council",
+                                    "Potential to find more specific information about council services"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "The news search provides a comprehensive listing of articles that may include detailed information about council services and updates, including those relevant to council customers."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Elmbridge Borough Council Cost of Living funding awards announced",
+                                "Source": "https://www.elmbridge.gov.uk/news/2024/elmbridge-borough-council-cost-living-funding-awards-announced",
+                                "Key Strengths": [
+                                    "Includes information about available funding to support council customers",
+                                    "Specifically mentions Oasis Charity food vouchers"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This article discusses the funding awarded by Elmbridge Borough Council to support residents experiencing financial hardship, including mention of Oasis Charity food vouchers."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "About Elmbridge: statistics | Elmbridge Borough Council",
+                                "Source": "https://elmbridge.gov.uk/vision/about-borough-elmbridge/about-elmbridge-statistics",
+                                "Key Strengths": [
+                                    "Provides statistical data about the Elmbridge Borough, including poverty level and free school meals eligibility",
+                                    "Gives an overview of current situation in the council area"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "This article provides statistical data that may help assess the needs of council customers within the Elmbridge Borough, including information about poverty levels and free school meals eligibility."
+                            }
+                        ],
+                        "Analysis Notes": "Several search results provide relevant information for council customers, such as news articles discussing benefits eligibility and available services. The top recommendations address specific concerns of council customers while still keeping a broad scope.",
+                        "Recommendations Notes": "The top five recommended resources were chosen based on their ability to answer council customer information needs directly while also providing additional context or further resources."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 75,
+                    "max_confidence": "85"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

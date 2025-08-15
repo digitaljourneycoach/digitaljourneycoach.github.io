@@ -1,0 +1,208 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T00:27:01+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "newforest.gov.uk",
+                "Council Name": "New Forest District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Solar panels - New Forest District Council",
+                        "link": "https://www.newforest.gov.uk/article/3109/Solar-panels",
+                        "snippet": "Solar panels and equipment installed on domestic buildings and land are usually considered permitted development. This means that planning permission is not\u00a0..."
+                    },
+                    {
+                        "title": "Energy efficiency planning advice - New Forest District Council",
+                        "link": "https://www.newforest.gov.uk/article/3105/Energy-efficiency-planning-advice",
+                        "snippet": "External measures such as solar panels, air-source heat pumps and new more thermally efficient windows need planning permission in certain locations and if\u00a0..."
+                    },
+                    {
+                        "title": "Planning guidance for householders - New Forest District Council",
+                        "link": "https://www.newforest.gov.uk/article/968/Planning-guidance-for-householders",
+                        "snippet": "If you are a householder who wishes to make alterations to your property, you may need to apply to the council for planning permission. ... Solar panels \u00b7 Heat\u00a0..."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://democracy.newforest.gov.uk/documents/s8858/3e.pdf",
+                        "snippet": "Jun 20, 2018 ... Application Number: 18/10111 Full Planning Permission. Site ... Any future applications for solar panels on this hut and others would be."
+                    },
+                    {
+                        "title": "Application Number:",
+                        "link": "https://democracy.newforest.gov.uk/documents/s29626/Land%20Near%20Walkford%20Farm%20New%20Milton%20Plan.pdf",
+                        "snippet": "Aug 14, 2024 ... \u2022 there are enough solar panels in the New Forest, including close to this site ... secured as a condition of any planning permission."
+                    },
+                    {
+                        "title": "Planning for Climate Change Supplementary Planning Document ...",
+                        "link": "https://www.newforest.gov.uk/article/3591/Planning-for-Climate-Change-Supplementary-Planning-Document-SPD",
+                        "snippet": "Apr 3, 2024 ... Solar PV panels installation ... Many self-builders and developers go beyond building regulations for energy efficiency because it makes sense."
+                    },
+                    {
+                        "title": "Application Number: 20/11192 Outline Planning Permission",
+                        "link": "https://democracy.newforest.gov.uk/documents/s22319/3b%20-%20Land%20south%20of%20Lymington%20Road%20Plan.pdf",
+                        "snippet": "May 11, 2022 ... 4 Heating and powering buildings currently makes up 40% of the UK's total energy use. Installing low carbon technology, such as solar panels and\u00a0..."
+                    },
+                    {
+                        "title": "Planning for Climate Change",
+                        "link": "https://www.newforest.gov.uk/media/3384/Planning-for-Climate-Change-SPD-Consultation-version/pdf/Planning_for_Climate_Change_SPD_Consultation_version.pdf",
+                        "snippet": "May 23, 2023 ... Solar PV panels installation ... Many self-builders and developers go beyond building regulations for energy efficiency because it makes sense."
+                    },
+                    {
+                        "title": "Planning Committee 12 July 2023 - Application Number: 21/11097 ...",
+                        "link": "https://democracy.newforest.gov.uk/documents/s26353/Derritt%20Lane%20Plan.pdf",
+                        "snippet": "Jul 12, 2023 ... Application Number: 21/11097 Full Planning Permission. Site: LAND SOUTH OF, DERRITT LANE, SOPLEY BH23 8AT. (PROPOSED LEGAL AGREEMENT)."
+                    },
+                    {
+                        "title": "Application Number:",
+                        "link": "https://democracy.newforest.gov.uk/documents/s32060/Threeways%20Cottage%20Rockbourne%20Plan.pdf",
+                        "snippet": "Mar 12, 2025 ... solar panels being visible from the road etc. do not apply here. 7 ... The application seeks planning permission to convert the existing stable\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Solar panels - New Forest District Council",
+                                "Source": "https://www.newforest.gov.uk/article/3109/Solar-panels",
+                                "Key Strengths": [
+                                    "Direct information about solar panels from the New Forest District Council",
+                                    "Covers permissible development regarding solar panels installation"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides detailed information on solar panels and their installation in a council context, which is directly relevant to the user's request. The snippet indicates that solar panels generally do not require planning permission as they fall under permitted development."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Energy efficiency planning advice - New Forest District Council",
+                                "Source": "https://www.newforest.gov.uk/article/3105/Energy-efficiency-planning-advice",
+                                "Key Strengths": [
+                                    "Official council resource on energy efficiency and planning advice",
+                                    "Includes guidelines for solar panels, air-source heat pumps and windows"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link contains comprehensive information about energy efficiency planning advice from the New Forest District Council. The snippet explicitly mentions solar panels as one of the solutions that may require planning permission in certain locations."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Planning guidance for householders - New Forest District Council",
+                                "Source": "https://www.newforest.gov.uk/article/968/Planning-guidance-for-householders",
+                                "Key Strengths": [
+                                    "Comprehensive guidance for householders from the council on planning regulations",
+                                    "Includes information about solar panels along with other energy efficiency measures"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link provides detailed planning guidelines for householders, which is relevant to a user seeking council customer information. The snippet mentions solar panels as one of the energy-related topics that may necessitate planning permission."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Planning for Climate Change Supplementary Planning Document ...",
+                                "Source": "https://www.newforest.gov.uk/article/3591/Planning-for-Climate-Change-Supplementary-Planning-Document-SPD",
+                                "Key Strengths": [
+                                    "In-depth planning document focusing on climate change and solar PV panels installation",
+                                    "Discusses the importance of exceeding building regulations for energy efficiency"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though not explicitly a customer information resource, this link addresses solar PV panels installation and energy efficiency within the context of planning change and climate change. The relevance to user's request is justified by the discussed importance of exceeding building regulations for energy efficiency."
+                            }
+                        ],
+                        "Analysis Notes": "Items 4, 5, 6, 8, and 10 do not contain easily discernible information about council customer resources or solar panels. As a result, these items have been excluded from the recommendations.",
+                        "Recommendations Notes": "Based on the search results, it is evident that the New Forest District Council provides useful resources for seeking information about energy efficiency and planning regulations, including solar panels. Recommended links are prioritized by their relevance to user's request and overall quality."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 77.5,
+                    "max_confidence": "85"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

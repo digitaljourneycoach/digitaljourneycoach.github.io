@@ -1,0 +1,185 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T01:57:13+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "newmiltontowncouncil.gov.uk",
+                "Council Name": "New Forest District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Planning Applications Planning Committee 13 August 2024",
+                        "link": "https://www.newmiltontowncouncil.gov.uk/wp-content/uploads/2020/08/Planning-20240813-Appendix-1-List-of-applications-decisions.pdf",
+                        "snippet": "Aug 13, 2024 ... Site: 1 Chestnut Avenue. Proposal. Roof recovering and refurbishment works; installation of solar panels. ... planning permission 23/10370 to\u00a0..."
+                    },
+                    {
+                        "title": "Planning Committee 2 July 2024 16 Minutes of the meeting of ...",
+                        "link": "https://www.newmiltontowncouncil.gov.uk/wp-content/uploads/2020/08/Planning-20240702-Minutes.pdf",
+                        "snippet": "Jul 2, 2024 ... Proposal: Roof recovering and refurbishment works; installation of solar panels. ... Proposal: Variation of condition 2 of planning permission\u00a0..."
+                    },
+                    {
+                        "title": "S U M M O N S",
+                        "link": "https://www.newmiltontowncouncil.gov.uk/wp-content/uploads/2020/08/2025-05-13_AnnualMeetingBundle-Public.pdf",
+                        "snippet": "May 13, 2025 ... Notice is hereby given that a meeting of the Planning Committee of New Milton Town Council will be held on Tuesday 13th May 2025 at 7.40pm (or\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 3
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "3",
+                            "recommendations": "Up to 5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Planning Applications Planning Committee 13 August 2024",
+                                "Source": "https://www.newmiltontowncouncil.gov.uk/wp-content/uploads/2020/08/Planning-20240813-Appendix-1-List-of-applications-decisions.pdf",
+                                "Key Strengths": [
+                                    "The document contains a list of planning applications decisions.",
+                                    "The title mentions council and customer information"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The provided link includes a list of planning application decisions, which can contain important information for council customers. This document appears to be relevant to the given instruction as it pertains to council customer info."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Planning Committee 2 July 2024 16 Minutes of the meeting of ...",
+                                "Source": "https://www.newmiltontowncouncil.gov.uk/wp-content/uploads/2020/08/Planning-20240702-Minutes.pdf",
+                                "Key Strengths": [
+                                    "The document contains minutes of a planning committee meeting.",
+                                    "It mentions a proposal for roof recovering, refurbishment works, and installation of solar panels, which may be relevant to council customers."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The provided link includes the minutes of a council's planning committee meeting. While it doesn't directly state that it contains customer information, it does refer to projects that could involve council customers."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "S U M M O N S",
+                                "Source": "https://www.newmiltontowncouncil.gov.uk/wp-content/uploads/2020/08/2025-05-13_AnnualMeetingBundle-Public.pdf",
+                                "Key Strengths": [
+                                    "The document appears to be an annual meeting bundle for a local council.",
+                                    "The title suggests that it might contain important notices, such as those related to planning applications."
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "Although the provided link points to an annual meeting bundle for the council, its relevance to the customer information request is not immediately clear. However, since it contains important meeting notices, there may be a possibility that it contains updated planning application information."
+                            }
+                        ],
+                        "Analysis Notes": "All items in the list appear to be related to council meetings or documents. The first two items are more directly relevant to the customer information request by referencing planning applications and decisions.",
+                        "Recommendations Notes": "The recommendations are ordered from most relevant (highest confidence) to least relevant. However, it's important to consider that the second and third recommendations might require further analysis or review before determining their full relevance to the customer information request."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "70",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 71.66666666666667,
+                    "max_confidence": "85"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

@@ -1,0 +1,640 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T23:23:06+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "kent.gov.uk",
+                "Council Name": "Kent County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Solar Together Kent - Kent County Council",
+                        "link": "https://www.kent.gov.uk/leisure-and-community/cost-of-living-support/household-energy/solar-together-kent",
+                        "snippet": "... solar photovoltaic (PV) panels. If you ... Solar PV installations are considered a 'permitted development' and will generally not need planning permission."
+                    },
+                    {
+                        "title": "LARGE SCALE SOLAR ARRAYS",
+                        "link": "https://democracy.kent.gov.uk/documents/s48772/KCC%20Solar%20Policy%20Position%20Statement%20August%202014%20FINAL.pdf",
+                        "snippet": "7.1 A Flood Risk Assessment (including drainage) may be needed to inform the planning approval process. Freestanding solar panels will drain to the existing\u00a0..."
+                    },
+                    {
+                        "title": "Environment, waste and planning - Kent County Council",
+                        "link": "https://www.kent.gov.uk/environment-waste-and-planning",
+                        "snippet": "Learn about planning permission, minerals and village greens. ... It allows residents and small businesses to install solar panels on their homes and businesses\u00a0..."
+                    },
+                    {
+                        "title": "Design Guide for Irrigation Reservoirs - Kent County Council",
+                        "link": "https://www.kent.gov.uk/__data/assets/pdf_file/0007/71656/design-guide-for-irrigation-reservoirs.pdf",
+                        "snippet": "The response of Kent local planning authorities to the inclusion of floating solar panels on reservoirs is as yet untested: The panels would not cause any."
+                    },
+                    {
+                        "title": "Item D3 Wind turbine with 15m mast turbine with 15m mast turbine ...",
+                        "link": "https://democracy.kent.gov.uk/documents/s6503/Item%20D3.%20Swanley%20Technology%20College.pdf",
+                        "snippet": "The proposed solar panels comprise of an array of 36 individual PV panels, which would ... recommend that planning permission be granted subject to the\u00a0..."
+                    },
+                    {
+                        "title": "Save money on energy through home improvements - Kent County ...",
+                        "link": "https://www.kent.gov.uk/leisure-and-community/cost-of-living-support/household-energy/save-money-on-energy-bills/save-money-on-energy-through-home-improvements",
+                        "snippet": "If you live in a designated area or listed building, you may need planning permission for home improvements. ... Solar PV panels should last for 25 years\u00a0..."
+                    },
+                    {
+                        "title": "PLANNING APPLICATIONS COMMITTEE Wednesday, 22nd ...",
+                        "link": "https://democracy.kent.gov.uk/documents/g9578/Public+reports+pack+22nd-Jan-2025+10.00+Planning+Applications+Committee.pdf?T=10",
+                        "snippet": "Jan 22, 2025 ... An external staircase would provide permanent access to the roof, where solar panels would be positioned in a southerly facing array. 8. The\u00a0..."
+                    },
+                    {
+                        "title": "Item D1 Proposed 2FE Primary School at Chilmington Green ...",
+                        "link": "https://democracy.kent.gov.uk/documents/s92521/Item%20D1%20-%20Chilmington%20Green.pdf",
+                        "snippet": "Oct 9, 2019 ... \u2022 An area of the flat roof allocated for an array of solar PV panels; & ... condition is attached to planning permission. Reptiles. Common\u00a0..."
+                    },
+                    {
+                        "title": "(Public Pack)Agenda Document for Planning Applications ...",
+                        "link": "https://democracy.kent.gov.uk/documents/g9583/Public%20reports%20pack%2009th-Jul-2025%2010.00%20Planning%20Applications%20Committee.pdf?T=10",
+                        "snippet": "Jul 9, 2025 ... ... system is covered by a permit to discharge then an application to ... installation of a solar array to the roof of a non-domestic building."
+                    },
+                    {
+                        "title": "Guidance and Validation Requirements for Minerals & Waste ...",
+                        "link": "https://www.kent.gov.uk/__data/assets/pdf_file/0019/205066/Guidance-and-validation-requirements-for-mineral-developments.pdf",
+                        "snippet": "An application for planning permission submitted to the County Council will be ... application (e.g., the installation of solar panels). c) Key Policy Drivers\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.kent.gov.uk/leisure-and-community/cost-of-living-support/household-energy/solar-together-kent",
+                        "title": "Solar Together Kent - Kent County Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Specifically aimed at residents of Kent County",
+                            "Offers information on solar photovoltaic (PV) panels and their installation",
+                            "Clear information on whether planning permission is needed"
+                        ],
+                        "reasoning": "This link directly provides information about a specific initiative for solar PV panel installations in Kent County, which is relevant to the customer's council-related energy needs. It offers practical advice and guides potential customers through the process of installing these panels.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "3"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Solar Together Kent - Kent County Council",
+                                "Source": "https://www.kent.gov.uk/leisure-and-community/cost-of-living-support/household-energy/solar-together-kent",
+                                "Key Strengths": [
+                                    "Specifically aimed at residents of Kent County",
+                                    "Offers information on solar photovoltaic (PV) panels and their installation",
+                                    "Clear information on whether planning permission is needed"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link directly provides information about a specific initiative for solar PV panel installations in Kent County, which is relevant to the customer's council-related energy needs. It offers practical advice and guides potential customers through the process of installing these panels."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Environment, waste and planning - Kent County Council",
+                                "Source": "https://www.kent.gov.uk/environment-waste-and-planning",
+                                "Key Strengths": [
+                                    "Overall resource on environment, waste, and planning in the county",
+                                    "Includes information on planning permission requirements for home improvements",
+                                    "Mention of solar PV panel installations"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While not dedicated solely to solar panels, this resource offers a comprehensive guide to environmental issues in Kent County, thus providing valuable information on planning permission that might be needed for solar panel installation."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Save money on energy through home improvements - Kent County ...",
+                                "Source": "https://www.kent.gov.uk/leisure-and-community/cost-of-living-support/household-energy/save-money-on-energy-bills/save-money-on-energy-through-home-improvements",
+                                "Key Strengths": [
+                                    "Offers tips for saving money on energy bills for residents of Kent County",
+                                    "Discusses solar PV panels and their benefits",
+                                    "Details on home improvement regulations, particularly relevant when adding solar panels"
+                                ],
+                                "Confidence": "78",
+                                "Reasoning": "This link discusses various ways to save money on energy bills, including the installation of solar photovoltaic (PV) panels. It offers practical advice on home improvements and the regulations that apply when making changes to a property."
+                            }
+                        ],
+                        "Analysis Notes": "While several resources provide information related to solar panel installations or environmental issues within Kent County, only three resources stood out as being most relevant to council customer needs in terms of providing practical advice on solar panel installation and home improvements. The remaining seven resources focused on topics such as solar array installations for schools and commercial buildings, local planning applications, and other environment-related matters that do not directly correspond to the council customer's information needs.",
+                        "Recommendations Notes": "When searching for relevant resources on a specific county council website, it is important to look for resources that provide practical advice, discuss the topic of interest (in this case, solar panel installations), and address potential issues such as home improvements or planning permission requirements. These three factors will help ensure recommendations are tailored to council customers' needs."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "80",
+                        "78"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82.66666666666667,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.kent.gov.uk/leisure-and-community/cost-of-living-support/household-energy/solar-together-kent"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.kent.gov.uk/leisure-and-community/cost-of-living-support/household-energy/solar-together-kent",
+                        "analysis": {
+                            "url": "https://www.kent.gov.uk/leisure-and-community/cost-of-living-support/household-energy/solar-together-kent",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T23:23:06+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T23:23:35+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 61505,
+                            "response_time": 1.13,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (1.13s)",
+                                    "Content successfully retrieved (61505 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 1.1309258937835693,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.kent.gov.uk/leisure-and-community/cost-of-living-support/household-energy/solar-together-kent"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.kent.gov.uk/leisure-and-community/cost-of-living-support/household-energy/solar-together-kent",
+                        "content": " Here is a brief explanation of the code provided:\n\n1. `<!DOCTYPE html>` - Declares this document as an HTML5 document.\n2. `<html lang=\"en\">` - The root element for the entire HTML document. The language attribute specifies that the content is written in English.\n3. `<head><meta charset=\"UTF-8\">` - Sets the character encoding to UTF-8, ensuring compatibility with various languages and symbols.\n4. `<title>Survey Results</title>` - Provides the title for the webpage, as displayed in browser tabs and search results.\n5. Various link tags (linked stylesheet and scripts) are used to load external resources required by the page such as fonts and JavaScript files.\n6. `<style>` element defines CSS styles applicable to the entire webpage. In this case, it sets some basic styling properties like fonts, colors, margins, and padding.\n7. Use of multiple div elements for organizing and grouping content into various sections such as the survey container, voting results, voting buttons (poor, average, good), and the overall rating (smiley faces).\n8. Inside the vote-container div, three divs are used to represent each smiley face button corresponding to poor, average, and good ratings. Each of these has a corresponding onClick event that triggers a JavaScript function.\n9. The JavaScript code is placed within script tags. It handles the click events on the voting buttons, sends an AJAX request to the specified endpoint for rating submission, and updates the overall rating (using smiley faces) accordingly.\n10. `<div id=\"results\">` contains the HTML structure for displaying the survey results using a series of div elements with various CSS classes. Inside this container, three sets of smiley faces are displayed based on the scores received for poor, average, and good ratings. The scores are represented as numbers (e.g., 127), percentages (e.g., 25%), and emojis (e.g., \u2639, \ud83e\udd37\u200d\u2642\ufe0f, \ud83d\ude0a).\n11. `<footer>` element provides information about the website source code and license.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 12.72590684890747,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.kent.gov.uk/leisure-and-community/cost-of-living-support/household-energy/solar-together-kent",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "The content does not explicitly address this question.",
+                                    "confidence": "30%",
+                                    "reasoning": "The webpage is about showing survey results of a solar energy initiative for Kent, but it doesn't provide information on the installation process or permission requirements for residents who want to install solar panels on their homes.",
+                                    "next_actions": "Search for specific permission guidelines from the local planning office or contact them directly"
+                                }
+                            ],
+                            "overall_assessment": "The content provides a summary of a survey about solar energy in Kent, but it lacks information relevant to council residents who want to install solar panels on their own properties."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.498306035995483,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.kent.gov.uk/leisure-and-community/cost-of-living-support/household-energy/solar-together-kent"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_232306-kent.gov.uk",
+                    "analysis_timestamp": "2025-08-10T23:23:53+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7833333333333333,
+                            "tokens_consumed": 7975,
+                            "tokens_remaining": 22025,
+                            "token_utilization_percentage": 26.58,
+                            "average_tokens_per_step": 1329.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 73.42,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 16,
+                            "consumption_rate": 1329.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "30",
+                            "quality_scores": [
+                                "30"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "30",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.19,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_232306-kent.gov.uk",
+                        "start_time": "2025-08-10T23:23:06+01:00",
+                        "current_time": "2025-08-10T23:23:53+01:00",
+                        "duration_seconds": 47,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7975,
+                        "tokens_remaining": 22025,
+                        "token_utilization_percentage": 26.58,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 4558,
+                                "avg_per_call": 2279
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3417,
+                                "avg_per_call": 1708.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1329.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_232306-kent.gov.uk",
+                    "start_time": "2025-08-10T23:23:06+01:00",
+                    "current_time": "2025-08-10T23:23:53+01:00",
+                    "duration_seconds": 47,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7975,
+                    "tokens_remaining": 22025,
+                    "token_utilization_percentage": 26.58,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 4558,
+                            "avg_per_call": 2279
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3417,
+                            "avg_per_call": 1708.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1329.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

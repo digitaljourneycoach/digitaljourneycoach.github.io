@@ -1,0 +1,208 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T22:05:47+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "devon.gov.uk",
+                "Council Name": "Devon County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Part B: Solar PV energy - Planning",
+                        "link": "https://www.devon.gov.uk/planning/planning-policies/landscape/landscape-policy-and-guidance/devon-landscape-and-policy-group-advice-note-2-accommodating-wind-and-solar-pv-developments-in-devons-landscape/part-b-solar-pv-energy/",
+                        "snippet": "Feb 17, 2025 ... Think about the position of panels and also of cabling \u2013 it is unlikely that panels or trenches will be permitted in areas with existing or\u00a0..."
+                    },
+                    {
+                        "title": "Part C: Battery electrical storage systems (BESS) - Planning",
+                        "link": "https://www.devon.gov.uk/planning/planning-policies/landscape/landscape-policy-and-guidance/devon-landscape-and-policy-group-advice-note-2-accommodating-wind-and-solar-pv-developments-in-devons-landscape/part-c-battery-electrical-storage-systems-bess/",
+                        "snippet": "Feb 13, 2025 ... BESS are devices that store surplus energy from renewable sources (such as solar and wind) then release it when the power is needed most."
+                    },
+                    {
+                        "title": "Blackdown hills - Planning",
+                        "link": "https://www.devon.gov.uk/planning/planning-policies/landscape/devon-character-areas/east-devon-area/blackdown-hills/",
+                        "snippet": "Increased demand for wind turbines and communications masts on higher ground as well as for domestic and community-scale solar panels and small wind turbines,\u00a0..."
+                    },
+                    {
+                        "title": "Devon's Climate Assembly shows the way to a net-zero future - News",
+                        "link": "https://www.devon.gov.uk/news/devons-climate-assembly-shows-the-way-to-a-net-zero-future/",
+                        "snippet": "Oct 12, 2021 ... In contrast, a fully retro-refitted home with solar panels would need just 4,300kWh of energy a year. ... planning permission was granted."
+                    },
+                    {
+                        "title": "Validation Requirements - Planning",
+                        "link": "https://www.devon.gov.uk/planning/document/validation-requirements/",
+                        "snippet": "May 27, 2021 ... Outline planning permission; Reserved matters*; Change of use; Extension of time *; Variation of a condition*; Retrospective applications. For\u00a0..."
+                    },
+                    {
+                        "title": "East Devon central ridge - Planning",
+                        "link": "https://www.devon.gov.uk/planning/planning-policies/landscape/devon-character-areas/east-devon-area/east-devon-central-ridge/",
+                        "snippet": "This landscape comprises a narrow, elevated, rolling ridge fringed by steep scarp slopes and upper valley farmland."
+                    },
+                    {
+                        "title": "Breccia Hills and Coast - Planning",
+                        "link": "https://www.devon.gov.uk/planning/planning-policies/landscape/devon-character-areas/teignbridge-and-east-devon-area/breccia-hills-and-coast/",
+                        "snippet": "Apply for planning permission \u00b7 Apply for planning permission ... Demand for domestic and community-scale renewable energy installations such as solar panels\u00a0..."
+                    },
+                    {
+                        "title": "Tamar Upland Fringe - Planning",
+                        "link": "https://www.devon.gov.uk/planning/planning-policies/landscape/devon-character-areas/west-devon-area/tamar-upland-fringe/",
+                        "snippet": "Apply for planning permission \u00b7 Apply for planning permission \u00b7 Get pre ... Increased demand for domestic and community-scale solar panels and small\u00a0..."
+                    },
+                    {
+                        "title": "Wootton hills - Planning",
+                        "link": "https://www.devon.gov.uk/planning/planning-policies/landscape/devon-character-areas/east-devon-area/wootton-hills/",
+                        "snippet": "A landscape of rounded hills which link to form a gentle, rolling ridge, with wooded fringes on the steeper slopes giving way to lower lying farmland."
+                    },
+                    {
+                        "title": "Devon County Council takes full ownership of Skypark Development ...",
+                        "link": "https://www.devon.gov.uk/news/devon-county-council-takes-full-ownership-of-skypark-development-partnership-llp/",
+                        "snippet": "Jun 23, 2025 ... ... planning permission and to attract new investment through a quicker and simplified planning process for developers. East Devon District\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Part B: Solar PV energy - Planning",
+                                "Source": "https://www.devon.gov.uk/planning/planning-policies/landscape/landscape-policy-and-guidance/devon-landscape-and-policy-group-advice-note-2-accommodating-wind-and-solar-pv-developments-in-devons-landscape/part-b-solar-pv-energy/",
+                                "Key Strengths": [
+                                    "Focuses on solar PV energy planning, which is relevant to the council's customer information needs.",
+                                    "Detailed guidelines for accommodating solar PV developments are provided."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title and the content of the link suggest that it provides detailed information about planning for solar PV energy, which is closely related to the council customer's needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Part C: Battery electrical storage systems (BESS) - Planning",
+                                "Source": "https://www.devon.gov.uk/planning/planning-policies/landscape/landscape-policy-and-guidance/devon-landscape-and-policy-group-advice-note-2-accommodating-wind-and-solar-pv-developments-in-devons-landscape/part-c-battery-electrical-storage-systems-bess/",
+                                "Key Strengths": [
+                                    "Focuses on battery electrical storage systems (BESS), which are often used in conjunction with solar PV energy.",
+                                    "Details about the working of BESS and its role in managing surplus energy from renewable sources."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The content seems to be relevant as it provides information on battery storage systems that are often paired with solar PV installations to manage power consumption."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Blackdown Hills - Planning",
+                                "Source": "https://www.devon.gov.uk/planning/planning-policies/landscape/devon-character-areas/east-devon-area/blackdown-hills/",
+                                "Key Strengths": [
+                                    "Covers a broader landscape, including hills, that is relevant to the council's customer information needs.",
+                                    "Mention of increased demand for renewable energy installations such as solar panels."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Though not directly focusing on energy planning, it discusses the landscape where infrastructure development may occur and mentions solar panels among other renewables."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Devon's Climate Assembly shows the way to a net-zero future - News",
+                                "Source": "https://www.devon.gov.uk/news/devons-climate-assembly-shows-the-way-to-a-net-zero-future/",
+                                "Key Strengths": [
+                                    "Reports a case study of retrofitted homes with solar panels, providing practical examples.",
+                                    "Discusses the importance and implications of achieving net-zero emissions."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Though not focused on planning specifically, it discusses successful examples of energy efficiency with solar panel implementations in homes."
+                            }
+                        ],
+                        "Analysis Notes": "The list contains information about different landscape areas, planning policies, and news articles. The primary resources related to council customer's information needs regarding energy infrastructure and policies were identified.",
+                        "Recommendations Notes": "The confidence scores are based on the relevance of the contents to the council customer informaton needs and the clarity of the presented information."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82.5,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

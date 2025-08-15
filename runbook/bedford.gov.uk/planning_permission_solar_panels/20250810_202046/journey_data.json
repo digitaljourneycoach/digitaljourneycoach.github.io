@@ -1,0 +1,220 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T20:20:46+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "bedford.gov.uk",
+                "Council Name": "Bedford Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Solar Together Bedfordshire | Bedford Borough Council",
+                        "link": "https://www.bedford.gov.uk/environmental-issues/sustainability/sustainability-projects/solar-together-bedfordshire",
+                        "snippet": "... planning permission may be required. You can find more information about planning requirements for PV panels in Bedford Borough here (PDF). Support during\u00a0..."
+                    },
+                    {
+                        "title": "Do I need planning permission? | Bedford Borough Council",
+                        "link": "https://www.bedford.gov.uk/planning-and-building-control/planning-guidance/do-i-need-planning-permission",
+                        "snippet": "Residential solar panel enquiries (including the Solar Together initiative); All HMOs in Bedford and Kempston require planning permission as an Article 4\u00a0..."
+                    },
+                    {
+                        "title": "Solar Photovoltaics (PV) \u2013 Planning and Building Regulations",
+                        "link": "https://www.bedford.gov.uk/files/solar-panels-advice-note-220615/download?inline",
+                        "snippet": "Placing solar panels on the roof of your house or flat, or a building within the grounds of your house or flat, is considered in most cases to be 'permitted."
+                    },
+                    {
+                        "title": "Renewable technology application guidance \u2013 Building Regulations",
+                        "link": "https://www.bedford.gov.uk/files/building-regulations-renewables-guidance2.pdf/download?inline",
+                        "snippet": "Regardless of whether or not planning permission is required for the installation of your solar panels, the installation itself is still subject to standard\u00a0..."
+                    },
+                    {
+                        "title": "Planning application forms - Overview | Bedford Borough Council",
+                        "link": "https://www.bedford.gov.uk/planning-and-building-control/planning-applications/make-planning-application/planning-0",
+                        "snippet": "Find out more about solar panels, cladding and render, Electric charging points and dropped kerbs. ... Application for Planning Permission and consent to display\u00a0..."
+                    },
+                    {
+                        "title": "The Mayor's Climate Change Fund | Bedford Borough Council",
+                        "link": "https://www.bedford.gov.uk/environmental-issues/sustainability/sustainability-projects/mayors-climate-change-fund",
+                        "snippet": "... Solar panels (PDF); Stewartby Village ... Confirmation of any permissions needed for the work such as planning permission or permission from building owner."
+                    },
+                    {
+                        "title": "Prior notifications | Bedford Borough Council",
+                        "link": "https://www.bedford.gov.uk/planning-and-building-control/planning-applications/make-planning-application/planning-2",
+                        "snippet": "Permitted development rights allow for larger extensions to be built without the need for full planning permission. Detached homes to extend up to 8 metres into\u00a0..."
+                    },
+                    {
+                        "title": "Annual Monitoring Report 2022-2023",
+                        "link": "https://www.bedford.gov.uk/files/annual-monitoring-report-2022-2023-updated-feb-2024.pdf/download?inline",
+                        "snippet": "... solar panels and is ... reasons for granting permission. Application reference. Site. Description of development. Reasons for granting planning permission."
+                    },
+                    {
+                        "title": "Planning Annual Monitoring Report 2023-2024",
+                        "link": "https://www.bedford.gov.uk/files/annual-monitoring-report-2023-2024.pdf/download?inline",
+                        "snippet": "1d Planning permissions for renewable and low carbon energy generation ... A 10.5 MW solar farm comprising an array of ground-mounted solar PV panels at Goosey\u00a0..."
+                    },
+                    {
+                        "title": "Thurleigh Neighbourhood Plan Consultation Statement",
+                        "link": "https://www.bedford.gov.uk/files/thurleighconsultationstatement.-final.pdf/download?inline",
+                        "snippet": "Green fields are a. The owner has pre- empted the NDP , however should they be successful in getting planning permission the dwellings can still be included as\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Solar Together Bedfordshire | Bedford Borough Council",
+                                "Source": "https://www.bedford.gov.uk/environmental-issues/sustainability/solar-together-bedfordshire",
+                                "Key Strengths": [
+                                    "Provides information specifically about solar panels for residents",
+                                    "Includes guidance on planning permission requirements"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link directly discusses solar panel installation, which is relevant to the customer's search. It also includes specific information about planning requirements."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Do I need planning permission? | Bedford Borough Council",
+                                "Source": "https://www.bedford.gov.uk/planning-and-building-control/planning-guidance/do-i-need-planning-permission",
+                                "Key Strengths": [
+                                    "Directly answers the question: 'Do I need planning permission?'",
+                                    "Offers guidance not only for solar panels but also for other home improvement projects"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides a general overview of when planning permission is required for various types of home improvements, including solar panel installation."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Solar Photovoltaics (PV) \u2013 Planning and Building Regulations",
+                                "Source": "https://www.bedford.gov.uk/files/solar-panels-advice-note-220615/download?inline",
+                                "Key Strengths": [
+                                    "Provides detailed information about planning permission and building regulations for solar panel installation",
+                                    "Offers guidance specific to Bedford Borough"
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "This link provides an advisory note that offers specific, detailed, and relevant information about planning and building regulations related to solar panel installation in Bedford Borough."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Renewable technology application guidance \u2013 Building Regulations",
+                                "Source": "https://www.bedford.gov.uk/files/building-regulations-renewables-guidance2.pdf/download?inline",
+                                "Key Strengths": [
+                                    "Details the building regulations for renewable technologies, including solar panels",
+                                    "Offers guidance specific to Bedford Borough"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While this link doesn't specifically mention planning permission, it offers detailed information about building regulations for renewable technologies such as solar panels in Bedford Borough."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Planning application forms - Overview | Bedford Borough Council",
+                                "Source": "https://www.bedford.gov.uk/planning-and-building-control/planning-applications/make-planning-application/planning-0",
+                                "Key Strengths": [
+                                    "Provides information on how to make a planning application for various types of developments",
+                                    "Offers guidance for solar panels, cladding, render, electric charging points, and dropped kerbs"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link provides an overview of the planning application process, offering guidance on how to make a planning application for various types of developments, including solar panels."
+                            }
+                        ],
+                        "Analysis Notes": "The provided search results contain a mix of general information about different development projects in Bedford Borough and more specific resources related to planning permissions and building regulations. Some results may not be as directly relevant but still offer valuable information for customers seeking guidance on solar panel installation.",
+                        "Recommendations Notes": "We have chosen the top five recommendations based on their relevance, quality of information provided, and whether they directly address the question 'Do I need planning permission for solar panels?'"
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "95",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "95"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

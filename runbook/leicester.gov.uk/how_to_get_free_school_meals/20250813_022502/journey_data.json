@@ -1,0 +1,687 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T02:25:02+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "leicester.gov.uk",
+                "Council Name": "Leicester City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Free school meals",
+                        "link": "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/",
+                        "snippet": "Find out if your child qualifies for benefits-related free school meals and how to apply."
+                    },
+                    {
+                        "title": "Free school meals for families with no recourse to public funds (NRPF)",
+                        "link": "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/free-school-meals-for-families-with-no-recourse-to-public-funds/",
+                        "snippet": "This includes, but may not be limited to children of: Zambrano carers; families who have no recourse to public funds with a right to remain in the UK on grounds\u00a0..."
+                    },
+                    {
+                        "title": "Sign up now for holiday scheme for children on free school meals",
+                        "link": "https://news.leicester.gov.uk/news-articles/2025/march/sign-up-now-for-holiday-scheme-for-children-on-free-school-meals/",
+                        "snippet": "Mar 3, 2025 ... CHILDREN in Leicester who receive benefits-related free school meals are being invited to sign up for free activities during the Easter\u00a0..."
+                    },
+                    {
+                        "title": "Sign up now for holiday scheme for children on free school meals",
+                        "link": "https://news.leicester.gov.uk/news-articles/2024/june/sign-up-now-for-holiday-scheme-for-children-on-free-school-meals/",
+                        "snippet": "Jun 17, 2024 ... Children and young people in Leicester who receive benefits-related free school meals are being invited to sign up for a programme of free summer activities."
+                    },
+                    {
+                        "title": "Grants and allowances",
+                        "link": "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/",
+                        "snippet": "Children in primary schools who receive free school meals may also receive free milk. Other over five year olds may receive milk at a cost of around 20p per\u00a0..."
+                    },
+                    {
+                        "title": "Free bus pass to school",
+                        "link": "https://www.leicester.gov.uk/schools-and-learning/school-and-colleges/transport-to-school-and-college/free-bus-pass-to-school/",
+                        "snippet": "More than three miles if they are 8 - 16 years old. Help for low-income families. If your child is entitled to free school meals, or if your family get the\u00a0..."
+                    },
+                    {
+                        "title": "Benefits related free school meals | LCC Family Hub",
+                        "link": "https://families.leicester.gov.uk/things-to-do-and-activities/holiday-activities-and-food-programme/benefits-related-free-school-meals/",
+                        "snippet": "If your child is in reception, year 1 or year 2 they are automatically entitled to the universal free school meal offer. Please note that this is not benefits\u00a0..."
+                    },
+                    {
+                        "title": "Sign up now for holiday scheme for children on free school meals",
+                        "link": "https://news.leicester.gov.uk/news-articles/2024/november/sign-up-now-for-holiday-scheme-for-children-on-free-school-meals/",
+                        "snippet": "Nov 7, 2024 ... CHILDREN in Leicester who receive benefits-related free school meals are being invited to sign up for a free programme of holiday activities\u00a0..."
+                    },
+                    {
+                        "title": "School dinners",
+                        "link": "https://www.leicester.gov.uk/schools-and-learning/school-and-colleges/school-dinners/",
+                        "snippet": "Schools have to provide a paid meal on request and a free meal to those that are eligible. Nutritional standards are defined by the government."
+                    },
+                    {
+                        "title": "Summer HAF 2025 | LCC Family Hub",
+                        "link": "https://families.leicester.gov.uk/things-to-do-and-activities/holiday-activities-and-food-programme/summer-haf-2025/",
+                        "snippet": "If you make an application for free school meals, you must wait for a confirmation response before applying for any programme place. Further information. The\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/",
+                        "title": "Free school meals",
+                        "confidence": 85,
+                        "strengths": [
+                            "Offers detailed information about benefits-related free school meals and the application process.",
+                            "Includes a direct link to the webpage.",
+                            "Informative snippet provides an overview of what can be found."
+                        ],
+                        "reasoning": "The title, URL, and snippet all suggest that this resource is directly related to council customer information needs regarding free school meals.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Free school meals",
+                                "Source": "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/",
+                                "Key Strengths": [
+                                    "Offers detailed information about benefits-related free school meals and the application process.",
+                                    "Includes a direct link to the webpage.",
+                                    "Informative snippet provides an overview of what can be found."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title, URL, and snippet all suggest that this resource is directly related to council customer information needs regarding free school meals."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Free school meals for families with no recourse to public funds (NRPF)",
+                                "Source": "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/free-school-meals-for-families-with-no-recourse-to-public-funds/",
+                                "Key Strengths": [
+                                    "Specifically addresses families with no recourse to public funds.",
+                                    "Gives detailed information about eligibility.",
+                                    "Provides a direct link to the webpage."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The URL and title explicitly refer to free school meals for families with no recourse to public funds, which aligns with council customer information needs."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Sign up now for holiday scheme for children on free school meals",
+                                "Source": "https://news.leicester.gov.uk/news-articles/2025/march/sign-up-now-for-holiday-scheme-for-children-on-free-school-meals/",
+                                "Key Strengths": [
+                                    "Directly offers activities for children eligible for free school meals during the Easter holiday.",
+                                    "Includes a direct link to the news article and sign-up information."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "The title and URL provide evidence that this resource pertains to a holiday program for children on free school meals, which is in line with council customer needs."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Benefits related free school meals | LCC Family Hub",
+                                "Source": "https://families.leicester.gov.uk/things-to-do-and-activities/holiday-activities-and-food-programme/benefits-related-free-school-meals/",
+                                "Key Strengths": [
+                                    "Offers details about the holiday activities and food program for children eligible for benefits-related free school meals.",
+                                    "Provides direct links to the webpage.",
+                                    "Covers both universal free school meal information and the specific program."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The title, URL, and snippet all suggest that this resource is useful for council customers seeking information about holiday activities and food programs."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Free bus pass to school",
+                                "Source": "https://www.leicester.gov.uk/schools-and-learning/school-and-colleges/transport-to-school-and-college/free-bus-pass-to-school/",
+                                "Key Strengths": [
+                                    "Offers details about the free bus pass program for children eligible for free school meals.",
+                                    "Provides a direct link to the webpage.",
+                                    "Covers the eligibility criteria and help for low-income families."
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "The title, URL, and snippet all suggest that this resource is useful for council customers seeking information about transportation options for their children eligible for free school meals."
+                            }
+                        ],
+                        "Analysis Notes": "The provided list pertains to various educational grants, allowances, programs, and services available from the Leicester City Council. Some of these resources do not meet the specific search criteria but still offer valuable information related to council customer needs.",
+                        "Recommendations Notes": "While several items on the list provide useful information about free school meals, holiday programs, transportation, and other educational benefits and services, it's important to note that the provided data does not include detailed pricing information or eligibility criteria for all offerings. Council customers may need to review each resource individually to determine their eligibility based on specific circumstances."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 75,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Free school meals",
+                            "Source": "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/",
+                            "Reasoning": "This option has the highest confidence score (85) and directly addresses council customer information needs regarding free school meals.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Sign up now for holiday scheme for children on free school meals",
+                            "Source": "https://news.leicester.gov.uk/news-articles/2025/march/sign-up-now-for-holiday-scheme-for-children-on-free-school-meals/",
+                            "Reasoning": "This option directly offers activities for children eligible for free school meals during the Easter holiday, which is in alignment with council customer needs.",
+                            "Confidence": "75"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Free school meals for families with no recourse to public funds (NRPF)",
+                            "Source": "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/free-school-meals-for-families-with-no-recourse-to-public-funds/",
+                            "Reasoning": "This option specifically addresses families with no recourse to public funds, offering detailed information about eligibility.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/",
+                        "analysis": {
+                            "url": "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T02:25:02+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T02:25:33+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": false,
+                            "http_status": 403,
+                            "content_type": null,
+                            "content_length": 0,
+                            "response_time": 0,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 10,
+                                "max_score": 100,
+                                "issues": [
+                                    "HTTP error response (403): forbidden",
+                                    "No content retrieved"
+                                ],
+                                "strengths": [
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "forbidden",
+                                    "action": "avoid",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 0,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": null,
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "avoid",
+                                "confidence": 95,
+                                "reason": "Access denied or forbidden (403)",
+                                "overall_score": 24,
+                                "component_scores": {
+                                    "technical": 10,
+                                    "accessibility": 0,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Do not follow this link",
+                                    "Look for alternative sources",
+                                    "Report broken link if appropriate"
+                                ],
+                                "alternatives_needed": true
+                            },
+                            "fetch_error": "Failed to fetch URL: Client error: `GET https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/` resulted in a `403 Forbidden` response:\n<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class (truncated...)\n"
+                        },
+                        "processing_time": 0.15288496017456055,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/",
+                        "content": " Here's the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n<h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> leicester.gov.uk</h2>\n\n<div class=\"cf-section cf-wrapper\">\n    <div class=\"cf-columns two\">\n        <div class=\"cf-column\">\n            <h2 data-translate=\"blocked_why_headline\">Why have I been blocked?</h2>\n            <p data-translate=\"blocked_why_detail\">This website is using a security service to protect itself from online attacks. The action you just performed triggered the security solution. There are several actions that could trigger this block including submitting a certain word or phrase, a SQL command or malformed data.</p>\n        </div>\n\n        <div class=\"cf-column\">\n            <h2 data-translate=\"blocked_resolve_headline\">What can I do to resolve this?</h2>\n            <p data-translate=\"blocked_resolve_detail\">You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.</p>\n        </div>\n    </div>\n</div>\n```\n\nThis cleaned HTML contains the central editorial content of the page, including main headings, paragraphs, and sub-headings that provide information about why the user has been blocked and potential ways to resolve it. It excludes any non-essential page furniture such as headers, footers, navigation menus, sidebars, cookie banners, sign-up blocks, decorative elements, and boilerplate elements.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 8.511904954910278,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "0",
+                                    "confidence": "0",
+                                    "reasoning": "The content does not address this need at all as it is about a website block, unrelated to applying for free school meals.",
+                                    "next_actions": "It's recommended to look for another reliable and accurate resource specifically dedicated to finding information about eligibility criteria and application process for free school meals."
+                                }
+                            ],
+                            "overall_assessment": "The content does not meet the needs of a Council Resident seeking information on applying for free school meals due to lack of relevant content. It provides no information on eligibility criteria, application process or estimated timeframe. There is a key gap in providing helpful advice for those who need it."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.9235639572143555,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.leicester.gov.uk/schools-and-learning/grants-and-allowances/free-school-meals/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_022502-leicester.gov.uk",
+                    "analysis_timestamp": "2025-08-13T02:25:47+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.75,
+                            "tokens_consumed": 4963,
+                            "tokens_remaining": 25037,
+                            "token_utilization_percentage": 16.54,
+                            "average_tokens_per_step": 827.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 83.46,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 30,
+                            "consumption_rate": 827.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 10.71,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.75,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_022502-leicester.gov.uk",
+                        "start_time": "2025-08-13T02:25:02+01:00",
+                        "current_time": "2025-08-13T02:25:47+01:00",
+                        "duration_seconds": 45,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 4963,
+                        "tokens_remaining": 25037,
+                        "token_utilization_percentage": 16.54,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 1425,
+                                "avg_per_call": 712.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3538,
+                                "avg_per_call": 1769
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 827.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_022502-leicester.gov.uk",
+                    "start_time": "2025-08-13T02:25:02+01:00",
+                    "current_time": "2025-08-13T02:25:47+01:00",
+                    "duration_seconds": 45,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 4963,
+                    "tokens_remaining": 25037,
+                    "token_utilization_percentage": 16.54,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 1425,
+                            "avg_per_call": 712.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3538,
+                            "avg_per_call": 1769
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 827.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

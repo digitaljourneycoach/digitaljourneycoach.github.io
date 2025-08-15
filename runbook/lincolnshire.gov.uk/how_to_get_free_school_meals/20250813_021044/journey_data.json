@@ -1,0 +1,687 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T02:10:44+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "lincolnshire.gov.uk",
+                "Council Name": "Lincolnshire County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Apply for free school meals \u2013 Lincolnshire County Council",
+                        "link": "https://www.lincolnshire.gov.uk/school-pupil-support/apply-free-school-meals",
+                        "snippet": "Apply for free school meals \u00b7 Universal Credit - your household income must be less than \u00a37,400 a year (after tax and not including any benefits you get)\u00a0..."
+                    },
+                    {
+                        "title": "Going to school in Lincolnshire guide \u2013 Free school meals ...",
+                        "link": "https://www.lincolnshire.gov.uk/school-admissions/going-school-lincolnshire-guide/11",
+                        "snippet": "help healthy eating habits; ensure that children get the energy and nutrition they need across the whole school day. It is also very important for food to look\u00a0..."
+                    },
+                    {
+                        "title": "Apply for school transport for children in reception to year 11 \u2013 Free ...",
+                        "link": "https://www.lincolnshire.gov.uk/school-college-transport/apply-free-reception-year-transport/4",
+                        "snippet": "Your child may get free school transport if: they receive free school meals based upon low income; or, you receive the highest level of working tax credit. If\u00a0..."
+                    },
+                    {
+                        "title": "Holiday Activities and Food Programme \u2013 Lincolnshire County Council",
+                        "link": "https://www.lincolnshire.gov.uk/school-pupil-support/holiday-activities-food-programme",
+                        "snippet": "Benefits related free school meals are different to Universal Infant Free School Meals (UIFSM). Children in Reception, Year 1 and Year 2 receive UIFSM in\u00a0..."
+                    },
+                    {
+                        "title": "Free school meals eligibility checking service - EduLincs ...",
+                        "link": "https://www.lincolnshire.gov.uk/directory-record/63836/free-school-meals-eligibility-checking-service",
+                        "snippet": "Pupil Premium provides additional support for schools and helps improve attainment and outcomes for children and young people. Schools will have access to\u00a0..."
+                    },
+                    {
+                        "title": "Free School Meals information - Find a freedom of information ...",
+                        "link": "https://www.lincolnshire.gov.uk/directory-record/75608/free-school-meals-information",
+                        "snippet": "Below is a summary of pupil numbers and FSM by school district for January and May 2023 censuses."
+                    },
+                    {
+                        "title": "Parent Portal: Home",
+                        "link": "https://www.lincolnshire.gov.uk/parentportal",
+                        "snippet": "... school-admissions. Free school meals. Applications are open all year round. If you have a query, please email Free_school_meals@lincolnshire.gov.uk. 2-year\u00a0..."
+                    },
+                    {
+                        "title": "Household Support Fund \u2013 Support for cost of living - Lincolnshire ...",
+                        "link": "https://www.lincolnshire.gov.uk/council-councillors/household-support-fund",
+                        "snippet": "Approximately 64% of the grant funding will be provided to Schools and Early Years providers, targeting children eligible for benefit related 'Free School Meals\u00a0..."
+                    },
+                    {
+                        "title": "Free School Meals Food Vouchers for Christmas - Find a freedom of ...",
+                        "link": "https://www.lincolnshire.gov.uk/directory-record/67325/free-school-meals-food-vouchers-for-christmas",
+                        "snippet": "Is the council providing meals and / or vouchers to support children in receipt of free school meals during the Christmas holiday period? Decision. 1. The Local\u00a0..."
+                    },
+                    {
+                        "title": "Equality, diversity and inclusion annual report 2024 \u2013 Schools ...",
+                        "link": "https://www.lincolnshire.gov.uk/council-business/equality-diversity-inclusion-annual-report/16",
+                        "snippet": "School information on the gender (male or female) and ethnicity of pupils, free school meals, special educational needs provision and exclusions is collected\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.lincolnshire.gov.uk/school-pupil-support/apply-free-school-meals",
+                        "title": "Apply for free school meals \u2013 Lincolnshire County Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Directly applies to the customer's information need",
+                            "Offers a clear and simple process for applying for free school meals"
+                        ],
+                        "reasoning": "This item provides detailed instruction on how to apply for free school meals, which is likely to be the key requirement of council customers.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Apply for free school meals \u2013 Lincolnshire County Council",
+                                "Source": "https://www.lincolnshire.gov.uk/school-pupil-support/apply-free-school-meals",
+                                "Key Strengths": [
+                                    "Directly applies to the customer's information need",
+                                    "Offers a clear and simple process for applying for free school meals"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This item provides detailed instruction on how to apply for free school meals, which is likely to be the key requirement of council customers."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Going to school in Lincolnshire guide \u2013 Free school meals ...",
+                                "Source": "https://www.lincolnshire.gov.uk/school-admissions/going-school-lincolnshire-guide/11",
+                                "Key Strengths": [
+                                    "Comprehensive guide covering various aspects of school admissions, including free school meals"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This item provides a broader context for information about free school meals, helping users understand the relevance and importance of it."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Holiday Activities and Food Programme \u2013 Lincolnshire County Council",
+                                "Source": "https://www.lincolnshire.gov.uk/school-pupil-support/holiday-activities-food-programme",
+                                "Key Strengths": [
+                                    "Addresses holiday food provision for children receiving free school meals"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This item specifically addresses support during school holidays, which may be a concern for families relying on free school meals."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Free school meals eligibility checking service - EduLincs ...",
+                                "Source": "https://www.lincolnshire.gov.uk/directory-record/63836/free-school-meals-eligibility-checking-service",
+                                "Key Strengths": [
+                                    "Offers an online service to check eligibility for free school meals"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This item offers a service that can help council customers quickly determine if they are eligible for free school meals."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Household Support Fund \u2013 Support for cost of living - Lincolnshire ...",
+                                "Source": "https://www.lincolnshire.gov.uk/council-councillors/household-support-fund",
+                                "Key Strengths": [
+                                    "Provides general information about the Household Support Fund, which may include aid for individuals eligible for free school meals"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "While not explicitly about free school meals, this item could still help customers understand other forms of financial support available to them."
+                            }
+                        ],
+                        "Analysis Notes": "A few items in the list, while relevant to a degree, did not present a clear and direct solution for the customer's information need. The top recommendations were chosen based on their specific focus on free school meals or related services that would likely be of most interest to council customers.",
+                        "Recommendations Notes": "The remaining recommendations were included as they also provided relevant information but with slightly lower confidence scores."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 75,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Apply for free school meals \u2013 Lincolnshire County Council",
+                            "Source": "https://www.lincolnshire.gov.uk/school-pupil-support/apply-free-school-meals",
+                            "Reasoning": "This item provides detailed instruction on how to apply for free school meals, which is likely to be the key requirement of council customers.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Going to school in Lincolnshire guide \u2013 Free school meals ...",
+                            "Source": "https://www.lincolnshire.gov.uk/school-admissions/going-school-lincolnshire-guide/11",
+                            "Reasoning": "This item provides a broader context for information about free school meals, helping users understand the relevance and importance of it.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Holiday Activities and Food Programme \u2013 Lincolnshire County Council",
+                            "Source": "https://www.lincolnshire.gov.uk/school-pupil-support/holiday-activities-food-programme",
+                            "Reasoning": "This item specifically addresses support during school holidays, which may be a concern for families relying on free school meals.",
+                            "Confidence": "75"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Free school meals eligibility checking service - EduLincs ...",
+                            "Source": "https://www.lincolnshire.gov.uk/directory-record/63836/free-school-meals-eligibility-checking-service",
+                            "Reasoning": "This item offers a service that can help council customers quickly determine if they are eligible for free school meals.",
+                            "Confidence": "70"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.lincolnshire.gov.uk/school-pupil-support/apply-free-school-meals"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.lincolnshire.gov.uk/school-pupil-support/apply-free-school-meals",
+                        "analysis": {
+                            "url": "https://www.lincolnshire.gov.uk/school-pupil-support/apply-free-school-meals",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T02:10:44+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T02:11:11+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 26049,
+                            "response_time": 0.459,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.459s)",
+                                    "Content successfully retrieved (26049 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.46115612983703613,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.lincolnshire.gov.uk/school-pupil-support/apply-free-school-meals"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.lincolnshire.gov.uk/school-pupil-support/apply-free-school-meals",
+                        "content": " Here's the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<!DOCTYPE html>\n    <body>\n        <main class=\"site-main\">\n            <div id=\"content\" tabindex=\"-1\" class=\"site-content\">\n                <h1 class=\"page-heading\">Apply for free school meals</h1>\n                <div class=\"page-content\">\n                    <p><span class=\"snippet\"></span></p>\n                    <div style=\"padding: 10px 20px; border:8px solid #fbba08;\">\n                        <p>Please be aware that the parent portal is closed from 18 August to 22 August.</p>\n                    </div><!-- rel:snippet -->\n                    <h3 class=\"button button--primary\"><a href=\"https://www.lincolnshire.gov.uk/parentportal\">Apply for free school meals</a></h3>\n                    <h3><strong>Get extra funding for your school</strong></h3>\n                    <p>If you receive any benefits, you should tell your school as they can get extra funding called the Pupil Premium grant. This includes:</p>\n                    <ul>\n                        <li>Universal Credit - your household income must be less than \u00a37,400 a year (after tax and not including any benefits you get)</li>\n                        <li>Income Support</li>\n                        <li>Income-based Jobseeker's Allowance</li>\n                        <li>Income-related Employment and Support Allowance</li>\n                        <li>Support under Part VI of the Immigration and Asylum Act 1999</li>\n                        <li>The guaranteed element of state Pension Credit</li>\n                        <li>Child Tax Credit (provided you're not also entitled to Working Tax Credit and have an annual gross income of no more \u00a316,190)</li>\n                        <li>Working Tax Credit run-on - paid for four weeks after you stop qualifying for Working Tax Credit</li>\n                    </ul>\n\n                    <p>Children who get paid these benefits directly can also get free school meals.</p>\n\n                    <p>If your family is facing hardship, find out what Government support is available to you.</p>\n\n                    <p>If you need urgent help, contact us to find out if we can assist you.</p>\n\n                    <h3>Universal infant free school meals</h3>\n\n                    <p>Your child will be able to get free school meals if they are in government-funded school and are in:</p>\n                    <ul>\n                        <li>Reception</li>\n                        <li>Year 1</li>\n                        <li>Year 2</li>\n                    </ul>\n\n                    <h3>Holiday activities and food programme</h3>\n\n                    <p>School-aged children and young people who qualify for benefits-related free school meals can access free holiday clubs during the:</p>\n                    <ul>\n                        <li>Easter holidays</li>\n                        <li>summer holidays</li>\n                        <li>Christmas holidays</li>\n                    </ul>\n\n                    <p>Clubs provide a wide range of activities, for example:</p>\n                    <ul>\n                        <li>sports and games</li>\n                        <li>arts and crafts</li>\n                        <li>music</li>\n                        <li>drama</li>\n                        <li>learning about food as well as healthy meals and snacks</li>\n                    </ul>\n                </div>\n            </div>\n        </main>\n    </body>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 18.743612051010132,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.lincolnshire.gov.uk/school-pupil-support/apply-free-school-meals",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content partially addresses this need",
+                                    "confidence": "70%",
+                                    "reasoning": "The page highlights the benefits that qualify for free school meals, but it does not provide explicit information about the application process or estimated time for approval. However, it does direct the reader to apply through the parent portal link.",
+                                    "next_actions": "I would visit the provided link <https://www.lincolnshire.gov.uk/parentportal> and attempt to apply for free school meals. If there's no clear indication of approval time, I may contact the local council for more information."
+                                }
+                            ],
+                            "overall_assessment": "While the content provides information relevant to Council Residents seeking free school meals, it lacks specific details about the application process and approval timeline. A clearer guide with step-by-step instructions would be more beneficial, along with an estimation of how quickly one can expect a response."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.189706087112427,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.lincolnshire.gov.uk/school-pupil-support/apply-free-school-meals"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_021044-lincolnshire.gov.uk",
+                    "analysis_timestamp": "2025-08-13T02:11:36+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8666666666666667,
+                            "tokens_consumed": 6956,
+                            "tokens_remaining": 23044,
+                            "token_utilization_percentage": 23.19,
+                            "average_tokens_per_step": 1159.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 76.81,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 19,
+                            "consumption_rate": 1159.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 12.38,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8666666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_021044-lincolnshire.gov.uk",
+                        "start_time": "2025-08-13T02:10:44+01:00",
+                        "current_time": "2025-08-13T02:11:36+01:00",
+                        "duration_seconds": 52,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6956,
+                        "tokens_remaining": 23044,
+                        "token_utilization_percentage": 23.19,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3172,
+                                "avg_per_call": 1586
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3784,
+                                "avg_per_call": 1892
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1159.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_021044-lincolnshire.gov.uk",
+                    "start_time": "2025-08-13T02:10:44+01:00",
+                    "current_time": "2025-08-13T02:11:36+01:00",
+                    "duration_seconds": 52,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6956,
+                    "tokens_remaining": 23044,
+                    "token_utilization_percentage": 23.19,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3172,
+                            "avg_per_call": 1586
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3784,
+                            "avg_per_call": 1892
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1159.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

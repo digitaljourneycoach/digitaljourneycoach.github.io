@@ -1,0 +1,220 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T03:50:02+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "pembrokeshire.gov.uk",
+                "Council Name": "Pembrokeshire County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Apply for free school meals for your child - Pembrokeshire County ...",
+                        "link": "https://www.pembrokeshire.gov.uk/school-meals/apply-for-free-school-meals-for-your-child",
+                        "snippet": "Make an application for eFSM if you are eligible, even if your child already receives free school meals with the rollout of UPFSM. You can apply any time."
+                    },
+                    {
+                        "title": "Universal Primary Free School Meals - Pembrokeshire County Council",
+                        "link": "https://www.pembrokeshire.gov.uk/school-meals/universal-primary-free-school-meals",
+                        "snippet": "Children will be asked whether they would like to order a meal each day during morning registration. I am on a low income and my child(ren) currently receive\u00a0..."
+                    },
+                    {
+                        "title": "School Meals",
+                        "link": "https://www.pembrokeshire.gov.uk/school-meals/free-school-meals",
+                        "snippet": "All full time primary pupils will receive a free school meal. Our Secondary Schools provide a cafeteria style service so pupils can choose the food they\u00a0..."
+                    },
+                    {
+                        "title": "Free school meals - Secondary - Pembrokeshire County Council",
+                        "link": "https://www.pembrokeshire.gov.uk/school-meals/free-school-meals-secondary",
+                        "snippet": "*You do not qualify if you receive Working Tax Credits and Child Tax Credits - even if your annual household income is still under \u00a316,190p.a.. Application\u00a0..."
+                    },
+                    {
+                        "title": "Free school meals \u2013 Primary - Pembrokeshire County Council",
+                        "link": "https://www.pembrokeshire.gov.uk/school-meals/free-school-meals-and-primary",
+                        "snippet": "If you as a parent or guardian are in receipt of a qualifying benefit, you may qualify for Free School Meals (eFSM) and other funding, such as School\u00a0..."
+                    },
+                    {
+                        "title": "Take advantage of free school meals to save time and money ...",
+                        "link": "https://newsroom.pembrokeshire.gov.uk/news/take-advantage-of-free-school-meals-to-save-time-and-money",
+                        "snippet": "Jul 17, 2023 ... Take advantage of the free hot or cold school meals available from September. There is always a sandwich or jacket potato option for children each day."
+                    },
+                    {
+                        "title": "Get help with School Essentials - Pembrokeshire County Council",
+                        "link": "https://www.pembrokeshire.gov.uk/school-attendance-and-pupil-welfare/school-essentials-grant-formerly-the-pupil-development-grant-access",
+                        "snippet": "If you are the parent or guardian of a child in school and receives means tested free school meals, you may be eligible for a School Essentials Grant."
+                    },
+                    {
+                        "title": "Back to school reminder of free school meals for full time Primary ...",
+                        "link": "https://newsroom.pembrokeshire.gov.uk/news/back-to-school-reminder-of-free-school-meals-for-full-time-primary-pupils",
+                        "snippet": "Sep 5, 2024 ... As the new school year starts anyone with children in full time Primary are reminded that hot and cold lunches are available every day for free."
+                    },
+                    {
+                        "title": "Pembrokeshire County Council - Cost of living",
+                        "link": "https://cdn.pembrokeshire.gov.uk/costoflivingtest/education-and-school-costs.html",
+                        "snippet": "If you have three or more children in school paying for meals, you can receive discounted school meals for each child. Free Breakfast in Primary Schools scheme."
+                    },
+                    {
+                        "title": "Secondary Schools - Pembrokeshire County Council",
+                        "link": "https://www.pembrokeshire.gov.uk/cashless-how-to-pay",
+                        "snippet": "Pupils entitled to free school meals will have their accounts automatically credited daily (\u00a32.70). ... However, you can add to the free school meal allowance via\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Apply for free school meals for your child - Pembrokeshire County ...",
+                                "Source": "https://www.pembrokeshire.gov.uk/school-meals/apply-for-free-school-meals-for-your-child",
+                                "Key Strengths": [
+                                    "Focuses on providing free school meals for children",
+                                    "Offers an application for eligible families"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link focuses on helping families apply for free school meals, making it most relevant to the customer information need."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "School Meals",
+                                "Source": "https://www.pembrokeshire.gov.uk/school-meals/free-school-meals",
+                                "Key Strengths": [
+                                    "Provides information on free school meals for primary pupils",
+                                    "Details about cafeteria-style services in secondary schools"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link offers a comprehensive overview of school meal options, including the fact that full time primary pupils receive free school meals."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Universal Primary Free School Meals - Pembrokeshire County Council",
+                                "Source": "https://www.pembrokeshire.gov.uk/school-meals/universal-primary-free-school-meals",
+                                "Key Strengths": [
+                                    "Details about the Universal Primary Free School Meals program",
+                                    "Explanation of how children can order meals"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link explains details about the Universal Primary Free School Meals program, which may be useful for families to understand how their children can participate."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Free school meals \u2013 Primary - Pembrokeshire County Council",
+                                "Source": "https://www.pembrokeshire.gov.uk/school-meals/free-school-meals-and-primary",
+                                "Key Strengths": [
+                                    "Details about free school meals eligibility for primary children",
+                                    "Information on other funding available"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link discusses the qualifying benefits for Free School Meals (eFSM) and provides information on additional funding, making it relevant to families who may qualify."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Pembrokeshire County Council - Cost of living",
+                                "Source": "https://cdn.pembrokeshire.gov.uk/costoflivingtest/education-and-school-costs.html",
+                                "Key Strengths": [
+                                    "Information about discounted school meals for families with multiple children",
+                                    "Mention of a Free Breakfast in Primary Schools scheme"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link discusses ways to save on school costs, including discounted meals and a free breakfast program for primary schools, which may be useful for cost-conscious families."
+                            }
+                        ],
+                        "Analysis Notes": "All search results pertain to school meals or related topics in Pembrokeshire County Council. While there is some overlap, each link offers unique details that could benefit users in varying ways.",
+                        "Recommendations Notes": "There are several options for families seeking information about school meals and meal applications in Pembrokeshire. The top five options range from general overviews to specific informational resources on eligibility and additional funding."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

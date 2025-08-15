@@ -1,0 +1,685 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T04:55:30+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "sheffield.gov.uk",
+                "Council Name": "Sheffield City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Find out if you need planning permission | Sheffield City Council",
+                        "link": "https://www.sheffield.gov.uk/planning-development/need-planning-permission",
+                        "snippet": "5 days ago ... You can also receive written guidance as to whether planning permission is required by submitting a pre-application enquiry. ... Solar panels (\u00a0..."
+                    },
+                    {
+                        "title": "Conservation areas | Sheffield City Council",
+                        "link": "https://www.sheffield.gov.uk/planning-development/conservation-areas",
+                        "snippet": "Solar panels. In most cases putting solar ... Flats, shops and offices do not have permitted development rights so are all subject to planning permission."
+                    },
+                    {
+                        "title": "Producing renewable energy | Sheffield City Council",
+                        "link": "https://www.sheffield.gov.uk/housing/producing-renewable-energy",
+                        "snippet": "Jun 3, 2025 ... Solar photovoltaics (PV) are panels that use the sun to create electricity. ... When you need planning permission \u00b7 Energy Saving Trust -\u00a0..."
+                    },
+                    {
+                        "title": "News search | Sheffield City Council",
+                        "link": "https://www.sheffield.gov.uk/news/search?amp%3Bamp%3Bpage=0&amp%3Bpage=2&f%5B0%5D=category%3A976&f%5B1%5D=category%3A978&f%5B2%5D=category%3A982&page=9",
+                        "snippet": "Planning permission submitted for ambitious new public artwork on the Sheffield and Tinsley Canal ... The installation of solar panels on thousands of buildings\u00a0..."
+                    },
+                    {
+                        "title": "FAQs | Hillsborough Activity Hub | Have Your Say Sheffield",
+                        "link": "https://haveyoursay.sheffield.gov.uk/hillsborough-activity-hub/widgets/69326/faqs",
+                        "snippet": "Does the development need planning permission? How do I comment ... energy efficient building, for example with solar panels and renewable heating sources."
+                    },
+                    {
+                        "title": "Publication (Pre-submission) Draft Sheffield Plan 2022 (Rula ...",
+                        "link": "https://www.sheffield.gov.uk/sites/default/files/2023-10/pdsp071_rula_developments_redacted.pdf",
+                        "snippet": "Feb 20, 2023 ... comprises sites with existing planning permission and proposed site allocations. ... Viability Appraisal only assesses solar panels and\u00a0..."
+                    },
+                    {
+                        "title": "Agenda Item 8a",
+                        "link": "https://democracy.sheffield.gov.uk/mgConvert2PDF.aspx?ID=64031",
+                        "snippet": "Jun 19, 2023 ... These applications seek planning permission and listed building consent for an ... - Solar panels should be provided on the roof. - A plan\u00a0..."
+                    },
+                    {
+                        "title": "Sheffield Development Framework Core Strategy - Adopted March ...",
+                        "link": "https://www.sheffield.gov.uk/sites/default/files/2022-07/core-strategy-adopted-march-2009.pdf",
+                        "snippet": "Renewable energy (including solar and wind power and biomass) generated ... and planning briefs and through decisions about applications for planning permission."
+                    },
+                    {
+                        "title": "Sheffield Development Framework Climate Change and Design ...",
+                        "link": "https://www.sheffield.gov.uk/sites/default/files/docs/planning-and-development/sheffield-plan/Climate%20Change%20and%20Design%20SPD%20and%20Practice%20Guide.pdf",
+                        "snippet": "of green roofs of any UK city except for London. To date, planning permission has been granted for approximately 100 developments which include green roofs;."
+                    },
+                    {
+                        "title": "The Adopted Dore Neighbourhood Plan - October 2021",
+                        "link": "https://www.sheffield.gov.uk/sites/default/files/docs/planning-and-development/dore/referendum%20documents%202021/adopted-dore-neighbourhood-plan-october-2021.pdf",
+                        "snippet": "Recently the installation of solar panels onto traditional slate roofs has ... Planning Conditions: Provisions attached to the granting of a planning permission."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.sheffield.gov.uk/planning-development/need-planning-permission",
+                        "title": "Find out if you need planning permission | Sheffield City Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly addresses customer's information needs regarding council permits",
+                            "Clear title and well-structured content"
+                        ],
+                        "reasoning": "The search result provides detailed information about planning permission and offers a pre-application enquiry service specifically for the Sheffield City Council, which directly meets the customer's needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Find out if you need planning permission | Sheffield City Council",
+                                "Source": "https://www.sheffield.gov.uk/planning-development/need-planning-permission",
+                                "Key Strengths": [
+                                    "Directly addresses customer's information needs regarding council permits",
+                                    "Clear title and well-structured content"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The search result provides detailed information about planning permission and offers a pre-application enquiry service specifically for the Sheffield City Council, which directly meets the customer's needs."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "FAQs | Hillsborough Activity Hub | Have Your Say Sheffield",
+                                "Source": "https://haveyoursay.sheffield.gov.uk/hillsborough-activity-hub/widgets/69326/faqs",
+                                "Key Strengths": [
+                                    "FAQ section specifically relates to development and planning permission questions",
+                                    "Answers are concise, clear and informative"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The FAQ section contains helpful information about planning permissions, providing relevant responses to common questions related to the topic."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Sheffield Development Framework Core Strategy - Adopted March ...",
+                                "Source": "https://www.sheffield.gov.uk/sites/default/files/2022-07/core-strategy-adopted-march-2009.pdf",
+                                "Key Strengths": [
+                                    "Offers information about renewable energy sources in Sheffield",
+                                    "Includes details about the planning briefs and decisions"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While not directly focused on customer's needs, this document offers relevant information about renewable energy policies within the city that might be of interest to a customer inquiring about council information."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Sheffield Development Framework Climate Change and Design ...",
+                                "Source": "https://www.sheffield.gov.uk/sites/default/files/docs/planning-and-development/sheffield-plan/Climate%20Change%20and%20Design%20SPD%20and%20Practice%20Guide.pdf",
+                                "Key Strengths": [
+                                    "Provides information on renewable energy and green roofs in the city's developments",
+                                    "Offers details about plans that include solar panels"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This document offers relevant information on renewable energy initiatives and sustainable development practices employed by Sheffield City Council, which may be useful to customers interested in council projects."
+                            },
+                            {
+                                "Number": "1",
+                                "Title": "Conservation areas | Sheffield City Council (alternative recommendation)",
+                                "Source": "https://www.sheffield.gov.uk/planning-development/conservation-areas",
+                                "Key Strengths": [
+                                    "Provides general information about conservation areas in Sheffield",
+                                    "Includes guidelines for solar panel installation"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though not directly focused on planning permission, this page offers relevant information for customers who may also be interested in understanding the rules regarding conservation areas and solar panels."
+                            }
+                        ],
+                        "Analysis Notes": "The search results are primarily centered around Council Development Frameworks, Planning permissions, and Energy Policies. While most of them provide relevant information for council customer's needs, they vary in focus and relevance to the specific question asked.",
+                        "Recommendations Notes": "Since this analysis focuses on customer service questions related to planning permission, FAQ sections and direct pages addressing the subject were prioritized over broader documents outlining development frameworks."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Find out if you need planning permission | Sheffield City Council",
+                            "Source": "https://www.sheffield.gov.uk/planning-development/need-planning-permission",
+                            "Reasoning": "The search result provides detailed information about planning permission and offers a pre-application enquiry service specifically for the Sheffield City Council, which directly meets the customer's needs.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "FAQs | Hillsborough Activity Hub | Have Your Say Sheffield",
+                            "Source": "https://haveyoursay.sheffield.gov.uk/hillsborough-activity-hub/widgets/69326/faqs",
+                            "Reasoning": "The FAQ section contains helpful information about planning permissions, providing relevant responses to common questions related to the topic.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "1",
+                            "Title": "Conservation areas | Sheffield City Council (alternative recommendation)",
+                            "Source": "https://www.sheffield.gov.uk/planning-development/conservation-areas",
+                            "Reasoning": "Though not directly focused on planning permission, this page offers relevant information for customers who may also be interested in understanding the rules regarding conservation areas and solar panels.",
+                            "Confidence": "70"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.sheffield.gov.uk/planning-development/need-planning-permission"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.sheffield.gov.uk/planning-development/need-planning-permission",
+                        "analysis": {
+                            "url": "https://www.sheffield.gov.uk/planning-development/need-planning-permission",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T04:55:30+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T04:55:58+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 96487,
+                            "response_time": 0.465,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.465s)",
+                                    "Content successfully retrieved (96487 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.46570801734924316,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.sheffield.gov.uk/planning-development/need-planning-permission"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.sheffield.gov.uk/planning-development/need-planning-permission",
+                        "content": " In this specific example, there isn't any body content within the provided HTML as it contains only a `<div>` element without any inner content. If we had more meaningful content within that `<div>`, I would extract and format it accordingly while adhering to your instructions:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <!-- Head elements omitted for brevity -->\n</head>\n\n<body>\n    <main>\n        <h1>Heading 1</h1>\n        <p>This is the main body content paragraph 1.</p>\n        <blockquote>\n            <p>This is a blockquote example.</p>\n        </blockquote>\n        <h2>Heading 2</h2>\n        <ul>\n            <li>List item 1</li>\n            <li>List item 2</li>\n        </ul>\n        <a href=\"https://example.com\">Link to an example site</a>\n        <!-- Other semantic HTML elements like paragraphs, headings, links, and lists are omitted for brevity -->\n    </main>\n</body>\n</html>\n```\n\nIn the above cleaned and structured HTML output, I omitted non-essential elements such as headers, footers, navigation menus, sidebars, cookie banners, newsletter sign-up blocks, site-wide search, login links, and social media footers. I preserved only the meaningful structural elements with proper semantic HTML such as `<h1>` to `<h6>`, `<p>`, `<a>`, `<button>`, lists (`<ul>` & `<ol>`), blockquotes, and any other related in-text links and paragraphs if necessary.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 7.303173780441284,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.sheffield.gov.uk/planning-development/need-planning-permission",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "Understanding whether permission is required to install solar panels on the house",
+                                    "answer_quality": "Partial",
+                                    "confidence": "60%",
+                                    "reasoning": "Although this content doesn't directly address the need to have permission for installing solar panels, it provides a general link where residents can find planning permissions information.",
+                                    "next_actions": "Visit the linked planning permission page for more specific details on building works like solar panel installation."
+                                }
+                            ],
+                            "overall_assessment": "The content could be more helpful in addressing specific resident concerns such as installing solar panels by providing direct or detailed information. However, it provides a helpful starting point for finding relevant information."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 3.9925930500030518,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.sheffield.gov.uk/planning-development/need-planning-permission"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_045530-sheffield.gov.uk",
+                    "analysis_timestamp": "2025-08-11T04:56:10+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6666666666666666,
+                            "tokens_consumed": 3892,
+                            "tokens_remaining": 26108,
+                            "token_utilization_percentage": 12.97,
+                            "average_tokens_per_step": 648.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 87.03,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 40,
+                            "consumption_rate": 648.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.52,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6666666666666666,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_045530-sheffield.gov.uk",
+                        "start_time": "2025-08-11T04:55:30+01:00",
+                        "current_time": "2025-08-11T04:56:10+01:00",
+                        "duration_seconds": 40,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 3892,
+                        "tokens_remaining": 26108,
+                        "token_utilization_percentage": 12.97,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 582,
+                                "avg_per_call": 291
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3310,
+                                "avg_per_call": 1655
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 648.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_045530-sheffield.gov.uk",
+                    "start_time": "2025-08-11T04:55:30+01:00",
+                    "current_time": "2025-08-11T04:56:10+01:00",
+                    "duration_seconds": 40,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 3892,
+                    "tokens_remaining": 26108,
+                    "token_utilization_percentage": 12.97,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 582,
+                            "avg_per_call": 291
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3310,
+                            "avg_per_call": 1655
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 648.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

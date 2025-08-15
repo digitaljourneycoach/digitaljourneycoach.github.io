@@ -1,0 +1,219 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-12T23:15:01+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "bristol.gov.uk",
+                "Council Name": "Bristol City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Free school meals and the pupil premium",
+                        "link": "https://www.bristol.gov.uk/residents/schools-learning-and-early-years/travel-and-free-school-meals/free-school-meals",
+                        "snippet": "Find out if your child can get free school meals, how to get extra funding for your school and how to apply. Free school meals. All children in reception,\u00a0..."
+                    },
+                    {
+                        "title": "Free school meals and support with travel to school",
+                        "link": "https://www.bristol.gov.uk/residents/schools-learning-and-early-years/travel-and-free-school-meals",
+                        "snippet": "Find out if your child can get free school meals and how to apply, and understand how to get extra funding for your school. School travel support. Some children\u00a0..."
+                    },
+                    {
+                        "title": "Free School Meals Application Form | Bristol City Council",
+                        "link": "https://www.bristol.gov.uk/files/documents/2646-free-school-meals-application-form",
+                        "snippet": "Am I eligible for free school meals/pupil premium? You are eligible if you receive any of the following benefits: \u25cb Income Support. \u25cb Income-based Jobseekers\u00a0..."
+                    },
+                    {
+                        "title": "Apply for home to school travel support",
+                        "link": "https://www.bristol.gov.uk/residents/schools-learning-and-early-years/travel-and-free-school-meals/school-travel",
+                        "snippet": "You're on a low income if your child qualifies for free school meals or you're on the maximum level of Working Tax Credit. Children in low income families can\u00a0..."
+                    },
+                    {
+                        "title": "Household Support Fund",
+                        "link": "https://www.bristol.gov.uk/residents/benefits-and-financial-help/household-support-fund",
+                        "snippet": "Free school meal vouchers will be provided for free school meal and Pupil ... Get free advice about your consumer rights \u00b7 Cost of living support \u00b7 Contact\u00a0..."
+                    },
+                    {
+                        "title": "Information about Bristol primary schools",
+                        "link": "https://www.bristol.gov.uk/residents/schools-learning-and-early-years/school-admissions/primary-admissions/information-about-bristol-primary-schools",
+                        "snippet": "For other year groups you should make an In Year application. Free school meals. Find out if your child can get free school meals and how to apply. Home to\u00a0..."
+                    },
+                    {
+                        "title": "Information about Bristol secondary schools",
+                        "link": "https://www.bristol.gov.uk/residents/schools-learning-and-early-years/school-admissions/secondary-admissions/information-about-bristol-secondary-schools",
+                        "snippet": "... school appeals last year. Free school meals. Find out if your child can get free school meals and how to apply. Home to school travel. Find out if your child\u00a0..."
+                    },
+                    {
+                        "title": "Get ready because Your Holiday Hub is back again for 2025",
+                        "link": "https://news.bristol.gov.uk/press-releases/4a2e907e-70dd-4ed9-87cd-066cfe4b7f2b/get-ready-because-your-holiday-hub-is-back-again-for-2025",
+                        "snippet": "Mar 18, 2025 ... ... access to healthy nutritious food across the holiday period. About one in four school aged children receive benefits-related free school meals\u00a0..."
+                    },
+                    {
+                        "title": "Travel support for students aged 19 to 25 years",
+                        "link": "https://www.bristol.gov.uk/residents/schools-learning-and-early-years/travel-and-free-school-meals/school-travel/travel-support-for-students-aged-19-to-25-years",
+                        "snippet": "bristol.gov.uk \u00b7 For residents \u00b7 Schools, learning and early years \u00b7 Free school meals and school travel support \u00b7 School travel support \u00b7 Travel support for\u00a0..."
+                    },
+                    {
+                        "title": "Find a holiday activity in your area",
+                        "link": "https://www.bristol.gov.uk/residents/people-and-communities/find-a-holiday-activity-in-your-area",
+                        "snippet": "Who can take part in YHH activities. YHH is open to all school age children and young people who get benefits-related free school meals (FSM). You can search\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Free school meals and the pupil premium",
+                                "Source": "https://www.bristol.gov.uk/residents/schools-learning-and-early-years/travel-and-free-school-meals/free-school-meals",
+                                "Key Strengths": [
+                                    "Provides information on eligibility for free school meals",
+                                    "Details how to apply"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link is one of the top results and it directly pertains to free school meals, which aligns with customer's information needs."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Free School Meals Application Form | Bristol City Council",
+                                "Source": "https://www.bristol.gov.uk/files/documents/2646-free-school-meals-application-form",
+                                "Key Strengths": [
+                                    "Link to the application form for free school meals",
+                                    "Information about eligibility"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "It provides precise access to the free school meal application form, which is a crucial piece of information needed by customers."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Apply for home to school travel support",
+                                "Source": "https://www.bristol.gov.uk/residents/schools-learning-and-early-years/travel-and-free-school-meals/school-travel",
+                                "Key Strengths": [
+                                    "Information on eligibility for home to school travel support",
+                                    "Details how to apply"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The link provides information related to both free school meals and home-to-school travel, which might be relevant customer needs."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Household Support Fund",
+                                "Source": "https://www.bristol.gov.uk/residents/benefits-and-financial-help/household-support-fund",
+                                "Key Strengths": [
+                                    "Mentions free school meal vouchers in the snippet",
+                                    "Offers contact information"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Even though it's not a direct link to free school meals, it provides some resources and support that might assist customers."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Find a holiday activity in your area",
+                                "Source": "https://www.bristol.gov.uk/residents/people-and-communities/find-a-holiday-activity-in-your-area",
+                                "Key Strengths": [
+                                    "Information on YHH activities for school aged children who receive benefits-related free school meals"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "While it doesn't directly provide information about free school meals, it does offer holiday activities that are eligible for those receiving benefits-related free school meals."
+                            }
+                        ],
+                        "Analysis Notes": "The searched results were dominated by links related to free school meals and some travel support. The top recommended links directly address customer's needs.",
+                        "Recommendations Notes": "The first four recommendations are ranked in order of relevance and quality, while the fifth recommendation is relevant but less so compared to the others."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "90",
+                        "85",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

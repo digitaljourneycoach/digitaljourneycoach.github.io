@@ -1,0 +1,225 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-12T22:01:18+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "broxbourne.gov.uk",
+                "Council Name": "Borough of Broxbourne"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "COST OF LIVING GUIDE",
+                        "link": "https://www.broxbourne.gov.uk/downloads/file/3569/cost-of-living-faq",
+                        "snippet": "children can get free school meals up to year 11 if you are on a low income. See if you qualify at www.gov.uk/apply-free-school-meals. Q: I have accrued rent\u00a0..."
+                    },
+                    {
+                        "title": "Free physical activity and healthy eating sessions return this October ...",
+                        "link": "https://www.broxbourne.gov.uk/news/article/302/free-physical-activity-and-healthy-eating-sessions-return-this-october",
+                        "snippet": "Oct 4, 2023 ... The free activity sessions will provide young people with a free nutritious lunch and give participants the opportunity to take part in\u00a0..."
+                    },
+                    {
+                        "title": "Broxbourne Cost of Living Directory Version 27 \u2013 July 2025 Herts ...",
+                        "link": "https://www.broxbourne.gov.uk/downloads/file/4146/cost-of-living-directory",
+                        "snippet": "Jul 27, 2025 ... (inclusive) who receive benefits-related free school meals. A booking code can be obtained from the child's school. Professionals that know\u00a0..."
+                    },
+                    {
+                        "title": "Fit and Fed \u2013 Borough of Broxbourne Council",
+                        "link": "https://www.broxbourne.gov.uk/events/event/145/fit-and-fed",
+                        "snippet": "Young people aged between 8-16 years, in receipt of free school meals or from families who are feeling the pinch during the holidays. FREE activity\u00a0..."
+                    },
+                    {
+                        "title": "Broxbourne Skills and Labour Market Analysis",
+                        "link": "https://www.broxbourne.gov.uk/downloads/file/3461/broxbourne-skills-analysis-2022-v1-4",
+                        "snippet": "dividing by 10 to get their attainment 8 score. Student's don't have to ... The Broxbourne School had only 9% of pupils eligible for free school meals in."
+                    },
+                    {
+                        "title": "Broxbourne Skills and Labour Market Analysis",
+                        "link": "https://www.broxbourne.gov.uk/downloads/file/1831/broxbourne-skills-and-labour-market-analysis-2020",
+                        "snippet": "score does not get counted. A student's ... School children are eligible for free school meals if their parents are on low income, universal credit."
+                    },
+                    {
+                        "title": "Statement of Intent for ECO4",
+                        "link": "https://www.broxbourne.gov.uk/downloads/file/4013/statement-of-intent",
+                        "snippet": "Nov 10, 2023 ... Only one from the list can be used, excludes the proxy 'low income'. Proxy 4) A householder receiving free school meals due to low-income. Proxy\u00a0..."
+                    },
+                    {
+                        "title": "Youth projects \u2013 Borough of Broxbourne Council",
+                        "link": "https://www.broxbourne.gov.uk/community/youth-projects",
+                        "snippet": "... free school meals or from families feeling the pinch. Booking required via community@broxbourne.gov.uk or call 01992 785555 ext. 5571 to reserve your\u00a0..."
+                    },
+                    {
+                        "title": "Statement of Intent for ECO4 and Great British Insulation Scheme",
+                        "link": "https://www.broxbourne.gov.uk/downloads/file/4128/statement-of-intent",
+                        "snippet": "Feb 23, 2024 ... Proxy 4) A child living at the premises is eligible for free school meals, due to low-income5. Proxy 5) A person living at the premises is\u00a0..."
+                    },
+                    {
+                        "title": "HODDESDON TOWN CENTRE STRATEGY",
+                        "link": "https://haveyoursay.broxbourne.gov.uk/pl/hoddtc/user_uploads/11mb-220365-hoddesdon-town-centre-strategy-hi-res-2-2.pdf",
+                        "snippet": "The town centre encompasses a wide selection of supermarkets, which provide convenient free parking for access to the town centre itself. ... Catherine's School."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "COST OF LIVING GUIDE",
+                                "Source": "https://www.broxbourne.gov.uk/downloads/file/3569/cost-of-living-faq",
+                                "Key Strengths": [
+                                    "Offers answers to frequently asked questions related to cost of living"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": [
+                                    "The provided snippet mentions 'free school meals' and 'low income', suggesting that the guide may contain relevant information for council customer needs"
+                                ]
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Broxbourne Cost of Living Directory Version 27 \u2013 July 2025 Herts ...",
+                                "Source": "https://www.broxbourne.gov.uk/downloads/file/4146/cost-of-living-directory",
+                                "Key Strengths": [
+                                    "Provides detailed information about cost of living"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": [
+                                    "The title and link suggest that the document might be a comprehensive resource for council customer needs"
+                                ]
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Fit and Fed \u2013 Borough of Broxbourne Council",
+                                "Source": "https://www.broxbourne.gov.uk/events/event/145/fit-and-fed",
+                                "Key Strengths": [
+                                    "Offers free activity sessions to young people eligible for or experiencing financial hardship"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": [
+                                    "The snippet mentions that it is open to 'Young people aged between 8-16 years, in receipt of free school meals'"
+                                ]
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Youth projects \u2013 Borough of Broxbourne Council",
+                                "Source": "https://www.broxbourne.gov.uk/community/youth-projects",
+                                "Key Strengths": [
+                                    "Offers youth projects for those eligible for free school meals or experiencing financial hardship"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": [
+                                    "The snippet hints at participation being open to those 'from families feeling the pinch'"
+                                ]
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Statement of Intent for ECO4 and Great British Insulation Scheme",
+                                "Source": "https://www.broxbourne.gov.uk/downloads/file/4128/statement-of-intent",
+                                "Key Strengths": [
+                                    "Potentially contains information about insulation schemes which could alleviate cost of living for council homeowners"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": [
+                                    "The text in the snippet mentions 'Proxy 4) A child living at the premises is eligible for free school meals', suggesting a connection to council residents"
+                                ]
+                            }
+                        ],
+                        "Analysis Notes": "The search results provided show considerable relevance to the requested council customer information, however, multiple items focus on specific events or initiatives rather than general resource materials.",
+                        "Recommendations Notes": "It is recommended that those seeking more comprehensive resources check out Recommendation 3 'Broxbourne Cost of Living Directory', while Recommendations 1, 4, and 8 offer programs or projects that align with the council customer information needs. Lastly, Recommendation 9 could provide useful details on insulation schemes."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "85",
+                        "90",
+                        "75",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 79,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

@@ -1,0 +1,672 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T00:45:02+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "charnwood.gov.uk",
+                "Council Name": "Charnwood Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "A to Z of Services - E - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/atoz/E",
+                        "snippet": "Apply for free school meals (County); Find out about free school meals ... If you have any questions or suggestions and would like to find out the best way to get\u00a0..."
+                    },
+                    {
+                        "title": "A to Z of Services - S - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/atoz/S",
+                        "snippet": "Nursery school placements (County); Home education (County); Free school meals (County) ... way to get in touch with us, please visit the Contact Us page or\u00a0..."
+                    },
+                    {
+                        "title": "Get help with managing your money",
+                        "link": "https://www.charnwood.gov.uk/files/documents/help_managing_money_leflet_digi/Help_managing_money%20leflet%20digi.pdf",
+                        "snippet": "You can also get help to manage and make the most of ... The fund will pay for food vouchers for around 14,000 children who are eligible for free school meals,\u00a0..."
+                    },
+                    {
+                        "title": "In the right place | A strategy for the organisation of school and other ...",
+                        "link": "https://www.charnwood.gov.uk/files/documents/eb_iand_d_5_in_the_right_place_school_places_strategy/EB-I%26D-5%20In%20the%20Right%20Place%20School%20Places%20Strategy.pdf",
+                        "snippet": "Jan 21, 2016 ... As a consequence of the Academies Act 2010, the majority of secondary schools (95%) have become. Academies or will soon do so, and by early 2016\u00a0..."
+                    },
+                    {
+                        "title": "Bulky waste exceptional hardship criteria - Charnwood Borough ...",
+                        "link": "https://www.charnwood.gov.uk/pages/bulky_waste_exceptional_hardship",
+                        "snippet": "Mar 30, 2023 ... ... school meals/work meals, clothing, NHS costs, child care costs ... have which may increase their need for a free collection. Points can\u00a0..."
+                    },
+                    {
+                        "title": "Welfare, health and wellbeing - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/cca_welfare",
+                        "snippet": "Jun 18, 2025 ... ... access to food provision. ... Youth Engagement Activator offer to schools and free access to a youth sports club at Loughborough Leisure centre\u00a0..."
+                    },
+                    {
+                        "title": "[Withdrawn] Get a discount with the Eat Out to Help Out Scheme ...",
+                        "link": "https://www.charnwood.gov.uk/pages/eat_out_to_help_out",
+                        "snippet": "restaurants, caf\u00e9s, bars or pubs; work and school canteens; food halls. All diners in a group of any size can use the discount. Find a restaurant."
+                    },
+                    {
+                        "title": "Your Homes Matter - 2024/25",
+                        "link": "https://www.charnwood.gov.uk/files/documents/your_homes_matter_winter_202425/Your%20Homes%20Matters%20-%20Winter%202024%20FINAL%20-%20website%20version.pdf",
+                        "snippet": "\u2022 providing some tenants staying in hotels with three meals a day or reimbursing food costs ... go for free. Everyone said how much they enjoyed both events and\u00a0..."
+                    },
+                    {
+                        "title": "CHARNWOOD COMMUNITY SAFETY PARTNERSHIP THURSDAY ...",
+                        "link": "https://www.charnwood.gov.uk/files/documents/csp_24_april_2025_agenda/CSP%2024%20April%202025%20-%20Agenda.pdf",
+                        "snippet": "Apr 24, 2025 ... During this operation Police officers and partnership agencies have carried out proactive patrols, engagement events, school education sessions,\u00a0..."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://www.charnwood.gov.uk/files/documents/loughborough_in_bloom_portfolio_2019/Bloom%20portfolio%202019.pdf",
+                        "snippet": "Charnwood Borough Council provides free garden waste bins to the various Its Your Neighbourhood groups so that green waste can composted and not go to landfill."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.charnwood.gov.uk/atoz/E",
+                        "title": "A to Z of Services - E - Charnwood Borough Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Provides extensive information",
+                            "Includes 'free school meals' category"
+                        ],
+                        "reasoning": "The search result appears to provide a comprehensive listing of various services offered by the council, including a category specifically dedicated to 'free school meals'. This suggests that it might provide detailed information about customer-related queries.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "A to Z of Services - E - Charnwood Borough Council",
+                                "Source": "https://www.charnwood.gov.uk/atoz/E",
+                                "Key Strengths": [
+                                    "Provides extensive information",
+                                    "Includes 'free school meals' category"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The search result appears to provide a comprehensive listing of various services offered by the council, including a category specifically dedicated to 'free school meals'. This suggests that it might provide detailed information about customer-related queries."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "A to Z of Services - S - Charnwood Borough Council",
+                                "Source": "https://www.charnwood.gov.uk/atoz/S",
+                                "Key Strengths": [
+                                    "Provides details about 'free school meals' under multiple headings",
+                                    "Includes contact information"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The search result offers a detailed listing of various services, including information related to 'free school meals' in multiple sections. Additionally, the presence of contact information suggests that users may be able to directly reach out for assistance."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Get help with managing your money",
+                                "Source": "https://www.charnwood.gov.uk/files/documents/help_managing_money_leflet_digi/Help_managing_money%20leflet%20digi.pdf",
+                                "Key Strengths": [
+                                    "Offers a guide for managing finances",
+                                    "Mentions free school meals in context"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This search result appears to be a guide on how to manage personal finances, which may include information related to council services like 'free school meals'. However, it's unclear if the document provides specific details about customer-related queries."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Bulky waste exceptional hardship criteria - Charnwood Borough ...",
+                                "Source": "https://www.charnwood.gov.uk/pages/bulky_waste_exceptional_hardship",
+                                "Key Strengths": [
+                                    "Offers exceptions for bulky waste collection",
+                                    "Mentions 'free school meals' as a potential point of increased need"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "While not primarily focused on council customer information, this search result does offer some potential exemptions to the bulky waste collection service that may be relevant to customers in exceptional circumstances. It also mentions 'free school meals' as a possible factor increasing one's need for services."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Welfare, health and wellbeing - Charnwood Borough Council",
+                                "Source": "https://www.charnwood.gov.uk/pages/cca_welfare",
+                                "Key Strengths": [
+                                    "Focuses on welfare, health, and well-being",
+                                    "Mentions access to food provisions"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "This search result seems to focus on welfare, health, and wellbeing in general. It does mention the possibility of access to food provision, but it's unclear if this includes specific information about 'free school meals' for their customers."
+                            }
+                        ],
+                        "Analysis Notes": "The list provided contained a variety of resources such as service directories, guides, strategies, and updates. However, not all of the resources directly relate to customer-related queries, which could impact their relevance. To improve the results, filtering by resource type or using more specific search terms might be beneficial.",
+                        "Recommendations Notes": "The top five recommendations were selected based on their direct relationship with 'free school meals', the inclusion of comprehensive details, and references to council customer information."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "65",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 73,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "A to Z of Services - E - Charnwood Borough Council",
+                            "Source": "https://www.charnwood.gov.uk/atoz/E",
+                            "Reasoning": "Recommendation 1 has the highest confidence score (85) and provides a comprehensive listing of various services offered by the council, including a category specifically dedicated to 'free school meals'. This suggests that it might provide detailed information about customer-related queries.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "A to Z of Services - S - Charnwood Borough Council",
+                            "Source": "https://www.charnwood.gov.uk/atoz/S",
+                            "Reasoning": "Recommendation 2 offers a detailed listing of various services, including information related to 'free school meals' in multiple sections with a higher emphasis on providing contact information, making it easier for the users to reach out for assistance.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Get help with managing your money",
+                            "Source": "https://www.charnwood.gov.uk/files/documents/help_managing_money_leflet_digi/Help_managing_money%20leflet%20digi.pdf",
+                            "Reasoning": "While this document does mention 'free school meals', it's unclear if the content inside provides specific details about council customer queries. However, its high relevance to financial management makes it still suitable for a broad understanding of financial assistance.",
+                            "Confidence": "75"
+                        }
+                    ],
+                    "max_selections": 3,
+                    "min_confidence": 0.6
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.charnwood.gov.uk/atoz/E"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.charnwood.gov.uk/atoz/E",
+                        "analysis": {
+                            "url": "https://www.charnwood.gov.uk/atoz/E",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T00:45:02+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T00:45:31+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 24812,
+                            "response_time": 0.263,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.263s)",
+                                    "Content successfully retrieved (24812 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.2637820243835449,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.charnwood.gov.uk/atoz/E"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.charnwood.gov.uk/atoz/E",
+                        "content": " Here is the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<main role=\"main\" id=\"content\" class=\"page-content\">\n   <section class=\"section-inner\">\n      <article class=\"module atoz\">\n         <div class=\"body\">\n            <ul class=\"letters\">\n               <!-- List items removed for brevity -->\n            </ul>\n            <div id=\"E\" class=\"panel\">\n               <h2><strong>Education</strong></h2>\n               <ul>\n                  <!-- List items related to Education removed for brevity -->\n               </ul>\n               <h3><strong>Education - additional support needs - assessment</strong></h3>\n               <ul>\n                  <!-- List items related to Education - additional support needs - assessment removed for brevity -->\n               </ul>\n               <h3><strong>Education - additional support needs - transport</strong></h3>\n               <ul>\n                  <!-- List items related to Education - additional support needs - transport removed for brevity -->\n               </ul>\n               <h3><strong>Education - grants - disabled students allowance</strong></h3>\n               <ul>\n                  <!-- List items related to Education - grants - disabled students allowance removed for brevity -->\n               </ul>\n               <h3><strong>Education - grants - free school meals</strong></h3>\n               <ul>\n                  <!-- List items related to Education - grants - free school meals removed for brevity -->\n               </ul>\n               <h3><strong>Education - grants - home to education establishment travel support</strong></h3>\n               <ul>\n                  <!-- List items related to Education - grants - home to education establishment travel support removed for brevity -->\n               </ul>\n               <h2><strong>Elections</strong></h2>\n               <ul>\n                  <!-- List items related to Elections removed for brevity -->\n               </ul>\n               <a href=\"https://www.charnwood.gov.uk/pages/charnwoodlifeline\">Emergency alarm (Charnwood Lifeline)</a>\n               <a href=\"http://www.charnwood.gov.uk/safety/emergencyplanning.html\">Emergency planning</a>\n            </div>\n         </div>\n      </article>\n   </section>\n</main>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 14.256542921066284,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.charnwood.gov.uk/atoz/E",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 6.534589052200317,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.charnwood.gov.uk/atoz/E"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_004502-charnwood.gov.uk",
+                    "analysis_timestamp": "2025-08-13T00:45:52+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8333333333333334,
+                            "tokens_consumed": 6946,
+                            "tokens_remaining": 23054,
+                            "token_utilization_percentage": 23.15,
+                            "average_tokens_per_step": 1157.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 76.85,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 19,
+                            "consumption_rate": 1157.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.9,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8333333333333334,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_004502-charnwood.gov.uk",
+                        "start_time": "2025-08-13T00:45:02+01:00",
+                        "current_time": "2025-08-13T00:45:52+01:00",
+                        "duration_seconds": 50,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6946,
+                        "tokens_remaining": 23054,
+                        "token_utilization_percentage": 23.15,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3281,
+                                "avg_per_call": 1640.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3665,
+                                "avg_per_call": 1832.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1157.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_004502-charnwood.gov.uk",
+                    "start_time": "2025-08-13T00:45:02+01:00",
+                    "current_time": "2025-08-13T00:45:52+01:00",
+                    "duration_seconds": 50,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6946,
+                    "tokens_remaining": 23054,
+                    "token_utilization_percentage": 23.15,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3281,
+                            "avg_per_call": 1640.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3665,
+                            "avg_per_call": 1832.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1157.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

@@ -1,0 +1,660 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T22:22:24+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "doncaster.gov.uk",
+                "Council Name": "Doncaster Metropolitan Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Check if you need planning permission - City of Doncaster Council",
+                        "link": "https://www.doncaster.gov.uk/services/planning/permitted-development",
+                        "snippet": "Apr 29, 2025 ... Planning permission may be required for a wide variety of development, whether it be new building works or changes in the use of land or buildings."
+                    },
+                    {
+                        "title": "View planning applications - City of Doncaster Council",
+                        "link": "https://www.doncaster.gov.uk/services/planning/planning-applications-online-public-access",
+                        "snippet": "You can view details of applications being considered by the council on our planning website. Want to apply for planning permission? We have a different\u00a0..."
+                    },
+                    {
+                        "title": "Planning permission - faqs - City of Doncaster Council",
+                        "link": "https://www.doncaster.gov.uk/services/planning/planning-permission-faqs",
+                        "snippet": "Mar 6, 2025 ... Answers to the most frequently asked questions about planning permission."
+                    },
+                    {
+                        "title": "Doncaster Transitional Developer Guidance - April 2024.pdf",
+                        "link": "https://www.doncaster.gov.uk/Documents/DocumentView/Stream/Media/Default/Planning/Documents/LDF/SPDs/Doncaster%20Transitional%20Developer%20Guidance%20-%20April%202024.pdf",
+                        "snippet": "Apr 3, 2024 ... Although in many cases planning permission may not be required for porches, they should not be over dominant, and the design should reflect the\u00a0..."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://www.doncaster.gov.uk/Documents/DocumentView/Stream/Media/Default/Planning/Documents/Local%20Plan/Housing%20Evidence/5%20YHLS%20Site%20Specific%20Detail%202023-2028.xlsx",
+                        "snippet": "... installation of solar panels and associated works. 44932, 46028, 1, 1, 0, 0, 0, 0 ... Hybrid planning application consisting of; PART 1) Full planning permission\u00a0..."
+                    },
+                    {
+                        "title": "Bawtry NDP 2019 - 2032 - Referendum Version",
+                        "link": "https://www.doncaster.gov.uk/Documents/DocumentView/Stream/Media/Default/Council%20and%20Democracy/Elections/Modified%20Bawtry%20Neighbourhood%20Plan.pdf",
+                        "snippet": "permissions and proposed development without planning permission at the current time - ... 37 There are only a limited number of solar panels in Bawtry at the\u00a0..."
+                    },
+                    {
+                        "title": "Tree Policy and Tree Risk Management Plan for Doncaster ...",
+                        "link": "https://www.doncaster.gov.uk/Documents/DocumentView/Stream/Media/Default/Environmental/Documents/Tree%20Policy%20and%20Tree%20Risk%20Management%20Plan%20Revised%202021v8.pdf",
+                        "snippet": "Planning Act the owner requires the formal consent of the Local Planning Authority before starting any work. ... domestic solar panels. Whilst Doncaster Council\u00a0..."
+                    },
+                    {
+                        "title": "Home improvements and grants - City of Doncaster Council",
+                        "link": "https://www.doncaster.gov.uk/services/housing/home-improvements-and-grants",
+                        "snippet": "Apr 22, 2025 ... We offer limited housing-related grants to help with keeping you independent and improving your quality of life."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.doncaster.gov.uk/services/planning/permitted-development",
+                        "title": "Check if you need planning permission - City of Doncaster Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Covers information about planning permission requirements.",
+                            "Official source from the city council."
+                        ],
+                        "reasoning": "The title directly indicates this resource is relevant to understanding whether planning permission is needed, making it the most pertinent among the results for customer inquiry about council customer information.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "8",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Check if you need planning permission - City of Doncaster Council",
+                                "Source": "https://www.doncaster.gov.uk/services/planning/permitted-development",
+                                "Key Strengths": [
+                                    "Covers information about planning permission requirements.",
+                                    "Official source from the city council."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title directly indicates this resource is relevant to understanding whether planning permission is needed, making it the most pertinent among the results for customer inquiry about council customer information."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "View planning applications - City of Doncaster Council",
+                                "Source": "https://www.doncaster.gov.uk/services/planning/planning-applications-online-public-access",
+                                "Key Strengths": [
+                                    "Information on current planning applications in progress.",
+                                    "Enables users to search specific applications."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource provides valuable insights into ongoing planning activities and offers access to view details of applications being considered by the council, which could benefit customers seeking updated information on relevant development projects."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Planning permission - faqs - City of Doncaster Council",
+                                "Source": "https://www.doncaster.gov.uk/services/planning/planning-permission-faqs",
+                                "Key Strengths": [
+                                    "Answers to frequently asked questions about planning permission.",
+                                    "Official source from the city council."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This FAQ section provides answers to common inquiries related to planning permission, providing immediate responses to general customer concerns and queries."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Home improvements and grants - City of Doncaster Council",
+                                "Source": "https://www.doncaster.gov.uk/services/housing/home-improvements-and-grants",
+                                "Key Strengths": [
+                                    "Information about limited housing-related grants.",
+                                    "Details on offering assistance with home improvements."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Though not directly related to planning, information regarding home improvements and grants could still be valuable for customers looking for assistance from the council or interested in understanding housing-related services."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Bawtry NDP 2019 - 2032 - Referendum Version",
+                                "Source": "https://www.doncaster.gov.uk/Documents/DocumentView/Stream/Media/Default/Council%20and%20Democracy/Elections/Modified%20Bawtry%20Neighbourhood%20Plan.pdf",
+                                "Key Strengths": [
+                                    "Provides context for a specific neighborhood plan with information on planning permissions and proposed developments.",
+                                    "Official source from the city council."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though not as directly applicable to general customer inquiries, this resource still contains important insights into a particular neighborhood's development plan, which may provide valuable context for customers interested in learning about local planning projects."
+                            }
+                        ],
+                        "Analysis Notes": "Several resources seem to be more related to specific developments, plans, or localities, but are still informative for certain users with specific interests.",
+                        "Recommendations Notes": "While all analyzed resources could potentially offer valuable insights to different users, those listed above have direct relevance to the majority of customers seeking general council customer information."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Check if you need planning permission - City of Doncaster Council",
+                            "Source": "https://www.doncaster.gov.uk/services/planning/permitted-development",
+                            "Reasoning": "The title directly indicates this resource is relevant to understanding whether planning permission is needed, making it the most pertinent among the results for customer inquiry about council customer information.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "View planning applications - City of Doncaster Council",
+                            "Source": "https://www.doncaster.gov.uk/services/planning/planning-applications-online-public-access",
+                            "Reasoning": "This resource provides valuable insights into ongoing planning activities and offers access to view details of applications being considered by the council, which could benefit customers seeking updated information on relevant development projects.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Planning permission - faqs - City of Doncaster Council",
+                            "Source": "https://www.doncaster.gov.uk/services/planning/planning-permission-faqs",
+                            "Reasoning": "This FAQ section provides answers to common inquiries related to planning permission, providing immediate responses to general customer concerns and queries.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.doncaster.gov.uk/services/planning/permitted-development"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.doncaster.gov.uk/services/planning/permitted-development",
+                        "analysis": {
+                            "url": "https://www.doncaster.gov.uk/services/planning/permitted-development",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T22:22:24+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T22:22:50+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 47301,
+                            "response_time": 1.427,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (1.427s)",
+                                    "Content successfully retrieved (47301 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 1.428905963897705,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.doncaster.gov.uk/services/planning/permitted-development"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.doncaster.gov.uk/services/planning/permitted-development",
+                        "content": "```html\n<h1>Check if you need planning permission</h1>\n<p>Planning permission may be required for a wide variety of development, whether it be new building works or changes in the use of land or buildings. However, there are many kinds of alterations and additions to buildings for which you do not need to apply for planning permission because they've been granted through 'permitted development rights'.</p>\n<p>You can use this service to check if:</p>\n<ul>\n    <li>changes you want to make to a property in the future may require planning permission</li>\n    <li>your property has any planning restrictions (for example, if it's a listed building or in a conservation area)</li>\n</ul>\n<h2>About the service</h2>\n<p>The results are based on the answers you give and are for <strong>guidance only</strong>. It's not an official planning decision.</p>\n<h2>Check online</h2>\n<p>This service does not capture any of your personal data.</p>\n<p>This service <strong>does not</strong> automatically include information about a property's history, such as restricted planning conditions.</p>\n<p><a class=\"btn btn-primary\" href=\"https://planningservices.doncaster.gov.uk/find-out-if-you-need-planning-permission\" target=\"_blank\">CHECK NOW</a></p>\n<h2>Do you need formal confirmation that you do not need planning permission?</h2>\n<p>You may want personal reassurance that planning permission is not required, or proof of this which you may use if you sell your home at a later date. If so, you may formally apply to the Council for a Certificate of Lawful Development.</p>\n<p>The Check Now service is <strong>not</strong> an official planning decision that you can rely on in future. It is also not a formal decision as to whether planning permission would be granted. If you require a formal decision as to whether a use or development, proposed or existing, is lawful, you should submit an application for a Certificate of Lawful Development. This will require you to submit drawings of your proposal and pay a fee.</p>\n<p><a title=\"Lawful Development Certificate - a users guide\" href=\"https://www.gov.uk/guidance/lawful-development-certificates\" target=\"_blank\">Lawful Development Certificate - a users guide</a></p>\n<p><a title=\"Apply online via Planning Portal\" href=\"https://www.planningportal.co.uk/applications\" target=\"_blank\">Apply online via Planning Portal</a></p>\n<p><a title=\"Print and email/post application form\" href=\"https://www.planningportal.co.uk/planning/planning-applications/paper-forms/find-and-download-paper-forms\" target=\"_blank\">Print and email/post application form</a></p>\n<p>You must also apply or give notice to your LPA if you want to work on a protected tree where you are carrying out development where full planning permission is not needed. <a title=\"Getting consent to work on a protected tree\" href=\"https://www.doncaster.gov.uk/services/planning/getting-consent-to-work-on-a-protected-tree\" target=\"_blank\">Getting consent to work on a protected tree</a>.</p>\n<h2>Related documents</h2>\n<p><a href=\"https://dmbcwebstolive01.blob.core.windows.net:443/media/Default/Planning/Documents/DM%20Planning/Permitted%20Development%20for%20householders%20-%20technical%20guidance.pdf\">Permitted Development for householders - technical guidance</a></p>\n<p>This technical guidance has been produced by the Government to help homeowners understand how they can exercise their rights to carry out development.</p>\n<p>Planning Portal:</p>\n<p><a title=\"Do you need planning permission?\" href=\"https://www.planningportal.co.uk/permission\" target=\"_blank\">Do you need planning permission?</a></p>\n<p><a title=\"Common projects\" href=\"https://www.planningportal.co.uk/permission/common-projects\" target=\"_blank\">Common projects</a></p>\n<p><a title=\"Interactive house\" href=\"https://www.planningportal.co.uk/permission/interactive-guidance\" target=\"_blank\">Interactive house</a></p>\n<h2>Planning history check</h2>\n<p>Fee and application (planning history check).</p>\n<p>The fee for this service is \u00a351.00 for 1 hour of resource; if it is determined that the search will take more than an hour, you will be notified that an additional charge of \u00a351.00 for each additional hour, or part thereof, will be required.</p>\n<p>You'll receive an email confirming the recent planning history of a property. We will aim to respond to all requests within 5 working days. To apply for this service, contact <a href=\"mailto:tsi@doncaster.gov.uk\">tsi@doncaster.gov.uk</a> A plan showing the application site must be provided.</p>\n<h2>Larger home extension scheme (neighbourhood consultation scheme)</h2>\n<p>The scheme relates to planning and is a method of prior approval. If you wish to build a large extension, you must notify the local authority, who will then consult the adjoining neighbours to advise them of your planned development.</p>\n<p>If your neighbours raise any concerns or objections, the local authority will decide if their objections reveal any impact on the amenity of the neighbouring properties and whether your plans can go ahead.</p>\n<p>This scheme only applies to larger single-storey rear extensions. This means that extensions of over four and up to eight metres for detached houses, and over three and up to six metres for all other houses, must go through this process.</p>\n<ul>\n    <li><strong><a title=\"Larger Home Extension Scheme\" href=\"https://www.planningportal.co.uk/info/200130/common_projects/17/extensions/2\" target=\"_blank\">Larger Home Extension Scheme on the Planning Portal</a></strong></li>\n</ul>\n<h2>Building Regulations</h2>\n<p>Please remember that even if you do not require planning permission, you may still require separate approval under the Building Regulations. For further information, please visit our <a title=\"Building Control website\" href=\"https://www.doncaster.gov.uk/services/planning/building-control\" target=\"_blank\">Building Control website</a>.</p>\n<p>In some cases where you do not need to apply for planning permission, you will still need to apply for approval to carry out works to protected trees, or some other form of statutory consent. It is the applicant's duty to ensure that all necessary consents are in place before carrying out a development.</p>\n<h2>Work carried out on trees</h2>\n<p>Any pruning or felling of a Tree covered by a Tree Preservation Order will require consent. Any works to Trees in a Conservation Area require six weeks notice in writing. For the planning application forms please refer to the</p>\n<ul>\n    <li><strong><a title=\"Planning Portal\" href=\"https://www.planningportal.co.uk/applications\" target=\"_blank\">Planning Portal</a></strong></li>\n</ul>\n<p>For further information/advice relating to Trees and Hedgerows, contact:</p>\n<ul>\n    <li>01302 734419</li>\n</ul>\n<h2>Demolition of a building</h2>\n<p>Permission is not always needed to demolish a building. However, there are situations where permission is required, so you are advised to check with a Planning Officer before demolition is carried out.</p>\n<p>Planning permission may also be required to re-build a demolished or partly demolished building and to demolish buildings and structures within a Conservation Area.</p>\n<h2>Change of use</h2>\n<p>The use of a building or an area of land will fall into a category within the Town and Country Planning (Use Classes) Order 1987 (as amended).</p>\n<p>The current Use Classes were last updated on 1 September 2020. It covers such uses as Shops, Food and Drink, Financial and Professional Services, Business, General Industry, Storage and Distribution, Dwelling Houses, Residential Institutions, Hotels, Non-residential Institutions, HMO's, Assembly and Leisure. Some uses fall into 'Sui Generis' (a Latin term, in this context meaning 'a class of its own'), such as nightclubs, drinking establishments/wine bars, betting offices/shops, hot food takeaways, large HMO (more than 6 residents), bingo halls. Other uses become 'Sui Generis' where they fall outside the defined limits of any other use class.</p>\n<p>Changing the use from one category to another may require planning permission, however, any use class changes within the same use class category may not need further permission. It should be noted that there is also possibility conditions may be attached to previous permission restricting use.</p>\n<p>Even where a change of use does not require planning permission, where a change of use is accompanied by other building operations, particularly external works, then those works may require planning permission.</p>\n<p>To establish if planning permission is required or not for your proposed change of use and/or seek proof for business/financial purposes, you can formally apply to the Council for a Certificate of Lawful Development. This may require you to submit drawings of your proposal and pay a fee. Alternatively, you could apply for a Planning History check to find out if any restrictive conditions are attached to the current permission (see above).</p>\n<p>To find out more about the specific uses within the Use Classes Order, visit:</p>\n<ul>\n    <li><strong><a title=\"Change of Use\" href=\"https://www.planningportal.co.uk/info/200130/common_projects/9/change_of_use\" target=\"_blank\">Planning Portal - change of use</a></strong></li>\n</ul>\n<h2>Outdoor advertisements</h2>\n<p>Express consent is required for the majority of outdoor advertisements, including shop signs and poster boards. For example, all illuminated adverts require consent. There are, however, certain exceptions. You should contact the Planning Department to find out if you will require consent for your proposed advert/s, currently this would be \"over the phone\" advice to give a helpful reply rather than any formal notification.</p>\n<p>The links below give more detailed advice on the limitations for advertisements and a handy guide produced by the Communities and Local Government:</p>\n<ul>\n    <li><strong><a title=\"Adverts and Signs\" href=\"https://www.planningportal.co.uk/info/200130/common_projects/4/adverts_and_signs\" target=\"_blank\">Adverts and signs</a></strong></li>\n    <li><strong><a title=\"Outdoor advertisements\" href=\"https://www.gov.uk/government/publications/outdoor-advertisements-and-signs-a-guide-for-advertisers\" target=\"_blank\">Outdoor advertisements</a></strong></li>\n</ul>\n<h2>More Information</h2>\n<h3>Privacy Notice</h3>\n<p>The Council is committed to meeting its data protection obligations and handling your information securely. You should make sure you read and understand the <a title=\"Privacy Notice\" href=\"https://www.doncaster.gov.uk/services/the-council-democracy/planning-service-privacy-notice\">Planning Services privacy notice</a>, which sets out what you need to know about how Doncaster Council will use your information in the course of our work as a Local Planning Authority.</p>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 28.973092079162598,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.doncaster.gov.uk/services/planning/permitted-development",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 12.277735948562622,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.doncaster.gov.uk/services/planning/permitted-development"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_222224-doncaster.gov.uk",
+                    "analysis_timestamp": "2025-08-10T22:23:33+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.15,
+                            "tokens_consumed": 13728,
+                            "tokens_remaining": 16272,
+                            "token_utilization_percentage": 45.76,
+                            "average_tokens_per_step": 2288
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 54.24,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 7,
+                            "consumption_rate": 2288,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 16.43,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.15,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_222224-doncaster.gov.uk",
+                        "start_time": "2025-08-10T22:22:24+01:00",
+                        "current_time": "2025-08-10T22:23:33+01:00",
+                        "duration_seconds": 69,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 13728,
+                        "tokens_remaining": 16272,
+                        "token_utilization_percentage": 45.76,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 7898,
+                                "avg_per_call": 3949
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 5830,
+                                "avg_per_call": 2915
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 2288
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_222224-doncaster.gov.uk",
+                    "start_time": "2025-08-10T22:22:24+01:00",
+                    "current_time": "2025-08-10T22:23:33+01:00",
+                    "duration_seconds": 69,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 13728,
+                    "tokens_remaining": 16272,
+                    "token_utilization_percentage": 45.76,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 7898,
+                            "avg_per_call": 3949
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 5830,
+                            "avg_per_call": 2915
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 2288
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

@@ -1,0 +1,672 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T20:23:19+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "cheltenham.gov.uk",
+                "Council Name": "Cheltenham Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Householder pre-application advice | Guide to planning services ...",
+                        "link": "https://www.cheltenham.gov.uk/info/79/planning_pre-application_advice/1755/guide_to_planning_services/2",
+                        "snippet": "... installation of solar panels, the planning portal will first help you establish whether or not you need planning permission for your development. You can\u00a0..."
+                    },
+                    {
+                        "title": "Planning: Pre-Application Services Guidance Note",
+                        "link": "https://www.cheltenham.gov.uk/download/downloads/id/9754/pre-application_advice_guide.pdf",
+                        "snippet": "... installation of solar panels, the Planning Portal will first help you establish whether or not you need planning permission for your development. You can\u00a0..."
+                    },
+                    {
+                        "title": "Permitted development | Cheltenham Borough Council",
+                        "link": "https://www.cheltenham.gov.uk/a_to_z/service/275/permitted_development",
+                        "snippet": "You can make certain types of minor changes to your house without needing to apply for planning permission. This is known as permitted development."
+                    },
+                    {
+                        "title": "Supplementary Planning Document - Residential Alterations and ...",
+                        "link": "https://www.cheltenham.gov.uk/download/downloads/id/3211/residential_alterations_and_extensions_spd.pdf",
+                        "snippet": "solar thermal panels. \u2022 solar electric photo voltaic (pv). \u2022 wind turbines ... Your proposal may require Planning Permission and Building Regulations Approval."
+                    },
+                    {
+                        "title": "Cheltenham Resid Guide v4",
+                        "link": "https://www.cheltenham.gov.uk/download/downloads/id/6639/ns057_residential_alterations_and_extensions_2004.pdf",
+                        "snippet": "Solar panels are welcome as a contribution ... It is likely that most of your proposed work will require Planning Permission and Building Regulations Approval."
+                    },
+                    {
+                        "title": "Initial template document",
+                        "link": "https://democracy.cheltenham.gov.uk/documents/s47669/24-00642+Officer+Report.pdf",
+                        "snippet": "Apr 26, 2024 ... In addition to the approved solar panels, the building will utilise Ground Source Heat Pump/s ... Planning permission is not permission to work in\u00a0..."
+                    },
+                    {
+                        "title": "Do I need listed building consent? | Listed and locally indexed ...",
+                        "link": "https://www.cheltenham.gov.uk/info/52/conservation/862/listed_and_locally_indexed_buildings/2",
+                        "snippet": "... solar panels and wind turbines); the removal or alteration of panelling, fireplaces or decorative plaster work; the removal or alteration of outbuildings\u00a0..."
+                    },
+                    {
+                        "title": "Working with listed buildings and within conservation areas | Energy ...",
+                        "link": "https://www.cheltenham.gov.uk/info/61/climate_and_sustainability/1689/energy_efficiency_renewables_and_our_built_cultural_heritage",
+                        "snippet": "This includes energy production from the sun, wind and heat from the ground. Solar panels. Historic England have helpfully produced specific guidance covering\u00a0..."
+                    },
+                    {
+                        "title": "(Public Pack)Agenda Document for Planning Committee, 17/07 ...",
+                        "link": "https://democracy.cheltenham.gov.uk/documents/g4884/Public+reports+pack+17th-Jul-2025+18.00+Planning+Committee.pdf?T=10",
+                        "snippet": "Jul 17, 2025 ... solar panels on planning permission 14/02144/LBC. 3. POLICIES AND ... 9th June 2025 - This application may require Building Regulations approval."
+                    },
+                    {
+                        "title": "(Public Pack)Presentations Agenda Supplement for Planning ...",
+                        "link": "https://democracy.cheltenham.gov.uk/documents/b13949/Presentations+19th-Jun-2025+18.00+Planning+Committee.pdf?T=9",
+                        "snippet": "Jun 19, 2025 ... Air source heat pump and solar panel details. Page 10. Page 11. 24 ... planning permission ref. 22/01935/FUL to allow for additional\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.cheltenham.gov.uk/info/79/planning_pre-application_advice/1755/guide_to_planning_services/2",
+                        "title": "Householder pre-application advice | Guide to planning services ...",
+                        "confidence": 90,
+                        "strengths": [
+                            "Detailed guide to planning services and processes for the installation of solar panels.",
+                            "Provides helpful information on whether planning permission is needed."
+                        ],
+                        "reasoning": "This resource provides a comprehensive guide to planning services related to the installation of solar panels, including whether or not planning permission is necessary, which makes it highly relevant for council customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Householder pre-application advice | Guide to planning services ...",
+                                "Source": "https://www.cheltenham.gov.uk/info/79/planning_pre-application_advice/1755/guide_to_planning_services/2",
+                                "Key Strengths": [
+                                    "Detailed guide to planning services and processes for the installation of solar panels.",
+                                    "Provides helpful information on whether planning permission is needed."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This resource provides a comprehensive guide to planning services related to the installation of solar panels, including whether or not planning permission is necessary, which makes it highly relevant for council customer information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Planning: Pre-Application Services Guidance Note",
+                                "Source": "https://www.cheltenham.gov.uk/download/downloads/id/9754/pre-application_advice_guide.pdf",
+                                "Key Strengths": [
+                                    "Detailed PDF document focusing on the pre-application planning process for various development types including installations of solar panels.",
+                                    "Provides a thorough understanding of the pre-application process and associated requirements."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource offers useful, detailed information about the pre-application planning process for installing solar panels; however, it may be more accessible as a PDF rather than a direct online resource."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Supplementary Planning Document - Residential Alterations and ...",
+                                "Source": "https://www.cheltenham.gov.uk/download/downloads/id/3211/residential_alterations_and_extensions_spd.pdf",
+                                "Key Strengths": [
+                                    "Offers guidelines for solar panel installation in the context of residential alterations and extensions.",
+                                    "Addresses additional planning requirements such as Building Regulations Approval."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Although this resource is more focused on residential alterations and extensions, it does provide useful guidance for solar panel installation in addition to detailing associated approval requirements. This makes it relevant for council customer information needs."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Cheltenham Resid Guide v4",
+                                "Source": "https://www.cheltenham.gov.uk/download/downloads/id/6639/ns057_residential_alterations_and_extensions_2004.pdf",
+                                "Key Strengths": [
+                                    "Comprehensive guide for residential alterations and extensions, including energy-efficient updates like solar panels.",
+                                    "Addresses both Planning Permission and Building Regulations Approval requirements."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This resource offers a broad overview of residential alterations and extension guidelines with specific mention of solar panels. It covers both planning permission and building regulations, making it helpful for council customers considering these changes."
+                            }
+                        ],
+                        "Analysis Notes": "Five resources were found that offer valuable information related to council customer needs regarding solar panel installation, planning permission, and associated approval processes. These sources varied in format from direct online guides to PDF downloads.",
+                        "Recommendations Notes": "The top five recommendations provide comprehensive information and guidance for solar panel installation, ensuring customers have the knowledge necessary to navigate the planning process."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82.5,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Householder pre-application advice | Guide to planning services ...",
+                            "Source": "https://www.cheltenham.gov.uk/info/79/planning_pre-application_advice/1755/guide_to_planning_services/2",
+                            "Reasoning": "This resource provides the most comprehensive guide for solar panel installation and it covers whether planning permission is needed, making it the best option for our analysis since it directly addresses the research objective.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Planning: Pre-Application Services Guidance Note",
+                            "Source": "https://www.cheltenham.gov.uk/download/downloads/id/9754/pre-application_advice_guide.pdf",
+                            "Reasoning": "This resource is a PDF document that focuses on the pre-application planning process for various development types, including installations of solar panels. Although it delivers thorough understanding of the pre-application process, as a PDF, accessibility might be an issue.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Supplementary Planning Document - Residential Alterations and ...",
+                            "Source": "https://www.cheltenham.gov.uk/download/downloads/id/3211/residential_alterations_and_extensions_spd.pdf",
+                            "Reasoning": "Although this resource is more focused on residential alterations and extensions, it does provide useful guidance for solar panel installation in addition to detailing associated approval requirements. However, we're limiting the selection to 3 options.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.cheltenham.gov.uk/info/79/planning_pre-application_advice/1755/guide_to_planning_services/2"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.cheltenham.gov.uk/info/79/planning_pre-application_advice/1755/guide_to_planning_services/2",
+                        "analysis": {
+                            "url": "https://www.cheltenham.gov.uk/info/79/planning_pre-application_advice/1755/guide_to_planning_services/2",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T20:23:19+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T20:23:45+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 28311,
+                            "response_time": 0.365,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.365s)",
+                                    "Content successfully retrieved (28311 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.36558103561401367,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.cheltenham.gov.uk/info/79/planning_pre-application_advice/1755/guide_to_planning_services/2"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.cheltenham.gov.uk/info/79/planning_pre-application_advice/1755/guide_to_planning_services/2",
+                        "content": " Here's the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<article id=\"content\" tabindex=\"-1\">\n    <h2 class=\"site-main__page-title\">Householder pre-application advice</h2>\n\n    <div class=\"editor editor--document\">\n        <p>Whether you're considering an extension to your property, remodelling works, the erection of an outbuilding or the installation of solar panels, the <a href=\"https://www.planningportal.co.uk/\" title=\"planning portal\">planning portal</a> will first help you establish whether or not you need planning permission for your development.</p>\n\n        <p>You can apply for a Certificate of Lawful Proposed Development (CLPUD) for written confirmation that your proposal is permitted development. If issued, this certificate confirms that planning permission is not necessary for your proposal and can prove very helpful should you come to sell your property in the future. For details of how to submit this type of application visit <a href=\"https://www.cheltenham.gov.uk/info/12/planning_and_development/1365/certificate_of_lawful_proposed_use_or_development\" title=\"our page about CLPUD\">our page about CLPUD</a>.</p>\n\n        <p>If you do need planning permission for your works, you may wish to discuss your proposal further with one of our development management team. We offer a range of pre-application services, which are set out below.</p>\n\n        <h2>Duty officer telephone appointments</h2>\n\n        <p>If you'd like to discuss your proposal via a telephone appointment, we have a duty planning officer available at different times throughout the week.</p>\n\n        <ul>\n            <li>Mondays and Thursdays: 11am to 1pm (last appointment 12.30pm)</li>\n            <li>Wednesday: 2pm to 4pm (last appointment 3.30pm)</li>\n        </ul>\n\n        <p>The fee for this service is &pound;90&nbsp;per appointment and appointments will last no more than 25 minutes.</p>\n\n        <p>Please note that before the appointment can be booked, you will need to pay the fee and submit any relevant information.</p>\n\n        <p>During your appointment, we'll give valuable advice on how likely your proposals are to gain planning permission, how you can best improve these chances (if necessary) and what information we need to register your application. This can save you time and money when it comes to submitting your application. The more information you can provide ahead of the meeting, the more productive the appointment will be. There will be occasions where a site visit for householder development may be helpful. If this is the case, the officer can advise you on the other pre-application services we offer.</p>\n\n        <h2>Householder pre-applications</h2>\n\n        <p>If a duty officer appointment is not suitable for your householder development, or if you need a more detailed service, such as a written response, a meeting and/or a site visit, we offer a more formal householder pre-application service that may be more suitable.</p>\n\n        <ul>\n            <li>a written response</li>\n            <li>a meeting and written response</li>\n            <li>a site visit and written response</li>\n        </ul>\n\n        <p>Note: meetings will be held virtually (either by telephone or via video call) and any meeting or site visit will last no more than 30 minutes.</p>\n\n        <p>You will need to complete a pre-application form, provide the required information, pay the relevant fee and submit to us for processing. A pre-application submission will only be valid once we've received all relevant information and payment.&nbsp; Officers will then strive to provide a written response within 15 working days.</p>\n\n        <p>The relevant fees for the different levels of service can be found in our <a href=\"http://www.cheltenham.gov.uk/info/79/planning_pre-application_advice/1755/guide_to_planning_services/8\" title=\"fee schedule\">fee schedule</a><strong>.</strong> Please note, if specialist comments are required, there may be additional fees.</p>\n\n        <h2>How to request the service</h2>\n\n        <p>For more information on how to book an appointment, how to make payment and how to submit the necessary information, visit our page about <a href=\"https://www.cheltenham.gov.uk/info/79/planning_pre-application_advice/1755/guide_to_planning_services/7\" title=\"submitting a request for pre-application advice\">submitting a request for pre-application advice</a>.</p>\n    </div>\n</article>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 23.744322061538696,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.cheltenham.gov.uk/info/79/planning_pre-application_advice/1755/guide_to_planning_services/2",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "High",
+                                    "confidence": "90%",
+                                    "reasoning": "The content provides clear guidance on whether planning permission is required for installing solar panels, using the Planning Portal as a first point of contact. It also mentions that if one needs planning permission, they can discuss their proposal further with the development management team through a duty officer appointment or a more formal householder pre-application service.",
+                                    "next_actions": "The resident can visit the Planning Portal (<a href='https://www.planningportal.co.uk/' title='planning portal'>) first, as suggested, to establish if planning permission is required for their solar panel installation project."
+                                }
+                            ],
+                            "overall_assessment": "The content is informative and helpful in answering the resident's questions related to obtaining permission for installing solar panels. It also offers assistance from the development management team through duty officer appointments and formal pre-application services. However, it could benefit from including information on what to do if the resident needs help understanding the process or encounters difficulties in seeking permission."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.694289922714233,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.cheltenham.gov.uk/info/79/planning_pre-application_advice/1755/guide_to_planning_services/2"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_202319-cheltenham.gov.uk",
+                    "analysis_timestamp": "2025-08-10T20:24:16+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.95,
+                            "tokens_consumed": 7160,
+                            "tokens_remaining": 22840,
+                            "token_utilization_percentage": 23.87,
+                            "average_tokens_per_step": 1193.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 76.13,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 19,
+                            "consumption_rate": 1193.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "90",
+                            "quality_scores": [
+                                "90"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "90",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 13.57,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.95,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_202319-cheltenham.gov.uk",
+                        "start_time": "2025-08-10T20:23:19+01:00",
+                        "current_time": "2025-08-10T20:24:16+01:00",
+                        "duration_seconds": 57,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7160,
+                        "tokens_remaining": 22840,
+                        "token_utilization_percentage": 23.87,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3032,
+                                "avg_per_call": 1516
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 4128,
+                                "avg_per_call": 2064
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1193.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_202319-cheltenham.gov.uk",
+                    "start_time": "2025-08-10T20:23:19+01:00",
+                    "current_time": "2025-08-10T20:24:16+01:00",
+                    "duration_seconds": 57,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7160,
+                    "tokens_remaining": 22840,
+                    "token_utilization_percentage": 23.87,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3032,
+                            "avg_per_call": 1516
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 4128,
+                            "avg_per_call": 2064
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1193.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

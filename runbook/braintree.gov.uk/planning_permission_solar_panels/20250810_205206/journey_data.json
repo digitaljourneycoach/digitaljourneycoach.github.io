@@ -1,0 +1,268 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T20:52:06+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "braintree.gov.uk",
+                "Council Name": "Braintree District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Prior notification Installation of solar panels - Planning validation ...",
+                        "link": "https://www.braintree.gov.uk/directory-record/6468/prior-notification-installation-of-solar-panels-",
+                        "snippet": "If your proposal falls under permitted development, you will need to submit a prior notification application to us."
+                    },
+                    {
+                        "title": "Check if you need planning permission \u2013 Braintree District Council",
+                        "link": "https://www.braintree.gov.uk/planning-building-control/check-need-planning-permission",
+                        "snippet": "The Planning Portal explains what work needs planning permission and what is allowed under permitted development and has a handy interactive tool which gives\u00a0..."
+                    },
+                    {
+                        "title": "Existing and proposed elevations - Planning validation requirements ...",
+                        "link": "https://www.braintree.gov.uk/directory-record/6418/existing-and-proposed-elevations",
+                        "snippet": "in the case of solar panels, show the solar panels on the subject building ... If your application is for one of these types of planning permission, you\u00a0..."
+                    },
+                    {
+                        "title": "Conservation areas \u2013 Braintree District Council",
+                        "link": "https://www.braintree.gov.uk/planning-building-control/conservation-areas",
+                        "snippet": "If your property is in a conservation area, you will need planning permission for some works that would normally be covered by permitted development: cladding\u00a0..."
+                    },
+                    {
+                        "title": "Government confirm its plans for the ongoing use of Wethersfield ...",
+                        "link": "https://www.braintree.gov.uk/news/article/641/government-confirm-its-plans-for-the-ongoing-use-of-wethersfield-airfield",
+                        "snippet": "Mar 22, 2024 ... ... planning permission for the Secretary of State at the Department for Levelling Up, Housing and Communities to extend the use of the asylum\u00a0..."
+                    },
+                    {
+                        "title": "Sustainability Statement Guidance Note. | Braintree District Council",
+                        "link": "https://www.braintree.gov.uk/downloads/file/3763/sustainability-statement-guidance-note-march-2023",
+                        "snippet": "... solar panel system to store excess solar energy generated ... planning application to demonstrate the effectiveness of installed renewable energy generation."
+                    },
+                    {
+                        "title": "Local Plan Review 2041 - Draft Issues & Options",
+                        "link": "https://engage.braintree.gov.uk/uploads/7f9186ba-4654-4fbb-a85a-26f06c0054ad/phase_file/file/c9f81e84-0892-4442-a78d-8739ca6e7e04/Issues_and_Options_Document.pdf",
+                        "snippet": "Jan 20, 2025 ... In the housing mix secured via planning permissions on large sites the Council has weighted the affordable mix more towards affordable homes as\u00a0..."
+                    },
+                    {
+                        "title": "SILVER END SHOPS SITE: A DEVELOPMENT BRIEF",
+                        "link": "https://www.braintree.gov.uk/downloads/file/3849/silver-end-shops-site-a-development-brief-june-2005",
+                        "snippet": "Jan 4, 2024 ... grant of planning permission in view of the potential ... This orientation is also helpful in seeking locations for the installation of solar\u00a0..."
+                    },
+                    {
+                        "title": "KELVEDON NEIGHBOURHOOD PLAN | Braintree District Council",
+                        "link": "https://www.braintree.gov.uk/downloads/file/3680/kelvedon-neighbourhood-plan-examiners-report",
+                        "snippet": "... solar panels. It is also unnecessary for Plan ... Planning policies are only relevant to development for which express planning permission is required."
+                    },
+                    {
+                        "title": "Climate Change Action Plan: September 2021",
+                        "link": "https://www.braintree.gov.uk/downloads/file/3854/annual-action-report-year-end-2022-23",
+                        "snippet": "Mar 31, 2024 ... planning applications. Reduced CO2 emissions from new developments. Planning ... support the installation of solar energy in residential and\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "005_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": 10,
+                            "recommendations": 5
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": 1,
+                                "Title": "Prior notification Installation of solar panels - Planning validation ...",
+                                "Source": "https://www.braintree.gov.uk/directory-record/6468/prior-notification-installation-of-solar-panels-",
+                                "Key Strengths": [
+                                    "The title clearly indicates it is about solar panel installation, which falls under planning regulations.",
+                                    "The snippet confirms that prior notification application is necessary for this procedure."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Given the user's interest in council customer information needs related to installing solar panels, the first result suggests a process (prior notification application) required from the district council when planning to install solar panels. Thus, this resource would provide detailed information on the process directly relating to the user's search."
+                            },
+                            {
+                                "Number": 2,
+                                "Title": "Check if you need planning permission \u2013 Braintree District Council",
+                                "Source": "https://www.braintree.gov.uk/planning-building-control/check-need-planning-permission",
+                                "Key Strengths": [
+                                    "The title and snippet suggest the resource offers guidance on work that requires planning permission.",
+                                    "An interactive tool is provided to determine if planning permission is needed."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This resource would be beneficial for the user in understanding which work necessitates planning permission, including solar panel installation. The interactive tool enhances its relevance as users can easily check their specific case without extensive research."
+                            },
+                            {
+                                "Number": 4,
+                                "Title": "Conservation areas \u2013 Braintree District Council",
+                                "Source": "https://www.braintree.gov.uk/planning-building-control/conservation-areas",
+                                "Key Strengths": [
+                                    "The title and snippet both indicate this resource is about conservation areas, which could be relevant to the user if they live in such an area.",
+                                    "The resource explains that additional planning permissions are often required for works within a conservation area."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "A user who lives in a conservation area may consider solar panel installation. In those cases, this resource will provide useful information about the necessary extra planning requirements if any work falls under that classification."
+                            },
+                            {
+                                "Number": 6,
+                                "Title": "Sustainability Statement Guidance Note. | Braintree District Council",
+                                "Source": "https://www.braintree.gov.uk/downloads/file/3763/sustainability-statement-guidance-note-march-2023",
+                                "Key Strengths": [
+                                    "The title and the 'solar panel system' mention in the snippet indicate the resource covers solar energy systems.",
+                                    "The guidance note could help the user demonstrate effectiveness of their installed renewable energy generation, as required by planning applications."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "If a user is submitting a planning application for solar panel installation or considering such an installation in the future, this resource can guide them on creating a sustainability statement to demonstrate the effectiveness of their renewable energy system."
+                            },
+                            {
+                                "Number": 10,
+                                "Title": "Climate Change Action Plan: September 2021",
+                                "Source": "https://www.braintree.gov.uk/downloads/file/3854/annual-action-report-year-end-2022-23",
+                                "Key Strengths": [
+                                    "The title indicates the resource discusses climate change action.",
+                                    "The snippet mentions planning applications, solar energy in residential, thus possibly including information related to solar panel installations."
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "This resource may provide insights into the district council's approach towards renewable energies like solar panels, helping users understand relevant regulations and requirements for planning applications. However, its direct relevance is relatively lower compared to other resources in the list."
+                            }
+                        ],
+                        "Analysis Notes": "There are various links that seem useful for a user seeking information about council customer needs related to installing solar panels or understanding planning requirements for certain works within Braintree District Council's jurisdiction. Multiple resources directly relate to the topic of solar panel installation, prior notifications, and planning permissions required from the district council.",
+                        "Recommendations Notes": "The top three recommendations are those that most closely address the user's concern about council customer needs regarding solar panel installation. The fourth recommendation offers guidance on creating a sustainability statement for planning applications, while the fifth provides insights into the district council's approaches to renewable energy like solar panels. It is worth noting that none of these resources focus explicitly on 'customer information,' which may have a broader meaning including local policies and regulations affecting homeowners."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 74,
+                    "max_confidence": "85"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

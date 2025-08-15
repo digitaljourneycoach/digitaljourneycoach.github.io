@@ -1,0 +1,678 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T23:30:02+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "babergh.gov.uk",
+                "Council Name": "Babergh District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Do I need permission? - Mid Suffolk District Council - babergh.gov ...",
+                        "link": "https://www.babergh.gov.uk/en/web/mid-suffolk/do-i-need-permission-",
+                        "snippet": "Find information and guidance about planning permission, if you wish to make a change to your home."
+                    },
+                    {
+                        "title": "Energy efficiency in historic buildings - Mid Suffolk District Council ...",
+                        "link": "https://www.babergh.gov.uk/en/web/mid-suffolk/energy-efficiency-in-historic-buildings",
+                        "snippet": "There are also similar exemptions for the private renting of buildings where Minimum Energy Efficiency Standards (MEES) apply. Do I need planning permission? ,."
+                    },
+                    {
+                        "title": "Planning - Babergh District Council - babergh.gov.uk / midsuffolk ...",
+                        "link": "https://www.babergh.gov.uk/planning",
+                        "snippet": "Planning applications, pre-application advice, decision appeals and planning enforcement. ... Apply for planning permission from us, learn our fees and charges\u00a0..."
+                    },
+                    {
+                        "title": "Energy Efficiency and Historic Buildings \u2013 Fabric Upgrades and ...",
+                        "link": "https://www.babergh.gov.uk/documents/d/asset-library-54706/energy-efficiency-and-historic-buildings-fabric-upgrades-and-energy-generation",
+                        "snippet": "They are also available in the form of solar slates. Requirement for Permission ... - Building Regulations on Fuel and Power \u2013 HM. Government, 2023. Conservation\u00a0..."
+                    },
+                    {
+                        "title": "Conservation areas - Babergh District Council - babergh.gov.uk ...",
+                        "link": "https://www.babergh.gov.uk/conservation-areas",
+                        "snippet": "... planning permission - which makes them 'permitted development'. However ... the installation of solar panels on a roof slope which fronts a highway; the\u00a0..."
+                    },
+                    {
+                        "title": "National and Local Validation List: Part One",
+                        "link": "https://www.babergh.gov.uk/documents/d/asset-library-54706/lvl-review-part-1-householder-final-updated-31-10-23",
+                        "snippet": "For Householder Planning Permission:- \u2022 A Design and Access Statement must ... o Solar panels. Page 12. 12 | Page. Babergh and Mid Suffolk District\u00a0..."
+                    },
+                    {
+                        "title": "Councils first in country to clear the way for listed building energy ...",
+                        "link": "https://www.babergh.gov.uk/w/councils-first-in-country-to-clear-the-way-for-listed-building-energy-upgrades",
+                        "snippet": "Jul 30, 2024 ... The first is a Local Listed Building Consent Order, allowing Grade ... The second is a Local Development Order, allowing solar PV and\u00a0..."
+                    },
+                    {
+                        "title": "Minimum Energy Efficiency Standards (MEES) - Babergh District ...",
+                        "link": "https://www.babergh.gov.uk/w/minimum-energy-efficiency-standards-mees-",
+                        "snippet": "Visit Warm Homes Suffolk's website for information on funding for air source heat pumps, solar PV panels, loft and wall insulation, as well as expert advice for\u00a0..."
+                    },
+                    {
+                        "title": "External Alterations to a Listed Building",
+                        "link": "https://www.babergh.gov.uk/documents/d/asset-library-54706/external-alterations-heritage-",
+                        "snippet": "Any extension to the listed building itself will require LBC and may also need planning permission. ... Solar panels, by their very nature, tend to be visually\u00a0..."
+                    },
+                    {
+                        "title": "Newly-elected council leader: 'We need to rethink, rebuild and repair ...",
+                        "link": "https://www.babergh.gov.uk/w/newly-elected-council-leader-we-need-to-rethink-rebuild-and-repair-",
+                        "snippet": "May 20, 2024 ... ... solar panels on outbuildings without planning permission, she said. Cllr Saw said working with partners like Citizens Advice to help people\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.babergh.gov.uk/planning",
+                        "title": "Planning - Babergh District Council - babergh.gov.uk / midsuffolk",
+                        "confidence": 90,
+                        "strengths": [
+                            "Comprehensive resource providing planning applications, pre-application advice, decision appeals, and planning enforcement.",
+                            "Offers guidance on fees and charges for applying for planning permission."
+                        ],
+                        "reasoning": "The resource provides a centralized hub for all planning-related matters. It includes information on what types of permissions are needed, application process, fees, and charges, making it an ideal starting point for anyone needing council customer information on council-related building activities.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Planning - Babergh District Council - babergh.gov.uk / midsuffolk",
+                                "Source": "https://www.babergh.gov.uk/planning",
+                                "Key Strengths": [
+                                    "Comprehensive resource providing planning applications, pre-application advice, decision appeals, and planning enforcement.",
+                                    "Offers guidance on fees and charges for applying for planning permission."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The resource provides a centralized hub for all planning-related matters. It includes information on what types of permissions are needed, application process, fees, and charges, making it an ideal starting point for anyone needing council customer information on council-related building activities."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Do I need permission? - Mid Suffolk District Council - babergh.gov ...",
+                                "Source": "https://www.babergh.gov.uk/en/web/mid-suffolk/do-i-need-permission-",
+                                "Key Strengths": [
+                                    "Clearly outlines the types of changes that might require planning permission.",
+                                    "Offers guidance on planning permissions for home modifications."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The page directly addresses one of the core needs customers have when dealing with council matters, providing detailed information about when and why planning permission is necessary for various modifications to dwellings. The concise nature of the resource facilitates easy understanding."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Conservation areas - Babergh District Council - babergh.gov.uk ...",
+                                "Source": "https://www.babergh.gov.uk/conservation-areas",
+                                "Key Strengths": [
+                                    "Discusses planning permission exemptions for certain activities in conservation areas.",
+                                    "Offers information on the installation of solar panels and other restrictions."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "The resource explains various rules that apply to properties located within conservation areas, including specific circumstances under which planning permission is not required. This information will likely be valuable for residents interested in solar panel installations or other changes to their property."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Minimum Energy Efficiency Standards (MEES) - Babergh District ...",
+                                "Source": "https://www.babergh.gov.uk/w/minimum-energy-efficiency-standards-mees-",
+                                "Key Strengths": [
+                                    "Provides information on funding for energy-efficient upgrades such as solar panels, air source heat pumps, and insulation.",
+                                    "Offers expert advice and resources to help customers navigate the process."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "While the resource does not directly provide information about council requirements for energy-efficient upgrades, it highlights funding opportunities and expert advice available from the council on such projects. This comprehensive approach to offering guidance makes it a valuable resource for customers seeking to improve the energy efficiency of their homes."
+                            }
+                        ],
+                        "Analysis Notes": "Some resources were not deemed relevant because they provided information on topics like LBC, National and Local Validation List, or news articles unrelated to customer service. Although these items may contain useful information, my analysis focused on providing recommendations directly addressing council customer information needs.",
+                        "Recommendations Notes": "The top four recommendations are ranked based on the presence of comprehensive coverage of relevant topics related to planning permission and energy efficiency in buildings, while also taking into account factors such as user experience, direct applicability to customers, and clarity of information."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "90",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 81.25,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "data": [
+                        {
+                            "Number": "1",
+                            "Title": "Planning - Babergh District Council - babergh.gov.uk / midsuffolk",
+                            "Source": "https://www.babergh.gov.uk/planning",
+                            "Reasoning": "This resource provides a centralized hub for all planning-related matters, comprehensively covering guidance on council requirements and fees, making it an ideal starting point for anyone needing customer information on council-related building activities, scoring 90 in confidence.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Do I need permission? - Mid Suffolk District Council - babergh.gov ...",
+                            "Source": "https://www.babergh.gov.uk/en/web/mid-suffolk/do-i-need-permission-",
+                            "Reasoning": "Clearly outlines the types of changes that might require planning permission and offers guidance on planning permissions specifically for home modifications, scoring 90 in confidence.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Conservation areas - Babergh District Council - babergh.gov.uk ...",
+                            "Source": "https://www.babergh.gov.uk/conservation-areas",
+                            "Reasoning": "Explains various rules that apply to properties located within conservation areas and discusses planning permission exemptions, scoring 75 in confidence.",
+                            "Confidence": "75"
+                        }
+                    ],
+                    "selected_options": {
+                        "max_selections": 3,
+                        "min_confidence": 0.6
+                    },
+                    "total_matches": 2
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.babergh.gov.uk/planning"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.babergh.gov.uk/planning",
+                        "analysis": {
+                            "url": "https://www.babergh.gov.uk/planning",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T23:30:02+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T23:30:29+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html;charset=UTF-8",
+                            "content_length": 102824,
+                            "response_time": 2.511,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 80,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Acceptable response time (2.511s)",
+                                    "Content successfully retrieved (102824 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 70,
+                                "component_scores": {
+                                    "technical": 80,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 2.51359486579895,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.babergh.gov.uk/planning"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.babergh.gov.uk/planning",
+                        "content": " The provided HTML code appears to be a part of a webpage related to local government services, specifically with a focus on planning and development. The content within the `<section>` elements indicates that this webpage provides information about various topics such as building regulations, planning enforcement, community infrastructure levies, etc., within a specific location or district.\n\nHowever, for a more accurate analysis, it would be helpful to have additional context or an explanation of the purpose and structure of the entire website. In case you need help with any specific part of this webpage or need assistance in improving it, feel free to ask further questions!",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 5.658229827880859,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.babergh.gov.uk/planning",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "Partially addressed",
+                                    "confidence": "70%",
+                                    "reasoning": "The content does mention 'building regulations', which may pertain to installing solar panels. However, it is not explicitly clear if a permission is required specifically for solar panel installation.",
+                                    "next_actions": "I would contact the local planning department or visit their website for specific guidelines regarding solar panel installations."
+                                }
+                            ],
+                            "overall_assessment": "While the content provides a general overview of planning services, it does not provide clear and concise information specifically addressing a council resident's need to install solar panels on their house. Key gaps include lack of clarity on whether permission is necessary for solar panel installation and detailed steps to follow.",
+                            "overall_satisfaction": "Moderate"
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.701653957366943,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.babergh.gov.uk/planning"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_233002-babergh.gov.uk",
+                    "analysis_timestamp": "2025-08-10T23:30:42+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6666666666666666,
+                            "tokens_consumed": 6735,
+                            "tokens_remaining": 23265,
+                            "token_utilization_percentage": 22.45,
+                            "average_tokens_per_step": 1122.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 77.55,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 20,
+                            "consumption_rate": 1122.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.52,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6666666666666666,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_233002-babergh.gov.uk",
+                        "start_time": "2025-08-10T23:30:02+01:00",
+                        "current_time": "2025-08-10T23:30:42+01:00",
+                        "duration_seconds": 40,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6735,
+                        "tokens_remaining": 23265,
+                        "token_utilization_percentage": 22.45,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3527,
+                                "avg_per_call": 1763.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3208,
+                                "avg_per_call": 1604
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1122.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_233002-babergh.gov.uk",
+                    "start_time": "2025-08-10T23:30:02+01:00",
+                    "current_time": "2025-08-10T23:30:42+01:00",
+                    "duration_seconds": 40,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6735,
+                    "tokens_remaining": 23265,
+                    "token_utilization_percentage": 22.45,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3527,
+                            "avg_per_call": 1763.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3208,
+                            "avg_per_call": 1604
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1122.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

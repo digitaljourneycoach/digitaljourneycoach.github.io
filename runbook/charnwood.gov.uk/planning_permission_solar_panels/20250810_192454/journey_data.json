@@ -1,0 +1,685 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T19:24:54+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "charnwood.gov.uk",
+                "Council Name": "Charnwood Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Solar Together Leicestershire - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/solartogether",
+                        "snippet": "Aug 27, 2024 ... Solar Together Leicestershire \u00b7 Planning Permission. Solar PV installations are considered a 'permitted development' and will generally not need\u00a0..."
+                    },
+                    {
+                        "title": "Do I need planning permission? - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/do_i_need_planning_permission",
+                        "snippet": "6 days ago ... Solar panels and wind turbines \u00b7 Working from home. Guidance is also ... Building Consent, as well as any relevant planning permission or building\u00a0..."
+                    },
+                    {
+                        "title": "Types of planning applications - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/types_of_planning_applications",
+                        "snippet": "Dec 1, 2023 ... Solar Panels and Wind Turbines. There are some cases where you may not need to apply for planning permission, providing the works meet\u00a0..."
+                    },
+                    {
+                        "title": "Residential planning - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/atoz/485",
+                        "snippet": "If a resident is thinking of making alterations to their house/flat they will need to consult the planning section to see if they require planning permission."
+                    },
+                    {
+                        "title": "Conservation areas in Charnwood - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/conservation_areas_in_charnwood",
+                        "snippet": "Apr 2, 2025 ... Permitted Development rights are usually more restricted and planning permission may be needed. For example, there is a smaller limit on\u00a0..."
+                    },
+                    {
+                        "title": "Competent person schemes - GOV.UK",
+                        "link": "https://www.charnwood.gov.uk/pages/competent_person_schemes",
+                        "snippet": "Join a competent person scheme to self-certify certain types of building work instead of getting building regulations approval from a council or private\u00a0..."
+                    },
+                    {
+                        "title": "CABINET -",
+                        "link": "https://www.charnwood.gov.uk/files/papers/cab_14_feb_2013_item_12_wymeswold_airfield_strategic_housing_development_options_study/Cab%2014%20Feb%202013%20Item%2012%20Wymeswold%20Airfield%20Strategic%20Housing%20Development%20Options%20Study.pdf",
+                        "snippet": "Feb 14, 2013 ... Planning permission has recently been granted for the installation of a solar farm and associated infrastructure at Wymeswold Airfield."
+                    },
+                    {
+                        "title": "Charnwood Borough Council Validation Requirements",
+                        "link": "https://www.charnwood.gov.uk/files/documents/validation_requirements_for_planning_applications/Local%20Validation%20Requirements%20-%20February%202024.pdf",
+                        "snippet": "no planning permission is required, as per application requirements. 8. Plans ... glare from a solar photovoltaic (PV) development including: \u2022 A sun\u00a0..."
+                    },
+                    {
+                        "title": "Community Facilities Grants - Applicant Guidance Notes 2025/26 ...",
+                        "link": "https://www.charnwood.gov.uk/pages/community_facilities_grants_applicant_guidance_notes_2021_22",
+                        "snippet": "Mar 3, 2025 ... Confirmation of Building Regulations approval and / or planning permission required for the building works within the scheme. 6. Application\u00a0..."
+                    },
+                    {
+                        "title": "Queniborough Neighbourhood Plan 2019-2028 Referendum",
+                        "link": "https://www.charnwood.gov.uk/files/documents/eb_np_3_queniborough_neighbourhood_plan_2021/EB-NP-3%20Queniborough%20Neighbourhood%20Plan%202021.pdf",
+                        "snippet": "without the need for planning permission. However, various conditions and ... large-scale application of solar PV panels to generate green, clean."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.charnwood.gov.uk/pages/solartogether",
+                        "title": "Solar Together Leicestershire - Charnwood Borough Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Provides information specifically about the council's solar-related initiatives.",
+                            "Easily accessible through the official Charnwood Borough Council website."
+                        ],
+                        "reasoning": "The page title contains 'Solar Together Leicestershire', which suggests this is a dedicated resource or initiative by the council for solar installations. Additionally, it's located on the Charnwood Borough Council website, demonstrating official validation.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Solar Together Leicestershire - Charnwood Borough Council",
+                                "Source": "https://www.charnwood.gov.uk/pages/solartogether",
+                                "Key Strengths": [
+                                    "Provides information specifically about the council's solar-related initiatives.",
+                                    "Easily accessible through the official Charnwood Borough Council website."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The page title contains 'Solar Together Leicestershire', which suggests this is a dedicated resource or initiative by the council for solar installations. Additionally, it's located on the Charnwood Borough Council website, demonstrating official validation."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Do I need planning permission? - Charnwood Borough Council",
+                                "Source": "https://www.charnwood.gov.uk/pages/do_i_need_planning_permission",
+                                "Key Strengths": [
+                                    "Covers a broad range of planning-related questions.",
+                                    "Includes specific information about solar panels and wind turbines."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While this page doesn't focus solely on council customer information needs, it does provide relevant information regarding whether planning permission is needed for renewable energy solutions such as solar panels."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Types of planning applications - Charnwood Borough Council",
+                                "Source": "https://www.charnwood.gov.uk/pages/types_of_planning_applications",
+                                "Key Strengths": [
+                                    "Comprehensive guide to various types of planning applications.",
+                                    "Mentions solar panels and wind turbines as examples."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This page offers a detailed overview of the different types of planning applications, potentially providing valuable information for customers seeking guidance on relevant permissions for installations such as solar panels."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Community Facilities Grants - Applicant Guidance Notes 2025/26 ...",
+                                "Source": "https://www.charnwood.gov.uk/pages/community_facilities_grants_applicant_guidance_notes_2021_22",
+                                "Key Strengths": [
+                                    "Covers grant applications for community facilities.",
+                                    "Mentions the requirement for building regulations approval and planning permission."
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "While this page primarily focuses on grant applications for community facilities, it also mentions certain requirements related to building regulations approval and planning permission, which could be of interest to council customers seeking guidance."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Queniborough Neighbourhood Plan 2019-2028 Referendum",
+                                "Source": "https://www.charnwood.gov.uk/files/documents/eb_np_3_queniborough_neighbourhood_plan_2021/EB-NP-3%20Queniborough%20Neighbourhood%20Plan%202021.pdf",
+                                "Key Strengths": [
+                                    "Provides a neighborhood plan for the Queniborough area.",
+                                    "Addresses conditions related to large-scale solar PV panels installation."
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "Though this resource is for a specific neighborhood, it offers details about the installation of solar PV panels on a large scale, which may provide valuable context for other parts of Charnwood Borough Council's area."
+                            }
+                        ],
+                        "Analysis Notes": "Due to the broad nature of the search results, not all items directly addressed council customer information needs. However, the top five selections offer potential solutions related to solar installations and planning permissions.",
+                        "Recommendations Notes": "Items were ranked based on their relevance to the given instruction. The titles, descriptions, and URL structure of selected resources indicated that these are likely to offer useful guidance for council customers in need of information about solar panels and planning permission."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "65",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 74,
+                    "max_confidence": "85"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "005_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.charnwood.gov.uk/pages/solartogether"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.charnwood.gov.uk/pages/solartogether",
+                        "analysis": {
+                            "url": "https://www.charnwood.gov.uk/pages/solartogether",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T19:24:54+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T19:25:45+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 23099,
+                            "response_time": 0.281,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.281s)",
+                                    "Content successfully retrieved (23099 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.28385186195373535,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "006_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.charnwood.gov.uk/pages/solartogether"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.charnwood.gov.uk/pages/solartogether",
+                        "content": " In this example, I will remove unnecessary elements and retain only the content within the `<main>` tag with semantic HTML structure intact.\n\nHere's the cleaned, semantically structured HTML containing the central editorial content of the web page:\n\n```html\n<div class=\"body\">\n    <div class=\"pagecontent\">\n        <p class=\"lead-text\">Solar Together Leicestershire - buying solar panels and battery storage made easy.</p>\n        <p>Do you want to save on your energy bills and generate your own clean electricity?</p>\n        <p>Having your own solar panels and battery storage to power your home with clean energy can be a smart investment.</p>\n        <p>Charnwood Borough Council is working in partnership with councils across Leicestershire to offer you the chance to generate your own clean electricity at a highly competitive price. By installing solar panels and producing renewable electricity for your home or business, you will be playing your part in supporting our shared ambition to reduce carbon emissions in Leicestershire.</p>\n        <p>The Council&nbsp;has partnered with independent experts in group-buying, iChoosr Ltd, to bring this opportunity to Charnwood's homeowners.</p>\n        <p>Solar Together Leicestershire is an innovative new scheme offering high-quality solar photovoltaic (PV) panels and battery storage. It is a group-buying scheme, which brings Leicestershire households together to get high-quality solar panels at a competitive price, helping you through the process and keeping you informed at every stage.</p>\n        <p class=\"strong-paragraph\">Registration for the latest scheme closed on&nbsp;<strong>Friday 9 August, 2024.</strong></p>\n        <p>Find out more about the scheme and how to apply by clicking on the link below.</p>\n        <p><a class=\"cms-btn cms-btn--green\" data-cms-link-uri=\"\" href=\"https://solartogether.co.uk/charnwood\">Solar Together Leicestershire</a></p>\n        <h2>Planning Permission</h2>\n        <p>Solar PV installations are considered a 'permitted development' and will generally not need planning permission. However, in some cases, such as in Conservation Areas and on Listed Buildings, planning permission may be required. For planning advice please our <a data-cms-link-uri=\"\" href=\"https://www.charnwood.gov.uk/pages/planning_and_regeneration\">planning and regeneration webpages.</a></p>\n        <p>Do you already have solar panels installed? You can also register to have battery storage added to your existing solar panels to maximise the benefits of your system.</p>\n        <h2>How does it work?</h2>\n        <p class=\"04xlpa\"><strong>1. Registration:</strong> register&nbsp;for free and without obligation at <a data-cms-link-uri=\"\" href=\"http://solartogether.co.uk/charnwood\">solartogether.co.uk/charnwood</a>. To register, you simply provide details about your roof, such as its size and orientation.</p>\n        <p><strong>2. Auction:&nbsp;</strong>A reverse auction will be held where our pre-vetted solar installers will submit bids for the work. The more people that register, the better the deal should be for each household. The installer with the most competitive package will win the auction.</p>\n        <p><strong>3. Personal recommendation:</strong>&nbsp;you will then be emailed your personal recommendation based on your registration details. This includes your costs and specifications of your system.</p>\n        <p><strong>4. You decide:</strong>&nbsp;the decision is then yours whether you want to accept your recommendation. There is no obligation to continue. We will let you know how long you have to accept your recommendation and update you before the scheme closes.</p>\n        <p><strong>5. Installation:</strong> if you accept, the winning installer will contact you to survey your roof and set an installation date. All installations are planned to be completed by</p>\n        <h2>Additional information</h2>\n        <p>For more information, visit the<a data-cms-link-uri=\"\" href=\"http://www.solartogether.co.uk/leicestershire\">Solar Together website</a>, where you can register for the scheme and get in touch with iChoosr's helpdesk.</p>\n        <h2>Helpdesk support</h2>\n        <p>Telephone and email support from iChoosr are on-hand throughout the whole process, which, together with information sessions, will allow households to make an informed decision in a safe and hassle-free environment.</p>\n        <h2>About iChoosr</h2>\n        <p>iChoosr was founded in 2008 and is privately owned by two co-founders. Before it entered the UK energy market in 2012, it focused on group-buying schemes in the Netherlands and Belgium. It now works with community leaders helping households select energy and solar power suppliers. As in the UK, its operations continue to grow across Europe, North America and Japan.</p>\n        <p>To contact iChoosr, please use their helpline 0800 048 8362 or email<span class=\"underline\"><a class=\"email\" data-cms-link-uri=\"\" href=\"mailto:leicestershire@solartogether.co.uk\">leicestershire@solartogether.co.uk</a><br></span></p>\n        <p class=\"last-published\">Last updated: <span>Tue 27th August, 2024 @ 09:15</span></p>\n    </div>\n</div>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 28.652261972427368,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "007_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.charnwood.gov.uk/pages/solartogether",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "The content partially answers this question by stating that solar PV installations are considered a 'permitted development' and generally do not need planning permission. However, it also mentions exceptions such as in Conservation Areas and on Listed Buildings.",
+                                    "confidence": "85%",
+                                    "reasoning": "The content provides clear information about the typical situation for solar panel installation not requiring planning permission but also acknowledges scenarios where it may be necessary. While no specific advice is given for securing permissions in exceptional cases, the provided link to Charnwood's planning and regeneration webpages suggests that more information can be found there.",
+                                    "next_actions": "I would first check if my house falls under any of the exceptional scenarios mentioned in the content. If so, I will visit the planning and regeneration webpage as indicated to see the requirements for seeking the necessary permission."
+                                }
+                            ],
+                            "overall_assessment": "The overall quality of the site is good as it provides detailed information about solar panel installation and group-buying schemes. It also includes useful resources such as a link to iChoosr's helpdesk. However, key gaps remain in terms of more specific guidance for residents regarding exceptional cases where planning permission may be required."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 7.559843063354492,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.charnwood.gov.uk/pages/solartogether"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "008_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_192454-charnwood.gov.uk",
+                    "analysis_timestamp": "2025-08-10T19:26:21+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 7,
+                            "duration_minutes": 1.45,
+                            "tokens_consumed": 10413,
+                            "tokens_remaining": 19587,
+                            "token_utilization_percentage": 34.71,
+                            "average_tokens_per_step": 1487.57
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 65.29,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 13,
+                            "consumption_rate": 1487.57,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 7,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 3
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "85",
+                            "quality_scores": [
+                                "85"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "85",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 20.71,
+                            "steps_fatigue_percentage": 58.33,
+                            "overall_fatigue_score": 58.33,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.45,
+                            "total_steps": 7,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved",
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_192454-charnwood.gov.uk",
+                        "start_time": "2025-08-10T19:24:54+01:00",
+                        "current_time": "2025-08-10T19:26:21+01:00",
+                        "duration_seconds": 87,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 10413,
+                        "tokens_remaining": 19587,
+                        "token_utilization_percentage": 34.71,
+                        "token_status": "available",
+                        "total_steps": 7,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 3,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 7
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3573,
+                                "avg_per_call": 1786.5
+                            },
+                            "analyst": {
+                                "calls": 3,
+                                "tokens": 6840,
+                                "avg_per_call": 2280
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1487.57
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_192454-charnwood.gov.uk",
+                    "start_time": "2025-08-10T19:24:54+01:00",
+                    "current_time": "2025-08-10T19:26:21+01:00",
+                    "duration_seconds": 87,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 10413,
+                    "tokens_remaining": 19587,
+                    "token_utilization_percentage": 34.71,
+                    "token_status": "available",
+                    "total_steps": 7,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 3,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 7
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3573,
+                            "avg_per_call": 1786.5
+                        },
+                        "analyst": {
+                            "calls": 3,
+                            "tokens": 6840,
+                            "avg_per_call": 2280
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1487.57
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

@@ -1,0 +1,672 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T02:40:02+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "harborough.gov.uk",
+                "Council Name": "Harborough District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Education and children | Leicestershire County Council",
+                        "link": "https://www.harborough.gov.uk/a_to_z/service/149/schools",
+                        "snippet": "See our latest information on Free School Meal (FSM) vouchers. For Educational Health and Care Plans or Assessments, please see how to get help with your child\u00a0..."
+                    },
+                    {
+                        "title": "Social care and supporting families | Leicestershire County Council",
+                        "link": "https://www.harborough.gov.uk/a_to_z/service/162/family_services_and_support",
+                        "snippet": "Information on who can get free school meals and how to apply. Help for young carers. If you're 18 and under and you look after someone at home, you\u00a0..."
+                    },
+                    {
+                        "title": "Local groups and initiatives | Ukrainian refugees and UK hosts ...",
+                        "link": "https://www.harborough.gov.uk/info/20021/council_information/465/ukrainian_refugees_and_uk_hosts/2",
+                        "snippet": "... Education, for children aged five to 16 who are receiving benefits-related free school meals. Leicestershire County Council is working with Active Together\u00a0..."
+                    },
+                    {
+                        "title": "Extra help if you are in financial difficulty | Harborough District Council",
+                        "link": "https://www.harborough.gov.uk/info/20020/benefits/115/extra_help_if_you_are_in_financial_difficulty",
+                        "snippet": "... getting certain benefits you may already be getting some of these for free ... School meals. Non-essential expenses include: Breakdown or recovery; Parking\u00a0..."
+                    },
+                    {
+                        "title": "Get Brexit Done Unleash Britain's Potential",
+                        "link": "https://www.harborough.gov.uk/download/downloads/id/7555/j3_conservative_2019_manifesto.pdf",
+                        "snippet": "Nov 24, 2019 ... commitment to free school meals. \u25bb We will also extend the entitlement to leave for unpaid carers, the majority of whom are women, to one\u00a0..."
+                    },
+                    {
+                        "title": "STARTING UP A NEW FOOD BUSINESS",
+                        "link": "https://www.harborough.gov.uk/download/downloads/id/3151/new_food_business_starter_packpdf.pdf",
+                        "snippet": "The law requires all food businesses to have a documented food safety ... You also have to provide free drinking water that is safe and easily\u00a0..."
+                    },
+                    {
+                        "title": "Evidence and Decision List December 2024(note this report may ...",
+                        "link": "https://www.harborough.gov.uk/download/downloads/id/6884/evidence_and_decision_list_december_2024.pdf",
+                        "snippet": "Dec 6, 2024 ... ... Take Aways' and also delivers meals from the pub menu on request to village residents. \u2981 Free wifi is available for customers which allows\u00a0..."
+                    },
+                    {
+                        "title": "Billesdon Neighbourhood Development Plan 2014-2028",
+                        "link": "https://www.harborough.gov.uk/download/downloads/id/2906/final_billesdon_ndppdf.pdf",
+                        "snippet": "access to the Primary School; access to public transport; public rights of way; footpaths; ... Free standing advertising signs should be discouraged and hoardings\u00a0..."
+                    },
+                    {
+                        "title": "North Kilworth Neighbourhood Plan Strategic Environmental ...",
+                        "link": "https://www.harborough.gov.uk/download/downloads/id/3742/north_kilworth_ndp_sea_screening_december_2016.pdf",
+                        "snippet": "Dec 5, 2016 ... Bogs to create traffic free access to the core of the Village and school; ... (h) Fish-meal and fish-oil factories. (i) Sugar factories. 9\u00a0..."
+                    },
+                    {
+                        "title": "Governance Toolkit for Parish & Town Councils",
+                        "link": "https://www.harborough.gov.uk/download/downloads/id/4578/parish_toolkit.pdf",
+                        "snippet": "Many parish councils produce a regular newsletter, monthly or quarterly, or take space in the local school or church magazine to publicise meetings and\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.harborough.gov.uk/a_to_z/service/149/schools",
+                        "title": "Education and children | Leicestershire County Council",
+                        "confidence": 80,
+                        "strengths": [
+                            "Provides latest information on Free School Meal (FSM) vouchers.",
+                            "Information on Educational Health and Care Plans or Assessments."
+                        ],
+                        "reasoning": "The title and snippet both suggest that this link contains information related to school meals and educational resources for children. Given the context of a council providing customer information, this seems to be a relevant option.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Education and children | Leicestershire County Council",
+                                "Source": "https://www.harborough.gov.uk/a_to_z/service/149/schools",
+                                "Key Strengths": [
+                                    "Provides latest information on Free School Meal (FSM) vouchers.",
+                                    "Information on Educational Health and Care Plans or Assessments."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title and snippet both suggest that this link contains information related to school meals and educational resources for children. Given the context of a council providing customer information, this seems to be a relevant option."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Social care and supporting families | Leicestershire County Council",
+                                "Source": "https://www.harborough.gov.uk/a_to_z/service/162/family_services_and_support",
+                                "Key Strengths": [
+                                    "Information on free school meals for families in need.",
+                                    "Help for young carers."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title and snippet suggest that this link contains information about social care services and family support, with a specific focus on free school meals. It aligns well with the given instruction."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Local groups and initiatives | Ukrainian refugees and UK hosts ...",
+                                "Source": "https://www.harborough.gov.uk/info/20021/council_information/465/ukrainian_refugees_and_uk_hosts/2",
+                                "Key Strengths": [
+                                    "Information on education for children of Ukrainian refugees.",
+                                    "Cooperation with Leicestershire County Council to provide free school meals."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title and snippet suggest that this link contains information related to a service specifically aimed at Ukrainian refugees, including education for their children. It aligns well with the given instruction and seems to be particularly relevant to current events."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Extra help if you are in financial difficulty | Harborough District Council",
+                                "Source": "https://www.harborough.gov.uk/info/20020/benefits/115/extra_help_if_you_are_in_financial_difficulty",
+                                "Key Strengths": [
+                                    "Information regarding extra help for those in financial difficulty.",
+                                    "Mention of free school meals as one potential form of assistance."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The title and snippet suggest that this link provides information about different types of help for people who find themselves financially disadvantaged. While it does not specifically focus on council customer information, the mention of free school meals aligns with the given instruction."
+                            }
+                        ],
+                        "Analysis Notes": "Some links provided general guidance or services that were only tangentially related to the specific instructions, so they have been excluded from recommendations.",
+                        "Recommendations Notes": "Although some options had a lower confidence score, they were still relevant to some extent and could potentially be useful for those seeking council customer information."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "85",
+                        "90",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 81.25,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Education and children | Leicestershire County Council",
+                            "Source": "https://www.harborough.gov.uk/a_to_z/service/149/schools",
+                            "Reasoning": "The title and snippet both suggest that this link contains information related to school meals and educational resources for children. Given the context of a council providing customer information, this seems to be a relevant option.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Social care and supporting families | Leicestershire County Council",
+                            "Source": "https://www.harborough.gov.uk/a_to_z/service/162/family_services_and_support",
+                            "Reasoning": "The title and snippet suggest that this link contains information about social care services and family support, with a specific focus on free school meals. It aligns well with the given instruction.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Local groups and initiatives | Ukrainian refugees and UK hosts ...",
+                            "Source": "https://www.harborough.gov.uk/info/20021/council_information/465/ukrainian_refugees_and_uk_hosts/2",
+                            "Reasoning": "The title and snippet suggest that this link contains information related to a service specifically aimed at Ukrainian refugees, including education for their children. It aligns well with the given instruction and seems to be particularly relevant to current events.",
+                            "Confidence": "90"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.harborough.gov.uk/a_to_z/service/149/schools"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.harborough.gov.uk/a_to_z/service/149/schools",
+                        "analysis": {
+                            "url": "https://www.harborough.gov.uk/a_to_z/service/149/schools",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T02:40:02+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T02:40:27+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 109951,
+                            "response_time": 0.706,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.706s)",
+                                    "Content successfully retrieved (109951 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.7083001136779785,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.harborough.gov.uk/a_to_z/service/149/schools"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.harborough.gov.uk/a_to_z/service/149/schools",
+                        "content": " The provided HTML code is for a webpage that appears to be a local government or council website, possibly from Leicestershire, England. The content includes news articles and sections for different services like adoption, fostering, and adult learning.\n\nHere's an overview of the main sections:\n\n1. Adoption and Fostering Information - Provides information on adopting a child, becoming a foster carer, and resources available from Leicestershire County Council related to adoption and fostering services.\n\n2. News - Contains current news articles related to the local government's activities, including updates about the latest newsletter, conversations about Beaumanor Hall, and appeals for foster carers.\n\n3. Find a School Near You - Offers search functionality to find schools in Leicestershire, including information on school types, ages, and OFSTED ratings.\n\n4. Business Rates - Provides information and resources related to business rates, rebates, reliefs, and appeals for businesses in Leiceshire.\n\n5. Adult Learning - Offers information about financial support, enrolling for adult learning courses, and latest news related to adult learning opportunities provided by Leicestershire County Council.\n\n6. Column 2 - Showcases a featured news story with an image, title, publication date, and introductory text.\n\n7. Latest News Teasers - Presents 3 recent news articles in a list format, each containing an article title, publication date, and short description. There are no images associated with these teasers.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 9.856127977371216,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.harborough.gov.uk/a_to_z/service/149/schools",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content does not answer this question/meet this need directly.",
+                                    "confidence": "0%",
+                                    "reasoning": "There is no specific information about free school meals and eligibility criteria provided on the webpage. While it offers various services like adoption, fostering, and adult learning, it lacks details for the question related to unemployment benefits.",
+                                    "next_actions": "Search specifically for information on council benefits or contact the local council's customer service desk to inquire about free school meals eligibility."
+                                }
+                            ],
+                            "overall_assessment": "The content provided may offer some basic guidance on various services offered by the council, but it does not provide direct answers to the specific concerns of a council resident who has recently lost employment and needs assistance with school meals. Key gaps include information about benefits eligibility and time frames for processing applications."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.374513149261475,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.harborough.gov.uk/a_to_z/service/149/schools"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_024002-harborough.gov.uk",
+                    "analysis_timestamp": "2025-08-13T02:40:43+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6833333333333333,
+                            "tokens_consumed": 14468,
+                            "tokens_remaining": 15532,
+                            "token_utilization_percentage": 48.23,
+                            "average_tokens_per_step": 2411.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 51.77,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 6,
+                            "consumption_rate": 2411.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.76,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_024002-harborough.gov.uk",
+                        "start_time": "2025-08-13T02:40:02+01:00",
+                        "current_time": "2025-08-13T02:40:43+01:00",
+                        "duration_seconds": 41,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 14468,
+                        "tokens_remaining": 15532,
+                        "token_utilization_percentage": 48.23,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 11198,
+                                "avg_per_call": 5599
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3270,
+                                "avg_per_call": 1635
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 2411.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_024002-harborough.gov.uk",
+                    "start_time": "2025-08-13T02:40:02+01:00",
+                    "current_time": "2025-08-13T02:40:43+01:00",
+                    "duration_seconds": 41,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 14468,
+                    "tokens_remaining": 15532,
+                    "token_utilization_percentage": 48.23,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 11198,
+                            "avg_per_call": 5599
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3270,
+                            "avg_per_call": 1635
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 2411.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

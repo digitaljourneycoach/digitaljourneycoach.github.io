@@ -1,0 +1,220 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T02:30:02+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "hants.gov.uk",
+                "Council Name": "Hampshire County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Free school meals for pupils up to 16 years old | Education and ...",
+                        "link": "https://www.hants.gov.uk/educationandlearning/freeschoolmeals/juniorsecondary",
+                        "snippet": "Child Tax Credit, provided you are not also entitled to Working Tax Credit, and have an annual gross income, of no more than \u00a316,190 as assessed by His\u00a0..."
+                    },
+                    {
+                        "title": "Free school meals | Education and learning | Hampshire County ...",
+                        "link": "https://www.hants.gov.uk/educationandlearning/freeschoolmeals",
+                        "snippet": "Free school meals. All children in Key Stage 1 are entitled to free school meals and older children may be eligible too. Eligibility for free school meals\u00a0..."
+                    },
+                    {
+                        "title": "Universal infant free school meals | Education and learning ...",
+                        "link": "https://www.hants.gov.uk/educationandlearning/freeschoolmeals/infants",
+                        "snippet": "Registration is not required for children to have the free meals. But schools get government funding for all children who meet the standard free meal criteria."
+                    },
+                    {
+                        "title": "Free school meals for students at college or in further education ...",
+                        "link": "https://www.hants.gov.uk/educationandlearning/freeschoolmeals/furthereducation",
+                        "snippet": "have their 19th birthday during their study programme: they remain eligible for a free meal until the end of the academic year in which that birthday occurs, or\u00a0..."
+                    },
+                    {
+                        "title": "Free school meals | Education and learning | Hampshire County ...",
+                        "link": "https://www.hants.gov.uk/educationandlearning/education-catering/parent-information/primary/free-school-meals",
+                        "snippet": "A pupil is only eligible to receive a free school meal when a claim for the meal has been made on their behalf, and their eligibility has been verified by the\u00a0..."
+                    },
+                    {
+                        "title": "Children and Young People Select Committee Free School Meals ...",
+                        "link": "https://democracy.hants.gov.uk/documents/b37032/Item%206%20presentation%20-%20Childrens%20Free%20School%20Meal%20Provision%20Friday%2006-Dec-2024%2010.00%20Children%20and%20.pdf?T=9",
+                        "snippet": "Dec 6, 2024 ... Schools receive government funding of \u00a32.58 per meal (2024/25), 5p higher than. Universal Infant Free School Meal (UIFSM) funding. \u2022\u00a0..."
+                    },
+                    {
+                        "title": "Primary Schools and Nurseries | Education and learning ...",
+                        "link": "https://www.hants.gov.uk/educationandlearning/education-catering/parent-information/primary",
+                        "snippet": "All infant and reception children can receive a free school lunchtime meal through central Government funding called Universal Infant Free School Meals (UIFSM)."
+                    },
+                    {
+                        "title": "Holiday Activities and Food programme (HAF) registration | Health ...",
+                        "link": "https://www.hants.gov.uk/socialcareandhealth/childrenandfamilies/connectforcommunities/holidayactivities/register",
+                        "snippet": "... receive benefits-related free school meals who live, or go to school, in Hampshire. This means areas of Hampshire serviced by Hampshire County Council\u00a0..."
+                    },
+                    {
+                        "title": "Universal Infant Free School Meals explained | Education and ...",
+                        "link": "https://www.hants.gov.uk/educationandlearning/education-catering/parent-information/primary/free-school-meals/uifsm",
+                        "snippet": "You simply send your child to have lunch at school! Like other school meals, our UIFSM meet school food standards. Why miss out, especially as we could all do\u00a0..."
+                    },
+                    {
+                        "title": "Free school meals explained | Education and learning | Hampshire ...",
+                        "link": "https://www.hants.gov.uk/educationandlearning/education-catering/parent-information/primary/free-school-meals/free-school-meals",
+                        "snippet": "Benefit from even more! We want to make sure as many eligible pupils as possible are claiming their free school meals."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Free school meals for pupils up to 16 years old | Education and ...",
+                                "Source": "https://www.hants.gov.uk/educationandlearning/freeschoolmeals/juniorsecondary",
+                                "Key Strengths": [
+                                    "Provides information on free school meals for pupils up to 16 years old.",
+                                    "Clear eligibility criteria discussed (Child Tax Credit, annual gross income of no more than \u00a316,190)"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource directly addresses the customer information need by providing detailed information about free school meals for pupils aged up to 16. The snippet also mentions clear eligibility criteria."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Free school meals | Education and learning | Hampshire County ...",
+                                "Source": "https://www.hants.gov.uk/educationandlearning/freeschoolmeals",
+                                "Key Strengths": [
+                                    "Offers comprehensive information about free school meals (for both Key Stage 1 and eligible older children).",
+                                    "Explanation of eligibility criteria for older children as well."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This resource covers comprehensive details on free school meals for all ages, making it a reliable and valuable source of information. It includes clear references to eligibility criteria for both Key Stage 1 and older children."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Universal infant free school meals | Education and learning ...",
+                                "Source": "https://www.hants.gov.uk/educationandlearning/freeschoolmeals/infants",
+                                "Key Strengths": [
+                                    "Dedicated page for Universal Infant Free School Meals.",
+                                    "Clarification that registration isn't required for children to benefit from the initiative."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The resource is dedicated specifically to Universal Infant Free School Meals, making it a useful source of information. Additionally, it clarifies an important detail\u2014that registration isn't required for children to take advantage of the meals."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Universal Infant Free School Meals explained | Education and ...",
+                                "Source": "https://www.hants.gov.uk/educationandlearning/education-catering/parent-information/primary/free-school-meals/uifsm",
+                                "Key Strengths": [
+                                    "Comprehensive explanation of Universal Infant Free School Meals.",
+                                    "Addresses the benefits and school food standards."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This resource offers a detailed explanation of Universal Infant Free School Meals, addressing both its benefits and the standards of the meals, making it valuable for users seeking information on this topic."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Free school meals explained | Education and learning | Hampshire ...",
+                                "Source": "https://www.hants.gov.uk/educationandlearning/education-catering/parent-information/primary/free-school-meals/free-school-meals",
+                                "Key Strengths": [
+                                    "Detailed explanation of free school meals eligibility and application process.",
+                                    "Promotion of the program to ensure as many eligible pupils as possible benefit."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The resource provides a detailed explanation of eligibility criteria, application processes for free school meals, and encourages more eligible students to participate, making it informative and valuable."
+                            }
+                        ],
+                        "Analysis Notes": "All search results were relevant to the user's request. The top five results offer comprehensive information about various aspects of free school meals, including eligibility criteria and the benefits of participating.",
+                        "Recommendations Notes": "The first recommendation is presented first as it directly addresses the customer information need by providing detailed information about free school meals for pupils aged up to 16 with clear eligibility criteria. Recommendation 2 follows because it offers comprehensive information on free school meals for all ages, and includes details about eligibility for older children."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "90",
+                        "90",
+                        "80",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

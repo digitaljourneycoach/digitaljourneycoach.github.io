@@ -1,0 +1,684 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T01:10:28+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "mansfield.gov.uk",
+                "Council Name": "Mansfield District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Mansfield Leisure SERCO Information",
+                        "link": "https://www.mansfield.gov.uk/downloads/file/1926/mansfield-leisure-serco-information",
+                        "snippet": "Lunch is provided to all eligible children based on Free School Meal standards, free of charge. Activities take place within our leisure facilities and\u00a0..."
+                    },
+                    {
+                        "title": "Letter from Marcus Rashford",
+                        "link": "https://www.mansfield.gov.uk/downloads/file/1923/letter-from-marcus-rashford",
+                        "snippet": "Places on the holiday schemes are available for free to children who receive free school meals, but children and young people of all ages and backgrounds\u00a0..."
+                    },
+                    {
+                        "title": "How music is helping Mansfield children to learn, feel and create ...",
+                        "link": "https://www.mansfield.gov.uk/news/article/12932/how-music-is-helping-mansfield-children-to-learn-feel-and-create",
+                        "snippet": "Feb 5, 2025 ... ... free school meals. The national average is about 25%. The scheme has ... \u201cIn every school this project has run, there have been\u00a0..."
+                    },
+                    {
+                        "title": "Household Support Grant Voucher | Instructions \u2013 Mansfield District ...",
+                        "link": "https://www.mansfield.gov.uk/xfp/form/1360",
+                        "snippet": "Eligibility Criteria: Low Income Households with children under 5, not eligible for funded childcare and not in receipt of Free School Meals. Eligible\u00a0..."
+                    },
+                    {
+                        "title": "Easterfest - Families \u2013 Mansfield District Council",
+                        "link": "https://www.mansfield.gov.uk/homepage/133/easterfest---families",
+                        "snippet": "Free for children who are eligible for free school meals (Terms apply). When ... I get to play with new kids and ones I already know. I love summer\u00a0..."
+                    },
+                    {
+                        "title": "Benefits \u2013 Mansfield District Council",
+                        "link": "https://www.mansfield.gov.uk/homepage/12/benefits",
+                        "snippet": "Sep 12, 2024 ... Housing Benefit can help towards the cost of your rent if you are on a low income. The amount of benefit you get ... Free School Meals and Milk\u00a0..."
+                    },
+                    {
+                        "title": "Benefits \u2013 Mansfield District Council",
+                        "link": "https://www.mansfield.gov.uk/benefits",
+                        "snippet": "Additional support \u00b7 Discretionary Housing Payments (DHP) \u00b7 Discretionary Council Tax Hardship Payments \u00b7 Free School Meals and Milk \u00b7 Report Benefit Fraud\u00a0..."
+                    },
+                    {
+                        "title": "Families Information \u2013 Mansfield District Council",
+                        "link": "https://www.mansfield.gov.uk/homepage/125/families-information",
+                        "snippet": "This is a free fun filled multi-sports summer school holiday activity scheme for children eligible for Free School Meals from the age 5 - 12 years."
+                    },
+                    {
+                        "title": "Summer Holidays Activities and Food Programme \u2013 Mansfield ...",
+                        "link": "https://www.mansfield.gov.uk/homepage/124/summer-holidays-activities-and-food-programme",
+                        "snippet": "... school aged children (5 to 16 years) who are eligible for benefits-related Free School Meals. However, in line with feedback from parents in the district\u00a0..."
+                    },
+                    {
+                        "title": "Mansfield Town HAF",
+                        "link": "https://www.mansfield.gov.uk/downloads/file/3127/mansfield-town-haf",
+                        "snippet": "Get involved in fun activities this ... MUST BE IN RECEIPT OF BENEFIT RELATED FREE SCHOOL MEALS | STEPHEN.CLAYTON@MANSFIELDTOWNFITC.NET FOR ENQUIRIES."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.mansfield.gov.uk/homepage/124/summer-holidays-activities-and-food-programme",
+                        "title": "Summer Holidays Activities and Food Programme \u2013 Mansfield ...",
+                        "confidence": 99,
+                        "strengths": [
+                            "Specifically targeted towards children eligible for free school meals.",
+                            "Offers a combination of activities and food during the summer holidays."
+                        ],
+                        "reasoning": "This resource directly mentions providing assistance to children eligible for free school meals, which is a clear match for council customer information needs. Additionally, it offers a comprehensive program that combines activities and food provisions during summer holidays when many parents may be in need of childcare support.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Summer Holidays Activities and Food Programme \u2013 Mansfield ...",
+                                "Source": "https://www.mansfield.gov.uk/homepage/124/summer-holidays-activities-and-food-programme",
+                                "Key Strengths": [
+                                    "Specifically targeted towards children eligible for free school meals.",
+                                    "Offers a combination of activities and food during the summer holidays."
+                                ],
+                                "Confidence": "99",
+                                "Reasoning": "This resource directly mentions providing assistance to children eligible for free school meals, which is a clear match for council customer information needs. Additionally, it offers a comprehensive program that combines activities and food provisions during summer holidays when many parents may be in need of childcare support."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Mansfield Town HAF",
+                                "Source": "https://www.mansfield.gov.uk/downloads/file/3127/mansfield-town-haf",
+                                "Key Strengths": [
+                                    "Targeted towards children eligible for free school meals.",
+                                    "Offers fun activities as a means of engagement."
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "Although this resource primarily exists in downloadable format, it still provides specific information aimed at children eligible for free school meals. Furthermore, the mention of fun activities suggests engagement and entertainment aspects that may be appealing to parents seeking childcare options."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Easterfest - Families \u2013 Mansfield District Council",
+                                "Source": "https://www.mansfield.gov.uk/homepage/133/easterfest---families",
+                                "Key Strengths": [
+                                    "Free for children who are eligible for free school meals.",
+                                    "Offers multi-sports activities during the Easter holidays."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "While this resource does not focus exclusively on council customer information needs, it still mentions that participation is free for children eligible for free school meals. Furthermore, the offering of sports activities during school breaks provides childcare support during that time."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Household Support Grant Voucher | Instructions \u2013 Mansfield District ...",
+                                "Source": "https://www.mansfield.gov.uk/xfp/form/1360",
+                                "Key Strengths": [
+                                    "Eligibility includes low-income households with children under 5.",
+                                    "Offers a grant voucher as a means of financial assistance."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Although this resource focuses on eligibility for households with children under 5, it still provides information regarding a household support grant voucher intended to assist low-income families. While this may not provide direct childcare options, it could potentially help ease financial burdens during difficult times."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Benefits \u2013 Mansfield District Council",
+                                "Source": "https://www.mansfield.gov.uk/homepage/12/benefits",
+                                "Key Strengths": [
+                                    "Provides information about Housing Benefit for low-income families.",
+                                    "Mentions assistance with free school meals and milk."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This resource provides general information about benefits available to low-income households, including housing benefit and assistance with free school meals. Although it does not explicitly offer childcare support or activities, it could help families in need of financial aid during difficult times."
+                            }
+                        ],
+                        "Analysis Notes": "The search results provided relevant links for council customer information needs related to children eligible for free school meals, such as summer camps and sports activities. The resources found were sorted by relevance and quality based on the presence and prominence of keywords related to the search instructions. The confidence scores reflect the likelihood that each link would be suitable for fulfilling the given instruction.",
+                        "Recommendations Notes": "The top recommendations primarily focus on summer camps, sports activities, and financial assistance targeted towards children eligible for free school meals. These options aim to provide childcare support during school breaks while also offering enrichment opportunities."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "99",
+                        "95",
+                        "90",
+                        "85",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 89.8,
+                    "max_confidence": "99"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Summer Holidays Activities and Food Programme \u2013 Mansfield ...",
+                            "Source": "https://www.mansfield.gov.uk/homepage/124/summer-holidays-activities-and-food-programme",
+                            "Reasoning": "This resource directly mentions providing assistance to children eligible for free school meals, which is a clear match for council customer information needs. Additionally, it offers a comprehensive program that combines activities and food provisions during summer holidays when many parents may be in need of childcare support.",
+                            "Confidence": "99"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Mansfield Town HAF",
+                            "Source": "https://www.mansfield.gov.uk/downloads/file/3127/mansfield-town-haf",
+                            "Reasoning": "Although this resource primarily exists in downloadable format, it still provides specific information aimed at children eligible for free school meals. Furthermore, the mention of fun activities suggests engagement and entertainment aspects that may be appealing to parents seeking childcare options.",
+                            "Confidence": "95"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Easterfest - Families \u2013 Mansfield District Council",
+                            "Source": "https://www.mansfield.gov.uk/homepage/133/easterfest---families",
+                            "Reasoning": "While this resource does not focus exclusively on council customer information needs, it still mentions that participation is free for children eligible for free school meals. Furthermore, the offering of sports activities during school breaks provides childcare support during that time.",
+                            "Confidence": "90"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.mansfield.gov.uk/homepage/124/summer-holidays-activities-and-food-programme"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.mansfield.gov.uk/homepage/124/summer-holidays-activities-and-food-programme",
+                        "analysis": {
+                            "url": "https://www.mansfield.gov.uk/homepage/124/summer-holidays-activities-and-food-programme",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T01:10:28+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T01:11:05+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 26277,
+                            "response_time": 0.921,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.921s)",
+                                    "Content successfully retrieved (26277 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.9243960380554199,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.mansfield.gov.uk/homepage/124/summer-holidays-activities-and-food-programme"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.mansfield.gov.uk/homepage/124/summer-holidays-activities-and-food-programme",
+                        "content": " Here is the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<!DOCTYPE html>\n<html class=\" no-js\" lang=\"en\">\n<head>\n<!-- Some head elements omitted for brevity -->\n</head>\n<body>\n    <main class=\"site-main\">\n        <div class=\"container\">\n            <div class=\"site-content\" id=\"content\" tabindex=\"-1\">\n                <h1 class=\"page-heading\">Summer Holidays Activities and Food Programme</h1>\n                <div class=\"page-content\">\n                    <p>Mansfield District Council are coordinating the Department for Education funded Holiday Activity and Food Programme.</p>\n\n                    <p>The Holiday Activities and Food Programme was specifically targeted to offer summer holiday activities to school aged children (5 to 16 years) who are eligible for benefits-related Free School Meals. However, in line with feedback from parents in the district and conversations with the project funders, we are pleased to extend the offer to more young person who wish to attend (some criteria still applies.)</p>\n\n                    <ul>\n                        <li>to eat more healthily over the school holidays;</li>\n                        <li>to be more active during the school holidays;</li>\n                        <li>to take part in engaging and enriching activities;</li>\n                        <li>to be safe and not to be socially isolated;</li>\n                        <li>to have greater knowledge of health and nutrition; and</li>\n                        <li>to be more engaged with school and other local services.</li>\n                    </ul>\n                </div>\n\n                <!-- Two images and their respective headers omitted for brevity -->\n            </div>\n        </div>\n    </main>\n</body>\n```\n\nThis output only includes the cleaned, semantically structured HTML containing the central editorial content of the page. It preserves headings (h1), paragraphs (p), lists (ul), and important in-text links (a) while removing any non-essential page furniture such as headers, footers, navigation menus, sidebars, cookie banners, newsletter sign-up blocks, and unnecessary elements like site-wide search, login links, and social media footers. The output maintains the structure of the content using semantic HTML elements wherever possible.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 12.092738151550293,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.mansfield.gov.uk/homepage/124/summer-holidays-activities-and-food-programme",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals",
+                                    "answer_quality": "The content partially answers this need, as it mentions the eligibility criteria for free school meals but does not provide a clear application process or time frame for applicants to receive the result.",
+                                    "confidence": "50%",
+                                    "reasoning": "The content mentions that the Holiday Activities and Food Programme is targeted for school-aged children eligible for benefits-related Free School Meals. However, it also states that they are extending the offer to more young people who wish to attend, suggesting that other criteria may apply, but these are not specified in the content.",
+                                    "next_actions": "Contact the local council's customer service department to inquire about the application process, eligibility requirements (besides benefits-related Free School Meals), and approximate time frame for processing applications."
+                                }
+                            ],
+                            "overall_assessment": "The content provides a decent starting point by introducing the Holiday Activities and Food Programme targeted at school-aged children eligible for benefits-related Free School Meals. However, it fails to deliver complete answers on essential aspects such as the application process, time frame, and extended eligibility criteria, which may leave some users, like Council Residents in need of this service, concerned and uncertain."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.675243854522705,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.mansfield.gov.uk/homepage/124/summer-holidays-activities-and-food-programme"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_011028-mansfield.gov.uk",
+                    "analysis_timestamp": "2025-08-13T01:11:25+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.95,
+                            "tokens_consumed": 6547,
+                            "tokens_remaining": 23453,
+                            "token_utilization_percentage": 21.82,
+                            "average_tokens_per_step": 1091.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 78.18,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 21,
+                            "consumption_rate": 1091.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "50",
+                            "quality_scores": [
+                                "50"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "50",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 13.57,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.95,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_011028-mansfield.gov.uk",
+                        "start_time": "2025-08-13T01:10:28+01:00",
+                        "current_time": "2025-08-13T01:11:25+01:00",
+                        "duration_seconds": 57,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6547,
+                        "tokens_remaining": 23453,
+                        "token_utilization_percentage": 21.82,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2779,
+                                "avg_per_call": 1389.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3768,
+                                "avg_per_call": 1884
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1091.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_011028-mansfield.gov.uk",
+                    "start_time": "2025-08-13T01:10:28+01:00",
+                    "current_time": "2025-08-13T01:11:25+01:00",
+                    "duration_seconds": 57,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6547,
+                    "tokens_remaining": 23453,
+                    "token_utilization_percentage": 21.82,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2779,
+                            "avg_per_call": 1389.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3768,
+                            "avg_per_call": 1884
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1091.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

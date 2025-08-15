@@ -1,0 +1,662 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T09:01:29+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "easthants.gov.uk",
+                "Council Name": "East Hampshire District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "What to do if your bin wasn't collected | East Hampshire District ...",
+                        "link": "https://www.easthants.gov.uk/bin-collections/what-do-if-your-bin-wasnt-collected",
+                        "snippet": "... collection. You can report missed refuse, recycling, glass and garden waste through this form. Report a missed bin. Please note, if your bin has been tagged\u00a0..."
+                    },
+                    {
+                        "title": "Report it | East Hampshire District Council",
+                        "link": "https://www.easthants.gov.uk/report-it",
+                        "snippet": "Report a missed bin. \u2713 Missed refuse collection? \u2713 Missed recycling? \u2713 Missed garden waste collection? Report an abandoned vehicle. \u2713 No tax? \u2713 No MOT\u00a0..."
+                    },
+                    {
+                        "title": "Garden waste | East Hampshire District Council",
+                        "link": "https://www.easthants.gov.uk/bin-collections/garden-waste",
+                        "snippet": "Missed bins must be reported by 4pm on the next working day after your scheduled collection. If you do not report a missed collection to us within this\u00a0..."
+                    },
+                    {
+                        "title": "Glass recycling | East Hampshire District Council",
+                        "link": "https://www.easthants.gov.uk/bin-collections/glass-recycling",
+                        "snippet": "If your box isn't collected, you can report it as missed in the same way as you would another bin. Report a missed bin. What sort of glass box do I need? Our\u00a0..."
+                    },
+                    {
+                        "title": "| East Hampshire District Council",
+                        "link": "https://www.easthants.gov.uk/node?page=5",
+                        "snippet": "Report a missed bin. \u2713 Missed refuse collection? \u2713 Missed recycling? \u2713 Missed garden waste collection? Traffic regulation orders - Hampshire County\u00a0..."
+                    },
+                    {
+                        "title": "Garden waste",
+                        "link": "http://maps.easthants.gov.uk/JWWCalendars/2022/g9norse2022.pdf",
+                        "snippet": "on your collection day. To report a missed bin 24/7, visit my.easthants.gov.uk. Alternatively, call 01730 234295. Missed bins must be reported by 4pm on the\u00a0..."
+                    },
+                    {
+                        "title": "Wednesday 9",
+                        "link": "https://www.easthants.gov.uk/media/9368/download?inline",
+                        "snippet": "To report a missed bin 24/7, visit easthants.gov.uk. Missed bins must be reported by 4pm on the next working day after your scheduled collection. What can I\u00a0..."
+                    },
+                    {
+                        "title": "thursday",
+                        "link": "https://www.easthants.gov.uk/media/9374/download?inline",
+                        "snippet": "To report a missed bin 24/7, visit easthants.gov.uk. Missed bins must be reported by 4pm on the next working day after your scheduled collection. What can I\u00a0..."
+                    },
+                    {
+                        "title": "Monday",
+                        "link": "http://maps.easthants.gov.uk/JWWCalendars/norse32020.pdf",
+                        "snippet": "7am on your collection day. To report a missed bin 24/7, visit my.easthants.gov.uk. Alternatively, call 01730 234295. Missed bins must be reported by 4pm on the\u00a0..."
+                    },
+                    {
+                        "title": "Garden waste",
+                        "link": "http://maps.easthants.gov.uk/JWWCalendars/2023/G7.pdf",
+                        "snippet": "To report a missed bin 24/7, visit my.easthants.gov.uk. Missed bins must be reported by 4pm on the next working day after your scheduled collection. WHAT CAN\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.easthants.gov.uk/bin-collections/what-do-if-your-bin-wasnt-collected",
+                        "title": "What to do if your bin wasn't collected | East Hampshire District ...",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly addresses the issue of a missed bin collection.",
+                            "Provides a form for reporting missed bin collections."
+                        ],
+                        "reasoning": "This link directly addresses the question of what to do if a bin was not collected and provides a clear form for reporting it.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "What to do if your bin wasn't collected | East Hampshire District ...",
+                                "Source": "https://www.easthants.gov.uk/bin-collections/what-do-if-your-bin-wasnt-collected",
+                                "Key Strengths": [
+                                    "Directly addresses the issue of a missed bin collection.",
+                                    "Provides a form for reporting missed bin collections."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link directly addresses the question of what to do if a bin was not collected and provides a clear form for reporting it."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Report it | East Hampshire District Council",
+                                "Source": "https://www.easthants.gov.uk/report-it",
+                                "Key Strengths": [
+                                    "Directly accessible report form for missed bin collections.",
+                                    "Covering various types of collections (refuse, recycling, garden waste)."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link leads to a direct report form covering multiple types of collection services."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Garden waste | East Hampshire District Council",
+                                "Source": "https://www.easthants.gov.uk/bin-collections/garden-waste",
+                                "Key Strengths": [
+                                    "Contains information about garden waste collection.",
+                                    "Provides reporting procedure."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Though this link primarily focuses on garden waste, it also provides information on reporting a missed bin collection."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Glass recycling | East Hampshire District Council",
+                                "Source": "https://www.easthants.gov.uk/bin-collections/glass-recycling",
+                                "Key Strengths": [
+                                    "Contains information about glass recycling.",
+                                    "Provides reporting procedure for missed bin collections."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "While this link primarily focuses on glass recycling, it also mentions missed bin collection reports within the related information."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "<title missing>",
+                                "Source": "https://www.easthants.gov.uk/node?page=5",
+                                "Key Strengths": [
+                                    "Contains multiple links to various services including missed bin report form."
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "Though the title is missing, this link appears to contain multiple links related to council services, including a possible missed bin report form."
+                            }
+                        ],
+                        "Analysis Notes": "The search results are focused on council and service-related information, which may not be directly applicable to a customer service context. Some of the links include misleading titles or incomplete metadata, which could make them less discoverable for users.",
+                        "Recommendations Notes": "Add more specific and descriptive titles for each resource, to improve user experience when browsing council websites."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "90",
+                        "80",
+                        "75",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 79,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.easthants.gov.uk/bin-collections/what-do-if-your-bin-wasnt-collected"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.easthants.gov.uk/bin-collections/what-do-if-your-bin-wasnt-collected",
+                        "analysis": {
+                            "url": "https://www.easthants.gov.uk/bin-collections/what-do-if-your-bin-wasnt-collected",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T09:01:29+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T09:02:00+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 36089,
+                            "response_time": 4.162,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 80,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Acceptable response time (4.162s)",
+                                    "Content successfully retrieved (36089 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 70,
+                                "component_scores": {
+                                    "technical": 80,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 4.165534019470215,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.easthants.gov.uk/bin-collections/what-do-if-your-bin-wasnt-collected"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.easthants.gov.uk/bin-collections/what-do-if-your-bin-wasnt-collected",
+                        "content": " Here is the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<article class=\"localgov-services-page node node--type-localgov-services-page node--with-restricted-width node--view-mode-full\">\n\n   <div class=\"node__restricted-width-section\">\n      <div class=\"localgov-services-page__content node__content\">\n         <div class=\"field field--name-field-main-content field--type-entity-reference-revisions field--label-hidden field__items\">\n            <div class=\"field__item\">\n               <div class=\"paragraph paragraph--type--localgov-text paragraph--view-mode--default\">\n                  <h2>Service update - Thursday 7 August</h2>\n                  <p>Our crews have completed the vast majority of bin collections scheduled for today and cleared outstanding roads from yesterday.</p>\n                  <p>Unfortunately, they were unable to collect recycling from Penns Road, Petersfield after trying four times, due to parked cars blocking access.</p>\n                  <p>A crew will return tomorrow. If you live on Penns Road, please leave your bin at the junction with Station Road so our crew can get to them.</p>\n                  <h2>If your bin wasn't collected</h2>\n                  <p>If your bin was not collected today and your area isn't included in the service update, please leave it out and report it as missed&nbsp;<a href=\"https://central.selfservice.easthants.gov.uk/w/webpage/request?service=missed_collection\" title=\"Link to MyEHDC missed bin reporting\">using your MyEHDA account</a>.</p>\n                  <p>If our provider is behind by the end of the week, they may work on Saturday to catch-up. If your collection was due on Friday and your area is not in the service update above, please report your bin as missed.</p>\n                  <p>Reports must be made before 4pm on the next working day after your collection was due.</p>\n                  <p>If you do not report a missed collection to us within this timeframe, you will have to wait until your next scheduled collection.</p>\n                  <p>You can report missed refuse, recycling, glass and garden waste through this form.</p>\n                  <p><a class=\"btn\" href=\"https://central.selfservice.easthants.gov.uk/w/webpage/request?service=missed_collection\">Report a missed bin</a></p>\n                  <p>Please note, if your bin has been tagged for reasons such as being too heavy or contaminated we will not return until your next scheduled collection. Also, if your bin is not placed on the boundary of your property, or was not out at the correct time (by 6am), it will not be collected and we will not return.</p>\n                  <p>You can also <a href=\"https://public.govdelivery.com/accounts/UKEHDC/signup/34136\">sign up for email bulletins</a> to be informed if there are problems with collections in your area.</p>\n                  <h2>Don't know when your bin should be collected?</h2>\n                  <p>If you're new to the area or haven't downloaded your bin calendar yet, you can find it on our website.</p>\n                  <p><a class=\"btn\" href=\"/bin-collections/find-your-bin-calendar\" data-entity-type=\"node\" data-entity-uuid=\"d132b8c5-b1fb-4b9d-87c3-36b4dee5f1cb\" data-entity-substitution=\"canonical\" title=\"Find your bin calendar\">Find your bin calendar</a></p>\n               </div>\n            </div>\n         </div>\n      </div>\n   </div>\n</article>\n```\nThis cleaned HTML structure preserves the meaningful structural elements in semantic HTML, including headings, paragraphs, and important links. It also strips out any non-essential page furniture such as headers, footers, navigation menus, sidebars, cookie banners, and newsletter sign-up blocks, leaving only the central editorial content of the page.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 20.594527006149292,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.easthants.gov.uk/bin-collections/what-do-if-your-bin-wasnt-collected",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content sufficiently addresses this need.",
+                                    "confidence": "90%",
+                                    "reasoning": "The page provides a clear instruction for reporting a missed bin collection, specifically mentioning the need to report it as such using a MyEHDA account before 4pm on the next working day after the collection was due.",
+                                    "next_actions": "Report the missed bin collection using the provided link."
+                                }
+                            ],
+                            "overall_assessment": "The content effectively addresses the need of a council resident regarding reporting a missed bin collection. There are clear instructions on how to report and the importance of timely reporting is highlighted.",
+                            "additional_observations": {
+                                "signup_for_email_bulletins": "An option to sign up for email bulletins was also provided, which could help residents stay informed if there are issues with collections in their area."
+                            }
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.928530931472778,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.easthants.gov.uk/bin-collections/what-do-if-your-bin-wasnt-collected"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_090129-easthants.gov.uk",
+                    "analysis_timestamp": "2025-08-08T09:02:31+01:00",
+                    "analysis_duration": 0.003,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.0333333333333334,
+                            "tokens_consumed": 6192,
+                            "tokens_remaining": 23808,
+                            "token_utilization_percentage": 20.64,
+                            "average_tokens_per_step": 1032
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 79.36,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 23,
+                            "consumption_rate": 1032,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "90",
+                            "quality_scores": [
+                                "90"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "90",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 14.76,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.0333333333333334,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_090129-easthants.gov.uk",
+                        "start_time": "2025-08-08T09:01:29+01:00",
+                        "current_time": "2025-08-08T09:02:31+01:00",
+                        "duration_seconds": 62,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6192,
+                        "tokens_remaining": 23808,
+                        "token_utilization_percentage": 20.64,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2622,
+                                "avg_per_call": 1311
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3570,
+                                "avg_per_call": 1785
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1032
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_090129-easthants.gov.uk",
+                    "start_time": "2025-08-08T09:01:29+01:00",
+                    "current_time": "2025-08-08T09:02:31+01:00",
+                    "duration_seconds": 62,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6192,
+                    "tokens_remaining": 23808,
+                    "token_utilization_percentage": 20.64,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2622,
+                            "avg_per_call": 1311
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3570,
+                            "avg_per_call": 1785
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1032
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

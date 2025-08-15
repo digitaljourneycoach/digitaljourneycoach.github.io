@@ -1,0 +1,685 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T23:05:03+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "darlington.gov.uk",
+                "Council Name": "Darlington Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Planning permission - Darlington BC",
+                        "link": "https://www.darlington.gov.uk/planning-and-building-regs/planning/planning-application-and-permission/planning-permission/",
+                        "snippet": "This advice is also the same for when considering installing Solar Panels. For a Lawful Development Certificate see separate tab below. For Dropped Kerb\u00a0..."
+                    },
+                    {
+                        "title": "Reference Proposal Site Address Decision Date Decision. 23/00583 ...",
+                        "link": "https://democracy.darlington.gov.uk/documents/s20616/PlanningDelegatedDecisions_Sept23.pdf",
+                        "snippet": "Sep 7, 2023 ... to front, installation of solar panels to dwelling roof and associated ... planning permission 19/00339/OUT dated 06 Feb 2020 (Outline."
+                    },
+                    {
+                        "title": "Reference Proposal Site Address DECTYPE DCSTAT Decison Date ...",
+                        "link": "https://democracy.darlington.gov.uk/documents/s13565/PlanningDelegatedDecisions_April2021.pdf",
+                        "snippet": "Apr 23, 2021 ... planning permission 19/01165/FUL dated 10 August 2020. (Partial conversion ... installation of car charging point, solar panels and external."
+                    },
+                    {
+                        "title": "Agenda item - Land at Teesside International Airport, Teesside ...",
+                        "link": "https://democracy.darlington.gov.uk/mgAi.aspx?ID=9361",
+                        "snippet": "Mar 1, 2023 ... No solar panels shall be installed until a glint and glare ... The development permitted by this planning permission shall only be\u00a0..."
+                    },
+                    {
+                        "title": "Agenda item - Land to South of Long Pasture Farm, Little Stainton ...",
+                        "link": "https://democracy.darlington.gov.uk/mgAi.aspx?ID=10029",
+                        "snippet": "Aug 9, 2023 ... 22/01329/FUL - Proposed ground mounted solar farm consisting of the Installation ... The development permitted by this planning permission shall\u00a0..."
+                    },
+                    {
+                        "title": "Reference Proposal Site Address Decision Date Decision 22/00877 ...",
+                        "link": "https://democracy.darlington.gov.uk/documents/s17512/PlanningDelegatedDecisions_Sept22.pdf",
+                        "snippet": "Application for reserved matters approval relating to landscaping attached to outline planning permission 15/00450/OUT ... solar panels on east roof slope\u00a0..."
+                    },
+                    {
+                        "title": "2025 Air Quality Annual Status Report (ASR)",
+                        "link": "https://www.darlington.gov.uk/media/jqdfeshz/asr-2025-final.pdf",
+                        "snippet": "Now also trialling solar panels on 5 no. refuse vehicles. \u2022 Planning permission was granted in January 2025 for the erection of a substation and additional\u00a0..."
+                    },
+                    {
+                        "title": "DARLINGTON BOROUGH COUNCIL",
+                        "link": "https://democracy.darlington.gov.uk/documents/s21789/22.01342.FULE+-+Burtree+Garden+Village.pdf",
+                        "snippet": "May 15, 2024 ... materials, the planting of native species within landscaping schemes, solar panels. ... development cells as identified in this planning consent."
+                    },
+                    {
+                        "title": "design spd",
+                        "link": "https://www.darlington.gov.uk/media/2222/designspd.pdf",
+                        "snippet": "installation of solar panels either initially or at a later date. Glazing ... Planning permission may be required for new signs and posters. Section\u00a0..."
+                    },
+                    {
+                        "title": "Skerningham Garden Village - Comprehensive Masterplan",
+                        "link": "https://www.darlington.gov.uk/media/22614/skerningham-comprehensive-masterplan-compressed.pdf",
+                        "snippet": "Appropriate measures will be put in place as part of any planning permission to ensure Local Distributor Road and ... Incorporation of technologies including PV\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_2",
+                        "url": "https://democracy.darlington.gov.uk/mgAi.aspx?ID=10029",
+                        "title": "Agenda item - Land to South of Long Pasture Farm, Little Stainton ...",
+                        "confidence": 85,
+                        "strengths": [
+                            "Mention of solar farm installation in the title.",
+                            "Solar panel installation is discussed in the snippet."
+                        ],
+                        "reasoning": "This link seems to discuss a specific agenda item about a proposed solar farm, which may be relevant to customers seeking information about solar panel installations.",
+                        "rank": 2
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "3"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Planning permission - Darlington BC",
+                                "Source": "https://www.darlington.gov.uk/planning-and-building-regs/planning/planning\u2010permission/",
+                                "Key Strengths": [
+                                    "Provides general information about planning permission.",
+                                    "Mention of solar panels in the snippet."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While not specific to customer service or council contact information, this link provides a starting point for those seeking information about planning permission related to solar panel installation."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Agenda item - Land to South of Long Pasture Farm, Little Stainton ...",
+                                "Source": "https://democracy.darlington.gov.uk/mgAi.aspx?ID=10029",
+                                "Key Strengths": [
+                                    "Mention of solar farm installation in the title.",
+                                    "Solar panel installation is discussed in the snippet."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link seems to discuss a specific agenda item about a proposed solar farm, which may be relevant to customers seeking information about solar panel installations."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Reference Proposal Site Address Decision Date Decision 22/00877 ...",
+                                "Source": "https://democracy.darlington.gov.uk/documents/s17512/PlanningDelegatedDecisions_Sept22.pdf",
+                                "Key Strengths": [
+                                    "Solar panel installation on an east roof slope is mentioned in the snippet.",
+                                    "The application for reserved matters approval likely relates to a project where solar panels have been approved."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link appears to provide information about a decision regarding solar panel installation, which may be relevant and useful to customers seeking similar information."
+                            }
+                        ],
+                        "Analysis Notes": "Some items referenced planning permission but did not mention solar panels directly in the snippet. Several links seemed related to specific projects or agenda items, which may provide more detailed or project-specific information.",
+                        "Recommendations Notes": "The three recommended links all pertain to topics related to solar panel installations and were chosen based on their relevance and quality as indicated by their snippets."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "85",
+                        "90"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "6",
+                            "Title": "Reference Proposal Site Address Decision Date Decision 22/00877 ...",
+                            "Source": "https://democracy.darlington.gov.uk/documents/s17512/PlanningDelegatedDecisions_Sept22.pdf",
+                            "Reasoning": "This link provides detailed information about a decision regarding solar panel installation, which is highly relevant and useful to customers seeking similar information, with a confidence score of 90.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Agenda item - Land to South of Long Pasture Farm, Little Stainton ...",
+                            "Source": "https://democracy.darlington.gov.uk/mgAi.aspx?ID=10029",
+                            "Reasoning": "This link discusses a specific agenda item about a proposed solar farm, providing potentially valuable and relevant information for customers seeking solar panel installation details, with an 85 confidence score.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "1",
+                            "Title": "Planning permission - Darlington BC",
+                            "Source": "https://www.darlington.gov.uk/planning-and-building-regs/planning/planning\u2010permission/",
+                            "Reasoning": "Though not as relevant or informative as the previous two options, this link provides a starting point for general information about planning permission related to solar panel installations with an 80 confidence score.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "005_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://democracy.darlington.gov.uk/mgAi.aspx?ID=10029"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://democracy.darlington.gov.uk/mgAi.aspx?ID=10029",
+                        "analysis": {
+                            "url": "https://democracy.darlington.gov.uk/mgAi.aspx?ID=10029",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T23:05:03+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T23:05:44+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 60063,
+                            "response_time": 0.599,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.599s)",
+                                    "Content successfully retrieved (60063 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.6007370948791504,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "006_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://democracy.darlington.gov.uk/mgAi.aspx?ID=10029"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://democracy.darlington.gov.uk/mgAi.aspx?ID=10029",
+                        "content": "```html\n<h1>Agenda item</h1>\n<h2>Land to South of Long Pasture Farm, Little Stainton, Stockton on Tees</h2>\n\n<ul>\n    <li><a href=\"ieListDocuments.aspx?CId=139&amp;MID=2622#AI10029\" title=\"Link to meeting containing this item\">Meeting of Planning Applications Committee, Wednesday, 9th August, 2023 1.30 pm (Item PA30)</a></li>\n</ul>\n\n<p>Minutes:</p>\n\n<p><b>22/01329/FUL</b> - Proposed ground mounted solar farm consisting of the Installation of 49.9MW solar photovoltaic array/solar farm with associated infrastructure (additional health impact assessment and battery safety management plan received 20th January 2022, response to Northern Gas objection received 9th February 2023, Written Scheme of Investigation received 16th March 2023, Trial Trench Evaluation report received 28th June 2023 and amended Trial Trench Evaluation report received 20th July 2023).</p>\n\n<p>(In making its decision, the Committee took into consideration the Planning Officer\u2019s report (previously circulated), the views of the Council\u2019s Highways Engineer, the Environmental Health Officer, Arboricultural Officer, Climate Change Officer, the Lead Local Flood Authority, the Council\u2019s Conservation Adviser, the Council\u2019s Ecology Adviser, the Council\u2019s Rights of Way Officer, Northumbrian Water, the Environment Agency, Teesside Airport, Northern Gas Network, the Health and Safety Executive, Stockton Borough Council, the recommendations of the Durham County Council Archaeology, five letters of objection received, four letters of representation received, the objections of Sadberge Parish Council, the objections of Bishopton Parish Council, the objections of East and West Newbiggin Parish Meeting, and the views of the Applicant, whom the Committee heard).</p>\n\n<p><b>RESOLVED</b> \u2013 That Planning Permission be granted subject to the following conditions:</p>\n\n<ol>\n    <li>The development hereby approved shall be commenced not later than 7 years from the date of this permission.</li>\n    <li>The permission hereby granted is for the development to be retained for a period of not more than 40 years from the date when electricity is first exported to the electricity grid (First Export Date) or in the event that electricity is not exported to the electricity grid from the date that works first commenced on site. Written confirmation of the First Export Date shall be submitted to the Local Planning Authority within one month of the First Export Date. The site shall be decommissioned and all buildings, structures and infrastructure works hereby approved shall be removed and the land restored to its former condition in accordance with details to be submitted to and approved by the Local Planning Authority in writing. The approved details shall then be implemented in full within 6 months of approval of those details.</li>\n    <li>In the event that the solar farm is inoperative for a period of 6 months or longer, a scheme for the restoration of the site, including the removal of all buildings, structures and infrastructure works, dismantling and removal of all elements, shall be submitted to and approved in writing by the Local Planning Authority not later than 12 months following the last export of electricity from the site. The approved details shall then be implemented in full within 6 months of approval of those details or such other period as may be approved in writing by the Local Planning Authority.</li>\n    <li>The development hereby approved shall be carried out in accordance with the following plans and documents: (a) Development area plan, drawing number 4449-PUB-028, dated 15.12.2022 (b) Indicative site layout, drawing number 4449_DR_P_0003, dated 24.08.2022 (c) Landscape mitigation plan, drawing number 4449_DR_P_0004, dated 17.08.2022 (d) Typical PV panel section, drawing number 4449_DR_P_0005, dated 17.08.2022 (e) Inverter/transformer, drawing number 4449_DR_P_0006, dated 17.08.2022 (f) Security fencing and CCTV, drawing number 4449_DR_P_0007, dated 17.08.2022 (g) Security gate, drawing number 4449_DR_P_0008, dated 17.08.2022 (h) Access track cross-section, drawing number 4449_DR_P_0009, dated 17.08.2022 (i) Container storage unit, drawing number 4449_DR_P_0010, dated 17.08.2022 (j) Substation compound, drawing number 4449_DR_P_0011, dated 17.08.2022 (k) Indicative temporary construction compound, drawing number 4449_DR_P_0012, dated 17.08.2022 (l) BESS battery unit elevations, drawing number 4449_DR_P_0013, dated 17.08.2022 (m) BESS PCS unit elevations, drawing number 4449_DR_P_0014, dated 17.08.2022</li>\n    <li>Prior to the commencement of the development hereby permitted a final biodiversity management plan shall be submitted to and approved in writing by the Local Planning Authority. Thereafter the development shall be carried out and operated in full accordance with the measures contained within the final biodiversity management plan, including provision for future monitoring, reporting and any necessary amendment of management measures, or such other alternative measures which may subsequently be approved in writing by the Local Planning Authority for the lifetime of the development hereby approved.</li>\n    <li>Prior to the commencement of the development precise details of the colours and finishes for all buildings, fixed plant and machinery shall be agreed in writing by the Local Planning Authority. Thereafter the development shall be carried out in accordance with the details as approved.</li>\n    <li>Prior to the commencement of the development hereby approved (including demolition work, details shall be submitted of a scheme to protect those existing trees to be retained as part of the development. The submitted details shall comprise generally the specification laid down within BS 5837 and where necessary shall include fencing of at least 2.3m high, consisting of a scaffolding frame braced to resist impacts, supported by a weldmesh wired to the uprights and horizontals to dissuade encroachments. The agreed scheme of protection shall be in place before the commencement of any work, including demolition operations. The Local Planning Authority shall be given notice of the completion of protection works prior to the commencement of any of the work to allow an inspection of the measures to ensure compliance with the approved scheme of protection. Notwithstanding the above approved specification, none of the following activities shall take place within the segregated protection zones in the area of the trees:</li>\n</ol>\n\n<ul>\n    <li>The raising or lowering of levels in relation to the existing ground levels;</li>\n    <li>Cutting of roots, digging of trenches or removal of soil;</li>\n    <li>Erection of temporary buildings, roads, or carrying out of any engineering operations;</li>\n    <li>Lighting of fires;</li>\n    <li>Driving of vehicles or storage of materials and equipment.</li>\n</ul>\n\n<p><b>REASON</b> \u2013 To ensure a maximum level of protection in order to safeguard the well-being of the trees on site and in the interests of the visual amenities of the area.</p>\n\n<p>No development shall commence until full details of soft landscaping has been submitted to and approved in writing by the Local Planning Authority. This will be a detailed planting plan and specification of works indicating soil depths, plant species, numbers, densities, locations, inter relationship of plants, stock size and type, grass, and planting methods including construction techniques for tree pits in hard surfacing and root barriers. All works shall be in accordance with the approved plans. All existing or proposed utility services that may influence proposed tree planting shall be indicated on the planting plan. The scheme shall be completed in the first planting season following commencement of the development and completed to the satisfaction of the Local Planning Authority.</p>\n\n<p><b>REASON</b> \u2013 To ensure a high-quality planting scheme is provided in the interests of visual amenity which contributes positively to local character and enhanced biodiversity.</p>\n\n<p>No development shall commence until a Written Scheme of Investigation setting out a phased programme of archaeological work in accordance with \u2018Standards for All Archaeological Work in County Durham and Darlington\u2019 has been submitted to and approved in writing by the Local Planning Authority. The programme of archaeological work will then be carried out in accordance with the approved scheme of works.</p>\n\n<p><b>REASON</b> \u2013 To safeguard any archaeological interest in the site and to comply with part 16 of the National Planning Policy Statement. Required to be a pre-commencement condition as the archaeological investigation/mitigation must be devised prior to the development being implemented.</p>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 29.589622020721436,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "007_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://democracy.darlington.gov.uk/mgAi.aspx?ID=10029",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "The content does not directly answer the question about individual residential solar panel installation. However, it provides information about a solar farm project that has received planning permission, which includes conditions regarding the duration of operation (40 years) and approval of plans and details for its implementation.",
+                                    "confidence": "30%",
+                                    "reasoning": "There is no mention of individual residential properties or small-scale solar panel installations, only a large-scale solar farm. There are no specific conditions or requirements mentioned that would directly apply to homeowners wanting to install their own solar panels.",
+                                    "next_actions": "Contact the local council's planning department for guidance on the requirements for installing solar panels in residential properties."
+                                }
+                            ],
+                            "overall_assessment": "The content provides detailed information about a specific solar farm project but does not directly address the needs of individual residents wanting to install solar panels at their own homes. Key gaps include the absence of guidance or conditions for small-scale residential solar installations."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 7.46920108795166,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://democracy.darlington.gov.uk/mgAi.aspx?ID=10029"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "008_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_230503-darlington.gov.uk",
+                    "analysis_timestamp": "2025-08-10T23:06:22+01:00",
+                    "analysis_duration": 0.002,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 7,
+                            "duration_minutes": 1.3166666666666667,
+                            "tokens_consumed": 17286,
+                            "tokens_remaining": 12714,
+                            "token_utilization_percentage": 57.62,
+                            "average_tokens_per_step": 2469.43
+                        },
+                        "token_analysis": {
+                            "status": "moderate",
+                            "remaining_percentage": 42.38,
+                            "urgency_score": 30,
+                            "estimated_remaining_steps": 5,
+                            "consumption_rate": 2469.43,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 7,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 3
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "30",
+                            "quality_scores": [
+                                "30"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "30",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 18.81,
+                            "steps_fatigue_percentage": 58.33,
+                            "overall_fatigue_score": 58.33,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.3166666666666667,
+                            "total_steps": 7,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved",
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_230503-darlington.gov.uk",
+                        "start_time": "2025-08-10T23:05:03+01:00",
+                        "current_time": "2025-08-10T23:06:22+01:00",
+                        "duration_seconds": 79,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 17286,
+                        "tokens_remaining": 12714,
+                        "token_utilization_percentage": 57.62,
+                        "token_status": "available",
+                        "total_steps": 7,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 3,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 7
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 10093,
+                                "avg_per_call": 5046.5
+                            },
+                            "analyst": {
+                                "calls": 3,
+                                "tokens": 7193,
+                                "avg_per_call": 2397.6666666666665
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 2469.43
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_230503-darlington.gov.uk",
+                    "start_time": "2025-08-10T23:05:03+01:00",
+                    "current_time": "2025-08-10T23:06:22+01:00",
+                    "duration_seconds": 79,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 17286,
+                    "tokens_remaining": 12714,
+                    "token_utilization_percentage": 57.62,
+                    "token_status": "available",
+                    "total_steps": 7,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 3,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 7
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 10093,
+                            "avg_per_call": 5046.5
+                        },
+                        "analyst": {
+                            "calls": 3,
+                            "tokens": 7193,
+                            "avg_per_call": 2397.6666666666665
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 2469.43
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

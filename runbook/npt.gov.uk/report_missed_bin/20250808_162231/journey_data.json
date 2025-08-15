@@ -1,0 +1,684 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T16:22:31+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "npt.gov.uk",
+                "Council Name": "Neath Port Talbot County Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed collections - Neath Port Talbot Council",
+                        "link": "https://www.npt.gov.uk/bins-and-recycling/missed-collections/",
+                        "snippet": "How to report a missed bin or recycling collection. ... Use this service to tell us if your waste or recycling was not collected on your normal collection day."
+                    },
+                    {
+                        "title": "Report - Neath Port Talbot Council",
+                        "link": "https://www.npt.gov.uk/report-request-apply/report/",
+                        "snippet": "Your feedback will help us improve this website. Report. Report an issue such as a missed bin collection, fly tipping or graffiti\u00a0..."
+                    },
+                    {
+                        "title": "Apply for a scaffolding permit - Neath Port Talbot County Borough ...",
+                        "link": "https://appsportal2.npt.gov.uk/ords/live6/f?p=301",
+                        "snippet": "The cost of a scaffolding permit is currently \u00a3103.50 for a 28 day period. I have read the terms and conditions. I have read the <strong><A\u00a0..."
+                    },
+                    {
+                        "title": "Bins and recycling - Neath Port Talbot Council",
+                        "link": "https://www.npt.gov.uk/bins-and-recycling/",
+                        "snippet": "Bins and recycling. Bin collections, order recycling equipment or book a recycling centre slot ... Report problems to keep Neath and Port Talbot clean and safe\u00a0..."
+                    },
+                    {
+                        "title": "Waste strategy - Neath Port Talbot Council",
+                        "link": "https://www.npt.gov.uk/council/strategies-plans-and-policies/environment/waste-strategy/",
+                        "snippet": "Scrutiny Officers are aware of the request and can add a review of the missed bin policy to the forward work programme of the committee. ... Waste Strategy Report\u00a0..."
+                    },
+                    {
+                        "title": "Dog waste bins - Neath Port Talbot Council",
+                        "link": "https://www.npt.gov.uk/parking-roads-and-travel/problems-with-roads-and-streets/dog-waste-bins/",
+                        "snippet": "Use this form to report dog waste bins that are: damaged; full; missing; vandalised. Report a bin problem. You can report a dog waste bin problem online. Before\u00a0..."
+                    },
+                    {
+                        "title": "Litter bins - Neath Port Talbot Council",
+                        "link": "https://www.npt.gov.uk/parking-roads-and-travel/problems-with-roads-and-streets/litter-bins/",
+                        "snippet": "Use this form to report public litter bins that are: full or overflowing \u00b7 damaged \u00b7 missing. Report a litter bin problem. You can report a litter bin problem\u00a0..."
+                    },
+                    {
+                        "title": "Appendix E2 Integrated Impact Assessment (IIA) Title of the Initiative ...",
+                        "link": "https://democracy.npt.gov.uk/documents/s102599/Appendix%20E2%20Integrated%20Impact%20Assessment%20Updated%20Missed%20Collections%20Policy.pdf",
+                        "snippet": "Feedback from waste collection operatives. Missed Collection Complaints. 3. Equalities a) How does the initiative impact on people who share a protected\u00a0..."
+                    },
+                    {
+                        "title": "Site Map - Neath Port Talbot Council",
+                        "link": "https://www.npt.gov.uk/system/site-map/",
+                        "snippet": "Site Map \u00b7 Battery recycling facilities \u00b7 Missed collections \u00b7 Bulky items collection \u00b7 Disposable nappy and incontinence waste collections \u00b7 Excess waste\u00a0..."
+                    },
+                    {
+                        "title": "Abandoned vehicles - Neath Port Talbot Council",
+                        "link": "https://www.npt.gov.uk/parking-roads-and-travel/problems-with-roads-and-streets/abandoned-vehicles/",
+                        "snippet": "Your feedback will help us improve this website. Abandoned vehicles. Contents. Private land; Untaxed and stolen vehicles; Report an abandoned vehicle\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.npt.gov.uk/bins-and-recycling/missed-collections/",
+                        "title": "Missed collections - Neath Port Talbot Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly relates to missed bin or recycling collection issues",
+                            "Provides a service for reporting such cases"
+                        ],
+                        "reasoning": "This link appears most relevant since it pertains directly to the issue of missed collections and offers users a resource for reporting cases.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed collections - Neath Port Talbot Council",
+                                "Source": "https://www.npt.gov.uk/bins-and-recycling/missed-collections/",
+                                "Key Strengths": [
+                                    "Directly relates to missed bin or recycling collection issues",
+                                    "Provides a service for reporting such cases"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link appears most relevant since it pertains directly to the issue of missed collections and offers users a resource for reporting cases."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Report - Neath Port Talbot Council",
+                                "Source": "https://www.npt.gov.uk/report-request-apply/report/",
+                                "Key Strengths": [
+                                    "Provides a platform for reporting various issues such as missed bin collections, fly tipping, or graffiti",
+                                    "Offers feedback mechanism to improve the website"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link also includes an option to report a missed bin collection and may be useful if users want to address multiple issues at once."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Dog waste bins - Neath Port Talbot Council",
+                                "Source": "https://www.npt.gov.uk/parking-roads-and-travel/problems-with-roads-and-streets/dog-waste-bins/",
+                                "Key Strengths": [
+                                    "Focuses on dog waste bins specifically which might be of interest to council customers",
+                                    "Allows users to report when bins are damaged, full, missing, or vandalized"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Although the main focus of this link is different (dog waste bins), it still offers a useful service for council customers."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Bins and recycling - Neath Port Talbot Council",
+                                "Source": "https://www.npt.gov.uk/bins-and-recycling/",
+                                "Key Strengths": [
+                                    "Provides comprehensive information on bin collections, ordering recycling equipment, or booking a recycling centre slot",
+                                    "Allows reporting of problems to keep the area clean and safe"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While not specifically dedicated to missed collections, this link still contains relevant information that could help council customers."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Abandoned vehicles - Neath Port Talbot Council",
+                                "Source": "https://www.npt.gov.uk/parking-roads-and-travel/problems-with-roads-and-streets/abandoned-vehicles/",
+                                "Key Strengths": [
+                                    "Addresses abandoned vehicles, which can potentially block waste collections or create other issues for council customers"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Although not directly related to missed collections, this link sheds light on another aspect that may indirectly affect council customers."
+                            }
+                        ],
+                        "Analysis Notes": "This analysis targeted links related to reporting or inquiring about council services. All provided options appear relevant, but rankings were based on the directness of each option's relation to missed collections.",
+                        "Recommendations Notes": "The top recommendations offer immediate solutions for users to report a missed bin collection or learn more about other related issues."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "90",
+                        "85",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 84,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Missed collections - Neath Port Talbot Council",
+                            "Source": "https://www.npt.gov.uk/bins-and-recycling/missed-collections/",
+                            "Reasoning": "This link directly pertains to missed collections and offers a service for reporting such cases, making it the most relevant and optimal next step.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Report - Neath Port Talbot Council",
+                            "Source": "https://www.npt.gov.uk/report-request-apply/report/",
+                            "Reasoning": "Although it offers a platform for reporting various issues, users interested specifically in missed bin collection may have to navigate to the correct section, hence this link has slightly lower confidence.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "6",
+                            "Title": "Dog waste bins - Neath Port Talbot Council",
+                            "Source": "https://www.npt.gov.uk/parking-roads-and-travel/problems-with-roads-and-streets/dog-waste-bins/",
+                            "Reasoning": "Although the main focus is dog waste bins, it still offers a useful service for council customers and can be considered as an alternative.",
+                            "Confidence": "85"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.npt.gov.uk/bins-and-recycling/missed-collections/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.npt.gov.uk/bins-and-recycling/missed-collections/",
+                        "analysis": {
+                            "url": "https://www.npt.gov.uk/bins-and-recycling/missed-collections/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T16:22:31+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T16:22:57+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 49012,
+                            "response_time": 0.263,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.263s)",
+                                    "Content successfully retrieved (49012 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.26354503631591797,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.npt.gov.uk/bins-and-recycling/missed-collections/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.npt.gov.uk/bins-and-recycling/missed-collections/",
+                        "content": " Here's the extracted main body content (central editorial content) in semantically structured HTML, as requested:\n\n```html\n<main>\n    <article id=\"content\" class=\"pt-3 content20\">\n        <div class=\"container\">\n            <h1>Missed collections</h1>\n            <div id=\"contentInner\">\n                <div class=\"umb-block-grid\" data-grid-columns=\"12;\" style=\"--umb-block-grid--grid-columns: 12;\">\n                    <!-- Main content goes here -->\n                </div>\n            </div>\n        </div>\n    </article>\n</main>\n```\n\nThe main body content includes the title (h1) and the actual content within the `<div id=\"contentInner\">`. All non-essential page furniture, such as headers, footers, navigation menus, sidebars, cookie banners, and newsletter sign-up blocks have been removed. The provided HTML structure has been preserved while maintaining semantic HTML elements like 'h1', 'p', 'a' for links, and various list tags ('ul', 'ol', 'li') as well as blockquotes where relevant to the main content. Decorative or boilerplate elements have been stripped out as requested.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 7.512598991394043,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.npt.gov.uk/bins-and-recycling/missed-collections/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content does not directly answer this question as it only provides information about missed collections, not how to report a missed collection or how to request a one-off pickup.",
+                                    "confidence": "30%",
+                                    "reasoning": "The content does not provide any clear procedure for reporting missed bins or requesting one-off pickups. The title 'Missed collections' indicates this might be the place to look for information on what to do when a collection is missed, but it falls short of providing the necessary steps and contact details.",
+                                    "next_actions": "I would need to search further on the council's website or call the council directly to report a missed bin or request a one-off pickup."
+                                }
+                            ],
+                            "overall_assessment": "The content provides a title that suggests it might address needs related to missed collections, but it fails to provide detailed information about what to do when a collection is missed. There are key gaps in the content, such as the absence of information regarding how to report a missed bin and request a one-off pickup. The overall satisfaction level for this content is low."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.8635640144348145,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.npt.gov.uk/bins-and-recycling/missed-collections/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_162231-npt.gov.uk",
+                    "analysis_timestamp": "2025-08-08T16:23:11+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6666666666666666,
+                            "tokens_consumed": 5482,
+                            "tokens_remaining": 24518,
+                            "token_utilization_percentage": 18.27,
+                            "average_tokens_per_step": 913.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 81.73,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 26,
+                            "consumption_rate": 913.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "30",
+                            "quality_scores": [
+                                "30"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "30",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.52,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6666666666666666,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_162231-npt.gov.uk",
+                        "start_time": "2025-08-08T16:22:31+01:00",
+                        "current_time": "2025-08-08T16:23:11+01:00",
+                        "duration_seconds": 40,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 5482,
+                        "tokens_remaining": 24518,
+                        "token_utilization_percentage": 18.27,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2361,
+                                "avg_per_call": 1180.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3121,
+                                "avg_per_call": 1560.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 913.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_162231-npt.gov.uk",
+                    "start_time": "2025-08-08T16:22:31+01:00",
+                    "current_time": "2025-08-08T16:23:11+01:00",
+                    "duration_seconds": 40,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 5482,
+                    "tokens_remaining": 24518,
+                    "token_utilization_percentage": 18.27,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2361,
+                            "avg_per_call": 1180.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3121,
+                            "avg_per_call": 1560.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 913.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

@@ -1,0 +1,686 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T15:30:21+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "rotherham.gov.uk",
+                "Council Name": "Rotherham Metropolitan Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed bin collection \u2013 Rotherham Metropolitan Borough Council",
+                        "link": "https://www.rotherham.gov.uk/environment-waste/missed-bin-collection/1",
+                        "snippet": "You can only report a missed collection after 3pm on your collection day. You can also report a missed collection on the next working day."
+                    },
+                    {
+                        "title": "Waste and Recycling: Report a missed bin collection | Instructions ...",
+                        "link": "https://www.rotherham.gov.uk/xfp/form/1108",
+                        "snippet": "Use this form to report a missed bin collection. Before reporting a missed collection, please ensure the bin you are reporting is the bin that was scheduled to\u00a0..."
+                    },
+                    {
+                        "title": "Environment and waste \u2013 Rotherham Metropolitan Borough Council",
+                        "link": "https://www.rotherham.gov.uk/environment",
+                        "snippet": "Missed bin collection \u00b7 New or replacement wheeled bins \u00b7 Over the Garden Hedge ... Report a litter or dog waste bin that needs emptying \u00b7 Report an\u00a0..."
+                    },
+                    {
+                        "title": "Complaints \u2013 Rotherham Metropolitan Borough Council",
+                        "link": "https://www.rotherham.gov.uk/complaints",
+                        "snippet": "Find out if there is anything currently affecting collections in your area. Visit our missed bins page here ... Report a missed bin collection \u00b7 Report anti\u00a0..."
+                    },
+                    {
+                        "title": "Report a problem with your garden waste subscription \u2013 Rotherham ...",
+                        "link": "https://www.rotherham.gov.uk/rubbish-recycling/garden-waste-collection-service",
+                        "snippet": "If your brown bin hasn't been emptied, you can report a missed bin collection. Please report a problem with your garden waste subscription if you have\u00a0..."
+                    },
+                    {
+                        "title": "Report a missing or damaged manhole, gully or service cover ...",
+                        "link": "https://www.rotherham.gov.uk/street-care-cleaning/report-missing-damaged-manhole-gully-service-cover",
+                        "snippet": "Find out if there is anything currently affecting collections in your area. Visit our missed bins page here \u00b7 Logo: Rotherham Metropolitan Borough Council."
+                    },
+                    {
+                        "title": "Garden waste collections \u2013 Rotherham Metropolitan Borough Council",
+                        "link": "https://www.rotherham.gov.uk/rubbish-recycling/pay-garden-waste-collections/4",
+                        "snippet": "Missed collections. If your garden waste (brown) bin hasn't been emptied on your usual collection day, you can report it as you would any other\u00a0..."
+                    },
+                    {
+                        "title": "Bin collections \u2013 Rotherham Metropolitan Borough Council",
+                        "link": "https://www.rotherham.gov.uk/bin-collections",
+                        "snippet": "Find Rotherham bin collection dates and learn what to do if your bin collection is missed ... Report a missed bin collection \u00b7 Household Waste Recycling Centres\u00a0..."
+                    },
+                    {
+                        "title": "Business waste \u2013 Rotherham Metropolitan Borough Council",
+                        "link": "https://www.rotherham.gov.uk/commercial-waste/commercial-waste-1/4",
+                        "snippet": "Missed collections. If your commercial waste bin has been missed, we can arrange to collect it. Before you report a missed collection, please check: your\u00a0..."
+                    },
+                    {
+                        "title": "Street care and cleaning \u2013 Rotherham Metropolitan Borough Council",
+                        "link": "https://www.rotherham.gov.uk/street-care-cleaning",
+                        "snippet": "Report a missing or damaged manhole, gully or service cover \u00b7 Report debris ... Report a litter or dog waste bin that needs emptying \u00b7 Report fly-tipping."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.rotherham.gov.uk/environment-waste/missed-bin-collection/1",
+                        "title": "Missed bin collection \u2013 Rotherham Metropolitan Borough Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Direct link to report a missed bin collection",
+                            "Contains information about the specific window for reporting"
+                        ],
+                        "reasoning": "This link provides an immediate solution for the council customer's need regarding a missed bin collection. The snippet also informs about the specific timing for reporting.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed bin collection \u2013 Rotherham Metropolitan Borough Council",
+                                "Source": "https://www.rotherham.gov.uk/environment-waste/missed-bin-collection/1",
+                                "Key Strengths": [
+                                    "Direct link to report a missed bin collection",
+                                    "Contains information about the specific window for reporting"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link provides an immediate solution for the council customer's need regarding a missed bin collection. The snippet also informs about the specific timing for reporting."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Waste and Recycling: Report a missed bin collection | Instructions ...",
+                                "Source": "https://www.rotherham.gov.uk/xfp/form/1108",
+                                "Key Strengths": [
+                                    "Direct form to report a missed bin collection",
+                                    "Encourages checking if the scheduled bin is missed before reporting"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link offers an effective solution for the council customer with a direct form that can be used to submit a request. The snippet also advises on verifying that the correct bin is missed."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Garden waste collections \u2013 Rotherham Metropolitan Borough Council",
+                                "Source": "https://www.rotherham.gov.uk/rubbish-recycling/pay-garden-waste-collections/4",
+                                "Key Strengths": [
+                                    "Information on missed garden waste collections within the snippet",
+                                    "Clear link to report a problem with a garden waste subscription"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The link pertains to garden waste collection issues, which is likely relevant for some council customers. The snippet provides guidance on reporting such problems."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Bin collections \u2013 Rotherham Metropolitan Borough Council",
+                                "Source": "https://www.rotherham.gov.uk/bin-collections",
+                                "Key Strengths": [
+                                    "Provides information on bin collection dates",
+                                    "Includes a section to report missed bin collections"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Although the search results don't list specific links for council customer information needs, this link includes useful information and a solution."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Street care and cleaning \u2013 Rotherham Metropolitan Borough Council",
+                                "Source": "https://www.rotherham.gov.uk/street-care-cleaning",
+                                "Key Strengths": [
+                                    "Information on reporting litter or dog waste bins in need of emptying",
+                                    "Encourages the reporting of fly tipping"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This link provides relevant information regarding street cleanup, although it is not directly related to missed bin collections, it can still be helpful for council customers."
+                            }
+                        ],
+                        "Analysis Notes": "Although some search results focused on other waste management issues rather than council customer needs directly, the provided links do offer valuable resources.",
+                        "Recommendations Notes": "While these links are tailored to various waste-related matters, they may help serve as suitable alternatives for direct solutions to bin collection issues."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Missed bin collection \u2013 Rotherham Metropolitan Borough Council",
+                            "Source": "https://www.rotherham.gov.uk/environment-waste/missed-bin-collection/1",
+                            "Reasoning": "This link provides an immediate solution for the council customer's need regarding a missed bin collection, offering direct access and details on specific timing for reporting.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Waste and Recycling: Report a missed bin collection | Instructions ...",
+                            "Source": "https://www.rotherham.gov.uk/xfp/form/1108",
+                            "Reasoning": "This link offers an effective solution for the council customer with a direct form that can be used to submit a request, as well as advising on verifying the scheduled bin has been missed.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "7",
+                            "Title": "Garden waste collections \u2013 Rotherham Metropolitan Borough Council",
+                            "Source": "https://www.rotherham.gov.uk/rubbish-recycling/pay-garden-waste-collections/4",
+                            "Reasoning": "The link pertains to garden waste collection issues that may be relevant for council customers, as it includes guidance on reporting problems with a garden waste subscription.",
+                            "Confidence": "80"
+                        }
+                    ],
+                    "average_confidence": 86.7,
+                    "max_confidence": "90"
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.rotherham.gov.uk/environment-waste/missed-bin-collection/1"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.rotherham.gov.uk/environment-waste/missed-bin-collection/1",
+                        "analysis": {
+                            "url": "https://www.rotherham.gov.uk/environment-waste/missed-bin-collection/1",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T15:30:21+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T15:30:48+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 87939,
+                            "response_time": 0.311,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.311s)",
+                                    "Content successfully retrieved (87939 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.31215715408325195,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.rotherham.gov.uk/environment-waste/missed-bin-collection/1"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.rotherham.gov.uk/environment-waste/missed-bin-collection/1",
+                        "content": " This HTML code is for a chatbot UI (User Interface) named Bailey, designed to help users with questions about council services. The interface includes terms and conditions that the user must agree to in order to start a conversation. Here's what each section does:\n\n1. Head tag: contains meta information like website title and description for search engines\n2. Body tag: The main content area\n3. Header: Displays the council logo and Bailey's name, along with a link to the council homepage\n4. Main container: Holds the chat interface, terms and conditions, and buttons to accept or dismiss the terms\n5. Terms container: Provides an explanation about how the chat works and a link to the privacy policy\n6. Chatbuttons container: Contains two buttons to either continue (accepting terms) or close (rejecting terms) the conversation\n7. Webchat container/div: This is where Bailey's responses will be displayed during the conversation\n8. Chatfooter: Displays a link to the privacy policy\n\nBy accepting the terms and conditions, users can engage with Bailey and receive answers to their questions.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 8.176507949829102,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.rotherham.gov.uk/environment-waste/missed-bin-collection/1",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "0%",
+                                    "confidence": "25%",
+                                    "reasoning": "The provided content is a chatbot interface for council services, but lacks information specific to reporting missed bin collections. It provides no direct answer or guidance on how to report or request additional collections.",
+                                    "next_actions": "I would first accept the terms and conditions to engage with Bailey, then ask my question about reporting a missed bin collection."
+                                }
+                            ],
+                            "overall_assessment": "While the provided content is a useful starting point for understanding how to use the council's chatbot service, it does not adequately address my specific need of understanding how to report a missed bin collection. Key gaps include: lack of information on procedures for missed collections and no immediate support for reporting missed bins directly from the interface."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.657636880874634,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.rotherham.gov.uk/environment-waste/missed-bin-collection/1"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_153021-rotherham.gov.uk",
+                    "analysis_timestamp": "2025-08-08T15:31:01+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6666666666666666,
+                            "tokens_consumed": 10348,
+                            "tokens_remaining": 19652,
+                            "token_utilization_percentage": 34.49,
+                            "average_tokens_per_step": 1724.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 65.51,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 11,
+                            "consumption_rate": 1724.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "25",
+                            "quality_scores": [
+                                "25"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "25",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.52,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6666666666666666,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_153021-rotherham.gov.uk",
+                        "start_time": "2025-08-08T15:30:21+01:00",
+                        "current_time": "2025-08-08T15:31:01+01:00",
+                        "duration_seconds": 40,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 10348,
+                        "tokens_remaining": 19652,
+                        "token_utilization_percentage": 34.49,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 7283,
+                                "avg_per_call": 3641.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3065,
+                                "avg_per_call": 1532.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1724.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_153021-rotherham.gov.uk",
+                    "start_time": "2025-08-08T15:30:21+01:00",
+                    "current_time": "2025-08-08T15:31:01+01:00",
+                    "duration_seconds": 40,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 10348,
+                    "tokens_remaining": 19652,
+                    "token_utilization_percentage": 34.49,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 7283,
+                            "avg_per_call": 3641.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3065,
+                            "avg_per_call": 1532.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1724.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

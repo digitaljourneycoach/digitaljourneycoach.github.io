@@ -1,0 +1,638 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T21:38:30+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "bury.gov.uk",
+                "Council Name": "Bury Metropolitan Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Planning - Frequently asked questions - Bury Council",
+                        "link": "https://www.bury.gov.uk/planning-building-control/planning-permission/planning-faq",
+                        "snippet": "Do I need planning permission? Can you confirm that I do not require planning permission? Would I get planning permission? How do I submit my planning\u00a0..."
+                    },
+                    {
+                        "title": "Item 06",
+                        "link": "https://councildecisions.bury.gov.uk/documents/s26465/item%2006%20latest.pdf",
+                        "snippet": "Mar 11, 2021 ... Planning permission is sought for the ... such as solar photovoltaic panels, battery energy storage systems and air source heat pump."
+                    },
+                    {
+                        "title": "Homeowner's guide to renovating your property",
+                        "link": "https://www.bury.gov.uk/asset-library/homeowners-guide-to-renovating-your-property.pdf",
+                        "snippet": "Planning permission is not normally required for installation or replacement of a boiler ... However, roof and wall mounted solar panels are subject to the\u00a0..."
+                    },
+                    {
+                        "title": "EXTENSIONS",
+                        "link": "https://www.bury.gov.uk/asset-library/bury-homesowners-guide-expanding-living-space.pdf",
+                        "snippet": "For example, prefabricated panels, concrete frame etc. Planning permission and garage conversions ... Solar panels (some produce hot water, whereas photovoltaic\u00a0..."
+                    },
+                    {
+                        "title": "Conservation areas - Bury Council",
+                        "link": "https://www.bury.gov.uk/planning-building-control/heritage-and-conservation/conservation-areas",
+                        "snippet": "Information about conservation areas in Bury, their locations, including planning permission advice for works on buildings within a conservation area."
+                    },
+                    {
+                        "title": "REPORT FOR NOTING 5",
+                        "link": "https://councildecisions.bury.gov.uk/documents/s17173/Agenda%20Item%205%20Delegated%20Decisions.pdf",
+                        "snippet": "Dec 18, 2018 ... Revised front elevation to include the addition of solar panels ... additional planning condition to planning permission reference 16/01455/OUT to\u00a0..."
+                    },
+                    {
+                        "title": "Bury East Ward: Bury East - Moorside Ward:",
+                        "link": "https://councildecisions.bury.gov.uk/Data/Planning%20Control%20Committee/201106141900/Agenda/att14661.pdf",
+                        "snippet": "Jun 2, 2011 ... 7 of planning permission 30363 to allow the sale of food goods ... Installation of 6 free standing photo voltaic solar panels on garage roof."
+                    },
+                    {
+                        "title": "Supplementary Planning Document 6 - Alterations and Extensions ...",
+                        "link": "https://www.bury.gov.uk/asset-library/alterations-and-extensions.pdf",
+                        "snippet": "Jan 13, 2020 ... 6.1 Applications for wind turbines, solar panels and other equipment on roofs will ... 10.2 In addition to normal planning permission, Listed\u00a0..."
+                    },
+                    {
+                        "title": "Title Planning Applications To: Planning Control Committee On: 09 ...",
+                        "link": "https://councildecisions.bury.gov.uk/documents/s40333/Final+agenda+090724+-combined-compressed.pdf",
+                        "snippet": "Jul 9, 2024 ... ... building regulations and the provision of solar photo voltaic panels. ... \u2022 Without planning permission or building regulations approval\u00a0..."
+                    },
+                    {
+                        "title": "The domestic private rented property minimum standard",
+                        "link": "https://councildecisions.bury.gov.uk/documents/s26422/Introduction%20of%20a%20Civil%20Financial%20Penalty%20Policy%20and%20Enforcement%20Protocol%20-%20Minimum%20Energy%20Effici.pdf",
+                        "snippet": "Oct 1, 2017 ... Such improvements may include external wall insulation or solar panels which can require local authority planning consent in certain\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.bury.gov.uk/planning-building-control/planning-permission/planning-faq",
+                        "title": "Planning - Frequently asked questions - Bury Council",
+                        "confidence": 95,
+                        "strengths": [
+                            "Comprehensive FAQ section provides information on planning permission requirements"
+                        ],
+                        "reasoning": "The link provides a frequently asked questions section about planning permission, which is directly related to the customer's needs for council customer information.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "4"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Planning - Frequently asked questions - Bury Council",
+                                "Source": "https://www.bury.gov.uk/planning-building-control/planning-permission/planning-faq",
+                                "Key Strengths": [
+                                    "Comprehensive FAQ section provides information on planning permission requirements"
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "The link provides a frequently asked questions section about planning permission, which is directly related to the customer's needs for council customer information."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Homeowner's guide to renovating your property",
+                                "Source": "https://www.bury.gov.uk/asset-library/homeowners-guide-to-renovating-your-property.pdf",
+                                "Key Strengths": [
+                                    "Covers various aspects of home renovation, including solar panel installations and planning permission requirements"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The guide provides information on the installation of roof and wall mounted solar panels, which is a specific concern for council customers seeking information regarding council services."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "EXTENSIONS",
+                                "Source": "https://www.bury.gov.uk/asset-library/bury-homesowners-guide-expanding-living-space.pdf",
+                                "Key Strengths": [
+                                    "Provides information on planning permission and garage conversions, specifically addressing solar panels as a subject"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The extension guide discusses solar panel installations as well as providing information on planning permission requirements for various home extensions."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Supplementary Planning Document 6 - Alterations and Extensions ...",
+                                "Source": "https://www.bury.gov.uk/asset-library/alterations-and-extensions.pdf",
+                                "Key Strengths": [
+                                    "Covers planning permission requirements for wind turbines, solar panels, and other equipment installed on roofs"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The supplementary planning document offers guidance and requirements relating to various home improvements, including the installation of solar panels."
+                            }
+                        ],
+                        "Analysis Notes": "All items contain information that could potentially be useful for council customers seeking information about council services. However, not all items are directly related to planning permissions or customer-specific concerns regarding installations like solar panels.",
+                        "Recommendations Notes": "The top four recommendations were selected based on their relevance to the customer's needs and the extent to which they address relevant concerns like solar panel installations and planning permissions."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "95",
+                        "90",
+                        "85",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 87.5,
+                    "max_confidence": "95"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "Planning - Frequently asked questions - Bury Council",
+                        "Source": "https://www.bury.gov.uk/planning-building-control/planning-permission/planning-faq",
+                        "Reasoning": "The highest confidence score of the recommendations and its focus on planning permission, making it the most relevant option among the available options for information gathering.",
+                        "Confidence": "95"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.bury.gov.uk/planning-building-control/planning-permission/planning-faq"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.bury.gov.uk/planning-building-control/planning-permission/planning-faq",
+                        "analysis": {
+                            "url": "https://www.bury.gov.uk/planning-building-control/planning-permission/planning-faq",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T21:38:30+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T21:38:48+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 362669,
+                            "response_time": 0.309,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.309s)",
+                                    "Content successfully retrieved (362669 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.3112599849700928,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.bury.gov.uk/planning-building-control/planning-permission/planning-faq"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.bury.gov.uk/planning-building-control/planning-permission/planning-faq",
+                        "content": "```html\n<h1>Planning - Frequently asked questions</h1>\n\n<h2>Do I need planning permission?</h2>\n<p>You may not always need planning permission to extend or carry out works to your property. The common project guides and interactive house on the Planning Portal will help you decide if a formal planning application is required.</p>\n<p>For details on permitted development rules, please visit the '<a title=\"do you need planning permission on the Planning Portal\" href=\"https://www.planningportal.co.uk/info/200125/do_you_need_permission\" target=\"_blank\" rel=\"noopener\">do you need permission</a>' advice on the Planning Portal.</p>\n<p>Please be aware that in some cases there may be restrictions on your property which would mean you require planning consent and information provided is for guidance only. You should be satisfied that works do not need formal planning permission before commencing any works.</p>\n<p>You may need to obtain your own independent professional planning advice. Your proposals may also require <a title=\"building regulations approval\" href=\"/planning-building-control/building-regulations/consent\">building regulations approval</a>.</p>\n\n<h2>Can you confirm that I do not require planning permission?</h2>\n<p>If you require a formal decision as to whether you need planning permission for your proposal that you consider your proposal is permitted development or that an existing use is lawful, you must apply for a Lawful Development Certificate.</p>\n<p>Please visit the Planning Portal for further information on <a title=\"development consent types and apply for a Lawful Development Certificate on the Planning Portal\" href=\"https://www.planningportal.co.uk/planning/planning-applications/consent-types/lawful-development-certificate-ldc\" target=\"_blank\" rel=\"noopener\">development consent types and apply online for a Lawful Development Certificate</a>.</p>\n<p>Confirmation will not be provided without the submission of a Lawful Development Certificate with supporting information upon which to base that opinion. A formal decision could also prove essential in the event of the sale of your property.</p>\n\n<h2>Would I get planning permission?</h2>\n<p>We recognise the value of pre-application discussions for the efficient handling of subsequent applications and therefore encourage those considering new development to engage in this process.</p>\n<p>If you wish to obtain our opinion on your proposal please visit our <a title=\"pre-application advice\" href=\"/planning-building-control/planning-permission/pre-application-advice\">pre-application advice</a> page for further information.</p>\n\n<h2>How do I submit my planning application?</h2>\n<p>Planning applications should preferably be submitted via the Planning Portal, however if you are unable to submit online please use the contact form below and we will advise on an alternative way to submit and pay for your application.</p>\n<p>The associated planning application fee will be calculated by the Planning Portal on submission or you can check using their <a title=\"Planning Portal fee calculator\" href=\"https://www.planningportal.co.uk/app/fee-calculator\" target=\"_blank\" rel=\"noopener\">fee calculator</a> and the fee must be made directly to the Planning Portal before the application will be released to us as the Local Planning Authority.</p>\n<p>For further information on what documents to submit please see our <a title=\"planning advice, validation checklists and criteria\" href=\"/planning-building-control/planning-permission/planning-application-process\">planning advice, validation checklists and criteria</a>.</p>\n<p>Also paper forms are available to download from the Planning Portal: <a href=\"https://www.planningportal.co.uk/planning/planning-applications/paper-forms/find-and-download-paper-forms\">Find and download paper forms - Paper Forms - Planning Portal</a></p>\n<p><a href=\"https://burymbc-self.achieveservice.com/AchieveForms/?&consentMessage=yes&form_uri=sandbox-publish://AF-Process-1e1ac6f3-589f-47d3-b8e5-0b8e4ff68aaf/AF-Stage-b664c699-b93e-4a8f-b5ac-4e5eb248714c/definition.json&process=1&process_uri=sandbox-processes://AF-Process-1e1ac6f3-589f-47d3-b8e5-0b8e4ff68aaf&process_id=AF-Process-1e1ac6f3-589f-47d3-b8e5-0b8e4ff68aaf\">Enquire about alternative ways to submit a planning application</a>.</p>\n\n<h2>Who can comment on my planning application?</h2>\n<h3>Neighbours</h3>\n<p>Letters will be sent to neighbouring properties. These consultations direct neighbours to our <a title=\"Planning Search website\" href=\"https://planning.bury.gov.uk/online-applications/search.do?action=simple&searchType=Application\" target=\"_blank\" rel=\"noopener\">Planning website</a> where they can view the plans and comment on the application within a statutory 21 days.</p>\n<p>These comments will be taken into consideration by the Planning Officer and will be summarised in the final report with the recommendation for either approval or refusal. Any comments made will be publicly available and published online.</p>\n<p>The neighbouring properties notified in relation to an application will vary according to the situation of the site and its surroundings. However, it should be noted that you can comment on any application irrespective of whether a formal notification has been received or not.</p>\n<p>See our information on <a title=\"View and comment on planning applications and appeals\" href=\"/planning-building-control/planning-permission/consultations\">viewing and commenting on planning applications and appeals</a>.</p>\n\n<h3>Internal and external consultees</h3>\n<p>We will consult any other relevant Council departments that may be able to provide the Planning Officer with professional advice, for example Highways or Drainage.</p>\n<p>It may also be necessary to consult with external authorities, for example Environment Agency or United Utilities. Ward councillors are also informed and given opportunity to comment.</p>\n<p>The consultations undertaken for any application will depend upon the nature and scale of the development proposed.</p>\n\n<h2>How do I comment on a current planning application?</h2>\n<p>Your comments must be made online via the <a title=\"Search planning applications website\" href=\"https://planning.bury.gov.uk/online-applications/search.do?action=simple&searchType=Application\" target=\"_blank\" rel=\"noopener\">Planning website</a>. For more information about commenting or appealing a planning application, please visit our <a title=\"planning consultations\" href=\"/planning-building-control/planning-permission/consultations\">planning consultations</a> page.</p>\n\n<h2>How will my planning application be considered?</h2>\n<p>The Planning case officer will review your application and make a site visit to get an understanding of the potential impact your development may have on neighbouring properties and the surrounding area. They will consider the consultation responses and carry out a further assessment of the proposals in respect of the relevant local and National Planning Policy Framework.</p>\n<p>Further advice is available on:</p>\n<ul>\n<li>our <a title=\"supplementary planning advice\" href=\"/planning-building-control/policy-and-projects/planning-policy/supplementary-planning-advice\">supplementary planning advice</a> page</li>\n<li><a title=\"National Planning Policy Framework on GOV.UK\" href=\"https://www.gov.uk/government/publications/national-planning-policy-framework--2\" target=\"_blank\" rel=\"noopener\">National Planning Policy Framework on GOV.UK</a></li>\n</ul>\n<p>In some cases it may be necessary to seek amendment to enable the development to be acceptable. If the changes are considered minor, we may make a decision without any further publicity or in some cases it may be necessary to re-consult.</p>\n<p>At the end of the assessment period, the case officer will write their report setting out their recommendation. The application will either be approved, with or without conditions, or refused.</p>\n\n<h2>Will my application be considered at Planning Control committee?</h2>\n<p>Not necessarily, although the <a title=\"Planning Control committee\" href=\"/planning-building-control/planning-permission/planning-control-committee\">Planning Control committee</a> is a group of elected Councillors who are trained in making planning decisions, the majority of applications will be signed off by the Head of Development Management on behalf of the Director of BGI.</p>\n<p>This is because Development Management has the ability to make decisions where they fall under a set of agreed criteria - this is known as the Scheme of Delegation authorised by the Council's Constitution. Only those applications which fall outside of this criteria are considered by the Planning Control committee.</p>\n\n<h2>How long does it take to determine a planning application?</h2>\n<p>There are nationally set target dates that define when the Council should make a decision on an application.</p>\n<p>Typically, the target dates are a statutory eight weeks for minor planning applications and 13 weeks for major planning applications. So this will depend on the nature of the application and whether or not there are any issues to be addressed and the Planning Control Committee meeting dates. Therefore in some cases extensions of time may be needed and agreed.</p>\n\n<h2>What can I do if my planning application is refused?</h2>\n<p>You have two options; you can resubmit your application seeking to address the reasons for refusal and a revised application is free provided the application is of the same scale and nature and is made by the same applicant within 12 months of the date of refusal.</p>\n<p>If an application is approved, then planning permission is granted and there is no third-party right of appeal.</p>\n<p>Alternatively, you can <a title=\"submit an appeal about a planning decision\" href=\"/planning-building-control/planning-permission/planning-application-process\">submit an appeal</a> against the Council's decision to refuse to the Planning Inspectorate.</p>\n\n<h2>Do I need planning permission to work from home?</h2>\n<p>You do not necessarily need <a title=\"working from home planning permission advice on the Planning Portal\" href=\"https://www.planningportal.co.uk/permission/common-projects/working-from-home/planning-permission\" target=\"_blank\" rel=\"noopener\">planning permission to work from home</a>. The key test is whether the overall character of the dwelling will change as a result of the business. If the answer to any of the following questions is 'yes', then permission will likely be needed:</p>\n<ul>\n<li>is it still mainly a home or has it become business premises?</li>\n<li>will your home no longer be used mainly as a private residence?</li>\n<li>will your business result in a marked rise in traffic or people calling or deliveries?</li>\n<li>will your business involve any activities unusual in a residential area?</li>\n<li>will your business disturb your neighbours including at unreasonable hours or create other forms of nuisance such as noise or smells?</li>\n</ul>\n<p>If you are in any doubt, you should apply for a Lawful Development Certificate for the proposed activity, to confirm it is not a change of use and the lawful use is still a dwelling.</p>\n\n<h3>Childminding at home</h3>\n<p>If there are:</p>\n<ul>\n<li>less than 3 children being cared for, including the childminders' own, planning permission is not needed</li>\n<li>between 3 and 6 children, it is unlikely that planning permission would be needed but it would be advised that any new childminder applies for a Lawful Development Certificate to confirm the situation</li>\n<li>over 6 children, planning permission is likely to be required.</li>\n</ul>\n\n<h2>Do I need planning permission for a change of use?</h2>\n<p>Planning permission is not needed when:</p>\n<ul>\n<li>the existing and the proposed uses fall within the same Use Class or</li>\n<li>if the Town and Country Planning (Use Classes) Order 1987 (as amended) states that a change of class is permitted to another specified class.</li>\n</ul>\n<p>Further guidance on <a title=\"change of use guidance on the Planning Portal\" href=\"https://www.planningportal.co.uk/permission/common-projects/change-of-use/use-classes\" target=\"_blank\" rel=\"noopener\">change of use</a> is available on the Planning Portal.</p>\n<p>If you require approval that a proposed change of use is permitted or our written confirmation of an existing use, you must submit a <a title=\"apply for a Lawful Development Certificate on the Planning Portal\" href=\"https://www.planningportal.co.uk/planning/planning-applications/consent-types/lawful-development-certificate-ldc\" target=\"_blank\" rel=\"noopener\">Lawful Development Certificate</a>.</p>\n\n<h2>Do I need planning permission for a new vehicular access, driveway or hardstanding?</h2>\n<p>Provided you do not live on or want access from a classified road, such as a main thoroughfare or highway, you will not need planning permission if a new or replacement driveway of any size uses permeable or porous surfacing which allows water to drain through, such as:</p>\n<ul>\n<li>gravel</li>\n<li>permeable concrete block paving</li>\n<li>porous asphalt</li>\n<li>if the rainwater is directed to a lawn or border to drain naturally.</li>\n</ul>\n<p>See further guidance on <a title=\"paving your front garden on the Planning Portal\" href=\"https://www.planningportal.co.uk/permission/common-projects/paving-your-front-garden/planning-permission\" target=\"_blank\" rel=\"noopener\">paving your front garden</a> on the Planning Portal.</p>\n<p>If you require our written confirmation as to whether you need planning permission for your new vehicular access or driveway, you must apply for a <a title=\"apply for a Lawful Development Certificate on the Planning Portal\" href=\"https://www.planningportal.co.uk/planning/planning-applications/consent-types/lawful-development-certificate-ldc\" target=\"_blank\" rel=\"noopener\">Lawful Development Certificate</a>.</p>\n<p>Whilst you may not need planning permission, if you're making a new access into the garden across the footpath you will need to obtain permission from the Highways Team to <a title=\"dropped kerbs\" href=\"/roads-travel-and-parking/highways-keep-bury-moving/dropped-kerbs\">drop the kerb</a> or to carry out works to the public highway including the footpath.</p>\n\n<h2>Do I need planning permission to convert a garage to a habitable room?</h2>\n<p>Planning permission is not usually required, providing the work is internal and does not involve enlarging the building.</p>\n<p>If you want to convert a garage into a separate house, regardless of who will occupy it, then planning permission will be required no matter what work is involved.</p>\n<p>Sometimes permitted development rights have been removed from some properties with regard to garage conversions and therefore you should check before proceeding, particularly if you live on a new housing development, in a listed building, or in a conservation area.</p>\n<p>Visit the <a title=\"advice on garage conversions on the Planning Portal\" href=\"https://www.planningportal.co.uk/permission/common-projects/garage-conversion/planning-permission\" target=\"_blank\" rel=\"noopener\">Planning Portal for advice on garage conversions</a>. Garage conversions do require <a title=\"building regulations approval\" href=\"/planning-building-control/building-regulations/consent\">building regulations approval</a>, so Building Control will need to be informed.</p>\n\n<h2>Do I need planning permission to put up an advert or sign?</h2>\n<p>A guide is available on the Planning Portal regarding <a title=\"outdoor advertisements and signs guidance on the Planning Portal\" href=\"https://www.planningportal.co.uk/permission/common-projects/adverts-and-signs/planning-permission\" target=\"_blank\" rel=\"noopener\">outdoor advertisements and signs</a>.</p>\n\n<h2>How do I report an alleged breach of Planning Control?</h2>\n<p>If you think works are being carried out that are in breach of Planning Control, please let us know by contacting <a title=\"Planning Enforcement\" href=\"/planning-building-control/planning-permission/planning-enforcement\">Planning Enforcement</a>. Your identity as a complainant is kept confidential.</p>\n<p>We will investigate your complaint and decide if a breach of Planning Control has occurred, and you will be informed of the results of the investigation.</p>\n\n<h2>How do I check if my property affects a tree preservation order, conservation area or listed building?</h2>\n<p>Our <a title=\"interactive online map\" href=\"/online-maps\" target=\"_blank\" rel=\"noopener\" >interactive online map</a> is able to confirm if the property you're enquiring about is covered by any of these constraints, definitions and restrictions.</p>\n<p>If you establish your property is covered by any of these constraints, please visit:</p>\n<ul>\n<li><a title=\"protected trees\" href=\"/planning-building-control/protected-trees\">tree protection</a></li>\n<li><a title=\"Trees and hedges on the Planning Portal\" href=\"https://www.planningportal.co.uk/permission/common-projects/trees-and-hedges/planning-permission\" target=\"_blank\" rel=\"noopener\">trees and hedges</a> on the Planning Portal</li>\n<li><a title=\"conservation areas\" href=\"/planning-building-control/heritage-and-conservation/conservation-areas\">conservation areas</a></li>\n<li><a title=\"listed buildings\" href=\"/planning-building-control/heritage-and-conservation/listed-buildings\">listed buildings</a></li>\n<li><a title=\"search the National Heritage list on Historical England\" href=\"https://historicengland.org.uk/listing/the-list/\" target=\"_blank\" rel=\"noopener\">search the National Heritage list</a> on Historic England</li>\n</ul>\n\n<h2>Where can I find information about a property I'm buying or selling?</h2>\n<p>A lot of information you may be interested in when considering purchasing a property is already available to you using both our <a title=\"planning database search facility\" href=\"/planning-building-control/planning-permission/consultations\">planning database search facility</a> and <a title=\"online maps\" href=\"/online-maps\" target=\"_blank\" rel=\"noopener\">interactive map</a>. Planning application documentation and decisions from 2007 onwards are also accessible.</p>\n<p>Planning application documentation and decisions between 1999 and 2007 can be made available, but you will need to provide planning reference numbers. You will need to research these on our interactive map and database search prior to requesting documentation.</p>\n<p>Requests for us to carry out <a title=\"planning fees for historic searches\" href=\"/planning-building-control/planning-permission/planning-fees\">historic searches</a> pre-1999 will attract an hourly fee.</p>\n<p>Whilst you may want to carry out your own research, your solicitor will normally instruct a Local Authority Search to be carried out via <a title=\"Land search charges\" href=\"/planning-building-control/local-land-search\">Land Charges</a> which will provide much of the information you as the purchaser is interested in. S106 agreements can also be purchased from the Land Charges department.</p>\n\n<h2>Who owns a piece of land?</h2>\n<p>Private land ownership is dealt with by <a title=\"Land Registry on GOV.UK\" href=\"https://www.gov.uk/government/organisations/land-registry\" target=\"_blank\" rel=\"noopener\">HM Land Registry</a>. We do not have jurisdiction to determine disputes about land.</p>\n<p>Ownership but any permission granted would not override the property rights of the neighbour should they subsequently prove to be the land owner.</p>\n<p>Please visit our <a title=\"Council owned land or property\" href=\"/business/business-property/council-owned-land-and-property\">Council owned land or property</a> page if your enquiry relates to public land.</p>\n\n<h2>Can you confirm the boundaries of my property?</h2>\n<p>We do not hold this information. Definitive boundaries are shown on the deeds to your property. If you do not have them, you will need to obtain a copy from either the <a title=\"Land Registry on GOV.UK\" href=\"https://www.gov.uk/government/organisations/land-registry\" target=\"_blank\" rel=\"noopener\">HM Land Registry</a> or your mortgage provider.</p>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 40.250917196273804,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.bury.gov.uk/planning-building-control/planning-permission/planning-faq",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 11.544842004776001,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.bury.gov.uk/planning-building-control/planning-permission/planning-faq"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_213830-bury.gov.uk",
+                    "analysis_timestamp": "2025-08-10T21:39:40+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.1666666666666667,
+                            "tokens_consumed": 23523,
+                            "tokens_remaining": 6477,
+                            "token_utilization_percentage": 78.41,
+                            "average_tokens_per_step": 3920.5
+                        },
+                        "token_analysis": {
+                            "status": "moderate",
+                            "remaining_percentage": 21.59,
+                            "urgency_score": 30,
+                            "estimated_remaining_steps": 1,
+                            "consumption_rate": 3920.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 16.67,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.1666666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 50,
+                            "efficiency_factors": [
+                                "High token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": false,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_213830-bury.gov.uk",
+                        "start_time": "2025-08-10T21:38:30+01:00",
+                        "current_time": "2025-08-10T21:39:40+01:00",
+                        "duration_seconds": 70,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 23523,
+                        "tokens_remaining": 6477,
+                        "token_utilization_percentage": 78.41,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 15502,
+                                "avg_per_call": 7751
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 8021,
+                                "avg_per_call": 4010.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 3920.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_213830-bury.gov.uk",
+                    "start_time": "2025-08-10T21:38:30+01:00",
+                    "current_time": "2025-08-10T21:39:40+01:00",
+                    "duration_seconds": 70,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 23523,
+                    "tokens_remaining": 6477,
+                    "token_utilization_percentage": 78.41,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 15502,
+                            "avg_per_call": 7751
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 8021,
+                            "avg_per_call": 4010.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 3920.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

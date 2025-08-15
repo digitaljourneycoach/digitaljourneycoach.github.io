@@ -1,0 +1,682 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T21:11:44+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "lbbd.gov.uk",
+                "Council Name": "London Borough of Barking and Dagenham"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed collection | London Borough of Barking and ...",
+                        "link": "https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection/report-missed-collection",
+                        "snippet": "You can only report a missed collection from 10pm on the scheduled collection day for your street until 6pm the following working day. Before you report a\u00a0..."
+                    },
+                    {
+                        "title": "Missed streets - bin collections | London Borough of Barking and ...",
+                        "link": "https://www.lbbd.gov.uk/missed-streets-bin-collections",
+                        "snippet": "... bins that have been missed please report it using our. Missed collections form. This page is updated throughout the day. Missed streets - bin collections\u00a0..."
+                    },
+                    {
+                        "title": "Report a missed communal bin | London Borough of Barking and ...",
+                        "link": "https://www.lbbd.gov.uk/form/report-a-missed-communal-bin",
+                        "snippet": "You can only use this form to report a missed collection from 10pm on your scheduled collection day until 6pm the following working day."
+                    },
+                    {
+                        "title": "Report a missed commercial waste collection | London Borough of ...",
+                        "link": "https://www.lbbd.gov.uk/form/report-a-missed-commercial-waste",
+                        "snippet": "Report a commercial waste missed collection. Are you a company or business? Yes No When was the bin supposed to be collected?"
+                    },
+                    {
+                        "title": "Rubbish & Recycling | London Borough of Barking and Dagenham",
+                        "link": "https://www.lbbd.gov.uk/rubbish-recycling",
+                        "snippet": "Learn about recycling and bin collection for residents, businesses and other organisations, across the borough. Check my bin collection day \u00b7 Report missed bin\u00a0..."
+                    },
+                    {
+                        "title": "Household bin collection | London Borough of Barking and Dagenham",
+                        "link": "https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection",
+                        "snippet": "Check your bin collection day, report a missed collection, what goes in each bin, how to reduce your waste and how to arrange an assisted collection."
+                    },
+                    {
+                        "title": "Missed bulky collection | London Borough of Barking and Dagenham",
+                        "link": "https://www.lbbd.gov.uk/bins-waste-and-recycling/bulky-waste-collection/missed-bulky-collection",
+                        "snippet": "can chase this through your ticket history. If you did not book this through My B&D, you can use our form. Report a missed bulky waste collection."
+                    },
+                    {
+                        "title": "Report a problem | London Borough of Barking and Dagenham",
+                        "link": "https://www.lbbd.gov.uk/report-problem",
+                        "snippet": "Report a missed collection. If your rubbish or recycling hasn't been collected on the day it should be, please report it online \u00b7 Anti-Social Behaviour."
+                    },
+                    {
+                        "title": "Complain about other services | London Borough of Barking and ...",
+                        "link": "https://www.lbbd.gov.uk/council-and-democracy/complaints-and-compliments-old/complain-about-other-services",
+                        "snippet": "If you want to tell us about things like missed bin collections, faulty street lights or noise, use our report it page."
+                    },
+                    {
+                        "title": "Contact us | London Borough of Barking and Dagenham",
+                        "link": "https://www.lbbd.gov.uk/contact-us",
+                        "snippet": "Report it. A range of issues including dumped rubbish, missed bin collections, abandoned vehicles. Pay for it. You can easily pay online for Council Tax,\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection/report-missed-collection",
+                        "title": "Report a missed collection | London Borough of Barking and Dagenham",
+                        "confidence": 95,
+                        "strengths": [
+                            "Directly addresses the missed collection issue for residential households.",
+                            "Offers a specific form and clear guidelines on when to report."
+                        ],
+                        "reasoning": "The title and the link clearly indicate that this is a service provided by the local authorities specifically aimed at reporting missed collections, making it most relevant to the given instruction.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed collection | London Borough of Barking and Dagenham",
+                                "Source": "https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection/report-missed-collection",
+                                "Key Strengths": [
+                                    "Directly addresses the missed collection issue for residential households.",
+                                    "Offers a specific form and clear guidelines on when to report."
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "The title and the link clearly indicate that this is a service provided by the local authorities specifically aimed at reporting missed collections, making it most relevant to the given instruction."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Missed streets - bin collections | London Bororough of Barking and Dagenham",
+                                "Source": "https://www.lbbd.gov.uk/missed-streets-bin-collections",
+                                "Key Strengths": [
+                                    "The page is updated throughout the day, providing real-time information about missed collections in various streets.",
+                                    "Offers a form for reporting missed collections."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This resource offers not only a way to report missed collections but also real-time updates on which streets have had missed bin collections, making it highly relevant to the given instruction."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Report a missed communal bin | London Borough of Barking and Dagenham",
+                                "Source": "https://www.lbbd.gov.uk/form/report-a-missed-communal-bin",
+                                "Key Strengths": [
+                                    "Addresses the issue of missed communal bins.",
+                                    "Offers a specific form to report the problem."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource directly addresses the specific concern about missed collections for communal bins, which may not be covered under the regular household bin collection service. Therefore, it is highly relevant to the given instruction."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Household bin collection | London Borough of Barking and Dagenham",
+                                "Source": "https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection",
+                                "Key Strengths": [
+                                    "Provides detailed information about residential household bin collection, including guidelines on what goes in each bin and how to arrange an assisted collection.",
+                                    "Offers a service for reporting missed collections."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Although this resource primarily focuses on the bin collection guidance for households, it also provides options for reporting missed collections, making it relevant to the given instruction."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Report a problem | London Borough of Barking and Dagenham",
+                                "Source": "https://www.lbbd.gov.uk/report-problem",
+                                "Key Strengths": [
+                                    "Offers options to report various problems including missed collection.",
+                                    "Ease of access to different services within one page."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Though the primary objective of this resource is not solely limited to reporting missed collections, it remains as an option with various services available on a single page."
+                            }
+                        ],
+                        "Analysis Notes": "There are multiple resources related to rubbish and recycling within the council, but not all were directly associated with reporting missed bin collections. However, some offered this service among other things.",
+                        "Recommendations Notes": "The top recommendations are based on relevance, accessibility of services specifically addressing missed collections, and clarity in offering these services."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "95",
+                        "90",
+                        "85",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "95"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "Report a missed collection | London Borough of Barking and Dagenham",
+                        "Source": "https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection/report-missed-collection",
+                        "Reasoning": "The title and the link clearly indicate that this is a service provided by the local authorities specifically aimed at reporting missed collections, making it most relevant to the given instruction.",
+                        "Confidence": "95"
+                    },
+                    {
+                        "Number": "2",
+                        "Title": "Missed streets - bin collections | London Borough of Barking and Dagenham",
+                        "Source": "https://www.lbbd.gov.uk/missed-streets-bin-collections",
+                        "Reasoning": "This resource offers not only a way to report missed collections but also real-time updates on which streets have had missed bin collections, making it highly relevant to the given instruction.",
+                        "Confidence": "90"
+                    },
+                    {
+                        "Number": "3",
+                        "Title": "Report a missed communal bin | London Borough of Barking and Dagenham",
+                        "Source": "https://www.lbbd.gov.uk/form/report-a-missed-communal-bin",
+                        "Reasoning": "This resource directly addresses the specific concern about missed collections for communal bins, which may not be covered under the regular household bin collection service. Therefore, it is highly relevant to the given instruction.",
+                        "Confidence": "85"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection/report-missed-collection"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection/report-missed-collection",
+                        "analysis": {
+                            "url": "https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection/report-missed-collection",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T21:11:44+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T21:12:10+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 201219,
+                            "response_time": 1.092,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (1.092s)",
+                                    "Content successfully retrieved (201219 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 1.0971190929412842,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection/report-missed-collection"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection/report-missed-collection",
+                        "content": " Here's the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<article class=\"localgov-services-page node node--type-localgov-services-page node--with-restricted-width node--view-mode-full\">\n  <div class=\"lgd-container padding-horizontal\">\n    <div class=\"field field--name-body field--type-text-with-summary field--label-hidden field__item\">\n      <p class=\"alert alert-info\">You can only report a missed collection from 10pm on the scheduled collection day for your street until 6pm the following working day. Before you report a missed bin collection please check our list of missed streets. If an entire street has been missed, please report this by email.</p>\n      <p><a class=\"btn btn-start col-sm-6 mt-3\" href=\"https://eforms.lbbd.gov.uk/missed-collections\">Report a missed collection from a house or flat</a></p>\n      <p><a class=\"btn btn-start col-sm-6 mt-3\" href=\"/form/report-a-missed-communal-bin\">Report a missed communal bin collection for flats</a></p>\n      <p><a class=\"btn btn-start col-sm-6 mt-3\" href=\"/form/report-a-missed-commercial-waste\">Report a missed trade waste collection</a></p>\n      <p>Bin collections take place between 5am and 10pm on the scheduled bin collection day.</p>\n      <p>Before reporting, note that we won't come back to collect your bin if:</p>\n      <ul>\n        <li>your bin was not left out by 5am on your collection day - <a href=\"https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection/check-your-bin-collection-days\">check your collection day</a></li>\n        <li>your waste was put into the wrong bin - <a href=\"https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection/what-goes-each-bin\">check what goes in your bins</a></li>\n        <li>your bin was not in the right place for collection - <a href=\"https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection/check-your-bin-collection-days\">check you are presenting your bins correctly</a></li>\n        <li>your bin was too heavy or damaged</li>\n        <li>you don't report it between 10pm on your collection day and 6pm on the next day</li>\n      </ul>\n      <p>Our collection crews record the reasons that your bin was not collected (e.g. contaminated bin, bins that aren't presented correctly and any other access issues).</p>\n      <p>If an issue is recorded by the collection crews we will not return to collect your bin and you will need to wait for your next scheduled collection for your bin to be emptied.</p>\n    </div>\n  </div>\n</article>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 18.894887924194336,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection/report-missed-collection",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content provides a clear instruction on how to report a missed collection. However, it does not answer directly about what to do if the bin was forgotten to be put out.",
+                                    "confidence": "70%",
+                                    "reasoning": "While there is no explicit statement on forgetting to place out the bin, the content provides a way to report a missed collection which might include such cases as well. The bin crew records reasons for not collecting bins and forgetting to put it out could be one of them.",
+                                    "next_actions": "The resident can still report a missed bin collection since the content shows where to do so, even though direct instruction is missing."
+                                }
+                            ],
+                            "overall_assessment": "The content provides clear instructions on reporting a missed collection and additional information about the factors affecting bin collection. However, it does not offer explicit advice for cases where the resident has forgotten to put out the bin or what happens if such cases are reported in the form of a missed collection report. Slightly more detailed instructions could improve user experience for residents who may forget to set out their bin on time."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.226946115493774,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.lbbd.gov.uk/rubbish-recycling/household-bin-collection/report-missed-collection"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_211144-lbbd.gov.uk",
+                    "analysis_timestamp": "2025-08-07T21:12:36+01:00",
+                    "analysis_duration": 0.002,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8666666666666667,
+                            "tokens_consumed": 6952,
+                            "tokens_remaining": 93048,
+                            "token_utilization_percentage": 6.95,
+                            "average_tokens_per_step": 1158.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 93.05,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 80,
+                            "consumption_rate": 1158.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 12.38,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8666666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_211144-lbbd.gov.uk",
+                        "start_time": "2025-08-07T21:11:44+01:00",
+                        "current_time": "2025-08-07T21:12:36+01:00",
+                        "duration_seconds": 52,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 6952,
+                        "tokens_remaining": 93048,
+                        "token_utilization_percentage": 6.95,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3391,
+                                "avg_per_call": 1695.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3561,
+                                "avg_per_call": 1780.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1158.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_211144-lbbd.gov.uk",
+                    "start_time": "2025-08-07T21:11:44+01:00",
+                    "current_time": "2025-08-07T21:12:36+01:00",
+                    "duration_seconds": 52,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 6952,
+                    "tokens_remaining": 93048,
+                    "token_utilization_percentage": 6.95,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3391,
+                            "avg_per_call": 1695.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3561,
+                            "avg_per_call": 1780.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1158.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

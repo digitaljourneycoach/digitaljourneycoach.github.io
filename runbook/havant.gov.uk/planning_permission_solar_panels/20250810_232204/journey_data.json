@@ -1,0 +1,249 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T23:22:04+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "havant.gov.uk",
+                "Council Name": "Havant Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "PLANNING DEVELOPMENT SERVICES WEEKLY LIST OF ...",
+                        "link": "https://www.havant.gov.uk/media/10319/download?inline",
+                        "snippet": "Mar 31, 2025 ... The attached list contains details of applications for planning permission submitted to Havant Borough ... Proposal. Proposed solar panels. APP/25\u00a0..."
+                    },
+                    {
+                        "title": "PLANNING DEVELOPMENT SERVICES WEEKLY LIST OF ...",
+                        "link": "https://www.havant.gov.uk/media/9508/download?inline",
+                        "snippet": "Dec 19, 2023 ... The attached list contains details of applications for planning permission ... Proposed installation of photovoltaic solar panels on roof. APP/23\u00a0..."
+                    },
+                    {
+                        "title": "Havant Borough Council Borough Design Guide Supplementary ...",
+                        "link": "https://www.havant.gov.uk/sites/default/files/documents/Borough%20Design%20Guide%20SPD%20V2%20with%20Copyright.pdf",
+                        "snippet": "In conservation areas solar panels on walls would not be permitted development. They would need planning permission and it is likely that they would be refused\u00a0..."
+                    },
+                    {
+                        "title": "PLANNING DEVELOPMENT SERVICES WEEKLY LIST OF ...",
+                        "link": "https://www.havant.gov.uk/media/8932/download?inline=",
+                        "snippet": "Nov 12, 2022 ... Minor Material Amendment to garage roof pitch to provide space for solar panels pursuant to planning permission APP/18/00659. APP/22/00969."
+                    },
+                    {
+                        "title": "Planning services - Overview | Havant Borough Council",
+                        "link": "https://www.havant.gov.uk/planning/planning-services-overview",
+                        "snippet": "Page Contents. Upcoming changes to the planning service; Do I need planning permission? Contact planning."
+                    },
+                    {
+                        "title": "PLANNING DEVELOPMENT SERVICES WEEKLY LIST OF ...",
+                        "link": "https://www.havant.gov.uk/media/9030/download?inline=",
+                        "snippet": "Jan 17, 2023 ... The attached list contains details of applications for planning permission ... Proposal. Installation of solar panels on existing flat roof of\u00a0..."
+                    },
+                    {
+                        "title": "PLANNING DEVELOPMENT SERVICES WEEKLY LIST OF ...",
+                        "link": "https://www.havant.gov.uk/media/10104/download?inline",
+                        "snippet": "Nov 4, 2024 ... replacement dwelling including solar panels and flood defences. APP/24/00746. Officer: Tina Pickup. Valid on: 17 October 2024. App Type: FULL."
+                    },
+                    {
+                        "title": "PLANNING DEVELOPMENT SERVICES WEEKLY LIST OF ...",
+                        "link": "https://www.havant.gov.uk/media/9918/download?inline",
+                        "snippet": "Jul 9, 2024 ... The attached list contains details of applications for planning permission ... To install PV solar panels and wind turbine. To build a workshop\u00a0..."
+                    },
+                    {
+                        "title": "PLANNING DEVELOPMENT SERVICES WEEKLY LIST OF ...",
+                        "link": "https://www.havant.gov.uk/media/9023/download?inline=",
+                        "snippet": "Dec 28, 2022 ... ... applications for planning permission submitted to Havant ... Installation of 6 solar panels on the front roof and 6 solar panels on the."
+                    },
+                    {
+                        "title": "PLANNING DEVELOPMENT SERVICES WEEKLY LIST OF ...",
+                        "link": "https://www.havant.gov.uk/media/9251/download?inline=",
+                        "snippet": "Apr 11, 2023 ... The attached list contains details of applications for planning permission ... Single storey rear extension, solar panels and loft conversion."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "PLANNING DEVELOPMENT SERVICES WEEKLY LIST OF ... (23 December 2023)",
+                                "Source": "https://www.havant.gov.uk/media/9508/download?inline",
+                                "Key Strengths": [
+                                    "Provides a weekly list of recently submitted planning applications with one application detailing the proposed installation of photovoltaic solar panels on roof.",
+                                    "Official source of Havant Borough Council's planning information.",
+                                    "The application is still under consideration, making it relevant for potential follow-up updates."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link provides a list of recently submitted applications with one specific case of solar panels installation on the roof, making it relevant to the customer's interest in council customer information related to solar panels. Furthermore, it comes from an official source and is still under evaluation."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Havant Borough Council Borough Design Guide Supplementary ...",
+                                "Source": "https://www.havant.gov.uk/sites/default/files/documents/Borough%20Design%20Guide%20SPD%20V2%20with%20Copyright.pdf",
+                                "Key Strengths": [
+                                    "Addresses regulations for solar panels in conservation areas.",
+                                    "Provides information on planning permission requirements and conditions.",
+                                    "Official document from Havant Borough Council."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "With the knowledge that solar panels on walls may not be permitted development, this document provides detailed information regarding regulations for installing solar panels in conservation areas, which can help individuals or contractors better understand their options. The document is officially produced by Havant Borough Council."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "PLANNING DEVELOPMENT SERVICES WEEKLY LIST OF ... (November 12, 2022)",
+                                "Source": "https://www.havant.gov.uk/media/8932/download?inline=",
+                                "Key Strengths": [
+                                    "Includes an application for a modification to a garage roof pitch to provide space for solar panels.",
+                                    "Official source of Havant Borough Council's planning information.",
+                                    "Gives context and details about the approved minor material amendment."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link provides a case where solar panels were added as part of an approved modification, demonstrating how such changes can be properly executed under planning regulations. The document is officially produced by Havant Borough Council."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Planning services - Overview | Havant Borough Council",
+                                "Source": "https://www.havant.gov.uk/planning/planning-services-overview",
+                                "Key Strengths": [
+                                    "Contains up-to-date information about the planning service and planning permission requirements.",
+                                    "Official Havant Borough Council resource.",
+                                    "Provides a helpful starting point for understanding the process."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link is an overview of Havant Borough Council's planning services, which includes important information about when planning permission may be needed. The document comes from an official source and can provide a good starting point for individuals or contractors seeking to understand the process."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "PLANNING DEVELOPMENT SERVICES WEEKLY LIST OF ... (December 28, 2022)",
+                                "Source": "https://www.havant.gov.uk/media/9023/download?inline=",
+                                "Key Strengths": [
+                                    "Includes information about an application to install solar panels on a front roof.",
+                                    "Official source of Havant Borough Council's planning information.",
+                                    "The application is still under consideration, making it relevant for potential follow-up updates."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Although the context provided in this document is less specific than other recommendations, it pertains to an application for installing solar panels on a front roof\u2014a relevant topic for those interested in Havant Borough Council customer information regarding solar panel installation. The document is officially produced by Havant Borough Council and provides details about a recently submitted planning application."
+                            }
+                        ],
+                        "Analysis Notes": "All items were analyzed based on relevance to the question, quality, and content. The top 5 recommendations offered contextual information, specific cases, regulations, or helpful starting points for individuals or contractors seeking information regarding Havant Borough Council customer information about solar panel installation.",
+                        "Recommendations Notes": "The recommended links focus on planning applications related to solar panels, official documents providing valuable guidance on planning permission requirements and solar panel regulations for conservation areas, as well as an overview of the planning service."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

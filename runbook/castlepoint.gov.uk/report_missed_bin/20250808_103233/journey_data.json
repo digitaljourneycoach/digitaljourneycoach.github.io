@@ -1,0 +1,672 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T10:32:33+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "castlepoint.gov.uk",
+                "Council Name": "Castle Point Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed collection | CastlePoint",
+                        "link": "https://www.castlepoint.gov.uk/missed-collections/",
+                        "snippet": "Report a missed collection by emailing recycling@castlepoint.gov.uk or by calling us on 01268 882200."
+                    },
+                    {
+                        "title": "Report it | CastlePoint",
+                        "link": "https://www.castlepoint.gov.uk/report-it/",
+                        "snippet": "Report Street Problem, Missed Collection, Moving Home, Council Housing Repair, Anti-social Behaviour and more."
+                    },
+                    {
+                        "title": "Christmas | CastlePoint",
+                        "link": "https://www.castlepoint.gov.uk/christmas/",
+                        "snippet": "What additional items can I recycle over Chritmas? When are my recycling and refuse collections over Christmas? How do I report a missed collection over\u00a0..."
+                    },
+                    {
+                        "title": "Refuse and Recycling | CastlePoint",
+                        "link": "https://www.castlepoint.gov.uk/recycling/",
+                        "snippet": "... recycling, food waste and black bin waste for their collections. Any business ... Report a missed collection \u00b7 How do I recycle... (A to Z of Waste). Your\u00a0..."
+                    },
+                    {
+                        "title": "Home Page | CastlePoint",
+                        "link": "https://www.castlepoint.gov.uk/",
+                        "snippet": "Check your bin date; Consultations. Benefits. Benefits \u00b7 Universal credit ... Report a missed collection \u00b7 Waste and Recycling Consultation. Services. Street\u00a0..."
+                    },
+                    {
+                        "title": "Forms | CastlePoint",
+                        "link": "https://www.castlepoint.gov.uk/forms/",
+                        "snippet": "Report it. Report Street Problem, Missed Collection, Moving Home, Council Housing Repair, Anti-social Behaviour and more. Back to top of page Print this page\u00a0..."
+                    },
+                    {
+                        "title": "Council services | CastlePoint",
+                        "link": "https://www.castlepoint.gov.uk/council-services/",
+                        "snippet": "My collection has been missed \u00b7 More on Recycling. HP - Building Control ... Report a Street Problem. Health and Wellbeing. Health and Wellbeing. Health and\u00a0..."
+                    },
+                    {
+                        "title": "Pink Sack FAQ's | CastlePoint",
+                        "link": "https://www.castlepoint.gov.uk/pink-sack/",
+                        "snippet": "Each property receives two rolls of 39 pink sacks per year. 2023 annual delivery has been completed. Cut-Off date to report any missed delivery is 15/10/2023."
+                    },
+                    {
+                        "title": "Castle Point Plan Initial Community and Stakeholder Engagement ...",
+                        "link": "https://consultation.castlepoint.gov.uk/planning/castle-point-plan-your-community-your-views/results/initialengagementoutcomesreport2023.pdf",
+                        "snippet": "\u2022 Levelling Up has stated not necessary to report. \u2022 ECC \u2013 Lee Scott has been ... The Essex Waste will not replace the need for LPA to prepare a Water\u00a0..."
+                    },
+                    {
+                        "title": "The Castle Point Plan 2023-2043",
+                        "link": "https://consultation.castlepoint.gov.uk/planning/castle-point-plan-issues-and-options/user_uploads/issues-and-options-consultation-document-1.pdf",
+                        "snippet": "At this consultation stage a scoping report which assesses the potential impacts of each borough-wide development option has been prepared. This is available\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.castlepoint.gov.uk/missed-collections/",
+                        "title": "Report a missed collection | CastlePoint",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly related to reporting a missed council service which the user specifically inquired about.",
+                            "Provides multiple options for reporting a missed collection, such as emailing or calling the council."
+                        ],
+                        "reasoning": "The provided snippet clearly indicates an option for reporting a missed collection service. This is relevant to the user's requirement and provides multiple methods for doing so, which increases its relevance and usefulness.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "4"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed collection | CastlePoint",
+                                "Source": "https://www.castlepoint.gov.uk/missed-collections/",
+                                "Key Strengths": [
+                                    "Directly related to reporting a missed council service which the user specifically inquired about.",
+                                    "Provides multiple options for reporting a missed collection, such as emailing or calling the council."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The provided snippet clearly indicates an option for reporting a missed collection service. This is relevant to the user's requirement and provides multiple methods for doing so, which increases its relevance and usefulness."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Report it | CastlePoint",
+                                "Source": "https://www.castlepoint.gov.uk/report-it/",
+                                "Key Strengths": [
+                                    "Offers a one-stop solution for reporting various council services, including missed collections.",
+                                    "Enables users to report other council-related issues as well."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The provided snippet indicates that the link offers several options for reporting various council services, and missed collection is one of them. The page is likely to have multiple options available for addressing users' different needs related to council services."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Refuse and Recycling | CastlePoint",
+                                "Source": "https://www.castlepoint.gov.uk/recycling/",
+                                "Key Strengths": [
+                                    "Covers multiple topics related to council waste management, such as recycling and bin collection schedules.",
+                                    "Provides information on reporting a missed collection at the bottom of the page."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The provided snippet indicates that the link covers multiple aspects of council waste management, including recycling. The user's question is related to council services, and this site likely contains information relevant to the user's needs."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Home Page | CastlePoint",
+                                "Source": "https://www.castlepoint.gov.uk/",
+                                "Key Strengths": [
+                                    "Serves as a starting point for finding various council services, including waste management and collection.",
+                                    "Provides information on how to report a missed collection."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The provided snippet indicates that the link serves as a primary platform for accessing several council services. While the information related to missed collections may be less explicit, it is still possible that the user can find relevant information on the page."
+                            }
+                        ],
+                        "Analysis Notes": "Some of the items in the list appear to offer general information about castlepoint.gov.uk, but do not appear to provide specific options for reporting a missed council collection. These may still be useful resources for users seeking other council services.",
+                        "Recommendations Notes": "Items were ranked based on their relevance to the user's question and ability to directly address the issue of reporting a missed council collection."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 81.25,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Report a missed collection | CastlePoint",
+                            "Source": "https://www.castlepoint.gov.uk/missed-collections/",
+                            "Reasoning": "The provided snippet clearly indicates an option for reporting a missed collection service, which directly addresses the user's requirement, and provides multiple methods for doing so.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Report it | CastlePoint",
+                            "Source": "https://www.castlepoint.gov.uk/report-it/",
+                            "Reasoning": "The link offers a one-stop solution for reporting various council services, including missed collections, and is likely to have multiple options available for addressing users' different needs related to council services.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Refuse and Recycling | CastlePoint",
+                            "Source": "https://www.castlepoint.gov.uk/recycling/",
+                            "Reasoning": "The provided snippet indicates that the link covers multiple aspects of council waste management, including recycling. The user's question is related to council services, and this site likely contains information relevant to the user's needs.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.castlepoint.gov.uk/missed-collections/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.castlepoint.gov.uk/missed-collections/",
+                        "analysis": {
+                            "url": "https://www.castlepoint.gov.uk/missed-collections/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T10:32:33+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T10:32:55+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html;charset=UTF-8",
+                            "content_length": 29016,
+                            "response_time": 0.423,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.423s)",
+                                    "Content successfully retrieved (29016 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.4235348701477051,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.castlepoint.gov.uk/missed-collections/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.castlepoint.gov.uk/missed-collections/",
+                        "content": " Here's the cleaned and semantically structured HTML with only the central editorial content of the page:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head></head>\n<body>\n  <main id=\"main-page-content\" class=\"main-article-area-7\">\n    <div class=\"placement-inner clearfix\">\n      <div class=\"content-item single-content content-wrapper no-main-image-display\">\n        <div class=\"content-item-inner\">\n          <h2>Missing Collections</h2>\n          <p>Before reporting a missed collection, please check if your waste was presented:</p>\n          <ul class=\"no-styling-list\">\n            <li>on the correct collection day*</li>\n            <li>by 7am on the day of collection</li>\n            <li>without contamination**</li>\n          </ul>\n          <p><br></p>\n          <h2>Reporting a missed collection</h2>\n          <p>If you have checked the information above, please report a missed collection by emailing <a href=\"mailto:recycling@castlepoint.gov.uk\"><strong>recycling@castlepoint.gov.uk</strong></a> or by calling us on 01268 882200.</p>\n          <p>&nbsp;</p>\n          <h2>Additional information</h2>\n          <p>Missed collections must be reported within 2 working days of the correct collection day.</p>\n          <p>We will try to collect your reported missed collection at the earliest possible time as resources allow.</p>\n        </div>\n      </div>\n    </div>\n  </main>\n</body>\n</html>\n```\n\nThis output contains only the main body content of the page, with its structure intact in semantic HTML tags (`<h2>` for headings, `<ul>` and `<li>` for ordered lists, and `<p>` for paragraphs). All unnecessary elements such as navigation, sidebars, and cookie consent forms have been removed.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 12.87717890739441,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.castlepoint.gov.uk/missed-collections/",
+                        "analysis": {
+                            "persona": "PERSONAL PERSPECTIVE",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "Partial",
+                                    "confidence": "60%",
+                                    "reasoning": "The content explains the steps required before reporting a missed collection, which includes checking if the waste was presented on the correct day, by 7am, and without contamination. However, it does not explicitly state what to do if a resident forgot to put their bin out on the collection day. It only mentions reporting a missed collection through email or phone call if the other conditions are met.",
+                                    "next_actions": "Check the website for any specific procedures related to late bin placement reporting, and report a missed collection according to the provided steps if necessary."
+                                }
+                            ],
+                            "overall_assessment": "While the content does provide steps for reporting a missed collection, it lacks clarity on what to do specifically when a resident forgets to put their bin out. A more detailed process involving late placement of bins would enhance user experience and address this need effectively."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.375406980514526,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.castlepoint.gov.uk/missed-collections/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_103233-castlepoint.gov.uk",
+                    "analysis_timestamp": "2025-08-08T10:33:14+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6833333333333333,
+                            "tokens_consumed": 6108,
+                            "tokens_remaining": 23892,
+                            "token_utilization_percentage": 20.36,
+                            "average_tokens_per_step": 1018
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 79.64,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 23,
+                            "consumption_rate": 1018,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.76,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_103233-castlepoint.gov.uk",
+                        "start_time": "2025-08-08T10:32:33+01:00",
+                        "current_time": "2025-08-08T10:33:14+01:00",
+                        "duration_seconds": 41,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6108,
+                        "tokens_remaining": 23892,
+                        "token_utilization_percentage": 20.36,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2985,
+                                "avg_per_call": 1492.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3123,
+                                "avg_per_call": 1561.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1018
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_103233-castlepoint.gov.uk",
+                    "start_time": "2025-08-08T10:32:33+01:00",
+                    "current_time": "2025-08-08T10:33:14+01:00",
+                    "duration_seconds": 41,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6108,
+                    "tokens_remaining": 23892,
+                    "token_utilization_percentage": 20.36,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2985,
+                            "avg_per_call": 1492.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3123,
+                            "avg_per_call": 1561.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1018
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

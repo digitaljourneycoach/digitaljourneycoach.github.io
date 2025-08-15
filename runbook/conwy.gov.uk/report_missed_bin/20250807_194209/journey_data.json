@@ -1,0 +1,688 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T19:42:09+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "conwy.gov.uk",
+                "Council Name": "Conwy County Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a Missed Collection - Conwy County Borough Council",
+                        "link": "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Report-Missed-Collection.aspx",
+                        "snippet": ""
+                    },
+                    {
+                        "title": "Report a Missed Bin Collection",
+                        "link": "https://www.conwy.gov.uk/Contensis-Forms/erf/drenvfeedback.asp?iLangid=1&stype=missed%20bin%20collection",
+                        "snippet": "Report a Missed Bin Collection. Please tell us what service or issue you are contacting us about. Please include relevant information about your query."
+                    },
+                    {
+                        "title": "Request Replacement Recycling Containers - Conwy County ...",
+                        "link": "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Request-Replacement-Recycling-Containers.aspx",
+                        "snippet": "Home Resident Recycling and Waste Forms Request Recycling Containers ... Report a Missed Collection. Drag side panels here (optional). end content."
+                    },
+                    {
+                        "title": "Request a Wheelie Bin Repair or Replacement - Conwy County ...",
+                        "link": "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Repair-Replace-Wheeliebin.aspx",
+                        "snippet": "Home Resident Recycling and Waste Forms Request a Wheelie Bin Repair or Replacement ... Browser does not support script. In this section. Report a Missed\u00a0..."
+                    },
+                    {
+                        "title": "Request Replacement Boxes or Bags for Kerbside Recycling ...",
+                        "link": "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Request-Replacement-Boxes-or-Bags-for-Kerbside-Recycling.aspx",
+                        "snippet": "Home Resident Recycling and Waste Forms Request Replacement Boxes or Bags for Kerbside Recycling ... In this section. Report a Missed Collection. Drag side panels\u00a0..."
+                    },
+                    {
+                        "title": "ERF Service Standards",
+                        "link": "https://www.conwy.gov.uk/en/Council/assets/documents/ERF-Service-Standards/ERF-Service-Standards.pdf",
+                        "snippet": "your bins. \u2022 Make sure your bin lids are closed. \u2022 Make your refuse and recycling available and accessible by 7am. \u2022 Report missed collections as soon as\u00a0..."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://www.conwy.gov.uk/en/Council/Contact-Us/BSL-FAQ/Assets/documents/BSL-Making-a-complaint.docx",
+                        "snippet": "... missed waste or recycling, you should contact our Environment, Roads and Facilities Service. ... complaint to be investigated at Stage 2, with a response\u00a0..."
+                    },
+                    {
+                        "title": "Conwy County Borough Council Environment, Roads & Facilities ...",
+                        "link": "https://erf.reporting.conwy.gov.uk/en?type=18",
+                        "snippet": "Bins Broken, Bins Overflowing, Equipment Damaged or Defective, Fencing, Gates ... Please do not complete this report if you consider it to be an emergency."
+                    },
+                    {
+                        "title": "Complaint - Conwy County Borough Council",
+                        "link": "https://www.conwy.gov.uk/en/Council/Forms/Form-Complaint.aspx",
+                        "snippet": "If your complaint is urgent, please ring 01492 574000. Conwy County Borough Council will only use your contact details to process your Complaint."
+                    },
+                    {
+                        "title": "Search Results - Conwy County Borough Council",
+                        "link": "https://www.conwy.gov.uk/en/Council/searchresults.aspx?search_keywords=collection",
+                        "snippet": "Description: Find your waste and recycling collection days and download your collection calendar."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Report-Missed-Collection.aspx",
+                        "title": "Report a Missed Collection - Conwy County Borough Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly addressing the council's customer information needs on missed collections",
+                            "Provides a form for users to submit reports quickly and easily"
+                        ],
+                        "reasoning": "This link directly relates to reporting missed waste collection, which aligns with the user's need for council customer information. The provided link offers a dedicated form to address this issue, making it a clear and effective solution.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a Missed Collection - Conwy County Borough Council",
+                                "Source": "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Report-Missed-Collection.aspx",
+                                "Key Strengths": [
+                                    "Directly addressing the council's customer information needs on missed collections",
+                                    "Provides a form for users to submit reports quickly and easily"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link directly relates to reporting missed waste collection, which aligns with the user's need for council customer information. The provided link offers a dedicated form to address this issue, making it a clear and effective solution."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Report a Missed Bin Collection",
+                                "Source": "https://www.conwy.gov.uk/Contensis-Forms/erffeedback.asp?iLangid=1&stype=missed%20bin%20collection",
+                                "Key Strengths": [
+                                    "Addresses the need for reporting missed waste collection",
+                                    "Includes a section to provide relevant information about the query"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Though not as straightforward as the first recommendation, this link still provides a means for users to report issues related to missed waste collections. The inclusion of a text box for detailed queries increases its usefulness."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Request a Wheelie Bin Repair or Replacement - Conwy County ...",
+                                "Source": "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Repair-Replace-Wheeliebin.aspx",
+                                "Key Strengths": [
+                                    "Addresses the need for repair or replacement of wheelie bins",
+                                    "Provides a form for users to submit requests quickly and easily"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While not directly about waste collection, this link provides essential information for residents who may have damaged wheels or other issues with their wheelie bins. The offered form enables users to request assistance easily."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Request Replacement Boxes or Bags for Kerbside Recycling ...",
+                                "Source": "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Request-Replacement-Boxes-or-Bags-for-Kerbside-Recycling.aspx",
+                                "Key Strengths": [
+                                    "Addresses the need for replacement recycling containers",
+                                    "Provides a form for users to submit requests quickly and easily"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link addresses the need for residents to obtain replacements for damaged or lost kerbside recycling containers. The provided form enables users to request assistance easily."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Search Results - Conwy County Borough Council",
+                                "Source": "https://www.conwy.gov.uk/en/Council/searchresults.aspx?search_keywords=collection",
+                                "Key Strengths": [
+                                    "Provides comprehensive search results related to waste and recycling collections",
+                                    "Allows users to download collection calendars"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The search results may contain multiple links that can help resolve various waste collection-related questions. Although the user might need to explore different search results, this page offers a more comprehensive solution."
+                            }
+                        ],
+                        "Analysis Notes": "Several of the given links pertain to council customer information needs, such as missed collections, replacement containers, and reporting issues. However, some links are less relevant, including those that offer forms for making complaints or reading service standards.",
+                        "Recommendations Notes": "The recommendations prioritize direct links to specific forms related to waste collection and recycling needs, but the fifth recommendation offers a more comprehensive solution for users searching for various collection-related information."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "80",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 81,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Report a Missed Collection - Conwy County Borough Council",
+                            "Source": "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Report-Missed-Collection.aspx",
+                            "Reasoning": "This link directly addresses the user's immediate need for reporting a missed waste collection and provides a streamlined solution by offering a dedicated form.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Report a Missed Bin Collection",
+                            "Source": "https://www.conwy.gov.uk/Contensis-Forms/erffeedback.asp?iLangid=1&stype=missed%20bin%20collection",
+                            "Reasoning": "Although not as straightforward, this link still provides a means for users to report missed waste collections, and the inclusion of a text box for relevant details enhances its usefulness.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Request a Wheelie Bin Repair or Replacement - Conwy County Borough Council",
+                            "Source": "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Repair-Replace-Wheeliebin.aspx",
+                            "Reasoning": "While not directly about waste collection, this link is useful as it provides residents with a means to obtain assistance for damaged wheelie bins.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Report-Missed-Collection.aspx"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Report-Missed-Collection.aspx",
+                        "analysis": {
+                            "url": "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Report-Missed-Collection.aspx",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T19:42:09+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T19:42:58+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 30588,
+                            "response_time": 0.228,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.228s)",
+                                    "Content successfully retrieved (30588 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.22927021980285645,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Report-Missed-Collection.aspx"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Report-Missed-Collection.aspx",
+                        "content": " This is an HTML code for a webpage belonging to Conwy County Borough Council. It contains various sections, including a header with navigation menus, a search bar, a banner, and a section that allows users to enter their postcode to find local services. The body of the page also includes an A-Z index of all the council's services, along with a footer containing links to important pages like contact us, jobs, privacy policy, and more. There is a hidden input named \"__VIEWSTATEGENERATOR\" for maintaining state management in the server-side programming language ASP.NET. The page also includes various CSS classes for styling, JavaScript scripts, and Google Analytics code for tracking website usage data.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 10.404092073440552,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Report-Missed-Collection.aspx",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "High",
+                                    "confidence": "95",
+                                    "reasoning": "The webpage provides a specific service that allows users to report missed bin collections by entering their postcode and date of the missed collection. This directly addresses the resident's need of reporting a missed bin collection.",
+                                    "next_actions": "After accessing the page, the user should enter their postcode and the date of the missed collection to submit a request for collection."
+                                }
+                            ],
+                            "overall_assessment": {
+                                "Key gaps or areas for improvement": "The webpage could improve by providing clear instructions or a visual guide on how to correctly lay out bins for collection.",
+                                "Your overall satisfaction level": "85",
+                                "reasoning": "The webpage provides a straightforward, user-friendly service for reporting missed bin collections. However, it lacks information that might help residents avoid missing the collection in the first place."
+                            }
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.1040730476379395,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Forms/Form-Report-Missed-Collection.aspx"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_194209-conwy.gov.uk",
+                    "analysis_timestamp": "2025-08-07T19:43:14+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.0833333333333333,
+                            "tokens_consumed": 8734,
+                            "tokens_remaining": 91266,
+                            "token_utilization_percentage": 8.73,
+                            "average_tokens_per_step": 1455.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 91.27,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 62,
+                            "consumption_rate": 1455.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "95",
+                            "quality_scores": [
+                                "95"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "95",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 15.48,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.0833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_194209-conwy.gov.uk",
+                        "start_time": "2025-08-07T19:42:09+01:00",
+                        "current_time": "2025-08-07T19:43:14+01:00",
+                        "duration_seconds": 65,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 8734,
+                        "tokens_remaining": 91266,
+                        "token_utilization_percentage": 8.73,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 5593,
+                                "avg_per_call": 2796.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3141,
+                                "avg_per_call": 1570.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1455.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_194209-conwy.gov.uk",
+                    "start_time": "2025-08-07T19:42:09+01:00",
+                    "current_time": "2025-08-07T19:43:14+01:00",
+                    "duration_seconds": 65,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 8734,
+                    "tokens_remaining": 91266,
+                    "token_utilization_percentage": 8.73,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 5593,
+                            "avg_per_call": 2796.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3141,
+                            "avg_per_call": 1570.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1455.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

@@ -1,0 +1,671 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T10:35:29+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "leicester.gov.uk",
+                "Council Name": "Leicester City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed collection - Self",
+                        "link": "https://my.leicester.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-9825f700-98fe-44cd-8beb-1c8387726190/AF-Stage-8b985a84-1d95-4d79-ba07-d5a06a26a703/definition.json&redirectlink=/&cancelRedirectLink=/&noLoginPrompt=1",
+                        "snippet": "It will be used by Leicester City Council and our partners to deliver and improve services and fulfil our legal duties."
+                    },
+                    {
+                        "title": "Report a missed collection - Self",
+                        "link": "https://my.leicester.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-9825f700-98fe-44cd-8beb-1c8387726190/AF-Stage-8b985a84-1d95-4d79-ba07-d5a06a26a703/definition.json&redirectlink=%2FService%2FServiceRating%3Fserviceid%3DAF-Process-9825f700-98fe-44cd-8beb-1c8387726190%26service%3DR4%26postRatingRedirectUrl%3D%2Fmodule%2Fservices&cancelRedirectLink=%2F&category=AF-Category-4780cc3f-3f50-403c-a9c1-ca086b108ee2",
+                        "snippet": "Sign up for an account to manage your service requests and accounts with us. Creating an account saves you time with auto-completion of your contact\u00a0..."
+                    },
+                    {
+                        "title": "Phone and email us",
+                        "link": "https://www.leicester.gov.uk/contact-us/phone-and-email-us/",
+                        "snippet": "Please report all other environmental issues on Love Clean Streets. Waste Management. You can report a problem with your bins, missed collection or request a\u00a0..."
+                    },
+                    {
+                        "title": "Recycling and waste",
+                        "link": "https://www.leicester.gov.uk/your-environment/recycling-and-waste/",
+                        "snippet": "Find out about your household waste and recycling service, recycling centres, bulky waste collections, and also report environmental issues to us."
+                    },
+                    {
+                        "title": "Garden waste",
+                        "link": "https://www.leicester.gov.uk/your-environment/recycling-and-waste/garden-waste/",
+                        "snippet": "... waste you can purchase additional bin subscriptions. How do I report a missed collection? If your bin was put out before 7am on collection day and contained\u00a0..."
+                    },
+                    {
+                        "title": "2019 Garden Waste",
+                        "link": "https://www.leicester.gov.uk/media/184341/calendar-b-2019.pdf",
+                        "snippet": "For further information visit: leicester.gov.uk/gardenwaste. To report a missed bin visit: ... We do not return to empty bins that were not presented by 7am."
+                    },
+                    {
+                        "title": "Waste and recycling collections",
+                        "link": "https://www.leicester.gov.uk/your-environment/recycling-and-waste/household-waste-collections/",
+                        "snippet": "We will send out reminders via social media and on this website to help make sure you don't miss any collections. What can I put in my black general waste bin?"
+                    },
+                    {
+                        "title": "Chargeable Garden Waste Service - Terms and Conditions",
+                        "link": "https://www.leicester.gov.uk/media/180891/chargeable-garden-waste-terms-and-conditions.pdf",
+                        "snippet": "Jan 6, 2017 ... scheduled green bin collection day, customers should report their bin as having been missed by no later than. 6pm of the day following the\u00a0..."
+                    },
+                    {
+                        "title": "Love Clean Streets",
+                        "link": "https://www.leicester.gov.uk/your-environment/love-clean-streets/",
+                        "snippet": "You can use the app or website to report the following types of issues: Cleansing issues (such as fly-tipping, graffiti, litter or dog fouling)\u00a0..."
+                    },
+                    {
+                        "title": "Request orange recycling bags",
+                        "link": "https://www.leicester.gov.uk/your-environment/recycling-and-waste/orange-bag-recycling-service/",
+                        "snippet": "Leave the blue bag out on collection day; We will leave you a new roll of orange bags when we pick up your recycling. Can I request more bags online? You can\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://my.leicester.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-9825f700-98fe-44cd-8beb-1c8387726190/AF-Stage-8b985a84-1d95-4d79-ba07-d5a06a26a703/definition.json&redirectlink=/",
+                        "title": "Report a missed collection - Self",
+                        "confidence": 95,
+                        "strengths": [
+                            "Direct link for reporting a missed collection",
+                            "Does not require any account creation"
+                        ],
+                        "reasoning": "This link allows users to report a missedcollection instantly without the need for creating an account, making it quick and easy.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed collection - Self",
+                                "Source": "https://my.leicester.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-9825f700-98fe-44cd-8beb-1c8387726190/AF-Stage-8b985a84-1d95-4d79-ba07-d5a06a26a703/definition.json&redirectlink=/",
+                                "Key Strengths": [
+                                    "Direct link for reporting a missed collection",
+                                    "Does not require any account creation"
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "This link allows users to report a missedcollection instantly without the need for creating an account, making it quick and easy."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Phone and email us",
+                                "Source": "https://www.leicester.gov.uk/contact-us/phone-and-email-us/",
+                                "Key Strengths": [
+                                    "Multiple contact options",
+                                    "Covers all environmental issues"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link provides various contact methods for users to reach out to Leicester City Council regarding their environmental concerns, including but not limited to waste and recycling issues."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Recycling and waste",
+                                "Source": "https://www.leicester.gov.uk/your-environment/recycling-and-waste/",
+                                "Key Strengths": [
+                                    "Comprehensive information on recycling and waste management",
+                                    "Includes collection schedules"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link offers an overview of waste management services provided by Leicester City Council, including collection schedules and recycling information."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Garden waste",
+                                "Source": "https://www.leicester.gov.uk/your-environment/recycling-and-waste/garden-waste/",
+                                "Key Strengths": [
+                                    "Specific focus on garden waste",
+                                    "Information on missed collection reports"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link focuses on garden waste management services, providing relevant information such as how to manage garden waste and report missed collections."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Love Clean Streets",
+                                "Source": "https://www.leicester.gov.uk/your-environment/love-clean-streets/",
+                                "Key Strengths": [
+                                    "Mobile app and website for reporting environmental issues",
+                                    "Covers various types of environmental issues"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link offers a convenient tool for users to report environmental concerns, such as litter or dog fouling, via either the mobile app or website."
+                            }
+                        ],
+                        "Analysis Notes": "The search results included various pages related to waste management, recycling, and reporting environmental issues. Although some of the links were duplicate versions of the same page or irrelevant content, I was able to identify five highly relevant links for users looking for information on council services.",
+                        "Recommendations Notes": "Choosing the most suitable link for customers would depend on their specific needs. For example, individuals seeking immediate attention or multiple contact options might prefer 'Phone and email us' while those interested in garden waste management would find 'Garden waste' more helpful."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "95",
+                        "90",
+                        "85",
+                        "80",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 86,
+                    "max_confidence": "95"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Report a missed collection - Self",
+                            "Source": "https://my.leicester.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-9825f700-98fe-44cd-8beb-1c8387726190/AF-Stage-8b985a84-1d95-4d79-ba07-d5a06a26a703/definition.json&redirectlink=/",
+                            "Reasoning": "This link allows users to report a missed collection instantly without the need for creating an account, making it quick and easy.",
+                            "Confidence": "95"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Recycling and waste",
+                            "Source": "https://www.leicester.gov.uk/your-environment/recycling-and-waste/",
+                            "Reasoning": "This link offers an overview of waste management services provided by Leicester City Council, including collection schedules and recycling information.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Phone and email us",
+                            "Source": "https://www.leicester.gov.uk/contact-us/phone-and-email-us/",
+                            "Reasoning": "This link provides various contact methods for users to reach out to Leicester City Council regarding their environmental concerns, including but not limited to waste and recycling issues.",
+                            "Confidence": "90"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://my.leicester.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-9825f700-98fe-44cd-8beb-1c8387726190/AF-Stage-8b985a84-1d95-4d79-ba07-d5a06a26a703/definition.json&redirectlink=/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://my.leicester.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-9825f700-98fe-44cd-8beb-1c8387726190/AF-Stage-8b985a84-1d95-4d79-ba07-d5a06a26a703/definition.json&redirectlink=/",
+                        "analysis": {
+                            "url": "https://my.leicester.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-9825f700-98fe-44cd-8beb-1c8387726190/AF-Stage-8b985a84-1d95-4d79-ba07-d5a06a26a703/definition.json&redirectlink=/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T10:35:29+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T10:35:57+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 28525,
+                            "response_time": 1.832,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (1.832s)",
+                                    "Content successfully retrieved (28525 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 1.8334598541259766,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://my.leicester.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-9825f700-98fe-44cd-8beb-1c8387726190/AF-Stage-8b985a84-1d95-4d79-ba07-d5a06a26a703/definition.json&redirectlink=/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://my.leicester.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-9825f700-98fe-44cd-8beb-1c8387726190/AF-Stage-8b985a84-1d95-4d79-ba07-d5a06a26a703/definition.json&redirectlink=/",
+                        "content": " Here's the cleaned semantic HTML containing the central editorial content of the page:\n\n```html\n<section id=\"main-content\">\n  <div id=\"self-content\" class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-sm-12 text-center\">\n        <!-- Your registration screen code here -->\n      </div>\n    </div>\n  </div>\n</section>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 6.239912986755371,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://my.leicester.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-9825f700-98fe-44cd-8beb-1c8387726190/AF-Stage-8b985a84-1d95-4d79-ba07-d5a06a26a703/definition.json&redirectlink=/",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 4.501380920410156,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://my.leicester.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-9825f700-98fe-44cd-8beb-1c8387726190/AF-Stage-8b985a84-1d95-4d79-ba07-d5a06a26a703/definition.json&redirectlink=/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_103529-leicester.gov.uk",
+                    "analysis_timestamp": "2025-08-08T10:36:10+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6833333333333333,
+                            "tokens_consumed": 5548,
+                            "tokens_remaining": 24452,
+                            "token_utilization_percentage": 18.49,
+                            "average_tokens_per_step": 924.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 81.51,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 26,
+                            "consumption_rate": 924.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.76,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_103529-leicester.gov.uk",
+                        "start_time": "2025-08-08T10:35:29+01:00",
+                        "current_time": "2025-08-08T10:36:10+01:00",
+                        "duration_seconds": 41,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 5548,
+                        "tokens_remaining": 24452,
+                        "token_utilization_percentage": 18.49,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2590,
+                                "avg_per_call": 1295
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 2958,
+                                "avg_per_call": 1479
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 924.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_103529-leicester.gov.uk",
+                    "start_time": "2025-08-08T10:35:29+01:00",
+                    "current_time": "2025-08-08T10:36:10+01:00",
+                    "duration_seconds": 41,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 5548,
+                    "tokens_remaining": 24452,
+                    "token_utilization_percentage": 18.49,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2590,
+                            "avg_per_call": 1295
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 2958,
+                            "avg_per_call": 1479
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 924.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

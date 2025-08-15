@@ -1,0 +1,216 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T09:29:55+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "bromley.gov.uk",
+                "Council Name": "Bromley London Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report it \u2013 London Borough of Bromley",
+                        "link": "https://www.bromley.gov.uk/homepage/37/report-it",
+                        "snippet": "Dumped rubbish \u00b7 Graffiti and fly-posting \u00b7 Empty property \u00b7 Enviro-crime \u00b7 Food safety \u00b7 Fraud \u00b7 Incorrect parking \u00b7 Missed bin or recycling collection \u00b7 Noise\u00a0..."
+                    },
+                    {
+                        "title": "Recycling and waste collections - Household waste and recycling ...",
+                        "link": "https://www.bromley.gov.uk/household-waste-recycling/household-waste-recycling-collections",
+                        "snippet": "A missed collection cannot be reported, and you will have to wait until the next scheduled collection day. In the case of unforeseen circumstances such as poor\u00a0..."
+                    },
+                    {
+                        "title": "Recycling, rubbish and waste \u2013 London Borough of Bromley",
+                        "link": "https://www.bromley.gov.uk/recycling-rubbish-waste",
+                        "snippet": "Recycling, rubbish and waste. Recycling, rubbish and waste. Top tasks. Check your collection day \u00b7 Report missed collection \u00b7 Waste collection calendars \u00b7 Order\u00a0..."
+                    },
+                    {
+                        "title": "Bins/Waste, Rubbish, Recycling, Green, Bulky and Clinical Waste ...",
+                        "link": "https://www.bromley.gov.uk/customer-services/contact-us/2",
+                        "snippet": "Bins/Waste, Rubbish, Recycling, Green, Bulky and Clinical Waste Collections. Please choose from the options below. Report missed waste collections \u00b7 Order a new\u00a0..."
+                    },
+                    {
+                        "title": "What is your address? :: WasteWorks",
+                        "link": "https://www.bromley.gov.uk/GGWApplicationForm",
+                        "snippet": "Bins, rubbish and recycling \u00b7 Find your bin collection days \u00b7 Report a missed bin collection \u00b7 Order new or additional bins \u00b7 Subscribe to garden waste collection\u00a0..."
+                    },
+                    {
+                        "title": "Green box bottles, cans and plastic recycling collection - Household ...",
+                        "link": "https://www.bromley.gov.uk/household-waste-recycling/household-waste-recycling-collections/4",
+                        "snippet": "You can also report an ongoing problem with your waste or recycling collection - for instance, if your waste has been missed on a number of occasions. Are\u00a0..."
+                    },
+                    {
+                        "title": "Missed Bin collection - Viewing a problem :: London Borough of ...",
+                        "link": "https://fix.bromley.gov.uk/report/367575",
+                        "snippet": "The communal bin, supplied by Bromley Council, for the use of residents of 53-61 Highlands Road has not been emptied today. Updates. Thank you for your report,\u00a0..."
+                    },
+                    {
+                        "title": "Garden bin collection missed - Viewing a problem :: London ...",
+                        "link": "https://fix.bromley.gov.uk/report/3828698",
+                        "snippet": "Thank you for your report, this is now being investigated. \u00b7 Issues such as missed collections, ordering of recycling containers or applying for garden waste\u00a0..."
+                    },
+                    {
+                        "title": "Black box paper recycling collection - Household waste and ...",
+                        "link": "https://www.bromley.gov.uk/household-waste-recycling/household-waste-recycling-collections/3",
+                        "snippet": "We cannot collect from wheeled bins as if the bin does not meet the necessary ... Report missed collection. Report missed collection \u00b7 Privacy \u00b7 Cookies\u00a0..."
+                    },
+                    {
+                        "title": "London Borough of Bromley - Report a problem in Bromley's streets ...",
+                        "link": "https://fix.bromley.gov.uk/",
+                        "snippet": "To report other kinds of problems like missed bins use our online report it forms. How to report a problem. Enter a Bromley postcode, or street name and area\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report it \u2013 London Borough of Bromley",
+                                "Source": "https://www.bromley.gov.uk/homepage/37/report-it",
+                                "Key Strengths": [
+                                    "Direct link to report a missed bin collection",
+                                    "Covers various types of civic issues including wasted collections"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The 'Report it' service is designed for reporting problems with waste collections among other civic issues, making it a good choice for reporting a missed bin collection."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Bins/Waste, Rubbish, Recycling, Green, Bulky and Clinical Waste ...",
+                                "Source": "https://www.bromley.gov.uk/customer-services/contact-us/2",
+                                "Key Strengths": [
+                                    "Direct link to report a missed bin collection"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This page offers various waste collection services and allows users to report a missed collection. However, it might not be specifically designed for bin collections."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Missed Bin collection - Viewing a problem :: London Borough of ...",
+                                "Source": "https://fix.bromley.gov.uk/report/367575",
+                                "Key Strengths": [
+                                    "A specific portal to report missed bin collections"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This portal is dedicated to reporting missed bin collections, increasing its relevance for this particular issue."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Garden bin collection missed - Viewing a problem :: London ...",
+                                "Source": "https://fix.bromley.gov.uk/report/3828698",
+                                "Key Strengths": [
+                                    "A specific portal to report garden bin collections"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The reported issue is related to a garden bin collection, making this portal suitable for the task despite it not being specifically dedicated to missed bin collections."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "London Borough of Bromley - Report a problem in Bromley's streets ...",
+                                "Source": "https://fix.bromley.gov.uk/",
+                                "Key Strengths": [
+                                    "Offers various civic issue reporting services, including missed waste collections"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "While this page doesn't have a direct link for missed bin collections, it does offer an option to report other types of problems like wasted collections."
+                            }
+                        ],
+                        "Analysis Notes": "Considering the provided search results are all about waste collection services from the London Borough of Bromley, I chose items that contained links and keywords relevant to reporting or checking on missed bin collections. The confidence ratings were assigned based on the direct relevance to missed bin collections and whether the page offers a specific portal for this purpose.",
+                        "Recommendations Notes": "The top five recommendations provide direct links or portals to specifically report missed waste/bin collections or offer options to do so among other services. They all provide relevant information regarding waste collection management in Bromley."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "90",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

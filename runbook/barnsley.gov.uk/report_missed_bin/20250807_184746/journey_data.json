@@ -1,0 +1,232 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T18:47:46+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "barnsley.gov.uk",
+                "Council Name": "Barnsley Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed bin",
+                        "link": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-missed-bin/",
+                        "snippet": "If your street has been missed but isn't listed as a known disruption, you can report the missed collection using our online form below."
+                    },
+                    {
+                        "title": "Disruptions to bin collections",
+                        "link": "https://www.barnsley.gov.uk/alerts/disruptions-to-bin-collections/",
+                        "snippet": "... report a missed bin online. Current disruptions. If your bin has been missed and your street is listed below, please leave it out and we'll come back for\u00a0..."
+                    },
+                    {
+                        "title": "Bins, rubbish and recycling",
+                        "link": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/",
+                        "snippet": "Order a bin \u00b7 Get an extra grey, blue or brown bin \u00b7 Bulky waste collections \u00b7 Ask for a new bin collection \u00b7 Report a missed bin \u00b7 Report a spilled bin."
+                    },
+                    {
+                        "title": "Tell us about it",
+                        "link": "https://www.barnsley.gov.uk/tell-us-about-it/",
+                        "snippet": "Report something to us. This could be things such as child or adult abuse, missed bins, fly-tipping or potholes."
+                    },
+                    {
+                        "title": "Report a spilled bin",
+                        "link": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-spilled-bin/",
+                        "snippet": "Report a spilled bin if we've spilled any waste when we were emptying your bins."
+                    },
+                    {
+                        "title": "Home Services Contact us",
+                        "link": "https://www.barnsley.gov.uk/services/contact-us/",
+                        "snippet": "(Please don't use this form to tell us about a missed bin collection, as these reports won't be actioned or responded to. Visit our bins, rubbish and recycling\u00a0..."
+                    },
+                    {
+                        "title": "Putting your bin out for collection",
+                        "link": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/putting-your-bin-out-for-collection/",
+                        "snippet": "bin is damaged \u2013 bins that are cracked, have missing wheels or a broken ... report a missed bin. See also... Report a spilled bin \u00b7 What goes in your bin\u00a0..."
+                    },
+                    {
+                        "title": "Site map",
+                        "link": "https://www.barnsley.gov.uk/site-map/",
+                        "snippet": "Get help to put your bins out \u00b7 Order a bin \u00b7 Get an extra grey, blue or brown bin \u00b7 Report a missed bin \u00b7 Report a spilled bin \u00b7 Report an abandoned bin\u00a0..."
+                    },
+                    {
+                        "title": "Barnsley \u2013 the place of possibilities",
+                        "link": "https://www.barnsley.gov.uk/",
+                        "snippet": "Bulky waste collections. Tell us about it Speech bubble icon \u00b7 Change Council Tax details Missed bin collections Report a pothole Report fly-tipping. A - Z of\u00a0..."
+                    },
+                    {
+                        "title": "Order a bin",
+                        "link": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/order-a-bin/",
+                        "snippet": "... missing bins. What you can order. Grey or green bin - if yours is damaged ... If you've ordered a bin to replace one you've reported as damaged, we'll\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed bin",
+                                "Source": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-missed-bin/",
+                                "Key Strengths": [
+                                    "Detailed instructions for reporting a missed bin collection.",
+                                    "Direct access to the required service."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link provides a direct method to report a missed bin collection and seems to best fit the customer's information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Disruptions to bin collections",
+                                "Source": "https://www.barnsley.gov.uk/alerts/disruptions-to-bin-collections/",
+                                "Key Strengths": [
+                                    "Information about disruptions in bin collections.",
+                                    "Link to report a missed bin online."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides information about current disruptions as well as the option to report a missed bin, which could be helpful for customers seeking updates on service status."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Bins, rubbish and recycling",
+                                "Source": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/",
+                                "Key Strengths": [
+                                    "Overview of available bin services.",
+                                    "Links to various related services."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While this link does not directly address the specific need for council customer information about a missed bin, it provides an overview of related services which customers may find helpful."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Order a bin",
+                                "Source": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/order-a-bin/",
+                                "Key Strengths": [
+                                    "Option to order additional bins.",
+                                    "Information about replacing damaged bins."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link may be helpful for customers who are experiencing issues with their current bins and need to replace or order additional ones."
+                            }
+                        ],
+                        "Analysis Notes": "The search results contained a mix of relevant and semi-relevant items related to council customer information needs about bin collections. Some links directly provided access to services for reporting missed or damaged bins, while others provided general overviews of available services.",
+                        "Recommendations Notes": "While links 3 and 10 were not as directly relevant to the requested information, they still provide useful information that could assist customers in understanding and managing their bin services."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 83.75,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Report a missed bin",
+                            "Source": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-missed-bin/",
+                            "Reasoning": "This link provides a direct method to report a missed bin collection and seems to best fit the customer's information needs.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Disruptions to bin collections",
+                            "Source": "https://www.barnsley.gov.uk/alerts/disruptions-to-bin-collections/",
+                            "Reasoning": "This link provides information about current disruptions as well as the option to report a missed bin, which could be helpful for customers seeking updates on service status.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Bins, rubbish and recycling",
+                            "Source": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/",
+                            "Reasoning": "While this link does not directly address the specific need for council customer information about a missed bin, it provides an overview of related services which customers may find helpful.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

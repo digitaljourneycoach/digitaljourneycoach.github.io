@@ -1,0 +1,664 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T00:55:39+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "lambeth.gov.uk",
+                "Council Name": "The London Borough of Lambeth"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Solar panels | Lambeth Council",
+                        "link": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/solar-panels",
+                        "snippet": "Installing solar panels and equipment on residential buildings and land may be permitted development with no need to apply to the council for planning\u00a0..."
+                    },
+                    {
+                        "title": "Design guidance on retrofitting | Lambeth Council",
+                        "link": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/design-guidance-retrofitting",
+                        "snippet": "Solar panels \u00b7 Air source heat pumps (ASHPs) \u00b7 Double and ... planning permission from the council unless the proposals relate to a statutory listed building."
+                    },
+                    {
+                        "title": "Find out if you need planning permission | Lambeth Council",
+                        "link": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/find-out-if-you-need-planning-permission",
+                        "snippet": "If you live in a house (not a flat or a maisonette) or run a business, you may be able to make alterations to your property without needing to make a\u00a0..."
+                    },
+                    {
+                        "title": "Air source heat pumps (ASHPs) | Lambeth Council",
+                        "link": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/air-source-heat-pumps-ashps",
+                        "snippet": "Solar panels; Air ... Installing an ASHP on domestic premises may be permitted development with no need to apply to the council for planning permission."
+                    },
+                    {
+                        "title": "Building Alterations, Extensions and Retrofit",
+                        "link": "https://www.lambeth.gov.uk/sites/default/files/2022-07/Revised_Draft_Lambeth_Design_Guide_SPD_P4_Building_alterations_and_extensions%5B1%5D.pdf",
+                        "snippet": "... permitted development rights and therefore do not require planning permission. These works can include, in some circumstances, roof lights and solar PV panels."
+                    },
+                    {
+                        "title": "Green roofs | Lambeth Council",
+                        "link": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/green-roofs",
+                        "snippet": "Solar panels \u00b7 Air source heat pumps (ASHPs) ... If your installation does not meet government requirements, you will need to apply for planning permission."
+                    },
+                    {
+                        "title": "External wall insulation | Lambeth Council",
+                        "link": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/external-wall-insulation",
+                        "snippet": "Solar panels \u00b7 Air ... If your installation will materially change the external appearance of the building, you will need to apply for planning permission."
+                    },
+                    {
+                        "title": "Double and triple glazed windows | Lambeth Council",
+                        "link": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/double-triple-glazed-windows",
+                        "snippet": "... permitted development with no need to apply to the council for planning permission ... Solar panels \u00b7 Air source heat pumps (ASHPs); Double and triple glazed\u00a0..."
+                    },
+                    {
+                        "title": "Planning Weekly List & Decisions - London",
+                        "link": "https://www.lambeth.gov.uk/sites/default/files/2024-07/12_07_24_planning_weekly_list.pdf",
+                        "snippet": "Feb 27, 2024 ... ... Installation) of planning permission 24/00134/FUL. (Installation of 1 ... Approval of details pursuant to conditions 11 (Photovoltaic Panels) and\u00a0..."
+                    },
+                    {
+                        "title": "Planning Weekly List & Decisions - London",
+                        "link": "https://www.lambeth.gov.uk/sites/default/files/2024-06/14_06_2024_planning_weekly_list.pdf",
+                        "snippet": "May 14, 2024 ... ... installation of solar panels onto the flat roofs at the rear. ... Variation of Condition 2 (Plans) of planning permission 24/04123/RG4 (\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/solar-panels",
+                        "title": "Solar panels | Lambeth Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Detailed guide on how to install solar panels without needing planning permission in most cases.",
+                            "Includes information about permitted development rights for solar panels."
+                        ],
+                        "reasoning": "The item specifically mentions the installation of solar panels and their related permit-free status, making it directly applicable to the user's question.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Solar panels | Lambeth Council",
+                                "Source": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/solar-panels",
+                                "Key Strengths": [
+                                    "Detailed guide on how to install solar panels without needing planning permission in most cases.",
+                                    "Includes information about permitted development rights for solar panels."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The item specifically mentions the installation of solar panels and their related permit-free status, making it directly applicable to the user's question."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Design guidance on retrofitting | Lambeth Council",
+                                "Source": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/design-guidance-retrofitting",
+                                "Key Strengths": [
+                                    "Comprehensive guide on various retrofitted solutions, including solar panels.",
+                                    "Dedicated section for government requirements and necessary applications"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The item discusses the installation of several retrofitting options, with a specific mention of solar panels, making it relevant to the user's needs."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Air source heat pumps (ASHPs) | Lambeth Council",
+                                "Source": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/air-source-heat-pumps-ashps",
+                                "Key Strengths": [
+                                    "Detailed guide on the installation of ASHPs, which can often be paired with solar panels.",
+                                    "Information about whether an ASHP may be considered permitted development."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The item pertains to air source heat pumps, a technology commonly used in combination with solar panels for energy optimization, making it relevant to the user's question."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Building Alterations, Extensions and Retrofit",
+                                "Source": "https://www.lambeth.gov.uk/sites/default/files/2022-07/Revised_Draft_Lambeth_Design_Guide_SPD_P4_Building_alterations_and_extensions%5B1%5D.pdf",
+                                "Key Strengths": [
+                                    "Comprehensive guide on building alterations, extensions, and retrofits.",
+                                    "General information about solar panels and their potential permitted development status."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The item covers a broad range of building modifications and mentions solar panels as an option while discussing permitted development rights."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Planning Weekly List & Decisions - London",
+                                "Source": "https://www.lambeth.gov.uk/sites/default/files/2024-07/12_07_24_planning_weekely_list.pdf",
+                                "Key Strengths": [
+                                    "Weekly list of planning decisions made by the council, which may contain approvals for solar panel installations.",
+                                    "Offers a glimpse into specific projects involving solar panels."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The item lists weekly planning decisions, some of which could be related to solar panel installations. Although it lacks the specific focus on the topic compared to other recommendations, it provides valuable information for users seeking a broader understanding."
+                            }
+                        ],
+                        "Analysis Notes": "This analysis focused on providing links that are most likely to have valuable and directly-relevant information about retrofitting homes with solar panels without needing planning permission. The resulting list includes guides, specific technologies like ASHPs, and planning decision lists that may contain relevant cases.",
+                        "Recommendations Notes": "The top 4 items were chosen based on the direct relevance of their content to the user's question about council customer information needs for solar panel installation without needing planning permission. The 5th item was included as it offers insight into actual projects that demonstrate how the council addresses solar panel installations in its decisions."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "80",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 81,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/solar-panels"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/solar-panels",
+                        "analysis": {
+                            "url": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/solar-panels",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T00:55:39+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T00:56:06+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 37327,
+                            "response_time": 0.594,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.594s)",
+                                    "Content successfully retrieved (37327 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.5949990749359131,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/solar-panels"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/solar-panels",
+                        "content": " Based on your request, here's the cleaned HTML content of the webpage you provided:\n\n```html\n<main class=\"main-content container mx-auto pt-4\">\n  <div id=\"block-lambeth-theme-localgov-guides-contents\" class=\"block block-localgov-guides block-localgov-guides-contents\">\n    <article class=\"localgov_guides node node--type-localgov-guides-page node--view-mode-full row order-1\">\n      <h2 class=\"measure\">\n        Solar panels\n      </h2>\n      <div class=\"measure typography\">\n        <p>Installing solar panels and equipment on residential buildings and land may be permitted development with no need to apply to the council for planning permission.&nbsp;</p>\n        <p>There are, however, important limits and conditions to permitted development rights which must be met to benefit from these rights. For information on permitted development rights, visit the <a href=\"https://www.planningportal.co.uk/permission/interactive-guidance\">interactive guidance on the Planning Portal website</a>.</p>\n        <p>If you believe installing solar panels would be lawful under the permitted development regulations, and you require written confirmation from the council that the work does not need planning permission, you are advised to submit an application for a <a href=\"https://www.planningportal.co.uk/permission/what-to-do-next/lawful-development-certificate\">lawful development certificate</a>.&nbsp;</p>\n        <p>If your installation does not meet government requirements, you will need to <a href=\"/planning-building-control/planning-applications/submit-or-pay-planning-application\" data-entity-type=\"node\" data-entity-uuid=\"859cd9ab-b8c3-45ae-be38-6e189bd2277d\" data-entity-substitution=\"canonical\" title=\"Submit or pay for a planning application\">apply for planning permission</a>.</p>\n        <p>Your planning application should include details of the location, design, and appearance of the solar panel, including a scale drawing showing the extent of projection of the panels from the roof.&nbsp;</p>\n        <p>Further advice on solar panels can be found via the:</p>\n        <ul>\n          <li><a href=\"https://www.lambeth.gov.uk/sites/default/files/2023-08/Part_4__Building_Alterations%2C_Extensions.pdf\">Lambeth Design Guide - Building Alterations, Extensions and Retrofit (PDF 2.7MB)</a></li>\n          <li><a href=\"https://www.planningportal.co.uk/permission/common-projects/solar-panels/planning-permission-solar-equipment-mounted-on-a-house-or-a-block-of-flats-or-on-a-building\">Planning Portal - planning permissions for solar panels</a></li>\n        </ul>\n        <p>If your property is in a conservation area and/or is a statutory listed building, please also refer to the <a href=\"https://historicengland.org.uk/images-books/publications/eehb-solar-electric/heag173-eehb-solar-electric-photovoltaics/\">solar panel advice on the Historic England website</a>.</p>\n      </div>\n    </article>\n  </div>\n</main>\n```\n\nThis cleaned HTML only contains the central editorial content of the page, with semantically structured elements like headings (<h2>), paragraphs (<p>), in-text links (<a>), blockquotes, lists (<ul>, <ol>, <li>) preserved. It strips out non-essential page furniture such as headers, footers, navigation menus, sidebars, cookie banners, newsletter sign-up blocks, site-wide search, login links, and social media footers.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 18.54270315170288,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/solar-panels",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "The content partially addresses this need by providing information about permitted development rights for solar panel installation. However, it does not explicitly state whether a permit is required for all cases.",
+                                    "confidence": "70%",
+                                    "reasoning": "While the content explains that installing certain solar panels might be permitted development without planning permission, there's no definitive statement indicating that a permit is always needed. To ensure a comprehensive understanding, I would recommend reaching out to the council for clarification.",
+                                    "next_actions": "Reach out to the local authority for further clarification and seek written confirmation if necessary."
+                                }
+                            ],
+                            "overall_assessment": {
+                                "key_gaps_or_areas_for_improvement": "The webpage could explicitly state whether a permit is required in all cases for solar panel installation, instead of just noting that there might be instances where it's permitted development. A more specific and straightforward answer would help clarify this question.",
+                                "satisfaction_level": "70%",
+                                "reasoning": "The content provides useful guidance on the general requirements for solar panel installation; however, it could be more clear in answering the resident's initial concern."
+                            }
+                        },
+                        "content_type": "html",
+                        "analysis_time": 7.168429851531982,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.lambeth.gov.uk/planning-building-control/planning-applications/guidance-retrofitting-homes/solar-panels"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_005539-lambeth.gov.uk",
+                    "analysis_timestamp": "2025-08-11T00:56:32+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8833333333333333,
+                            "tokens_consumed": 6095,
+                            "tokens_remaining": 23905,
+                            "token_utilization_percentage": 20.32,
+                            "average_tokens_per_step": 1015.83
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 79.68,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 23,
+                            "consumption_rate": 1015.83,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 12.62,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_005539-lambeth.gov.uk",
+                        "start_time": "2025-08-11T00:55:39+01:00",
+                        "current_time": "2025-08-11T00:56:32+01:00",
+                        "duration_seconds": 53,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6095,
+                        "tokens_remaining": 23905,
+                        "token_utilization_percentage": 20.32,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2051,
+                                "avg_per_call": 1025.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 4044,
+                                "avg_per_call": 2022
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1015.83
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_005539-lambeth.gov.uk",
+                    "start_time": "2025-08-11T00:55:39+01:00",
+                    "current_time": "2025-08-11T00:56:32+01:00",
+                    "duration_seconds": 53,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6095,
+                    "tokens_remaining": 23905,
+                    "token_utilization_percentage": 20.32,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2051,
+                            "avg_per_call": 1025.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 4044,
+                            "avg_per_call": 2022
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1015.83
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

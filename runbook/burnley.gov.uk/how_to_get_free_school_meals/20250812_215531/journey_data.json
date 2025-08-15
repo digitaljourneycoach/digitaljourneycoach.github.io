@@ -1,0 +1,685 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-12T21:55:31+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "burnley.gov.uk",
+                "Council Name": "Burnley Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Help with the Cost of Living - burnley.gov.uk",
+                        "link": "https://burnley.gov.uk/benefits/help-with-cost-of-living/",
+                        "snippet": "Children eligible for benefits related free school meals can get a place on the Holiday Activities and Food (HAF) programme, funded by the Department for\u00a0..."
+                    },
+                    {
+                        "title": "Fun Food and Friends - burnley.gov.uk",
+                        "link": "https://burnley.gov.uk/leisure/burnley-holiday-activities-and-food-programme/fun-food-friends/",
+                        "snippet": "Jan 25, 2022 ... If your child is not on benefits related free school meals but you ... The programme is a great opportunity for children and young people to get\u00a0..."
+                    },
+                    {
+                        "title": "Burnley Holiday Activities and Food Programme - burnley.gov.uk",
+                        "link": "https://burnley.gov.uk/leisure/burnley-holiday-activities-and-food-programme/",
+                        "snippet": "The aim of the programme is to make free places available to children eligible for benefits-related free school meals for the equivalent of at least four hours\u00a0..."
+                    },
+                    {
+                        "title": "Statement of Intent for ECO4",
+                        "link": "https://burnley.gov.uk/wp-content/uploads/2023/04/Statement-of-Intent-for-ECO-Cosy-Homes-in-Lancashire.pdf",
+                        "snippet": "Apr 12, 2023 ... Only one from the list can be used, excludes the proxy 'low income'. Proxy 4) A householder receiving free school meals due to low-income. Proxy\u00a0..."
+                    },
+                    {
+                        "title": "Statement of Intent for ECO4 and Great British Insulation Scheme",
+                        "link": "https://burnley.gov.uk/wp-content/uploads/2024/04/Statement-of-Intent-for-ECO4-and-Great-British-Insulation-Scheme.pdf",
+                        "snippet": "Feb 1, 2024 ... Proxy 4) A child living at the premises is eligible for free school meals, due to low-income5. Proxy 5) A person living at the premises is\u00a0..."
+                    },
+                    {
+                        "title": "Find a warm space - burnley.gov.uk",
+                        "link": "https://burnley.gov.uk/council-democracy/warm-hearts-warm-spaces/find-a-warm-space/",
+                        "snippet": "We have a cafe, winter warming clothing and school uniform shop, community grocery and food parcels. We have a Pay-It Forward scheme available in both our caf\u00e9\u00a0..."
+                    },
+                    {
+                        "title": "Burnley BC - Council Tax insert 2024-25.pdf",
+                        "link": "https://burnley.gov.uk/wp-content/uploads/2024/03/Burnley-BC-Council-Tax-insert-2024-25.pdf",
+                        "snippet": "Provides free meals and activities for eligible free school meal children during the school holidays - burnleyhaf.org.uk ... get warm and spend time with others."
+                    },
+                    {
+                        "title": "Contact us - burnley.gov.uk",
+                        "link": "https://burnley.gov.uk/council-democracy/contact-burnley-council/",
+                        "snippet": "If you cannot use our online services, please call us on 01282 425011."
+                    },
+                    {
+                        "title": "Exceptional Hardship Payments(EHP) Application Form",
+                        "link": "https://burnley.gov.uk/wp-content/uploads/2022/02/EHP-Form-PDF.pdf",
+                        "snippet": "School meals. Telephone (mobile and/or landline). Travel (bus fares or taxi fares e.g. if you have difficulty using public transport through disability). TV\u00a0..."
+                    },
+                    {
+                        "title": "Id Please make any comments about the masterplan and if you ...",
+                        "link": "https://burnley.gov.uk/wp-content/uploads/2025/03/Towneley-Park-Masterplan-Consultation-Responses-Aug-2024.pdf",
+                        "snippet": "Have access from Todmorden road to the school,. Riverside carpark, Towneley ... free access to walking areas in a natural environment. I would not\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://burnley.gov.uk/benefits/help-with-cost-of-living/",
+                        "title": "Help with the Cost of Living - burnley.gov.uk",
+                        "confidence": 95,
+                        "strengths": [
+                            "Provides information about benefits related free school meals for council customer needs.",
+                            "Covers topic of cost of living assistance relevant to the current context."
+                        ],
+                        "reasoning": "The title and snippet suggest that this link provides information about benefits related free school meals, which is closely aligned with the council customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Help with the Cost of Living - burnley.gov.uk",
+                                "Source": "https://burnley.gov.uk/benefits/help-with-cost-of-living/",
+                                "Key Strengths": [
+                                    "Provides information about benefits related free school meals for council customer needs.",
+                                    "Covers topic of cost of living assistance relevant to the current context."
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "The title and snippet suggest that this link provides information about benefits related free school meals, which is closely aligned with the council customer information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Fun Food and Friends - burnley.gov.uk",
+                                "Source": "https://burnley.gov.uk/leisure/burnley-holiday-activities-and-food-programme/fun-food-friends/",
+                                "Key Strengths": [
+                                    "Offers holiday activities and food programme for children.",
+                                    "Potential eligibility criteria for children not on benefits related free school meals."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title suggests that this link offers a holiday activity and food programme, which could provide additional resources to council customers. Although the eligibility criteria does not explicitly state that the programme is only for children on benefits-related free school meals, other links in the list provide evidence of such programmes."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Burnley Holiday Activities and Food Programme - burnley.gov.uk",
+                                "Source": "https://burnley.gov.uk/leisure/burnley-holiday-activities-and-food-programme/",
+                                "Key Strengths": [
+                                    "Programme aims to provide free places for children eligible for benefits-related free school meals.",
+                                    "Information about the length of time offered by the programme."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title and snippet suggest that this link provides information about a holiday activities and food programme, offering free places specifically for children eligible for benefits-related free school meals. This aligns closely with the search query needs of council customers."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Statement of Intent for ECO4",
+                                "Source": "https://burnley.gov.uk/wp-content/uploads/2023/04/Statement-of-Intent-for-ECO-Cosy-Homes-in-Lancashire.pdf",
+                                "Key Strengths": [
+                                    "Discusses Cosy Homes in Lancashire, a potential resource for council customers.",
+                                    "Includes eligibility criteria related to free school meals."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The document discusses the Cosy Homes programme in Lancashire, and includes an eligibility proxy for free school meals. However, its relevance to council customer needs is less clear than some of the other options in the list."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Statement of Intent for ECO4 and Great British Insulation Scheme",
+                                "Source": "https://burnley.gov.uk/wp-content/uploads/2024/04/Statement-of-Intent-for-ECO4-and-Great-British-Insulation-Scheme.pdf",
+                                "Key Strengths": [
+                                    "Discusses both the ECO4 and Great British Insulation Scheme, which could benefit council customers.",
+                                    "Includes eligibility criteria related to free school meals."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The document discusses both the ECO4 and the Great British Insulation Scheme, and includes eligibility criteria related to free school meals. While its relevance might not be as direct as some other options in the list, it still presents potential resources for council customers."
+                            }
+                        ],
+                        "Analysis Notes": "The search results include a variety of documents related to various initiatives that could potentially benefit council customers. However, only a few of them are directly aligned with the needs specified, namely those providing information about benefits-related free school meals and holiday activities and food programmes.",
+                        "Recommendations Notes": "The top recommendations have been chosen based on their relevance to the specified search needs and the quality of the information they provide."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "95",
+                        "85",
+                        "90",
+                        "70",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 84,
+                    "max_confidence": "95"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Help with the Cost of Living - burnley.gov.uk",
+                            "Source": "https://burnley.gov.uk/benefits/help-with-cost-of-living/",
+                            "Reasoning": "The highest confidence score, relevance to the objective of finding information related to benefits for council customers, and a clear focus on free school meals makes this the optimal next step.",
+                            "Confidence": "95"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Burnley Holiday Activities and Food Programme - burnley.gov.uk",
+                            "Source": "https://burnley.gov.uk/leisure/burnley-holiday-activities-and-food-programme/",
+                            "Reasoning": "The link provides information about a holiday activities and food programme offering free places specifically for children eligible for benefits-related free school meals, making it highly relevant to the council customer's needs.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Fun Food and Friends - burnley.gov.uk",
+                            "Source": "https://burnley.gov.uk/leisure/burnley-holiday-activities-and-food-programme/fun-food-friends/",
+                            "Reasoning": "While this option also provides a holiday activities and food programme, its eligibility criteria is not explicitly stated to only be for children receiving benefits-related free school meals. However, the information it offers may still prove valuable as part of further research.",
+                            "Confidence": "85"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://burnley.gov.uk/benefits/help-with-cost-of-living/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://burnley.gov.uk/benefits/help-with-cost-of-living/",
+                        "analysis": {
+                            "url": "https://burnley.gov.uk/benefits/help-with-cost-of-living/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-12T21:55:31+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-12T21:56:02+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 62418,
+                            "response_time": 0.676,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.676s)",
+                                    "Content successfully retrieved (62418 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.6800720691680908,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://burnley.gov.uk/benefits/help-with-cost-of-living/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://burnley.gov.uk/benefits/help-with-cost-of-living/",
+                        "content": " Based on your requirements, I have cleaned the HTML source, removing non-essential page elements such as headers, footers, navigation menus, and newsletter sign-up blocks. The remaining meaningful content is presented in semantic HTML with preserved headings (<h1>), paragraphs (<p>) and links (<a>).\n\nHere's the output:\n\n```html\n<div class=\"text\">\n    <h1>What can I do to fix it?</h1>\n    <p>If you are just visiting the site, just wait a bit and it should be back soon. We apologize for the inconvenience. </p>\n    <p>If you own the web site, please verify with your hosting company if your server is up and running and if they have our firewall IPs whitelisted. Please wait a few minutes and try again. If the problem persists, open a ticket on our support page <a href=\"https://support.sucuri.net\">https://support.sucuri.net</a> and we will assist with troubleshooting.</p>\n</div>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 4.710850954055786,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://burnley.gov.uk/benefits/help-with-cost-of-living/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "0%",
+                                    "confidence": "0",
+                                    "reasoning": "The content does not address this question as it focuses on website issues rather than benefits for council residents.",
+                                    "next_actions": "There is no useful information provided to help in the application process. I would need to search for accurate information elsewhere."
+                                }
+                            ],
+                            "overall_assessment": "The webpage does not provide any assistance regarding free school meals application, or information about eligibility criteria or timeframes. It only provides technical support for website issues which is of no help in our situation."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.268000841140747,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://burnley.gov.uk/benefits/help-with-cost-of-living/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250812_215531-burnley.gov.uk",
+                    "analysis_timestamp": "2025-08-12T21:56:11+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6666666666666666,
+                            "tokens_consumed": 3916,
+                            "tokens_remaining": 26084,
+                            "token_utilization_percentage": 13.05,
+                            "average_tokens_per_step": 652.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 86.95,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 39,
+                            "consumption_rate": 652.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.52,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6666666666666666,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250812_215531-burnley.gov.uk",
+                        "start_time": "2025-08-12T21:55:31+01:00",
+                        "current_time": "2025-08-12T21:56:11+01:00",
+                        "duration_seconds": 40,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 3916,
+                        "tokens_remaining": 26084,
+                        "token_utilization_percentage": 13.05,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 685,
+                                "avg_per_call": 342.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3231,
+                                "avg_per_call": 1615.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 652.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250812_215531-burnley.gov.uk",
+                    "start_time": "2025-08-12T21:55:31+01:00",
+                    "current_time": "2025-08-12T21:56:11+01:00",
+                    "duration_seconds": 40,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 3916,
+                    "tokens_remaining": 26084,
+                    "token_utilization_percentage": 13.05,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 685,
+                            "avg_per_call": 342.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3231,
+                            "avg_per_call": 1615.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 652.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

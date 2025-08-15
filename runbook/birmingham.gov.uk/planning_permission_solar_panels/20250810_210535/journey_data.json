@@ -1,0 +1,710 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T21:05:35+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "birmingham.gov.uk",
+                "Council Name": "Birmingham City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Solar Together Birmingham - buying solar panels and battery ...",
+                        "link": "https://www.birmingham.gov.uk/info/50282/climate_change/3049/solar_together_birmingham_-_buying_solar_panels_and_battery_storage_made_easy",
+                        "snippet": "Mar 27, 2025 ... Solar PV installations are considered a 'permitted development' and will generally not need planning permission. However, in some cases, such as\u00a0..."
+                    },
+                    {
+                        "title": "Do I need planning permission? | Apply for planning permission ...",
+                        "link": "https://www.birmingham.gov.uk/info/20160/planning_applications/21/apply_for_planning_permission",
+                        "snippet": "Nov 25, 2024 ... It is important to find out if you need planning permission before you make improvements or changes to a property."
+                    },
+                    {
+                        "title": "Details Page for Planning Application - 2024/04525/PA",
+                        "link": "https://eplanning.birmingham.gov.uk/Northgate/PlanningExplorer/Generic/StdDetails.aspx?PT=Planning%20Applications%20On-Line&TYPE=PL/PlanningPK.xml&PARAM0=1314318&XSLT=/Northgate/PlanningExplorer/SiteFiles/Skins/Birmingham/xslt/PL/PLDetails.xslt&FT=Planning%20Application%20Details&PUBLIC=Y&XMLSIDE=/Northgate/PlanningExplorer/SiteFiles/Skins/Birmingham/Menus/PL.xml&DAURI=PLANNING",
+                        "snippet": "ProposalVariation of condition 2 (approved plans) attached to planning permission ... solar panels. Planning OfficerAudrey Lewis. Area TeamP & D - North West Team."
+                    },
+                    {
+                        "title": "Planning Applications Received between 18/05/2025 and 24/05/2025",
+                        "link": "https://www.birmingham.gov.uk/download/downloads/id/30347/planning_applications_received_18_may_to_24_may_2025.pdf",
+                        "snippet": "May 24, 2025 ... Notification for Prior Approval for the installation of 112 roof mounted Solar PV solar panels with 50.4 kWp capacity. Unit 9, Junction 6\u00a0..."
+                    },
+                    {
+                        "title": "Guidance on preparing Sustainable Construction and Energy ...",
+                        "link": "https://www.birmingham.gov.uk/download/downloads/id/12999/guidance_note_on_sustainable_construction_and_energy_statements.pdf",
+                        "snippet": "thermal panels, photovoltaic cells, small wind power ... 4.19 Full (and reserved matters) planning applications must provide a detailed energy assessment."
+                    },
+                    {
+                        "title": "Getting permission to carry out work in a Conservation Area ...",
+                        "link": "https://www.birmingham.gov.uk/info/20055/conservation_areas/34/getting_permission_to_carry_out_work_in_a_conservation_area",
+                        "snippet": "You should also check whether you need any other permissions before starting work: You may need Planning Permission and Building Regulations approval for some\u00a0..."
+                    },
+                    {
+                        "title": "Planning Applications Received between 11/05/2025 and 17/05/2025",
+                        "link": "https://www.birmingham.gov.uk/download/downloads/id/30309/planning_applications_received_11_may_to_17_may_2025.pdf",
+                        "snippet": "May 17, 2025 ... Notification for Prior Approval for the installation of rooftop PV solar panels ... Installation of single storey portable building to the side."
+                    },
+                    {
+                        "title": "Birmingham Design Guide Healthy Living and Working Places City ...",
+                        "link": "https://www.birmingham.gov.uk/download/downloads/id/24168/4_healthy_living_and_working_city_manual_-_september_2022.pdf",
+                        "snippet": "2.64 Planning Permission and Building Regulations are separate processes and ... installing solar panels where an appropriately orientated roof space."
+                    },
+                    {
+                        "title": "Historic Enviornment SPD",
+                        "link": "https://www.birmingham.gov.uk/download/downloads/id/29348/historic_environment_supplementary_planning_document_spd.pdf",
+                        "snippet": "setting of the listed building. Planning permission will be needed for the installation of solar photovoltaic or solar thermal panels on a non-domestic building."
+                    },
+                    {
+                        "title": "Guidance Toolkit on Building Retrofit | Birmingham City Council",
+                        "link": "https://www.birmingham.gov.uk/download/downloads/id/29130/guidance_toolkit_on_building_retrofit.pdf",
+                        "snippet": "Installing solar PV panels to generate electricity. 11.2 Staged retrofit \u2013 It ... glazing has been controlled by building regulations and planning permission may."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.birmingham.gov.uk/info/50282/climate_change/3049/solar_together_birmingham_-_buying_solar_panels_and_battery_storage_made_easy",
+                        "title": "Solar Together Birmingham - buying solar panels and battery ...",
+                        "confidence": 90,
+                        "strengths": [
+                            "Direct link to Solar Together Birmingham's webpage",
+                            "Information about buying solar panels and battery storage made easy"
+                        ],
+                        "reasoning": "This provides a direct link to the page that explains how to easily purchase solar panels and battery storage as part of the Solar Together Birmingham initiative, making it a relevant resource for council customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "4"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Solar Together Birmingham - buying solar panels and battery ...",
+                                "Source": "https://www.birmingham.gov.uk/info/50282/climate_change/3049/solar_together_birmingham_-_buying_solar_panels_and_battery_storage_made_easy",
+                                "Key Strengths": [
+                                    "Direct link to Solar Together Birmingham's webpage",
+                                    "Information about buying solar panels and battery storage made easy"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This provides a direct link to the page that explains how to easily purchase solar panels and battery storage as part of the Solar Together Birmingham initiative, making it a relevant resource for council customer information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Do I need planning permission? | Apply for planning permission ...",
+                                "Source": "https://www.birmingham.gov.uk/info/20160/planning_applications/21/apply_for_planning_permission",
+                                "Key Strengths": [
+                                    "Direct link to the application process for planning permission",
+                                    "Information about whether planning permission is needed"
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "This resource provides a clear and direct pathway for individuals to apply for planning permission, making it highly relevant and valuable information for council customer information needs."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Planning Applications Received between 18/05/2025 and 24/05/2025",
+                                "Source": "https://www.birmingham.gov.uk/download/downloads/id/30347/planning_applications_received_18_may_to_24_may_2025.pdf",
+                                "Key Strengths": [
+                                    "PDF file containing planning applications received between specified dates",
+                                    "Information about the installation of photovoltaic panels and portable buildings"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Although not directly a resource for applying for permits, this document provides valuable information about solar panel installation, making it relevant to council customer information needs."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Guidance on preparing Sustainable Construction and Energy ...",
+                                "Source": "https://www.birmingham.gov.uk/download/downloads/id/12999/guidance_note_on_sustainable_construction_and_energy_statements.pdf",
+                                "Key Strengths": [
+                                    "PDF file with guidance on preparing sustainable construction and energy statements",
+                                    "Information about energy assessments, photovoltaic cells, small wind power"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource offers guidance on sustainable construction and energy matters, including essential elements such as energy assessments and renewable technologies like photovoltaic cells, making it a pertinent resource for council customer information needs."
+                            }
+                        ],
+                        "Analysis Notes": "Although some links provide valuable resources related to solar panel installations or planning permission requirements, none of the searched items directly provide online forms to apply for or request permits. As such, additional research or resources may be necessary for individuals seeking permit application information.",
+                        "Recommendations Notes": "The recommended list includes resources that are most relevant based on their content and the specific instruction for council customer information needs. These resources offer useful information about solar panel installation processes, planning permission requirements, and guidance on sustainable energy and construction initiatives."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "95",
+                        "80",
+                        "85"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 87.5,
+                    "max_confidence": "95"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "2",
+                            "Title": "Do I need planning permission? | Apply for planning permission ...",
+                            "Source": "https://www.birmingham.gov.uk/info/20160/planning_applications/21/apply_for_planning_permission",
+                            "Reasoning": "This resource provides a clear and direct pathway for individuals to apply for planning permission, making it highly relevant and valuable information for council customer information needs.",
+                            "Confidence": "95"
+                        },
+                        {
+                            "Number": "1",
+                            "Title": "Solar Together Birmingham - buying solar panels and battery ...",
+                            "Source": "https://www.birmingham.gov.uk/info/50282/climate_change/3049/solar_together_birmingham_-_buying_solar_panels_and_battery_storage_made_easy",
+                            "Reasoning": "This provides a direct link to the page that explains how to easily purchase solar panels and battery storage as part of the Solar Together Birmingham initiative, making it a relevant resource for council customer information needs.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Guidance on preparing Sustainable Construction and Energy ...",
+                            "Source": "https://www.birmingham.gov.uk/download/downloads/id/12999/guidance_note_on_sustainable_construction_and_energy_statements.pdf",
+                            "Reasoning": "This resource offers guidance on sustainable construction and energy matters, including essential elements such as energy assessments and renewable technologies like photovoltaic cells, making it a pertinent resource for council customer information needs.",
+                            "Confidence": "85"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "005_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.birmingham.gov.uk/info/50282/climate_change/3049/solar_together_birmingham_-_buying_solar_panels_and_battery_storage_made_easy"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.birmingham.gov.uk/info/50282/climate_change/3049/solar_together_birmingham_-_buying_solar_panels_and_battery_storage_made_easy",
+                        "analysis": {
+                            "url": "https://www.birmingham.gov.uk/info/50282/climate_change/3049/solar_together_birmingham_-_buying_solar_panels_and_battery_storage_made_easy",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T21:05:35+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T21:06:17+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": false,
+                            "http_status": 403,
+                            "content_type": null,
+                            "content_length": 0,
+                            "response_time": 0,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 10,
+                                "max_score": 100,
+                                "issues": [
+                                    "HTTP error response (403): forbidden",
+                                    "No content retrieved"
+                                ],
+                                "strengths": [
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "forbidden",
+                                    "action": "avoid",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 0,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": null,
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "avoid",
+                                "confidence": 95,
+                                "reason": "Access denied or forbidden (403)",
+                                "overall_score": 24,
+                                "component_scores": {
+                                    "technical": 10,
+                                    "accessibility": 0,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Do not follow this link",
+                                    "Look for alternative sources",
+                                    "Report broken link if appropriate"
+                                ],
+                                "alternatives_needed": true
+                            },
+                            "fetch_error": "Failed to fetch URL: Client error: `GET https://www.birmingham.gov.uk/info/50282/climate_change/3049/solar_together_birmingham_-_buying_solar_panels_and_battery_storage_made_easy` resulted in a `403 Forbidden` response:\n<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n</body>\r\n</html>\r\n\n"
+                        },
+                        "processing_time": 0.16522812843322754,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "006_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.birmingham.gov.uk/info/50282/climate_change/3049/solar_together_birmingham_-_buying_solar_panels_and_battery_storage_made_easy"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.birmingham.gov.uk/info/50282/climate_change/3049/solar_together_birmingham_-_buying_solar_panels_and_battery_storage_made_easy",
+                        "content": " This text appears to be a part of an HTML file for a web page. It includes various elements such as div, span, ul, and links within tags like a, img, link, and script. The content describes a Birmingham City Council webpage that features a LinkedIn logo and a feedback button linking to a GovMetric survey, as well as an email signup option. Additionally, it contains SiteImprove analytics code snippets between specific comments. It seems to be structured in a way that allows for responsive layout (mobile-friendly design) based on CSS stylesheets, and the use of classes for styling and function throughout the HTML.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 7.044320106506348,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "007_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.birmingham.gov.uk/info/50282/climate_change/3049/solar_together_birmingham_-_buying_solar_panels_and_battery_storage_made_easy",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "Understanding if permission is required to install solar panels on a house",
+                                    "answer_quality": "Partial",
+                                    "confidence": "60%",
+                                    "reasoning": "The content does not explicitly address the need for permission to install solar panels, but it does link to another page (not provided in the content) that provides information about building regulations and planning permission requirements related to renewable energy systems.",
+                                    "next_actions": "Click on the provided link to explore further information about building regulations and planning permission."
+                                },
+                                {
+                                    "need": "Understanding the steps, who to contact, and estimated timeframe for getting permission",
+                                    "answer_quality": "Not Addressed",
+                                    "confidence": "0%",
+                                    "reasoning": "The content does not provide information on the specific steps or contact details required to obtain building regulations and planning permissions related to installing solar panels.",
+                                    "next_actions": "Search for additional resources, such as the planning section of Birmingham City Council's main website, for more detailed information about the specific process and requirements."
+                                },
+                                {
+                                    "need": "Finding help if needed during the application process",
+                                    "answer_quality": "Not Addressed",
+                                    "confidence": "0%",
+                                    "reasoning": "The content does not provide any information about assistance or support available to residents when navigating the solar panel installation process, including obtaining permissions and working with contractors.",
+                                    "next_actions": "Reach out to local solar installation companies or contact Birmingham City Council's customer service for further guidance."
+                                }
+                            ],
+                            "overall_assessment": "The provided content is intended to introduce a campaign and provides general information about the process of purchasing solar panels, but it does not adequately address the specific needs of residents in terms of obtaining permission, understanding the steps involved, or finding help during the application process."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 8.332585096359253,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.birmingham.gov.uk/info/50282/climate_change/3049/solar_together_birmingham_-_buying_solar_panels_and_battery_storage_made_easy"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "008_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_210535-birmingham.gov.uk",
+                    "analysis_timestamp": "2025-08-10T21:06:33+01:00",
+                    "analysis_duration": 0.002,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 7,
+                            "duration_minutes": 0.9666666666666667,
+                            "tokens_consumed": 11040,
+                            "tokens_remaining": 18960,
+                            "token_utilization_percentage": 36.8,
+                            "average_tokens_per_step": 1577.14
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 63.2,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 12,
+                            "consumption_rate": 1577.14,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 7,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 3
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60",
+                                "0",
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 13.81,
+                            "steps_fatigue_percentage": 58.33,
+                            "overall_fatigue_score": 58.33,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.9666666666666667,
+                            "total_steps": 7,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved",
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_210535-birmingham.gov.uk",
+                        "start_time": "2025-08-10T21:05:35+01:00",
+                        "current_time": "2025-08-10T21:06:33+01:00",
+                        "duration_seconds": 58,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 11040,
+                        "tokens_remaining": 18960,
+                        "token_utilization_percentage": 36.8,
+                        "token_status": "available",
+                        "total_steps": 7,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 3,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 7
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 5253,
+                                "avg_per_call": 2626.5
+                            },
+                            "analyst": {
+                                "calls": 3,
+                                "tokens": 5787,
+                                "avg_per_call": 1929
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1577.14
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_210535-birmingham.gov.uk",
+                    "start_time": "2025-08-10T21:05:35+01:00",
+                    "current_time": "2025-08-10T21:06:33+01:00",
+                    "duration_seconds": 58,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 11040,
+                    "tokens_remaining": 18960,
+                    "token_utilization_percentage": 36.8,
+                    "token_status": "available",
+                    "total_steps": 7,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 3,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 7
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 5253,
+                            "avg_per_call": 2626.5
+                        },
+                        "analyst": {
+                            "calls": 3,
+                            "tokens": 5787,
+                            "avg_per_call": 1929
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1577.14
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

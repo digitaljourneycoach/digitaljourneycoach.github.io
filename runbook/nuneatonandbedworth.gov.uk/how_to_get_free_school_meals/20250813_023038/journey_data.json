@@ -1,0 +1,684 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T02:30:38+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "nuneatonandbedworth.gov.uk",
+                "Council Name": "Nuneaton and Bedworth Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Where to go for help and support | Financial support and advice ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/support-advice/financial-support-advice/3",
+                        "snippet": "Free School Meals \u2013 Every free school meal awarded helps your child's school get more funding. Your child does not even have to have the meal. The funding\u00a0..."
+                    },
+                    {
+                        "title": "Warm Homes Local Grant | Energy efficiency grants | Nuneaton and ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/private-housing/energy-matters",
+                        "snippet": "Eligibility \u00b7 Have a long-term health condition and/or disability that's affected by a cold home \u00b7 Receive income based free school meals\u00a0..."
+                    },
+                    {
+                        "title": "Apply for a Warm Homes Local Grant - Important information - Self",
+                        "link": "https://customer.nuneatonandbedworth.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-56c59ccc-ccdf-4115-8b46-8e7977dcc59f/AF-Stage-fba54dad-6823-4d38-870a-b548dd705da2/definition.json&redirectlink=/en&cancelRedirectLink=/en&consentMessage=yes&noLoginPrompt=1",
+                        "snippet": "Receive income based free school meals. Before you start. You will need the following information for each resident at the property over\u00a0..."
+                    },
+                    {
+                        "title": "Landlord Forum Nuneaton and Bedworth BC Local Help and Support",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/downloads/file/82/landlord-forum-financial-inclusion-presentation-12th-july-2023",
+                        "snippet": "\u2022 Children have full tummies, so they learn better and have better outcomes. \u2022 Simply apply online. \u2022 Apply for free school meals \u2013 Warwickshire County Council."
+                    },
+                    {
+                        "title": "Bedworth 3 Foodbank Centres are:",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/downloads/file/12/bedworth-food-outlets",
+                        "snippet": "Venues where you can obtain a hot free/subsidised meal are: Monday ... HOLIDAY SUPPORT FOR FAMILIES ON FREE SCHOOL MEALS covers all school holidays."
+                    },
+                    {
+                        "title": "Statement of Intent V2 | Energy efficiency grants | Nuneaton and ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/private-housing/energy-matters/3",
+                        "snippet": "A child living at the property receives free school meals due to low income. Proxy 5. A Person living at the property is supported by a Local Authority-run\u00a0..."
+                    },
+                    {
+                        "title": "Statement of Intent This statement sets out Nuneaton and Bedworth ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/downloads/file/1588/eco4-statement-of-intent-v1-expired",
+                        "snippet": "A child living at the property receives free school meals due to low income. \u2022. A householder is supported by a Local Authority-run scheme that has been\u00a0..."
+                    },
+                    {
+                        "title": "Nuneaton & Bedworth Borough Council - Register of gifts and ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/downloads/file/1568/gifts-and-hospitality-register",
+                        "snippet": "Jun 19, 2013 ... No. Not keeping it. 10/05/2013 10/05/2013 J. Baker. Eurosport. Two tickets for Snooker event. \u00a350 Free gift."
+                    },
+                    {
+                        "title": "COMMUNITY CENTRE CONSULTATION AUGUST / SEPTEMBER ...",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/downloads/file/317/sport-recreation-and-community-facilities-strategy-2016-2031-appendix-9-community-centre-consultation-2016-",
+                        "snippet": "Open 7 days a week 6-11pm. A charitable trust. Business model \u2013 food/functions & bar generate income to subsidise low cost or free use. ... There is no school\u00a0..."
+                    },
+                    {
+                        "title": "WHAT'S ON",
+                        "link": "https://www.nuneatonandbedworth.gov.uk/downloads/file/1222/whats-on-guide-2024",
+                        "snippet": "Feb 18, 2024 ... Make and Take Activities on. Thursdays and Fridays over the school holidays! No booking required, just drop in. All activities are free, but."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.nuneatonandbedworth.gov.uk/support-advice/financial-support-advice/3",
+                        "title": "Where to go for help and support | Financial support and advice ...",
+                        "confidence": 85,
+                        "strengths": [
+                            "Directly discusses free school meals for council customers",
+                            "Mention of financial support and advice"
+                        ],
+                        "reasoning": "This link provides information about several forms of financial support for council residents, including free school meals. The provided snippet explicitly mentions the benefits of free school meals in improving a child's education by ensuring they have a full stomach.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "3"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Where to go for help and support | Financial support and advice ...",
+                                "Source": "https://www.nuneatonandbedworth.gov.uk/support-advice/financial-support-advice/3",
+                                "Key Strengths": [
+                                    "Directly discusses free school meals for council customers",
+                                    "Mention of financial support and advice"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides information about several forms of financial support for council residents, including free school meals. The provided snippet explicitly mentions the benefits of free school meals in improving a child's education by ensuring they have a full stomach."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Apply for a Warm Homes Local Grant - Important information - Self",
+                                "Source": "https://customer.nuneatonandbedworth.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-56c59ccc-ccdf-4115-8b46-8e7977dcc59f/AF-Stage-fba54dad-6823-4d38-870a-b548dd705da2/definition.json&redirectlink=/en&cancelRedirectLink=/en&consentMessage=yes&noLoginPrompt=1",
+                                "Key Strengths": [
+                                    "Mention of energy efficiency grants for properties occupied by council customers receiving free school meals"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link leads to an application form for energy efficiency grants. According to the provided snippet, applicants will need to provide information on whether any resident receives free school meals. This suggests that grant eligibility may be linked to a residence receiving free school meals."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Bedworth 3 Foodbank Centres are:",
+                                "Source": "https://www.nuneatonandbedworth.gov.uk/downloads/file/12/bedworth-food-outlets",
+                                "Key Strengths": [
+                                    "Mention of free/subsidized meals for families on free school meals during holidays"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though not directly related to council customer information, this link provides details about foodbank centers in Bedworth. The snippet mentions support for families on free school meals during holidays, which can be beneficial to council customers."
+                            }
+                        ],
+                        "Analysis Notes": "The search results were related to a variety of topics including financial support, energy efficiency grants, landlord forums, foodbanks, and community centers. However, the primary focus seemed to be on areas that would provide support to residents living in council-owned properties or receiving council benefits. Three options from this search met the criteria specified, with the strongest match being item 1 which provided information about financial support including free school meals."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 78.33333333333333,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Where to go for help and support | Financial support and advice ...",
+                            "Source": "https://www.nuneatonandbedworth.gov.uk/support-advice/financial-support-advice/3",
+                            "Reasoning": "This link provides the most comprehensive information about various forms of financial support for council residents, with a direct mention of free school meals. It has the highest relevance and confidence score, making it the optimal next step.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Apply for a Warm Homes Local Grant - Important information - Self",
+                            "Source": "https://customer.nuneatonandbedworth.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-56c59ccc-ccdf-4115-8b46-8e7977dcc59f/AF-Stage-fba54dad-6823-4d38-870a-b548dd705da2/definition.json&redirectlink=/en&cancelRedirectLink=/en&consentMessage=yes&noLoginPrompt=1",
+                            "Reasoning": "Though not as promising in terms of relevance and credibility, this link leads to an application form for energy efficiency grants that may be linked to a residence receiving free school meals. It has a decent confidence score.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Bedworth 3 Foodbank Centres are:",
+                            "Source": "https://www.nuneatonandbedworth.gov.uk/downloads/file/12/bedworth-food-outlets",
+                            "Reasoning": "Though not directly related to council customer information, this link provides details about foodbank centers that may offer support for families on free school meals during holidays. It has a lower confidence score.",
+                            "Confidence": "70"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "005_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.nuneatonandbedworth.gov.uk/support-advice/financial-support-advice/3"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.nuneatonandbedworth.gov.uk/support-advice/financial-support-advice/3",
+                        "analysis": {
+                            "url": "https://www.nuneatonandbedworth.gov.uk/support-advice/financial-support-advice/3",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T02:30:38+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T02:31:25+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 41019,
+                            "response_time": 0.258,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.258s)",
+                                    "Content successfully retrieved (41019 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.260498046875,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "006_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.nuneatonandbedworth.gov.uk/support-advice/financial-support-advice/3"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.nuneatonandbedworth.gov.uk/support-advice/financial-support-advice/3",
+                        "content": " <div class=\"page-content\">\n\n                                     <div class=\"\">\n                                         <div class=\"\">\n                                             <h2>Getting Help and Support</h2>\n                                             <p>There are many organizations that offer help and support for a variety of issues. Here is a list of some national and local resources you may find useful:</p>\n                                             <h3>Local Organizations</h3>\n                                             <ul>\n                                                 <!-- Add the content of your unordered list here -->\n                                                 <li><strong>Learn My Way</strong> - Learn how to use the internet. Learn My Way has free courses to help you get online, learn digital skills and stay safe and connected</li>\n                                                 <li><strong>The Money Helper</strong> - The easy way to get clear, free, impartial help for all your money and pension choices. The website is packed with advice and guides to help improve finances, tools and calculators to help customers keep track and plan ahead</li>\n                                                 <li><strong>National Debtline</strong> - Free expert, tailored advice and practical solutions to problem debt</li>\n                                                 <li><strong>Loan Sharks</strong> - Stop Loan Sharks offers advice on the tell-tale signs that someone is a loan shark. These include offering cash loans without any paperwork, charging extortionate interest, taking bank cards and passports as security and threatening behaviour or violence to get money.</li>\n                                                 <li><strong>StepChange</strong> - Free expert advice and practical solutions to problem debt</li>\n                                             </ul>\n                                         </div>\n                                     </div>\n </div>",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 10.941251039505005,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "007_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.nuneatonandbedworth.gov.uk/support-advice/financial-support-advice/3",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content does not directly answer this question as it doesn't provide details about the application process or criteria for free school meals.",
+                                    "confidence": "0%",
+                                    "reasoning": "The provided content only lists various resources and organizations offering help on a variety of issues. However, the specific issue related to applying for free school meals is not addressed in this content.",
+                                    "next_actions": "I would need to search further, possibly on the council's or government's website, for detailed guidance about applying for free school meals and eligibility criteria."
+                                }
+                            ],
+                            "overall_assessment": "The content offers some useful information about various organizations providing help and support but fails to address the specific issue of applying for free school meals as a council resident. The content could be improved by including more comprehensive information about the eligibility process and application procedure for free school meals."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.536057949066162,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.nuneatonandbedworth.gov.uk/support-advice/financial-support-advice/3"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "008_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_023038-nuneatonandbedworth.gov.uk",
+                    "analysis_timestamp": "2025-08-13T02:31:41+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_no_progress",
+                    "confidence": 80,
+                    "reasoning": "No progress detected - journey stagnating",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 7,
+                            "duration_minutes": 1.05,
+                            "tokens_consumed": 9595,
+                            "tokens_remaining": 20405,
+                            "token_utilization_percentage": 31.98,
+                            "average_tokens_per_step": 1370.71
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 68.02,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 14,
+                            "consumption_rate": 1370.71,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 7,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 3
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 15,
+                            "steps_fatigue_percentage": 58.33,
+                            "overall_fatigue_score": 58.33,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.05,
+                            "total_steps": 7,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy"
+                        ],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "try_chat",
+                        "optimize_strategy"
+                    ],
+                    "risk_factors": [
+                        "Wasted resources",
+                        "User frustration"
+                    ],
+                    "next_step_suggestions": [
+                        "Try ChatScout for AI-generated content",
+                        "Revise search terms"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_023038-nuneatonandbedworth.gov.uk",
+                        "start_time": "2025-08-13T02:30:38+01:00",
+                        "current_time": "2025-08-13T02:31:41+01:00",
+                        "duration_seconds": 63,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 9595,
+                        "tokens_remaining": 20405,
+                        "token_utilization_percentage": 31.98,
+                        "token_status": "available",
+                        "total_steps": 7,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 3,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 7
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 4154,
+                                "avg_per_call": 2077
+                            },
+                            "analyst": {
+                                "calls": 3,
+                                "tokens": 5441,
+                                "avg_per_call": 1813.6666666666667
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1370.71
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_no_progress",
+                    "confidence": 80,
+                    "reasoning": "No progress detected - journey stagnating"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_023038-nuneatonandbedworth.gov.uk",
+                    "start_time": "2025-08-13T02:30:38+01:00",
+                    "current_time": "2025-08-13T02:31:41+01:00",
+                    "duration_seconds": 63,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 9595,
+                    "tokens_remaining": 20405,
+                    "token_utilization_percentage": 31.98,
+                    "token_status": "available",
+                    "total_steps": 7,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 3,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 7
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 4154,
+                            "avg_per_call": 2077
+                        },
+                        "analyst": {
+                            "calls": 3,
+                            "tokens": 5441,
+                            "avg_per_call": 1813.6666666666667
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1370.71
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_no_progress"
+            }
+        }
+    }
+]

@@ -1,0 +1,220 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T02:51:00+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "runnymede.gov.uk",
+                "Council Name": "Runnymede Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Sports and physical activity \u2013 Runnymede Borough Council",
+                        "link": "https://www.runnymede.gov.uk/community-development/sports-physical-activity/2",
+                        "snippet": "Community sport & health projects. Club4 Holiday Programme (HAF). Government funded Holiday and Food (HAF) programme for children who receive free school meals."
+                    },
+                    {
+                        "title": "Family support team Self referral form",
+                        "link": "https://www.runnymede.gov.uk/downloads/file/502/self-referral-form",
+                        "snippet": "Children eligible for (FSM) free school meal. A child not receiving free school meals when eligible \u2610. Applied for free school meals \u2610. 4. Page 5. 3 -School\u00a0..."
+                    },
+                    {
+                        "title": "Statement of Intent for ECO 4 Flex",
+                        "link": "https://www.runnymede.gov.uk/downloads/file/2336/statement-of-intent-for-eco-flex",
+                        "snippet": "May 3, 2024 ... Proxy 4) Achild living at the premises is eligible for free school meals,due to low-income5. Proxy 5) A person living at the premises is\u00a0..."
+                    },
+                    {
+                        "title": "Runnymede Borough Council Residents Support Fund scheme ...",
+                        "link": "https://democracy.runnymede.gov.uk/documents/s12626/Appendix%20B%20-%20Residents%20Support%20Fund%20Aug24v1.pdf",
+                        "snippet": "(for example, Child Benefit) is paid or free school meals are provided at ... which directly affect a household's ability to afford or access energy, food and."
+                    },
+                    {
+                        "title": "Projects in your community \u2013 Runnymede Borough Council",
+                        "link": "https://www.runnymede.gov.uk/community-development/projects-community",
+                        "snippet": "... Food) camps for children who receive benefit-related free school meals. These camps \u2013 known as 'Club4' in Surrey \u2013 run in the Easter, summer and Christmas\u00a0..."
+                    },
+                    {
+                        "title": "Runnymede Borough Council Household Support Fund scheme ...",
+                        "link": "https://democracy.runnymede.gov.uk/documents/s12625/Appendix+A+-+HSF6+Policy.pdf",
+                        "snippet": "Sep 4, 2024 ... benefit (for example, Child Benefit) is paid or free school meals are provided at the time of the award. The definition of a household with\u00a0..."
+                    },
+                    {
+                        "title": "Household Support Fund Policy - approved November 2023",
+                        "link": "https://www.runnymede.gov.uk/downloads/file/1776/hsf-policy",
+                        "snippet": "Apr 20, 2023 ... a person aged 19 or over in respect of whom a child-related benefit (for example, Child Benefit) is paid or free school meals are provided\u00a0..."
+                    },
+                    {
+                        "title": "Runnymede civic awards \u2013 Runnymede Borough Council",
+                        "link": "https://www.runnymede.gov.uk/council-local-democracy/runnymede-civic-awards/14",
+                        "snippet": "Philip has a number of issues that can make life difficult for him in school ... They also run a school holidays lunch project with an impressive 2538 lunches\u00a0..."
+                    },
+                    {
+                        "title": "Fees and charges",
+                        "link": "https://democracy.runnymede.gov.uk/documents/s12475/Community+Services+-+Fees+and+Charges+25-26.pdf",
+                        "snippet": "Sep 23, 2024 ... Full weekly charge (price to include a free smoke alarm on take up of contract) - ... School Assemblies - schools within Runnymede (max. 30\u00a0..."
+                    },
+                    {
+                        "title": "Community Transport: Taking you where you want to go ...",
+                        "link": "https://www.runnymede.gov.uk/news/article/191/community-transport-taking-you-where-you-want-to-go-",
+                        "snippet": "Carers are able to travel as a companion free of charge. How to book ... and independent in your own home, such as Meals at Home, and community alarms. Published: 31 July 2024. Provide website feedback."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Sports and physical activity \u2013 Runnymede Borough Council",
+                                "Source": "https://www.runnymede.gov.uk/community-development/sports-physical-activity/2",
+                                "Key Strengths": [
+                                    "Mentions sports, physical activities, and government funded Holiday and Food (HAF) programme for children who receive free school meals.",
+                                    "Relevant for promoting physical activity and nutrition among children in need."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The information provided indicates a program aimed at providing sports, physical activities, and food assistance for children eligible for free school meals during holidays. This is highly relevant for council customer information needs as it focuses on supporting families with low income."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Runnymede Borough Council Residents Support Fund scheme ...",
+                                "Source": "https://democracy.runnymede.gov.uk/documents/s12626/Appendix%20B%20-%20Residents%20Support%20Fund%20Aug24v1.pdf",
+                                "Key Strengths": [
+                                    "Mentions free school meals and their potential impact on a household's ability to afford energy, food, and other necessities.",
+                                    "Relevant for supporting residents in need of financial assistance."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The document provides information about a Residents Support Fund scheme that takes into account the potential impact of free school meals on a household's ability to afford energy, food, and other necessities. This is highly relevant for council customer information needs as it focuses on financial support for families with low income."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Projects in your community \u2013 Runnymede Borough Council",
+                                "Source": "https://www.runnymede.gov.uk/community-development/projects-community",
+                                "Key Strengths": [
+                                    "Mentions Holiday and Food (HAF) camps for children who receive benefit-related free school meals.",
+                                    "Relevant for promoting activities and services that cater to the needs of children in need."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "The information provided describes holiday and food programs for children eligible for benefit-related free school meals. This is relevant for council customer information needs as it focuses on supporting families with low income during holidays."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Runnymede Borough Council Household Support Fund scheme ...",
+                                "Source": "https://democracy.runnymede.gov.uk/documents/s12625/Appendix+A+-+HSF6+Policy.pdf",
+                                "Key Strengths": [
+                                    "Mentions free school meals and their impact on the definition of a household with low income.",
+                                    "Relevant for providing information about financial assistance programs that cater to the needs of families with low income."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The document explains the Household Support Fund Policy and mentions how free school meals are considered when defining a household with low income. This is relevant for council customer information needs as it focuses on financial support for families with low income."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Household Support Fund Policy - approved November 2023",
+                                "Source": "https://www.runnymede.gov.uk/downloads/file/1776/hsf-policy",
+                                "Key Strengths": [
+                                    "Mentions free school meals in the context of the definition of a household with low income.",
+                                    "Relevant for providing information about financial assistance programs that cater to the needs of families with low income."
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "The document describes the Household Support Fund Policy, including considerations related to free school meals when defining a household with low income. This is relevant for council customer information needs as it focuses on financial support for families with low income."
+                            }
+                        ],
+                        "Analysis Notes": "All items in the provided list were analyzed for relevance and quality based on their title, link, snippet, and key strengths. Ten items were examined, of which five best meet the stated criteria and confidence threshold (60%).",
+                        "Recommendations Notes": "The chosen recommendations provide information about support programs that cater to the needs of families with low income, including sports, physical activities, holiday food projects, financial assistance funds, and household support fund policies. Recommendations are ordered by relevance and quality, as well as the potential impact on council customer information needs."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 75,
+                    "max_confidence": "85"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

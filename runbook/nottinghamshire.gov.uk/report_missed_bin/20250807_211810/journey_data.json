@@ -1,0 +1,683 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T21:18:10+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "nottinghamshire.gov.uk",
+                "Council Name": "Nottinghamshire County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Bin and bulky waste collections | Nottinghamshire County Council",
+                        "link": "https://www.nottinghamshire.gov.uk/waste-and-recycling/waste-collection/bin-bulky-waste-collections",
+                        "snippet": "You can find details of bin collection days and report missed bin collections on the website of the council covering the area where you live."
+                    },
+                    {
+                        "title": "Report damaged road structures, furniture or street signs ...",
+                        "link": "https://www.nottinghamshire.gov.uk/transport/roads/report-damaged-structures-furniture-or-signs",
+                        "snippet": "street furniture damage; street/road sign damage; traffic light damage; traffic light fault; temporary sign issue; cycle sign damaged or missing. Green/grey\u00a0..."
+                    },
+                    {
+                        "title": "MyNotts app relaunched with brand-new look | Nottinghamshire ...",
+                        "link": "https://www.nottinghamshire.gov.uk/newsroom/news/mynotts-app-relaunched-with-brand-new-look",
+                        "snippet": "Dec 18, 2023 ... ... report potholes and faulty streetlights as well as apply for school places. ... waste removal and missed bins. There is also a Cost-of-Living\u00a0..."
+                    },
+                    {
+                        "title": "Report a road or pavement problem | Nottinghamshire County Council",
+                        "link": "https://www.nottinghamshire.gov.uk/transport/roads/report-a-road-or-pavement-problem",
+                        "snippet": "The issues you're able to report on this form are: road marking renewal; cycle track damage; cycle track lining issues; cycling issues caused by roadworks; any\u00a0..."
+                    },
+                    {
+                        "title": "Contact us | Nottinghamshire County Council",
+                        "link": "https://www.nottinghamshire.gov.uk/contact-and-complaints/contact-us/contact-us",
+                        "snippet": "Contact and complaints \u00b7 Contact us; Contact us. Contact us. Our team of ... If English is not your preferred language you can ask us to use a translator\u00a0..."
+                    },
+                    {
+                        "title": "Waste collection | Nottinghamshire County Council",
+                        "link": "https://www.nottinghamshire.gov.uk/waste-and-recycling/waste-collection",
+                        "snippet": "Bin and bulky waste collections \u00b7 Request a healthcare waste collection ... Contact and complaints \u00b7 Homepage. Latest news. Photographic competition\u00a0..."
+                    },
+                    {
+                        "title": "Nottinghamshire County Council: Home",
+                        "link": "https://www.nottinghamshire.gov.uk/",
+                        "snippet": "Information from Nottinghamshire County Council on local services, latest news, job vacancies, tourism and Robin Hood."
+                    },
+                    {
+                        "title": "Construction, demolition and excavation waste arisings, use and ...",
+                        "link": "https://www.nottinghamshire.gov.uk/media/120376/nd29-construction-demolition-and-excavation-waste-arisings-use-and-disposal-for-england-2008-april-2010.pdf",
+                        "snippet": "WRAP and Capita Symonds believe the content of this report to be correct as at the date of writing. However, factors such as prices, levels of recycled\u00a0..."
+                    },
+                    {
+                        "title": "Nottinghamshire and Nottingham - Waste Local Plan and Waste ...",
+                        "link": "https://www.nottinghamshire.gov.uk/media/4rent0jk/final-wlp-amr-2019-2021.pdf",
+                        "snippet": "Overall, this monitoring report shows that waste arisings across all waste streams have been lower than the arisings forecasted in the Waste Core Strategy."
+                    },
+                    {
+                        "title": "Make a new highways request | Nottinghamshire County Council",
+                        "link": "https://www.nottinghamshire.gov.uk/transport/roads/make-a-new-highways-request",
+                        "snippet": "Pedestrian crossing. Winter roads. grit bin refill; new grit bin; road ... Report damaged road structures, furniture or street signs \u00b7 Highways Capital\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.nottinghamshire.gov.uk/waste-and-recycling/waste-collection/bin-bulky-waste-collections",
+                        "title": "Bin and bulky waste collections | Nottinghamshire County Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Provides details of bin collection days",
+                            "Offers a way to report missed bin collections"
+                        ],
+                        "reasoning": "This link provides direct information regarding council's bin and bulky waste collections, which is most relevant for the customer's information needs. It also offers a means to report missed bin collections.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Bin and bulky waste collections | Nottinghamshire County Council",
+                                "Source": "https://www.nottinghamshire.gov.uk/waste-and-recycling/waste-collection/bin-bulky-waste-collections",
+                                "Key Strengths": [
+                                    "Provides details of bin collection days",
+                                    "Offers a way to report missed bin collections"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link provides direct information regarding council's bin and bulky waste collections, which is most relevant for the customer's information needs. It also offers a means to report missed bin collections."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Report a road or pavement problem | Nottinghamshire County Council",
+                                "Source": "https://www.nottinghamshire.gov.uk/transport/roads/report-a-road-or-pavement-problem",
+                                "Key Strengths": [
+                                    "Allows reporting of various road and pavement problems",
+                                    "Inclusive of cycle track damage issues"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link provides customers with the ability to report a variety of road and pavement problems, including cycle track damages. This is likely to be useful for customers who encounter issues with cycling infrastructure."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Contact us | Nottinghamshire County Council",
+                                "Source": "https://www.nottinghamshire.gov.uk/contact-and-complaints/contact-us/contact-us",
+                                "Key Strengths": [
+                                    "Offers multiple contact methods for customers",
+                                    "Provides a translator service if English is not preferred"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link offers customers the opportunity to contact the council via various communication channels, which is essential when seeking customer information. Additionally, it offers a translator service, catering to multilingual customers."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Waste collection | Nottinghamshire County Council",
+                                "Source": "https://www.nottinghamshire.gov.uk/waste-and-recycling/waste-collection",
+                                "Key Strengths": [
+                                    "Provides information about waste collections",
+                                    "Includes healthcare waste collection services"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link offers customers information about waste collections, including healthcare waste collection services. This could be relevant for individuals needing to dispose of medical waste."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Make a new highways request | Nottinghamshire County Council",
+                                "Source": "https://www.nottinghamshire.gov.uk/transport/roads/make-a-new-highways-request",
+                                "Key Strengths": [
+                                    "Offers the ability to report new highway requests",
+                                    "Includes winter roads maintenance and grit bin refill"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link offers customers the opportunity to make new highway requests, which could be beneficial for those needing maintenance on or near council-maintained roads. Additionally, it includes winter roads maintenance and grit bin refill requests."
+                            }
+                        ],
+                        "Analysis Notes": "The provided list contains information primarily regarding waste collections, highways maintenance, reporting problems, and contacting the council directly. Although some of the links offer valuable resources for our customer's needs, the list does not appear specifically tailored to council customer service information.",
+                        "Recommendations Notes": "By further refining the search criteria or using additional search terms, it is possible that more suitable options may become available."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "90",
+                        "85",
+                        "80",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "90"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "Bin and bulky waste collections | Nottinghamshire County Council",
+                        "Source": "https://www.nottinghamshire.gov.uk/waste-and-recycling/waste-collection/bin-bulky-waste-collections",
+                        "Reasoning": "This link provides direct information regarding council's bin and bulky waste collections, which is most relevant for the customer's information needs, and it has a high confidence score of 90 which meets the minimum threshold.",
+                        "Confidence": "90"
+                    },
+                    {
+                        "Number": "5",
+                        "Title": "Contact us | Nottinghamshire County Council",
+                        "Source": "https://www.nottinghamshire.gov.uk/contact-and-complaints/contact-us/contact-us",
+                        "Reasoning": "This link offers customers the opportunity to contact the council via various communication channels, which is essential when seeking customer information, and also provides a translator service catering to multilingual customers.",
+                        "Confidence": "85"
+                    },
+                    {
+                        "Number": "6",
+                        "Title": "Waste collection | Nottinghamshire County Council",
+                        "Source": "https://www.nottinghamshire.gov.uk/waste-and-recycling/waste-collection",
+                        "Reasoning": "This link offers customers information about waste collections, including healthcare waste collection services.",
+                        "Confidence": "80"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.nottinghamshire.gov.uk/waste-and-recycling/waste-collection/bin-bulky-waste-collections"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.nottinghamshire.gov.uk/waste-and-recycling/waste-collection/bin-bulky-waste-collections",
+                        "analysis": {
+                            "url": "https://www.nottinghamshire.gov.uk/waste-and-recycling/waste-collection/bin-bulky-waste-collections",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T21:18:10+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T21:18:37+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 26755,
+                            "response_time": 0.331,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.331s)",
+                                    "Content successfully retrieved (26755 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.33145880699157715,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.nottinghamshire.gov.uk/waste-and-recycling/waste-collection/bin-bulky-waste-collections"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.nottinghamshire.gov.uk/waste-and-recycling/waste-collection/bin-bulky-waste-collections",
+                        "content": " The cleaned semantically structured HTML containing the central editorial content of the given webpage would be:\n\n```html\n<h1>403 Forbidden</h1>\n```\n\nThis single `<h1>` element is the main body content on the page, indicating that access to the content has been forbidden. All other non-essential elements, such as headers, footers, navigation menus, sidebars, cookie banners, and newsletter sign-up blocks have been stripped out.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 2.3167989253997803,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.nottinghamshire.gov.uk/waste-and-recycling/waste-collection/bin-bulky-waste-collections",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content does not provide an answer as the page is not accessible.",
+                                    "confidence": "0%",
+                                    "reasoning": "The provided webpage displays a '403 Forbidden' error, indicating access to the content has been denied or otherwise forbidden. As such, the information needed to report a missed bin collection is not available on this page.",
+                                    "next_actions": "Attempt to access the correct page or contact the local council through alternative means such as phone or email."
+                                }
+                            ],
+                            "overall_assessment": "The provided content does not serve my needs as it is not accessible. Key gaps or areas for improvement include addressing webpage accessibility errors and providing information related to missed bin collections."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.292675971984863,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.nottinghamshire.gov.uk/waste-and-recycling/waste-collection/bin-bulky-waste-collections"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_211810-nottinghamshire.gov.uk",
+                    "analysis_timestamp": "2025-08-07T21:18:43+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.55,
+                            "tokens_consumed": 3464,
+                            "tokens_remaining": 96536,
+                            "token_utilization_percentage": 3.46,
+                            "average_tokens_per_step": 577.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 96.54,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 167,
+                            "consumption_rate": 577.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 7.86,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.55,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_211810-nottinghamshire.gov.uk",
+                        "start_time": "2025-08-07T21:18:10+01:00",
+                        "current_time": "2025-08-07T21:18:43+01:00",
+                        "duration_seconds": 33,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 3464,
+                        "tokens_remaining": 96536,
+                        "token_utilization_percentage": 3.46,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 449,
+                                "avg_per_call": 224.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3015,
+                                "avg_per_call": 1507.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 577.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_211810-nottinghamshire.gov.uk",
+                    "start_time": "2025-08-07T21:18:10+01:00",
+                    "current_time": "2025-08-07T21:18:43+01:00",
+                    "duration_seconds": 33,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 3464,
+                    "tokens_remaining": 96536,
+                    "token_utilization_percentage": 3.46,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 449,
+                            "avg_per_call": 224.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3015,
+                            "avg_per_call": 1507.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 577.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

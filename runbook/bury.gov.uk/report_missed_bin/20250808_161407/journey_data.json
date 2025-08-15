@@ -1,0 +1,670 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T16:14:07+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "bury.gov.uk",
+                "Council Name": "Bury Metropolitan Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed bin collection - Bury Council",
+                        "link": "https://www.bury.gov.uk/waste-and-recycling/missed-bins",
+                        "snippet": "You do not need to report a missed bin collection if: Your bin is not full and you can manage until your next collection; The bins in your street or part of\u00a0..."
+                    },
+                    {
+                        "title": "Bins information - Bury Council",
+                        "link": "https://www.bury.gov.uk/waste-and-recycling/bins-information",
+                        "snippet": "Bins information. Bins information. Grey rubbish bin. Find out what you can put in your grey rubbish bin. See all \u00b7 Report a missed grey bin collection \u00b7 Brown\u00a0..."
+                    },
+                    {
+                        "title": "Communal bins service - Bury Council",
+                        "link": "https://www.bury.gov.uk/waste-and-recycling/communal-bins-service",
+                        "snippet": "Collections we know we have missed are listed on our website at the end of the working day. You do not need to report a missed collection if the list includes\u00a0..."
+                    },
+                    {
+                        "title": "Report - Bury Council",
+                        "link": "https://www.bury.gov.uk/report",
+                        "snippet": "... report this to us. See all. Waste and Recycling. Missed bin collection. What to do if your bin was not emptied on your collection day. See all. Trees, parks and\u00a0..."
+                    },
+                    {
+                        "title": "Grey rubbish bin - Bury Council",
+                        "link": "https://www.bury.gov.uk/waste-and-recycling/bins-information/grey-bin",
+                        "snippet": "Report a missed grey bin collection. Main content area. We will empty your grey household rubbish bin once every three weeks on your collection day. What you\u00a0..."
+                    },
+                    {
+                        "title": "Green recycling bin - Bury Council",
+                        "link": "https://www.bury.gov.uk/waste-and-recycling/bins-information/green-bin",
+                        "snippet": "Report a missed green bin collection. Main content area. We will empty your green recycling bin once every three weeks on your collection day. You can request\u00a0..."
+                    },
+                    {
+                        "title": "Request a bin - Bury Council",
+                        "link": "https://www.bury.gov.uk/waste-and-recycling/request-a-bin",
+                        "snippet": "your bin is missing or damaged; you need to change the size of your bin; you want an extra bin. Please note: All bins remain the property of Bury Council\u00a0..."
+                    },
+                    {
+                        "title": "Report an issue in your neighbourhood - Bury Council",
+                        "link": "https://www.bury.gov.uk/housing/housing-services/neighbourhoods/report-an-issue-in-your-neighbourhood",
+                        "snippet": "Traffic calming issue \u00b7 Salt bins \u00b7 Street furniture damage or issue \u00b7 Street lighting fault \u00b7 Street sign \u00b7 Tree issues. Rubbish and recycling. Missed bin\u00a0..."
+                    },
+                    {
+                        "title": "Brown recycling bin - Bury Council",
+                        "link": "https://www.bury.gov.uk/waste-and-recycling/bins-information/brown-bin",
+                        "snippet": "Report a missed brown bin collection. Main content area. We will empty your ... Your brown bin is for recycling garden waste and food waste. These items\u00a0..."
+                    },
+                    {
+                        "title": "Blue recycling bin - Bury Council",
+                        "link": "https://www.bury.gov.uk/waste-and-recycling/bins-information/blue-bin",
+                        "snippet": "Report a missed blue bin collection. Main content area. We will empty your blue recycling bin once every three weeks on your collection day. You can request a\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.bury.gov.uk/waste-and-recycling/missed-bins",
+                        "title": "Missed bin collection - Bury Council",
+                        "confidence": 100,
+                        "strengths": [
+                            "Direct link specific to missed bin collections"
+                        ],
+                        "reasoning": "This link directly addresses the user's need for information regarding a missed bin collection. The title and snippet both indicate that this resource deals specifically with missed bin collections, providing immediate assistance.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "Up to 4"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed bin collection - Bury Council",
+                                "Source": "https://www.bury.gov.uk/waste-and-recycling/missed-bins",
+                                "Key Strengths": [
+                                    "Direct link specific to missed bin collections"
+                                ],
+                                "Confidence": "100",
+                                "Reasoning": "This link directly addresses the user's need for information regarding a missed bin collection. The title and snippet both indicate that this resource deals specifically with missed bin collections, providing immediate assistance."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Report - Bury Council",
+                                "Source": "https://www.bury.gov.uk/report",
+                                "Key Strengths": [
+                                    "Direct report form for various council services, including missed bin collection"
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "Though the title and snippet do not explicitly mention missed bin collections, the source is a direct report form for various council services, with an option to report a missed bin collection. This resource should still provide relevant assistance."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Grey rubbish bin - Bury Council",
+                                "Source": "https://www.bury.gov.uk/waste-and-recycling/bins-information/grey-bin",
+                                "Key Strengths": [
+                                    "Information about grey bin collections and missed grey bin collection reporting"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "Though the source does not directly provide information about missing collections, it offers details about the grey bin service, potentially allowing users to understand their specific collection schedule and report any missed collections."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Brown recycling bin - Bury Council",
+                                "Source": "https://www.bury.gov.uk/waste-and-recycling/bins-information/brown-bin",
+                                "Key Strengths": [
+                                    "Information about brown bin collections and missed brown bin collection reporting"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Though the source focuses primarily on the brown recycling bin, it provides information related to collection schedules and allows users to report missed collections if necessary."
+                            }
+                        ],
+                        "Analysis Notes": "Four of the provided links offer relevant information for council customer needs, specifically addressing problems related to missed bin collections or providing information about bin services. The remaining six items focus on aspects such as green or blue bins, communal bins service, and requesting a new bin, which are not directly relevant to the user's initial query.",
+                        "Recommendations Notes": "Suggested recommendations are chosen based on direct relevance to missing bin collections, explicit mention of missed collection reporting, or general information related to council waste services."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "100",
+                        "95",
+                        "90",
+                        "85"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 92.5,
+                    "max_confidence": "100"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Missed bin collection - Bury Council",
+                            "Source": "https://www.bury.gov.uk/waste-and-recycling/missed-bins",
+                            "Reasoning": "This link directly addresses the user's need for information regarding a missed bin collection with a confidence score of 100.",
+                            "Confidence": "100"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Report - Bury Council",
+                            "Source": "https://www.bury.gov.uk/report",
+                            "Reasoning": "Though the title and snippet do not explicitly mention missed bin collections, this direct report form for various council services likely offers an option to report a missed collection.",
+                            "Confidence": "95"
+                        }
+                    ],
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "100",
+                        "95"
+                    ],
+                    "options": {
+                        "max_selections": 3,
+                        "min_confidence": 0.6,
+                        "include_reasoning": true
+                    }
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.bury.gov.uk/waste-and-recycling/missed-bins"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.bury.gov.uk/waste-and-recycling/missed-bins",
+                        "analysis": {
+                            "url": "https://www.bury.gov.uk/waste-and-recycling/missed-bins",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T16:14:07+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T16:14:28+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 310326,
+                            "response_time": 0.309,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.309s)",
+                                    "Content successfully retrieved (310326 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.3125619888305664,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.bury.gov.uk/waste-and-recycling/missed-bins"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.bury.gov.uk/waste-and-recycling/missed-bins",
+                        "content": " The provided HTML code contains a web page which provides information about reporting a missed bin collection in Bury St. Edmunds, UK. On the page, there are various options for users to report a missed bin collection:\n1. Phone Number: Call 03450 602626 (available Monday-Friday 8am-6pm)\n2. Online form: Fill out the online form on the Bury St Edmunds Council's website by click on \"Report missed bin\" button.\n3. Email: Send an email to wasteteam@steds.gov.uk\n4. Facebook: Share page to Facebook\n5. Twitter: Share page to Twitter\n\nUnder \"Related Pages\", there are links for additional resources such as Bin collection advice, Bin collection days and alerts, Bins information, and Household waste and recycling centers.\nAdditionally, there is a translator widget at the bottom of the page which allows users to view the content in other languages.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 7.5792341232299805,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.bury.gov.uk/waste-and-recycling/missed-bins",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content provides excellent answers for this question by detailing the multiple methods one can use to report a missed bin collection, including contacting via phone, online form, email, social media platforms, and even using language translator at the bottom of the page.",
+                                    "confidence": "85%",
+                                    "reasoning": "The provided content clearly outlines what steps need to be taken by council residents who have missed their bin collection due to forgetting and offers multiple methods for contact to ensure accessibility. However, there is no specific mention of the response or resolution time for a reported missed bin collection.",
+                                    "next_actions": "After reading this content, as a Council Resident with a missed bin, my next action would be to choose one of the listed options and contact the Bury St Edmunds Council via one method."
+                                }
+                            ],
+                            "overall_assessment": "The provided HTML code successfully meets the needs of Council Residents regarding missed bin collections by providing detailed information on how to report a missed collection, but it falls short in mentioning the response or resolution time. It offers an overall satisfactory experience for residents seeking information related to missed collections."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.87791109085083,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.bury.gov.uk/waste-and-recycling/missed-bins"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_161407-bury.gov.uk",
+                    "analysis_timestamp": "2025-08-08T16:14:42+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.5833333333333334,
+                            "tokens_consumed": 6634,
+                            "tokens_remaining": 23366,
+                            "token_utilization_percentage": 22.11,
+                            "average_tokens_per_step": 1105.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 77.89,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 21,
+                            "consumption_rate": 1105.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "85",
+                            "quality_scores": [
+                                "85"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "85",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 8.33,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.5833333333333334,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_161407-bury.gov.uk",
+                        "start_time": "2025-08-08T16:14:07+01:00",
+                        "current_time": "2025-08-08T16:14:42+01:00",
+                        "duration_seconds": 35,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6634,
+                        "tokens_remaining": 23366,
+                        "token_utilization_percentage": 22.11,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3709,
+                                "avg_per_call": 1854.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 2925,
+                                "avg_per_call": 1462.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1105.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_161407-bury.gov.uk",
+                    "start_time": "2025-08-08T16:14:07+01:00",
+                    "current_time": "2025-08-08T16:14:42+01:00",
+                    "duration_seconds": 35,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6634,
+                    "tokens_remaining": 23366,
+                    "token_utilization_percentage": 22.11,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3709,
+                            "avg_per_call": 1854.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 2925,
+                            "avg_per_call": 1462.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1105.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

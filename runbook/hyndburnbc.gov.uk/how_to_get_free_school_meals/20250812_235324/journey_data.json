@@ -1,0 +1,669 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-12T23:53:24+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "hyndburnbc.gov.uk",
+                "Council Name": "Hyndburn Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Food",
+                        "link": "https://www.hyndburnbc.gov.uk/costofliving/7/",
+                        "snippet": "Healthy Start vouchers \u2013Assistance with food or milk for your child. Free School Meals \u2013Eligibility and how to apply for free school meals. Intro \u00b7 Cost of\u00a0..."
+                    },
+                    {
+                        "title": "Hyndburn's HAF Programme",
+                        "link": "https://democracy.hyndburnbc.gov.uk/documents/s19151/HAF%20Report%20to%20Scrutiny%20Dec23.pdf",
+                        "snippet": "To be eligible for the Hyndburn scheme you must be: School aged children from reception to year 11 (inclusive) who receive benefits-related free school meals (\u00a0..."
+                    },
+                    {
+                        "title": "The Evergreen School Proposal",
+                        "link": "https://democracy.hyndburnbc.gov.uk/documents/s2620/The%20Evergreen%20School%20Proposal.pdf",
+                        "snippet": "proposed free school location. Distance from proposed location of free school in miles. Most recent. Ofsted rating. % of pupils eligible for Free. School Meals."
+                    },
+                    {
+                        "title": "Healthy weights",
+                        "link": "https://democracy.hyndburnbc.gov.uk/documents/s20102/June+2024+Hyndburn+Healthy+Weight+Service.pdf",
+                        "snippet": "diet and get participants more physically active. Family Programme ... 5-8 years, prioritising those who are eligible for free school meals. \u2022. PASTA\u00a0..."
+                    },
+                    {
+                        "title": "Sponsor's Handbook",
+                        "link": "https://www.hyndburnbc.gov.uk/wp-content/uploads/2022/05/Sponsors-Handbook-Homes-for-Ukraine-v1f.pdf",
+                        "snippet": "For more information, please visit www.lancashire.gov.uk/children-education-families/schools/free-school-meals/. 7.2 Pre-School. Children can access a nursey or\u00a0..."
+                    },
+                    {
+                        "title": "Food and Safety Advice for the Public | Hyndburn Borough Council",
+                        "link": "https://www.hyndburnbc.gov.uk/food-and-safety-advice-for-the-public/11/",
+                        "snippet": "Feb 19, 2019 ... ... school or other establishments until they have also been symptom-free for 48 hours. If you are suffering from food poisoning you must try to\u00a0..."
+                    },
+                    {
+                        "title": "Food Allergen Information and Controls for Caterers",
+                        "link": "https://www.hyndburnbc.gov.uk/download/allergy-guidance-document-for-caterers/?ind=1533904464259&filename=Guidance%20Control%20of%20allergens%20in%20the%20kitchen.pdf&wpdmdl=17797&refresh=679f1a342ada01738480180",
+                        "snippet": "food type \u2013 e.g. ground nuts always go in the same container when decanted. Do not put an allergen free food in to a container that may have previously held."
+                    },
+                    {
+                        "title": "Changes to your household",
+                        "link": "https://www.hyndburnbc.gov.uk/download/benfits-changes-of-circumstances/?ind=1485789510087&filename=Changes%20to%20your%20household.pdf&wpdmdl=6228&refresh=6801f726bc9181744959270",
+                        "snippet": "Do they get Income Support, income based Job Seeker's. Allowance or ... child's eligibility for free school meals or any other benefit, and with Lancashire."
+                    },
+                    {
+                        "title": "BOROUGH OF HYNDBURN",
+                        "link": "https://www.hyndburnbc.gov.uk/download/benefits-changes-in-circumstances-forms/?wpdmdl=10560&refresh=66bb2b4b11c131723542347&ind=1496226567858&filename=Benefits%20-%20Self%20Employed%20Declaration.pdf",
+                        "snippet": "Do you get any government business allowances? ... be shared with the Local Education Authority for the purpose of determining a child's eligibility for free\u00a0..."
+                    },
+                    {
+                        "title": "Statement of Intent for ECO4 Appendix 1",
+                        "link": "https://democracy.hyndburnbc.gov.uk/documents/s16946/Appendix%201%20-%20Lancashire-wide%20Statement%20of%20Intent.pdf",
+                        "snippet": "Proxy 4) A householder receiving free school meals due to low-income. Proxy 5) A householder supported by a LA run scheme, that has been named and described\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.hyndburnbc.gov.uk/costofliving/7/",
+                        "title": "Food",
+                        "confidence": 80,
+                        "strengths": [
+                            "Provides information on Healthy Start vouchers and free school meals",
+                            "Includes a clear reference to food for children"
+                        ],
+                        "reasoning": "The title of the page mentions 'Food' and the snippet talks about Healthy Start vouchers, which are primarily used to buy food, and free school meals. This strongly suggests that information on council customer's needs related to food can be found here.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "4"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Food",
+                                "Source": "https://www.hyndburnbc.gov.uk/costofliving/7/",
+                                "Key Strengths": [
+                                    "Provides information on Healthy Start vouchers and free school meals",
+                                    "Includes a clear reference to food for children"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title of the page mentions 'Food' and the snippet talks about Healthy Start vouchers, which are primarily used to buy food, and free school meals. This strongly suggests that information on council customer's needs related to food can be found here."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Hyndburn's Holiday Activities and Food (HAF) Programme",
+                                "Source": "https://democracy.hyndburnbc.gov.uk/documents/s19151/HAF%20Report%20to%20Scrutiny%20Dec23.pdf",
+                                "Key Strengths": [
+                                    "Provides details about a programme offering free food during school holidays",
+                                    "Eligibility criteria for the programme clearly mentioned"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title indicates it is about a holiday activities and food (HAF) programme, which directly relates to providing meals during times when schools are closed. The eligibility criteria for this programme also includes receiving benefits-related free school meals."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Healthy weights",
+                                "Source": "https://democracy.hyndburnbc.gov.uk/documents/s20102/June+2024+Hyndburn+Healthy+Weight+Service.pdf",
+                                "Key Strengths": [
+                                    "Healthy Weight Service offers diet and physical activity programs",
+                                    "Priority given to children eligible for free school meals"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title suggests the document pertains to maintaining a healthy weight, which can involve providing nutritional guidance and promoting physical activities. The focus on families with children eligible for free school meals further highlights its relevance to council customer's needs."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Changes to your household",
+                                "Source": "https://www.hyndburnbc.gov.uk/download/benfits-changes-of-circumstances/?ind=1485789510087&filename=Changes%20to%20your%20household.pdf&wpdmdl=6228&refresh=6801f726bc9181744959270",
+                                "Key Strengths": [
+                                    "Provides information on changes to household income, which may affect a child's eligibility for free school meals",
+                                    "Includes details on how to report such changes"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title mentions 'Changes to your household', which suggests this document concerns updates in a citizen's financial situation that could impact their access to council services, including free school meals. The section on reporting changes strengthens its relevance."
+                            }
+                        ],
+                        "Analysis Notes": "Several results were related to food safety or allergen information, which while important, did not directly address the query for customer information needs regarding council services such as free school meals.",
+                        "Recommendations Notes": "While other results might have been relevant if the focus was on general food-related information, the scope of this analysis is limited to council-provided customer information related to food or meal programs."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "85",
+                        "90",
+                        "85"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "2",
+                            "Title": "Hyndburn's Holiday Activities and Food (HAF) Programme",
+                            "Source": "https://democracy.hyndburnbc.gov.uk/documents/s19151/HAF%20Report%20to%20Scrutiny%20Dec23.pdf",
+                            "Reasoning": "The title indicates it is about a holiday activities and food (HAF) programme, which directly relates to providing meals during times when schools are closed. The eligibility criteria for this programme also includes receiving benefits-related free school meals.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "1",
+                            "Title": "Food",
+                            "Source": "https://www.hyndburnbc.gov.uk/costofliving/7/",
+                            "Reasoning": "The title of the page mentions 'Food' and the snippet talks about Healthy Start vouchers, which are primarily used to buy food, and free school meals. This strongly suggests that information on council customer's needs related to food can be found here.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Healthy weights",
+                            "Source": "https://democracy.hyndburnbc.gov.uk/documents/s20102/June%202024%20Hyndburn%20Healthy%20Weight%20Service.pdf",
+                            "Reasoning": "The title suggests the document pertains to maintaining a healthy weight, which can involve providing nutritional guidance and promoting physical activities. The focus on families with children eligible for free school meals further highlights its relevance.",
+                            "Confidence": "90"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.hyndburnbc.gov.uk/costofliving/7/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.hyndburnbc.gov.uk/costofliving/7/",
+                        "analysis": {
+                            "url": "https://www.hyndburnbc.gov.uk/costofliving/7/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-12T23:53:24+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-12T23:53:52+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": false,
+                            "http_status": 200,
+                            "content_type": null,
+                            "content_length": 0,
+                            "response_time": 0,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 50,
+                                "max_score": 100,
+                                "issues": [
+                                    "No content retrieved"
+                                ],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 0,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": null,
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 40,
+                                "component_scores": {
+                                    "technical": 50,
+                                    "accessibility": 0,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content",
+                                    "Be prepared for potential accessibility challenges"
+                                ],
+                                "alternatives_needed": false
+                            },
+                            "fetch_error": "Failed to fetch URL: cURL error 23: Failed writing received data to disk/application (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://www.hyndburnbc.gov.uk/costofliving/7/"
+                        },
+                        "processing_time": 0.3372480869293213,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.hyndburnbc.gov.uk/costofliving/7/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.hyndburnbc.gov.uk/costofliving/7/",
+                        "content": " Here is the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<main class=\"govuk-main-wrapper\" id=\"main-content\" role=\"main\">\n    <article>\n        <div class=\"entry content rich-text\">\n            <h2>Food</h2>\n            <p style=\"text-align: left;\">Please see details of some local food banks:</p>\n            <p><strong><a href=\"https://www.hyndburnbc.gov.uk/food-support/\">Map of affordable food options in the area</a></strong></p>\n            <p style=\"text-align: left;\"><strong><a href=\"https://www.ourfoodbank.co.uk/clayton-baptist-church\" target=\"_blank\" rel=\"noopener\">Hyndburn Food Network</a></strong></p>\n            <p style=\"text-align: left;\"><strong><a href=\"https://www.maundyrelief.org.uk/\" target=\"_blank\" rel=\"noopener\">Maundy Relief</a></strong></p>\n            <p style=\"text-align: left;\"><strong><a href=\"https://csnw.co.uk/\" target=\"_blank\" rel=\"noopener\">Community Solutions North West</a></strong></p>\n            <p style=\"text-align: left;\">The Hyndburn Helpers, St James Church, Cannon Street, Accrington</p>\n            <p style=\"text-align: left;\">The Hyndburn Food Pantry, 27 Broadway, Accrington</p>\n            <p style=\"text-align: left;\"><a href=\"https://www.healthystart.nhs.uk/how-to-apply/\" target=\"_blank\" rel=\"noopener\"><strong>Healthy Start vouchers</strong></a> &ndash;Assistance with food or milk for your child</p>\n            <p style=\"text-align: left;\"><a href=\"https://www.lancashire.gov.uk/children-education-families/schools/\" target=\"_blank\" rel=\"noopener\"><strong>Free School Meals</strong></a> &ndash;Eligibility and how to apply for free school meals</p>\n        </div>\n    </article>\n</main>\n```\n\nThis cleaned version includes the main heading, paragraphs, important in-text links, and lists (no blockquotes exist in this particular example) that are part of the article. Decorative or boilerplate elements such as site-wide search, login links, social media footers have been stripped out to focus on the central editorial content.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 12.952995777130127,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.hyndburnbc.gov.uk/costofliving/7/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content partially addresses this need by providing a link to the Free School Meals information, although it does not specify the criteria or timeline for eligibility",
+                                    "confidence": "70%",
+                                    "reasoning": "While the content provides a link to the Free School Meals application process, it does not include detailed information about the specific criteria for eligibility or how quickly one might expect a response. As a council resident seeking this information, I would appreciate more clarity on these points to better understand my options.",
+                                    "next_actions": "I would follow the provided link to the Free School Meals application process and look for further details about eligibility criteria and timelines there."
+                                }
+                            ],
+                            "overall_assessment": "The content provides helpful links to various local food support resources, but lacks specific information on eligibility and speed of response for some of the services mentioned, particularly Free School Meals. This could be improved by providing more detailed information about these topics within the council's website."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.2711029052734375,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.hyndburnbc.gov.uk/costofliving/7/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250812_235324-hyndburnbc.gov.uk",
+                    "analysis_timestamp": "2025-08-12T23:54:12+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8,
+                            "tokens_consumed": 5448,
+                            "tokens_remaining": 24552,
+                            "token_utilization_percentage": 18.16,
+                            "average_tokens_per_step": 908
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 81.84,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 27,
+                            "consumption_rate": 908,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.43,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250812_235324-hyndburnbc.gov.uk",
+                        "start_time": "2025-08-12T23:53:24+01:00",
+                        "current_time": "2025-08-12T23:54:12+01:00",
+                        "duration_seconds": 48,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 5448,
+                        "tokens_remaining": 24552,
+                        "token_utilization_percentage": 18.16,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 1957,
+                                "avg_per_call": 978.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3491,
+                                "avg_per_call": 1745.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 908
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250812_235324-hyndburnbc.gov.uk",
+                    "start_time": "2025-08-12T23:53:24+01:00",
+                    "current_time": "2025-08-12T23:54:12+01:00",
+                    "duration_seconds": 48,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 5448,
+                    "tokens_remaining": 24552,
+                    "token_utilization_percentage": 18.16,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 1957,
+                            "avg_per_call": 978.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3491,
+                            "avg_per_call": 1745.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 908
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

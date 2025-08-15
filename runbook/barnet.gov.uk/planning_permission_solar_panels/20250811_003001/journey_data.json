@@ -1,0 +1,670 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T00:30:01+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "barnet.gov.uk",
+                "Council Name": "London Borough of Barnet"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Do I need planning permission? | Barnet Council",
+                        "link": "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions/do-i-need-planning-permission",
+                        "snippet": "Find out if you need planning permission before you start any building work or change the use of your property."
+                    },
+                    {
+                        "title": "Guidance for home energy improvements | Barnet Council",
+                        "link": "https://www.barnet.gov.uk/sustainability-barnet-zero/sustainable-homes/improve-your-home-be-more-energy-efficient/guidance",
+                        "snippet": "cooler in summer; more energy efficient; greener. This could involve anything from switching to LED light bulbs, improving insulation to installing solar panels\u00a0..."
+                    },
+                    {
+                        "title": "Energy efficiency | Barnet Council",
+                        "link": "https://www.barnet.gov.uk/housing/private-housing/landlords-barnet/energy-efficiency",
+                        "snippet": "Solar Panels External link \u00b7 Air Source Heat Pumps External link ... Planning permission, listed building consent or other planning approvals may\u00a0..."
+                    },
+                    {
+                        "title": "Planning applications and permissions | Barnet Council",
+                        "link": "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions",
+                        "snippet": "All you need to know about making an application for planning permission, including the steps involved, fees, pre-application advice and much more."
+                    },
+                    {
+                        "title": "Planning permission: making an application | Barnet Council",
+                        "link": "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions/making-an-application",
+                        "snippet": "Find out aabout making an application for planning permission, including the steps involved, fees and pre-application advice."
+                    },
+                    {
+                        "title": "Hampstead Garden Suburb",
+                        "link": "https://www.barnet.gov.uk/sites/default/files/2022-07/hgs-character-appraisal-issues-management-proposals-oct2010.pdf",
+                        "snippet": "In the event of works being carried out in the absence of. Planning Permission, Listed Building Consent, or if unauthorised treework is undertaken, enforcement."
+                    },
+                    {
+                        "title": "Design Guidance No.5 Extensions to houses Revised (March 2010)",
+                        "link": "https://www.barnet.gov.uk/sites/default/files/assets/citizenportal/documents/planningconservationandbuildingcontrol/dgn5extensionshousesmar2010.pdf",
+                        "snippet": "are panels which convert solar energy into electricity. ... If so, they will not require planning permission but may require approval under the Building\u00a0..."
+                    },
+                    {
+                        "title": "HAMPSTEAD GARDEN SUBURB Conservation Area",
+                        "link": "https://www.barnet.gov.uk/sites/default/files/2021-08/hgs_trust_design_guidance_web.pdf",
+                        "snippet": "such as solar panels and wind turbines, on visible elevations will not be ... application for Planning Permission, although no fee is charged for\u00a0..."
+                    },
+                    {
+                        "title": "Energy Assessment Guidance",
+                        "link": "https://www.barnet.gov.uk/sites/default/files/gla_energy_assessment_guidance_june_2022_0.pdf",
+                        "snippet": "Full (and reserved matters) planning applications must provide a detailed energy ... Photovoltaic (PV) panels. 10.10. The following information is required\u00a0..."
+                    },
+                    {
+                        "title": "Supplementary Planning Document: Sustainable Design and ...",
+                        "link": "https://www.barnet.gov.uk/sites/default/files/assets/citizenportal/documents/planningconservationandbuildingcontrol/PlanningPolicy/SPD/appendix2draftSustainableDesignandConstructionoct2016.pdf",
+                        "snippet": "Conservation Areas. For flats planning permission is required. Solar panels or Photo. Voltaic panels. Planning permission is not normally required (except for\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions/do-i-need-planning-permission",
+                        "title": "Do I need planning permission? | Barnet Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Provides clear information on whether planning permission is required.",
+                            "Covers a wide range of building work and property changes."
+                        ],
+                        "reasoning": "This link directly addresses the question 'Do I need planning permission?' and provides details about various types of building works or property changes. The answer is provided in clear, easy-to-understand language, making it a reliable resource.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Do I need planning permission? | Barnet Council",
+                                "Source": "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions/do-i-need-planning-permission",
+                                "Key Strengths": [
+                                    "Provides clear information on whether planning permission is required.",
+                                    "Covers a wide range of building work and property changes."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link directly addresses the question 'Do I need planning permission?' and provides details about various types of building works or property changes. The answer is provided in clear, easy-to-understand language, making it a reliable resource."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Planning applications and permissions | Barnet Council",
+                                "Source": "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions",
+                                "Key Strengths": [
+                                    "Provides comprehensive information on the application process.",
+                                    "Covers fees, pre-application advice, and other relevant steps involved."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link offers a detailed overview of planning applications and permissions. It covers various aspects such as fees, pre-application advice, and more \u2013 making it an essential resource for anyone pursuing a building project that requires planning permission."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Planning permission: making an application | Barnet Council",
+                                "Source": "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions/making-an-application",
+                                "Key Strengths": [
+                                    "Includes detailed instructions on the application process.",
+                                    "Covers fees and provides pre-application advice."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link offers step-by-step instructions for making a planning application. The information includes fee details, pre-application advice, and other relevant steps \u2013 making it valuable for applicants."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Energy Assessment Guidance",
+                                "Source": "https://www.barnet.gov.uk/sites/default/files/gla_energy_assessment_guidance_june_2022_0.pdf",
+                                "Key Strengths": [
+                                    "Covers energy assessments for full planning applications.",
+                                    "Provides detailed information on energy assessment requirements."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This link provides detailed guidance on energy assessments for full planning applications. While not specifically about council customer information needs, it is still an important resource for understanding the energy aspect of building projects that require planning permission."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Supplementary Planning Document: Sustainable Design and ...",
+                                "Source": "https://www.barnet.gov.uk/sites/default/files/assets/citizenportal/documents/planningconservationandbuildingcontrol/PlanningPolicy/SPD/appendix2draftSustainableDesignandConstructionoct2016.pdf",
+                                "Key Strengths": [
+                                    "Addresses sustainable design and construction aspects.",
+                                    "Covers flats, solar panels, and other relevant topics."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Although not a clear-cut resource for council customer information needs, this link addresses sustainable design and construction aspects. It covers topics such as flats, solar panels, and other relevant topics \u2013 making it valuable for environmentally conscious builders seeking to incorporate green technologies in their projects."
+                            }
+                        ],
+                        "Analysis Notes": "Three out of the five recommended resources directly address council customer information needs related to planning applications. The remaining two offer insights into energy assessments and sustainable design, respectively - while not initially targeted towards planning permission or property development questions; they do provide additional relevant details that may be useful for customers.",
+                        "Recommendations Notes": "Top recommendations were selected based on relevance to council customer information needs and the comprehensiveness of the provided content."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 77,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Do I need planning permission? | Barnet Council",
+                            "Source": "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions/do-i-need-planning-permission",
+                            "Reasoning": "This link directly addresses the question 'Do I need planning permission?' and provides details about various types of building works or property changes. The answer is provided in clear, easy-to-understand language, making it a reliable resource.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Planning applications and permissions | Barnet Council",
+                            "Source": "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions",
+                            "Reasoning": "This link offers a detailed overview of planning applications and permissions. It covers various aspects such as fees, pre-application advice, and more - making it an essential resource for anyone pursuing a building project that requires planning permission.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Planning permission: making an application | Barnet Council",
+                            "Source": "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions/making-an-application",
+                            "Reasoning": "This link offers step-by-step instructions for making a planning application. The information includes fee details, pre-application advice, and other relevant steps - making it valuable for applicants.",
+                            "Confidence": "75"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions/do-i-need-planning-permission"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions/do-i-need-planning-permission",
+                        "analysis": {
+                            "url": "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions/do-i-need-planning-permission",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T00:30:01+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T00:30:31+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 46078,
+                            "response_time": 0.682,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.682s)",
+                                    "Content successfully retrieved (46078 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.6838619709014893,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions/do-i-need-planning-permission"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions/do-i-need-planning-permission",
+                        "content": " This is an HTML code for a webpage that provides information about planning and permitted development in Barnet, London. The page includes the following sections:\n\n1. A header that contains the title \"Planning and Permitted Development\" and a navigation menu.\n2. A banner with the slogan \"Your one-stop shop for all your planning needs\".\n3. A section for a newsletter, where users can subscribe to receive updates about planning in Barnet.\n4. Information about upcoming events related to planning.\n5. A section that displays an interactive tool called \"Interactive Tool: Check if you need planning permission\". This tool allows users to input their address and see whether they require planning permission for a construction or alteration project.\n6. A sidebar with related content, such as articles about planning applications, listed buildings, conservation areas, change of use, and more.\n7. Footer that contains links to other pages on the website, legal information, and contact details for Barnet Council's Planning department.\n8. A popup box containing a message about cookies and the ability to accept or reject them.\n9. The closing HTML tags.\n\nOverall, this webpage provides useful information and tools for individuals who are considering construction or alteration projects in Barnet, helping them understand their requirements and navigate the planning process more easily.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 9.188764095306396,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions/do-i-need-planning-permission",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 7.878337144851685,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.barnet.gov.uk/planning-and-building-control/planning-applications-and-permissions/do-i-need-planning-permission"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_003001-barnet.gov.uk",
+                    "analysis_timestamp": "2025-08-11T00:30:49+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8,
+                            "tokens_consumed": 7644,
+                            "tokens_remaining": 22356,
+                            "token_utilization_percentage": 25.48,
+                            "average_tokens_per_step": 1274
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 74.52,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 17,
+                            "consumption_rate": 1274,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.43,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_003001-barnet.gov.uk",
+                        "start_time": "2025-08-11T00:30:01+01:00",
+                        "current_time": "2025-08-11T00:30:49+01:00",
+                        "duration_seconds": 48,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7644,
+                        "tokens_remaining": 22356,
+                        "token_utilization_percentage": 25.48,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3910,
+                                "avg_per_call": 1955
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3734,
+                                "avg_per_call": 1867
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1274
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_003001-barnet.gov.uk",
+                    "start_time": "2025-08-11T00:30:01+01:00",
+                    "current_time": "2025-08-11T00:30:49+01:00",
+                    "duration_seconds": 48,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7644,
+                    "tokens_remaining": 22356,
+                    "token_utilization_percentage": 25.48,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3910,
+                            "avg_per_call": 1955
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3734,
+                            "avg_per_call": 1867
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1274
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]
