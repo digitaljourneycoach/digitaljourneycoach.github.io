@@ -1,0 +1,220 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T16:18:54+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "caerffili.gov.uk",
+                "Council Name": "Caerphilly County Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed bin collection",
+                        "link": "https://caerffili.gov.uk/services/household-waste-and-recycling/missed-bin-collections-(1)?lang=en-GB",
+                        "snippet": "Missed bin collections, apply, report, request, pay, school term dates and closures, public transport - information and advice, recycling centres."
+                    },
+                    {
+                        "title": "Caerphilly - Caerphilly County Borough",
+                        "link": "https://caerffili.gov.uk/search-result?searchtext=missed%20my%20bin&lang=en-gb",
+                        "snippet": "Report a missed commercial waste collection. 08/04/2025 18:20:07. If your bin has not been emptied, please report it to us. Bin collection days. 14/01/2025\u00a0..."
+                    },
+                    {
+                        "title": "Bin collection - Caerphilly",
+                        "link": "https://www.caerffili.gov.uk/search-result?searchtext=Bin+collection&lang=en-GB",
+                        "snippet": "Report a missed commercial waste collection. 08/04/2025 18:20:07. If your bin has not been emptied, please report it to us. \u00ab 1 (current) \u00b7 2 \u00b7 3 \u00b7 4 \u00b7 5 \u00b7 6\u00a0..."
+                    },
+                    {
+                        "title": "Caerphilly - Caerphilly County Borough",
+                        "link": "https://caerffili.gov.uk/Search?Alpha=r&lang=en-GB",
+                        "snippet": "Missed bin collections \u00b7 Apply, report, request, pay \u00b7 School term dates and closures \u00b7 Public transport - information and advice \u00b7 Recycling centres \u00b7 Housing\u00a0..."
+                    },
+                    {
+                        "title": "Housing",
+                        "link": "https://caerffili.gov.uk/Services?lang=en-GB",
+                        "snippet": "Missed bin collections \u00b7 View All - Bins and recycling. Housing. Find a home ... Report an issue. Report a highways issue \u00b7 View All - Report an issue. Local\u00a0..."
+                    },
+                    {
+                        "title": "Caerphilly - Caerphilly County Borough - Bins and Recycling",
+                        "link": "https://caerffili.gov.uk/services/household-waste-and-recycling/request-a-new-bin?lang=en-GB",
+                        "snippet": "240ltr refuse bin; 240ltr recycling; Internal food waste caddy; External food waste caddy. If one or more of these are missing, you can request new replacements\u00a0..."
+                    },
+                    {
+                        "title": "Caerphilly County Borough Council",
+                        "link": "https://www.caerffili.gov.uk/tc-cym/index.html",
+                        "snippet": "Get involved. Menu. Popular tasks \u00b7 Primary school meals \u00b7 Jobs and training \u00b7 Mobile Coverage Checker \u00b7 Council Tax \u00b7 Missed bin collections \u00b7 Apply, report,\u00a0..."
+                    },
+                    {
+                        "title": "Caerphilly - Caerphilly County Borough",
+                        "link": "https://www.caerffili.gov.uk/search-result?searchtext=Commercial+waste&lang=en-GB",
+                        "snippet": "Report a missed commercial waste collection. 08/04/2025 18:20:07. If your bin has not been emptied, please report it to us. Duty of Care for businesses. 15/08\u00a0..."
+                    },
+                    {
+                        "title": "Caerphilly - Caerphilly County Borough",
+                        "link": "https://www.caerffili.gov.uk/Search-Result?searchtext=Waste+collection&searchmode=allwords&lang=en-GB",
+                        "snippet": "Report a missed commercial waste collection. 08/04/2025 18:20:07. If your bin has not been emptied, please report it to us. Apply for hygiene waste\u00a0..."
+                    },
+                    {
+                        "title": "Commercial waste contracts",
+                        "link": "https://www.caerffili.gov.uk/Business/Commercial-waste/New-contracts?lang=en-GB",
+                        "snippet": "Related Pages. Terminate a commercial waste contract | Report a missed collection | Hazardous commercial waste \u00b7 a to z of services."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed bin collection",
+                                "Source": "https://caerffili.gov.uk/services/household-waste-and-recycling/missed-bin-collections-(1)?lang=en-GB",
+                                "Key Strengths": [
+                                    "Exact match for 'missing bin collection'",
+                                    "Direct link to report a missing bin collection"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link is the most direct and specific option for reporting a missed household bin collection."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Request a new bin",
+                                "Source": "https://caerffili.gov.uk/services/household-waste-and-recycling/request-a-new-bin?lang=en-GB",
+                                "Key Strengths": [
+                                    "Direct link to request a new bin",
+                                    "Relevance to the customer's need for council information"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link allows customers to request new bins if one or more are missing, which could be beneficial when addressing customer needs."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Caerphilly County Borough Council",
+                                "Source": "https://www.caerffili.gov.uk/tc-cym/index.html",
+                                "Key Strengths": [
+                                    "General information hub for the council",
+                                    "Multiple services available"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though not specific to 'council customer information', this link provides access to various services that may be relevant for customers."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Report a missed commercial waste collection",
+                                "Source": "https://www.caerffili.gov.uk/search-result?searchtext=Commercial+waste&lang=en-GB",
+                                "Key Strengths": [
+                                    "Indirect link related to 'commercial waste'",
+                                    "Allows commercial customers to report missed collections"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "While not directly related to household waste, this resource caters to commercial waste and missing collection reports, which could still be helpful."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Waste collection - Caerphilly County Borough",
+                                "Source": "https://www.caerffili.gov.uk/Search-Result?searchtext=Waste+collection&searchmode=allwords&lang=en-GB",
+                                "Key Strengths": [
+                                    "Indirect link related to 'waste collection'",
+                                    "Possible relevance to customers' needs"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "Though not as specific, this resource may provide additional information or services regarding waste collection for customers."
+                            }
+                        ],
+                        "Analysis Notes": "The search results provided a mix of direct and indirect links related to council customer information. However, the most relevant options mainly focused on household and commercial waste.",
+                        "Recommendations Notes": "While some of the recommended resources are not directly related to specific customer needs, they still offer useful information that could address various inquiries."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "70",
+                        "65",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 74,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

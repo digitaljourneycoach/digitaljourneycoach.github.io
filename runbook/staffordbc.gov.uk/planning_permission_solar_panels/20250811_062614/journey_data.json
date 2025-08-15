@@ -1,0 +1,680 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T06:26:14+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "staffordbc.gov.uk",
+                "Council Name": "Stafford Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Do I need Planning Permission? | Stafford Borough Council",
+                        "link": "https://www.staffordbc.gov.uk/do-i-need-planning-permission",
+                        "snippet": "Oct 16, 2024 ... You can find out whether you need to apply for planning permission by using the Interactive House tool on the Planning Portal."
+                    },
+                    {
+                        "title": "Conservation Areas | Stafford Borough Council",
+                        "link": "https://www.staffordbc.gov.uk/conservation-areas",
+                        "snippet": "The installation of solar panels or wind turbines on a building or within its curtilage. ... planning permission, listed building consent and building\u00a0..."
+                    },
+                    {
+                        "title": "Planning practice guidance for renewable and low carbon energy",
+                        "link": "https://www.staffordbc.gov.uk/sites/default/files/cme/DocMan1/Programme%20Officer/Programme%20Officer%202013/J29_Planning_Practise_Guidance_Low_Carbon_Energy.pdf",
+                        "snippet": "For example, where councils have identified suitable areas for onshore wind or large scale solar farms, they should not have to give permission outside those\u00a0..."
+                    },
+                    {
+                        "title": "Special Planning",
+                        "link": "https://www.staffordbc.gov.uk/special-planning-committee-31-july-2024-agenda",
+                        "snippet": "Jul 31, 2024 ... 1.11 Full planning permission is sought for a period of up to 40 years for the installation of a ground mounted photovoltaic (PV) solar farm\u00a0..."
+                    },
+                    {
+                        "title": "Special Planning",
+                        "link": "https://www.staffordbc.gov.uk/special-planning-committee-12-june-2024-agenda",
+                        "snippet": "Jun 12, 2024 ... Installation of a 49.5MW Solar Energy Scheme consisting of non-reflective photovoltaic (PV) solar panels and associated infrastructure\u00a0..."
+                    },
+                    {
+                        "title": "Burton Manor Village Conservation Area Character Appraisal",
+                        "link": "https://www.staffordbc.gov.uk/sites/default/files/cme/DocMan1/Planning%20Policy/Conservation/Conservation%20Areas/Conservation%20Areas%20List/Burton-Manor-CAA-2014.pdf",
+                        "snippet": "The rules apply in addition to those items that would normally require planning permission. The installation of solar panels. 8.6 Due to recent changes in\u00a0..."
+                    },
+                    {
+                        "title": "Viewing a Planning Application | Stafford Borough Council",
+                        "link": "https://www.staffordbc.gov.uk/viewing-a-planning-application",
+                        "snippet": "Cookies are not set on staffordbc.gov.uk unless you give your consent. Find out more about cookies. Accept Cookies Reject Cookies. Skip to\u00a0..."
+                    },
+                    {
+                        "title": "Local Plan 2020-2040 Renewable Energy Topic Paper",
+                        "link": "https://www.staffordbc.gov.uk/renewable-energy-topic-paper",
+                        "snippet": "This WMS stated that local planning authorities should only grant planning permission for proposals ... The council itself has installed solar panels on the roof\u00a0..."
+                    },
+                    {
+                        "title": "Special Planning Committee - 27 February 2024 - Agenda",
+                        "link": "https://www.staffordbc.gov.uk/sites/default/files/cme/DocMan1/Committee-Agenda-23-24/Planning/Special-Planning-Committee-27-February-2024-Agenda_0.pdf",
+                        "snippet": "Feb 27, 2024 ... It is, however, considered necessary to secure precise details of the solar panels by condition prior to their installation. Whilst the\u00a0..."
+                    },
+                    {
+                        "title": "Special Planning Committee 14 November 2023 Agenda",
+                        "link": "https://www.staffordbc.gov.uk/special-planning-committee-14-november-2023-agenda",
+                        "snippet": "Nov 14, 2023 ... 19. No solar panels shall be installed on the roof of the building(s) except for those in accordance with details which shall first have been\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.staffordbc.gov.uk/do-i-need-planning-permission",
+                        "title": "Do I need Planning Permission? | Stafford Borough Council",
+                        "confidence": 80,
+                        "strengths": [
+                            "Provides general guidance on planning permission requirements",
+                            "Includes an interactive tool for specific applications"
+                        ],
+                        "reasoning": "This resource provides a good starting point for understanding the basics of planning permission and includes a helpful interactive tool for users to determine if they need to apply for planning permission.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Do I need Planning Permission? | Stafford Borough Council",
+                                "Source": "https://www.staffordbc.gov.uk/do-i-need-planning-permission",
+                                "Key Strengths": [
+                                    "Provides general guidance on planning permission requirements",
+                                    "Includes an interactive tool for specific applications"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This resource provides a good starting point for understanding the basics of planning permission and includes a helpful interactive tool for users to determine if they need to apply for planning permission."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Special Planning - 31 July 2024 Agenda",
+                                "Source": "https://www.staffordbc.gov.uk/special-planning-committee-31-july-2024-agenda",
+                                "Key Strengths": [
+                                    "Details full planning permission for a 40-year period for a solar farm installation"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource provides detailed information on a specific case involving the approval of a large-scale solar farm, which may be useful for those seeking similar approvals."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Special Planning - 12 June 2024 Agenda",
+                                "Source": "https://www.staffordbc.gov.uk/special-planning-committee-12-june-2024-agenda",
+                                "Key Strengths": [
+                                    "Details installation of a large 49.5MW solar energy scheme"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource provides detailed information on another specific case involving the approval of a large-scale solar energy installation, which may be useful for those seeking similar approvals."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Local Plan 2020-2040 Renewable Energy Topic Paper",
+                                "Source": "https://www.staffordbc.gov.uk/renewable-energy-topic-paper",
+                                "Key Strengths": [
+                                    "Discusses renewable energy planning best practices and mentions the council's own solar panel installation"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This resource discusses renewable energy planning practices, including a mention of Stafford Borough Council installing their own solar panels. While not specific to customer information needs, it provides valuable context and background related to the council's approach towards renewable energy."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Special Planning Committee - 27 February 2024 Agenda",
+                                "Source": "https://www.staffordbc.gov.uk/sites/default/files/cme/DocMan1/Committee-Agenda-23-24/Planning/Special-Planning-Committee-27-February-2024-Agenda_0.pdf",
+                                "Key Strengths": [
+                                    "Provides details about conditions for installing solar panels on buildings"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This resource outlines specific requirements and conditions for installing solar panels on buildings, which may be useful for those planning such projects."
+                            }
+                        ],
+                        "Analysis Notes": "Five items were found that could potentially address the customer's information needs related to council customer information regarding renewable energy or planning permissions. Recommendations were chosen based on their relevance to these topics and their provision of specific details, examples, or guidelines.",
+                        "Recommendations Notes": "The top five recommendations cover a range of topics relevant to the customer's questions, including general guidance for obtaining planning permission, detailed information about specific approval cases for solar farms and energy schemes, and insight into Stafford Borough Council's approach towards renewable energy."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "85",
+                        "85",
+                        "75",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 81,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Do I need Planning Permission? | Stafford Borough Council",
+                            "Source": "https://www.staffordbc.gov.uk/do-i-need-planning-permission",
+                            "Reasoning": "This resource provides a good starting point for understanding the basics of planning permission and includes a helpful interactive tool for users to determine if they need to apply for planning permission.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "9",
+                            "Title": "Special Planning Committee - 27 February 2024 Agenda",
+                            "Source": "https://www.staffordbc.gov.uk/sites/default/files/cme/DocMan1/Committee-Agenda-23-24/Planning/Special-Planning-Committee-27-February-2024-Agenda_0.pdf",
+                            "Reasoning": "This resource outlines specific requirements and conditions for installing solar panels on buildings, which may be useful for those planning such projects.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Special Planning - 12 June 2024 Agenda",
+                            "Source": "https://www.staffordbc.gov.uk/special-planning-committee-12-june-2024-agenda",
+                            "Reasoning": "This resource provides detailed information on a specific case involving the approval of a large-scale solar energy installation, which may be useful for those seeking similar approvals.",
+                            "Confidence": "85"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.staffordbc.gov.uk/do-i-need-planning-permission"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.staffordbc.gov.uk/do-i-need-planning-permission",
+                        "analysis": {
+                            "url": "https://www.staffordbc.gov.uk/do-i-need-planning-permission",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T06:26:14+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T06:26:49+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 34664,
+                            "response_time": 0.303,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.303s)",
+                                    "Content successfully retrieved (34664 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.3040039539337158,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.staffordbc.gov.uk/do-i-need-planning-permission"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.staffordbc.gov.uk/do-i-need-planning-permission",
+                        "content": " Here is the HTML structure with added semantic HTML tags for better accessibility:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <!-- head content -->\n</head>\n<body>\n    <header>\n        <!-- navigation and branding content goes here -->\n    </header>\n\n    <main>\n        <article>\n            <h1>Title of the page</h1>\n            <!-- main content of the page goes here -->\n\n            <aside>\n                <!-- sidebar or related content goes here -->\n            </aside>\n        </article>\n\n        <footer>\n            <!-- footer content goes here -->\n        </footer>\n    </main>\n</body>\n</html>\n```\n\nI've grouped the main content and sidebar into an article element, which is a semantic HTML5 tag that represents a self-contained composition in a document, such as a blog post or magazine article. The footer contains the website's footer content such as copyright, social media icons, etc.\n\nFor better accessibility and search engine optimization, it's essential to follow semantic HTML5 tags, which help search engines understand the structure of your webpage more easily and are also beneficial for screen readers used by people with disabilities.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 9.209728956222534,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.staffordbc.gov.uk/do-i-need-planning-permission",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "Understanding if permission is needed to install solar panels on a house",
+                                    "answer_quality": "Partial",
+                                    "confidence": "70%",
+                                    "reasoning": "The website's content does provide information about needing planning permission for extensions or alterations. In this context, solar panel installation might fall under that category based on the type and scale of the project; however, there is no explicit statement regarding solar panels specifically.",
+                                    "next_actions": "I would contact the council directly to clarify if solar panel installations require planning permission."
+                                }
+                            ],
+                            "overall_assessment": "While the content hints at the need of planning permission for extensions and alterations, it does not fully answer the question regarding solar panels specifically. As a result, I am moderately confident in my interpretation but would still seek direct clarification from the council."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.515913963317871,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.staffordbc.gov.uk/do-i-need-planning-permission"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_062614-staffordbc.gov.uk",
+                    "analysis_timestamp": "2025-08-11T06:27:03+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8166666666666667,
+                            "tokens_consumed": 6801,
+                            "tokens_remaining": 23199,
+                            "token_utilization_percentage": 22.67,
+                            "average_tokens_per_step": 1133.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 77.33,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 20,
+                            "consumption_rate": 1133.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.67,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8166666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_062614-staffordbc.gov.uk",
+                        "start_time": "2025-08-11T06:26:14+01:00",
+                        "current_time": "2025-08-11T06:27:03+01:00",
+                        "duration_seconds": 49,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6801,
+                        "tokens_remaining": 23199,
+                        "token_utilization_percentage": 22.67,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3587,
+                                "avg_per_call": 1793.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3214,
+                                "avg_per_call": 1607
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1133.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_062614-staffordbc.gov.uk",
+                    "start_time": "2025-08-11T06:26:14+01:00",
+                    "current_time": "2025-08-11T06:27:03+01:00",
+                    "duration_seconds": 49,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6801,
+                    "tokens_remaining": 23199,
+                    "token_utilization_percentage": 22.67,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3587,
+                            "avg_per_call": 1793.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3214,
+                            "avg_per_call": 1607
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1133.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

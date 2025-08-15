@@ -1,0 +1,165 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T12:23:53+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "truro.gov.uk",
+                "Council Name": "Truro City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "TRURO CITY COUNCIL",
+                        "link": "https://truro.gov.uk/wp-content/uploads/2022/03/Full-Council-Agenda-September-2021.pdf",
+                        "snippet": "Sep 27, 2021 ... 6. Open Session for Cornwall Councillors verbal, written or tabled reports (15 minutes). This is an opportunity to discuss Cornwall Council\u00a0..."
+                    },
+                    {
+                        "title": "TRURO CITY COUNCIL",
+                        "link": "https://truro.gov.uk/wp-content/uploads/2022/03/Full-Council-Agenda-December-2020.pdf",
+                        "snippet": "Dec 7, 2020 ... (ix) Waste Disposal Contract. Councillor Nolan CC reported that the waste disposal contract for Cornwall would be signed by the directors of\u00a0..."
+                    },
+                    {
+                        "title": "TRURO CITY COUNCIL",
+                        "link": "https://truro.gov.uk/wp-content/uploads/2024/03/Planning-Committee-Agenda-04-04-24-1.pdf",
+                        "snippet": "Mar 7, 2024 ... 9. CHAIRMAN'S REPORT. 10. DATE OF NEXT MEETING. Thursday 2 May 2024. The agenda for the next Planning Committee to be\u00a0..."
+                    },
+                    {
+                        "title": "TRURO CITY COUNCIL",
+                        "link": "https://truro.gov.uk/wp-content/uploads/2024/02/FGP-12-02-24-Agenda.pdf",
+                        "snippet": "Feb 12, 2024 ... provider for Cleaning and Waste management were high for all areas not just the Quay ... report and to approach BID to discuss the\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "4",
+                            "recommendations": "Up to 3"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Waste Disposal Contract - Council Meeting Agenda, December 2020",
+                                "Source": "https://truro.gov.uk/wp-content/uploads/2022/03/Full-Council-Agenda-December-2020.pdf",
+                                "Key Strengths": [
+                                    "Discusses the waste disposal contract for Truro City Council",
+                                    "Links to the city council's official website"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This document provides information about the waste disposal contract, which is pertinent and timely customer inquiry. The link leads directly to the city council's official website."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Cleaning and Waste Management Provider Discussion - Council Meeting Agenda, February 2024",
+                                "Source": "https://truro.gov.uk/wp-content/uploads/2024/02/FGP-12-02-24-Agenda.pdf",
+                                "Key Strengths": [
+                                    "Discusses Cleaning and Waste management providers for Truro City Council",
+                                    "Links to the city council's official website"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This document discusses the Cleaning and Waste management providers, which may provide valuable information for customers. The link leads directly to the city council's official website."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Not Available (Agenda lacks specificity)",
+                                "Source": "https://truro.gov.uk/wp-content/uploads/2024/03/Planning-Committee-Agenda-04-04-24-1.pdf",
+                                "Key Strengths": [
+                                    "Discusses council matters but does not provide specific information about customer services"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "While this document discusses various matters related to the city council, it lacks specificity regarding customer service or information relevant to typical customer inquiries."
+                            }
+                        ],
+                        "Analysis Notes": "All four documents retrieved are meeting agendas for Truro City Council. Three of them appear to contain potential information relevant to customer queries concerning waste management and cleaning services, while the fourth document is less clear about its relevance.",
+                        "Recommendations Notes": "Items 1 and 2 were identified as the most likely to contain relevant information for customers inquiring about council services, particularly waste disposal and cleaning. However, it's important to note that Item 3 may still provide useful insights into council matters."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "75",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 73.33333333333333,
+                    "max_confidence": "85"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

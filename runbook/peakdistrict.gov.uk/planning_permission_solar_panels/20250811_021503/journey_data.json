@@ -1,0 +1,675 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T02:15:03+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "peakdistrict.gov.uk",
+                "Council Name": "Peak District National Park Authority"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Renewable energy and planning: Peak District National Park",
+                        "link": "https://www.peakdistrict.gov.uk/planning/advice/renewable-energy/renewable-energy-and-planning",
+                        "snippet": "Solar photovoltaic panels; Water source heat pumps (within a garden). Devices that always need planning permission: Anaerobic digesters; Small-scale\u00a0..."
+                    },
+                    {
+                        "title": "Questions and answers: Peak District National Park",
+                        "link": "https://www.peakdistrict.gov.uk/planning/advice/questions-and-answers",
+                        "snippet": "... planning permission or not. Devices that may not need planning permission: Solar panels and photovoltaic cells (under 200mm depth and installed at the rear)\u00a0..."
+                    },
+                    {
+                        "title": "LWR - Planning for Renewables on Farms",
+                        "link": "https://www.peakdistrict.gov.uk/__data/assets/pdf_file/0025/48139/lwr-planning-for-renewables-on-farms.pdf",
+                        "snippet": "Solar - Domestic. \u2022 On an unlisted house, solar panels may not need planning permission if the panels are mounted on the roof, project less than 200mm from\u00a0..."
+                    },
+                    {
+                        "title": "Normal Document Template",
+                        "link": "https://democracy.peakdistrict.gov.uk/documents/s55999/0723-0810_%20Chunal%20Quarry%20JK%20Checked.pdf",
+                        "snippet": "Nov 3, 2023 ... These buildings, the caravan and the solar panels do not have planning permission, although photographs suggest that the building has been on\u00a0..."
+                    },
+                    {
+                        "title": "Alterations & Extensions - Peak District",
+                        "link": "https://www.peakdistrict.gov.uk/__data/assets/pdf_file/0029/71759/PDNP-AlterationsExtensions-DesignGuide-2015-06.pdf",
+                        "snippet": "2.12 Adding photo-voltaic or solar thermal panels to a roof fundamentally alters its character and appearance. ... It is worth noting that in some cases planning\u00a0..."
+                    },
+                    {
+                        "title": "Do I need permission?: Peak District National Park",
+                        "link": "https://www.peakdistrict.gov.uk/planning/advice/do-i-need-permission",
+                        "snippet": "You may need planning permission depending on the nature and scale of the change. Submitting a planning application can be confusing and time consuming."
+                    },
+                    {
+                        "title": "Renewable energy: Peak District National Park",
+                        "link": "https://www.peakdistrict.gov.uk/planning/advice/renewable-energy",
+                        "snippet": "If you want to install a renewable energy device, you may need planning permission. ... Solar photovoltaic panels. These systems generate electricity from\u00a0..."
+                    },
+                    {
+                        "title": "Normal Document Template",
+                        "link": "https://democracy.peakdistrict.gov.uk/documents/s48184/0522-0743_Shepherd%20Hut%20-%20Waterfall%20MN.pdf",
+                        "snippet": "Aug 5, 2022 ... The application seeks retrospective planning permission to retain a single shepherd's hut for use as holiday accommodation, and the erection of\u00a0..."
+                    },
+                    {
+                        "title": "Planning Application details - NP/DDD/0506/0392 || Peak District ...",
+                        "link": "https://pam.peakdistrict.gov.uk/05060392",
+                        "snippet": "Listed Building consent - Installation of loft insulation, installation of ... solar pv panels - 2 panels to rear left outrigger, 1 to main house rear\u00a0..."
+                    },
+                    {
+                        "title": "Planning Application details - WED1093459 || Peak District National ...",
+                        "link": "https://portal.peakdistrict.gov.uk/1093459",
+                        "snippet": "... solar panels to garage roof. Location: BROOKLANDS FOOLOW ROAD EYAM. 02/09/2019. Erection of rear single storey extension with roof light; removal of existing\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.peakdistrict.gov.uk/planning/advice/renewable-energy/renewable-energy-and-planning",
+                        "title": "Renewable energy and planning: Peak District National Park",
+                        "confidence": 100,
+                        "strengths": [
+                            "Detailed and comprehensive guide to renewable energy systems within the Peak District National Park",
+                            "Outlines which devices always or may not need planning permission, including specific details like depth limits for solar panels"
+                        ],
+                        "reasoning": "This source provides a detailed and comprehensive guide to renewable energy systems within the Peak District National Park. It outlines which devices always or may not need planning permission, including specific details like depth limits for solar panels.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Renewable energy and planning: Peak District National Park",
+                                "Source": "https://www.peakdistrict.gov.uk/planning/advice/renewable-energy/renewable-energy-and-planning",
+                                "Key Strengths": [
+                                    "Detailed and comprehensive guide to renewable energy systems within the Peak District National Park",
+                                    "Outlines which devices always or may not need planning permission, including specific details like depth limits for solar panels"
+                                ],
+                                "Confidence": "100",
+                                "Reasoning": "This source provides a detailed and comprehensive guide to renewable energy systems within the Peak District National Park. It outlines which devices always or may not need planning permission, including specific details like depth limits for solar panels."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "LWR - Planning for Renewables on Farms",
+                                "Source": "https://www.peakdistrict.gov.uk/__data/assets/pdf_file/0025/48139/lwr-planning-for-renewables-on-farms.pdf",
+                                "Key Strengths": [
+                                    "A detailed guide on planning for renewable energy projects on farms within the Peak District National Park",
+                                    "Provides specific details regarding solar panel installations on unlisted houses and project depth limits"
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "This source provides a detailed guide on planning for renewable energy projects on farms within the Peak District National Park. It specifically addresses solar panel installations on unlisted houses, along with details about project depth limits."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Alterations & Extensions - Peak District",
+                                "Source": "https://www.peakdistrict.gov.uk/__data/assets/pdf_file/0029/71759/PDNP-AlterationsExtensions-DesignGuide-2015-06.pdf",
+                                "Key Strengths": [
+                                    "A design guide for alterations and extensions within the Peak District National Park",
+                                    "Mentions solar thermal panels as an alteration that alters character and appearance, potentially requiring planning permission"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While this source doesn't provide comprehensive information about renewable energy systems, it does mention solar thermal panels as an alteration that could require planning permission due to their impact on the character and appearance of buildings."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Do I need permission?: Peak District National Park",
+                                "Source": "https://www.peakdistrict.gov.uk/planning/advice/do-i-need-permission",
+                                "Key Strengths": [
+                                    "A basic guide for understanding whether you may require planning permission for changes",
+                                    "Includes renewable energy systems as one of the potential changes that might require planning permission"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This source provides a basic guide for understanding whether you may require planning permission for changes, but it doesn't extensively cover options for renewable energy systems. However, it does include them as one of the potential changes that might require planning permission."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Renewable energy: Peak District National Park",
+                                "Source": "https://www.peakdistrict.gov.uk/planning/advice/renewable-energy",
+                                "Key Strengths": [
+                                    "Overview of renewable energy within the Peak District National Park",
+                                    "Includes a section on solar photovoltaic panels"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "This source provides an overview of renewable energy within the Peak District National Park, but it doesn't offer comprehensive details like other sources in this list. It does, however, include a section on solar photovoltaic panels."
+                            }
+                        ],
+                        "Analysis Notes": "While all sources contain relevant information about planning or renewable energy within the Peak District National Park, some prove more valuable for quick and detailed understanding due to their comprehensiveness.",
+                        "Recommendations Notes": "Sources 1 and 3 appear most useful as they offer comprehensive guidance on renewable energy systems and the associated planning requirements."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "100",
+                        "95",
+                        "80",
+                        "70",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 81,
+                    "max_confidence": "100"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Renewable energy and planning: Peak District National Park",
+                            "Source": "https://www.peakdistrict.gov.uk/planning/advice/renewable-energy/renewable-energy-and-planning",
+                            "Reasoning": "This source provides a detailed and comprehensive guide to renewable energy systems within the Peak District National Park. It outlines which devices always or may not need planning permission, including specific details like depth limits for solar panels.",
+                            "Confidence": "100"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "LWR - Planning for Renewables on Farms",
+                            "Source": "https://www.peakdistrict.gov.uk/__data/assets/pdf_file/0025/48139/lwr-planning-for-renewables-on-farms.pdf",
+                            "Reasoning": "This source provides a detailed guide on planning for renewable energy projects on farms within the Peak District National Park. It specifically addresses solar panel installations on unlisted houses, along with details about project depth limits.",
+                            "Confidence": "95"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.peakdistrict.gov.uk/planning/advice/renewable-energy/renewable-energy-and-planning"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.peakdistrict.gov.uk/planning/advice/renewable-energy/renewable-energy-and-planning",
+                        "analysis": {
+                            "url": "https://www.peakdistrict.gov.uk/planning/advice/renewable-energy/renewable-energy-and-planning",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T02:15:03+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T02:15:31+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": false,
+                            "http_status": 403,
+                            "content_type": null,
+                            "content_length": 0,
+                            "response_time": 0,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 10,
+                                "max_score": 100,
+                                "issues": [
+                                    "HTTP error response (403): forbidden",
+                                    "No content retrieved"
+                                ],
+                                "strengths": [
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "forbidden",
+                                    "action": "avoid",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 0,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": null,
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "avoid",
+                                "confidence": 95,
+                                "reason": "Access denied or forbidden (403)",
+                                "overall_score": 24,
+                                "component_scores": {
+                                    "technical": 10,
+                                    "accessibility": 0,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Do not follow this link",
+                                    "Look for alternative sources",
+                                    "Report broken link if appropriate"
+                                ],
+                                "alternatives_needed": true
+                            },
+                            "fetch_error": "Failed to fetch URL: Client error: `GET https://www.peakdistrict.gov.uk/planning/advice/renewable-energy/renewable-energy-and-planning` resulted in a `403 Forbidden` response:\n<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/htm (truncated...)\n"
+                        },
+                        "processing_time": 0.9806489944458008,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.peakdistrict.gov.uk/planning/advice/renewable-energy/renewable-energy-and-planning"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.peakdistrict.gov.uk/planning/advice/renewable-energy/renewable-energy-and-planning",
+                        "content": " The extracted semantic HTML would look like this, containing only the main body content with headings (h1 to h6), paragraphs (p), links (a), buttons, lists (ul, ol, li) and blockquotes (blockquote) if they are part of the main content:\n\n```html\n<div class=\"main-content\">\n    <!-- Main Body Content Here -->\n    <h1>Main Heading</h1>\n    <p>This is a paragraph with some text that provides context for the page.</p>\n    <a href=\"https://example.com/link\">This is an important in-text link</a>\n    <blockquote>This is a blockquote containing an extract or quote from the main content.</blockquote>\n    <ul>\n        <li>Item 1</li>\n        <li>Item 2</li>\n    </ul>\n    <ol>\n        <li>List item 1</li>\n        <li>List item 2</li>\n    </ol>\n    <button>Central user action button</button>\n</div>\n```\nIn this example, notice the extraction removed all non-essential elements, like headers, footers, navigation menus, sidebars, cookie banners, newsletter sign-up blocks, site-wide search, login links and social media footers. The output only includes the semantically structured main body content of the page.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 5.974953889846802,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.peakdistrict.gov.uk/planning/advice/renewable-energy/renewable-energy-and-planning",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "Partially addressed",
+                                    "confidence": "60%",
+                                    "reasoning": "The content provides some general information about planning permissions for renewable energy, but it doesn't specify whether solar panel installation requires a permission or not. The specifics may vary based on location and the size of the project.",
+                                    "next_actions": "I would reach out to my local council or planning department for more accurate guidance tailored to my case."
+                                }
+                            ],
+                            "overall_assessment": "While there is some useful information about renewable energy and planning, it lacks specific details about solar panel installation and permits needed. More explicit content would improve user satisfaction."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.401750087738037,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.peakdistrict.gov.uk/planning/advice/renewable-energy/renewable-energy-and-planning"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_021503-peakdistrict.gov.uk",
+                    "analysis_timestamp": "2025-08-11T02:15:42+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.65,
+                            "tokens_consumed": 3815,
+                            "tokens_remaining": 26185,
+                            "token_utilization_percentage": 12.72,
+                            "average_tokens_per_step": 635.83
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 87.28,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 41,
+                            "consumption_rate": 635.83,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.29,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.65,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_021503-peakdistrict.gov.uk",
+                        "start_time": "2025-08-11T02:15:03+01:00",
+                        "current_time": "2025-08-11T02:15:42+01:00",
+                        "duration_seconds": 39,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 3815,
+                        "tokens_remaining": 26185,
+                        "token_utilization_percentage": 12.72,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 520,
+                                "avg_per_call": 260
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3295,
+                                "avg_per_call": 1647.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 635.83
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_021503-peakdistrict.gov.uk",
+                    "start_time": "2025-08-11T02:15:03+01:00",
+                    "current_time": "2025-08-11T02:15:42+01:00",
+                    "duration_seconds": 39,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 3815,
+                    "tokens_remaining": 26185,
+                    "token_utilization_percentage": 12.72,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 520,
+                            "avg_per_call": 260
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3295,
+                            "avg_per_call": 1647.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 635.83
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

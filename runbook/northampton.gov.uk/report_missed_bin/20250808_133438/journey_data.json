@@ -1,0 +1,646 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T13:34:38+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "northampton.gov.uk",
+                "Council Name": "Northampton Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed bin collections | West Northamptonshire Council",
+                        "link": "https://www.northampton.gov.uk/a-to-z/service/107/missed-bin-collection",
+                        "snippet": "Jan 14, 2025 ... How to report a missed bin collection. Before you report. Please check: no changes to our service have been announced - check this page or\u00a0..."
+                    },
+                    {
+                        "title": "Instructions | Missed bin collection (Northampton area)",
+                        "link": "https://www.northampton.gov.uk/xfp/form/310",
+                        "snippet": "After 7:30pm on your normal collection day. Your missed collection must be reported within 2 working days of your collection day."
+                    },
+                    {
+                        "title": "Missed bin enquiry | Missed Bin Collection (Daventry)",
+                        "link": "https://www.northampton.gov.uk/xfp/form/494?council=wnc",
+                        "snippet": "This form is used by our residents to report justified missed collection: Domestic/Communal and Assisted Refuse and Recycling Collections; Clinical Sharps\u00a0..."
+                    },
+                    {
+                        "title": "Your Details | Report a Missed Bin (South Northants area)",
+                        "link": "https://www.northampton.gov.uk/xfp/form/457",
+                        "snippet": "Report a Missed Bin (South Northants area) Your Details Title Please select Mr Mrs Miss Ms First name Required Last Name Required Collection Address Required"
+                    },
+                    {
+                        "title": "New, replacement or additional bins | West Northamptonshire Council",
+                        "link": "https://www.northampton.gov.uk/a-to-z/service/113/replacement-binbox-request",
+                        "snippet": "Jun 12, 2025 ... You can also report a stray bin if the bin does not appear to belong to anyone. ... Missed bin collections \u00b7 Bulky waste collection \u00b7 Garden\u00a0..."
+                    },
+                    {
+                        "title": "Instructions | Make a WNC complaint",
+                        "link": "https://www.northampton.gov.uk/xfp/form/537",
+                        "snippet": "In the first instance, please report your issue directly to a service area without using this formal complaints procedure. ... Reporting a missed bin; Reporting\u00a0..."
+                    },
+                    {
+                        "title": "Contact us | West Northamptonshire Council",
+                        "link": "https://www.northampton.gov.uk/contactthecouncil",
+                        "snippet": "Report a missed bin collection \u00b7 Request a new bin \u00b7 Planning policy ... Find information about services in your area, search for food outlets, receive\u00a0..."
+                    },
+                    {
+                        "title": "Comments, compliments and complaints | West Northamptonshire ...",
+                        "link": "https://www.northampton.gov.uk/complaints",
+                        "snippet": "This is not a complaint and will be passed to the responsible service to action. Some examples of a service request would be: a missed bin collection; reporting\u00a0..."
+                    },
+                    {
+                        "title": "Forms",
+                        "link": "https://www.northampton.gov.uk/forms",
+                        "snippet": "Report a Missed Bin (South Northants area) \u00b7 Report a Tenancy Fraud \u00b7 Report illegal Tobacco and Vapes Activity to West Northamptonshire Trading Standards\u00a0..."
+                    },
+                    {
+                        "title": "Instructions | New Bin Order Form",
+                        "link": "https://www.northampton.gov.uk/xfp/form/441",
+                        "snippet": "Use this form to order your first set of bins or if you have moved into a property that is missing any of the standard bins."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.northampton.gov.uk/a-to-z/service/107/missed-bin-collection",
+                        "title": "Missed bin collections | West Northamptonshire Council",
+                        "confidence": 80,
+                        "strengths": [
+                            "The link provides detailed instructions on how to report a missed bin collection for the entire West Northamptonshire Council area.",
+                            "It offers a specific page dedicated to missed bin collections, making it easily accessible."
+                        ],
+                        "reasoning": "This link offers specific information related to customer's needs regarding missed bin collections and provides instructions on how to report them.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed bin collections | West Northamptonshire Council",
+                                "Source": "https://www.northampton.gov.uk/a-to-z/service/107/missed-bin-collection",
+                                "Key Strengths": [
+                                    "The link provides detailed instructions on how to report a missed bin collection for the entire West Northamptonshire Council area.",
+                                    "It offers a specific page dedicated to missed bin collections, making it easily accessible."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link offers specific information related to customer's needs regarding missed bin collections and provides instructions on how to report them."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Instructions | Missed bin collection (Northampton area)",
+                                "Source": "https://www.northampton.gov.uk/xfp/form/310",
+                                "Key Strengths": [
+                                    "The link provides instructions on reporting a missed bin collection for the Northampton area.",
+                                    "It is a direct form made specifically for missed bin collections, ensuring a quick and effective solution."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link provides detailed instructions on how to report a missed bin collection within the Northampton area, streamlining the process for customers."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Missed bin enquiry | Missed Bin Collection (Daventry)",
+                                "Source": "https://www.northampton.gov.uk/xfp/form/494?council=wnc",
+                                "Key Strengths": [
+                                    "The link provides a specific form to report justified missed bin collections in the Daventry area.",
+                                    "It offers information on both domestic and clinical sharps, making it versatile for various needs."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This link is suitable for customers living in the Daventry area looking to report a missed collection as it provides a targeted form and relevant resources."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Your Details | Report a Missed Bin (South Northants area)",
+                                "Source": "https://www.northampton.gov.uk/xfp/form/457",
+                                "Key Strengths": [
+                                    "The link provides a specific form to report missed bin collections in the South Northamptonshire area.",
+                                    "It focuses on collecting customer's details, ensuring their needs are addressed efficiently."
+                                ],
+                                "Confidence": "68",
+                                "Reasoning": "This link offers detailed information for customers seeking to report a missed bin collection within South Northamptonshire, focusing on gathering necessary personal and collection information."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Contact us | West Northamptonshire Council",
+                                "Source": "https://www.northampton.gov.uk/contactthecouncil",
+                                "Key Strengths": [
+                                    "The link connects customers to a contact page for the entire West Northamptonshire Council, allowing them to easily report missed bin collections.",
+                                    "It offers information on various services and areas, ensuring customer needs are met."
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "Although the link does not provide specific instructions, it offers a general means for customers to contact the council and communicate their issue of a missed bin collection."
+                            }
+                        ],
+                        "Analysis Notes": "The search results focused heavily on reporting missed bin collections, making it a valuable source for council customer information. However, we advise further refining the search criteria to provide more specific options if needed.",
+                        "Recommendations Notes": "The top recommendations focus on addressing the primary need of reporting a missed bin collection in their respective areas, with various links offering direct access to relevant forms."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "75",
+                        "70",
+                        "68",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 71.6,
+                    "max_confidence": "80"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.northampton.gov.uk/a-to-z/service/107/missed-bin-collection"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.northampton.gov.uk/a-to-z/service/107/missed-bin-collection",
+                        "analysis": {
+                            "url": "https://www.northampton.gov.uk/a-to-z/service/107/missed-bin-collection",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T13:34:38+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T13:35:06+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 172809,
+                            "response_time": 0.806,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.806s)",
+                                    "Content successfully retrieved (172809 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.809499979019165,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.northampton.gov.uk/a-to-z/service/107/missed-bin-collection"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.northampton.gov.uk/a-to-z/service/107/missed-bin-collection",
+                        "content": " It appears you have provided an HTML content related to a webpage about missed bin collections for a specific local council in England. However, I am unable to directly interpret or execute the information as it requires being accessed through a web browser. Here's an overview of what this HTML page contains:\n\n1. The title of the page shows \"Missed Bin Collections\"\n2. There are several sections that allow reporting and provide information regarding missed bin collections, including after-reporting procedures, and what happens next.\n3. The content also has a section for pages in that collection, listing various related topics such as different types of waste, bin collection day, battery disposal, clothing collections, clinical waste, general waste sack deliveries, etc.\n4. Additionally, there is information on garden waste, bulky waste collection, and what we do with your waste.\n5. At the bottom of the page, there's a \"Back to top\" button that scrolls back up to the top of the webpage when clicked.\n\nI have summarized the key points from this HTML to give you an idea about its content. If you need specific information or want to access interactive features like reporting missed bin collections, I recommend visiting the actual website at the link provided in the HTML: https://www.northamptonshire.gov.uk/bin-collection-services/missed-bin-collections",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 9.109703063964844,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.northampton.gov.uk/a-to-z/service/107/missed-bin-collection",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 5.2389609813690186,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.northampton.gov.uk/a-to-z/service/107/missed-bin-collection"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_133438-northampton.gov.uk",
+                    "analysis_timestamp": "2025-08-08T13:35:21+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7166666666666667,
+                            "tokens_consumed": 8199,
+                            "tokens_remaining": 21801,
+                            "token_utilization_percentage": 27.33,
+                            "average_tokens_per_step": 1366.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 72.67,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 15,
+                            "consumption_rate": 1366.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 10.24,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7166666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_133438-northampton.gov.uk",
+                        "start_time": "2025-08-08T13:34:38+01:00",
+                        "current_time": "2025-08-08T13:35:21+01:00",
+                        "duration_seconds": 43,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 8199,
+                        "tokens_remaining": 21801,
+                        "token_utilization_percentage": 27.33,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 5002,
+                                "avg_per_call": 2501
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3197,
+                                "avg_per_call": 1598.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1366.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_133438-northampton.gov.uk",
+                    "start_time": "2025-08-08T13:34:38+01:00",
+                    "current_time": "2025-08-08T13:35:21+01:00",
+                    "duration_seconds": 43,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 8199,
+                    "tokens_remaining": 21801,
+                    "token_utilization_percentage": 27.33,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 5002,
+                            "avg_per_call": 2501
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3197,
+                            "avg_per_call": 1598.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1366.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

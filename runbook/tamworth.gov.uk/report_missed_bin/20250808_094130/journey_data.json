@@ -1,0 +1,678 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T09:41:30+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "tamworth.gov.uk",
+                "Council Name": "Tamworth Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed bin updates | Tamworth Borough Council",
+                        "link": "https://www.tamworth.gov.uk/bins-and-recycling/missed-bin-updates",
+                        "snippet": "Information on any missed bin rounds will be provided on this page. Missed bin collections: 15/04/25 - Due to parked vehicles restricting access,\u00a0..."
+                    },
+                    {
+                        "title": "Bins and recycling | Tamworth Borough Council",
+                        "link": "https://www.tamworth.gov.uk/bins-and-recycling",
+                        "snippet": "Report a missed bin, business waste, clinical waste, bin collection dates, recycle for good. Contact this service 0345 002 0022"
+                    },
+                    {
+                        "title": "Do it online | Tamworth Borough Council",
+                        "link": "https://www.tamworth.gov.uk/council/do-it-online",
+                        "snippet": "You can still report and apply for many of our services online via this website. ... Missed bin collection \u00b7 Pay us a compliment \u00b7 Road, pothole or highway issue\u00a0..."
+                    },
+                    {
+                        "title": "Contact Us | Tamworth Borough Council",
+                        "link": "https://www.tamworth.gov.uk/council/contact-us",
+                        "snippet": "Repairs \u2013 Council housing repairs - To report any issues please call: Freephone 0800 183 00 44. This number is also for out-of-hours and urgent enquiries."
+                    },
+                    {
+                        "title": "Stray dogs | Tamworth Borough Council",
+                        "link": "https://www.tamworth.gov.uk/environment/stray-dogs",
+                        "snippet": "If you find a stray dog, please try to keep it contained if you feel it's safe to do so. The collection service does not come out to reports of a dog roaming\u00a0..."
+                    },
+                    {
+                        "title": "Unauthorised Encampments | Tamworth Borough Council",
+                        "link": "https://www.tamworth.gov.uk/environment/unauthorised-encampments",
+                        "snippet": "The council will provide a tuff tank and bin bags to try to manage this. ... If you feel we have missed something please report it online here. What are\u00a0..."
+                    },
+                    {
+                        "title": "Tamworth Borough Council Amington Green Draft Conservation ...",
+                        "link": "https://www.tamworth.gov.uk/sites/default/files/planning_docs/Conservation/Amington-Green-CAMP-March2017.pdf",
+                        "snippet": "Figure 7: No ball games sign and light post with attached bin. ... Survey/Tamworth-EUS-Report-Final.pdf. Page 6. Tamworth Borough Council \u2013 Draft Amington\u00a0..."
+                    },
+                    {
+                        "title": "Tamworth Borough Council Local Plan 2006-2031 Adopted ...",
+                        "link": "https://www.tamworth.gov.uk/sites/default/files/planning_docs/Local-Plan-2006-2031.pdf",
+                        "snippet": "Feb 23, 2016 ... However, the report recognises that it should not necessarily be assumed to imply that ... Relying on landfill for waste disposal is unsustainable\u00a0..."
+                    },
+                    {
+                        "title": "(Public Pack)Agenda Document for Cabinet, 01/02/2024 18:00",
+                        "link": "https://democracy.tamworth.gov.uk/documents/g4742/Public%20reports%20pack%2001st-Feb-2024%2018.00%20Cabinet.pdf?T=10",
+                        "snippet": "Feb 1, 2024 ... There are no climate change/net zero Implications as a result of this report. Page 8. Page 9. BACKGROUND INFORMATION. Tamworth Borough Council\u00a0..."
+                    },
+                    {
+                        "title": "Tamworth Borough Council Planning Application Validation ...",
+                        "link": "https://www.tamworth.gov.uk/sites/default/files/planning_docs/Planning-Application-Validation-Checklist.pdf",
+                        "snippet": "It is important to note that a Coal Mining Report is not sufficient, the ... of the size of bins and the design and materials of any proposed bin."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.tamworth.gov.uk/bins-and-recycling/missed-bin-updates",
+                        "title": "Missed bin updates | Tamworth Borough Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Directly relates to the search term 'council customer information needs'",
+                            "Provides information about missed bin collections",
+                            "Easily accessible and user-friendly"
+                        ],
+                        "reasoning": "This website gives specific details on missed bin collections, which are a common customer complaint or question. This would be the most direct and relevant link for council customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed bin updates | Tamworth Borough Council",
+                                "Source": "https://www.tamworth.gov.uk/bins-and-recycling/missed-bin-updates",
+                                "Key Strengths": [
+                                    "Directly relates to the search term 'council customer information needs'",
+                                    "Provides information about missed bin collections",
+                                    "Easily accessible and user-friendly"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This website gives specific details on missed bin collections, which are a common customer complaint or question. This would be the most direct and relevant link for council customer information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Bins and recycling | Tamworth Borough Council",
+                                "Source": "https://www.tamworth.gov.uk/bins-and-recycling",
+                                "Key Strengths": [
+                                    "Relates to the search term 'council customer information needs'",
+                                    "Provides a variety of services related to bins and recycling",
+                                    "Offers contact information for any questions or concerns"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This website offers various services related to bin collection and disposal, which are key areas that customers frequently require information on. Although it doesn't specifically address missed collections like the first recommendation, it still provides a comprehensive resource for council-related waste services."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Do it online | Tamworth Borough Council",
+                                "Source": "https://www.tamworth.gov.uk/council/do-it-online",
+                                "Key Strengths": [
+                                    "Directly relates to the search term 'council customer information needs'",
+                                    "Offers online services for multiple council functions",
+                                    "Includes reporting missed bin collection as an option"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "While this website doesn't offer explicit information on missed bin collections, it provides a means for customers to report them alongside other council services. This makes it a viable alternative to the top two recommendations."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Contact Us | Tamworth Borough Council",
+                                "Source": "https://www.tamworth.gov.uk/council/contact-us",
+                                "Key Strengths": [
+                                    "Directly relates to the search term 'council customer information needs'",
+                                    "Offers multiple contact methods for council enquiries",
+                                    "Includes a freephone number for out-of-hours and urgent enquiries"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "While this website does not provide specific information on missed bin collections or other waste-related inquires, it offers various methods to contact the council for queries, making it useful for customers who need immediate assistance."
+                            }
+                        ],
+                        "Analysis Notes": "The search results were analyzed based on relevance and quality for the given instruction. Items that directly related to 'council customer information needs,' were prioritized higher in ranking. Those addressing missed bin collections received the highest priority due to their direct association with council waste services.",
+                        "Recommendations Notes": "The first four recommendations were considered as they relate directly or indirectly to answering the user's council-related queries. Recommendation number five does not provide specific customer information but offers a general contact method for out-of-hours enquiries."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "75",
+                        "70",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 72.5,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Missed bin updates | Tamworth Borough Council",
+                            "Source": "https://www.tamworth.gov.uk/bins-and-recycling/missed-bin-updates",
+                            "Reasoning": "With the highest confidence score (85) and a direct relationship to the search term, this recommendation focuses specifically on missed bin updates, making it the optimal next step for council customer information needs.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Bins and recycling | Tamworth Borough Council",
+                            "Source": "https://www.tamworth.gov.uk/bins-and-recycling",
+                            "Reasoning": "Although it doesn't specifically address missed collections, this recommendation still provides a comprehensive resource for council waste services and related information.",
+                            "Confidence": "75"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Do it online | Tamworth Borough Council",
+                            "Source": "https://www.tamworth.gov.uk/council/do-it-online",
+                            "Reasoning": "This recommendation offers a way for customers to report missed bin collections alongside other council services, making it a valuable alternative.",
+                            "Confidence": "70"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.tamworth.gov.uk/bins-and-recycling/missed-bin-updates"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.tamworth.gov.uk/bins-and-recycling/missed-bin-updates",
+                        "analysis": {
+                            "url": "https://www.tamworth.gov.uk/bins-and-recycling/missed-bin-updates",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T09:41:30+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T09:41:55+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 28136,
+                            "response_time": 0.24,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.24s)",
+                                    "Content successfully retrieved (28136 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.24053406715393066,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.tamworth.gov.uk/bins-and-recycling/missed-bin-updates"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.tamworth.gov.uk/bins-and-recycling/missed-bin-updates",
+                        "content": " Here's the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<article class=\"localgov-services-page node node--type-localgov-services-page node--with-restricted-width node--view-mode-full\">\n  <div class=\"lgd-container padding-horizontal\">\n    <div class=\"node__restricted-width-section\">\n      <div class=\"localgov-services-page__content node__content\">\n        <div class=\"field field--name-body field--type-text-with-summary field--label-hidden field__item\">\n          <p>Information on any missed bin rounds will be provided on this page.</p>\n          <p><strong>Missed bin collections: 15/04/25</strong> - Due to parked vehicles restricting access, the following streets have not been collected. Canterbury Close, Sunbeam, Tolson Court, Kennedy Close, Grange Close, Allen Street, Mount Pleasant, Dorset Close, West Street. Please leave your bins out as crews will attempt to return tomorrow.</p>\n          <p>If your bin has been missed and there\u2019s no information listed above about a missed round, please call the service on <a href=\"tel:0345%20002%200022\">0345 002 0022</a> or fill in the <a href=\"https://www.lichfielddc.gov.uk/xfp/form/157\">online missed bin form</a>.</p>\n          <p>Please note, all bins should be out on the kerbside by 6am on the day of collection.</p>\n        </div>\n      </div>\n    </div>\n  </div>\n</article>\n```\n\nThis code contains only the main body content of the webpage, such as headings (<h1>), paragraphs (<p>), and links (<a>) that are part of the article or central user actions. decorative or boilerplate elements have been removed in keeping with your requirements.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 10.170982837677002,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.tamworth.gov.uk/bins-and-recycling/missed-bin-updates",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "70%",
+                                    "confidence": "85%",
+                                    "reasoning": "The content provides a phone number (0345 002 0022) to call for missed bin collections and a link to an online missed bin form, which would help residents report missed bins. However, it doesn't specify a time frame for when they will be collected or what actions to take if the bin was not missed on the dates listed.",
+                                    "next_actions": "Call the provided phone number or fill out the online missed bin form."
+                                }
+                            ],
+                            "overall_assessment": "The content provides useful information for reporting a missed bin collection. However, more specific details would be appreciated, such as potential time frames or additional contact options, to better serve residents' needs."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.852081060409546,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.tamworth.gov.uk/bins-and-recycling/missed-bin-updates"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_094130-tamworth.gov.uk",
+                    "analysis_timestamp": "2025-08-08T09:42:10+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6666666666666666,
+                            "tokens_consumed": 4901,
+                            "tokens_remaining": 25099,
+                            "token_utilization_percentage": 16.34,
+                            "average_tokens_per_step": 816.83
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 83.66,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 30,
+                            "consumption_rate": 816.83,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "85",
+                            "quality_scores": [
+                                "85"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "85",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.52,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6666666666666666,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_094130-tamworth.gov.uk",
+                        "start_time": "2025-08-08T09:41:30+01:00",
+                        "current_time": "2025-08-08T09:42:10+01:00",
+                        "duration_seconds": 40,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 4901,
+                        "tokens_remaining": 25099,
+                        "token_utilization_percentage": 16.34,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 1679,
+                                "avg_per_call": 839.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3222,
+                                "avg_per_call": 1611
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 816.83
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_094130-tamworth.gov.uk",
+                    "start_time": "2025-08-08T09:41:30+01:00",
+                    "current_time": "2025-08-08T09:42:10+01:00",
+                    "duration_seconds": 40,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 4901,
+                    "tokens_remaining": 25099,
+                    "token_utilization_percentage": 16.34,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 1679,
+                            "avg_per_call": 839.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3222,
+                            "avg_per_call": 1611
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 816.83
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

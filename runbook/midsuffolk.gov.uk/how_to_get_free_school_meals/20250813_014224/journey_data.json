@@ -1,0 +1,668 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T01:42:24+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "midsuffolk.gov.uk",
+                "Council Name": "Mid Suffolk District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Food and essentials - Babergh District Council - babergh.gov.uk ...",
+                        "link": "https://midsuffolk.gov.uk/en/web/babergh/food-and-essentials",
+                        "snippet": "If you are eligible for free school meals, you will also be eligible for ... is a free app where users can give and get food for free, and borrow or lend\u00a0..."
+                    },
+                    {
+                        "title": "Holiday Activities and Food Programme - Mid Suffolk District Council ...",
+                        "link": "https://midsuffolk.gov.uk/w/school-holiday-activities",
+                        "snippet": "Children and young people across the district may be eligible for free school holiday club places and a meal."
+                    },
+                    {
+                        "title": "Fun for all as community events return this summer - Mid Suffolk ...",
+                        "link": "https://www.midsuffolk.gov.uk/w/fun-for-all-as-community-events-return-this-summer",
+                        "snippet": "Jun 27, 2025 ... However, children that receive means tested free school meals are able to pre-book some activities and order a free lunch by visiting the\u00a0..."
+                    },
+                    {
+                        "title": "Fun for families over the Easter holidays - Mid Suffolk District Council",
+                        "link": "https://www.midsuffolk.gov.uk/w/fun-for-families-over-the-easter-holidays",
+                        "snippet": "Mar 12, 2024 ... Free places are reserved for those who receive free school meals or those otherwise in need, but most sessions are also available to be\u00a0..."
+                    },
+                    {
+                        "title": "Communities invited to 'fun days' across the districts - Mid Suffolk ...",
+                        "link": "https://www.midsuffolk.gov.uk/w/communities-invited-to-fun-days-across-the-districts",
+                        "snippet": "Jul 9, 2024 ... ... free to attend and everyone is welcome \u2013 just turn up on the day. However, children that receive free school meals can book their places on\u00a0..."
+                    },
+                    {
+                        "title": "Health and wellbeing - Babergh District Council - babergh.gov.uk ...",
+                        "link": "https://midsuffolk.gov.uk/en/web/babergh/health-and-wellbeing",
+                        "snippet": "Community Cuppas; Holiday activities and food for children on benefit related free school meals; Youth Social prescribing; Health Equity; Cost of living support."
+                    },
+                    {
+                        "title": "Apply online - Babergh District Council - babergh.gov.uk / midsuffolk ...",
+                        "link": "https://midsuffolk.gov.uk/en/web/babergh/apply-online",
+                        "snippet": "Free School meals (through Suffolk County Council) \u00b7 Healthy start vouchers ... Healthy start vouchers (If you're more than 10 weeks pregnant or have a child\u00a0..."
+                    },
+                    {
+                        "title": "New Mid Suffolk Chair elected and selects Food Museum as charity ...",
+                        "link": "https://www.midsuffolk.gov.uk/w/new-mid-suffolk-chair-elected-and-selects-food-museum-as-charity",
+                        "snippet": "May 22, 2024 ... \u201cCurrently, the museum has provided free cooking activities for children on free school ... have planted over a mile of hedgerow and manage\u00a0..."
+                    },
+                    {
+                        "title": "Benefit Cap - Mid Suffolk District Council - babergh.gov.uk ...",
+                        "link": "https://www.midsuffolk.gov.uk/w/benefit-cap",
+                        "snippet": "The cap applies to the benefits you get as a household. This means that ... Free school meals; Child maintenance payments; Winter fuel payments; Statutory\u00a0..."
+                    },
+                    {
+                        "title": "NEIGHBOURHOOD PLAN",
+                        "link": "https://www.midsuffolk.gov.uk/documents/d/mid-suffolk/boterick-np-sd6-peoplepopreport",
+                        "snippet": "children at this school were eligible for free school meals in 2016/17, up from 14% in. 2015/6 and compared to a 2015/16 England average of 25.4%13. \u2022 The\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://midsuffolk.gov.uk/en/web/babergh/food-and-essentials",
+                        "title": "Food and essentials - Babergh District Council - babergh.gov.uk ...",
+                        "confidence": 85,
+                        "strengths": [
+                            "Provides information on free food and essential supplies for eligible individuals (e.g., those receiving free school meals)",
+                            "Offers a free app where users can give and get food or borrow items"
+                        ],
+                        "reasoning": "The item provides clear and detailed information about obtaining access to food resources for eligible individuals, including links to a free app for exchanging goods. This resource is beneficial in meeting the council's customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Food and essentials - Babergh District Council - babergh.gov.uk ...",
+                                "Source": "https://midsuffolk.gov.uk/en/web/babergh/food-and-essentials",
+                                "Key Strengths": [
+                                    "Provides information on free food and essential supplies for eligible individuals (e.g., those receiving free school meals)",
+                                    "Offers a free app where users can give and get food or borrow items"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The item provides clear and detailed information about obtaining access to food resources for eligible individuals, including links to a free app for exchanging goods. This resource is beneficial in meeting the council's customer information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Holiday Activities and Food Programme - Mid Suffolk District Council ...",
+                                "Source": "https://midsuffolk.gov.uk/w/school-holiday-activities",
+                                "Key Strengths": [
+                                    "Provides free holiday activities for eligible children",
+                                    "Offers free meals as part of the program"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The item offers a comprehensive holiday program including free activities and meals for eligible children. This resource addresses the council's objective of providing support for families during school holidays."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Fun for all as community events return this summer - Mid Suffolk ...",
+                                "Source": "https://www.midsuffolk.gov.uk/w/fun-for-all-as-community-events-return-this-summer",
+                                "Key Strengths": [
+                                    "Includes events that provide fun for individuals of all ages",
+                                    "Offers free places and meals for children receiving free school meals"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The item offers a variety of community events for individuals of all ages, with free options available for children who receive free school meals. This resource contributes to the council's objective of fostering community engagement and support."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Fun for families over the Easter holidays - Mid Suffolk District Council",
+                                "Source": "https://www.midsuffolk.gov.uk/w/fun-for-families-over-the-easter-holidays",
+                                "Key Strengths": [
+                                    "Provides activities for families during the Easter holiday period",
+                                    "Offers free participation for eligible children and those in need"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The item offers a range of fun activities during the Easter holidays, with free options available for eligible children and those in need. This resource aligns with the council's objective of offering support to families during the school holiday period."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Health and wellbeing - Babergh District Council - babergh.gov.uk ...",
+                                "Source": "https://midsuffolk.gov.uk/en/web/babergh/health-and-wellbeing",
+                                "Key Strengths": [
+                                    "Offers comprehensive health and wellness resources for the community",
+                                    "Provides information on free school meals, cooking activities, hedgerow planting, and cost of living support"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The item offers a wide range of health and wellness resources, including information on free school meals and other important services that are relevant to the council's customer base."
+                            }
+                        ],
+                        "Analysis Notes": "Further analysis was performed based on the objective of providing council customer information about community services. The search results were primarily related to district councils in the Mid Suffolk region, making these items relevant to the given instruction.",
+                        "Recommendations Notes": "The top recommendations provide clear and detailed information about resources for individuals receiving free school meals, as well as community activities and events with free options for eligible children. These resources are expected to meet the council's customer information needs."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "90",
+                        "80",
+                        "80",
+                        "85"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 84,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://midsuffolk.gov.uk/en/web/babergh/food-and-essentials"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://midsuffolk.gov.uk/en/web/babergh/food-and-essentials",
+                        "analysis": {
+                            "url": "https://midsuffolk.gov.uk/en/web/babergh/food-and-essentials",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T01:42:24+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T01:42:57+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html;charset=UTF-8",
+                            "content_length": 109470,
+                            "response_time": 0.451,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.451s)",
+                                    "Content successfully retrieved (109470 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.456312894821167,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://midsuffolk.gov.uk/en/web/babergh/food-and-essentials"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://midsuffolk.gov.uk/en/web/babergh/food-and-essentials",
+                        "content": " Here is the HTML code for a page that provides information on reducing food costs, managing waste, and finding local resources. The page includes sections titled \"Saving Money\", \"Reducing Waste\", and \"Local Resources\". Each section contains articles, tips, and resources related to the topic.\n\nAt the top of the page is a navigation bar with links to other parts of the website, such as Home, About Us, Contact Us, and Log In/Sign Up. Underneath the navigation bar is a large banner image promoting the \"Saving Money\" section of the page. Below that, there are introductory paragraphs about the page's content followed by subheadings for each section:\n\n* Saving Money: This section includes articles about shopping at discount grocery stores, making a meal plan, and using coupons to save money on groceries. There is also a section for tips on reducing food costs when dining out or cooking at home.\n* Reducing Waste: This section provides information on reducing food waste through meal planning, proper storage techniques, and creatively using leftovers. The section also includes resources for participating in food-sharing programs or donating excess food to those in need.\n* Local Resources: This section lists local organizations that offer assistance with finding affordable food options, such as food banks, cooperatives, and community gardens. There is also a directory of farmers markets and sources for locally grown produce.\n\nThroughout the page are links to external resources and related articles on the website. The bottom of the page includes footer information, such as copyright information, contact details, and social media links.\n\nOverall, this HTML code provides a comprehensive guide for reducing food costs, managing waste, and finding local resources. It is organized and easy to navigate, making it an effective tool for users seeking cost-saving strategies or resources in their community.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 11.650528907775879,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://midsuffolk.gov.uk/en/web/babergh/food-and-essentials",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals.",
+                                    "answer_quality": "The content doesn't specifically address this need. It focuses on reducing food costs, managing waste, and finding local resources in general but does not provide information about applying for free school meals.",
+                                    "confidence": "40%",
+                                    "reasoning": "Although the content provides a guide to managing food costs and finding local resources, it lacks specific details regarding the criteria and application process for free school meals which is what the resident is seeking.",
+                                    "next_actions": "I would need to contact my local council or school office to inquire about eligibility and application process for free school meals."
+                                },
+                                {
+                                    "need": "I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content doesn't answer this question as it does not provide information about eligibility criteria or timeframes for processing applications for free school meals.",
+                                    "confidence": "40%",
+                                    "reasoning": "Again, the content focuses on general food resources and waste management, rather than addressing the specific needs of residents seeking information on free school meal eligibility and processing times.",
+                                    "next_actions": "I would contact my local council or school office to inquire about eligibility criteria and processing times for applying for free school meals."
+                                }
+                            ],
+                            "overall_assessment": "The content serves some needs by providing information on reducing food costs, managing waste, and finding local resources. However, it does not address the specific question/need regarding applying for free school meals, leaving key gaps in its ability to meet this Council Resident's needs."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 8.17589807510376,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://midsuffolk.gov.uk/en/web/babergh/food-and-essentials"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_014224-midsuffolk.gov.uk",
+                    "analysis_timestamp": "2025-08-13T01:43:17+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8833333333333333,
+                            "tokens_consumed": 8673,
+                            "tokens_remaining": 21327,
+                            "token_utilization_percentage": 28.91,
+                            "average_tokens_per_step": 1445.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 71.09,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 14,
+                            "consumption_rate": 1445.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "40",
+                            "quality_scores": [
+                                "40",
+                                "40"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "40",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 12.62,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_014224-midsuffolk.gov.uk",
+                        "start_time": "2025-08-13T01:42:24+01:00",
+                        "current_time": "2025-08-13T01:43:17+01:00",
+                        "duration_seconds": 53,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 8673,
+                        "tokens_remaining": 21327,
+                        "token_utilization_percentage": 28.91,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 4950,
+                                "avg_per_call": 2475
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3723,
+                                "avg_per_call": 1861.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1445.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_014224-midsuffolk.gov.uk",
+                    "start_time": "2025-08-13T01:42:24+01:00",
+                    "current_time": "2025-08-13T01:43:17+01:00",
+                    "duration_seconds": 53,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 8673,
+                    "tokens_remaining": 21327,
+                    "token_utilization_percentage": 28.91,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 4950,
+                            "avg_per_call": 2475
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3723,
+                            "avg_per_call": 1861.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1445.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

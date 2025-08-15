@@ -1,0 +1,671 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T00:31:11+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "hounslow.gov.uk",
+                "Council Name": "Hounslow London Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Solar panels | Improving the sustainability of your home | London ...",
+                        "link": "https://www.hounslow.gov.uk/environment/improving-sustainability-home/7",
+                        "snippet": "Does it need planning permission? The Council strongly supports the use of solar panels to contribute to the achievement of its carbon reduction targets."
+                    },
+                    {
+                        "title": "Permitted development, conservation areas and listed buildings ...",
+                        "link": "https://www.hounslow.gov.uk/environment/improving-sustainability-home/14",
+                        "snippet": "Solar panels \u00b7 Wind power \u00b7 Heat pumps (ground, water and air ... Other development works relating to renewable energy will likely require planning permission\u00a0..."
+                    },
+                    {
+                        "title": "Reducing heat loss | Improving the sustainability of your home ...",
+                        "link": "https://www.hounslow.gov.uk/environment/improving-sustainability-home/6",
+                        "snippet": "Solar panels \u00b7 Wind power \u00b7 Heat pumps (ground, water and air source) \u00b7 Other ... Does it need planning permission? Listed Building Consent is likely to be\u00a0..."
+                    },
+                    {
+                        "title": "Planning permission | London Borough of Hounslow",
+                        "link": "https://www.hounslow.gov.uk/planning-permission",
+                        "snippet": "Planning permission \u00b7 Single storey rear extensionsA change in the law allowing larger extensions \u00b7 Residential extension guidelinesAcceptable forms of extension\u00a0..."
+                    },
+                    {
+                        "title": "15 February 2011",
+                        "link": "https://democraticservices.hounslow.gov.uk/documents/s57057/area%20delegated%20committee%20full%20v10%20ca.pdf",
+                        "snippet": "Feb 15, 2011 ... ... Solar Panel system to the roof of the house. ... Full Planning Permission Approved. Installation of an awning to the front of the building."
+                    },
+                    {
+                        "title": "Cycle parking and storage | Improving the sustainability of your ...",
+                        "link": "https://www.hounslow.gov.uk/environment/improving-sustainability-home/12",
+                        "snippet": "Solar panels \u00b7 Wind power \u00b7 Heat pumps (ground, water and air source) \u00b7 Other ... Planning permission is needed in front gardens for any permanent structure\u00a0..."
+                    },
+                    {
+                        "title": "Planning and building | London Borough of Hounslow",
+                        "link": "https://www.hounslow.gov.uk/planning-building",
+                        "snippet": "Search planning applicationsSearch for and comment on applications, decisions and appeals; Planning permissionApply for permission, appeals, enforcement,\u00a0..."
+                    },
+                    {
+                        "title": "Residential Extension - Guidelines",
+                        "link": "https://democraticservices.hounslow.gov.uk/(S(ipsdenb4k0c24p45rqqoqv45))/documents/s4077/ext%20guidelines.pdf",
+                        "snippet": "SOLAR PANELS. Planning permission may be required is for the installation of solar panels. While the environmental benefits of these panels are acknowledged\u00a0..."
+                    },
+                    {
+                        "title": "PLANNING COMMITTEE 7/12/2023 Jacky Leung jacky.leung ...",
+                        "link": "https://democraticservices.hounslow.gov.uk/documents/s188562/Quintin%20Hogg%20Memorial%20Sports%20Ground%20Committee%20Report.pdf",
+                        "snippet": "Dec 7, 2023 ... 4.1 The submission is based on an extant planning permission (application ... Energy efficiency measures including 30 solar panels on the roof and."
+                    },
+                    {
+                        "title": "Residential Extension Guidelines Consultation Document",
+                        "link": "https://democraticservices.hounslow.gov.uk/%28S%284k323145mbtlkkujhe1zfy45%29%29/documents/s134555/REGs%20Residential%20Extension%20Guidelines%20consultation%20document.pdf",
+                        "snippet": "minor changes, require planning permission and you will need to submit a planning application. ... Solar Panels: The provision of solar panels is strongly\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.hounslow.gov.uk/environment/improving-sustainability-home/7",
+                        "title": "Solar panels | Improving the sustainability of your home | London ...",
+                        "confidence": 90,
+                        "strengths": [
+                            "The webpage provides information about solar panels and notes that the council supports their use to achieve carbon reduction targets.",
+                            "It explains potential planning permission requirements, which are crucial for homeowners considering a solar panel installation."
+                        ],
+                        "reasoning": "Although not explicitly labeled as customer information about council services, this page offers valuable insights into implementing a sustainable solution promoted by the council and the regulatory aspects involved. The presence of planning permission-related guidance further solidifies its relevance.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Solar panels | Improving the sustainability of your home | London ...",
+                                "Source": "https://www.hounslow.gov.uk/environment/improving-sustainability-home/7",
+                                "Key Strengths": [
+                                    "The webpage provides information about solar panels and notes that the council supports their use to achieve carbon reduction targets.",
+                                    "It explains potential planning permission requirements, which are crucial for homeowners considering a solar panel installation."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "Although not explicitly labeled as customer information about council services, this page offers valuable insights into implementing a sustainable solution promoted by the council and the regulatory aspects involved. The presence of planning permission-related guidance further solidifies its relevance."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Planning permission | London Borough of Hounslow",
+                                "Source": "https://www.hounslow.gov.uk/planning-permission",
+                                "Key Strengths": [
+                                    "This webpage serves as a hub for all planning permission-related matters, including residential extensions and applications."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "While not directly discussing solar panels, this resource offers comprehensive planning permission guidelines that would be relevant for any homeowners looking to install them. It is a reliable and official council source for understanding the necessary steps in installing solar panels."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Residential Extension - Guidelines",
+                                "Source": "https://democraticservices.hounslow.gov.uk/(S(ipsdenb4k0c24p45rqqoqv45))/documents/s4077/ext%20guidelines.pdf",
+                                "Key Strengths": [
+                                    "This document discusses possible planning permission requirements for residential extensions, which would also apply to solar panel installations.",
+                                    "It provides detailed guidelines about various aspects of extensions and includes the provision of solar panels as a potential consideration."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Although not explicitly a customer information page on council services, this resource highlights planning requirements that may apply to solar panel installations within residential areas. This makes it valuable for homeowners or property owners looking to add such infrastructure."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Residential Extension Guidelines Consultation Document",
+                                "Source": "https://democraticservices.hounslow.gov.uk/%28S%284k323145mbtlkkujhe1zfy45%29%29/documents/s134555/REGs%20Residential%20Extension%20Guidelines%20consultation%20document.pdf",
+                                "Key Strengths": [
+                                    "This consultation document discusses regulations regarding residential extensions, including requirements for planning permission and potential exemptions.",
+                                    "The provision of solar panels is explicitly mentioned as an aspect to consider within this context."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Although it is a consultation document rather than a customer information page about council services, this resource offers valuable insights into the regulatory framework governing residential extensions and solar panel installation. As such, it provides helpful information for homeowners planning to add solar panels."
+                            }
+                        ],
+                        "Analysis Notes": "Some resources were not explicitly dedicated to providing council customer information; however, they offer relevant guidance on solar panels or associated planning requirements, making them valuable for homeowners in Hounslow.",
+                        "Recommendations Notes": "The recommended items cover a range of topics surrounding Solar Panel installation and the necessary steps involved. They offer official council resources to provide reliable and informative guidance."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 83.75,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Solar panels | Improving the sustainability of your home | London ...",
+                            "Source": "https://www.hounslow.gov.uk/environment/improving-sustainability-home/7",
+                            "Reasoning": "This page offers valuable insights into implementing a sustainable solution promoted by the council and the regulatory aspects involved. The presence of planning permission-related guidance further solidifies its relevance, making it an optimal next step.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Planning permission | London Borough of Hounslow",
+                            "Source": "https://www.hounslow.gov.uk/planning-permission",
+                            "Reasoning": "While not directly discussing solar panels, this resource offers comprehensive planning permission guidelines that would be relevant for any homeowners looking to install them. It is a reliable and official council source for understanding the necessary steps in installing solar panels.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "10",
+                            "Title": "Residential Extension Guidelines Consultation Document",
+                            "Source": "https://democraticservices.hounslow.gov.uk/%28S%284k323145mbtlkkujhe1zfy45%29%29/documents/s134555/REGs%20Residential%20Extension%20Guidelines%20consultation%20document.pdf",
+                            "Reasoning": "Although it is a consultation document, this resource offers valuable insights into the regulatory framework governing residential extensions and solar panel installation. As such, it provides helpful information for homeowners planning to add solar panels.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.hounslow.gov.uk/environment/improving-sustainability-home/7"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.hounslow.gov.uk/environment/improving-sustainability-home/7",
+                        "analysis": {
+                            "url": "https://www.hounslow.gov.uk/environment/improving-sustainability-home/7",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T00:31:11+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T00:31:40+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 49256,
+                            "response_time": 0.428,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.428s)",
+                                    "Content successfully retrieved (49256 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.4285118579864502,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.hounslow.gov.uk/environment/improving-sustainability-home/7"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.hounslow.gov.uk/environment/improving-sustainability-home/7",
+                        "content": " Here's the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<div class=\"page-content\">\n    <div class=\"page-content-inner\">\n        <p>&nbsp;</p>\n        <div class=\"editor\">\n            <div class=\"imageCaption\"><img alt=\"A man on a roof installing solar panels \" src=\"/images/solar_panels_web.png\"></div>\n\n            <!-- The main content starts here -->\n            <p>This refers to both photovoltaic (PV) and solar thermal panels. Both types absorb energy from the sun &ndash; solar PV panels use this to generate electricity, while solar thermal panels use it to heat water.&nbsp;</p>\n\n            <p><strong>Advantages&nbsp;</strong></p>\n\n            <p>Solar energy is a renewable energy source which can make a significant contribution to household energy needs.&nbsp; The upfront cost can be quite high &ndash; around &pound;7000 for a typical installation &ndash; but, once installed, panels are easy to maintain and can save a typical household up to &pound;565 a year in electricity bills, which would enable costs to be paid back within 13 years (figures from <a href=\"https://energysavingtrust.org.uk/advice/solar-panels/\" rel=\"noreferrer noopener\" target=\"_blank\">Energy Saving Trust</a>, July 2023).&nbsp;</p>\n\n            <p>&nbsp;</p>\n\n            <h3>Does it need planning permission?&nbsp;</h3>\n\n            <p>The Council strongly supports the use of solar panels to contribute to the achievement of its carbon reduction targets.&nbsp; Solar panels may be installed as permitted development on a house, flats or a structure within the curtilage of the property without the need for planning permission, including in conservation areas, provided they comply with the following requirements:</p>\n\n            <ul>\n                <li>The panels cannot project more than 0.2m from the roof slope or wall surface, when measured perpendicularly.</li>\n                <li>The panels cannot protrude above the highest part of the roof (chimneys, parapets, firewalls and other protrusions do not count as part of the roof for this purpose)</li>\n                <li>If within a conservation area - the panels cannot be located on a wall fronting a highway</li>\n            </ul>\n\n            <p><strong>Planning permission will usually be required:</strong></p>\n\n            <ul>\n                <li>on a site designated as a scheduled monument</li>\n                <li>on a listed building (including any building within the listed building\u2019s grounds)</li>\n                <li>On a property in a Conservation Area covered by an Article 4 Direction&nbsp;&nbsp;</li>\n            </ul>\n\n            <p>In all cases the equipment needs to be sited as discreetly as practicable (acknowledging south - facing panels are required), avoid impacting on the character and significance of sensitive locations and on heritage assets, and they must be removed when no longer required.</p>\n        </div>\n    </div>\n</div>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 15.74459719657898,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.hounslow.gov.uk/environment/improving-sustainability-home/7",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "Understanding if I need permission to install solar panels on my house",
+                                    "answer_quality": "High",
+                                    "confidence": "85%",
+                                    "reasoning": "The content clearly states the conditions for which planning permission is required or not when installing solar panels. It provides specific requirements and exceptions, such as in conservation areas and for listed buildings.",
+                                    "next_actions": "I would double-check my property against the mentioned exceptions to see if I need additional assessments before proceeding with the installation."
+                                }
+                            ],
+                            "overall_assessment": "The content provides a clear and comprehensive answer to the resident's need about solar panel installation, covering the advantages, permission requirements, and exceptions. There are no key gaps or areas for improvement that I could identify in serving the resident's needs."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.698750019073486,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.hounslow.gov.uk/environment/improving-sustainability-home/7"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_003111-hounslow.gov.uk",
+                    "analysis_timestamp": "2025-08-11T00:32:00+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8166666666666667,
+                            "tokens_consumed": 6356,
+                            "tokens_remaining": 23644,
+                            "token_utilization_percentage": 21.19,
+                            "average_tokens_per_step": 1059.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 78.81,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 22,
+                            "consumption_rate": 1059.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "85",
+                            "quality_scores": [
+                                "85"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "85",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.67,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8166666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_003111-hounslow.gov.uk",
+                        "start_time": "2025-08-11T00:31:11+01:00",
+                        "current_time": "2025-08-11T00:32:00+01:00",
+                        "duration_seconds": 49,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6356,
+                        "tokens_remaining": 23644,
+                        "token_utilization_percentage": 21.19,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2613,
+                                "avg_per_call": 1306.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3743,
+                                "avg_per_call": 1871.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1059.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_003111-hounslow.gov.uk",
+                    "start_time": "2025-08-11T00:31:11+01:00",
+                    "current_time": "2025-08-11T00:32:00+01:00",
+                    "duration_seconds": 49,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6356,
+                    "tokens_remaining": 23644,
+                    "token_utilization_percentage": 21.19,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2613,
+                            "avg_per_call": 1306.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3743,
+                            "avg_per_call": 1871.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1059.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

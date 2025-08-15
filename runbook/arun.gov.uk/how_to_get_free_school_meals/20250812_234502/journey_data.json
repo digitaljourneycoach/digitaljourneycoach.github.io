@@ -1,0 +1,183 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-12T23:45:02+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "arun.gov.uk",
+                "Council Name": "Arun District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Half-term information for parents and carers | Latest news | Arun ...",
+                        "link": "https://www.arun.gov.uk/news-archive/halfterm-information-for-parents-and-carers-9202/",
+                        "snippet": "Oct 28, 2024 ... ... benefits-related free school meals, the opportunity to attend participating holiday activity clubs and have a free meal. HAF provides a\u00a0..."
+                    },
+                    {
+                        "title": "Upcycling our redundant IT equipment | Latest news | Arun District ...",
+                        "link": "https://www.arun.gov.uk/news-archive/upcycling-our-redundant-it-equipment-5722/",
+                        "snippet": "Jun 10, 2022 ... We have recently donated around 100 second-hand laptops to local schools. ... eligible for free school meals (FSM). They also plan to lend them to\u00a0..."
+                    },
+                    {
+                        "title": "Arun Healthy Communities",
+                        "link": "https://democracy.arun.gov.uk/documents/s20403/06.2+Healthy+Communities+Report+-+Feb+25.pdf",
+                        "snippet": "were also able to support children and families attending with free food provision too! Leapfrogs \u2013 Due to demand, 5 sessions are now running across the."
+                    },
+                    {
+                        "title": "(Public Pack)Leisure Contract Performance Report Agenda ...",
+                        "link": "https://democracy.arun.gov.uk/documents/b6292/Leisure+Contract+Performance+Report+04th-Feb-2025+18.00+Housing+and+Wellbeing+Committee.pdf?T=9",
+                        "snippet": "Jan 31, 2025 ... ... students to have a junior membership ... Free yearly community memberships for community groups and service users to access our facilities."
+                    },
+                    {
+                        "title": "(Public Pack)Item 6 - Leisure Operating Contract - Officer ...",
+                        "link": "https://democracy.arun.gov.uk/documents/b5870/Item%206%20-%20Leisure%20Operating%20Contract%20-%20Officer%20Presentations%2025th-Jan-2024%2018.00%20Housing%20and%20Wellbe.pdf?T=9",
+                        "snippet": "We have also seen a significant drop in schools ... \u201cGreat to have these free sessions on our doorstep, loved having more sessions at different locations."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "5",
+                            "recommendations": "4"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Half-term information for parents and carers | Latest news | Arun ...",
+                                "Source": "https://www.arun.gov.uk/news-archive/halfterm-information-for-parents-and-carers-9202/",
+                                "Key Strengths": [
+                                    "Directly addresses council customer information needs for half-term details",
+                                    "Includes information about free school meals, holiday activity clubs, and participating schools"
+                                ],
+                                "Confidence": "100",
+                                "Reasoning": "This resource directly provides relevant information about council services and benefits for parents during the half-term break."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "(Public Pack)Leisure Contract Performance Report Agenda ...",
+                                "Source": "https://democracy.arun.gov.uk/documents/b6292/Leisure+Contract+Performance+Report+04th-Feb-2025+18.00+Housing+and+Wellbeing+Committee.pdf?T=9",
+                                "Key Strengths": [
+                                    "Details leisure contract performance reports and community membership opportunities",
+                                    "Mention of free yearly community memberships for service users"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource provides valuable information about the leisure contract performance, as well as the availability of free community memberships."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "(Public Pack)Item 6 - Leisure Operating Contract - Officer ...",
+                                "Source": "https://democracy.arun.gov.uk/documents/b5870/Item%206%20-%20Leisure%20Operating%20Contract%20-%20Officer%20Presentations%2025th-Jan-2024%2018.00%20Housing+and+Wellbe.pdf?T=9",
+                                "Key Strengths": [
+                                    "Discusses details of the leisure operating contract and mentions free sessions for schools",
+                                    "Positive feedback from attendees about the free sessions"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Though not directly addressing council customer information needs, it does provide insights into leisure services and their benefits for the community."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Arun Healthy Communities",
+                                "Source": "https://democracy.arun.gov.uk/documents/s20403/06.2+Healthy+Communities+Report+-+Feb+25.pdf",
+                                "Key Strengths": [
+                                    "Mentions support for children and families, including free food provision",
+                                    "Discusses Leapfrogs sessions providing support"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "While this resource does not specifically address council customer information needs, it does touch upon relevant social services that may be of interest to families with children."
+                            }
+                        ],
+                        "Analysis Notes": "The search list includes a mix of resources related to leisure, community, and council services. Some documents provide more direct and comprehensive answers to the request for customer information than others.",
+                        "Recommendations Notes": " Although item 3 does not directly address customer information needs, it provides valuable insight into the benefits and popularity of leisure services which may help users understand the value of these programs."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "100",
+                        "85",
+                        "75",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "100"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

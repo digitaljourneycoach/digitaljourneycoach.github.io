@@ -1,0 +1,685 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T09:30:36+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "chesterfield.gov.uk",
+                "Council Name": "Chesterfield Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed bin through My Chesterfield",
+                        "link": "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/missed-bins/report-a-missed-bin-through-my-chesterfield/",
+                        "snippet": "Jun 10, 2024 ... You need a My Chesterfield account to report a missed bin online. Signing up is quick and easy. We just need to know: your name and address\u00a0..."
+                    },
+                    {
+                        "title": "Missed bins",
+                        "link": "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/missed-bins/",
+                        "snippet": "Mar 12, 2025 ... ... report a missed bin or waste sack if: the crew hasn't completed their rounds yet; there was a reason why the crew didn't empty your bin."
+                    },
+                    {
+                        "title": "Damaged or missing bins or recycling sacks",
+                        "link": "https://www.chesterfield.gov.uk/bins-and-recycling/household-wheelie-bins/new-replacement-and-repaired-bins/damaged-or-missing-bins-or-recycling-sacks/",
+                        "snippet": "Mar 12, 2025 ... Report a broken bin here. Damaged recycling sacks. If your hessian recycling sack is worn out, you can ask us for a replacement. Our crew aim to\u00a0..."
+                    },
+                    {
+                        "title": "Report a problem",
+                        "link": "https://www.chesterfield.gov.uk/i-want-to/i-want-to-report/",
+                        "snippet": "Report a problem with missed, lost or broken wheeled bins, litter and dumped rubbish. Abandoned vehicles \u00b7 Complain about something that happened when your bin\u00a0..."
+                    },
+                    {
+                        "title": "Bins and recycling",
+                        "link": "https://www.chesterfield.gov.uk/bins-and-recycling/",
+                        "snippet": "Jul 9, 2025 ... Bins, bin collections and waste services are now available online through 'My Chesterfield'. You can: report a missed bin collection\u00a0..."
+                    },
+                    {
+                        "title": "Bin collections",
+                        "link": "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/",
+                        "snippet": "Jul 9, 2025 ... If you are not able to sign into My Chesterfield you can check bin dates here. You might also be interested in: report a missed bin \u00b7 what you\u00a0..."
+                    },
+                    {
+                        "title": "Complain about your bin collection",
+                        "link": "https://www.chesterfield.gov.uk/bins-and-recycling/complain-about-your-bin-collection/",
+                        "snippet": "Mar 12, 2025 ... What do you want to report? a bin or waste sack that hasn't been emptied \u00b7 a missing or damaged bin \u00b7 a bin or waste sack hasn't been delivered\u00a0..."
+                    },
+                    {
+                        "title": "Overdue bin delivery or repair",
+                        "link": "https://www.chesterfield.gov.uk/bins-and-recycling/household-wheelie-bins/new-replacement-and-repaired-bins/overdue-bin-delivery-or-repair/",
+                        "snippet": "Mar 12, 2025 ... reported a missing bin or waste sacks; ordered bins for a new property or conversion. Our contractor aims to carry out repairs and deliveries\u00a0..."
+                    },
+                    {
+                        "title": "New, replacement and repaired bins",
+                        "link": "https://www.chesterfield.gov.uk/bins-and-recycling/household-wheelie-bins/new-replacement-and-repaired-bins/",
+                        "snippet": "Mar 12, 2025 ... ... bins, ask for a replacement or need to report a bin repair ... reporting that your bin or recycling sack is damaged or missing\u00a0..."
+                    },
+                    {
+                        "title": "Site Map - Chesterfield Borough Council",
+                        "link": "https://www.chesterfield.gov.uk/about-this-website/sitemap",
+                        "snippet": "Missed bin \u00b7 Noise nuisance \u00b7 Planning breach \u00b7 Report another issue >>. Request. Benefit \u00b7 Bulky item collection \u00b7 Council home \u00b7 Housing repair \u00b7 Freedom of\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/missed-bins/report-a-missed-bin-through-my-chesterfield/",
+                        "title": "Report a missed bin through My Chesterfield",
+                        "confidence": 85,
+                        "strengths": [
+                            "Direct link to report a missed bin through the council's online service",
+                            "Does not require phone calls or additional contacts"
+                        ],
+                        "reasoning": "This link provides users with an easy and convenient method of reporting a missed bin collection, which is directly related to the customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed bin through My Chesterfield",
+                                "Source": "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/missed-bins/report-a-missed-bin-through-my-chesterfield/",
+                                "Key Strengths": [
+                                    "Direct link to report a missed bin through the council's online service",
+                                    "Does not require phone calls or additional contacts"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides users with an easy and convenient method of reporting a missed bin collection, which is directly related to the customer information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Missed bins",
+                                "Source": "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/missed-bins/",
+                                "Key Strengths": [
+                                    "Offers users the ability to report missed bin or waste sack if the crew hasn't completed their rounds yet",
+                                    "Provides information about reasons for non-collection"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link offers a comprehensive understanding of missed bins and waste sacks, along with information on reporting these issues."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Report a problem",
+                                "Source": "https://www.chesterfield.gov.uk/i-want-to/i-want-to-report/",
+                                "Key Strengths": [
+                                    "Allows users to report issues related to missed, lost or broken wheeled bins, litter and dumped rubbish",
+                                    "Includes options for complaints about something that happened when your bin was collected"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link provides users with the ability to report a wide range of issues related to council services, including bins."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Bin collections",
+                                "Source": "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/",
+                                "Key Strengths": [
+                                    "Offers users the ability to check bin dates",
+                                    "Also includes a link to report missed bin collections"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This link offers users the ability to check their bin collection dates, along with a direct link to report missed bin collections."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Complain about your bin collection",
+                                "Source": "https://www.chesterfield.gov.uk/bins-and-recycling/complain-about-your-bin-collection/",
+                                "Key Strengths": [
+                                    "Direct link to report issues related to the bin collection, such as missed bins or damaged ones",
+                                    "Includes an option for users to request a bin repair"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link provides users with the ability to report specific issues related to their bin collections, including missing and damaged bins."
+                            }
+                        ],
+                        "Analysis Notes": "Search results focused mainly on links related to council services including waste management, but some additional links unrelated to customer information needs were found.",
+                        "Recommendations Notes": "Further filtering of search results could be applied for increased relevance to the customer information needs."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 77,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "output": [
+                        {
+                            "Number": "1",
+                            "Title": "Report a missed bin through My Chesterfield",
+                            "Source": "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/missed-bins/report-a-missed-bin-through-my-chesterfield/",
+                            "Reasoning": "This link provides users with an easy and convenient method of reporting a missed bin collection, which is directly related to the customer information needs.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Missed bins",
+                            "Source": "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/missed-bins/",
+                            "Reasoning": "This link offers a comprehensive understanding of missed bins and waste sacks, along with information on reporting these issues.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Report a problem",
+                            "Source": "https://www.chesterfield.gov.uk/i-want-to/i-want-to-report/",
+                            "Reasoning": "This link provides users with the ability to report a wide range of issues related to council services, including bins.",
+                            "Confidence": "75"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/missed-bins/report-a-missed-bin-through-my-chesterfield/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/missed-bins/report-a-missed-bin-through-my-chesterfield/",
+                        "analysis": {
+                            "url": "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/missed-bins/report-a-missed-bin-through-my-chesterfield/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T09:30:36+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T09:31:01+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 42865,
+                            "response_time": 0.215,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.215s)",
+                                    "Content successfully retrieved (42865 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.21597695350646973,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/missed-bins/report-a-missed-bin-through-my-chesterfield/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/missed-bins/report-a-missed-bin-through-my-chesterfield/",
+                        "content": " In the given HTML, here's the cleaned and semantically structured content I extracted:\n```\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <!-- CSS files -->\n  </head>\n  <body>\n    <div class=\"page-content\">\n      <h1>Report a missed bin through My Chesterfield</h1>\n      <p class=\"h2\">You need a My Chesterfield account to report a missed bin online.</p>\n      <ul>\n        <li>your name and address</li>\n        <li>your phone number</li>\n        <li>your email address</li>\n      </ul>\n      <p>Through a My Chesterfield account you can:</p>\n      <ul>\n        <li>manage your Council Tax, or benefit account online</li>\n        <li>check your bin day and contact your councillor</li>\n        <li>apply for council services, report problems, and check the progress of your application or report</li>\n      </ul>\n      <div><a class=\"buttonb\" href=\"https://myaccount.chesterfield.gov.uk/resident2/s/report-it-rs-process?service_ref=CBC_Report_It_Missed_Bin\">Sign up or sign into My Chesterfield</a></div>\n      <p>&nbsp;</p>\n      <p>If you are not able to sign into My Chesterfield please contact our Customer Services team.</p>\n    </div>\n  </body>\n</html>\n```\nIn this output, I removed non-essential page furniture such as headers, footers, navigation menus, sidebars, cookie banners, and newsletter sign-up blocks. I've preserved the main body content while preserving only the meaningful structural elements that include `<h1>` for headings, `<p>` for paragraphs, links (`<a>`), and lists (`, , `) if they are part of the central editorial content. I've also stripped out decorative or boilerplate elements like site-wide search, login links, and social media footers.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 11.784932851791382,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/missed-bins/report-a-missed-bin-through-my-chesterfield/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "10",
+                                    "confidence": "20",
+                                    "reasoning": "The content provides guidance on how to sign up for an account to report a missed bin, but it does not directly offer an immediate solution for reporting a missed collection. The resident would need to go through the process of setting up a My Chesterfield account before they can report the issue.",
+                                    "next_actions": "Sign up or sign into My Chesterfield and then report the missed bin collection."
+                                }
+                            ],
+                            "overall_assessment": "This content provides information on how to use an online platform to manage various council services, including reporting a missed bin; however, it is not optimized for someone who needs immediate assistance with a missed bin collection. The lack of a quick and straightforward way to report a missed bin collection would make it less desirable for residents seeking an immediate resolution."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.088896036148071,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.chesterfield.gov.uk/bins-and-recycling/bin-collections/missed-bins/report-a-missed-bin-through-my-chesterfield/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_093036-chesterfield.gov.uk",
+                    "analysis_timestamp": "2025-08-08T09:31:19+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7166666666666667,
+                            "tokens_consumed": 5378,
+                            "tokens_remaining": 24622,
+                            "token_utilization_percentage": 17.93,
+                            "average_tokens_per_step": 896.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 82.07,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 27,
+                            "consumption_rate": 896.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "20",
+                            "quality_scores": [
+                                "20"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "20",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 10.24,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7166666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_093036-chesterfield.gov.uk",
+                        "start_time": "2025-08-08T09:30:36+01:00",
+                        "current_time": "2025-08-08T09:31:19+01:00",
+                        "duration_seconds": 43,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 5378,
+                        "tokens_remaining": 24622,
+                        "token_utilization_percentage": 17.93,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2173,
+                                "avg_per_call": 1086.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3205,
+                                "avg_per_call": 1602.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 896.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_093036-chesterfield.gov.uk",
+                    "start_time": "2025-08-08T09:30:36+01:00",
+                    "current_time": "2025-08-08T09:31:19+01:00",
+                    "duration_seconds": 43,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 5378,
+                    "tokens_remaining": 24622,
+                    "token_utilization_percentage": 17.93,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2173,
+                            "avg_per_call": 1086.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3205,
+                            "avg_per_call": 1602.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 896.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

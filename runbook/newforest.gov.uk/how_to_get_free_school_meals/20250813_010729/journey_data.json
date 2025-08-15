@@ -1,0 +1,686 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T01:07:29+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "newforest.gov.uk",
+                "Council Name": "New Forest District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Help if you have children - New Forest District Council",
+                        "link": "https://www.newforest.gov.uk/article/3153/Help-if-you-have-children",
+                        "snippet": "You may be eligible for help from the Household Support Fund. If you or your child receive certain benefits, you can apply for free school meals from Year 3 and\u00a0..."
+                    },
+                    {
+                        "title": "Help with food - New Forest District Council",
+                        "link": "https://www.newforest.gov.uk/article/3157/Help-with-food",
+                        "snippet": "If you or your child receive certain benefits, you can apply for free school meals from Year 3 and above. For information and resources to reduce food waste\u00a0..."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://www.newforest.gov.uk/media/3722/ECO-4-flex-statement-of-intent/doc/NFDC_ECO_4_flex_STATEMENT_OF_INTENT.docx?m=1699459174597",
+                        "snippet": "Oct 20, 2023 ... Only one from the list can be used, excludes the proxy 'low income'. Proxy 4) A householder receiving free school meals due to low-income. Proxy\u00a0..."
+                    },
+                    {
+                        "title": "Get a grant or loan to improve your home energy efficiency - New ...",
+                        "link": "https://www.newforest.gov.uk/article/3437/Get-a-grant-or-loan-to-improve-your-home-energy-efficiency",
+                        "snippet": "Proxy 4) A householder receiving free school meals due to low-income. Proxy 5) A householder supported by a LA run scheme, that has been named and described\u00a0..."
+                    },
+                    {
+                        "title": "Liberal Democrat Budget Speech 2024",
+                        "link": "https://democracy.newforest.gov.uk/documents/s28632/Lib%20Dem%20Budget%20Speech.pdf",
+                        "snippet": "... get from this venture. ... In the 22/23 figures, amongst our New Forest school age children there are 19% on free school meals compared to 18.3% across the county\u00a0..."
+                    },
+                    {
+                        "title": "Supporting our Residents - Action Plan to 2025 Appendix 1",
+                        "link": "https://democracy.newforest.gov.uk/documents/s28543/Appendix+1+-+Action+Plan+to+2025.pdf",
+                        "snippet": "Mar 31, 2024 ... on free school meals, who will benefit from a ... programme who are eligible for free school meals. \u2022 Educational attainment of participants, as."
+                    },
+                    {
+                        "title": "Health and Wellbeing Plan 2022-2025",
+                        "link": "https://democracy.newforest.gov.uk/documents/s25602/Appendix%201%20-%20Health%20and%20Wellbeing%20Action%20Plan.pdf",
+                        "snippet": "Jamie Burton Summer HAF ongoing. 18 organisations delivered 7966 funded places to those eligible for Free. School Meals. Ongoing. Page 8. Health and Wellbeing\u00a0..."
+                    },
+                    {
+                        "title": "Report - Business Plan 2018-19",
+                        "link": "https://democracy.newforest.gov.uk/documents/s26800/Freedom%20Leisure%20Annual%20Report.pdf",
+                        "snippet": "6.2 Holiday Activity & Food: At Applemore and Ringwood Leisure Centres we have been providing free Holiday Camps spaces for children on Free School meals or\u00a0..."
+                    },
+                    {
+                        "title": "Title slide",
+                        "link": "https://democracy.newforest.gov.uk/documents/s28614/Presentation+-+New+Forest+Health+and+Wellbeing+Plan+Update.pdf",
+                        "snippet": "\u2022 Back to Basics - website has had 5,620 visits and 2,572 professionals have ... young people eligible for Free School Meals as part of the Holiday Activity Fund."
+                    },
+                    {
+                        "title": "Health and Wellbeing Plan 2022-2025",
+                        "link": "https://www.newforest.gov.uk/media/4350/Health-and-Wellbeing-Report-2022-2025/pdf/Health_and_Wellbeing_Report_2022_v10.pdf?m=1740577964673",
+                        "snippet": "Support partners to deliver the. Holiday Activity Fund to ensure families on Free School Meals can access activity and hot meals through the holidays. Page\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.newforest.gov.uk/article/3153/Help-if-you-have-children",
+                        "title": "Help if you have children - New Forest District Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Relevant title and content for customer information needs",
+                            "Direct information about help for parents with children"
+                        ],
+                        "reasoning": "The provided link directly relates to council customer information needs regarding assistance for families with children. The snippet mentions free school meals, which is a clear sign of relevance.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Help if you have children - New Forest District Council",
+                                "Source": "https://www.newforest.gov.uk/article/3153/Help-if-you-have-children",
+                                "Key Strengths": [
+                                    "Relevant title and content for customer information needs",
+                                    "Direct information about help for parents with children"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The provided link directly relates to council customer information needs regarding assistance for families with children. The snippet mentions free school meals, which is a clear sign of relevance."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Help with food - New Forest District Council",
+                                "Source": "https://www.newforest.gov.uk/article/3157/Help-with-food",
+                                "Key Strengths": [
+                                    "Relevant title and content for customer information needs",
+                                    "Direct information about help with food assistance"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The provided link directly relates to council customer information needs regarding food help. The snippet mentions free school meals for those receiving certain benefits, which is a clear sign of relevance."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Get a grant or loan to improve your home energy efficiency - New Forest District Council",
+                                "Source": "https://www.newforest.gov.uk/article/3437/Get-a-grant-or-loan-to-improve-your-home-energy-efficiency",
+                                "Key Strengths": [
+                                    "Mentions home energy efficiency grants or loans for eligible customers",
+                                    "Indirectly related to council customer information needs"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "Although not directly related, this link may be relevant for those looking for financial assistance and could help improve their overall situation. The snippet mentions a householder receiving free school meals due to low-income, which is a possible indicator of financial need."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Supporting our Residents - Action Plan to 2025 Appendix 1",
+                                "Source": "https://democracy.newforest.gov.uk/documents/s28543/Appendix+1+-+Action+Plan+to+2025.pdf",
+                                "Key Strengths": [
+                                    "Relevant title and content for council action plan to 2025",
+                                    "Indirectly related to council customer information needs"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This link may be relevant for understanding the council's action plan and its focus on supporting residents. The snippet mentions free school meals, which could indicate assistance for families with children."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Health and Wellbeing Plan 2022-2025",
+                                "Source": "https://www.newforest.gov.uk/media/4350/Health-and-Wellbeing-Report-2022-2025/pdf/Health_and_Wellbeing_Report_2022_v10.pdf?m=1740577964673",
+                                "Key Strengths": [
+                                    "Relevant title and content for Health and Wellbeing plan",
+                                    "Indirectly related to council customer information needs"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "This link may be relevant for understanding the council's focus on health and wellbeing, which could include support for families with children. The snippet mentions ensuring families on Free School Meals can access activity and hot meals through the holidays."
+                            }
+                        ],
+                        "Analysis Notes": "The provided list of search results contained relevant content for the given instruction regarding council customer information needs. However, some links were indirectly related or only vaguely connected to the initial requirements.",
+                        "Recommendations Notes": "The top recommendations are more directly related to the council's assistance for families with children, while lower ranked suggestions provide potential indirect benefits or insights into the council's overall strategies and actions."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "60",
+                        "70",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 72,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Help if you have children - New Forest District Council",
+                            "Source": "https://www.newforest.gov.uk/article/3153/Help-if-you-have-children",
+                            "Reasoning": "The provided link directly relates to council customer information needs regarding assistance for families with children. The snippet mentions free school meals, which is a clear sign of relevance.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Help with food - New Forest District Council",
+                            "Source": "https://www.newforest.gov.uk/article/3157/Help-with-food",
+                            "Reasoning": "The provided link directly relates to council customer information needs regarding help with food assistance.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Get a grant or loan to improve your home energy efficiency - New Forest District Council",
+                            "Source": "https://www.newforest.gov.uk/article/3437/Get-a-grant-or-loan-to-improve-your-home-energy-efficiency",
+                            "Reasoning": "Although not directly related, this link may be relevant for those looking for financial assistance and could help improve their overall situation.",
+                            "Confidence": "60"
+                        }
+                    ],
+                    "max_confidence": "85",
+                    "average_confidence": 74.33
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.newforest.gov.uk/article/3153/Help-if-you-have-children"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.newforest.gov.uk/article/3153/Help-if-you-have-children",
+                        "analysis": {
+                            "url": "https://www.newforest.gov.uk/article/3153/Help-if-you-have-children",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T01:07:29+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T01:07:58+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 35221,
+                            "response_time": 0.62,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.62s)",
+                                    "Content successfully retrieved (35221 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.6241228580474854,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.newforest.gov.uk/article/3153/Help-if-you-have-children"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.newforest.gov.uk/article/3153/Help-if-you-have-children",
+                        "content": " Here's the cleaned, semantically structured HTML containing the central editorial content of the page:\n```\n  <main id=\"maincontent\" class=\"maincontent\">\n      <div class=\"container\">\n          <div class=\"a-body a-body--default\">\n              <p>Use this<a href=\"https://www.gov.uk/childcare-calculator\">childcare calculator on GOV.UK</a> to find out how much you could get towards approved childcare, including:</p>\n              <ul>\n                  <li>free childcare for children aged between two and four</li>\n                  <li>help with childcare costs if your child is under 16 (or under 17 and disabled)</li>\n              </ul>\n              <p>You can also visit <a href=\"https://helpforhouseholds.campaign.gov.uk/help-with-childcare-costs/\">Help with childcare costs on GOV.UK</a>.</p>\n              <p>New Forest residents of working age who claim means-tested benefits, such as Universal Credit or employment and support allowance, may be eligible to apply for<a href=\"https://newforest.gov.uk/article/1251/Council-Tax-Support\">Council Tax support</a>.</p>\n              <p>You may be eligible for help from the<a href=\"https://newforest.gov.uk/householdsupportfund\">Household Support Fund</a>.</p>\n              <p>If you or your child receive certain benefits, you can<a href=\"https://www.hants.gov.uk/educationandlearning/freeschoolmeals\">apply for free school meals</a>from Year 3 and above.</p>\n              <p>For help with children's clothes, school uniforms, baby equipment, and household items in the south of the New Forest (New Milton, Ashley, Pennington and Lymington) you may wish to contact<a href=\"https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.stepupsafespace.com%2F&amp;data=05%7C01%7C%7C5dc701e4c3f6492c39b908da8f4f2a58%7C09969afd0c3043739fd3ce5bbbf19141%7C0%7C0%7C637979867420551937%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=JlfcUBOyV5DzZIl50wrsBTTH%2B0y%2FGd0S3iCNaXi9uLk%3D&amp;reserved=0\">Step Up Safe Space</a>.&nbsp;</p>\n              <p>If you live within a 25 mile radius of Ringwood,<a href=\"https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.acts4sharing.org%2Fneed-help&amp;data=05%7C01%7C%7C5dc701e4c3f6492c39b908da8f4f2a58%7C09969afd0c3043739fd3ce5bbbf19141%7C0%7C0%7C637979867420551937%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=rXJk2ygpXNGlZz0rBdmVrqeunXJOlTc%2F8ZXLMahXroQ%3D&amp;reserved=0\">Acts 4 Sharing</a>&nbsp;may be also able to help.</p>\n              <p>Check if your child is eligible for free holiday provision through the<a href=\"https://www.hants.gov.uk/socialcareandhealth/childrenandfamilies/connectforcommunities/holidayactivities\">Holiday Activities and Food Programme</a>&nbsp;running in the summer and Christmas holidays.</p>\n              <p>If you're at least 10 weeks pregnant or have a child under four years old, you might be able to get free vitamins and a<a href=\"https://www.healthystart.nhs.uk/\">Healthy Start</a>&nbsp;card for milk, fruit and vegetables and infant formula milk.&nbsp; You may also be entitled to a one-off payment of &Acirc;&pound;500 to help towards the cost of having a child, known as the <a href=\"https://www.gov.uk/sure-start-maternity-grant\">Sure Start Maternity grant</a>.</p>\n              <p>Get free and impartial energy saving advice from<a href=\"https://www.hants.gov.uk/socialcareandhealth/adultsocialcare/coldspots\">Hampshire County Council hitting the cold spots webpage</a>&nbsp;or call 0800 804 8601.</p>\n          </div>\n      </div>\n  </main>\n```\nThis HTML snippet contains the main body content of the page with proper semantic structuring, including headings (h1), paragraphs (p), links (a) and lists (ul, li). Decorative or boilerplate elements like site-wide search, login links, social media footers have been stripped out.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 30.733438968658447,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.newforest.gov.uk/article/3153/Help-if-you-have-children",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently unemployed and I'd like to apply for free school meals.",
+                                    "answer_quality": "The content does provide a link where the Council Resident can apply for free school meals. However, it doesn't specify the criteria or timeline of eligibility.",
+                                    "confidence": "50%",
+                                    "reasoning": "Although the webpage provides an option to apply for free school meals by linking to Hants.gov.uk, it does not elaborate on the specific criteria and estimated timeframe required to be considered eligible.",
+                                    "next_actions": "I would further look into the linked page provided for more details about eligibility criteria and timeline."
+                                }
+                            ],
+                            "overall_assessment": "The content is informative and helpful, providing various resources for support. However, it falls short in addressing some specific needs such as clarifying eligibility criteria and estimated timeframes, which are important considerations for council residents in need of assistance."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.036243915557861,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.newforest.gov.uk/article/3153/Help-if-you-have-children"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_010729-newforest.gov.uk",
+                    "analysis_timestamp": "2025-08-13T01:08:36+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.1166666666666667,
+                            "tokens_consumed": 6531,
+                            "tokens_remaining": 23469,
+                            "token_utilization_percentage": 21.77,
+                            "average_tokens_per_step": 1088.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 78.23,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 21,
+                            "consumption_rate": 1088.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "50",
+                            "quality_scores": [
+                                "50"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "50",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 15.95,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.1166666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_010729-newforest.gov.uk",
+                        "start_time": "2025-08-13T01:07:29+01:00",
+                        "current_time": "2025-08-13T01:08:36+01:00",
+                        "duration_seconds": 67,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6531,
+                        "tokens_remaining": 23469,
+                        "token_utilization_percentage": 21.77,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2529,
+                                "avg_per_call": 1264.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 4002,
+                                "avg_per_call": 2001
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1088.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_010729-newforest.gov.uk",
+                    "start_time": "2025-08-13T01:07:29+01:00",
+                    "current_time": "2025-08-13T01:08:36+01:00",
+                    "duration_seconds": 67,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6531,
+                    "tokens_remaining": 23469,
+                    "token_utilization_percentage": 21.77,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2529,
+                            "avg_per_call": 1264.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 4002,
+                            "avg_per_call": 2001
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1088.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

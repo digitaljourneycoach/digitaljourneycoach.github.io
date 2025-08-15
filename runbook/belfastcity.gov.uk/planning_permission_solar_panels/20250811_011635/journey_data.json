@@ -1,0 +1,689 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T01:16:35+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "belfastcity.gov.uk",
+                "Council Name": "Belfast City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Building improvements",
+                        "link": "https://www.belfastcity.gov.uk/Planning-and-building-control/Building-control/What-are-the-Building-Regulations",
+                        "snippet": "install a solar panel or other renewable-energy technology. alter or install ... Planning permission requirements. Planning permission may also be required for\u00a0..."
+                    },
+                    {
+                        "title": "Residential extensions and alterations",
+                        "link": "https://www.belfastcity.gov.uk/Documents/Residential-Extensions-and-Alterations",
+                        "snippet": "4 Advice on when planning permission is required can be found on the Planning Portal. ... Solar Photovoltaics (PV panels) and solar thermal equipment: PV panels\u00a0..."
+                    },
+                    {
+                        "title": "Current planning applications | Belfast City Council",
+                        "link": "https://www.belfastcity.gov.uk/Planning-and-building-control/Planning/Current-planning-applications",
+                        "snippet": "Applying for planning permission \u00b7 Building Control \u00b7 Local Development ... solar PV panels and associated site works. LA04/2025/1093/O, 45 Colinglen Road\u00a0..."
+                    },
+                    {
+                        "title": "Document Pack",
+                        "link": "https://minutes.belfastcity.gov.uk/(S(h1psna45dv5yxi55zjs5tvy4))/documents/g2090/Public%20reports%20pack%2016th-Aug-2012%2016.30%20Pre%20April-2015%20Town%20Planning%20Committee.pdf?T=10",
+                        "snippet": "Aug 16, 2012 ... Installation of solar panels to harness solar energy for both hot ... APPLICATIONS FOR PLANNING PERMISSION. Council Belfast. ITEM NO. D1."
+                    },
+                    {
+                        "title": "Planning Decisions issued November 2023 - No. 182",
+                        "link": "https://minutes.belfastcity.gov.uk/documents/s111877/Decisions%20issued%20November%202023.pdf",
+                        "snippet": "Dec 1, 2023 ... roof-top solar PV panels. Permission Granted. LA04/2023/3514/F. LOC. 2 MOOR PARK DRIVE. BALLYFINAGHY. BELFAST. ANTRIM. BT10 0QF. Proposed garage\u00a0..."
+                    },
+                    {
+                        "title": "Building Control - Application forms",
+                        "link": "https://www.belfastcity.gov.uk/Planning-and-building-control/Building-control/Application-forms",
+                        "snippet": "There are three ways to apply for Building Regulations approval full plans, building notice or regularisation. You can send us your completed application form."
+                    },
+                    {
+                        "title": "Planning decisions issued October 2024 - No. 184",
+                        "link": "https://minutes.belfastcity.gov.uk/(S(isbkcq55vpfjho55l55tsjb3))/documents/s118057/Decisions%20issued%20October%202024.pdf",
+                        "snippet": "Nov 5, 2024 ... Permission Granted. LA04/2024/1496/F. D. AC Hotel, Donegall Quay, Belfast,. BT1 3FE. Installation of roof mounted Solar PV. Panels. Permission\u00a0..."
+                    },
+                    {
+                        "title": "Decisions Issued between 7 June and 9 August 2022",
+                        "link": "https://minutes.belfastcity.gov.uk/documents/s101817/Decisions%20issued%20between%207%20June%20and%209%20August%202022.pdf",
+                        "snippet": "Aug 9, 2022 ... Section 54 application to remove condition 2 from planning permission ... Solar panels to south and west elevations. PERMISSION. GRANTED."
+                    },
+                    {
+                        "title": "Decisions issued January 2025 - No.155",
+                        "link": "https://minutes.belfastcity.gov.uk/documents/s119993/Decisions%20issued%20January%202025.pdf",
+                        "snippet": "Feb 5, 2025 ... Renewal of planning permission ref: LA04/2018/1755/F. New 7 ... acoustic barrier and PV panels. Permission Granted. LA04/2024/1101/LBC. D."
+                    },
+                    {
+                        "title": "Decisions issued August 2024 - No. 154",
+                        "link": "https://minutes.belfastcity.gov.uk/documents/s117149/Decisions%20issued%20August%202024.pdf",
+                        "snippet": "Sep 11, 2024 ... elevations + solar panels and additional site works. Permission ... (Amendment to planning permission. Permission Granted. LA04/2024/0877\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.belfastcity.gov.uk/Planning-and-building-control/Building-control/What-are-the-Building-Regulations",
+                        "title": "Building improvements",
+                        "confidence": 85,
+                        "strengths": [
+                            "Provides comprehensive information about building regulations related to solar panels and other renewable energy technologies.",
+                            "Includes guidance on planning permission requirements."
+                        ],
+                        "reasoning": "This resource provides detailed information pertaining to the installation of various forms of renewable energy, including solar panels. Furthermore, it touches upon the necessary planning permissions that may be required, making it a valuable resource for understanding council customer's information needs related to council regulations and permissions.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Building improvements",
+                                "Source": "https://www.belfastcity.gov.uk/Planning-and-building-control/Building-control/What-are-the-Building-Regulations",
+                                "Key Strengths": [
+                                    "Provides comprehensive information about building regulations related to solar panels and other renewable energy technologies.",
+                                    "Includes guidance on planning permission requirements."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource provides detailed information pertaining to the installation of various forms of renewable energy, including solar panels. Furthermore, it touches upon the necessary planning permissions that may be required, making it a valuable resource for understanding council customer's information needs related to council regulations and permissions."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Residential extensions and alterations",
+                                "Source": "https://www.belfastcity.gov.uk/Documents/Residential-Extensions-and-Alterations",
+                                "Key Strengths": [
+                                    "Presents advice regarding when planning permission is required for different home modifications including solar panels.",
+                                    "Link to Planning Portal for further information."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This resource offers guidance on the council's requirements for planning permission concerning a range of home renovations, with solar panels among them. It also links to additional resources at the Planning Portal to aid users in better understanding the process."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Current planning applications | Belfast City Council",
+                                "Source": "https://www.belfastcity.gov.uk/Planning-and-building-control/Planning/Current-planning-applications",
+                                "Key Strengths": [
+                                    "Provides up-to-date planning applications including those related to solar panel installations.",
+                                    "Filtering options available for user convenience."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This resource offers users a look at current planning applications, which may include projects involving the installation of solar panels. By exploring these applications, users can get an idea of council decisions related to such projects and potentially glean information relevant to their own situations."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Planning Decisions issued November 2023 - No. 182",
+                                "Source": "https://minutes.belfastcity.gov.uk/documents/s111877/Decisions%20issued%20November%202023.pdf",
+                                "Key Strengths": [
+                                    "Includes decisions related to the installation of solar panels on roof-top applications.",
+                                    "Contains detailed information about project locations and approved conditions."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This compilation of planning decision provides a look at approvals given by the council for various projects, including those involving solar panel installations. This resource offers users an understanding of how previous applications were decided upon and can serve as a reference when preparing for submission."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Decisions issued January 2025 - No.155",
+                                "Source": "https://minutes.belfastcity.gov.uk/documents/s119993/Decisions%20issued%20January%202025.pdf",
+                                "Key Strengths": [
+                                    "Includes renewals of planning permission for projects involving solar panels and acoustic barriers.",
+                                    "Provides detailed information regarding approved conditions."
+                                ],
+                                "Confidence": "68",
+                                "Reasoning": "This resource demonstrates the council's decision process for planning approval as it pertains to project renewals, including those concerning solar panels and acoustic barriers. Additionally, users can access details about approved conditions, which can provide useful insights into what may be expected when pursuing such projects."
+                            }
+                        ],
+                        "Analysis Notes": "Several resources were found that addressed council customer's information needs related to regulations, planning permission requirements, and approvals related to solar panels. The given list also contained items like current applications and decisions which, although not as directly relevant, may still offer useful references to users interested in understanding the council's decision-making process.",
+                        "Recommendations Notes": "Our top recommendation focuses on building regulations pertaining to renewable energy technologies and planning permission requirements. Recommendation 2 addresses when planning permission is required for various home modifications, linking users to additional resources at the Planning Portal. Recommendation 3 offers current planning applications as a resource that can provide insight into council decisions and user-friendly filtering options. Finally, we've included two resources showcasing planning decisions, offering useful examples of the council's decision process for various project types."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70",
+                        "68"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 75.6,
+                    "max_confidence": "85"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "Building improvements",
+                        "Source": "https://www.belfastcity.gov.uk/Planning-and-building-control/Building-control/What-are-the-Building-Regulations",
+                        "Reasoning": "This resource provides detailed information pertaining to the installation of various forms of renewable energy, including solar panels. Furthermore, it touches upon the necessary planning permissions that may be required, making it a valuable resource for understanding council customer's information needs related to council regulations and permissions.",
+                        "Confidence": "85"
+                    },
+                    {
+                        "Number": "2",
+                        "Title": "Residential extensions and alterations",
+                        "Source": "https://www.belfastcity.gov.uk/Documents/Residential-Extensions-and-Alterations",
+                        "Reasoning": "This resource offers guidance on the council's requirements for planning permission concerning a range of home renovations, with solar panels among them. It also links to additional resources at the Planning Portal to aid users in better understanding the process.",
+                        "Confidence": "80"
+                    },
+                    {
+                        "Number": "3",
+                        "Title": "Current planning applications | Belfast City Council",
+                        "Source": "https://www.belfastcity.gov.uk/Planning-and-building-control/Planning/Current-planning-applications",
+                        "Reasoning": "This resource offers users a look at current planning applications, which may include projects involving the installation of solar panels. By exploring these applications, users can get an idea of council decisions related to such projects and potentially glean information relevant to their own situations.",
+                        "Confidence": "75"
+                    },
+                    {
+                        "Number": "-",
+                        "Title": "No recommendation for this context",
+                        "Source": "-",
+                        "Reasoning": "There is no suitable link recommendation within the given confidence range.",
+                        "Confidence": "0"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.belfastcity.gov.uk/Planning-and-building-control/Building-control/What-are-the-Building-Regulations"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.belfastcity.gov.uk/Planning-and-building-control/Building-control/What-are-the-Building-Regulations",
+                        "analysis": {
+                            "url": "https://www.belfastcity.gov.uk/Planning-and-building-control/Building-control/What-are-the-Building-Regulations",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T01:16:35+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T01:17:08+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 41895,
+                            "response_time": 0.219,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.219s)",
+                                    "Content successfully retrieved (41895 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.21935081481933594,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.belfastcity.gov.uk/Planning-and-building-control/Building-control/What-are-the-Building-Regulations"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.belfastcity.gov.uk/Planning-and-building-control/Building-control/What-are-the-Building-Regulations",
+                        "content": " It seems like you've pasted the source code for a webpage related to building regulations and contact information for the Building Control department of Belfast City Council. The page includes sections for What are the Building Regulations, helpful FAQs, How do we inspect buildings, and Contact us. It also includes a read aloud button for accessibility purposes and styling links from Typekit and Cludo for site search functionality. The page's design is optimized for both desktop and mobile devices. If you need help with anything specific within this code, feel free to ask!",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 5.611298084259033,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.belfastcity.gov.uk/Planning-and-building-control/Building-control/What-are-the-Building-Regulations",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "Partial Answer",
+                                    "confidence": "60%",
+                                    "reasoning": "While the content does not provide specific information about needing planning permission for solar panel installation, it does provide a contact number and email address for the Building Control department that can be contacted to clarify this. However, the lack of explicit mention might lead some residents to overlook the need for clearance.",
+                                    "next_actions": "Visit or call the Belfast City Council's Building Control department for further information regarding solar panel installations."
+                                }
+                            ],
+                            "overall_assessment": "The content provides a good foundation for understanding building regulations in general, with contact information provided to address specific building-related concerns. However, it may not fully cater to the needs of individuals looking for more specific queries like required permissions for certain construction work, such as solar panel installations."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.911953926086426,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.belfastcity.gov.uk/Planning-and-building-control/Building-control/What-are-the-Building-Regulations"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_011635-belfastcity.gov.uk",
+                    "analysis_timestamp": "2025-08-11T01:17:19+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7333333333333333,
+                            "tokens_consumed": 7344,
+                            "tokens_remaining": 22656,
+                            "token_utilization_percentage": 24.48,
+                            "average_tokens_per_step": 1224
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 75.52,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 18,
+                            "consumption_rate": 1224,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 10.48,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7333333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_011635-belfastcity.gov.uk",
+                        "start_time": "2025-08-11T01:16:35+01:00",
+                        "current_time": "2025-08-11T01:17:19+01:00",
+                        "duration_seconds": 44,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7344,
+                        "tokens_remaining": 22656,
+                        "token_utilization_percentage": 24.48,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3893,
+                                "avg_per_call": 1946.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3451,
+                                "avg_per_call": 1725.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1224
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_011635-belfastcity.gov.uk",
+                    "start_time": "2025-08-11T01:16:35+01:00",
+                    "current_time": "2025-08-11T01:17:19+01:00",
+                    "duration_seconds": 44,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7344,
+                    "tokens_remaining": 22656,
+                    "token_utilization_percentage": 24.48,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3893,
+                            "avg_per_call": 1946.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3451,
+                            "avg_per_call": 1725.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1224
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

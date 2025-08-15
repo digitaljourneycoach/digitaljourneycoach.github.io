@@ -1,0 +1,678 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T00:00:45+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "derby.gov.uk",
+                "Council Name": "Derby City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Free school meals - Derby City Council",
+                        "link": "https://www.derby.gov.uk/education-and-learning/schools-and-colleges/free-school-meals/",
+                        "snippet": "the guaranteed element of Pension Credit; Child Tax Credit (provided you're not also entitled to Working Tax Credit and have an annual gross income of no more\u00a0..."
+                    },
+                    {
+                        "title": "Free School Meals | Derby City Council",
+                        "link": "https://secure.derby.gov.uk/forms/?formid=195",
+                        "snippet": "Free School Meals. Please use the form fields to send us your comments or questions. If you require a response from us you must complete at least one method of\u00a0..."
+                    },
+                    {
+                        "title": "Supporting Derby children with free meals and activities - Derby City ...",
+                        "link": "https://www.derby.gov.uk/news/2022/july/supporting-derby-children-with-free-meals-and-activities/",
+                        "snippet": "Jul 7, 2022 ... ... eligible for benefits-related free school meals. Coordinated by Community Action Derby, 23 providers have been approved and will deliver fun\u00a0..."
+                    },
+                    {
+                        "title": "Free activities and meals for children as holiday scheme returns for ...",
+                        "link": "https://www.derby.gov.uk/news/2024/march/freeactivitiesandmealsforchildrenasholidayschemereturnsfor2024/",
+                        "snippet": "Mar 15, 2024 ... The Derby Holiday Activity and Food Programme offers thousands of free places during the Easter school holidays."
+                    },
+                    {
+                        "title": "Household Support Fund - Derby City Council",
+                        "link": "https://www.derby.gov.uk/advice-and-benefits/benefits/household-support-fund/",
+                        "snippet": "Free school meals. Over 16,600 Derby city households with children receiving benefit-related free school meals will be supported with supermarket food\u00a0..."
+                    },
+                    {
+                        "title": "Elective home education (EHE) - Derby City Council",
+                        "link": "https://www.derby.gov.uk/education-and-learning/schools-and-colleges/home-schooling/",
+                        "snippet": "Most parents send their children to school, but some parents choose to take ... Free school meals \u00b7 Travel support \u00b7 Elective home education (EHE) \u00b7 Derby SEND\u00a0..."
+                    },
+                    {
+                        "title": "Derby HAF Annual Report 2023-24",
+                        "link": "https://www.derby.gov.uk/media/derbycitycouncil/content/documents/education/extra-curricularactivities/haf-annual-report.pdf",
+                        "snippet": "Derby has over 14,500 children who receive benefits related free school meals and Derby Poverty Commission's data suggests that 38.3% of children are living in\u00a0..."
+                    },
+                    {
+                        "title": "Travel support - Derby City Council",
+                        "link": "https://www.derby.gov.uk/education-and-learning/schools-and-colleges/travel-support/",
+                        "snippet": "from a family entitled to free school meals; who can't walk to school because ... For further information including how to apply, please visit our Home to School\u00a0..."
+                    },
+                    {
+                        "title": "Derby's free children's holiday programme returns for summer 2025 ...",
+                        "link": "https://www.derby.gov.uk/news/2025/july/derbys-free-childrens-holiday-programme-returns-for-summer-2025/",
+                        "snippet": "Jul 2, 2025 ... ... have access to an exciting schedule of activities over the school summer break, as the Derby Holiday Activities and Food Programme (HAF) returns"
+                    },
+                    {
+                        "title": "Free activities and meals for children as holiday scheme returns in ...",
+                        "link": "https://www.derby.gov.uk/news/2023/december/free-activities-and-meals-for-children-as-holiday-club-returns/",
+                        "snippet": "Dec 15, 2023 ... Parents and carers with children who are eligible for free school meals need to register their child for the scheme to receive a booking code to\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.derby.gov.uk/education-and-learning/schools-and-colleges/free-school-meals/",
+                        "title": "Free school meals - Derby City Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Offers detailed information on free school meals eligibility criteria for the Derby City Council area."
+                        ],
+                        "reasoning": "This link provides a clear and informative overview of free school meals in Derby City Council, making it a top recommendation for users seeking council customer information.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Free school meals - Derby City Council",
+                                "Source": "https://www.derby.gov.uk/education-and-learning/schools-and-colleges/free-school-meals/",
+                                "Key Strengths": [
+                                    "Offers detailed information on free school meals eligibility criteria for the Derby City Council area."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides a clear and informative overview of free school meals in Derby City Council, making it a top recommendation for users seeking council customer information."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Free School Meals | Derby City Council",
+                                "Source": "https://secure.derby.gov.uk/forms/?formid=195",
+                                "Key Strengths": [
+                                    "Offers a contact form for users to ask questions or make comments about free school meals."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Though not immediately apparent, this link does provide access to an official form for users seeking information related to free school meals in Derby City Council, making it a recommended option."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Supporting Derby children with free meals and activities - Derby City ...",
+                                "Source": "https://www.derby.gov.uk/news/2022/july/supporting-derby-children-with-free-meals-and-activities/",
+                                "Key Strengths": [
+                                    "Provides information on the return of free holiday activities and meals during the summer of 2022."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link provides useful information for users looking for free meals and activities for children during holidays in Derby City Council, especially for the year 2022."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Household Support Fund - Derby City Council",
+                                "Source": "https://www.derby.gov.uk/advice-and-benefits/benefits/household-support-fund/",
+                                "Key Strengths": [
+                                    "Provides information on the Household Support Fund, which includes free school meals support for eligible households."
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "Though not primarily focused on free school meal information, this link includes relevant details that might be useful for users seeking council customer information related to support funds."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Free activities and meals for children as holiday scheme returns in ...",
+                                "Source": "https://www.derby.gov.uk/news/2023/december/free-activities-and-meals-for-children-as-holiday-club-returns/",
+                                "Key Strengths": [
+                                    "Provides information on the holiday scheme's return in December 2023 with free activities and meals for eligible children."
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "This link offers some details about the holiday scheme returning with free activities and meals for eligible children, but it is less comprehensive compared to other recommendations."
+                            }
+                        ],
+                        "Analysis Notes": "The provided list mainly consists of news articles and blog postings rather than dedicated service pages. Some analysis had to be made regarding relevance and usefulness for users seeking council customer information.",
+                        "Recommendations Notes": "Recommendations are ranked following their relevance, comprehensive content, and user convenience. The top recommendations provide detailed overviews of free school meals while the lower-ranked options offer less in-depth resources."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "65",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 73,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "data": [
+                        {
+                            "Number": "1",
+                            "Title": "Free school meals - Derby City Council",
+                            "Source": "https://www.derby.gov.uk/education-and-learning/schools-and-colleges/free-school-meals/",
+                            "Reasoning": "This link provides the most detailed information on free school meals eligibility criteria for Derby City Council, which makes it the optimal next step for users seeking council customer information.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Free School Meals | Derby City Council",
+                            "Source": "https://secure.derby.gov.uk/forms/?formid=195",
+                            "Reasoning": "Though it might seem less intuitive, this link provides access to a contact form for users to ask questions or make comments about free school meals in Derby City Council.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Supporting Derby children with free meals and activities - Derby City ...",
+                            "Source": "https://www.derby.gov.uk/news/2022/july/supporting-derby-children-with-free-meals-and-activities/",
+                            "Reasoning": "This link offers useful information for users looking for free meals and activities for children during holidays in Derby City Council, especially related to the year 2022.",
+                            "Confidence": "75"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.derby.gov.uk/education-and-learning/schools-and-colleges/free-school-meals/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.derby.gov.uk/education-and-learning/schools-and-colleges/free-school-meals/",
+                        "analysis": {
+                            "url": "https://www.derby.gov.uk/education-and-learning/schools-and-colleges/free-school-meals/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T00:00:45+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T00:01:11+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html",
+                            "content_length": 46997,
+                            "response_time": 0.236,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.236s)",
+                                    "Content successfully retrieved (46997 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.23866891860961914,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.derby.gov.uk/education-and-learning/schools-and-colleges/free-school-meals/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.derby.gov.uk/education-and-learning/schools-and-colleges/free-school-meals/",
+                        "content": " This text displays the HTML source code for a webpage about Free School Meals in Derby, UK. It includes various sections such as heading tags (h1-h6), paragraphs (p), links (a), and containers (div) to structure the content of the page. The page also contains JavaScript libraries such as jQuery, pagination, accordion, and webchat that enhance user interaction on the webpage.\n\nThe main content section includes information about free school meals for students in Derby City, including eligibility criteria, how to apply, and links to related content related to education and learning in the city. There is also a sidebar menu featuring various links to different sections of the Derby City Council website, as well as subscriber links, document downloads, useful links, and footer nav code at the bottom of the page.\n\nThe webpage also includes a cookie modal that allows users to manage their cookie preferences, including the option to allow or deny necessary and analytical cookies used on the site. The modal contains two buttons: \"Save preferences\" and \"Allow all cookies.\" The functionality for this feature requires certain JS libraries to be loaded first.\n\nThe page also includes references to some JavaScript files such as jQuery-1.8.2.min.js, pagination.min.js, and WebChat library at the end of the HTML code, which may not be displayed in your provided text snippet.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 9.026968002319336,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.derby.gov.uk/education-and-learning/schools-and-colleges/free-school-meals/",
+                        "analysis": {
+                            "persona": "COUNCIL RESIDENT",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content partially addresses this need as it details eligibility criteria for free school meals, but it does not specify a timeframe for when an applicant will receive their application results.",
+                                    "confidence": "60%",
+                                    "reasoning": "Though the text clarifies that families on certain benefits or whose annual income falls below a specific threshold are eligible for free school meals, it does not state explicitly how quickly applications are processed or when applicants can expect to hear back about their application status.",
+                                    "next_actions": "Given the ambiguity around the timeframe for application processing, I would recommend contacting the Derby City Council directly for clarification."
+                                }
+                            ],
+                            "overall_assessment": "The content provides helpful information about eligibility criteria for free school meals in Derby City, but it falls short on providing critical details such as a timeframe for application processing and what to do if help is needed. The overall level of satisfaction could be improved with additional clarity."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.832802057266235,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.derby.gov.uk/education-and-learning/schools-and-colleges/free-school-meals/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_000045-derby.gov.uk",
+                    "analysis_timestamp": "2025-08-13T00:01:26+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6833333333333333,
+                            "tokens_consumed": 7461,
+                            "tokens_remaining": 22539,
+                            "token_utilization_percentage": 24.87,
+                            "average_tokens_per_step": 1243.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 75.13,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 18,
+                            "consumption_rate": 1243.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.76,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_000045-derby.gov.uk",
+                        "start_time": "2025-08-13T00:00:45+01:00",
+                        "current_time": "2025-08-13T00:01:26+01:00",
+                        "duration_seconds": 41,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7461,
+                        "tokens_remaining": 22539,
+                        "token_utilization_percentage": 24.87,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 4145,
+                                "avg_per_call": 2072.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3316,
+                                "avg_per_call": 1658
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1243.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_000045-derby.gov.uk",
+                    "start_time": "2025-08-13T00:00:45+01:00",
+                    "current_time": "2025-08-13T00:01:26+01:00",
+                    "duration_seconds": 41,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7461,
+                    "tokens_remaining": 22539,
+                    "token_utilization_percentage": 24.87,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 4145,
+                            "avg_per_call": 2072.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3316,
+                            "avg_per_call": 1658
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1243.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

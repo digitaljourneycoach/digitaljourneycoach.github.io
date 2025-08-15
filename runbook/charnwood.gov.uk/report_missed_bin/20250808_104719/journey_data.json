@@ -1,0 +1,642 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T10:47:19+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "charnwood.gov.uk",
+                "Council Name": "Charnwood Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed bin collection - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/report_a_missed_bin",
+                        "snippet": "Apr 30, 2025 ... If your bin was missed and it was not due to the reasons above, you can let us know by completing the online form at the bottom of the page."
+                    },
+                    {
+                        "title": "Recycling and waste online services - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/recycling_and_waste_online_services",
+                        "snippet": "Nov 24, 2023 ... Check my bin collection day \u00b7 Bulky household waste collection enquires \u00b7 Apply, renew, cancel your garden waste subscription \u00b7 Report a missed\u00a0..."
+                    },
+                    {
+                        "title": "Recycling and waste - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/recycling",
+                        "snippet": "Sep 20, 2024 ... Report a missed bin collection \u00b7 County Council Recycling and waste sites (Tips) \u00b7 Bring sites in Charnwood \u00b7 Recycling and bins FAQs \u00b7 What can\u00a0..."
+                    },
+                    {
+                        "title": "Report something us - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/report",
+                        "snippet": "Jul 18, 2025 ... High hedges complaints \u00b7 Housing issue (environmental) (council and rented) \u00b7 Litter problem \u00b7 Lost/found (stray) dog \u00b7 Missed bin \u00b7 Noise issue."
+                    },
+                    {
+                        "title": "Green recycling bin - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/green_recycling_bin",
+                        "snippet": "May 30, 2025 ... These clear recycling sacks can be placed alongside your green bin on your collection day. Report a missed collection. Your items may have been\u00a0..."
+                    },
+                    {
+                        "title": "Dog waste / litter bins - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/dog_waste_litter_bins",
+                        "snippet": "May 4, 2022 ... Home \u00bb Recycling and waste \u00bb Dog waste / litter bins. Dog waste ... Household waste collections calendars \u00b7 Report a missed bin collection\u00a0..."
+                    },
+                    {
+                        "title": "Feedback, Compliments or Complaints - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/feedback_compliments_or_complaints",
+                        "snippet": "May 10, 2024 ... ... reporting a repair or a missed bin collection; A complaint that has already been concluded as not being the fault of the Council; Homelessness\u00a0..."
+                    },
+                    {
+                        "title": "Black refuse bin - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/household_waste_domestic_bins",
+                        "snippet": "Aug 20, 2024 ... Please ensure that all waste is inside the black sacks and not loose inside in the bin. ... Report a missed bin collection \u00b7 County Council\u00a0..."
+                    },
+                    {
+                        "title": "Garden waste service - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/gardenwaste",
+                        "snippet": "Apr 30, 2025 ... All about the Brown Bin Garden Waste collection service. ... Please do not report a missed collection until after 5pm on the day of collection."
+                    },
+                    {
+                        "title": "Online forms - Online services - Charnwood Borough Council",
+                        "link": "https://www.charnwood.gov.uk/pages/onlineforms",
+                        "snippet": "May 19, 2025 ... Check your bin collection day \u00b7 Report a missed bin collection \u00b7 Apply, renew, cancel your garden waste subscription \u00b7 Book a bulky waste\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.charnwood.gov.uk/pages/report_a_missed_bin",
+                        "title": "Report a missed bin collection - Charnwood Borough Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly addresses the requirement of council customer information needs",
+                            "Provides a clear and straightforward process for reporting a missed bin collection"
+                        ],
+                        "reasoning": "The title and snippet suggest that this link directly relates to the council's customer service regarding waste management, specifically addressing a missed bin collection.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS_FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed bin collection - Charnwood Borough Council",
+                                "Source": "https://www.charnwood.gov.uk/pages/report_a_missed_bin",
+                                "Key Strengths": [
+                                    "Directly addresses the requirement of council customer information needs",
+                                    "Provides a clear and straightforward process for reporting a missed bin collection"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title and snippet suggest that this link directly relates to the council's customer service regarding waste management, specifically addressing a missed bin collection."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Report something us - Charnwood Borough Council",
+                                "Source": "https://www.charnwood.gov.uk/pages/report",
+                                "Key Strengths": [
+                                    "Broad coverage of council services, including bin collection issues and other council-related concerns"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though the direct mention of a missed bin collection is not explicit in the provided snippet, the link's title and context within a broader service menu suggests it may cover this topic."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Black refuse bin - Charnwood Borough Council",
+                                "Source": "https://www.charnwood.gov.uk/pages/household_waste_domestic_bins",
+                                "Key Strengths": [
+                                    "Contains information about waste management and the use of black refuse bins"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "While not explicitly addressing a missed bin collection, this link provides general knowledge about householder waste disposal that could indirectly assist in understanding or solving the issue."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Garden waste service - Charnwood Borough Council",
+                                "Source": "https://www.charnwood.gov.uk/pages/gardenwaste",
+                                "Key Strengths": [
+                                    "Contains information about the council's garden waste collection service"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "Though not directly related to reporting a missed bin collection, understanding the details of the garden waste service might help customers better manage their waste and avoid potential issues."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Online forms - Online services - Charnwood Borough Council",
+                                "Source": "https://www.charnwood.gov.uk/pages/onlineforms",
+                                "Key Strengths": [
+                                    "Provides a channel to report missed bin collections and other online council services"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "Though not explicitly mentioned in the snippet, the link's title suggests it offers various online forms, possibly including a form for reporting a missed bin collection."
+                            }
+                        ],
+                        "Analysis Notes": "Several items on the search results list address different aspects of waste management and council services, but none explicitly match the exact query for council customer information needs regarding a missed bin collection. Recommendations are provided in order of confidence score and potential relevance to the query.",
+                        "Recommendations Notes": "While some recommendations aren't a perfect fit, they still offer valuable context or support that may be useful to council customers looking for information about waste management."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS_FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "70",
+                        "60",
+                        "60",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 68,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.charnwood.gov.uk/pages/report_a_missed_bin"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.charnwood.gov.uk/pages/report_a_missed_bin",
+                        "analysis": {
+                            "url": "https://www.charnwood.gov.uk/pages/report_a_missed_bin",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T10:47:19+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T10:47:46+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 23896,
+                            "response_time": 0.926,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.926s)",
+                                    "Content successfully retrieved (23896 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.9271519184112549,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.charnwood.gov.uk/pages/report_a_missed_bin"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.charnwood.gov.uk/pages/report_a_missed_bin",
+                        "content": " Here is the cleaned, semantically structured HTML containing the main editorial content of the page:\n\n```html\n<!DOCTYPE html>\n<html>\n  <head></head>\n  <body>\n    <article class=\"module article\" id=\"article-report_a_missed_bin\">\n      <div class=\"body\">\n        <div class=\"pagecontent\">\n          <p class=\"lead-text\">Unfortunately, on some occasions items may not be collected.</p>\n          <h2>When to report a missed collection</h2>\n          <p>Our crews have from 6am until 6pm to collect your refuse. Our collection crews may still be making their way to your property.</p>\n          <p><a class=\"cms-btn cms-btn--green\" data-cms-link-uri=\"\" href=\"http://my.charnwood.gov.uk/\">Check your bin collection day</a></p>\n          <p>Missed collections must be reported within two working days of your scheduled collection date.</p>\n          <h3>A collection will <span class=\"underline\">not</span> be re-attempted if:</h3>\n          <ul>\n            <li>The wrong bin has been presented (visit <a data-cms-link-uri=\"articles/2976\" href=\"/pages/my_charnwood\">My Charnwood</a> and enter your postcode to check your collection day)</li>\n            <li>The bin was not presented at the <span class=\"underline\">boundary</span>&nbsp;of your property by 6am</li>\n            <li>The crew could not access the bin</li>\n            <li>The wrong items were in the bin. Find out <a data-cms-link-uri=\"articles/4454\" href=\"/pages/what_can_and_cannot_be_recycled\">what can and cannot be recycled</a>&nbsp;and <a data-cms-link-uri=\"articles/2034\" href=\"/pages/household_waste_domestic_bins\">visit the black refuse bin webpage</a> to find out what can go in your green and black bins</li>\n            <li>The bin was too heavy or overfilled and the lid was not closed flat.</li>\n          </ul>\n          <p>If your bin was missed and it was not due to the reasons above, you can let us know by completing the online form at the bottom of the page.</p>\n          <h3>Excess rubbish</h3>\n          <p>Any excess rubbish left alongside the black bin or on top will not be collected and will have to be placed in your bin and wait until the next scheduled rubbish collection or disposed of at your local tip.</p>\n          <p><a class=\"cms-btn cms-btn--green\" data-cms-link-uri=\"articles/1788\" href=\"/pages/tips\">Information about tips in Charnwood</a></p>\n          <p>If you have additional waste as a result of a change in circumstances such as medical waste we may be able to help. Applications can be made to the council and an officer will make an assessment. Visit <a data-cms-link-uri=\"articles/1785\" href=\"/pages/clinical_waste\">the clinical waste webpage</a> for further details.</p>\n          <p>Additional mixed recycling waste can be left in clear plastic sacks at the side of the green bin on the day of your collection.</p>\n          <h2>Report a missed bin collection</h2>\n          <p>Before reporting a missed bin collection, please ensure you have put your bin out on the correct day by 6am. Check your collection days on <a data-cms-link-uri=\"\" href=\"http://my.charnwood.gov.uk\">My.Charnwood.</a></p>\n          <p>Please complete the form below:</p>\n          <p class=\"normal\"><a class=\"cms-btn cms-btn--green\" data-cms-link-uri=\"\" href=\"https://vof.charnwood.gov.uk/form/auto/es_missedbin_collection\">Report a missed collection</a></p>\n          <p class=\"normal\"><a class=\"cms-btn cms-btn--green\" data-cms-link-uri=\"\" href=\"https://vof.charnwood.gov.uk/form/auto/es_intrim_missed_bin_rep\">Report a missed garden waste collection</a></p>\n          <p class=\"last-paragraph\">The above content is the only part of the original HTML relevant to the main editorial content, as it is inside the article tag.</p>\n        </div>\n      </div>\n    </article>\n  </body>\n</html>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 24.603766918182373,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.charnwood.gov.uk/pages/report_a_missed_bin",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 6.240984916687012,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.charnwood.gov.uk/pages/report_a_missed_bin"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_104719-charnwood.gov.uk",
+                    "analysis_timestamp": "2025-08-08T10:48:18+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.9833333333333333,
+                            "tokens_consumed": 7189,
+                            "tokens_remaining": 22811,
+                            "token_utilization_percentage": 23.96,
+                            "average_tokens_per_step": 1198.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 76.04,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 19,
+                            "consumption_rate": 1198.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 14.05,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.9833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_104719-charnwood.gov.uk",
+                        "start_time": "2025-08-08T10:47:19+01:00",
+                        "current_time": "2025-08-08T10:48:18+01:00",
+                        "duration_seconds": 59,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7189,
+                        "tokens_remaining": 22811,
+                        "token_utilization_percentage": 23.96,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3419,
+                                "avg_per_call": 1709.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3770,
+                                "avg_per_call": 1885
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1198.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_104719-charnwood.gov.uk",
+                    "start_time": "2025-08-08T10:47:19+01:00",
+                    "current_time": "2025-08-08T10:48:18+01:00",
+                    "duration_seconds": 59,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7189,
+                    "tokens_remaining": 22811,
+                    "token_utilization_percentage": 23.96,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3419,
+                            "avg_per_call": 1709.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3770,
+                            "avg_per_call": 1885
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1198.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

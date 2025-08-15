@@ -1,0 +1,571 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T15:57:01+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "harrogate.gov.uk",
+                "Council Name": "Harrogate Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "North Yorkshire Council: Home",
+                        "link": "https://secure.harrogate.gov.uk/",
+                        "snippet": "Check your bin collection day, find your nearest waste recycling centre, pay for garden waste and report a missed bin."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://secure.harrogate.gov.uk/",
+                        "title": "North Yorkshire Council: Home",
+                        "confidence": 90,
+                        "strengths": [
+                            "Provides essential information about the North Yorkshire Council including waste collection, recycling centers, and reporting a missed bin.",
+                            "Official website of the North Yorkshire Council which means that the information provided is accurate and reliable."
+                        ],
+                        "reasoning": "The search result has a clear title referring to the North Yorkshire Council and relevant information like waste collection, recycling centers, and missed bin reports. Furthermore, it's an official website which ensures authority and reliability.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "1",
+                            "recommendations": "1"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "North Yorkshire Council: Home",
+                                "Source": "https://secure.harrogate.gov.uk/",
+                                "Key Strengths": [
+                                    "Provides essential information about the North Yorkshire Council including waste collection, recycling centers, and reporting a missed bin.",
+                                    "Official website of the North Yorkshire Council which means that the information provided is accurate and reliable."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The search result has a clear title referring to the North Yorkshire Council and relevant information like waste collection, recycling centers, and missed bin reports. Furthermore, it's an official website which ensures authority and reliability."
+                            }
+                        ],
+                        "Analysis Notes": "The provided list consists of a single item that is directly related to council customer information needs.",
+                        "Recommendations Notes": "While there are only a few options available in the search results, the analyzed item provides relevant and reliable information."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    }
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "North Yorkshire Council: Home",
+                        "Source": "https://secure.harrogate.gov.uk/",
+                        "Reasoning": "The search result has a clear title referring to the North Yorkshire Council and relevant information like waste collection, recycling centers, and missed bin reports. Furthermore, it's an official website which ensures authority and reliability.",
+                        "Confidence": "90"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://secure.harrogate.gov.uk/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://secure.harrogate.gov.uk/",
+                        "analysis": {
+                            "url": "https://secure.harrogate.gov.uk/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T15:57:01+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T15:57:09+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 40540,
+                            "response_time": 0.414,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.414s)",
+                                    "Content successfully retrieved (40540 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.41439294815063477,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://secure.harrogate.gov.uk/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://secure.harrogate.gov.uk/",
+                        "content": " This is a webpage for the North Yorkshire Council's news page. The main content is divided into several articles, each containing an image, a headline, and a brief piece of text summarizing the news article. Here are some examples of the information presented in each article:\n\n1. Tickets for 'biggest-ever' Moonlight on the Lake go on sale: This article discusses the upcoming Moonlight on the Lake event, which is expected to attract thousands of families to Scarborough and boost tourism into the autumn.\n2. Businesses being encouraged to be a part of Restaurant Week: This article explains that restaurant and caf\u00e9 owners are being encouraged to showcase their culinary talents as part of a popular scheme offering customers great food at great prices.\n3. Judge rules against legal challenge for major transport scheme: This article reports on the High Court's ruling in favor of North Yorkshire Council regarding a project to improve Harrogate town center and encourage the use of public transportation.\n4. A-Z of council services: This is a link to the glossary page, where users can find definitions for various terms related to the council's services.\n\nAt the bottom of the page, there are links to the A to Z list of council services and a newsletter signup form. On the left-hand side, there is a navigation menu with various sections such as \"Council and democracy,\" \"Living,\" \"Business and economy,\" etc. This menu allows users to easily navigate to different parts of the website. The website's header contains the council's logo, the main navigation menu, and a search bar. The footer of the page includes links to various sections such as \"About us,\" \"FAQs,\" \"Privacy policy,\" etc.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 10.69019103050232,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://secure.harrogate.gov.uk/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The provided content does not answer this question directly nor does it list any contact information for bin collection issues.",
+                                    "confidence": "0%",
+                                    "reasoning": "The content is focused on council news articles and the A-Z of council services, with no mention or link to a service related to reporting missed bin collections.",
+                                    "next_actions": "I would search in the A-Z list of council services for ' refuse & recycling' or contact the council directly through their general customer service number."
+                                }
+                            ],
+                            "overall_assessment": "The content provided is informative about local news and events, however it does not include specific information that would be useful to a Council Resident who needs information on bin collection. The website navigation menu and the A-Z list of council services could help in finding such information."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.806798934936523,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://secure.harrogate.gov.uk/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_155701-harrogate.gov.uk",
+                    "analysis_timestamp": "2025-08-08T15:57:25+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.4,
+                            "tokens_consumed": 8384,
+                            "tokens_remaining": 21616,
+                            "token_utilization_percentage": 27.95,
+                            "average_tokens_per_step": 1397.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 72.05,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 15,
+                            "consumption_rate": 1397.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 5.71,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.4,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_155701-harrogate.gov.uk",
+                        "start_time": "2025-08-08T15:57:01+01:00",
+                        "current_time": "2025-08-08T15:57:25+01:00",
+                        "duration_seconds": 24,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 8384,
+                        "tokens_remaining": 21616,
+                        "token_utilization_percentage": 27.95,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 6535,
+                                "avg_per_call": 3267.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 1849,
+                                "avg_per_call": 924.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1397.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_155701-harrogate.gov.uk",
+                    "start_time": "2025-08-08T15:57:01+01:00",
+                    "current_time": "2025-08-08T15:57:25+01:00",
+                    "duration_seconds": 24,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 8384,
+                    "tokens_remaining": 21616,
+                    "token_utilization_percentage": 27.95,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 6535,
+                            "avg_per_call": 3267.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 1849,
+                            "avg_per_call": 924.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1397.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

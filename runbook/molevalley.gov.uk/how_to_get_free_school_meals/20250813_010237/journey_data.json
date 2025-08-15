@@ -1,0 +1,636 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T01:02:37+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "molevalley.gov.uk",
+                "Council Name": "Mole Valley District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Help with Food Costs - Mole Valley District Council",
+                        "link": "https://www.molevalley.gov.uk/community/help-with-food-costs/",
+                        "snippet": "Check to see if your child can get free school meals on GOV.UK. Healthy Start. The Healthy Start scheme can help you buy food and milk if you're more than 10\u00a0..."
+                    },
+                    {
+                        "title": "MVDC Deciding On Pilot Bursary Scheme to Widen Participation in ...",
+                        "link": "https://news.molevalley.gov.uk/2025/04/01/mvdc-deciding-on-pilot-bursary-scheme-to-widen-participation-in-sport/",
+                        "snippet": "Apr 1, 2025 ... ... school meals and/or whose parents receive regular universal credit ... Those eligible would be signposted to a local sports club for a free\u00a0..."
+                    },
+                    {
+                        "title": "Sports Club Access Scheme - Mole Valley District Council",
+                        "link": "https://www.molevalley.gov.uk/sports-club-access-scheme/",
+                        "snippet": "in receipt of free school meals and/or \u00b7 whose parents are in receipt of regular universal credit payments \u00b7 aged 17 or under."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 3
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.molevalley.gov.uk/community/help-with-food-costs/",
+                        "title": "Help with Food Costs - Mole Valley District Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Direct link to a resource specifically related to help with food costs.",
+                            "Offers information on free school meals and the Healthy Start scheme."
+                        ],
+                        "reasoning": "The search result is directly related to 'council customer information needs' as it provides information regarding assistance in managing food costs, which may be of interest to council customers. The page also mentions a program called Healthy Start, which would likely provide further relevant details.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "3",
+                            "recommendations": "3"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Help with Food Costs - Mole Valley District Council",
+                                "Source": "https://www.molevalley.gov.uk/community/help-with-food-costs/",
+                                "Key Strengths": [
+                                    "Direct link to a resource specifically related to help with food costs.",
+                                    "Offers information on free school meals and the Healthy Start scheme."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The search result is directly related to 'council customer information needs' as it provides information regarding assistance in managing food costs, which may be of interest to council customers. The page also mentions a program called Healthy Start, which would likely provide further relevant details."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Sports Club Access Scheme - Mole Valley District Council",
+                                "Source": "https://www.molevalley.gov.uk/sports-club-access-scheme/",
+                                "Key Strengths": [
+                                    "A resource related to sports and potential financial assistance for those in need.",
+                                    "Eligibility criteria mention 'in receipt of free school meals and/or \u00b7 whose parents are in receipt of regular universal credit payments'."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The search result appears relevant to council customer information needs as it is a sports club access scheme which provides potential financial assistance for those eligible. Mentioned criteria overlap with what may be considered 'council customer information needs'."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "MVDC Deciding On Pilot Bursary Scheme to Widen Participation in ...",
+                                "Source": "https://news.molevalley.gov.uk/2025/04/01/mvdc-deciding-on-pilot-bursary-scheme-to-widen-participation-in-sport/",
+                                "Key Strengths": [
+                                    "A news article discussing a potential sports bursary scheme.",
+                                    "Implicitly refers to financial assistance for those eligible."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The search result is somewhat relevant to council customer information needs as it discusses a potential pilot sports bursary scheme. Although not directly related, the article mentions that those eligible would be signposted to a local sports club for a free membership. This suggests some financial assistance could be provided."
+                            }
+                        ],
+                        "Analysis Notes": "While all search results are somewhat related to council customer information needs due to mentions of finance or resources, none explicitly provide direct and immediate support related to the broad search query. A more specific search or further investigation may be necessary for suitable results.",
+                        "Recommendations Notes": "Rankings were based on how directly and clearly each search result satisfied the requirement of providing council customer information, with a focus on relevance and quality."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 81.66666666666667,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Help with Food Costs - Mole Valley District Council",
+                            "Source": "https://www.molevalley.gov.uk/community/help-with-food-costs/",
+                            "Reasoning": "The recommended link is directly related to 'council customer information needs' and offers clear, immediate information on financial assistance with food costs. This is highly relevant and provides concrete results.",
+                            "Confidence": "90"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "005_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.molevalley.gov.uk/community/help-with-food-costs/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.molevalley.gov.uk/community/help-with-food-costs/",
+                        "analysis": {
+                            "url": "https://www.molevalley.gov.uk/community/help-with-food-costs/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T01:02:37+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T01:03:03+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 63962,
+                            "response_time": 0.395,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.395s)",
+                                    "Content successfully retrieved (63962 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.3970518112182617,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "006_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.molevalley.gov.uk/community/help-with-food-costs/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.molevalley.gov.uk/community/help-with-food-costs/",
+                        "content": " Here's the cleaned and semantically structured HTML containing the central editorial content of the page:\n\n```html\n<h1>Help with Food Costs</h1>\n<h2>Food Banks</h2>\n<p>If you\u2019re struggling to put food on the table, there are two local food banks in:</p>\n<ul>\n    <li><a href=\"https://dorkingarea.foodbank.org.uk/\">Dorking</a></li>\n    <li><a href=\"https://epsomewell.foodbank.org.uk/\">Epsom and Ewell</a>&nbsp;(including Leatherhead)</li>\n</ul>\n<p>In order to get help from a food bank you will need to be referred with a voucher, which can be issued by a number of local community organisations (for instance schools, GPs and advice agencies). Your local food bank can advise which agencies can help.</p>\n<h2>Mid Surrey Community Fridges</h2>\n<p>This volunteer-led service aims to stop food wastage and to redistribute the excess food from supermarkets and restaurants to residents in need. There are collection points throughout the week, all over Mole Valley.</p>\n<h2>Free school meals</h2>\n<p>Check to see if your child can get free school meals on <a href=\"https://www.gov.uk/apply-free-school-meals\">GOV.UK</a>.</p>\n<h2>Healthy Start</h2>\n<p><strong><a title=\"Healthy Start NHS : opens on new browser window or tab\" href=\"https://www.healthystart.nhs.uk/\" target=\"_blank\" rel=\"noopener\">The Healthy Start scheme</a></strong>&nbsp;can help you buy food and milk if you\u2019re more than 10 weeks pregnant or have a child under four.</p>\n<h2>Apps offering free or reduced food</h2>\n<p>The <strong><a title=\"too good to go app : opens on new browser window or tab\" href=\"https://toogoodtogo.co.uk/en-gb/\" target=\"_blank\" rel=\"noopener\">Too good to go app</a></strong>&nbsp;allows you to purchase unsold food at a discounted rate from restaurants and cafes.</p>\n<p>The <strong><a title=\"Olio app : opens on new browser window or tab\" href=\"https://olioex.com/\" target=\"_blank\" rel=\"noopener\">Olio app</a></strong>&nbsp;connects neighbours with each other and with local businesses so surplus food can be shared, not thrown away.</p>\n<h2>Making savings on your weekly shop</h2>\n<p>This article has some top tips on <a href=\"https://www.thetimes.co.uk/money-mentor/article/cost-food-bill/\">cutting the cost of your food bill</a>.</p>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 16.629534006118774,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "007_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.molevalley.gov.uk/community/help-with-food-costs/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content partially answers this as it directs to a GOV.UK website where the eligibility can be checked, but there is no information about the criteria or approximate time for the application process.",
+                                    "confidence": "60%",
+                                    "reasoning": "While the content does provide a link to check for free school meals eligibility, it lacks detailed information about the criteria and the timeframe for receiving an answer which are crucial for my specific need. Moreover, it doesn't discuss anything about financial support during unemployment.",
+                                    "next_actions": "Visit GOV.UK website to determine eligibility for free school meals, reach out to local council or community organizations for further clarification."
+                                }
+                            ],
+                            "overall_assessment": "The content provides some useful information on various food assistance programs in the area, but it does not comprehensively answer questions about specific financial support for unemployed residents or immediate food aid (such as voucher eligibility). Overall, while there is helpful information, significant gaps exist that may leave Council Residents with unanswered questions about their immediate needs."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.7019031047821045,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.molevalley.gov.uk/community/help-with-food-costs/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "008_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_010237-molevalley.gov.uk",
+                    "analysis_timestamp": "2025-08-13T01:03:27+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 7,
+                            "duration_minutes": 0.8333333333333334,
+                            "tokens_consumed": 7128,
+                            "tokens_remaining": 22872,
+                            "token_utilization_percentage": 23.76,
+                            "average_tokens_per_step": 1018.29
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 76.24,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 22,
+                            "consumption_rate": 1018.29,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 7,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 3
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.9,
+                            "steps_fatigue_percentage": 58.33,
+                            "overall_fatigue_score": 58.33,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8333333333333334,
+                            "total_steps": 7,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved",
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_010237-molevalley.gov.uk",
+                        "start_time": "2025-08-13T01:02:37+01:00",
+                        "current_time": "2025-08-13T01:03:27+01:00",
+                        "duration_seconds": 50,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7128,
+                        "tokens_remaining": 22872,
+                        "token_utilization_percentage": 23.76,
+                        "token_status": "available",
+                        "total_steps": 7,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 3,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 7
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3199,
+                                "avg_per_call": 1599.5
+                            },
+                            "analyst": {
+                                "calls": 3,
+                                "tokens": 3929,
+                                "avg_per_call": 1309.6666666666667
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1018.29
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_010237-molevalley.gov.uk",
+                    "start_time": "2025-08-13T01:02:37+01:00",
+                    "current_time": "2025-08-13T01:03:27+01:00",
+                    "duration_seconds": 50,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7128,
+                    "tokens_remaining": 22872,
+                    "token_utilization_percentage": 23.76,
+                    "token_status": "available",
+                    "total_steps": 7,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 3,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 7
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3199,
+                            "avg_per_call": 1599.5
+                        },
+                        "analyst": {
+                            "calls": 3,
+                            "tokens": 3929,
+                            "avg_per_call": 1309.6666666666667
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1018.29
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

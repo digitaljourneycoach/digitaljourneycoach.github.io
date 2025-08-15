@@ -1,0 +1,645 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T20:22:27+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "caerffili.gov.uk",
+                "Council Name": "Caerphilly County Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Solar Together Caerphilly Buying solar panels and battery storage ...",
+                        "link": "https://www.caerffili.gov.uk/services/environmental-health-and-pollution/decarbonisation/solar-together-caerphilly?lang=en-GB",
+                        "snippet": "Planning Permission. Solar PV installations are considered a 'permitted development' and will generally not need planning permission. However, in some cases,\u00a0..."
+                    },
+                    {
+                        "title": "Buyers sought for Caerphilly solar farm development rights",
+                        "link": "https://www.caerffili.gov.uk/news/news-bulletin/may-2025/buyers-sought-for-caerphilly-solar-farm-developmen?lang=en-GB",
+                        "snippet": "May 12, 2025 ... ... solar PV scheme. Situated just outside Caerphilly, the proposed C. 20 MW farm secured planning permission in May 2024, with c. 81 acres of\u00a0..."
+                    },
+                    {
+                        "title": "buildings in the countryside indd.indd",
+                        "link": "https://caerffili.gov.uk/CaerphillyDocs/Planning/SPG-LDP-10-buildings-in-the-countryside.aspx",
+                        "snippet": "the need for planning permission) through planning conditions where ... Technologies such as solar photovoltaic (PV) panels and wind turbines will\u00a0..."
+                    },
+                    {
+                        "title": "Caerphilly, No Use Empty",
+                        "link": "https://www.caerffili.gov.uk/CaerphillyDocs/Housing/17051-Empty-Property-Advise-Pack-E-Acc.aspx",
+                        "snippet": "Sep 28, 2022 ... As the value of the materials (the solar panels and the battery) is ... Certain renovation work may require Planning Permission or Building."
+                    },
+                    {
+                        "title": "Self Assessment Report 2023/24",
+                        "link": "https://www.caerffili.gov.uk/caerphillydocs/council-and-democracy/self-assessment-report-2023-24.aspx",
+                        "snippet": "Dec 24, 2024 ... The council has installed Photovoltaic (PV's) panels ... The Cwm Ifor solar farm project, a 20MW solar farm development, received planning."
+                    },
+                    {
+                        "title": "Private sector housing renewal and adaptations policy 2024",
+                        "link": "https://www.caerffili.gov.uk/web-documents/strategies-plans-and-policies/housing-strategy/private-sector-housing-renewal-policy/document?lang=en-gb",
+                        "snippet": "... energy efficiency of homes, such as installation of solar panels. Assistance ... planning permission or Building Regulations approval are not permitted."
+                    },
+                    {
+                        "title": "Proposal to Establish a Rhymney 3-18 School (Incorporating ...",
+                        "link": "https://www.caerffili.gov.uk/caerphillydocs/schools/21centuryschools/rhymney_3-18_consultation_response_april2017.aspx",
+                        "snippet": "Mar 15, 2017 ... A: It was undertaken as part of the planning permission. Q: Could ... panels, and the children will be able to observe how much they\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.caerffili.gov.uk/services/environmental-health-and-pollution/decarbonisation/solar-together-caerphilly?lang=en-GB",
+                        "title": "Solar Together Caerphilly Buying solar panels and battery storage ...",
+                        "confidence": 85,
+                        "strengths": [
+                            "The item discusses solar panels for residential purposes which is relevant to council customer information needs.",
+                            "It mentions that planning permission may not be needed, which is useful information for customers."
+                        ],
+                        "reasoning": "Although the title contains 'Solar Together' and indicates a community effort, it also directly addresses residential solar panel systems, which aligns with council customer information needs. Furthermore, the snippet suggests that planning permission is not always required.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "7",
+                            "recommendations": "3"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Solar Together Caerphilly Buying solar panels and battery storage ...",
+                                "Source": "https://www.caerffili.gov.uk/services/environmental-health-and-pollution/decarbonisation/solar-together-caerphilly?lang=en-GB",
+                                "Key Strengths": [
+                                    "The item discusses solar panels for residential purposes which is relevant to council customer information needs.",
+                                    "It mentions that planning permission may not be needed, which is useful information for customers."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Although the title contains 'Solar Together' and indicates a community effort, it also directly addresses residential solar panel systems, which aligns with council customer information needs. Furthermore, the snippet suggests that planning permission is not always required."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "buildings in the countryside indd.indd",
+                                "Source": "https://caerffili.gov.uk/CaerphillyDocs/Planning/SPG-LDP-10-buildings-in-the-countryside.aspx",
+                                "Key Strengths": [
+                                    "The item discusses planning permission for buildings, which is relevant to council customer information needs.",
+                                    "It mentions solar panels as one of the technologies that may require planning permission."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This document appears to be a strategic planning guideline related to buildings in the countryside, which covers various aspects such as technology and regulations. Although it does not specifically mention residential solar panel installation, its relevance lies in providing information about when planning permission is required for solar panels."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Private sector housing renewal and adaptations policy 2024",
+                                "Source": "https://www.caerffili.gov.uk/web-documents/strategies-plans-and-policies/housing-strategy/private-sector-housing-renewal-policy/document?lang=en-gb",
+                                "Key Strengths": [
+                                    "The item discusses housing renewal, which may include energy efficiency improvements such as installing solar panels.",
+                                    "It mentions the possibility of assistance for these improvements."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Although this document is a policy related to private sector housing, it discusses implementing energy-efficient measures. The snippet implies that installation of solar panels may be part of these measures and that financial assistance might be available."
+                            }
+                        ],
+                        "Analysis Notes": "The search results lack a clear listing of council customer information specifically about obtaining or using solar panels for residential purposes. However, the found items provide relevant insights regarding solar panels, planning permission, housing renewal, and energy efficiency improvements.",
+                        "Recommendations Notes": "Although none of the identified options are ideal for a focused search on providing residents with information about council services related to solar panel installation, the selected options offer insights into planning requirements for solar panel installations, as well as housing renewal policies that may include energy efficiency improvements such as solar panels."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "70",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 76.66666666666667,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Solar Together Caerphilly Buying solar panels and battery storage ...",
+                            "Source": "https://www.caerffili.gov.uk/services/environmental-health-and-pollution/decarbonisation/solar-together-caerphilly?lang=en-GB",
+                            "Reasoning": "The selection offers the highest confidence score and directly addresses installation of solar panels for residential purposes, which aligns with council customer information needs, and it also mentions planning permission that may not be needed.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "buildings in the countryside indd.indd",
+                            "Source": "https://caerffili.gov.uk/CaerphillyDocs/Planning/SPG-LDP-10-buildings-in-the-countryside.aspx",
+                            "Reasoning": "While the title is not about solar panels specifically, this selection discusses planning permission which may require for solar panel installations, providing useful information to customers.",
+                            "Confidence": "70"
+                        },
+                        {
+                            "Number": "6",
+                            "Title": "Private sector housing renewal and adaptations policy 2024",
+                            "Source": "https://www.caerffili.gov.uk/web-documents/strategies-plans-and-policies/housing-strategy/private-sector-housing-renewal-policy/document?lang=en-gb",
+                            "Reasoning": "This selection discusses housing renewal that may include energy efficiency improvements such as installing solar panels and mentions the possibility of financial assistance.",
+                            "Confidence": "75"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.caerffili.gov.uk/services/environmental-health-and-pollution/decarbonisation/solar-together-caerphilly?lang=en-GB"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.caerffili.gov.uk/services/environmental-health-and-pollution/decarbonisation/solar-together-caerphilly?lang=en-GB",
+                        "analysis": {
+                            "url": "https://www.caerffili.gov.uk/services/environmental-health-and-pollution/decarbonisation/solar-together-caerphilly?lang=en-GB",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T20:22:27+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T20:22:52+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 41797,
+                            "response_time": 1.118,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (1.118s)",
+                                    "Content successfully retrieved (41797 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 1.1190321445465088,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.caerffili.gov.uk/services/environmental-health-and-pollution/decarbonisation/solar-together-caerphilly?lang=en-GB"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.caerffili.gov.uk/services/environmental-health-and-pollution/decarbonisation/solar-together-caerphilly?lang=en-GB",
+                        "content": " Solar power has become an increasingly popular and sustainable source of energy in recent years, as more people seek to reduce their carbon footprint and save on electricity bills. One of the main advantages of solar power is that it harnesses the sun's energy, which is abundant and virtually free. Additionally, solar panels have become more affordable and efficient over time, making it a viable option for homes, businesses, and even larger-scale projects such as solar farms.\n\nWhen considering solar power for your home or business, there are several key factors to consider:\n\n1. Location: A south-facing roof is ideal for maximizing the amount of sunlight that can be captured by solar panels. However, east and west-facing roofs can also be effective, especially in the Northern Hemisphere. The location's latitude, climate, and weather patterns should also be taken into account when determining the potential for solar power.\n2. Size: The size of your solar system will depend on several factors such as energy consumption, roof space, and budget. A larger system will generate more electricity but can be more expensive to install and maintain. It's important to find a balance that meets your needs while remaining cost-effective.\n3. Type of Solar Panels: There are two main types of solar panels: monocrystalline and polycrystalline. Monocrystalline panels have a higher energy efficiency and take up less space, but they can be more expensive than polycrystalline panels which are easier on the wallet but have slightly lower energy output.\n4. Installation: Proper installation of solar panels is crucial for their effectiveness, as it ensures that they face the right direction and are securely fastened to the roof. It's recommended to hire a professional installer who will ensure your system is installed correctly and meets safety regulations.\n5. Maintenance: While solar panels require minimal maintenance compared to other energy sources, regular cleaning and inspections should be conducted to maximize their efficiency. This may include checking for damage or debris, re-aligning panels if necessary, and ensuring proper connections are still intact.\n6. Incentives: Many governments and utility companies offer incentives such as tax credits and rebates for homeowners who install solar power systems. Do your research to find out what incentives are available in your area and see how they can help you offset the cost of installation and maintenance.\n7. Energy Storage: If you want to maximize your use of solar power, consider investing in energy storage such as batteries or capacitors. This allows excess energy produced by the panels during the day to be stored for later use at night or on cloudy days. Energy storage can help reduce reliance on grid electricity and provide a more consistent source of power.\n\nOverall, solar power presents an environmentally friendly and cost-effective solution for homes and businesses seeking to reduce their energy consumption and carbon footprint. By taking the key factors outlined above into account, you'll be well on your way to a brighter and greener future with solar panels.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 16.071870803833008,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.caerffili.gov.uk/services/environmental-health-and-pollution/decarbonisation/solar-together-caerphilly?lang=en-GB",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "Unsatisfactory",
+                                    "confidence": "50%",
+                                    "reasoning": "While the content provides valuable information about the factors to consider when installing solar panels, it does not explicitly state whether permission is required from the council. This crucial information is vital for a council resident who wants to proceed with the installation.",
+                                    "next_actions": "The resident should contact the local council to inquire about the permissions and regulations related to the installation of solar panels."
+                                }
+                            ],
+                            "overall_assessment": "The content provides valuable insights into the factors to consider when installing solar panels, but it lacks information on whether permission is required from the council. This key piece of information may deter potential residents from pursuing solar power due to uncertainty about the approval process."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.094581842422485,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.caerffili.gov.uk/services/environmental-health-and-pollution/decarbonisation/solar-together-caerphilly?lang=en-GB"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_202227-caerffili.gov.uk",
+                    "analysis_timestamp": "2025-08-10T20:23:14+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7833333333333333,
+                            "tokens_consumed": 10974,
+                            "tokens_remaining": 19026,
+                            "token_utilization_percentage": 36.58,
+                            "average_tokens_per_step": 1829
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 63.42,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 10,
+                            "consumption_rate": 1829,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "50",
+                            "quality_scores": [
+                                "50"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "50",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.19,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_202227-caerffili.gov.uk",
+                        "start_time": "2025-08-10T20:22:27+01:00",
+                        "current_time": "2025-08-10T20:23:14+01:00",
+                        "duration_seconds": 47,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 10974,
+                        "tokens_remaining": 19026,
+                        "token_utilization_percentage": 36.58,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 7550,
+                                "avg_per_call": 3775
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3424,
+                                "avg_per_call": 1712
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1829
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_202227-caerffili.gov.uk",
+                    "start_time": "2025-08-10T20:22:27+01:00",
+                    "current_time": "2025-08-10T20:23:14+01:00",
+                    "duration_seconds": 47,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 10974,
+                    "tokens_remaining": 19026,
+                    "token_utilization_percentage": 36.58,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 7550,
+                            "avg_per_call": 3775
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3424,
+                            "avg_per_call": 1712
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1829
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

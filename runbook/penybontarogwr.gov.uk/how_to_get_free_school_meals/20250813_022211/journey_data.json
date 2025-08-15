@@ -1,0 +1,583 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T02:22:11+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "penybontarogwr.gov.uk",
+                "Council Name": "Bridgend County Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "My Account",
+                        "link": "https://uat.penybontarogwr.gov.uk/my-council/my-account-support-pages/sign-up-to-my-account/",
+                        "snippet": "Apply for school admissions; Apply for free school meals; Register for e-bills - As well as getting your bills faster, you can also view old\u00a0..."
+                    },
+                    {
+                        "title": "Proposal to establish provision for pupils with additional learning ...",
+                        "link": "https://www.penybontarogwr.gov.uk/media/da0dog3k/ymgynghoriad-ysgol-cynwyd-sant-consultation-document.pdf",
+                        "snippet": "Jan 6, 2022 ... How to make your views known? ... At foundation phase and key stage 2, pupils eligible for free school meals (eFSM) make very good progress, with\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://uat.penybontarogwr.gov.uk/my-council/my-account-support-pages/sign-up-to-my-account/",
+                        "title": "My Account",
+                        "confidence": 80,
+                        "strengths": [
+                            "Offers services such as applying for school admissions, free school meals, and e-bills",
+                            "Allows faster billing and viewing of old bills"
+                        ],
+                        "reasoning": "The title 'My Account' suggests it is a customer-centric page offered by the council, and the snippet mentions services relevant to general council customers, such as applying for school admissions, free school meals, and e-bills. This resource seems highly likely to contain information of interest to a user seeking council customer information.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "2",
+                            "recommendations": "2"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "My Account",
+                                "Source": "https://uat.penybontarogwr.gov.uk/my-council/my-account-support-pages/sign-up-to-my-account/",
+                                "Key Strengths": [
+                                    "Offers services such as applying for school admissions, free school meals, and e-bills",
+                                    "Allows faster billing and viewing of old bills"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title 'My Account' suggests it is a customer-centric page offered by the council, and the snippet mentions services relevant to general council customers, such as applying for school admissions, free school meals, and e-bills. This resource seems highly likely to contain information of interest to a user seeking council customer information."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Proposal to establish provision for pupils with additional learning needs...",
+                                "Source": "https://www.penybontarogwr.gov.uk/media/da0dog3k/ymgynghoriad-ysgol-cynwyd-sant-consultation-document.pdf",
+                                "Key Strengths": [
+                                    "Discusses council's plans for additional learning needs provision"
+                                ],
+                                "Confidence": "50",
+                                "Reasoning": "The title suggests the resource pertains to a proposal related to schools and additional learning needs. Although it does not seem directly related to general council customer information, the content might provide insights into how the council supports pupils and their families. However, users should be aware that this is a consultation document, so its relevance may be limited compared to the 'My Account' page."
+                            }
+                        ],
+                        "Analysis Notes": "Both resources might contain useful information for council customers, but the first resource appears more directly relevant and user-friendly. It offers multiple services conveniently in one place for users to access easily.",
+                        "Recommendations Notes": "The order of recommendations is based on perceived relevance and overall user experience."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "50"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 65,
+                    "max_confidence": "80"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://uat.penybontarogwr.gov.uk/my-council/my-account-support-pages/sign-up-to-my-account/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://uat.penybontarogwr.gov.uk/my-council/my-account-support-pages/sign-up-to-my-account/",
+                        "analysis": {
+                            "url": "https://uat.penybontarogwr.gov.uk/my-council/my-account-support-pages/sign-up-to-my-account/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T02:22:11+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T02:22:28+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 38937,
+                            "response_time": 0.424,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.424s)",
+                                    "Content successfully retrieved (38937 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.4263641834259033,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://uat.penybontarogwr.gov.uk/my-council/my-account-support-pages/sign-up-to-my-account/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://uat.penybontarogwr.gov.uk/my-council/my-account-support-pages/sign-up-to-my-account/",
+                        "content": "```html\n<h1>My Account</h1>\n<p>My Account is a personalised service for Bridgend County Borough residents.</p>\n<p><strong>With My Account you can:</strong></p>\n<ul>\n    <li>Report issues online including potholes and damaged streetlights</li>\n    <li>View and manage your council tax account</li>\n    <li>Manage your housing benefit and council tax reduction - Apply, view and amend your details</li>\n    <li>Request pest control visit (domestic properties only)</li>\n    <li>Apply for school admissions</li>\n    <li>Apply for free school meals</li>\n    <li>Register for e-bills - As well as getting your bills faster, you can also view old bills online</li>\n</ul>\n<h2>Register for My Account</h2>\n<p>Registering is quick and easy; all you need to get started is an email address.</p>\n<a href=\"https://bridgend-self.achieveservice.com/\" title=\"Register for My Account\">Register for My Account</a>\n<h2>Login to My Account</h2>\n<p>To login to My Account, please enter your username and password.</p>\n<a href=\"https://bridgend-self.achieveservice.com/authapi/auth?auth_session=4dbbba176f336b4615d6a098f84dc8d2&amp;provider=ssauth&amp;uri=%2Fen\" title=\"Login to My Account\">Login to My Account</a>\n<h2>Seven great benefits of e-bills!</h2>\n<p>Using e-billing for your council tax bills means you can:</p>\n<ul>\n    <li>access your bills faster, as soon as they\u2019re available</li>\n    <li>feel protected by a secure, private system, with nothing to get lost in the post</li>\n    <li>have peace of mind, instead of wondering when your bill will arrive</li>\n    <li>access your bills anywhere, anytime</li>\n    <li>get notified by a convenient email, with a link to your online bill</li>\n    <li>always know where your old bills are for reviewing, as My Account stores everything</li>\n    <li>help the environment by not printing a paper bill</li>\n</ul>\n<h2>FAQs</h2>\n<h3>I haven\u2019t received an activation email</h3>\n<p>Try entering your details again or checking your spam or junk folder.</p>\n<h3>I am having trouble logging in</h3>\n<p>You must use the email and password you used to create the account.</p>\n<p>Make sure you have activated the account by clicking on the link in the email you were sent when you signed up.</p>\n<h3>I\u2019ve forgotten my password</h3>\n<p>You can reset your password online.</p>\n<p>You will need to access the email address used to setup the account to do this.</p>\n<a href=\"https://bridgend-self.achieveservice.com/ssauth/passwordreset\" title=\"Reset my password\">Reset my password</a>\n<h3>I don\u2019t have access to the email address used to set up the account</h3>\n<p>You can change your registered email address by logging into My Account, selecting your name at the top of the screen and then 'Change Email' from the drop down.</p>\n<h3>How to register a council tax account</h3>\n<ol>\n    <li>Before you can register a council tax account, you must login/sign up for My Account.</li>\n    <li>Once you have logged in, select \u2018<strong>Services</strong>\u2019 and select '<strong>Council tax and Benefits</strong>\u2019 and then \u2018<strong>Council tax account</strong>\u2019. This will take you to the council tax portal.</li>\n    <li>You can register your council tax by selecting \u2018<strong>Register to use additional council tax services</strong>\u2019 or \u2018<strong>Tell us who you are</strong>\u2019.</li>\n    <li>Select \u2018<strong>Person</strong>\u2019 and then enter your Council Tax Account number. This will be an eight-digit number beginning with a two or three. You can find this information on your bill. When you select person, it will ask you to enter your first and last name. These must match the name on the bill. Select \u2018<strong>Next</strong>\u2019.</li>\n    <li>Answer two security questions. Select \u2018<strong>Next</strong>\u2019.</li>\n    <li>Check your email address is correct.</li>\n    <li>Read and sign the terms and conditions and click \u2018<strong>Agree</strong>\u2019.</li>\n    <li>Click \u2018<strong>Submit</strong>\u2019.</li>\n    <li>Enter your \u2018<strong>Email address</strong>\u2019 and enter again to \u2018<strong>Confirm your email address</strong>\u2019</li>\n    <li>Select \u2018<strong>Yes or No</strong>\u2019 to apply for paperless billing</li>\n    <li>Tick box to agree to terms and conditions</li>\n</ol>\n<p>Your Council Tax Account details will display. Here you can view your bills, set up / amend direct debits and make payments from the options available.</p>\n<p>If you want to return to My Account click \u2018<strong>Return to LA Portal\u2019.</strong></p>\n<p>If you have any difficulties using My Account due to an accessibility issue, please contact <a href=\"mailto:myaccountsupport@bridgend.gov.uk\">myaccountsupport@bridgend.gov.uk</a></p>\n<h3>I\u2019m having problems registering my council tax account</h3>\n<p>When registering to see details of your council tax account you will be asked to enter a reference number and answer a number of security questions. These details <strong>must</strong> match the information on your latest council tax bill.</p>\n<p>Please make sure you have your most recent council tax bill with you.</p>\n<p>If you are unable to locate this, please complete our \u2018contact us\u2019 form:</p>\n<ul>\n    <li>Select \u2018Council Tax\u2019 from the drop down</li>\n    <li>then \u2018Where can I find my reference number\u2019</li>\n</ul>\n<p>If you pay by direct debit, your council tax reference number is also on your bank statement alongside the payment.</p>\n<a href=\"https://bridgend-self.achieveservice.com/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-7bdfc5a4-9d7a-452e-b292-9aff5096733d/AF-Stage-52c3f8bd-36ed-405c-a4e3-2958c2c806b7/definition.json&amp;redirectlink=/en&amp;cancelRedirectLink=/en\" title=\"Contact us\">Contact us</a>\n<h3>How up-to-date is payment information in My Account?</h3>\n<p>Payments need to be processed and will be allocated to your account within one working day.</p>\n<p>Please bear this in mind when viewing the balance on My Account.</p>\n<p>It can take up to five working days for balances to be debited from your bank account.</p>\n<h3>How secure are my details?</h3>\n<p>It will not be possible to view your account details without knowing your reference number.</p>\n<p>If you receive benefits it will not be possible to view your benefit records without knowing your reference number or certain details personal to you like your National Insurance number.</p>\n<h3>I can\u2019t find my address</h3>\n<p>If you are unable to find your address, please:</p>\n<ul>\n    <li>Select 'Can\u2019t find address'</li>\n    <li>type in your address</li>\n</ul>\n<h3>Some of my details are incorrect</h3>\n<p>If any of your details are incorrect, you can change your details within My Account:</p>\n<ul>\n    <li>Select 'Welcome to My Account'</li>\n    <li>then 'My Profile' from the drop down</li>\n</ul>\n<p>If any of your details are incorrect on your bill, please email <a href=\"mailto:taxation@bridgend.gov.uk\" class=\"email\">taxation@bridgend.gov.uk</a> stating your council tax reference number and what changes are required.</p>\n<h3>Does it matter if I use upper or lower case?</h3>\n<p>None of the fields are case sensitive. You can use lower or upper case.</p>\n<h3>The webpage timed out</h3>\n<p>The system times out after 15 minutes of inactivity.</p>\n<h3>I tried to login but the system was not available</h3>\n<p>My Account will occasionally be unavailable while we back up our data.</p>\n<p>We will post a message on the site to let you know how long it will be unavailable.</p>\n<h3>I\u2019m having difficulty using My Account due to accessibility issues</h3>\n<p>If you are struggling to use My Account due to an accessibility issue such as a visual impairment, please contact:</p>\n<a href=\"mailto:myaccountsupport@bridgend.gov.uk\">myaccountsupport@bridgend.gov.uk</a>\n```\n",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 31.14128303527832,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://uat.penybontarogwr.gov.uk/my-council/my-account-support-pages/sign-up-to-my-account/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content does not specifically address this question or provide any clear information about the criteria for free school meals or the time it takes to determine eligibility.",
+                                    "confidence": "30%",
+                                    "reasoning": "The content lists applying for free school meals among the services available through My Account, but there is no further detail provided in the HTML passage about how to apply, what the criteria are, or how long it takes to process applications. The content does not seem to have been written with the specific goal of informing residents about applying for free school meals.",
+                                    "next_actions": "Contact the local council or visit their official website for more detailed information about eligibility and application procedures for free school meals."
+                                }
+                            ],
+                            "overall_assessment": "The content provides a general overview of services available through My Account, but does not specifically address or provide detailed information on how to apply for free school meals, making it less than ideal for someone seeking that specific information. While it does mention applying for free school meals, more specific and actionable guidance is needed."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 8.133005142211914,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://uat.penybontarogwr.gov.uk/my-council/my-account-support-pages/sign-up-to-my-account/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_022211-penybontarogwr.gov.uk",
+                    "analysis_timestamp": "2025-08-13T02:23:08+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.95,
+                            "tokens_consumed": 13447,
+                            "tokens_remaining": 16553,
+                            "token_utilization_percentage": 44.82,
+                            "average_tokens_per_step": 2241.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 55.18,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 7,
+                            "consumption_rate": 2241.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "30",
+                            "quality_scores": [
+                                "30"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "30",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 13.57,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.95,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_022211-penybontarogwr.gov.uk",
+                        "start_time": "2025-08-13T02:22:11+01:00",
+                        "current_time": "2025-08-13T02:23:08+01:00",
+                        "duration_seconds": 57,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 13447,
+                        "tokens_remaining": 16553,
+                        "token_utilization_percentage": 44.82,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 9596,
+                                "avg_per_call": 4798
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3851,
+                                "avg_per_call": 1925.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 2241.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_022211-penybontarogwr.gov.uk",
+                    "start_time": "2025-08-13T02:22:11+01:00",
+                    "current_time": "2025-08-13T02:23:08+01:00",
+                    "duration_seconds": 57,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 13447,
+                    "tokens_remaining": 16553,
+                    "token_utilization_percentage": 44.82,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 9596,
+                            "avg_per_call": 4798
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3851,
+                            "avg_per_call": 1925.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 2241.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

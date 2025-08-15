@@ -1,0 +1,188 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T05:22:19+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "wealden.gov.uk",
+                "Council Name": "Wealden District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Other help if you are on a low income - Wealden District Council",
+                        "link": "https://www.wealden.gov.uk/benefits/how-are-welfare-benefits-changing/other-help-if-you-are-on-a-low-income/",
+                        "snippet": "Other Benefits you may want to think about. If you are Pension Age. Pension ... Free school meals. For pensioners. TV license \u00b7 Bus pass. For the disabled. Bus\u00a0..."
+                    },
+                    {
+                        "title": "Cost of Living for Residents - Wealden District Council",
+                        "link": "https://www.wealden.gov.uk/cost-of-living-support/cost-of-living-for-residents/",
+                        "snippet": "Other useful links. Children under 4 \u2013 Healthy Start:Get help to buy food and milk \u00b7 Free school meals East Sussex County Council. Support with health. Health\u00a0..."
+                    },
+                    {
+                        "title": "Wealden Community Lottery - Wealden District Council",
+                        "link": "https://www.wealden.gov.uk/community-and-safety/information-on-grant-funding/wealden-community-lottery-2/",
+                        "snippet": "Crowborough Community Pantry provides more than just free food for the community. ... Friends Of Cross In Hand Primary School over the last 5-6 years have\u00a0..."
+                    },
+                    {
+                        "title": "Wealden District Council",
+                        "link": "https://www.wealden.gov.uk/",
+                        "snippet": "Please note, this search facility is for domestic collections only. Go. Get Collections Enter a different post code. Selected Property: Select a different\u00a0..."
+                    },
+                    {
+                        "title": "Household Support Fund - Wealden District Council",
+                        "link": "https://www.wealden.gov.uk/benefits/household-support-fund/",
+                        "snippet": "If you receive Universal Credit (that also includes the Housing Costs element), Housing Benefit or Council Tax Reduction (or getting an SMI exemption and would\u00a0..."
+                    },
+                    {
+                        "title": "Council Constitution Part 4 \u2013 Codes and Protocols - Wealden District ...",
+                        "link": "https://www.wealden.gov.uk/councillors-and-committees/about-the-elected-council/council-constitution/council-constitution-part-4-codes-and-protocols/",
+                        "snippet": "school meals or school transport and travelling expenses, where you are a ... To bring undue pressure upon a person to try to get them to do something that they\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "6",
+                            "recommendations": "4"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Other help if you are on a low income - Wealden District Council",
+                                "Source": "https://www.wealden.gov.uk/benefits/how-are-welfare-benefits-changing/other-help-if-you-are-on-a-low-income/",
+                                "Key Strengths": [
+                                    "Provides information related to other benefits for low income individuals",
+                                    "The link focuses explicitly on the council's services",
+                                    "Snippet suggests this content may cover free school meals and TV license support"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link offers the most specific information about customer-related services provided by the council that are tailored to individuals who are on a low income. The snippet mentions benefits, free school meals, and TV license support, which are essential pieces of customer information."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Household Support Fund - Wealden District Council",
+                                "Source": "https://www.wealden.gov.uk/benefits/household-support-fund/",
+                                "Key Strengths": [
+                                    "Offers support for households in need",
+                                    "Snippet suggests this content may cover customers on Universal Credit or receiving Housing Benefit"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link provides financial assistance for household needs such as food, energy bills, and council tax. Although the snippet does not explicitly mention it, the link focuses on households that receive either Universal Credit or Housing Benefit."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Wealden District Council",
+                                "Source": "https://www.wealden.gov.uk/",
+                                "Key Strengths": [
+                                    "The main council website, presumably containing a variety of customer-related information"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "Though the snippet suggests this is a search facility primarily for domestic collections, the link leads to the district council's homepage which is likely to contain various customer-related services and information."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Cost of Living for Residents - Wealden District Council",
+                                "Source": "https://www.wealden.gov.uk/cost-of-living-support/cost-of-living-for-residents/",
+                                "Key Strengths": [
+                                    "Offers cost of living assistance for residents",
+                                    "The link refers to essential resources like free school meals and health support"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "This link seems likely to offer relevant information to customers such as cost of living assistance, as well as access to resources like free school meals and health services. However, it has a lower confidence score due to its broader topic compared to the other options."
+                            }
+                        ],
+                        "Analysis Notes": "The given search results provided by Google have been analyzed within the context of council customer information needs based on the provided instructions. The list contains 6 items in total, and this analysis has identified 4 suitable recommendations with confidence scores above the required threshold of 60%.",
+                        "Recommendations Notes": "The top 2 recommendations offer direct assistance to customers who are on a low income or require financial help for their households. The third recommendation leads to the main council website, which is expected to contain multiple customer-related services and information. Lastly, the fourth recommendation focuses on general cost of living support for residents."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "75",
+                        "65",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 70,
+                    "max_confidence": "80"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

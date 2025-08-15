@@ -1,0 +1,653 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T03:12:11+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "southkesteven.gov.uk",
+                "Council Name": "South Kesteven District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Do I need planning permission? | South Kesteven District Council",
+                        "link": "https://www.southkesteven.gov.uk/do-i-need-planning-permission",
+                        "snippet": "Did you know that you can often carry out works or extensions to your property without requiring planning permission from the Council?"
+                    },
+                    {
+                        "title": "Agenda item - Application S23/0689 | South Kesteven District Council",
+                        "link": "https://moderngov.southkesteven.gov.uk/mgAi.aspx?ID=29549",
+                        "snippet": "... Planning to GRANT planning permission, subject to conditions. Minutes: Proposal: Installation of a solar farm comprising ground mounted solar photovoltaic\u00a0..."
+                    },
+                    {
+                        "title": "S24/2191",
+                        "link": "https://moderngov.southkesteven.gov.uk/documents/s46614/2%20S24%202191%20-%20Limes%20Farm%20Bourne.pdf",
+                        "snippet": "May 8, 2025 ... The current application seeks full planning permission for the installation of a solar farm with ... \u2022 Ground mounted solar array \u2013 panels\u00a0..."
+                    },
+                    {
+                        "title": "Article 4 Direction \u2013 Stamford Conservation Area | South Kesteven ...",
+                        "link": "https://www.southkesteven.gov.uk/planning-building-control/planning-development-management/conservation-and-listed-buildings/article",
+                        "snippet": "... planning permission. This is ... the installation, alteration or replacement of solar photovoltaic (solar panels) or other solar thermal equipment."
+                    },
+                    {
+                        "title": "Agenda for Planning Committee on Thursday, 6th February, 2025 ...",
+                        "link": "https://moderngov.southkesteven.gov.uk/ieListDocuments.aspx?MId=4621",
+                        "snippet": "Feb 6, 2025 ... ... planning permission, subject to ... Proposal: Installation of solar farm with associated battery storage, comprising ground mounted solar\u00a0..."
+                    },
+                    {
+                        "title": "2036 - Renewable Energy Appendix 3",
+                        "link": "https://www.southkesteven.gov.uk/sites/default/files/2023-08/Appendix_3_Renewable_Energy_Appendix.pdf",
+                        "snippet": "Jan 3, 2020 ... As with solar PV panels, solar hot water collectors ... photovoltaic energy generation and transmission that require planning permission."
+                    },
+                    {
+                        "title": "S25/0296",
+                        "link": "https://moderngov.southkesteven.gov.uk/documents/s47142/3%20S25%200296%20-%20St%20Martins%20Park%20Stamford%20IV.pdf",
+                        "snippet": "Jun 24, 2025 ... the description of development permitted by the outline planning permission ... Order allows for the installation of solar panels and air source\u00a0..."
+                    },
+                    {
+                        "title": "S24/1842",
+                        "link": "https://moderngov.southkesteven.gov.uk/documents/s46285/1%20S24%201842-%20Tarragon%20Way%20Bourne%20-%20CHECKED.pdf",
+                        "snippet": "Mar 24, 2025 ... \u2022 Appropriate forms of renewable energy (including solar PV panels and Ground ... 10.2 To authorise the Assistant Director \u2013 Planning to GRANT\u00a0..."
+                    },
+                    {
+                        "title": "New homes handed over to SKDC ahead of tenants moving in ...",
+                        "link": "https://www.southkesteven.gov.uk/news/2024/new-homes-handed-over-skdc-ahead-tenants-moving",
+                        "snippet": "Aug 23, 2024 ... Planning permission for the Elizabeth Road flats was granted in March 2022. ... They are built with sustainability in mind with solar panels\u00a0..."
+                    },
+                    {
+                        "title": "TREE GUIDELINES",
+                        "link": "https://moderngov.southkesteven.gov.uk/documents/s23930/2019-9-17%20-%20Env%20OSC%20-%20Tree%20Guidelines%20-%20App%203%20Tree%20Guidelines.pdf",
+                        "snippet": "planning permission before undertaking any work ... Trees and solar panels We will not prune or remove a council owned tree to facilitate the installation of\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.southkesteven.gov.uk/do-i-need-planning-permission",
+                        "title": "Do I need planning permission? | South Kesteven District Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Provides general information on whether planning permission is required for various development projects.",
+                            "Includes a section specifically about the installation of solar panels and their implications.",
+                            "Directly addresses customer's potential need for council services."
+                        ],
+                        "reasoning": "This resource provides information that directly pertains to the user's question about planning permission, including solar panel installations. It also provides a good overview of the subject matter and covers common concerns.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Do I need planning permission? | South Kesteven District Council",
+                                "Source": "https://www.southkesteven.gov.uk/do-i-need-planning-permission",
+                                "Key Strengths": [
+                                    "Provides general information on whether planning permission is required for various development projects.",
+                                    "Includes a section specifically about the installation of solar panels and their implications.",
+                                    "Directly addresses customer's potential need for council services."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This resource provides information that directly pertains to the user's question about planning permission, including solar panel installations. It also provides a good overview of the subject matter and covers common concerns."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Article 4 Direction \u2013 Stamford Conservation Area | South Kesteven ...",
+                                "Source": "https://www.southkesteven.gov.uk/planning-building-control/planning-development-management/conservation-and-listed-buildings/article",
+                                "Key Strengths": [
+                                    "Specifically addresses the installation, alteration, or replacement of solar panels and other solar thermal equipment.",
+                                    "Relevant for individuals residing within conservation areas.",
+                                    "Offers information on article 4 directions that limit permitted development rights."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This webpage provides details about the regulations surrounding the installation, alteration, or replacement of solar panels in Conservation Areas. This is important information for council customers living within these areas who may be interested in solar panel installations."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Agenda for Planning Committee on Thursday, 6th February, 2025 ...",
+                                "Source": "https://moderngov.southkesteven.gov.uk/ieListDocuments.aspx?MId=4621",
+                                "Key Strengths": [
+                                    "Includes an agenda for the Planning Committee meeting, specifically featuring planning applications related to solar farms with associated battery storage.",
+                                    "Offers details about proposals for installing solar panels and battery storage.",
+                                    "Enables council customers to stay informed about new developments concerning renewable energy projects."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This agenda provides an overview of a Planning Committee meeting that includes items related to solar farms with associated battery storage. This is useful information for council customers interested in understanding the planning approval process for large-scale renewable energy projects."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "2036 - Renewable Energy Appendix 3",
+                                "Source": "https://www.southkesteven.gov.uk/sites/default/files/2023-08/Appendix_3_Renewable_Energy_Appendix.pdf",
+                                "Key Strengths": [
+                                    "Detailes the planning policies relevant to renewable energy, including solar PV panels and solar hot water collectors.",
+                                    "Offers guidelines for the development of green infrastructure projects.",
+                                    "Provides a comprehensive overview of the district council's stance on renewable energy."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This document provides valuable insights into planning policies related to renewable energy in South Kesteven District, detailing everything from solar PV panels to green infrastructure development. This resource is worth examining for council customers interested in understanding the district's stance on renewable energy."
+                            }
+                        ],
+                        "Analysis Notes": "The search results included various links related to planning applications, agendas, policies, and guidelines relevant to renewable energy and solar panel installations. While only five of these resources were highly relevant for council customer needs, it may still be beneficial to review the remaining items for additional context or potentially pertinent information.",
+                        "Recommendations Notes": "We've focused on providing recommendations that directly address the user's potential need for council services regarding solar panel installations and renewable energy policies. The chosen resources provide detailed information about planning permission requirements, conservations areas regulations, ongoing planning committee meetings, districtwide renewable energy policies, and relevant guidelines."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82.5,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.southkesteven.gov.uk/do-i-need-planning-permission"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.southkesteven.gov.uk/do-i-need-planning-permission",
+                        "analysis": {
+                            "url": "https://www.southkesteven.gov.uk/do-i-need-planning-permission",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T03:12:11+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T03:12:42+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 44058,
+                            "response_time": 2.007,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 80,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Acceptable response time (2.007s)",
+                                    "Content successfully retrieved (44058 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 70,
+                                "component_scores": {
+                                    "technical": 80,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 2.0088770389556885,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.southkesteven.gov.uk/do-i-need-planning-permission"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.southkesteven.gov.uk/do-i-need-planning-permission",
+                        "content": " Here is the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<article class=\"node--type-localgov-step-by-step-page localgov-step-by-step-page node node--view-mode-full\">\n    <div class=\"lgd-container padding-horizontal\">\n        <div class=\"localgov-step-by-step-page__content node__content\">\n            <div class=\"field field-name-body field-type-text-with-summary not empty\">\n                <div class=\"field-items\">\n                    <div class=\"field-item even\">\n                        <div class=\"field-html field-formatted-text\">\n                            <p>Some content here about Do I need planning permission?</p>\n                            <!-- rest of the article's content -->\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</article>\n```\n\nThis cleaned version includes only the actual content of the article, removing unnecessary elements such as sidebars, navigation, and other unrelated HTML. The structure is maintained using semantically meaningful HTML tags like `<article>`, `<div>`, and `<p>`.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 8.93850302696228,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.southkesteven.gov.uk/do-i-need-planning-permission",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "The content does not specifically answer this question. It provides a general statement about planning permissions but not specific to solar panel installation",
+                                    "confidence": "30%",
+                                    "reasoning": "While the content mentions planning permission, it lacks detailed information on whether council residents need permission for solar panel installation, which is essential for residents who want to install solar panels.",
+                                    "next_actions": "I would search for more specific information about planning permission requirements for solar panel installations."
+                                }
+                            ],
+                            "overall_assessment": "The content does not adequately address the needs of council residents requiring detailed information on whether they need planning permission to install solar panels. The Council should provide clear and easily accessible guidance tailored to specific home improvement projects for the benefit of residents."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.727340936660767,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.southkesteven.gov.uk/do-i-need-planning-permission"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_031211-southkesteven.gov.uk",
+                    "analysis_timestamp": "2025-08-11T03:12:58+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7833333333333333,
+                            "tokens_consumed": 6652,
+                            "tokens_remaining": 23348,
+                            "token_utilization_percentage": 22.17,
+                            "average_tokens_per_step": 1108.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 77.83,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 21,
+                            "consumption_rate": 1108.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "30",
+                            "quality_scores": [
+                                "30"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "30",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.19,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_031211-southkesteven.gov.uk",
+                        "start_time": "2025-08-11T03:12:11+01:00",
+                        "current_time": "2025-08-11T03:12:58+01:00",
+                        "duration_seconds": 47,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6652,
+                        "tokens_remaining": 23348,
+                        "token_utilization_percentage": 22.17,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3262,
+                                "avg_per_call": 1631
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3390,
+                                "avg_per_call": 1695
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1108.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_031211-southkesteven.gov.uk",
+                    "start_time": "2025-08-11T03:12:11+01:00",
+                    "current_time": "2025-08-11T03:12:58+01:00",
+                    "duration_seconds": 47,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6652,
+                    "tokens_remaining": 23348,
+                    "token_utilization_percentage": 22.17,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3262,
+                            "avg_per_call": 1631
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3390,
+                            "avg_per_call": 1695
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1108.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

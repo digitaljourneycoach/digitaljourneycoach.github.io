@@ -1,0 +1,672 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T21:30:01+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "ashford.gov.uk",
+                "Council Name": "Ashford Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Common projects - Common projects - Planning Portal",
+                        "link": "https://www.ashford.gov.uk/planning-and-development/planning-applications/planning-help/homeowner-guidance/common-projects/",
+                        "snippet": "Do you need planning permission for your home improvement project? Read ... Solar panels \u00b7 Solar panels - non domestic \u00b7 Swimming pools \u00b7 Trees \u00b7 Underpinning\u00a0..."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://www.ashford.gov.uk/media/ecjbu55u/1-50kw-solar-pv-and-thermal.pdf",
+                        "snippet": "Planning Application and Planning Application Fee for medium scale solar PV ... In Conservation Areas planning permission for the installation of solar panels\u00a0..."
+                    },
+                    {
+                        "title": "Interactive House - Interactive House - Planning Portal",
+                        "link": "https://www.ashford.gov.uk/planning-and-development/planning-applications/planning-help/homeowner-guidance/interactive-guides/",
+                        "snippet": "The Interactive House is your visual guide to the permitted development rights and building regulations, including conservatories, extensions,\u00a0..."
+                    },
+                    {
+                        "title": "Appeal by: Against refusal to grant full planning permission for:",
+                        "link": "https://www.ashford.gov.uk/media/02jld2bb/11-8-m-durling-proof-of-evidence-planning-east-stour.pdf",
+                        "snippet": "Installation of a solar farm with a generating capacity of up to 49.9MW comprising: ground mounted solar panels; access tracks; inverter/transformers;."
+                    },
+                    {
+                        "title": "Explains when planning permission is not required from the council ...",
+                        "link": "https://www.ashford.gov.uk/planning-and-development/do-i-need-planning-permission/",
+                        "snippet": "Permitted Development Rights. If you're planning to carry out building work or changes to your property,\u00a0..."
+                    },
+                    {
+                        "title": "Information on the solar panel group buying scheme called Solar ...",
+                        "link": "https://www.ashford.gov.uk/environmental-concerns/climate-change/solar-together-kent/",
+                        "snippet": "Solar Together Kent is a solar panel, battery storage and EV charging point group-purchase scheme which to date has seen more than 280 solar PV and battery\u00a0..."
+                    },
+                    {
+                        "title": "ABC Large Scale Solar PV version 2 Page 3",
+                        "link": "https://www.ashford.gov.uk/media/ksbdqx5o/3-7-renewable-energy-pgn2.pdf",
+                        "snippet": "planning application boundary should extend around the proposed solar PV panels with a ... The planning application sought planning permission for a period\u00a0..."
+                    },
+                    {
+                        "title": "Planning Inquiry - East Stour Solar Farm",
+                        "link": "https://www.ashford.gov.uk/planning-and-development/planning-applications/planning-appeals/planning-inquiries/planning-inquiry-east-stour-solar-farm/",
+                        "snippet": "Against refusal to grant full planning permission for: Installation of a solar ... panels; access tracks; inverter/transformers; substation; storage, spare\u00a0..."
+                    },
+                    {
+                        "title": "CLIMATE CHANGE GUIDANCE FOR DEVELOPMENT ...",
+                        "link": "https://www.ashford.gov.uk/media/ixcn5c3e/climate-change-guidance-for-development-management-dec-2022.pdf",
+                        "snippet": "'permitted development'. Appendix 3 provides applicants with guidance to help determine if and when planning permission is required for solar panels. Page 8\u00a0..."
+                    },
+                    {
+                        "title": "Find out how to view and submit planning applications, view land ...",
+                        "link": "https://www.ashford.gov.uk/planning-and-development/",
+                        "snippet": "Citizens Panel. Back. Emergency Planning. Back; Flooding \u00b7 Loss Of Power \u00b7 Emergency ... Do I Need Planning Permission? Homeowner Guidance \u00b7 Check Constraints on\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.ashford.gov.uk/planning-and-development/planning-applications/planning-help/homeowner-guidance/common-projects/",
+                        "title": "Common projects - Common projects - Planning Portal",
+                        "confidence": 85,
+                        "strengths": [
+                            "Provides general guidance for homeowners on when planning permission is required",
+                            "Includes specific information about solar panels installation"
+                        ],
+                        "reasoning": "The item's title and snippet clearly indicate that this page offers guidance for homeowners, including information on solar panels.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "4"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Common projects - Common projects - Planning Portal",
+                                "Source": "https://www.ashford.gov.uk/planning-and-development/planning-applications/planning-help/homeowner-guidance/common-projects/",
+                                "Key Strengths": [
+                                    "Provides general guidance for homeowners on when planning permission is required",
+                                    "Includes specific information about solar panels installation"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The item's title and snippet clearly indicate that this page offers guidance for homeowners, including information on solar panels."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Explains when planning permission is not required from the council ...",
+                                "Source": "https://www.ashford.gov.uk/planning-and-development/do-i-need-planning-permission/",
+                                "Key Strengths": [
+                                    "Focuses on explaining when planning permission is not needed",
+                                    "Relevant information for those seeking to install solar panels without planning permission"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The snippet mentions Permitted Development Rights, which are important for determining if planning permission is required."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Information on the solar panel group buying scheme called Solar ...",
+                                "Source": "https://www.ashford.gov.uk/environmental-concerns/climate-change/solar-together-kent/",
+                                "Key Strengths": [
+                                    "Offers information on a community-based solar panel installation scheme",
+                                    "Encourages energy saving and renewable energy usage"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Although not directly about planning permission, the item provides useful information related to solar panels for council customers."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "CLIMATE CHANGE GUIDANCE FOR DEVELOPMENT ...",
+                                "Source": "https://www.ashford.gov.uk/media/ixcn5c3e/climate-change-guidance-for-development-management-dec-2022.pdf",
+                                "Key Strengths": [
+                                    "Guidance document for developers on climate change considerations in development",
+                                    "Appenderix 3 provides information about solar panel installation requirements"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "Although the guidance is not solely focused on council customers, the appendix offers relevant information regarding solar panels."
+                            }
+                        ],
+                        "Analysis Notes": "Most results pertain to general planning, development and climate change guidance, with only a few resources discussing solar panels specifically. The search could benefit from more specialized content for customers seeking council-related information related to solar panel installation.",
+                        "Recommendations Notes": "The fourth recommendation is included due to its relevance even though it does not directly address the customer's solar panel installation needs, as it offers valuable information on a community-based solar panel scheme."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "70",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 75,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Common projects - Common projects - Planning Portal",
+                            "Source": "https://www.ashford.gov.uk/planning-and-development/planning-applications/planning-help/homeowner-guidance/common-projects/",
+                            "Reasoning": "The item's title and snippet clearly indicate that this page offers guidance for homeowners, including specific information about solar panels.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Explains when planning permission is not required from the council ...",
+                            "Source": "https://www.ashford.gov.uk/planning-and-development/do-i-need-planning-permission/",
+                            "Reasoning": "The snippet mentions Permitted Development Rights, which are important for determining if planning permission is required.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Information on the solar panel group buying scheme called Solar ...",
+                            "Source": "https://www.ashford.gov.uk/environmental-concerns/climate-change/solar-together-kent/",
+                            "Reasoning": "Although not directly about planning permission, the item provides useful information related to solar panels for council customers.",
+                            "Confidence": "70"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.ashford.gov.uk/planning-and-development/planning-applications/planning-help/homeowner-guidance/common-projects/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.ashford.gov.uk/planning-and-development/planning-applications/planning-help/homeowner-guidance/common-projects/",
+                        "analysis": {
+                            "url": "https://www.ashford.gov.uk/planning-and-development/planning-applications/planning-help/homeowner-guidance/common-projects/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T21:30:01+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T21:30:25+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html",
+                            "content_length": 160898,
+                            "response_time": 0.665,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.665s)",
+                                    "Content successfully retrieved (160898 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.6674549579620361,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.ashford.gov.uk/planning-and-development/planning-applications/planning-help/homeowner-guidance/common-projects/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.ashford.gov.uk/planning-and-development/planning-applications/planning-help/homeowner-guidance/common-projects/",
+                        "content": " This text appears to be HTML content related to planning and building projects for residential, commercial, and industrial purposes. The content is categorized under common projects such as:\n\n1. **Loft conversion**, **Outbuildings**, **Extensions**, and **Garage conversions** - for home improvement and expanding living spaces.\n2. **Underpinning**, **Insulation**, **Kitchens, and Bathrooms**, and **Boilers** - for home renovation purposes.\n3. **Porches**, **Roof**, **Satellite, TV and radio antenna**, **Security**, and **Solar panels** - for property maintenance and energy efficiency improvement.\n4. **Windows** - for replacing or upgrading window installations.\n5. **Trees** - for tree works such as pruning, felling, and planting in properties.\n6. **Hedges** - for maintaining or adding hedges around properties.\n7. **Swimming pools** and **Outdoor kitchens** - for recreational and lifestyle purposes.\n8. **Neighborhood planning** - for community members to collaborate on local development plans.\n9. **Shops**, **Offices, Warehouses & Industrial Buildings**, and **Self-build homes** - for commercial and housing building projects.\n10. **Working from home** - for advice on creating a suitable workspace at home in various spaces like bedrooms, gardens, garages, and converted outbuildings to meet local planning rules and requirements.\n11. Additionally, the content covers sustainable development topics such as solar panels, wind turbines, hydro electricity, and self-built homes with an emphasis on energy efficiency and reducing greenhouse gas emissions.\n\nThe information provided is likely intended for homeowners, property developers, and building professionals seeking advice, guidance, and planning permission regarding various construction projects in the United Kingdom.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 11.1997709274292,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.ashford.gov.uk/planning-and-development/planning-applications/planning-help/homeowner-guidance/common-projects/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "Partial",
+                                    "confidence": "70%",
+                                    "reasoning": "While the content does not explicitly state whether a permit is needed for solar panel installation, it includes 'Solar panels' in the list of projects, and thus, the assumption can be made that a resident may need to seek approval from the council if they are planning to install them. However, there might be insufficient detail on obtaining specific permissions for solar panels.",
+                                    "next_actions": "I will contact the Ashford Borough Council's planning department or visit their website for further information concerning the requirements and permission process for the installation of solar panels."
+                                }
+                            ],
+                            "overall_assessment": "The content provides a useful overview of various construction projects and offers guidance on common projects that may require planning permission. However, it could be improved by providing more explicit details about specific permits for some projects \u2013 like solar panels in this instance \u2013 to better serve the needs of council residents."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.624492883682251,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.ashford.gov.uk/planning-and-development/planning-applications/planning-help/homeowner-guidance/common-projects/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_213001-ashford.gov.uk",
+                    "analysis_timestamp": "2025-08-10T21:30:42+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6833333333333333,
+                            "tokens_consumed": 7136,
+                            "tokens_remaining": 22864,
+                            "token_utilization_percentage": 23.79,
+                            "average_tokens_per_step": 1189.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 76.21,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 19,
+                            "consumption_rate": 1189.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.76,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_213001-ashford.gov.uk",
+                        "start_time": "2025-08-10T21:30:01+01:00",
+                        "current_time": "2025-08-10T21:30:42+01:00",
+                        "duration_seconds": 41,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7136,
+                        "tokens_remaining": 22864,
+                        "token_utilization_percentage": 23.79,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3830,
+                                "avg_per_call": 1915
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3306,
+                                "avg_per_call": 1653
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1189.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_213001-ashford.gov.uk",
+                    "start_time": "2025-08-10T21:30:01+01:00",
+                    "current_time": "2025-08-10T21:30:42+01:00",
+                    "duration_seconds": 41,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7136,
+                    "tokens_remaining": 22864,
+                    "token_utilization_percentage": 23.79,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3830,
+                            "avg_per_call": 1915
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3306,
+                            "avg_per_call": 1653
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1189.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

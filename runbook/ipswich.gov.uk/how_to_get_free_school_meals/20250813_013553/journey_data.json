@@ -1,0 +1,670 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T01:35:53+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "ipswich.gov.uk",
+                "Council Name": "Ipswich Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Benefit cap | ipswich.gov.uk",
+                        "link": "https://www.ipswich.gov.uk/benefits/benefit-information-and-advice/benefit-cap",
+                        "snippet": "The cap applies to the benefits you get as a household. This means that ... Free school meals; Child maintenance payments; Winter fuel payments; Statutory\u00a0..."
+                    },
+                    {
+                        "title": "REDUCING EVERYDAY LIVING COSTS",
+                        "link": "https://www.ipswich.gov.uk/sites/ipswich/files/m-files/act-brochure-a5-living-costs-v3b.pdf",
+                        "snippet": "off, 3 for 2, Buy One Get One Free ... If you are claiming certain benefits, you may be entitled to the Free School Meals scheme to assist with costs for lunches\u00a0..."
+                    },
+                    {
+                        "title": "Statement of Intent for ECO4",
+                        "link": "https://www.ipswich.gov.uk/sites/ipswich/files/m-files/eco_statement_of_intent_v6.2_eco4_ibc_002.pdf",
+                        "snippet": "Jul 1, 2022 ... Only one from the list can be used, excludes the proxy 'low income'. Proxy 4) A householder receiving free school meals due to low-income. Proxy\u00a0..."
+                    },
+                    {
+                        "title": "Food business registration | ipswich.gov.uk",
+                        "link": "https://www.ipswich.gov.uk/environmental-health/food-safety/food-business-registration",
+                        "snippet": "Examples where registration is not required: A one-off event such as a church or school fete, or a street party. Daily small-scale provision of low-\u00a0..."
+                    },
+                    {
+                        "title": "Ipswich Borough & Suffolk Coastal District Retail and Commercial ...",
+                        "link": "https://www.ipswich.gov.uk/sites/default/files/retail_leisure_study_-_volume_1_-_final_version_-_issued_06-12-17_0.pdf",
+                        "snippet": "a Free School, provides an important opportunity for refurbishment/redevelopment. \u27a2 The Crown Car Park and its redevelopment is a key opportunity to\u00a0..."
+                    },
+                    {
+                        "title": "Compass Children's Homes Ltd COMMUNITY IMPACT ...",
+                        "link": "https://democracy.ipswich.gov.uk/documents/s40849/Item%202%20-%20Appendix%201%20-%20Management%20Plan.pdf",
+                        "snippet": "adults work from home and children go to school and activities. Therefore ... Sta may do the weekly food shopping with children or may choose to have their\u00a0..."
+                    },
+                    {
+                        "title": "Council Tax Reduction Scheme S13A and Schedule 1a of the Local ...",
+                        "link": "https://www.ipswich.gov.uk/sites/ipswich/files/2025-03/IBC%20CTR%20SCHEME.pdf",
+                        "snippet": "In a case where a student is in receipt of a student loan or where he could have acquired a student loan by taking reasonable steps but had not done so, any\u00a0..."
+                    },
+                    {
+                        "title": "STATEMENT OF LICENSING POLICY | Ipswich Borough Council",
+                        "link": "https://www.ipswich.gov.uk/sites/default/files/statement_of_licensing_policy_0.pdf",
+                        "snippet": "provision of free tap water, age verification policies, smaller alcohol measures and a ban on sale ... Access to off-licenses and schools in the area\u00a0..."
+                    },
+                    {
+                        "title": "EMPLOYEECODEOFCONDUCT",
+                        "link": "https://www.ipswich.gov.uk/sites/default/files/employee_code_of_conduct.pdf",
+                        "snippet": "Feb 5, 2014 ... example, to go shopping, have a meal, have a hair-cut, smoke, or to ... take the form of a free gift, a hospitality offer, or vouchers towards\u00a0..."
+                    },
+                    {
+                        "title": "'Retail Study 2005' FINAL REPORT ... - Ipswich Borough Council",
+                        "link": "https://www.ipswich.gov.uk/sites/ipswich/files/2024-09/Retail%20Study%20whole.pdf",
+                        "snippet": "Oct 1, 2005 ... ... free-standing Regional Shopping Centres (RSC). \u2022. Fourth Wave ... school holidays and one-off events in the survey or neighbouring towns\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.ipswich.gov.uk/benefits/benefit-information-and-advice/benefit-cap",
+                        "title": "Benefit cap | ipswich.gov.uk",
+                        "confidence": 85,
+                        "strengths": [
+                            "Relevant to council customer information needs related to welfare benefits.",
+                            "Offers comprehensive information on the benefit cap."
+                        ],
+                        "reasoning": "This resource provides detailed and relevant information about the Benefit Cap, which is a policy that affects various types of government assistance. The resource is hosted by Ipswich Borough Council's official website, increasing its credibility and relevance.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Benefit cap | ipswich.gov.uk",
+                                "Source": "https://www.ipswich.gov.uk/benefits/benefit-information-and-advice/benefit-cap",
+                                "Key Strengths": [
+                                    "Relevant to council customer information needs related to welfare benefits.",
+                                    "Offers comprehensive information on the benefit cap."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource provides detailed and relevant information about the Benefit Cap, which is a policy that affects various types of government assistance. The resource is hosted by Ipswich Borough Council's official website, increasing its credibility and relevance."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "REDUCING EVERYDAY LIVING COSTS",
+                                "Source": "https://www.ipswich.gov.uk/sites/ipswich/files/m-files/act-brochure-a5-living-costs-v3b.pdf",
+                                "Key Strengths": [
+                                    "Addresses various aspects of everyday living costs for low-income households.",
+                                    "May contain information relevant to school meals and other subsidies."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Although the resource doesn't explicitly mention council customer information, it discusses various ways to reduce everyday living costs for low-income households, and might indirectly provide relevant details about school meals and other subsidies."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Council Tax Reduction Scheme S13A and Schedule 1a of the Local ...",
+                                "Source": "https://www.ipswich.gov.uk/sites/ipswich/files/2025-03/IBC%20CTR%20SCHEME.pdf",
+                                "Key Strengths": [
+                                    "Relevant to council customer information needs related to Council Tax Reduction Scheme.",
+                                    "Official document from Ipswich Borough Council."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This official document provides detailed and specific information regarding the Council Tax Reduction Scheme, which directly impacts council customers' financial situations."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Council Tax Reduction Scheme S13A and Schedule 1a of the Local ...",
+                                "Source": "https://www.ipswich.gov.uk/sites/ipswich/files/employee_code_of_conduct.pdf",
+                                "Key Strengths": [
+                                    "Indirectly relevant to council customer information needs through discussing employee conduct.",
+                                    "Offers insights into the behavior expected of Ipswich Borough Council employees."
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "Although the document doesn't directly address council customer information, it can offer an understanding of the council's organizational culture and values, which might indirectly impact customer service."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "'Retail Study 2005' FINAL REPORT ... - Ipswich Borough Council",
+                                "Source": "https://www.ipswich.gov.uk/sites/ipswich/files/2024-09/Retail%20Study%20whole.pdf",
+                                "Key Strengths": [
+                                    "Relevant to council customer information needs related to retail business and economic development.",
+                                    "Offers insights into the retail landscape in Ipswich."
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "The report provides an analysis of the retail industry in Ipswich, which can offer valuable insights for understanding council-related businesses. While not directly addressing customer information, it may still be useful."
+                            }
+                        ],
+                        "Analysis Notes": "Most of the provided resources primarily address various topics unrelated to customer support or direct information for council customers. Those that did align with the given instruction are documents related to welfare benefits, Council Tax Reduction Scheme, economic development, and organizational conduct.",
+                        "Recommendations Notes": "The resources were evaluated based on their relevance, quality, title, snippets, and URLs to determine the best recommendations."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "70",
+                        "85",
+                        "60",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 73,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "Results": [
+                        {
+                            "Number": "1",
+                            "Title": "Benefit cap | ipswich.gov.uk",
+                            "Source": "https://www.ipswich.gov.uk/benefits/benefit-information-and-advice/benefit-cap",
+                            "Reasoning": "This resource provides detailed and relevant information about the Benefit Cap, which is a policy that affects various types of government assistance. The resource is hosted by Ipswich Borough Council's official website, increasing its credibility and relevance.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Council Tax Reduction Scheme S13A and Schedule 1a of the Local ...",
+                            "Source": "https://www.ipswich.gov.uk/sites/ipswich/files/2025-03/IBC%20CTR%20SCHEME.pdf",
+                            "Reasoning": "This official document provides detailed and specific information regarding the Council Tax Reduction Scheme, which directly impacts council customers' financial situations.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "8",
+                            "Title": "'Retail Study 2005' FINAL REPORT ... - Ipswich Borough Council",
+                            "Source": "https://www.ipswich.gov.uk/sites/ipswich/files/2024-09/Retail%20Study%20whole.pdf",
+                            "Reasoning": "The report provides an analysis of the retail industry in Ipswich, which can offer valuable insights for understanding council-related businesses. While not directly addressing customer information, it may still be useful.",
+                            "Confidence": "65"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.ipswich.gov.uk/benefits/benefit-information-and-advice/benefit-cap"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.ipswich.gov.uk/benefits/benefit-information-and-advice/benefit-cap",
+                        "analysis": {
+                            "url": "https://www.ipswich.gov.uk/benefits/benefit-information-and-advice/benefit-cap",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T01:35:53+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T01:36:23+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 27393,
+                            "response_time": 0.22,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.22s)",
+                                    "Content successfully retrieved (27393 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.2220919132232666,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.ipswich.gov.uk/benefits/benefit-information-and-advice/benefit-cap"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.ipswich.gov.uk/benefits/benefit-information-and-advice/benefit-cap",
+                        "content": " This is an HTML document with a stylesheet for a simple webpage. The page contains a main section that includes a header, navigation bar, and a footer. The content in the main section consists of a text \"Welcome to our Website\" in a large font size, followed by a description paragraph. There's also an image located at the top left corner with dimensions of 40px by 40px.\n\nBelow the content section, there's a button that triggers a dropdown menu when clicked, which contains additional links for different sections of the website. At the bottom of the page, you can find a copyright notice and a link to \"Tell us about your experience\" at the footer. The styles within the `<style>` tag in the head section define several CSS selectors that control various aspects of how elements on the page are presented visually.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 6.793247938156128,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.ipswich.gov.uk/benefits/benefit-information-and-advice/benefit-cap",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 5.384871959686279,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.ipswich.gov.uk/benefits/benefit-information-and-advice/benefit-cap"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_013553-ipswich.gov.uk",
+                    "analysis_timestamp": "2025-08-13T01:36:36+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7166666666666667,
+                            "tokens_consumed": 6560,
+                            "tokens_remaining": 23440,
+                            "token_utilization_percentage": 21.87,
+                            "average_tokens_per_step": 1093.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 78.13,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 21,
+                            "consumption_rate": 1093.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 10.24,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7166666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_013553-ipswich.gov.uk",
+                        "start_time": "2025-08-13T01:35:53+01:00",
+                        "current_time": "2025-08-13T01:36:36+01:00",
+                        "duration_seconds": 43,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6560,
+                        "tokens_remaining": 23440,
+                        "token_utilization_percentage": 21.87,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3308,
+                                "avg_per_call": 1654
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3252,
+                                "avg_per_call": 1626
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1093.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_013553-ipswich.gov.uk",
+                    "start_time": "2025-08-13T01:35:53+01:00",
+                    "current_time": "2025-08-13T01:36:36+01:00",
+                    "duration_seconds": 43,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6560,
+                    "tokens_remaining": 23440,
+                    "token_utilization_percentage": 21.87,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3308,
+                            "avg_per_call": 1654
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3252,
+                            "avg_per_call": 1626
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1093.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

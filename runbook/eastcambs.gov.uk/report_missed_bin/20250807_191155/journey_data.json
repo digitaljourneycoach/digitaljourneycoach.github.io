@@ -1,0 +1,679 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T19:11:55+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "eastcambs.gov.uk",
+                "Council Name": "East Cambridgeshire District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a problem | East Cambridgeshire District Council",
+                        "link": "https://eastcambs.gov.uk/waste-and-recycling/report-problem",
+                        "snippet": "How to report a problem including missed bins, bin not returned, fly tipping, full litter or dog bins and lost or broken bins."
+                    },
+                    {
+                        "title": "Missed collection report - EASTCAMBS.GOV.UK",
+                        "link": "https://self.eastcambs.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-ea342df1-cf17-4e50-b082-83a69729482e/AF-Stage-468123ec-2a82-44d2-a692-489ada10da65/definition.json&redirectlink=%2Fen&cancelRedirectLink=%2Fen&consentMessage=yes",
+                        "snippet": "Sign up for an account to manage your service requests and accounts with us. Creating an account saves you time with auto-completion of your contact information\u00a0..."
+                    },
+                    {
+                        "title": "MyServices - EASTCAMBS.GOV.UK",
+                        "link": "https://self.eastcambs.gov.uk/MyServices",
+                        "snippet": "Bulky Waste Missed Collection \u00b7 Business Permit Scheme Application Form ... Full Litter Bin or Dog Waste Bin Report. G. Graffiti Report. H. Hackney Carriage\u00a0..."
+                    },
+                    {
+                        "title": "Waste and recycling | East Cambridgeshire District Council",
+                        "link": "https://eastcambs.gov.uk/waste-and-recycling",
+                        "snippet": "How to report a problem including missed bins, bin not returned, fly tipping, full litter or dog bins and lost or broken bins."
+                    },
+                    {
+                        "title": "EASTCAMBS.GOV.UK",
+                        "link": "https://self.eastcambs.gov.uk/",
+                        "snippet": "For more information, please see the ECDC Privacy Notice. Thank you. Report a missed bin \u00b7 Pay your parking penalty notice \u00b7 Customer feedback survey \u00b7 Report a\u00a0..."
+                    },
+                    {
+                        "title": "Committee Report",
+                        "link": "https://eastcambs.gov.uk/sites/default/files/2024-11/07%20ECSS%20Q2%20Performance%20Report.pdf",
+                        "snippet": "Nov 18, 2024 ... QUARTER 2 2024/25 PERFORMANCE REPORT FOR THE WASTE. AND STREET ... missed bins per. 100,000 bins collected. 30. 90. 66. 56. Green \u2013 Average."
+                    },
+                    {
+                        "title": "Replacement Refuse Collection Vehicles",
+                        "link": "https://eastcambs.gov.uk/sites/default/files/2024-12/4%20-%20Item%208%20Replacement%20Waste%20Vehicles.pdf",
+                        "snippet": "For example a customer may report a missed bin on line, this request can go directly to the in cab to alert the driver and if appropriate the crew can clear the\u00a0..."
+                    },
+                    {
+                        "title": "Collection dates | East Cambridgeshire District Council",
+                        "link": "https://eastcambs.gov.uk/waste-and-recycling/collection-dates",
+                        "snippet": "Bin collection dates, waste disruptions and bank holiday collections ... report a missed collection by the end of the next working day. East\u00a0..."
+                    },
+                    {
+                        "title": "What we collect | East Cambridgeshire District Council",
+                        "link": "https://eastcambs.gov.uk/waste-and-recycling/what-we-collect",
+                        "snippet": "For any further information, please email waste@eastcambs.gov.uk or call us on 01353 665555. Report a missed collection \u00b7 Find your bin collection day\u00a0..."
+                    },
+                    {
+                        "title": "Clinical collections | East Cambridgeshire District Council",
+                        "link": "https://eastcambs.gov.uk/waste-and-recycling/clinical-collections",
+                        "snippet": "If your clinical waste or sharps boxes were not collected, please report it to us. Report a missed clinical collection. For further information on clinical\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://eastcambs.gov.uk/waste-and-recycling/report-problem",
+                        "title": "Report a problem | East Cambridgeshire District Council",
+                        "confidence": 80,
+                        "strengths": [
+                            "Direct link for reporting missed bin or other issues related to waste and recycling"
+                        ],
+                        "reasoning": "The title directly points towards addressing customer's issue, and the snippet explains how to report problems including missed bins, fly tipping, full litter, etc. This link seems most relevant to council customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a problem | East Cambridgeshire District Council",
+                                "Source": "https://eastcambs.gov.uk/waste-and-recycling/report-problem",
+                                "Key Strengths": [
+                                    "Direct link for reporting missed bin or other issues related to waste and recycling"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title directly points towards addressing customer's issue, and the snippet explains how to report problems including missed bins, fly tipping, full litter, etc. This link seems most relevant to council customer information needs."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "MyServices - EASTCAMBS.GOV.UK",
+                                "Source": "https://self.eastcambs.gov.uk/MyServices",
+                                "Key Strengths": [
+                                    "Offers multiple services for residents including missed collection report, business permit application form, etc."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title suggests it is a service portal that may provide various resources and tools for council customers. The snippet also indicates features related to waste management such as Bulky Waste Missed Collection. This link might be useful for those seeking multiple types of council services."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Waste and recycling | East Cambridgeshire District Council",
+                                "Source": "https://eastcambs.gov.uk/waste-and-recycling",
+                                "Key Strengths": [
+                                    "Covers a wide variety of information related to waste services offered by the council"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The title pertains to waste and recycling, which aligns with customer information needs. The snippet also mentions missed collection reporting, showing some relevancy."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Collection dates | East Cambridgeshire District Council",
+                                "Source": "https://eastcambs.gov.uk/waste-and-recycling/collection-dates",
+                                "Key Strengths": [
+                                    "Direct information on bin collection days and disruptions"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The title clearly indicates that this link contains information about bin collection dates, addressing one of the potential user needs."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "What we collect | East Cambridgeshire District Council",
+                                "Source": "https://eastcambs.gov.uk/waste-and-recycling/what-we-collect",
+                                "Key Strengths": [
+                                    "Information on the types of waste collected by the council"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The title and snippet both indicate that this link contains details regarding the types of waste collected, addressing a possible user need."
+                            }
+                        ],
+                        "Analysis Notes": "All items contained related information to some extent but had varying degrees of direct relevance to council customer needs. The top five recommendations were chosen based on their clarity in addressing identified needs and usefulness for end-users.",
+                        "Recommendations Notes": "While multiple options may provide relevant information, the top four recommendations stand out due to their clear focus on the user's objective of finding council customer services related to waste management."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "80",
+                        "70",
+                        "70",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 74,
+                    "max_confidence": "80"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "005_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://eastcambs.gov.uk/waste-and-recycling/report-problem"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://eastcambs.gov.uk/waste-and-recycling/report-problem",
+                        "analysis": {
+                            "url": "https://eastcambs.gov.uk/waste-and-recycling/report-problem",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T19:11:55+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T19:12:39+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 34993,
+                            "response_time": 0.388,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.388s)",
+                                    "Content successfully retrieved (34993 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.3887820243835449,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "006_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://eastcambs.gov.uk/waste-and-recycling/report-problem"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://eastcambs.gov.uk/waste-and-recycling/report-problem",
+                        "content": " The clean, semantically structured HTML containing the central editorial content of the page would be:\n\n```html\n<html lang=\"en-gb\">\n<head></head>\n<body>\n   <main id=\"main-content\" tabindex=\"-1\">\n      <div class=\"lgd-region lgd-region--content-top region region-content-top\">\n         <div class=\"lgd-container padding-horizontal\">\n            <div class=\"lgd-region__inner lgd-region__inner--content-top\">\n               <div id=\"block-eastcambs-theme-pagetitle--2\" class=\"block block-core block-page-title-block\">\n                  <h1><span>Report a problem</span></h1>\n               </div>\n               <div class=\"views-element-container block block-views block-views-blocksummary-for-landing-pages-block-1\" id=\"block-eastcambs-theme-views-block-summary-for-landing-pages-block-1\">\n                  <!-- This section is removed as it's not part of the main content -->\n               </div>\n               <div class=\"views-element-container block block-views block-views-blockguide-page-parent-block-1\" id=\"block-eastcambs-theme-views-block-guide-page-parent-block-1\">\n                  <!-- This section is removed as it's not part of the main content -->\n               </div>\n            </div>\n         </div>\n      </div>\n\n      <div class=\"lgd-region lgd-region--content region region-content\">\n         <div class=\"lgd-region__inner lgd-region__inner--content\">\n            <div id=\"block-eastcambs-theme-content--2\" class=\"block block-system block-system-main-block\">\n               <article data-history-node-id=\"1151\" data-component-id=\"localgov_base:display-full\" class=\"localgov-services-page node node--view-mode-full node--type-localgov-services-page\">\n                  <div class=\"lgd-container padding-horizontal\">\n                     <div class=\"node__restricted-width-section\">\n                        <div class=\"localgov-services-page__content node__content\">\n                           <div class=\"field field--name-body field--type-text-with-summary field--label-hidden field__item\">\n\n                              <h2 id=\"missed-collection\">Missed collection</h2>\n                              <p><a class=\"btn btn-start\" href=\"https://eastcambs-self.achieveservice.com//service/Missed_Collection\">Report a missed collection</a></p>\n                              <p>You can report a missed collection from 3pm on the day of collection until the end of the next working day. Please check that your neighbours' bins have been collected and that no notification has been placed on your bins or sacks.</p>\n\n                              <h2 id=\"fly-tip-report\">Fly-tip report&nbsp;</h2>\n                              <p><a class=\"btn btn-start\" href=\"https://eastcambs-self.achieveservice.com//service/Fly_Tip_Report\">Report a fly tip</a></p>\n                              <p>Fly-tipping is the illegal dumping of waste, find out more on our fly tipping webpages. Fly-tipping will normally be removed from town centres/shopping streets by the end of the next working day and other areas within three working days.</p>\n                              <p>For further information on fly-tipping, please see our <a href=\"/environmental-health/pollution-and-harmful-substances/fly-tipping-and-illegal-waste\" data-entity-type=\"node\" data-entity-uuid=\"7f791de7-011b-4ed9-85e0-dd782a087efe\" data-entity-substitution=\"canonical\">fly-tipping and illegal waste webpage</a>.</p>\n\n                              <h2 id=\"lost-or-broken-wheeled-bins\">Lost or broken wheeled bins</h2>\n                              <p><a class=\"btn btn-start\" href=\"https://eastcambs-self.achieveservice.com//service/Lost_or_broken_wheeled_bin\">Report a lost or broken wheeled bin</a></p>\n                              <p>If your wheeled bins are lost or they have been damaged and no longer usable then please report this to us.</p>\n\n                              <h2 id=\"wheeled-bin-return-issue\">Wheeled bin return issue</h2>\n                              <p><a class=\"btn btn-start\" href=\"https://eastcambs-self.achieveservice.com//service/Wheeled_Bin___Return_Issue\">Report a wheeled bin return issue</a></p>\n                              <p>If you are having an issue with where with your wheeled bin is being returned to, please get in touch.</p>\n\n                              <h2 id=\"full-litter-or-dog-waste-bin\">Full litter or dog waste bin</h2>\n                              <p><a class=\"btn btn-start\" href=\"https://eastcambs-self.achieveservice.com//service/Full_Litter_Bin_or_Dog_Waste_Bin_Report\">Report a full litter or dog waste bin</a></p>\n                              <p>Every effort is made to empty litter and dog waste bins on a regular basis. However, if you see any over-flowing litter or dog waste bins please report this to us.</p>\n\n                              <h2 id=\"other\">Other</h2>\n                              <p>For a full list of our forms, please <a href=\"https://self.eastcambs.gov.uk/\">visit our self-service portal</a></p>\n                           </div>\n                        </div>\n                     </div>\n                  </div>\n               </article>\n            </div>\n         </div>\n      </div>\n   </main>\n</body>\n</html>\n```\n\nThis HTML only includes the main content and removes any unnecessary sections like site headers, footers, JavaScript files, and the sidebar blocks.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 31.95646905899048,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "007_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://eastcambs.gov.uk/waste-and-recycling/report-problem",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content meets this need as it provides a direct link and instructions on how to report a missed collection.",
+                                    "confidence": "95%",
+                                    "reasoning": "After scanning the provided content, we can see that there's a specific section titled 'Missed collection' and it contains a link to report a missed collection. The instructions suggest checking if neighbors' bins have been collected and verifying if any notification has been placed on one's bins or sacks. This information is adequate for a council resident who needs to make such a report.",
+                                    "next_actions": "Click the provided link, 'Report a missed collection', to proceed with the task."
+                                }
+                            ],
+                            "overall_assessment": "The provided content offers clear instructions and direct links for reporting common waste-related issues, making it effective at meeting the needs of council residents. However, key gaps include the lack of immediate information on the estimated time for collection or assistance in case of difficulties accessing the online service."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.748181104660034,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://eastcambs.gov.uk/waste-and-recycling/report-problem"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "008_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_191155-eastcambs.gov.uk",
+                    "analysis_timestamp": "2025-08-07T19:13:18+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 7,
+                            "duration_minutes": 1.3833333333333333,
+                            "tokens_consumed": 9512,
+                            "tokens_remaining": 90488,
+                            "token_utilization_percentage": 9.51,
+                            "average_tokens_per_step": 1358.86
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 90.49,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 66,
+                            "consumption_rate": 1358.86,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 7,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 3
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "95",
+                            "quality_scores": [
+                                "95"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "95",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 19.76,
+                            "steps_fatigue_percentage": 58.33,
+                            "overall_fatigue_score": 58.33,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.3833333333333333,
+                            "total_steps": 7,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved",
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_191155-eastcambs.gov.uk",
+                        "start_time": "2025-08-07T19:11:55+01:00",
+                        "current_time": "2025-08-07T19:13:18+01:00",
+                        "duration_seconds": 83,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 9512,
+                        "tokens_remaining": 90488,
+                        "token_utilization_percentage": 9.51,
+                        "token_status": "available",
+                        "total_steps": 7,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 3,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 7
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3262,
+                                "avg_per_call": 1631
+                            },
+                            "analyst": {
+                                "calls": 3,
+                                "tokens": 6250,
+                                "avg_per_call": 2083.3333333333335
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1358.86
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_191155-eastcambs.gov.uk",
+                    "start_time": "2025-08-07T19:11:55+01:00",
+                    "current_time": "2025-08-07T19:13:18+01:00",
+                    "duration_seconds": 83,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 9512,
+                    "tokens_remaining": 90488,
+                    "token_utilization_percentage": 9.51,
+                    "token_status": "available",
+                    "total_steps": 7,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 3,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 7
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3262,
+                            "avg_per_call": 1631
+                        },
+                        "analyst": {
+                            "calls": 3,
+                            "tokens": 6250,
+                            "avg_per_call": 2083.3333333333335
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1358.86
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

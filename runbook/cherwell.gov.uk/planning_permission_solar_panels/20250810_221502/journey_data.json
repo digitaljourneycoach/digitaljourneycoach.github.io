@@ -1,0 +1,684 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T22:15:02+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "cherwell.gov.uk",
+                "Council Name": "Cherwell District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Do I Need Planning Permission? | Planning Advice and Queries ...",
+                        "link": "https://www.cherwell.gov.uk/info/115/planning-process/206/planning-advice-and-queries/2",
+                        "snippet": "If you make improvements or changes to a property without obtaining planning permission you may end up having to put things back to how they were."
+                    },
+                    {
+                        "title": "Planning Permission: Solar equipment mounted on a house or a ...",
+                        "link": "https://planningregister.cherwell.gov.uk/Document/Download?module=PLA&recordNumber=139914&planId=1514371&imageId=1&isPlan=False&fileName=EVIDENCE%20TO%20VERIFY%20APPLICATION.pdf",
+                        "snippet": "Jun 2, 2014 ... panels must not be fitted to a wall which fronts a highway. TOWN AND COUNTRY PLANNING. PART 14. Renewable energy. Class A \u2013 installation or\u00a0..."
+                    },
+                    {
+                        "title": "Home Extensions and Alterations Design Guide (draft17).pub",
+                        "link": "https://modgov.cherwell.gov.uk/Data/Executive/20061106/Agenda/09A%20Home%20Extensions%20and%20Alterations%20Design%20Guide%20(draft17)%20DND.pdf",
+                        "snippet": "Solar panels use the power of the sun to heat water or to produce ... Regulations, even if planning permission and/or listed building consent is\u00a0..."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://planningregister.cherwell.gov.uk/Document/Download?module=PLA&recordNumber=160563&planId=2204345&imageId=11&isPlan=False&fileName=2024_07_24%20Planning%20statement%20Manor%20House%20Bletchingdon%20solar%282%29%281%29.pdf",
+                        "snippet": "Solar panel LDC application. JPPC \u00a9 2024. Planning Statement. 1. This ... planning permission for the development. The only question to ask is whether the\u00a0..."
+                    },
+                    {
+                        "title": "Executive",
+                        "link": "http://modgov.cherwell.gov.uk/documents/s18806/Article%204.pdf",
+                        "snippet": "Sep 2, 2013 ... planning permission and the submission of a formal planning application. ... replacement, erection of satellite dishes and solar panels on\u00a0..."
+                    },
+                    {
+                        "title": "Home extensions and alterations design guide",
+                        "link": "https://planningregister.cherwell.gov.uk/Document/Download?module=APP&recordNumber=1648&planId=0&imageId=28&isPlan=False&fileName=Home%20extensions%20and%20alterations%20design%20guide.pdf",
+                        "snippet": "let 'Solar Energy Collectors \u2013 A Planning Guide\u201d, which is avail- able from ... Regulations, even if planning permission and/or listed building consent\u00a0..."
+                    },
+                    {
+                        "title": "Home Extensions and Alterations - Design Guide",
+                        "link": "https://modgov.cherwell.gov.uk/CeConvert2PDF.aspx?MID=663&F=13a%20Home%20Extensions%20and%20Alterations%20Design%20Guide%20March%2007%20DND.pdf&A=1&R=0",
+                        "snippet": "let 'Solar Energy Collectors \u2013 A Planning Guide\u201d, which is avail- able from ... Regulations, even if planning permission and/or listed building consent\u00a0..."
+                    },
+                    {
+                        "title": "S62A/22/0006 Decision Notice and Statement of Reasons",
+                        "link": "https://planningregister.cherwell.gov.uk/Document/Download?module=APP&recordNumber=1937&planId=0&imageId=51&isPlan=False&fileName=s62A-22-0006%20-%20Appeal%20Decision%20-%20Berden%2C%20Uttlesford.pdf",
+                        "snippet": "Jul 18, 2024 ... Planning permission is granted for a ground mounted solar farm with a generation capacity of up to 49.99MW together with associated\u00a0..."
+                    },
+                    {
+                        "title": "Living in a conservation area | What is a conservation area ...",
+                        "link": "https://www.cherwell.gov.uk/info/126/conservation-and-heritage/310/what-is-a-conservation-area/2",
+                        "snippet": "Additional planning controls exist within conservation areas which provide protection to boundary walls and larger trees and restrict Permitted Development\u00a0..."
+                    },
+                    {
+                        "title": "National Policy Statement for renewable energy infrastructure (EN-3)",
+                        "link": "https://planningregister.cherwell.gov.uk/Document/Download?module=APP&recordNumber=1937&planId=0&imageId=40&isPlan=False&fileName=National%20Policy%20Statement%20for%20Renewable%20Energy%20Infrastructure%20%28EN-3%29.pdf",
+                        "snippet": "Nov 2, 2023 ... development consent or other planning permission ... solar panel efficiency over time when determining the period for which consent is required."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.cherwell.gov.uk/info/115/planning-process/206/planning-advice-and-queries/2",
+                        "title": "Do I Need Planning Permission? | Planning Advice and Queries ...",
+                        "confidence": 95,
+                        "strengths": [
+                            "Overall informative guidance on the need for planning permission",
+                            "Addresses common questions about improvements and changes to a property"
+                        ],
+                        "reasoning": "This resource provides comprehensive planning advice, addressing a concern about the necessity of planning permission. It also clearly states the potential consequences of making changes without proper authorization.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Do I Need Planning Permission? | Planning Advice and Queries ...",
+                                "Source": "https://www.cherwell.gov.uk/info/115/planning-process/206/planning-advice-and-queries/2",
+                                "Key Strengths": [
+                                    "Overall informative guidance on the need for planning permission",
+                                    "Addresses common questions about improvements and changes to a property"
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "This resource provides comprehensive planning advice, addressing a concern about the necessity of planning permission. It also clearly states the potential consequences of making changes without proper authorization."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Home Extensions and Alterations Design Guide (draft17).pub",
+                                "Source": "https://modgov.cherwell.gov.uk/Data/Executive/20061106/Agenda/09A%20Home%20Extensions%20and%20Alterations%20Design%20Guide%20(draft17)%20DND.pdf",
+                                "Key Strengths": [
+                                    "Detailed guide for home extensions and alterations, including solar panel installation regulations",
+                                    "Discusses relevant planning permissions and regulations"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The document provides clear information about home improvements, specifically focusing on solar panel installation regulations within planning permission guidelines."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Executive",
+                                "Source": "http://modgov.cherwell.gov.uk/documents/s18806/Article%204.pdf",
+                                "Key Strengths": [
+                                    "Specific mentions of solar panels and satellite dishes as examples of home improvements subject to planning permission",
+                                    "Provides a clear context for understanding which developments require formal applications"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The source discusses solar panel installations alongside other home improvement considerations, emphasizing the need for formal planning applications when warranted."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Home Extensions and Alterations - Design Guide",
+                                "Source": "https://planningregister.cherwell.gov.uk/Document/Download?module=APP&recordNumber=1648&planId=0&imageId=28&isPlan=False&fileName=Home%20extensions%20and%20alterations%20design%20guide.pdf",
+                                "Key Strengths": [
+                                    "Covers regulations for home extensions and alterations, including solar panel installation",
+                                    "Provides explanations for planning permissions and listed building consents"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This guide discusses various home improvement scenarios, focusing on solar panel installation and relevant permissions required."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "S62A/22/0006 Decision Notice and Statement of Reasons",
+                                "Source": "https://planningregister.cherwell.gov.uk/Document/Download?module=APP&recordNumber=1937&planId=0&imageId=51&isPlan=False&fileName=s62A-22-0006%20-%20Appeal%20Decision%20-%20Berden%2C%20Uttlesford.pdf",
+                                "Key Strengths": [
+                                    "Addresses specific planning permission decisions concerning ground-mounted solar farms",
+                                    "Provides valuable insights into the process of renewable energy infrastructure approval"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "While not directly discussing residential solar panel installations, this decision notice offers insights into the process of obtaining planning permission for large-scale solar farm developments."
+                            }
+                        ],
+                        "Analysis Notes": "There were several relevant links that discussed aspects related to planning permission and solar panel installations. Although the items in question did not exclusively focus on council customer information needs, they still provide valuable guidance and resources for users looking for information about both subjects.",
+                        "Recommendations Notes": "The top 5 items cover various aspects of planning permission, home extensions, and alterations\u2014including solar panel installations. Items 1-3 offer the most focused and specific guidance for planning permission considerations involving residential solar installations."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "95",
+                        "90",
+                        "85",
+                        "85",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 86,
+                    "max_confidence": "95"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Do I Need Planning Permission? | Planning Advice and Queries ...",
+                            "Source": "https://www.cherwell.gov.uk/info/115/planning-process/206/planning-advice-and-queries/2",
+                            "Reasoning": "As it has the highest confidence score (95%) and addresses a concern about the necessity of planning permission for home improvements like solar panel installation, in addition to providing clear information on the potential consequences of making changes without proper authorization.",
+                            "Confidence": "95"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Executive",
+                            "Source": "http://modgov.cherwell.gov.uk/documents/s18806/Article%204.pdf",
+                            "Reasoning": "Though it has a slightly lower confidence score (85%) compared to item 1, this source discusses solar panels and satellite dishes as examples of home improvements subject to planning permission, providing a clear context for understanding which developments require formal applications.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Home Extensions and Alterations Design Guide (draft17).pub",
+                            "Source": "https://modgov.cherwell.gov.uk/Data/Executive/20061106/Agenda/09A%20Home%20Extensions%20and%20Alterations%20Design%20Guide%20(draft17)%20DND.pdf",
+                            "Reasoning": "Another detailed guide that discusses relevant planning permissions and regulations, including solar panel installation regulations that are related to home improvements.",
+                            "Confidence": "90"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.cherwell.gov.uk/info/115/planning-process/206/planning-advice-and-queries/2"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.cherwell.gov.uk/info/115/planning-process/206/planning-advice-and-queries/2",
+                        "analysis": {
+                            "url": "https://www.cherwell.gov.uk/info/115/planning-process/206/planning-advice-and-queries/2",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T22:15:02+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T22:15:33+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 41682,
+                            "response_time": 0.259,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.259s)",
+                                    "Content successfully retrieved (41682 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.2593231201171875,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.cherwell.gov.uk/info/115/planning-process/206/planning-advice-and-queries/2"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.cherwell.gov.uk/info/115/planning-process/206/planning-advice-and-queries/2",
+                        "content": " Here's the structured HTML that I extracted for the content you provided:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <!-- Head elements, such as meta tags and title -->\n</head>\n<body>\n  <main>\n    <div class=\"container\">\n      <h1>Planning Advice and Queries</h1>\n      <section>\n        <p>Welcome to the Planning Advice and Queries information page on the Cherwell District Council website.</p>\n        <p>The information below provides guidance on where to find planning-related questions and advice.</p>\n        <ul>\n          <li>Questions about development control can be directed to the Development Management team.</li>\n          <li>Questions about enforcement action can be directed to the Planning Enforcement team.</li>\n          <li>Questions about local plans or other strategic planning issues can be directed to the Strategic Planning team.</li>\n          <li>To submit a planning application, please visit our Apply for Planning Permission page.</li>\n        </ul>\n        <p>For additional guidance on various subjects related to planning, we offer a range of helpful resources:</p>\n        <ul>\n          <li><a href=\"https://www.cherwell.gov.uk/index.aspx?articleid=874\">General Advice Notes (GANs)</a></li>\n          <li><a href=\"https://www.cherwell.gov.uk/article/5639/Pre-Application-Advice-Fees\">Pre-application advice fees</a></li>\n          <li><a href=\"https://www.cherwell.gov.uk/services/Planning-and-building-control/Development-Management/Making-a-planning-application\">Making a planning application online</a></li>\n        </ul>\n      </section>\n      <h2>Feedback Form</h2>\n      <div class=\"tab-container feedback-form\">\n        <!-- Feedback form content -->\n      </div>\n    </div>\n  </main>\n  <!-- Footer and other elements (head, body attributes, scripts, etc.) -->\n</body>\n</html>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 13.450655937194824,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.cherwell.gov.uk/info/115/planning-process/206/planning-advice-and-queries/2",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "The content does not answer this question directly.",
+                                    "confidence": "40%",
+                                    "reasoning": "The content provides information about where to direct questions related to development control, but it does not specifically address the need for permission when installing solar panels. However, given that solar panel installation is a form of property improvement or alteration, it's likely that homeowners might need to consult with their local planning authority.",
+                                    "next_actions": "Contact the Development Management team at Cherwell District Council for clarity and specific guidance on installing solar panels."
+                                }
+                            ],
+                            "overall_assessment": "The content provides some information about where to direct questions related to various planning-related issues, but it does not provide detailed answers or comprehensive guidance for council residents seeking specific advice, especially regarding installation of solar panels. The content could be improved by either clarifying the need for permission to install solar panels or directly stating any applicable regulations or procedures."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.633479118347168,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.cherwell.gov.uk/info/115/planning-process/206/planning-advice-and-queries/2"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_221502-cherwell.gov.uk",
+                    "analysis_timestamp": "2025-08-10T22:15:52+01:00",
+                    "analysis_duration": 0.002,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8333333333333334,
+                            "tokens_consumed": 7652,
+                            "tokens_remaining": 22348,
+                            "token_utilization_percentage": 25.51,
+                            "average_tokens_per_step": 1275.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 74.49,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 17,
+                            "consumption_rate": 1275.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "40",
+                            "quality_scores": [
+                                "40"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "40",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.9,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8333333333333334,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_221502-cherwell.gov.uk",
+                        "start_time": "2025-08-10T22:15:02+01:00",
+                        "current_time": "2025-08-10T22:15:52+01:00",
+                        "duration_seconds": 50,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7652,
+                        "tokens_remaining": 22348,
+                        "token_utilization_percentage": 25.51,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3959,
+                                "avg_per_call": 1979.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3693,
+                                "avg_per_call": 1846.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1275.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_221502-cherwell.gov.uk",
+                    "start_time": "2025-08-10T22:15:02+01:00",
+                    "current_time": "2025-08-10T22:15:52+01:00",
+                    "duration_seconds": 50,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7652,
+                    "tokens_remaining": 22348,
+                    "token_utilization_percentage": 25.51,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3959,
+                            "avg_per_call": 1979.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3693,
+                            "avg_per_call": 1846.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1275.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

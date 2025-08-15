@@ -1,0 +1,696 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T16:10:40+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "burnley.gov.uk",
+                "Council Name": "Burnley Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed bin collections - burnley.gov.uk",
+                        "link": "https://burnley.gov.uk/waste-recycling/missed-bin-collections/",
+                        "snippet": "Click the button at the bottom of the page to report a missed bin collection. Please be aware that it may take up to two working days for a re-collection to\u00a0..."
+                    },
+                    {
+                        "title": "Report a Missed Bin - Burnley Borough Council.",
+                        "link": "https://your.burnley.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-dfc9e9aa-6d3c-43f5-b650-f009587c79d3/AF-Stage-b064a57d-e510-494e-9742-5252748386a7/definition.json&redirectlink=%2Fen&cancelRedirectLink=%2Fen&consentMessage=yes",
+                        "snippet": "Should they choose to do this, they have an obligation to let you know where this is the case, and what the benefits and costs are, who they share it with, and\u00a0..."
+                    },
+                    {
+                        "title": "Contact us - burnley.gov.uk",
+                        "link": "https://burnley.gov.uk/council-democracy/contact-burnley-council/",
+                        "snippet": "Popular online services ; Report an environmental problem \u00b7 Report a missed bin \u00b7 Report a highways issue ; Apply for benefits \u00b7 Apply for council tax discount."
+                    },
+                    {
+                        "title": "Your refuse and recycling bins and containers - burnley.gov.uk",
+                        "link": "https://burnley.gov.uk/waste-recycling/bins/",
+                        "snippet": "menu openable Report. Report a missed bin collection \u00b7 Report an environmental problem \u00b7 Report a problem on a highway or pavement \u00b7 Disrepair in your Rented\u00a0..."
+                    },
+                    {
+                        "title": "Waste and Recycling - burnley.gov.uk",
+                        "link": "https://burnley.gov.uk/waste-recycling/",
+                        "snippet": "Report a missed bin collection \u00b7 Report an environmental problem \u00b7 Report a ... Your refuse and recycling bins and containers \u00b7 Recycling collections\u00a0..."
+                    },
+                    {
+                        "title": "Canalside Conservation Area Appraisal and Management Plan ...",
+                        "link": "https://burnley.gov.uk/planning/planning-policies/heritage-conservation/conservation-areas/conservation-area-appraisals-and-management-plans/canalside-conservation-area-appraisal-and-management-plan/",
+                        "snippet": "Report a missed bin collection \u00b7 Report an environmental problem \u00b7 Report a problem on a highway or pavement \u00b7 Disrepair in your Rented Property. For Residents."
+                    },
+                    {
+                        "title": "Complaining about a Council service - burnley.gov.uk",
+                        "link": "https://burnley.gov.uk/council-democracy/complaining-about-council-service/",
+                        "snippet": "menu openable Report. Report a missed bin collection \u00b7 Report an environmental problem \u00b7 Report a problem on a highway or pavement \u00b7 Disrepair in your Rented\u00a0..."
+                    },
+                    {
+                        "title": "Environmental problems - burnley.gov.uk",
+                        "link": "https://burnley.gov.uk/environmental-problems/",
+                        "snippet": "Report a missed bin collection \u00b7 Report an environmental problem \u00b7 Report a ... You might be interested in. Environmental Health \u00b7 Waste and Recycling \u00b7 Report a\u00a0..."
+                    },
+                    {
+                        "title": "Recycling collections - burnley.gov.uk",
+                        "link": "https://burnley.gov.uk/waste-recycling/recycling/",
+                        "snippet": "menu openable Report. Report a missed bin collection \u00b7 Report an environmental problem \u00b7 Report a problem on a highway or pavement \u00b7 Disrepair in your Rented\u00a0..."
+                    },
+                    {
+                        "title": "What to do in a flood - burnley.gov.uk",
+                        "link": "https://burnley.gov.uk/environmental-problems/flooding/what-to-do-in-a-flood/",
+                        "snippet": "To report flooding from waste water or sewers, ring United Utilities on 0345 672 3723. If your house is flooding, ring your insurance company's 24 hour\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://burnley.gov.uk/waste-recycling/missed-bin-collections/",
+                        "title": "Missed bin collections - burnley.gov.uk",
+                        "confidence": 90,
+                        "strengths": [
+                            "Direct link to report a missed bin collection",
+                            "Official website of Burnley Council",
+                            "Ease of use: single click on the provided button"
+                        ],
+                        "reasoning": "The linked page is dedicated specifically to reporting missed bin collections. It offers a clear and easy-to-use process for residents needing this service.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed bin collections - burnley.gov.uk",
+                                "Source": "https://burnley.gov.uk/waste-recycling/missed-bin-collections/",
+                                "Key Strengths": [
+                                    "Direct link to report a missed bin collection",
+                                    "Official website of Burnley Council",
+                                    "Ease of use: single click on the provided button"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The linked page is dedicated specifically to reporting missed bin collections. It offers a clear and easy-to-use process for residents needing this service."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Your refuse and recycling bins and containers - burnley.gov.uk",
+                                "Source": "https://burnley.gov.uk/waste-recycling/bins/",
+                                "Key Strengths": [
+                                    "Comprehensive information on waste and recycling services offered by Burnley Council",
+                                    "Link to report a missed bin collection",
+                                    "Menu for various problems related to waste and recycling"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Though the link provided is not explicitly for reporting missed bin collections, it takes users to a page offering that service along with several other relevant information."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Contact us - burnley.gov.uk",
+                                "Source": "https://burnley.gov.uk/council-democracy/contact-burnley-council/",
+                                "Key Strengths": [
+                                    "Provides an overall contact option for council services",
+                                    "Includes options for reporting various services such as missed bin collection, environmental problems and highways issues"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Though the page does offer an option to report a missed bin collection, it may require additional navigation or searching."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Environmental problems - burnley.gov.uk",
+                                "Source": "https://burnley.gov.uk/environmental-problems/",
+                                "Key Strengths": [
+                                    "Wide variety of environmental service offerings by Burnley Council",
+                                    "Includes an option for reporting missed bin collection",
+                                    "Ease of access to additional services related to the environment"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Though primarily focused on multiple environmental issues, it still offers a simple path to report a missed bin collection."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Recycling collections - burnley.gov.uk",
+                                "Source": "https://burnley.gov.uk/waste-recycling/recycling/",
+                                "Key Strengths": [
+                                    "In-depth information about waste and recycling services offered by Burnley Council",
+                                    "Link to report a missed bin collection",
+                                    "Menu for various problems related to waste and recycling"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Though not a direct link, the page still offers an easy-to-find path to report a missed bin collection."
+                            }
+                        ],
+                        "Analysis Notes": "The provided search results covered various topics within waste and recycling services offered by Burnley Council. Each item analyzed was relevant to council customer information needs in terms of reporting and accessing their waste collection services.",
+                        "Recommendations Notes": "Our top picks were direct links or pages with a clear path to report a missed bin collection, demonstrating simplicity for users while maintaining relevancy."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "75",
+                        "80",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Missed bin collections - burnley.gov.uk",
+                            "Source": "https://burnley.gov.uk/waste-recycling/missed-bin-collections/",
+                            "Reasoning": "The linked page is dedicated specifically to reporting missed bin collections and offers a clear and easy-to-use process for residents needing this service.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Your refuse and recycling bins and containers - burnley.gov.uk",
+                            "Source": "https://burnley.gov.uk/waste-recycling/bins/",
+                            "Reasoning": "Though not a direct link for reporting missed bin collections, it offers an easy-to-find path to accomplish the task.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Contact us - burnley.gov.uk",
+                            "Source": "https://burnley.gov.uk/council-democracy/contact-burnley-council/",
+                            "Reasoning": "Though it may require additional navigation or searching, the page does offer an option to report a missed bin collection.",
+                            "Confidence": "75"
+                        }
+                    ],
+                    "has_recommendations": true,
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "75"
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://burnley.gov.uk/waste-recycling/missed-bin-collections/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://burnley.gov.uk/waste-recycling/missed-bin-collections/",
+                        "analysis": {
+                            "url": "https://burnley.gov.uk/waste-recycling/missed-bin-collections/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T16:10:40+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T16:11:06+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 51801,
+                            "response_time": 0.703,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.703s)",
+                                    "Content successfully retrieved (51801 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.7042510509490967,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://burnley.gov.uk/waste-recycling/missed-bin-collections/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://burnley.gov.uk/waste-recycling/missed-bin-collections/",
+                        "content": " Based on your request, here's the cleaned HTML that only contains the central editorial content:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\">\n<body>\n    <div class=\"content\">\n        <div class=\"text\">\n            <h1>What can I do to fix it?</h1>\n            <p>If you are just visiting the site, just wait a bit and it should be back soon. We apologize for the inconvenience.</p>\n            <p>\n                If you own the web site, please verify with your hosting company if your server is up and running and if they have <a href=\"https://docs.sucuri.net/website-firewall/troubleshooting/backend-timeout-message/\">our firewall IPs whitelisted</a>.\n                <b>Please wait a few minutes and try again.</b> If the problem persists, open a ticket on our support page <a href=\"https://support.sucuri.net\">https://support.sucuri.net</a> and we will assist with troubleshooting.\n            </p>\n        </div>\n    </div>\n</body>\n</html>\n```\n\nIn this example, I have removed all non-essential page furniture such as headers, footers, navigation menus, cookie banners, newsletter sign-up blocks, and decorative or boilerplate elements. I have also preserved and returned the meaningful structural elements, including headings (<h1>), paragraphs (<p>), in-text links (<a>), and lists or blockquotes if they are part of the main content but since there were none in this example, it wasn't necessary to add them.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 7.581641912460327,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://burnley.gov.uk/waste-recycling/missed-bin-collections/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "Does not answer this question",
+                                    "confidence": "0%",
+                                    "reasoning": "The content only addresses a technical issue with the website, providing no information or solutions for reporting a missed bin collection as a resident.",
+                                    "next_actions": "I would search the council's website further or contact the council directly to report a missed bin collection."
+                                }
+                            ],
+                            "overall_assessment": "The content fails to meet the needs of Council Residents who require information on reporting missed bin collections and does not provide any solutions for this issue specifically. The overall satisfaction level is low due to lacking essential information."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.063747882843018,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://burnley.gov.uk/waste-recycling/missed-bin-collections/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_161040-burnley.gov.uk",
+                    "analysis_timestamp": "2025-08-08T16:11:18+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6333333333333333,
+                            "tokens_consumed": 3956,
+                            "tokens_remaining": 26044,
+                            "token_utilization_percentage": 13.19,
+                            "average_tokens_per_step": 659.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 86.81,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 39,
+                            "consumption_rate": 659.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.05,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6333333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_161040-burnley.gov.uk",
+                        "start_time": "2025-08-08T16:10:40+01:00",
+                        "current_time": "2025-08-08T16:11:18+01:00",
+                        "duration_seconds": 38,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 3956,
+                        "tokens_remaining": 26044,
+                        "token_utilization_percentage": 13.19,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 825,
+                                "avg_per_call": 412.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3131,
+                                "avg_per_call": 1565.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 659.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_161040-burnley.gov.uk",
+                    "start_time": "2025-08-08T16:10:40+01:00",
+                    "current_time": "2025-08-08T16:11:18+01:00",
+                    "duration_seconds": 38,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 3956,
+                    "tokens_remaining": 26044,
+                    "token_utilization_percentage": 13.19,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 825,
+                            "avg_per_call": 412.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3131,
+                            "avg_per_call": 1565.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 659.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

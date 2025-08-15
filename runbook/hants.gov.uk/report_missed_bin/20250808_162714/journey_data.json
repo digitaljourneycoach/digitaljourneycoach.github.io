@@ -1,0 +1,682 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T16:27:14+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "hants.gov.uk",
+                "Council Name": "Hampshire County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Waste prevention and recycling | Waste and recycling | Hampshire ...",
+                        "link": "https://www.hants.gov.uk/wasteandrecycling",
+                        "snippet": "... waste permits for vans and trailers, and report fly-tipping, illegal waste, litter and abandoned vehicles ... Report a missed bin collection \u00b7 Report littering\u00a0..."
+                    },
+                    {
+                        "title": "Report a problem to Hampshire County Council Highways ...",
+                        "link": "https://www.hants.gov.uk/transport/highways/report-a-problem",
+                        "snippet": "Icon illustrating a waste bin. Waste bins. Report damaged or missing bins. Rubbish. Find out more about Waste bins. Icon illustrating graffiti. Graffiti. Report\u00a0..."
+                    },
+                    {
+                        "title": "Report a missing salt bin | Transport and roads | Hampshire County ...",
+                        "link": "https://www.hants.gov.uk/transport/highways/report-a-problem/missingsaltbin",
+                        "snippet": "Report a missing salt bin."
+                    },
+                    {
+                        "title": "Road salt (grit) bins | Transport and roads | Hampshire County Council",
+                        "link": "https://www.hants.gov.uk/transport/highways/severeweather/salting",
+                        "snippet": "Report a damaged salt bin \u00b7 Report a missing salt bin \u00b7 Request a new salt bin \u00b7 Using salt bins \u00b7 Map of salt bins and salting routes \u00b7 Road salting\u00a0..."
+                    },
+                    {
+                        "title": "Hampshire County Council Highways | Transport and roads ...",
+                        "link": "https://www.hants.gov.uk/transport/highways",
+                        "snippet": "Report a tree or hedge problem. Icon illustrating a general highways problem ... Waste prevention and recycling \u00b7 About the Council \u00b7 Supplier services\u00a0..."
+                    },
+                    {
+                        "title": "Contact the Council | About the Council | Hampshire County Council",
+                        "link": "https://www.hants.gov.uk/aboutthecouncil/contact",
+                        "snippet": "How to get in touch with Hampshire County Council services by email, phone or post. You can make a suggestion, complaint, FOI or subject access request."
+                    },
+                    {
+                        "title": "Household Waste Recycling Centres (HWRCs)",
+                        "link": "https://democracy.hants.gov.uk/documents/s125727/Household%20Waste%20Recycling%20Centres%20HWRCs.pdf",
+                        "snippet": "The WRAP Guidance also refers to the National Assessment of Civic Amenity Sites (NACAS) report (2004) which advised that a site should not manage more than\u00a0..."
+                    },
+                    {
+                        "title": "Efford | Waste and recycling | Hampshire County Council",
+                        "link": "https://www.hants.gov.uk/wasteandrecycling/recyclingcentres/hwrcfinder/Efford",
+                        "snippet": "Performance cookies help us to improve our website by collecting and reporting information on its usage (for example, which of our pages are most frequently\u00a0..."
+                    },
+                    {
+                        "title": "Appendix 1",
+                        "link": "https://www.hants.gov.uk/get-decision-document?documentId=13992&file=2014-10-17%20Staunton%20Country%20Park%20-%20Item%206%20Park%20Manager%20Report.pdf&type=pdf",
+                        "snippet": "Oct 17, 2014 ... collection in the future. ... This is a regular update report and therefore does not have any direct crime and disorder impact implications."
+                    },
+                    {
+                        "title": "1. HAMPSHIRE COUNTY COUNCIL Decision Report Decision ...",
+                        "link": "https://www.hants.gov.uk/get-decision-document?documentId=17900&file=The%20Butts%20Primary%20School%20Bolle%20Road%20Alton%20-%20Report.pdf&type=pdf",
+                        "snippet": "Oct 19, 2016 ... Thursday in late April, later than a week after the Easter school holiday. ... f) make provision for waste and recycling bin storage and\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.hants.gov.uk/wasteandrecycling",
+                        "title": "Waste prevention and recycling | Waste and recycling | Hampshire ...",
+                        "confidence": 85,
+                        "strengths": [
+                            "Provides information about waste permits, fly-tipping, illegal waste, litter, missed bin collections and abandoned vehicles.",
+                            "Offers ways to report various waste-related issues."
+                        ],
+                        "reasoning": "This link directly pertains to council customer information needs related to waste management. It offers a variety of services for managing and reporting waste issues.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Waste prevention and recycling | Waste and recycling | Hampshire ...",
+                                "Source": "https://www.hants.gov.uk/wasteandrecycling",
+                                "Key Strengths": [
+                                    "Provides information about waste permits, fly-tipping, illegal waste, litter, missed bin collections and abandoned vehicles.",
+                                    "Offers ways to report various waste-related issues."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link directly pertains to council customer information needs related to waste management. It offers a variety of services for managing and reporting waste issues."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Report a problem to Hampshire County Council Highways ...",
+                                "Source": "https://www.hants.gov.uk/transport/highways/report-a-problem",
+                                "Key Strengths": [
+                                    "Allows customers to report damaged or missing bins, graffiti, and other general highways problems.",
+                                    "Offers ways to report various issues related to waste bins."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link provides a mechanism for reporting a problem that includes issues related to waste bins. While not the primary focus, it does offer relevant services for customers."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Report a missing salt bin | Transport and roads | Hampshire County ...",
+                                "Source": "https://www.hants.gov.uk/transport/highways/report-a-problem/missingsaltbin",
+                                "Key Strengths": [
+                                    "Provides a mechanism for customers to report missing salt bins.",
+                                    "Offers a targeted service related to road safety in winter conditions."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "While not directly related to waste management, reporting missing salt bins helps maintain roads and potentially minimizes waste from improper snow removal methods."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Road salt (grit) bins | Transport and roads | Hampshire County Council",
+                                "Source": "https://www.hants.gov.uk/transport/highways/severeweather/salting",
+                                "Key Strengths": [
+                                    "Provides information about damaged salt bins, missing salt bins, new salt bin requests, using salt bins, and offers a map of salt bin locations.",
+                                    "Offers comprehensive services relevant to waste management in winter conditions."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link provides a variety of services related to road safety and snow removal, which indirectly benefits waste management and minimizes potential waste from improper snow removal methods."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Contact the Council | About the Council | Hampshire County Council",
+                                "Source": "https://www.hants.gov.uk/aboutthecouncil/contact",
+                                "Key Strengths": [
+                                    "Offers multiple methods for contacting the council by email, phone, or post.",
+                                    "Allows customers to make suggestions, complaints, FOI requests, and subject access requests."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "While not directly related to waste management, this link provides valuable resources for customers to voice concerns or suggestions, which may pertain to council services in relation to waste."
+                            }
+                        ],
+                        "Analysis Notes": "Several links offered relevant information regarding waste management and reporting. While some were not primary sources, they still provided potential avenues for addressing various customer needs related to council services.",
+                        "Recommendations Notes": "The top five recommendations offer the most relevant and high-quality solutions for council customer information needs related to waste management and reporting."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "80",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 78,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Waste prevention and recycling | Waste and recycling | Hampshire ...",
+                            "Source": "https://www.hants.gov.uk/wasteandrecycling",
+                            "Reasoning": "This link directly pertains to council customer information needs related to waste management. It offers a variety of services for managing and reporting waste issues.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Road salt (grit) bins | Transport and roads | Hampshire County Council",
+                            "Source": "https://www.hants.gov.uk/transport/highways/severeweather/salting",
+                            "Reasoning": "This link provides a variety of services related to road safety and snow removal, which indirectly benefits waste management and minimizes potential waste from improper snow removal methods.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Report a problem to Hampshire County Council Highways ...",
+                            "Source": "https://www.hants.gov.uk/transport/highways/report-a-problem",
+                            "Reasoning": "This link provides a mechanism for reporting various issues related to waste bins, even though not the primary focus.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.hants.gov.uk/wasteandrecycling"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.hants.gov.uk/wasteandrecycling",
+                        "analysis": {
+                            "url": "https://www.hants.gov.uk/wasteandrecycling",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T16:27:14+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T16:27:40+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": false,
+                            "http_status": 403,
+                            "content_type": null,
+                            "content_length": 0,
+                            "response_time": 0,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 10,
+                                "max_score": 100,
+                                "issues": [
+                                    "HTTP error response (403): forbidden",
+                                    "No content retrieved"
+                                ],
+                                "strengths": [
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "forbidden",
+                                    "action": "avoid",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 0,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": null,
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "avoid",
+                                "confidence": 95,
+                                "reason": "Access denied or forbidden (403)",
+                                "overall_score": 24,
+                                "component_scores": {
+                                    "technical": 10,
+                                    "accessibility": 0,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Do not follow this link",
+                                    "Look for alternative sources",
+                                    "Report broken link if appropriate"
+                                ],
+                                "alternatives_needed": true
+                            },
+                            "fetch_error": "Failed to fetch URL: Client error: `GET https://www.hants.gov.uk/wasteandrecycling` resulted in a `403 Forbidden` response:\n<!doctype html>\r\n<html lang=\"en\">\r\n\t<head>\r\n\t\t<meta charset=\"utf-8\">\r\n\t\t<title>Hantsweb</title>\r\n\t\t<meta name=\"robots\" c (truncated...)\n"
+                        },
+                        "processing_time": 0.22786521911621094,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.hants.gov.uk/wasteandrecycling"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.hants.gov.uk/wasteandrecycling",
+                        "content": " Here is the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n<h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> hants.gov.uk</h2>\n<div class=\"cf-section cf-wrapper\">\n    <div class=\"cf-columns two\">\n        <div class=\"cf-column\">\n            <h2 data-translate=\"blocked_why_headline\">Why have I been blocked?</h2>\n            <p data-translate=\"blocked_why_detail\">This website is using a security service to protect itself from online attacks. The action you just performed triggered the security solution. There are several actions that could trigger this block including submitting a certain word or phrase, a SQL command or malformed data.</p>\n        </div>\n        <div class=\"cf-column\">\n            <h2 data-translate=\"blocked_resolve_headline\">What can I do to resolve this?</h2>\n            <p data-translate=\"blocked_resolve_detail\">You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.</p>\n        </div>\n    </div>\n</div>\n```\n\nThis clean HTML structure preserves the main headings, paragraphs, and relevant sub-structure elements like lists (not present in this example) and blockquotes. It removes non-essential page furniture such as headers, footers, navigation menus, sidebars, cookie banners, login links, and social media footers, resulting in a clean and focused content representation.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 8.366425037384033,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.hants.gov.uk/wasteandrecycling",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "0%",
+                                    "confidence": "0%",
+                                    "reasoning": "The content does not address this specific question or meet this need as it is related to a website access issue and does not provide any information about waste management services or how to report missed bin collections.",
+                                    "next_actions": "The Council Resident should visit the council's official waste management page or contact the council's customer service directly."
+                                }
+                            ],
+                            "overall_assessment": "The content fails to meet the needs of a Council Resident as it does not provide information about waste management services, specifically missed bin collections. The overall satisfaction level is very low due to the lack of relevant content for the question asked."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.343004941940308,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.hants.gov.uk/wasteandrecycling"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_162714-hants.gov.uk",
+                    "analysis_timestamp": "2025-08-08T16:27:53+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.65,
+                            "tokens_consumed": 4686,
+                            "tokens_remaining": 25314,
+                            "token_utilization_percentage": 15.62,
+                            "average_tokens_per_step": 781
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 84.38,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 32,
+                            "consumption_rate": 781,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.29,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.65,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_162714-hants.gov.uk",
+                        "start_time": "2025-08-08T16:27:14+01:00",
+                        "current_time": "2025-08-08T16:27:53+01:00",
+                        "duration_seconds": 39,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 4686,
+                        "tokens_remaining": 25314,
+                        "token_utilization_percentage": 15.62,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 1415,
+                                "avg_per_call": 707.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3271,
+                                "avg_per_call": 1635.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 781
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_162714-hants.gov.uk",
+                    "start_time": "2025-08-08T16:27:14+01:00",
+                    "current_time": "2025-08-08T16:27:53+01:00",
+                    "duration_seconds": 39,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 4686,
+                    "tokens_remaining": 25314,
+                    "token_utilization_percentage": 15.62,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 1415,
+                            "avg_per_call": 707.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3271,
+                            "avg_per_call": 1635.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 781
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

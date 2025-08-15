@@ -1,0 +1,220 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-12T23:01:27+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "chorley.gov.uk",
+                "Council Name": "Chorley Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Holiday Activity and Food (HAF) Clubs | Chorley",
+                        "link": "https://chorley.gov.uk/children-families-support/HAF",
+                        "snippet": "School aged children from reception to year 11 (inclusive) who receive benefits related free school meals can access this provision. Activities take place\u00a0..."
+                    },
+                    {
+                        "title": "Children and families support services | Chorley",
+                        "link": "https://chorley.gov.uk/children-families-support/Children-young-people-and-family-support",
+                        "snippet": "Your child may be eligible for free school meals if they are in Reception class, Year 1, or Year 2. Additionally, if you receive certain benefits, your child's\u00a0..."
+                    },
+                    {
+                        "title": "Chorley Council Holiday Activity and Food (HAF) Grant Funding",
+                        "link": "https://chorley.gov.uk/downloads/file/1525/2025-26-haf-guidance-notes-and-criteria",
+                        "snippet": "free school meals (FSM) and other identified vulnerabilities access to support through the school holiday ... the HAF programme, however, please do get in\u00a0..."
+                    },
+                    {
+                        "title": "Minutes Template",
+                        "link": "https://democracy.chorley.gov.uk/documents/s167179/Minutes+12102023+Executive+Cabinet.pdf",
+                        "snippet": "Oct 12, 2023 ... In summary, Chorley has 2,727 children aged 4 \u2013 16 receiving free school meals, ... To grant approval to receive funding from LCC to undertake the\u00a0..."
+                    },
+                    {
+                        "title": "Household Support Fund - 2023/24 delivery",
+                        "link": "https://democracy.chorley.gov.uk/documents/s163698/Appendix%202%20for%20Cost%20of%20Living%20Action%20Plan%20-%20Update.pdf?txtonly=1",
+                        "snippet": "Lancashire County Council have retained funding to allocate Free School Meal vouchers during Easter, Summer, October, Christmas, and February holiday periods."
+                    },
+                    {
+                        "title": "Healthy Weight Collaboration",
+                        "link": "https://democracy.chorley.gov.uk/documents/s165508/Council%20report%20funding%20Nov%2023.pdf?txtonly=1",
+                        "snippet": "The programme will be offered to families who have children aged between 5-8 years, prioritising those eligible for free school meals, however we have the\u00a0..."
+                    },
+                    {
+                        "title": "Statement of Intent for ECO4 and Great British Insulation Scheme ...",
+                        "link": "https://chorley.gov.uk/climate-change/statement-intent-eco4-great-british-insulation-scheme",
+                        "snippet": "Proxy 4) A child living at the premises is eligible for free school meals, due to low-income. Proxy 5) A person living at the premises is supported by a\u00a0..."
+                    },
+                    {
+                        "title": "Winter weather | Chorley",
+                        "link": "https://chorley.gov.uk/emergency-advice/winter-weather",
+                        "snippet": "School closures. You can find out about school closures in severe weather ... have at least 1 hot meal a day; fill some clean containers with fresh water\u00a0..."
+                    },
+                    {
+                        "title": "Accessible Report Template",
+                        "link": "https://democracy.chorley.gov.uk/documents/s185880/Household%20Support%20Fund%20-%20Phase%207%20Delivery%20Approval.pdf",
+                        "snippet": "Jun 6, 2025 ... providing Free School Meal vouchers, which could be argued is duplicating the ... and ensure they have sufficient food supplies to support\u00a0..."
+                    },
+                    {
+                        "title": "Reducing the backlog in criminal courts",
+                        "link": "https://chorley.gov.uk/downloads/file/948/g2d-iv-reducing-the-backlog-in-criminal-courts",
+                        "snippet": "Mar 9, 2022 ... EU Exit: Get ready for Brexit Campaign. HC 131. 5th. University ... COVID 19: the free school meals voucher scheme. HC 689. 42nd. COVID-19\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Holiday Activity and Food (HAF) Clubs | Chorley",
+                                "Source": "https://chorley.gov.uk/children-families-support/HAF",
+                                "Key Strengths": [
+                                    "Directly lists free school meal eligibility",
+                                    "Outlines activities for children aged from reception to year 11"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link provides information about the Holiday Activity and Food (HAF) Clubs, which directly states that it is for children who receive benefits related free school meals. It also lists activities available for children aged from reception to year 11."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Children and families support services | Chorley",
+                                "Source": "https://chorley.gov.uk/children-families-support/Children-young-people-and-family-support",
+                                "Key Strengths": [
+                                    "Indirectly lists free school meal eligibility",
+                                    "Explains process for determining eligibility"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link provides information about children and family support services. While it doesn't directly mention the Holiday Activity and Food program, its content explains that free school meals can be a qualifying factor."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Household Support Fund - 2023/24 delivery",
+                                "Source": "https://democracy.chorley.gov.uk/documents/s163698/Appendix%202%20for%20Cost%20of%20Living%20Action%20Plan%20-%20Update.pdf?txtonly=1",
+                                "Key Strengths": [
+                                    "Mentions free school meal vouchers",
+                                    "Specifies holiday periods for voucher distribution"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link discusses the Household Support Fund and mentions that Lancashire County Council retains funding to allocate Free School Meal vouchers during certain holiday periods."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Healthy Weight Collaboration",
+                                "Source": "https://democracy.chorley.gov.uk/documents/s165508/Council%20report%20funding%20Nov%2023.pdf?txtonly=1",
+                                "Key Strengths": [
+                                    "Indicates priority for families receiving free school meals",
+                                    "Mentions program catering to children aged 5-8"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This document discusses the Healthy Weight Collaboration, which has a focus on families who receive free school meals as a priority. However, the specifics of the program are not clearly related to holiday support."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Accessible Report Template",
+                                "Source": "https://democracy.chorley.gov.uk/documents/s185880/Household%20Support%20Fund%20-%20Phase%207%20Delivery%20Approval.pdf",
+                                "Key Strengths": [
+                                    "Mentions provision of free school meal vouchers",
+                                    "Focuses on reducing backlog phase 7 delivery"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "While this document does reference provision of Free School Meal vouchers, the focus is primarily on reducing the backlog of support phase 7. Additionally, the specific holiday periods are not explicitly mentioned in the excerpt provided."
+                            }
+                        ],
+                        "Analysis Notes": "Many links contained relevant information about council services, but only a few directly addressed free school meal eligibility or holiday activities for children. In particular, Item 3 provides insight into the HAF grant funding criteria, which could be useful when determining additional resources for holiday support.",
+                        "Recommendations Notes": "Items 1-2 were prioritized due to their direct relevance to free school meal eligibility and holiday activities, making them the most applicable options for council customer information needs."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "80",
+                        "85",
+                        "75",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 79,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

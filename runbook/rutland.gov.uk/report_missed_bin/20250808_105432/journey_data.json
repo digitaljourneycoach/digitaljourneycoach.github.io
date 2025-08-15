@@ -1,0 +1,663 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T10:54:32+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "rutland.gov.uk",
+                "Council Name": "Rutland County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report it | Rutland County Council",
+                        "link": "https://www.rutland.gov.uk/report-it",
+                        "snippet": "crash barriers; dead animal; fly posting; fly tipping; footway or footpaths; graffiti; gully or manhole; kerbs; missed bins; missed grass cutting; roads\u00a0..."
+                    },
+                    {
+                        "title": "MyAccount | Rutland County Council",
+                        "link": "https://www.rutland.gov.uk/council-councillors/myaccount",
+                        "snippet": "Waste Waste. report a missed bin; Find your bin collection day; report a problem with your bin; request a new bin; get help to put your bins out. Recycling"
+                    },
+                    {
+                        "title": "Bins, waste and recycling | Rutland County Council",
+                        "link": "https://www.rutland.gov.uk/bins-waste-recycling",
+                        "snippet": "Household waste and recycling centres and how to register your vehicle, report waste issues, bin guides, bulky waste collections, recycling and reducing\u00a0..."
+                    },
+                    {
+                        "title": "CORPORATE COMPLAINTS PROCEDURE",
+                        "link": "https://www.rutland.gov.uk/sites/default/files/2024-11/Corporate%20Complaints%20Procedure%20-%202024%20%281%29.pdf",
+                        "snippet": "or where is it has been overlooked i.e. a missed bin collection. A. Service Request is not a Complaint but is recorded and reported on in the same way as a\u00a0..."
+                    },
+                    {
+                        "title": "Green waste subscription service | Rutland County Council",
+                        "link": "https://www.rutland.gov.uk/bins-waste-recycling/green-waste-subscription-service",
+                        "snippet": "If your green bin is missed due to bad weather and you'd like your bin emptied before your next collection day, you must report your missed bin within two\u00a0..."
+                    },
+                    {
+                        "title": "Rutland County Council - Annual Performance Report",
+                        "link": "https://www.rutland.gov.uk/sites/default/files/2023-03/Annual%20Report%202122.pdf",
+                        "snippet": "This included introducing MyAccount to enable residents to book services and track progress online including booking Civil Amenities, reporting missed bins and\u00a0..."
+                    },
+                    {
+                        "title": "Rutland County Council Waste Policy 2024-2026",
+                        "link": "https://www.rutland.gov.uk/sites/default/files/2024-12/Waste%20Policy%202024%20to%202026.pdf",
+                        "snippet": "the bin on their next scheduled collection. 1.7 Missed Bins or Bags. (a). All missed bins/bag collections must be reported to the Council by residents\u00a0..."
+                    },
+                    {
+                        "title": "Rutland County Council waste guide 2023",
+                        "link": "https://www.rutland.gov.uk/sites/default/files/2023-01/Waste%20Guide%202023.pdf",
+                        "snippet": "Genuine missed collections are rare. If your bin has been missed please report this to the Council using My Account or by calling our Customer Services Team."
+                    },
+                    {
+                        "title": "COMPLIMENTS, COMMENTS AND COMPLAINTS POLICY AND ...",
+                        "link": "https://www.rutland.gov.uk/sites/default/files/2023-04/Compliments%20Comments%20and%20Complaints%20Policy%20-%20May%202020.pdf",
+                        "snippet": "We will deal with a single service failure, such as a missed refuse collection or ... complaint or complaints not only with the Council, but at the same time\u00a0..."
+                    },
+                    {
+                        "title": "Chief Executive Summary Welcome to the quarter three ...",
+                        "link": "https://www.rutland.gov.uk/sites/default/files/2025-02/Performance%20Dashboard%202024-2025%20Quarter%20Three.pdf",
+                        "snippet": "Since changing recycling contractors in April 2024 there has been in increase in reported contamination. ... only 0.04% of bins were missed by collection crews."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.rutland.gov.uk/report-it",
+                        "title": "Report it | Rutland County Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Direct link to report various council service issues, including missed bin collections",
+                            "Includes a wide range of council service issues"
+                        ],
+                        "reasoning": "The title and snippet of this resource clearly indicate that it's a service provided by the Rutland County Council for reporting various service issues, including missed bin collections.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report it | Rutland County Council",
+                                "Source": "https://www.rutland.gov.uk/report-it",
+                                "Key Strengths": [
+                                    "Direct link to report various council service issues, including missed bin collections",
+                                    "Includes a wide range of council service issues"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title and snippet of this resource clearly indicate that it's a service provided by the Rutland County Council for reporting various service issues, including missed bin collections."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "MyAccount | Rutland County Council",
+                                "Source": "https://www.rutland.gov.uk/council-councillors/myaccount",
+                                "Key Strengths": [
+                                    "Allows residents to report missed bin collections and request new bins online",
+                                    "Provides a user-friendly platform to manage council services"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The snippet mentions the option to report a missed bin collection and find your collection day, suggesting that this resource can be used for managing waste services."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Bins, waste and recycling | Rutland County Council",
+                                "Source": "https://www.rutland.gov.uk/bins-waste-recycling",
+                                "Key Strengths": [
+                                    "A central hub for all information related to bins, waste, and recycling services",
+                                    "Includes options for reporting missed bin collections"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title and snippet of this resource suggest that it's a comprehensive guide to the council's waste management services, including information about reporting missed bin collections."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "CORPORATE COMPLAINTS PROCEDURE",
+                                "Source": "https://www.rutland.gov.uk/sites/default/files/2024-11/Corporate%20Complaints%20Proced...",
+                                "Key Strengths": [
+                                    "Detailed guide on the complaints procedure within Rutland County Council",
+                                    "Covers missed bin collections as a potential complaint"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While this resource is primarily about the complaints procedure within Rutland County Council, it does mention missed bin collections as an example of a service request that can be transformed into a complaint if necessary."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Rutland County Council - Annual Performance Report",
+                                "Source": "https://www.rutland.gov.uk/sites/default/files/2023-03/Annual%20Report%2021...",
+                                "Key Strengths": [
+                                    "Details the performance of Rutland County Council over the year, including information about waste services such as bin collections and MyAccount implementation"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though this resource does not specifically mention missed bin collections, it is a comprehensive annual report containing performance data for various council services. As MyAccount includes the option to report missed bin collections, it may still provide relevant information."
+                            }
+                        ],
+                        "Analysis Notes": "Some of the resources provided detailed information about the council's waste management system and its related services, while others were more general in nature. The recommended resources are those that appear most relevant to the user's need for council customer information on bin collection issues.",
+                        "Recommendations Notes": "While some resources did not specifically mention missed bin collections, they were included due to their relevance to waste management services and the potential connection to the user's needs."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "90",
+                        "90",
+                        "80",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 84,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.rutland.gov.uk/report-it"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.rutland.gov.uk/report-it",
+                        "analysis": {
+                            "url": "https://www.rutland.gov.uk/report-it",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T10:54:32+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T10:55:07+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 46173,
+                            "response_time": 1.328,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (1.328s)",
+                                    "Content successfully retrieved (46173 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 1.3297500610351562,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.rutland.gov.uk/report-it"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.rutland.gov.uk/report-it",
+                        "content": " This HTML code represents a webpage for a local government organization, likely County Rutland in England. The page is designed to provide information on how residents can report various issues within the county.\n\nThe main sections of the webpage include:\n\n1. A header that contains the name and logo of the organization, navigation menu, and search bar.\n2. A section for council news headlines.\n3. The main content area, which provides information on how to report different types of issues, such as abandoned vehicles, bin issues, road signage, etc., through the MyAccount portal or FixMyStreet. It also lists some specific issues that can be reported directly from this website, under categories like anti-social behavior, concern about a child or young person, concern about a vulnerable adult, reporting a flood, etc.\n4. A footer with links to helpful resources, such as accessibility information, terms of use, privacy policy, cookie policy, sitemap, and contact details.\n5. A section asking visitors if the page was useful.\n\nThe code is written in HTML (Hypertext Markup Language), a standard markup language used for creating web pages and other information that can be delivered over the internet. The structure of the code follows the Document Object Model (DOM), allowing different web browsers to render the page correctly while maintaining its logical organization and semantic meaning. CSS (Cascading Style Sheets) is used to control the visual presentation, and JavaScript may be added for interactivity and dynamic content.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 9.536970853805542,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.rutland.gov.uk/report-it",
+                        "analysis": {
+                            "persona": "COUNCIL RESIDENT",
+                            "Reasons": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "Partial",
+                                    "confidence": "60%",
+                                    "reasoning": "The content provides a way to report issues related to bins, but it does not specify how long it might take for the missed bin collection report to be processed or resolved. Also, it doesn't explicitly mention if there is an option to request a one-off pickup for forgotten bins.",
+                                    "next_actions": "I would visit the MyAccount portal or FixMyStreet as described in the content to see if I can find more information about missed bin collections and possibly submit a report."
+                                }
+                            ],
+                            "overall_assessment": {
+                                "summary": "The provided content is helpful in guiding Council Residents on various issues that can be reported, but it lacks specificity for some services. It would be beneficial to include more detailed information, such as estimated response times and additional steps for less common requests.",
+                                "gaps_or_areas_for_improvement": [
+                                    "Specific information about missed bin collections, estimated response times, and whether one-off pickups are available."
+                                ],
+                                "overall_satisfaction_level": "70%"
+                            }
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.2875449657440186,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.rutland.gov.uk/report-it"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_105432-rutland.gov.uk",
+                    "analysis_timestamp": "2025-08-08T10:55:25+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8833333333333333,
+                            "tokens_consumed": 6571,
+                            "tokens_remaining": 23429,
+                            "token_utilization_percentage": 21.9,
+                            "average_tokens_per_step": 1095.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 78.1,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 21,
+                            "consumption_rate": 1095.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 12.62,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_105432-rutland.gov.uk",
+                        "start_time": "2025-08-08T10:54:32+01:00",
+                        "current_time": "2025-08-08T10:55:25+01:00",
+                        "duration_seconds": 53,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6571,
+                        "tokens_remaining": 23429,
+                        "token_utilization_percentage": 21.9,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3234,
+                                "avg_per_call": 1617
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3337,
+                                "avg_per_call": 1668.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1095.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_105432-rutland.gov.uk",
+                    "start_time": "2025-08-08T10:54:32+01:00",
+                    "current_time": "2025-08-08T10:55:25+01:00",
+                    "duration_seconds": 53,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6571,
+                    "tokens_remaining": 23429,
+                    "token_utilization_percentage": 21.9,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3234,
+                            "avg_per_call": 1617
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3337,
+                            "avg_per_call": 1668.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1095.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

@@ -1,0 +1,671 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T15:18:30+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "testvalley.gov.uk",
+                "Council Name": "Test Valley Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report | Test Valley Borough Council",
+                        "link": "https://www.testvalley.gov.uk/do-it-online-services/report",
+                        "snippet": "Missed Bin Collection \u00b7 Notice of Demolition \u00b7 Report a Nuisance \u00b7 Report a Pothole \u00b7 Report Dog Fouling \u00b7 Suggest Item for OSCOM. A to Z of Council Services. A\u00a0..."
+                    },
+                    {
+                        "title": "My Test Valley | Test Valley Borough Council",
+                        "link": "https://www.testvalley.gov.uk/mytestvalley",
+                        "snippet": "My Test Valley allows you to report issues such as fly-tipped waste and a missed bin collection to us quickly and easily. Registration is free."
+                    },
+                    {
+                        "title": "Household Waste and Recycling Collection Service | Test Valley ...",
+                        "link": "https://www.testvalley.gov.uk/wasteandrecycling/waste",
+                        "snippet": "6 days ago ... To check when your next collection is due, click here: When Are My Bins Collected? To report a missed bin collection online, please follow this\u00a0..."
+                    },
+                    {
+                        "title": "Annual Complaints report | Test Valley Borough Council",
+                        "link": "https://www.testvalley.gov.uk/aboutyourcouncil/accesstoinformation/open-government-data/open-government-annual-complaints-reports",
+                        "snippet": "Mar 10, 2025 ... ... issue has been reported (for example, a missed bin). However, that request for action may lead to a complaint should the Council's response\u00a0..."
+                    },
+                    {
+                        "title": "MCS | Test Valley Borough Council",
+                        "link": "https://www.testvalley.gov.uk/formredirect/mcs",
+                        "snippet": "Report Dog Aggression \u00b7 Report Details Of A Dog Fouling Incident You Have Seen ... Missed Bin Collection \u00b7 Nuisance Vehicles \u00b7 Order a Wheeled Bin \u00b7 Planning\u00a0..."
+                    },
+                    {
+                        "title": "Garden Waste Collection Service | Test Valley Borough Council",
+                        "link": "https://www.testvalley.gov.uk/wasteandrecycling/garden-waste-info?chapter=2",
+                        "snippet": "7 days ago ... ... waste wheeled bin or sack as part of the subscription process. ... Check your collection days and reporting a missed collection. To report a\u00a0..."
+                    },
+                    {
+                        "title": "Trees overhanging the highway",
+                        "link": "https://www.testvalley.gov.uk/assets/attach/4863/Trees-overhanging-the-highway.pdf",
+                        "snippet": "'My Test Valley' allows residents to report issues such as missed bins, overgrown shrubs and hedges and fly-tips, quickly and easily. You can attach useful\u00a0..."
+                    },
+                    {
+                        "title": "Tree pruning",
+                        "link": "https://www.testvalley.gov.uk/assets/attach/4868/Tree-Pruning.pdf",
+                        "snippet": "'My Test Valley' allows residents to report issues such as missed bins, overgrown shrubs and hedges and fly-tips, quickly and easily. You can attach useful\u00a0..."
+                    },
+                    {
+                        "title": "Dead and dangerous trees | Test Valley Borough Council",
+                        "link": "https://www.testvalley.gov.uk/assets/attach/4870/Dead-and-dangerous-trees.pdf",
+                        "snippet": "'My Test Valley' allows residents to report issues such as missed bins, overgrown shrubs and hedges and fly-tips, quickly and easily. You can attach useful\u00a0..."
+                    },
+                    {
+                        "title": "Hampshire County Council Highways | Transport and roads ...",
+                        "link": "https://testvalley.gov.uk/do-it-online-services/report/report-a-pothole",
+                        "snippet": "Report a tree or hedge problem. Icon illustrating a general highways problem ... Waste prevention and recycling \u00b7 About the Council \u00b7 Supplier services\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.testvalley.gov.uk/mytestvalley",
+                        "title": "My Test Valley | Test Valley Borough Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Allows users to report issues such as missed bin collection quickly and easily.",
+                            "Provides a user-friendly interface."
+                        ],
+                        "reasoning": "This link enables residents to directly report missed bin collections, which is the primary customer information need mentioned in the instruction. The site also offers an easy-to-use platform for reporting such issues.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "My Test Valley | Test Valley Borough Council",
+                                "Source": "https://www.testvalley.gov.uk/mytestvalley",
+                                "Key Strengths": [
+                                    "Allows users to report issues such as missed bin collection quickly and easily.",
+                                    "Provides a user-friendly interface."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link enables residents to directly report missed bin collections, which is the primary customer information need mentioned in the instruction. The site also offers an easy-to-use platform for reporting such issues."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Household Waste and Recycling Collection Service | Test Valley Borough Council",
+                                "Source": "https://www.testvalley.gov.uk/wasteandrecycling/waste",
+                                "Key Strengths": [
+                                    "Clear information about household waste collection days and online reporting of missed bin collections.",
+                                    "Offers comprehensive waste management information."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While this link isn't dedicated to just missed bin collection, it does provide necessary details on waste collection and the ability to report missed bins as well."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "MCS | Test Valley Borough Council",
+                                "Source": "https://www.testvalley.gov.uk/formredirect/mcs",
+                                "Key Strengths": [
+                                    "Offers options for reporting dog aggression and dog fouling incidents.",
+                                    "Additional services provided such as ordering a wheeled bin and planning."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "While the main instruction wasn't specifically related to dog-related issues, this link still offers convenient options for residents to report these types of problems, which may be useful in some scenarios."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Hampshire County Council Highways | Transport and roads ...",
+                                "Source": "https://testvalley.gov.uk/do-it-online-services/report/report-a-pothole",
+                                "Key Strengths": [
+                                    "This service provides a pothole reporting functionality.",
+                                    "It could help maintain the overall quality of roads and infrastructure in the council area."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Although this link doesn't focus on missed bin collection, it offers another useful avenue for residents to report issues related to the council's maintenance of the local infrastructure, which may indirectly contribute to a well-maintained living environment."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Trees overhanging the highway",
+                                "Source": "https://www.testvalley.gov.uk/assets/attach/4863/Trees-overhanging-the-highway.pdf",
+                                "Key Strengths": [
+                                    "Offers residents an option to report trees overhanging the highway.",
+                                    "Includes useful information about reporting other types of issues such as missed bins, overgrown shrubs, and fly-tips."
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "While this option doesn't directly focus on the primary task of reporting a missed bin collection, it does offer residents another way to report problems that affect their local environment. This may indirectly contribute to maintaining a clean, well-maintained living space."
+                            }
+                        ],
+                        "Analysis Notes": "Four out of ten links focused on issues other than those directly related to missed bin collection (such as tree issues, potholes, etc.). As such, the analysis was primarily based on finding resources offering a user interface for reporting issues quickly and easily.",
+                        "Recommendations Notes": "I prioritized results that provided direct means of reporting a missed bin collection, while also considering links with relevant supplementary services."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 75,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "My Test Valley | Test Valley Borough Council",
+                            "Source": "https://www.testvalley.gov.uk/mytestvalley",
+                            "Reasoning": "This is the optimal next step as it's a direct avenue for residents to report missed bin collections quickly and easily, as per the research objective.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Household Waste and Recycling Collection Service | Test Valley Borough Council",
+                            "Source": "https://www.testvalley.gov.uk/wasteandrecycling/waste",
+                            "Reasoning": "While this link doesn't solely focus on missed bin collection, it also provides necessary details on waste collection and the ability to report missed bins as well.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "10",
+                            "Title": "Hampshire County Council Highways | Transport and roads ...",
+                            "Source": "https://testvalley.gov.uk/do-it-online-services/report/report-a-pothole",
+                            "Reasoning": "Though indirectly related to missed bin collection, this link offers another useful avenue for residents to report issues that affect the overall living environment.",
+                            "Confidence": "70"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.testvalley.gov.uk/mytestvalley"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.testvalley.gov.uk/mytestvalley",
+                        "analysis": {
+                            "url": "https://www.testvalley.gov.uk/mytestvalley",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T15:18:30+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T15:18:57+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 28009,
+                            "response_time": 0.515,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.515s)",
+                                    "Content successfully retrieved (28009 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.516340970993042,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.testvalley.gov.uk/mytestvalley"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.testvalley.gov.uk/mytestvalley",
+                        "content": " The extract body content from the provided HTML page would be:\n```html\n<article class=\"row content marginTop marginBottom paddingTop\">\n  <div class=\"small-12 columns\">\n      <section>\n          <h2>More information</h2>\n          <p>&nbsp;</p>\n          <p>My Test Valley allows you to report issues such as fly-tipped waste and a missed bin collection to us quickly and easily. Registration is free and once you have joined you can track your reports and you will receive notification when the work has been completed. It only takes a few minutes to register, but if you prefer, you can report some specific issues anonymously. Click on the \u201cregister now\u201d button and create your account to report a matter.</p>\n          <p>To make life even easier, we have an app so you can report issues like fly-tipped waste or overgrown hedges and shrubs, on the go using your smartphone. The My Test Valley app is available to download at both the <a href=\"https://itunes.apple.com/gb/app/mytestvalley/id1000998433?mt=8\">App Store </a>(for iPhones and iPads) and from <a href=\"https://play.google.com/store/apps/details?id=com.itv.testvalley&amp;hl=en_GB\">Google Play&trade;</a> (for Android devices). You can attach information such as photos or videos and pinpoint the location of your report using the mapping software on your phone.</p>\n          <p><strong>Don't want to register?</strong><br> You can submit a report anonymously but we don\u2019t recommend it because we won\u2019t be able to answer enquiries, let you know what we\u2019ve done to rectify the problem or contact you for more information.<br> If you register, you have a record of your report and we can keep you updated on what we've done about it. You only need to register once to have a full history of your reports and enquiries.</p>\n      </section>\n  </div>\n</article>\n```\nI removed headers, footers, navigation menus, cookie banners, newsletter sign-up blocks, site-wide search, login links, social media footers, scripts, and other decorative or boilerplate elements from the HTML page while preserving semantic HTML tags `<article>`, `<div>`, `<h2>`, `<p>`, `<a>`, and formatting elements like `<br>`.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 11.855808973312378,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.testvalley.gov.uk/mytestvalley",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 5.040709018707275,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.testvalley.gov.uk/mytestvalley"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_151830-testvalley.gov.uk",
+                    "analysis_timestamp": "2025-08-08T15:19:14+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7333333333333333,
+                            "tokens_consumed": 5273,
+                            "tokens_remaining": 24727,
+                            "token_utilization_percentage": 17.58,
+                            "average_tokens_per_step": 878.83
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 82.42,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 28,
+                            "consumption_rate": 878.83,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 10.48,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7333333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_151830-testvalley.gov.uk",
+                        "start_time": "2025-08-08T15:18:30+01:00",
+                        "current_time": "2025-08-08T15:19:14+01:00",
+                        "duration_seconds": 44,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 5273,
+                        "tokens_remaining": 24727,
+                        "token_utilization_percentage": 17.58,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 1814,
+                                "avg_per_call": 907
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3459,
+                                "avg_per_call": 1729.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 878.83
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_151830-testvalley.gov.uk",
+                    "start_time": "2025-08-08T15:18:30+01:00",
+                    "current_time": "2025-08-08T15:19:14+01:00",
+                    "duration_seconds": 44,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 5273,
+                    "tokens_remaining": 24727,
+                    "token_utilization_percentage": 17.58,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 1814,
+                            "avg_per_call": 907
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3459,
+                            "avg_per_call": 1729.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 878.83
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

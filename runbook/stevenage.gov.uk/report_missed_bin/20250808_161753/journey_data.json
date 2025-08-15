@@ -1,0 +1,703 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T16:17:53+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "stevenage.gov.uk",
+                "Council Name": "Stevenage Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed Bin Collections",
+                        "link": "https://www.stevenage.gov.uk/waste-and-recycling/missed-bins",
+                        "snippet": "Aug 14, 2024 ... There are a number of things to do before reporting a missed bin collection. You should follow these steps before contacting us."
+                    },
+                    {
+                        "title": "Waste and Recycling",
+                        "link": "https://www.stevenage.gov.uk/waste-and-recycling",
+                        "snippet": "Waste and Recycling. Waste and Recycling. Missed Bin CollectionsWhat to do before reporting a missed bin \u00b7 What happens to your Recycling in StevenageSee what\u00a0..."
+                    },
+                    {
+                        "title": "Report Online",
+                        "link": "https://www.stevenage.gov.uk/report-online",
+                        "snippet": "Dec 22, 2022 ... Report a range of issues online including, pest control, anti-social behaviour, fly tipping and missed bin collections."
+                    },
+                    {
+                        "title": "Stevenage Borough Council",
+                        "link": "https://www.stevenage.gov.uk/",
+                        "snippet": "Welcome to Stevenage \u00b7 Council Housing \u00b7 Manage your Council Tax account online \u00b7 Missed Bin Collections \u00b7 Report Online \u00b7 Report a Repair \u00b7 Find a Planning\u00a0..."
+                    },
+                    {
+                        "title": "Request Waste and Recycling Bins or Containers",
+                        "link": "https://www.stevenage.gov.uk/waste-and-recycling/request-waste-and-recycling-bins-or-containers",
+                        "snippet": "May 9, 2024 ... If your bin is stolen, you should report it to the police who will issue you with a crime reference number. ... Missed Bin Collections \u00b7 Your\u00a0..."
+                    },
+                    {
+                        "title": "Compliments and Complaints",
+                        "link": "https://www.stevenage.gov.uk/have-your-say/compliments-and-complaints",
+                        "snippet": "Jun 23, 2025 ... ... missed bin, fly tipping or a repair to your Council property we may ... Download Housing Complaints and Service Improvement Report 2023-24 Housing\u00a0..."
+                    },
+                    {
+                        "title": "Report a Change of Address",
+                        "link": "https://my.stevenage.gov.uk/publicaccesslive/selfservice/services/changeofaddress/coastart.htm",
+                        "snippet": "Report. a missing bin and more \u00b7 Find. your local councillor and more \u00b7 Home \u00b7 About the Council \u00b7 About Stevenage \u00b7 News and Events \u00b7 Popular Links \u00b7 Have Your\u00a0..."
+                    },
+                    {
+                        "title": "Your details - by Rapid",
+                        "link": "https://services.stevenage.gov.uk/youth-mayor?start",
+                        "snippet": "Report. a missing bin and more \u00b7 Find. your local councillor and more \u00b7 Council Services \u00b7 About the Council \u00b7 About Stevenage \u00b7 News and Events \u00b7 Popular Links."
+                    },
+                    {
+                        "title": "Stevenage Borough Council Productivity Plan 2024-25",
+                        "link": "https://www.stevenage.gov.uk/documents/about-the-council/financial-management/stevenage-borough-council-productivity-plan-2024-25.pdf",
+                        "snippet": "Jul 19, 2024 ... ... report missed bins is end-to-end, communicating with the collection scheduling system and mobile technology in waste freighters. This means\u00a0..."
+                    },
+                    {
+                        "title": "Your Waste Bins and Recycling Containers",
+                        "link": "https://www.stevenage.gov.uk/waste-and-recycling/your-waste-bins-and-recycling-containers",
+                        "snippet": "May 27, 2025 ... If you would like to report a damaged or lost bin, or you would like additional capacity to be able to recycle more, please see our request\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.stevenage.gov.uk/waste-and-recycling/missed-bins",
+                        "title": "Missed Bin Collections",
+                        "confidence": 95,
+                        "strengths": [
+                            "Provides detailed information on what to do before reporting a missed bin collection"
+                        ],
+                        "reasoning": "The title and snippet of this link clearly indicate it is about missed bin collections. The snippet states 'There are a number of things to do before reporting a missed bin collection.'",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": 10,
+                            "recommendations": 5
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": 1,
+                                "Title": "Missed Bin Collections",
+                                "Source": "https://www.stevenage.gov.uk/waste-and-recycling/missed-bins",
+                                "Key Strengths": [
+                                    "Provides detailed information on what to do before reporting a missed bin collection"
+                                ],
+                                "Confidence": 95,
+                                "Reasoning": "The title and snippet of this link clearly indicate it is about missed bin collections. The snippet states 'There are a number of things to do before reporting a missed bin collection.'"
+                            },
+                            {
+                                "Number": 3,
+                                "Title": "Report Online",
+                                "Source": "https://www.stevenage.gov.uk/report-online",
+                                "Key Strengths": [
+                                    "Offers an online report system for various issues including missed bin collections"
+                                ],
+                                "Confidence": 90,
+                                "Reasoning": "The title and snippet suggest this link leads to a page where users can report missed bin collections online."
+                            },
+                            {
+                                "Number": 2,
+                                "Title": "Waste and Recycling",
+                                "Source": "https://www.stevenage.gov.uk/waste-and-recycling",
+                                "Key Strengths": [
+                                    "Provides a comprehensive resource for waste and recycling information"
+                                ],
+                                "Confidence": 85,
+                                "Reasoning": "While the page doesn't specifically target missed bin collections in its title or snippet, it does lead to a broader waste and recycling website which can provide relevant information on missed bin collections."
+                            },
+                            {
+                                "Number": 5,
+                                "Title": "Request Waste and Recycling Bins or Containers",
+                                "Source": "https://www.stevenage.gov.uk/waste-and-recycling/request-waste-and-recycling-bins-or-containers",
+                                "Key Strengths": [
+                                    "Allows users to request additional capacity or report damaged or lost waste bins"
+                                ],
+                                "Confidence": 80,
+                                "Reasoning": "The title and snippet suggest that this link leads to a page for requesting waste and recycling bins which could be useful for reporting missing or damaged bins."
+                            },
+                            {
+                                "Number": 10,
+                                "Title": "Your Waste Bins and Recycling Containers",
+                                "Source": "https://www.stevenage.gov.uk/waste-and-recycling/your-waste-bins-and-recycling-containers",
+                                "Key Strengths": [
+                                    "Allows users to report damaged or lost waste bins, and request additional capacity"
+                                ],
+                                "Confidence": 80,
+                                "Reasoning": "The title and snippet suggest that this link leads to a page for managing waste bins, including reporting issues and requesting additional capacity."
+                            }
+                        ],
+                        "Analysis Notes": "All items in the list relate in some way to Stevenage Council's waste management services or website. However, not all are immediately relevant to council customer information needs for missed bin collections. Items 1-3, 5, and 10 offer more direct relevance with informative content or report systems specific to missed bin collections.",
+                        "Recommendations Notes": "Items ranked higher have a stronger connection to the given instruction, being more directly related or easier to find information about missed bins. Lower-ranked items may still be valuable resources for Stevenage council users but require additional navigation."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        95,
+                        90,
+                        85,
+                        80,
+                        80
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 86,
+                    "max_confidence": 95
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": 1,
+                            "Title": "Missed Bin Collections",
+                            "Source": "https://www.stevenage.gov.uk/waste-and-recycling/missed-bins",
+                            "Reasoning": "This link provides detailed information on missed bin collections and has the highest confidence score, making it the optimal next step.",
+                            "Confidence": 95
+                        },
+                        {
+                            "Number": 3,
+                            "Title": "Report Online",
+                            "Source": "https://www.stevenage.gov.uk/report-online",
+                            "Reasoning": "The title of this link suggests it leads to an online report system for various issues including missed bin collections.",
+                            "Confidence": 90
+                        },
+                        {
+                            "Number": 5,
+                            "Title": "Request Waste and Recycling Bins or Containers",
+                            "Source": "https://www.stevenage.gov.uk/waste-and-recycling/request-waste-and-recycling-bins-or-containers",
+                            "Reasoning": "This link allows users to request additional capacity or report damaged or lost waste bins, and has a high confidence score.",
+                            "Confidence": 80
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "005_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.stevenage.gov.uk/waste-and-recycling/missed-bins"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.stevenage.gov.uk/waste-and-recycling/missed-bins",
+                        "analysis": {
+                            "url": "https://www.stevenage.gov.uk/waste-and-recycling/missed-bins",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T16:17:53+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T16:18:34+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 720627,
+                            "response_time": 0.391,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.391s)",
+                                    "Content successfully retrieved (720627 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.3933830261230469,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "006_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.stevenage.gov.uk/waste-and-recycling/missed-bins"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.stevenage.gov.uk/waste-and-recycling/missed-bins",
+                        "content": " You've provided HTML code for a webpage that provides information about reporting and addressing missed bin collections in Stevenage. Here is a summary of the key points:\n\n1. The page informs users about what to do when their bins or boxes are not collected within two working days of being reported.\n2. Users should verify they have reported after 12 noon on their collection day, ensured that the bin/box was out by 7am, placed on the property boundary, the correct collection day, and was not stickered due to contamination.\n3. If users fail to report a missed collection within two working days, they will need to wait until the next collection or take their waste to the Household Waste and Recycling Centre on Caxton Way or to one of the recycling banks.\n4. The page also advises users if their bins contain items not accepted by the collection crews, their contents will not be removed, and a sticker detailing the nature of the contaminating item(s) will be placed on the bin/box to inform them why it was not collected. Users should remove any non-acceptable items before placing their bins out for collection on their next scheduled day.\n5. The page links to related resources like the Household Waste Management Policy, your bin collections, recycling centre, and recycling banks pages, as well as a form to report a missed collection.\n6. Lastly, an external link icon indicates that some links, like the Household Waste Management Policy document, open in a new tab or window.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 9.93362307548523,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "007_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.stevenage.gov.uk/waste-and-recycling/missed-bins",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "85%",
+                                    "confidence": "90%",
+                                    "reasoning": "The content informs users about the reporting process for missed collections, as well as providing a form for making the report. However, no information is given about what to do immediately after realizing that one has forgotten to put out a bin, such as temporarily storing the waste or arranging for a special pickup.",
+                                    "next_actions": "Report the missed collection through the provided form and consider temporary storage until a solution can be confirmed."
+                                }
+                            ],
+                            "overall_assessment": "The content is informative and provides useful steps for reporting and addressing missed bin collections. However, there could be additional guidance on what to do in immediate situations or when a user needs special assistance."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.596281051635742,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.stevenage.gov.uk/waste-and-recycling/missed-bins"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "008_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_161753-stevenage.gov.uk",
+                    "analysis_timestamp": "2025-08-08T16:18:49+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 7,
+                            "duration_minutes": 0.9333333333333333,
+                            "tokens_consumed": 8838,
+                            "tokens_remaining": 21162,
+                            "token_utilization_percentage": 29.46,
+                            "average_tokens_per_step": 1262.57
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 70.54,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 16,
+                            "consumption_rate": 1262.57,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 7,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 3
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "90",
+                            "quality_scores": [
+                                "90"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "90",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 13.33,
+                            "steps_fatigue_percentage": 58.33,
+                            "overall_fatigue_score": 58.33,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.9333333333333333,
+                            "total_steps": 7,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved",
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_161753-stevenage.gov.uk",
+                        "start_time": "2025-08-08T16:17:53+01:00",
+                        "current_time": "2025-08-08T16:18:49+01:00",
+                        "duration_seconds": 56,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 8838,
+                        "tokens_remaining": 21162,
+                        "token_utilization_percentage": 29.46,
+                        "token_status": "available",
+                        "total_steps": 7,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 3,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 7
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3646,
+                                "avg_per_call": 1823
+                            },
+                            "analyst": {
+                                "calls": 3,
+                                "tokens": 5192,
+                                "avg_per_call": 1730.6666666666667
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1262.57
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_161753-stevenage.gov.uk",
+                    "start_time": "2025-08-08T16:17:53+01:00",
+                    "current_time": "2025-08-08T16:18:49+01:00",
+                    "duration_seconds": 56,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 8838,
+                    "tokens_remaining": 21162,
+                    "token_utilization_percentage": 29.46,
+                    "token_status": "available",
+                    "total_steps": 7,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 3,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 7
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3646,
+                            "avg_per_call": 1823
+                        },
+                        "analyst": {
+                            "calls": 3,
+                            "tokens": 5192,
+                            "avg_per_call": 1730.6666666666667
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1262.57
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

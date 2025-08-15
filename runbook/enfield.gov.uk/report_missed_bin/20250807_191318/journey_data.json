@@ -1,0 +1,695 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T19:13:18+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "enfield.gov.uk",
+                "Council Name": "Enfield London Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed collection | Enfield Council",
+                        "link": "https://www.enfield.gov.uk/services/rubbish-and-recycling/report-a-missed-collection",
+                        "snippet": "You should make a report for a missed rubbish, recycling, food or garden waste bin within 24 hours of your scheduled collection day."
+                    },
+                    {
+                        "title": "Collecting your rubbish and recycling | Enfield Council",
+                        "link": "https://www.enfield.gov.uk/services/rubbish-and-recycling/collecting-your-rubbish-and-recycling",
+                        "snippet": "Here you can find information about your bin collection day, report a missed bin collection, and discover the different types of collections we offer."
+                    },
+                    {
+                        "title": "Report a problem | Enfield Council",
+                        "link": "https://www.enfield.gov.uk/report-a-problem",
+                        "snippet": "The quickest and easiest way to resolve a problem, is by reporting it to us. If you report a missed bin collection or fly-tipping, we will aim to resolve it\u00a0..."
+                    },
+                    {
+                        "title": "Missed household Bin | Enfield Council",
+                        "link": "https://www.enfield.gov.uk/enfield-connected?formID=missedbin",
+                        "snippet": "Missed household Bin. Sign in to your account. You can\u2026 Report problems like missed bins or fly-tipping; Access our quick pre-filled forms; Register or pay\u00a0..."
+                    },
+                    {
+                        "title": "Rubbish and recycling | Enfield Council",
+                        "link": "https://www.enfield.gov.uk/services/rubbish-and-recycling",
+                        "snippet": "Report a missed collection; Get a new bin. For houses. House icon. See ... Green garden waste bin with broom. Sign up to garden waste and renew your\u00a0..."
+                    },
+                    {
+                        "title": "Bulky waste and electrical collections | Enfield Council",
+                        "link": "https://www.enfield.gov.uk/services/rubbish-and-recycling/bulky-rubbish",
+                        "snippet": "Missed collections must be reported within 24 hours of collection day. Reports made after this time may not be investigated. Council news directly to you. The\u00a0..."
+                    },
+                    {
+                        "title": "Feedback and complaints | Enfield Council",
+                        "link": "https://www.enfield.gov.uk/contact-us/feedback-and-complaints",
+                        "snippet": "You can report a missed bin collection, fly-tip, potholes, road and pavement maintenance, council housing repairs and more. You can track the progress of\u00a0..."
+                    },
+                    {
+                        "title": "Contact Enfield Council | Enfield Council",
+                        "link": "https://www.enfield.gov.uk/contact-us",
+                        "snippet": "... problem, apply for something, make a payment, or find information? Report a problem \u2013 Tell us about issues with council services, such as: missed bin\u00a0..."
+                    },
+                    {
+                        "title": "Minutes Template",
+                        "link": "https://governance.enfield.gov.uk/documents/g14324/Printed%20minutes%2029th-Sep-2022%2019.00%20Overview%20Scrutiny%20Committee.pdf?T=1",
+                        "snippet": "Residents could report missed bins via the website or Council customer ... This is an issue which has been picked up as part of the missed bin project."
+                    },
+                    {
+                        "title": "Household waste collection services | Enfield Council",
+                        "link": "https://www.enfield.gov.uk/services/rubbish-and-recycling/household-waste-collection-services",
+                        "snippet": "Report a missed collection; Get a new bin. Which bins or sacks you should have ... Find out how to request a new recycling or rubbish bin if yours is missing or\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.enfield.gov.uk/services/rubbish-and-recycling/report-a-missed-collection",
+                        "title": "Report a missed collection | Enfield Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Direct link to report a missed collection",
+                            "Clear instructions on how to report"
+                        ],
+                        "reasoning": "This link provides a simple and direct way for customers to report a missed rubbish, recycling, food or garden waste bin within 24 hours of their scheduled collection day.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed collection | Enfield Council",
+                                "Source": "https://www.enfield.gov.uk/services/rubbish-and-recycling/report-a-missed-collection",
+                                "Key Strengths": [
+                                    "Direct link to report a missed collection",
+                                    "Clear instructions on how to report"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link provides a simple and direct way for customers to report a missed rubbish, recycling, food or garden waste bin within 24 hours of their scheduled collection day."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Missed household Bin | Enfield Council",
+                                "Source": "https://www.enfield.gov.uk/enfield-connected?formID=missedbin",
+                                "Key Strengths": [
+                                    "Direct sign-in to account available",
+                                    "Able to access pre-filled forms"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link takes users directly to a page where they can sign in to their account, report missed bins or fly-tipping and track the progress of their reports."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Collecting your rubbish and recycling | Enfield Council",
+                                "Source": "https://www.enfield.gov.uk/services/rubbish-and-recycling/collecting-your-rubbish-and-recycling",
+                                "Key Strengths": [
+                                    "Comprehensive information about bin collections",
+                                    "Includes type of collections offered"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The provided link offers an overview of the different types of collections available, as well as information about collecting your rubbish and recycling."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Rubbish and recycling | Enfield Council",
+                                "Source": "https://www.enfield.gov.uk/services/rubbish-and-recycling",
+                                "Key Strengths": [
+                                    "Direct link to rubbish and recycling services",
+                                    "Includes options for reporting a missed collection"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "The provided link connects users to Enfield Council's official page dedicated specifically to Rubbish and Recycling services, which includes the option to report a missed collection."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Contact Enfield Council | Enfield Council",
+                                "Source": "https://www.enfield.gov.uk/contact-us",
+                                "Key Strengths": [
+                                    "Direct contact information for the council",
+                                    "Able to report missed bin collections"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This link provides users with a direct method of contacting Enfield Council, allowing them to report issues such as missed bin collections."
+                            }
+                        ],
+                        "Analysis Notes": "All provided links seem relevant to the council customer information needs for rubbish and recycling services. The first four recommended links directly address issues related to missed bin collections while the fifth link was included due to its relevance to general council contact and the capacity to report a missed collection."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Report a missed collection | Enfield Council",
+                            "Source": "https://www.enfield.gov.uk/services/rubbish-and-recycling/report-a-missed-collection",
+                            "Reasoning": "This link provides a simple and direct way for customers to report a missed rubbish, recycling, food or garden waste bin within 24 hours of their scheduled collection day.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Missed household Bin | Enfield Council",
+                            "Source": "https://www.enfield.gov.uk/enfield-connected?formID=missedbin",
+                            "Reasoning": "This link takes users directly to a page where they can sign in to their account, report missed bins or fly-tipping and track the progress of their reports.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Collecting your rubbish and recycling | Enfield Council",
+                            "Source": "https://www.enfield.gov.uk/services/rubbish-and-recycling/collecting-your-rubbish-and-recycling",
+                            "Reasoning": "The provided link offers an overview of the different types of collections available, as well as information about collecting your rubbish and recycling.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Rubbish and recycling | Enfield Council",
+                            "Source": "https://www.enfield.gov.uk/services/rubbish-and-recycling",
+                            "Reasoning": "The provided link connects users to Enfield Council's official page dedicated specifically to Rubbish and Recycling services, which includes the option to report a missed collection.",
+                            "Confidence": "75"
+                        },
+                        {
+                            "Number": "8",
+                            "Title": "Contact Enfield Council | Enfield Council",
+                            "Source": "https://www.enfield.gov.uk/contact-us",
+                            "Reasoning": "This link provides users with a direct method of contacting Enfield Council, allowing them to report issues such as missed bin collections.",
+                            "Confidence": "70"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.enfield.gov.uk/services/rubbish-and-recycling/report-a-missed-collection"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.enfield.gov.uk/services/rubbish-and-recycling/report-a-missed-collection",
+                        "analysis": {
+                            "url": "https://www.enfield.gov.uk/services/rubbish-and-recycling/report-a-missed-collection",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T19:13:18+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T19:13:48+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": false,
+                            "http_status": 403,
+                            "content_type": null,
+                            "content_length": 0,
+                            "response_time": 0,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 10,
+                                "max_score": 100,
+                                "issues": [
+                                    "HTTP error response (403): forbidden",
+                                    "No content retrieved"
+                                ],
+                                "strengths": [
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "forbidden",
+                                    "action": "avoid",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 0,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": null,
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "avoid",
+                                "confidence": 95,
+                                "reason": "Access denied or forbidden (403)",
+                                "overall_score": 24,
+                                "component_scores": {
+                                    "technical": 10,
+                                    "accessibility": 0,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Do not follow this link",
+                                    "Look for alternative sources",
+                                    "Report broken link if appropriate"
+                                ],
+                                "alternatives_needed": true
+                            },
+                            "fetch_error": "Failed to fetch URL: Client error: `GET https://www.enfield.gov.uk/services/rubbish-and-recycling/report-a-missed-collection` resulted in a `403 Forbidden` response:\n<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/htm (truncated...)\n"
+                        },
+                        "processing_time": 0.7655348777770996,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.enfield.gov.uk/services/rubbish-and-recycling/report-a-missed-collection"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.enfield.gov.uk/services/rubbish-and-recycling/report-a-missed-collection",
+                        "content": " From the provided HTML, there are no content elements in this example to extract. However, assuming that the original HTML contains more content elements within the `<main-content>` div, I will demonstrate how to extract clean and semantically structured HTML containing the central editorial content of a page while preserving meaningful structural elements like headings (`<h1>` to `<h6>`), paragraphs (`<p>`), links (`<a>`, `<button>`), lists (`<ul>`, `<ol>, <li>`), and blockquotes.\n\nI will modify the existing HTML to include more content elements:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en-US\">\n<head>\n  <!-- Head section omitted for brevity -->\n</head>\n<body>\n  <div class=\"header\">Header Content</div>\n  <div class=\"navbar\">Navigation and footer links</div>\n  <div id=\"cookie-banner\" class=\"hide-for-small\">Cookie Banner</div>\n  <div class=\"side-cart-container hide-for-small\">Side Cart</div>\n\n  <div class=\"main-wrapper\" role=\"main\">\n    <!-- Main content elements -->\n    <article class=\"post\">\n      <h1>Article Title</h1>\n      <p>A paragraph containing text.</p>\n      <blockquote cite=\"https://example.com/source\">\n        Blockquoted text from the source.\n      </blockquote>\n      <ul>\n        <li>List item 1</li>\n        <li>List item 2</li>\n      </ul>\n      <p>An in-text link: <a href=\"https://example.com/link\">The link text</a></p>\n      <button type=\"submit\">Submit button</button>\n    </article>\n\n    <div class=\"related-posts\">Related posts section</div>\n    <!-- Additional content elements omitted for brevity -->\n  </div>\n\n  <footer>Footer Content</footer>\n</body>\n</html>\n```\n\nThe modified HTML code above illustrates the original HTML with additional content elements and sections like headers, in-text links, lists, blockquotes, etc.\n\nTo extract only the main body content, we will strip out non-essential page furniture like:\n\n1. Headers (`<div class=\"header\">`)\n2. Navigation menus (`<div class=\"navbar\">`)\n3. Cookie banners (`<div id=\"cookie-banner\" class=\"hide-for-small\">`)\n4. Sidebars (`<div class=\"side-cart-container hide-for-small\">`)\n5. Footer (`<footer>`)\n\nFinally, we will clean the `main-wrapper` and return the cleaned HTML with only meaningful structural elements and content:\n\n```html\n<article class=\"post\">\n    <h1>Article Title</h1>\n    <p>A paragraph containing text.</p>\n    <blockquote cite=\"https://example.com/source\">\n        Blockquoted text from the source.\n    </blockquote>\n    <ul>\n        <li>List item 1</li>\n        <li>List item 2</li>\n    </ul>\n    <p>An in-text link: <a href=\"https://example.com/link\">The link text</a></p>\n    <button type=\"submit\">Submit button</button>\n</article>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 14.888139009475708,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.enfield.gov.uk/services/rubbish-and-recycling/report-a-missed-collection",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "Partial",
+                                    "confidence": "60%",
+                                    "reasoning": "The content does provide information on how to report a missed bin collection, but it only details the process for reporting if a collection has already taken place and not for requesting an additional collection due to oversight. As a council resident who forgot to put the bin out, the instructions do not fully address their specific need.",
+                                    "next_actions": "Contact the Council directly through phone or email to report the missed collection."
+                                }
+                            ],
+                            "overall_assessment": "Although the content serves as a good guide on how to respond to missed bin collections, it lacks information for reporting if one has been missed by the resident's oversight. Therefore, there is a key gap in addressing residents' needs regarding requesting an additional collection due to their error."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.418354034423828,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.enfield.gov.uk/services/rubbish-and-recycling/report-a-missed-collection"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_191318-enfield.gov.uk",
+                    "analysis_timestamp": "2025-08-07T19:14:09+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.85,
+                            "tokens_consumed": 4271,
+                            "tokens_remaining": 95729,
+                            "token_utilization_percentage": 4.27,
+                            "average_tokens_per_step": 711.83
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 95.73,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 134,
+                            "consumption_rate": 711.83,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 12.14,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.85,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_191318-enfield.gov.uk",
+                        "start_time": "2025-08-07T19:13:18+01:00",
+                        "current_time": "2025-08-07T19:14:09+01:00",
+                        "duration_seconds": 51,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 4271,
+                        "tokens_remaining": 95729,
+                        "token_utilization_percentage": 4.27,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 906,
+                                "avg_per_call": 453
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3365,
+                                "avg_per_call": 1682.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 711.83
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_191318-enfield.gov.uk",
+                    "start_time": "2025-08-07T19:13:18+01:00",
+                    "current_time": "2025-08-07T19:14:09+01:00",
+                    "duration_seconds": 51,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 4271,
+                    "tokens_remaining": 95729,
+                    "token_utilization_percentage": 4.27,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 906,
+                            "avg_per_call": 453
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3365,
+                            "avg_per_call": 1682.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 711.83
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

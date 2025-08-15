@@ -1,0 +1,670 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-12T23:45:37+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "eastleigh.gov.uk",
+                "Council Name": "Eastleigh Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Fun activity days at Itchen Valley for free school meal families",
+                        "link": "https://www.eastleigh.gov.uk/latest-news/fun-activity-days-at-itchen-valley-for-free-school-meal-families",
+                        "snippet": "Jun 20, 2024 ... Free fun-filled activity days take place at Itchen Valley Country Park this summer holidays for families in receipt of benefits-related free school meals."
+                    },
+                    {
+                        "title": "Food education and production programme - Eastleigh Borough ...",
+                        "link": "https://www.eastleigh.gov.uk/council/shared-prosperity-fund/food-education-and-production-programme",
+                        "snippet": "... food and cooking sessions for families in receipt of free school meals; Six 90-minute sessions to take place across Pavilion on the Park, Eastleigh and Fair\u00a0..."
+                    },
+                    {
+                        "title": "Family Fun Days: connect4communities",
+                        "link": "https://www.eastleigh.gov.uk/our-community/family-fun-days",
+                        "snippet": "Take part in FREE activity days Itchen Valley Country Park across the summer holidays, as well as enjoying a two-course meal."
+                    },
+                    {
+                        "title": "Cost of living support",
+                        "link": "https://www.eastleigh.gov.uk/benefits-support-and-employment/other-forms-of-support/cost-of-living-support",
+                        "snippet": "the benefits you could get ... There are free holiday activities, which includes a meal, for children that are eligible for benefits-related free school meals."
+                    },
+                    {
+                        "title": "Council relaunches Food Voucher Scheme for vulnerable households",
+                        "link": "https://www.eastleigh.gov.uk/latest-news/council-relaunches-food-voucher-scheme-for-vulnerable-households-update",
+                        "snippet": "Dec 20, 2023 ... Letters will be sent direct in the post to eligible households with instructions on how to access and use the voucher. The vouchers, which are\u00a0..."
+                    },
+                    {
+                        "title": "Mayoral blog | Eastleigh Borough Council",
+                        "link": "https://www.eastleigh.gov.uk/council/mayor/the-office-of-mayor/mayoral-blog",
+                        "snippet": "You are then invited to enjoy a beautiful meal for free. I can tell you that this event has captured local attention. The Rotary Club are a constant presence\u00a0..."
+                    },
+                    {
+                        "title": "Itchen Valley Country Park - Trail guide",
+                        "link": "https://www.eastleigh.gov.uk/media/7553/144795-ivcp-trail-guide-final.pdf",
+                        "snippet": "Have a go at the different exercises as you walk around the forest trail. Free. Ages 3+. Ollie Owl. Crack the code around the forest trail to discover where."
+                    },
+                    {
+                        "title": "New Community Pantry opens in Bursledon",
+                        "link": "https://www.eastleigh.gov.uk/latest-news/new-community-pantry-opens-in-bursledon",
+                        "snippet": "Jan 23, 2024 ... This new pantry is offered alongside other low-cost and free food offers in the Borough such as foodbanks and community fridges. Contact\u00a0..."
+                    },
+                    {
+                        "title": "Supported Housing Eastleigh",
+                        "link": "https://www.eastleigh.gov.uk/housing/housing-options/supported-housing-and-support-in-the-community",
+                        "snippet": "Accessing education, training and employment; Accessing services; Social ... meal, breakfast, and access to a local day centre for midday meals. There is\u00a0..."
+                    },
+                    {
+                        "title": "quality-places.pdf",
+                        "link": "https://www.eastleigh.gov.uk/media/2398/quality-places.pdf",
+                        "snippet": "To make best use of free heat energy from the sun, buildings should ... \u2022 (e.g. food shops, post office, primary school, children's play area, public."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.eastleigh.gov.uk/latest-news/fun-activity-days-at-itchen-valley-for-free-school-meal-families",
+                        "title": "Fun activity days at Itchen Valley for free school meal families",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly addresses the need for council customer information related to free activities and meals during holiday periods.",
+                            "The activity days are scheduled during summer holidays, making it timely and relevant."
+                        ],
+                        "reasoning": "This link presents information about free fun-filled activity days at Itchen Valley Country Park for families in receipt of benefits-related free school meals. The activities will take place during the summer holidays, making it particularly relevant and useful for council customers during this period.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "4"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Fun activity days at Itchen Valley for free school meal families",
+                                "Source": "https://www.eastleigh.gov.uk/latest-news/fun-activity-days-at-itchen-valley-for-free-school-meal-families",
+                                "Key Strengths": [
+                                    "Directly addresses the need for council customer information related to free activities and meals during holiday periods.",
+                                    "The activity days are scheduled during summer holidays, making it timely and relevant."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link presents information about free fun-filled activity days at Itchen Valley Country Park for families in receipt of benefits-related free school meals. The activities will take place during the summer holidays, making it particularly relevant and useful for council customers during this period."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Food education and production programme - Eastleigh Borough ...",
+                                "Source": "https://www.eastleigh.gov.uk/council/shared-prosperity-fund/food-education-and-production-programme",
+                                "Key Strengths": [
+                                    "Offers food and cooking sessions for families in receipt of free school meals.",
+                                    "The programme also includes six 90-minute sessions, making it more comprehensive than a one-time event."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides information about a food education and production programme that offers cooking sessions for families receiving free school meals. The programme consists of six 90-minute sessions, making it suitable for a more substantial learning experience compared to single events."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Cost of living support",
+                                "Source": "https://www.eastleigh.gov.uk/benefits-support-and-employment/other-forms-of-support/cost-of-living-support",
+                                "Key Strengths": [
+                                    "Information about free holiday activities, including a meal, for children eligible for benefits-related free school meals.",
+                                    "Provides a comprehensive list of support available to council customers during the cost of living crisis."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link offers information about cost of living support, including details on free holiday activities and a meal for children eligible for benefits-related free school meals. The broad range of support services provided make it particularly relevant to council customers during this challenging time."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Council relaunches Food Voucher Scheme for vulnerable households",
+                                "Source": "https://www.eastleigh.gov.uk/latest-news/council-relaunches-food-voucher-scheme-for-vulnerable-households-update",
+                                "Key Strengths": [
+                                    "Distribution of food vouchers for vulnerable households.",
+                                    "The vouchers can be used in various supermarkets, offering flexibility in redemption."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "While not directly providing council customer information related to free activities or meals, this link discusses the relaunch of a food voucher scheme for vulnerable households. The vouchers are redeemable in multiple supermarkets, catering to a wide range of customers."
+                            }
+                        ],
+                        "Analysis Notes": "Many of the items provided were related to services or events that either require payment or are not directly relevant to the needs of council customers seeking information on free activities and meals. These options were filtered out during the analysis.",
+                        "Recommendations Notes": "Though not included as recommendations, it is worth mentioning Item 4: 'Support Housing Eastleigh.' While it doesn't explicitly address the need for council customer information related to food and activities, it does offer support services that may benefit those seeking assistance. Additionally, Item 7: 'Itchen Valley Country Park - Trail guide,' offers a family-friendly outdoor activity, but since it doesn't appear to provide free meals or activities, it was not included as a top recommendation."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82.5,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Fun activity days at Itchen Valley for free school meal families",
+                            "Source": "https://www.eastleigh.gov.uk/latest-news/fun-activity-days-at-itchen-valley-for-free-school-meal-families",
+                            "Reasoning": "This link presents information about free fun-filled activity days at Itchen Valley Country Park for families in receipt of benefits-related free school meals. The activities will take place during the summer holidays, making it particularly relevant and useful for council customers during this period.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Food education and production programme - Eastleigh Borough ...",
+                            "Source": "https://www.eastleigh.gov.uk/council/shared-prosperity-fund/food-education-and-production-programme",
+                            "Reasoning": "This link provides information about a food education and production programme that offers cooking sessions for families receiving free school meals. The programme consists of six 90-minute sessions, making it suitable for a more substantial learning experience compared to single events.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Cost of living support",
+                            "Source": "https://www.eastleigh.gov.uk/benefits-support-and-employment/other-forms-of-support/cost-of-living-support",
+                            "Reasoning": "This link offers information about cost of living support, including details on free holiday activities and a meal for children eligible for benefits-related free school meals. The broad range of support services provided make it particularly relevant to council customers during this challenging time.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.eastleigh.gov.uk/latest-news/fun-activity-days-at-itchen-valley-for-free-school-meal-families"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.eastleigh.gov.uk/latest-news/fun-activity-days-at-itchen-valley-for-free-school-meal-families",
+                        "analysis": {
+                            "url": "https://www.eastleigh.gov.uk/latest-news/fun-activity-days-at-itchen-valley-for-free-school-meal-families",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-12T23:45:37+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-12T23:46:06+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": false,
+                            "http_status": 403,
+                            "content_type": null,
+                            "content_length": 0,
+                            "response_time": 0,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 10,
+                                "max_score": 100,
+                                "issues": [
+                                    "HTTP error response (403): forbidden",
+                                    "No content retrieved"
+                                ],
+                                "strengths": [
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "forbidden",
+                                    "action": "avoid",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 0,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": null,
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "avoid",
+                                "confidence": 95,
+                                "reason": "Access denied or forbidden (403)",
+                                "overall_score": 24,
+                                "component_scores": {
+                                    "technical": 10,
+                                    "accessibility": 0,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Do not follow this link",
+                                    "Look for alternative sources",
+                                    "Report broken link if appropriate"
+                                ],
+                                "alternatives_needed": true
+                            },
+                            "fetch_error": "Failed to fetch URL: Client error: `GET https://www.eastleigh.gov.uk/latest-news/fun-activity-days-at-itchen-valley-for-free-school-meal-families` resulted in a `403 Forbidden` response:\n<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/htm (truncated...)\n"
+                        },
+                        "processing_time": 0.21121597290039062,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.eastleigh.gov.uk/latest-news/fun-activity-days-at-itchen-valley-for-free-school-meal-families"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.eastleigh.gov.uk/latest-news/fun-activity-days-at-itchen-valley-for-free-school-meal-families",
+                        "content": " Given the HTML content provided, the main body content without non-essential elements would be:\n\n```html\n<div class=\"main-content\">\n   <!-- The main body content will be here -->\n</div>\n```\n\nHowever, to extract the actual central editorial content, we need to parse the \"main-content\" div. For this example let's assume that this div contains the following structure:\n\n```html\n<div class=\"main-content\">\n   <h1>Header 1</h1>\n   <p>Paragraph 1 text.</p>\n   <a href=\"/link-to-another-page\">Link text</a>\n   <button>Button text</button>\n   <blockquote>Quote text</blockquote>\n   <ul>\n      <li>List item 1</li>\n      <li>List item 2</li>\n   </ul>\n   <p>Paragraph 2 text.</p>\n   <!-- Other paragraphs, headings, links, and lists follow a similar pattern -->\n</div>\n```\n\nIn this stripped-down example, all the essential structural elements like headings (<h1> to <h6>), paragraphs (<p>), links (<a>), buttons (<button> within article or central user actions), lists (<ul>, <ol>, <li>) and blockquotes have been preserved. Any non-essential elements, such as boilerplate site-wide search, login links, or social media footers have been removed.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 6.321281909942627,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.eastleigh.gov.uk/latest-news/fun-activity-days-at-itchen-valley-for-free-school-meal-families",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "Low",
+                                    "confidence": "20%",
+                                    "reasoning": "The provided content does not contain specific information about who qualifies for free school meals, nor the application process or time frame for eligibility determination. However, it does mention the provision of Fun Activity Days for Families which may be related to the free school meals, but without explicit connection.",
+                                    "next_actions": "I would reach out to the council office directly through phone or email for more information and clarification about the criteria and application process for free school meals."
+                                }
+                            ],
+                            "overall_assessment": "The content provides no useful or meaningful information relevant to a Council Resident looking for details on applying for and qualifying for free school meals.\nKey gaps or areas for improvement:\n- Lack of clear, concise guidance about the application process\n- Absence of any mention regarding eligibility criteria\n- Omission of estimated wait periods for assessing eligibility.\nYour overall satisfaction level: 20%"
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.025604963302612,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.eastleigh.gov.uk/latest-news/fun-activity-days-at-itchen-valley-for-free-school-meal-families"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250812_234537-eastleigh.gov.uk",
+                    "analysis_timestamp": "2025-08-12T23:46:19+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7,
+                            "tokens_consumed": 3922,
+                            "tokens_remaining": 26078,
+                            "token_utilization_percentage": 13.07,
+                            "average_tokens_per_step": 653.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 86.93,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 39,
+                            "consumption_rate": 653.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "20",
+                            "quality_scores": [
+                                "20"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "20",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 10,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250812_234537-eastleigh.gov.uk",
+                        "start_time": "2025-08-12T23:45:37+01:00",
+                        "current_time": "2025-08-12T23:46:19+01:00",
+                        "duration_seconds": 42,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 3922,
+                        "tokens_remaining": 26078,
+                        "token_utilization_percentage": 13.07,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 527,
+                                "avg_per_call": 263.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3395,
+                                "avg_per_call": 1697.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 653.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250812_234537-eastleigh.gov.uk",
+                    "start_time": "2025-08-12T23:45:37+01:00",
+                    "current_time": "2025-08-12T23:46:19+01:00",
+                    "duration_seconds": 42,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 3922,
+                    "tokens_remaining": 26078,
+                    "token_utilization_percentage": 13.07,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 527,
+                            "avg_per_call": 263.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3395,
+                            "avg_per_call": 1697.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 653.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

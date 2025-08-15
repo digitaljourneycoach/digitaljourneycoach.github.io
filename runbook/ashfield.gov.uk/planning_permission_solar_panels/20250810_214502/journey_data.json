@@ -1,0 +1,232 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T21:45:02+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "ashfield.gov.uk",
+                "Council Name": "Ashfield District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Search applications - Ashfield District Council",
+                        "link": "https://planning.ashfield.gov.uk/planning-applications/search-applications/?civica.query.SDate1From=01%2F12%2F2024&civica.query.SDate1To=07%2F12%2F2024",
+                        "snippet": "Dec 2, 2024 ... Application to determine if prior approval is required for a proposed: installation of solar panels. Planning Application V/2024/0604 - Valid\u00a0..."
+                    },
+                    {
+                        "title": "Search applications - Ashfield District Council",
+                        "link": "https://planning.ashfield.gov.uk/planning-applications/search-applications/?civica.query.SDate1From=12%2F02%2F2023&civica.query.SDate1To=18%2F02%2F2023",
+                        "snippet": "... solar panels as per permission v/2022/0267. Planning Application V/2023/0082 - Valid From 14/02/2023. 195 Alfreton Road, Underwood, Nottinghamshire, NG16 5GX."
+                    },
+                    {
+                        "title": "Planning permission - find out if you need permission - Ashfield ...",
+                        "link": "https://www.ashfield.gov.uk/planning-building-control/planning-applications/apply-for-permission/do-i-need-planning-permission/",
+                        "snippet": "Some developments need planning permission, others are 'permitted development' - check whether you need permission for your proposal."
+                    },
+                    {
+                        "title": "Search applications - Ashfield District Council",
+                        "link": "https://planning.ashfield.gov.uk/planning-applications/search-applications/?civica.query.SDate1From=18%2F05%2F2025&civica.query.SDate1To=24%2F05%2F2025",
+                        "snippet": "The Watermill, Kingfisher Way, Sutton In Ashfield, Nottinghamshire, NG17 4BR. Roof mounted solar panels ... planning permission v/2020/0884 - management and\u00a0..."
+                    },
+                    {
+                        "title": "Search planning applications in Ashfield - Ashfield District Council",
+                        "link": "https://www.ashfield.gov.uk/planning-building-control/planning-applications/searching-planning-applications/",
+                        "snippet": "Planning application files are a public document and in accordance with the Council's Code of Conduct any letters submitted in respect of a proposal will become\u00a0..."
+                    },
+                    {
+                        "title": "Ashfield District Council \u00a9 Crown copyright and database right 2021 ...",
+                        "link": "https://democracy.ashfield.gov.uk/documents/s20789/FINAL%20-%20Hucknall%20Leisure%20Centre.pdf",
+                        "snippet": "Dec 15, 2021 ... available to the public, such as the installation of solar panels and electric vehicle ... planning permission, subject to the below conditions:."
+                    },
+                    {
+                        "title": "Ashfield District Council \u00a9 Crown copyright and database right 2023 ...",
+                        "link": "https://democracy.ashfield.gov.uk/documents/s32379/FINAL%20-%20Leamington%20Hall%20Flats%20Sutton.pdf",
+                        "snippet": "Feb 5, 2025 ... wall insulation, new roof, solar panels, windows and doors. Whilst ... Recommendation: - Grant planning permission, subject to the below."
+                    },
+                    {
+                        "title": "V/2023/0679",
+                        "link": "https://democracy.ashfield.gov.uk/documents/s33662/FINAL%20-%20Beck%20Lane.pdf",
+                        "snippet": "May 30, 2025 ... This application seeks outline planning permission with all matters reserved except for access ... photovoltaic panels, high level thermal\u00a0..."
+                    },
+                    {
+                        "title": "Home upgrade grant - Ashfield District Council",
+                        "link": "https://www.ashfield.gov.uk/housing/repairs-improvements/adapting-and-improving-your-home/home-upgrade-grant/",
+                        "snippet": "Do I need planning permission? Back. Planning process explained; Searching planning applications ... Solar PV Panels and Air Source Heat Pumps. Please be\u00a0..."
+                    },
+                    {
+                        "title": "9-11 Low Street Sutton in Ashfield",
+                        "link": "https://democracy.ashfield.gov.uk/documents/s23251/FINAL%20-%209-11%20Low%20Street%20Sutton%20in%20Ashfield.pdf",
+                        "snippet": "Aug 26, 2022 ... Solar panels are also proposed to be installed on the front ... any point in the future may require planning permission in its own right."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Search applications - Ashfield District Council",
+                                "Source": "https://planning.ashfield.gov.uk/planning-applications/search-applications/?civica.query.SDate1From=01%2F12%2F2024&civica.query.SDate1To=07%2F12%2F2024",
+                                "Key Strengths": [
+                                    "Provides a search functionality for planning applications in Ashfield District Council.",
+                                    "The snippet mentions an application for solar panels, indicating a relevant resource for customer information needs."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The item contains a direct link to search applications which is likely to have information about ongoing projects related to solar panel installations in the area. The snippet confirms that there's an application for solar panels, indicating its relevance to customer information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Search applications - Ashfield District Council",
+                                "Source": "https://planning.ashfield.gov.uk/planning-applications/search-applications/?civica.query.SDate1From=12%2F02%2F2023&civica.query.SDate1To=18%2F02%2F2023",
+                                "Key Strengths": [
+                                    "Provides a search functionality for planning applications in Ashfield District Council.",
+                                    "The snippet mentions an application that includes solar panels as part of a project, which might be relevant to customer information needs."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The item offers a search function for applications and the snippet shows that one of the projects involves solar panels, making it a suitable source for customer information."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Planning permission - find out if you need permission - Ashfield ...",
+                                "Source": "https://www.ashfield.gov.uk/planning-building-control/planning-applications/apply-for-permission/do-i-need-planning-permission/",
+                                "Key Strengths": [
+                                    "Provides guidance on whether planning permission is needed for various projects.",
+                                    "The snippet highlights that some developments need planning permission, suggesting it's a good starting point for customer information needs."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Though the item doesn't directly provide application search results, it serves as an informative resource for understanding whether planning permission is required. This can be helpful for customers looking to install solar panels in the future."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Search planning applications in Ashfield - Ashfield District Council",
+                                "Source": "https://www.ashfield.gov.uk/planning-building-control/planning-applications/searching-planning-applications/",
+                                "Key Strengths": [
+                                    "Offers a comprehensive search function for planning applications in Ashfield District Council.",
+                                    "The snippet suggests that information about the applications is publicly available, which may help customers gather relevant details."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This item offers a search function for all planning applications within the district council's area. Its relevance lies in providing access to information on solar panel projects or similar queries."
+                            }
+                        ],
+                        "Analysis Notes": "Although most of the items provide relevant information, some are more specific and therefore ranked higher based on their direct connection to customer needs related to council customer information regarding solar panels.",
+                        "Recommendations Notes": "Items were chosen based on their relevance and quality, with a focus on search functions for applications as they are more likely to contain detailed information about ongoing projects like the installation of solar panels."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "85"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

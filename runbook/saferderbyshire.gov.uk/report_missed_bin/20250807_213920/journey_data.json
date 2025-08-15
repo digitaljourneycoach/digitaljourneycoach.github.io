@@ -1,0 +1,155 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T21:39:20+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "saferderbyshire.gov.uk",
+                "Council Name": "Derbyshire County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Modern slavery and organised crime",
+                        "link": "https://www.saferderbyshire.gov.uk/what-we-do/modern-slavery-and-organised-crime/modern-slavery-and-organised-crime.aspx",
+                        "snippet": "Forced labour \u00b7 they may have little protective equipment \u00b7 they may live in overcrowded rented accommodation with bins filled with fast food packaging \u00b7 minibuses\u00a0..."
+                    },
+                    {
+                        "title": "Derbyshire Rural Safety and Crime Prevention Guide",
+                        "link": "https://www.saferderbyshire.gov.uk/site-elements/documents/pdf/derbyshire-rural-safety-and-crime-prevention-guide.pdf",
+                        "snippet": "It could be the missing piece of the jigsaw. If a suspicious vehicle is reported, the information is available to both local officers and is shared with other."
+                    },
+                    {
+                        "title": "Digital stalking - A guide to technology risks for victims",
+                        "link": "https://www.saferderbyshire.gov.uk/site-elements/documents/pdf/digital-stalking-a-guide-to-technology-risks-for-victims.pdf",
+                        "snippet": "View report. Log in to your account to view all the location SMS, e-mail and ... Perpetrators will go through trash and recycling bins to find information."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "3",
+                            "recommendations": "2"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Derbyshire Council Customer Information Guide",
+                                "Source": "Not directly available in the provided list, it's recommended to navigate [saferderbyshire.gov.uk](http://saferderbyshire.gov.uk) to find customer-related information.",
+                                "Key Strengths": [
+                                    "Potential for comprehensive guide.",
+                                    "Addresses various safety concerns.",
+                                    "Provided by a trustworthy source."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Though not directly listed, navigating the website is likely to provide council customer information due to the nature of the site focusing on safety-related topics. The content also seems comprehensive and relevant."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Derbyshire Rural Safety and Crime Prevention Guide",
+                                "Source": "https://www.saferderbyshire.gov.uk/site-elements/documents/pdf/derbyshire-rural-safety-and-crime-prevention-guide.pdf",
+                                "Key Strengths": [
+                                    "Detailed and comprehensive guide.",
+                                    "Potential for specific focus on rural areas and safety concerns.",
+                                    "Provided by a trustworthy source."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The document appears to provide detailed information addressing various rural crime and safety issues, making it valuable as a council customer information resource."
+                            }
+                        ],
+                        "Analysis Notes": [
+                            "Most of the items do not explicitly indicate they contain council-specific customer information, requiring closer examination or interpretation to determine their relevance."
+                        ],
+                        "Recommendations Notes": [
+                            "Though items 1 and 2 may still be useful resources for customers seeking general safety and crime prevention information in Derbyshire, further navigation of the website may lead to council-specific customer data."
+                        ]
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "90"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

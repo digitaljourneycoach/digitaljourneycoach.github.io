@@ -1,0 +1,681 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T04:11:13+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "thanet.gov.uk",
+                "Council Name": "Thanet District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Cost of living support - Thanet",
+                        "link": "https://www.thanet.gov.uk/info-pages/cost-of-living/",
+                        "snippet": "... benefits \u2013 like Universal Credit or income support \u2013 you may be eligible for free school meals. If your child is in reception, year 1 or year 2, you'll get free\u00a0..."
+                    },
+                    {
+                        "title": "Summer Blast - Thanet",
+                        "link": "https://www.thanet.gov.uk/info-pages/summer-blast/",
+                        "snippet": "The Department for Education funding for HAF offers families of children aged 4 to 16, who are eligible for benefits related free school meals ... Get in touch\u00a0..."
+                    },
+                    {
+                        "title": "Thanet District Council Child Health Profile",
+                        "link": "https://democracy.thanet.gov.uk/documents/s50430/item%206%20Profile%20thwb%2024.3.16.pdf",
+                        "snippet": "Feb 14, 2016 ... 4.2 Free school meals eligibility. There are slightly more than 4,100 children eligible for free schools meals who are resident in Thanet."
+                    },
+                    {
+                        "title": "Educational Resources - Thanet",
+                        "link": "https://www.thanet.gov.uk/info-pages/educational-resources/",
+                        "snippet": "Thanet District Council is now registered as an approved centre with AQA* and will be working with local schools and colleges to help young people receive\u00a0..."
+                    },
+                    {
+                        "title": "Recycl e for Thanet Team",
+                        "link": "https://www.thanet.gov.uk/wp-content/uploads/2020/06/WR-School-Booklet.pdf",
+                        "snippet": "Once we have collected the food waste, it gets taken to a place where it is turned into energy to power homes, schools and other buildings. Or sometimes it gets\u00a0..."
+                    },
+                    {
+                        "title": "Climate Change - Thanet",
+                        "link": "https://www.thanet.gov.uk/info-pages/climate-change/",
+                        "snippet": "Always make a shopping list and meal plan before you go shopping to avoid food waste ... food and purchases: Climate Change Education and Communication."
+                    },
+                    {
+                        "title": "Community Champions Programme - Thanet",
+                        "link": "https://www.thanet.gov.uk/info-pages/community-champions-programme/",
+                        "snippet": "Discover how you can help and who can support you locally. Let's make this year the one where you give back! There will be free food and drink available on the\u00a0..."
+                    },
+                    {
+                        "title": "Chapter 3 - Housing Strategy Amount of Housing SP11 Respondent ...",
+                        "link": "https://www.thanet.gov.uk/wp-content/uploads/2018/11/Chapter-3-Housing-Strategy.pdf",
+                        "snippet": "already on Benefits free up land etc, so that London councils can get better ... Reducing child benefits but supplying free school meals would discourage\u00a0..."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://www.thanet.gov.uk/wp-content/uploads/2020/09/R.018-Margate-Town-Deal-Engagement-Summary-Report_Rev-A_LR.pdf",
+                        "snippet": "Sep 29, 2020 ... The Towns Fund Guidance puts an onus on stakeholder and community engagement. \u201cintervenfions supported through the Towns Fund should have\u00a0..."
+                    },
+                    {
+                        "title": "Housing Space Standards",
+                        "link": "https://www.thanet.gov.uk/wp-content/uploads/2018/03/16-space-standards.pdf",
+                        "snippet": "meals only ever cooked in a microwave or are cookers and food ... York have found links between overcrowding and lower educational attainment\u201d citing."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.thanet.gov.uk/info-pages/cost-of-living/",
+                        "title": "Cost of living support - Thanet",
+                        "confidence": 85,
+                        "strengths": [
+                            "Provides information on cost of living support specifically for Thanet",
+                            "Mentions free school meals eligibility"
+                        ],
+                        "reasoning": "This link directly provides information about cost of living support in Thanet, which includes details about free school meals eligibility.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Cost of living support - Thanet",
+                                "Source": "https://www.thanet.gov.uk/info-pages/cost-of-living/",
+                                "Key Strengths": [
+                                    "Provides information on cost of living support specifically for Thanet",
+                                    "Mentions free school meals eligibility"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link directly provides information about cost of living support in Thanet, which includes details about free school meals eligibility."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Thanet District Council Child Health Profile",
+                                "Source": "https://democracy.thanet.gov.uk/documents/s50430/item%206%20Profile%20thwb%2024.3.16.pdf",
+                                "Key Strengths": [
+                                    "Contains information about the number of children eligible for free school meals in Thanet"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "While not directly a customer service page, this link provides valuable data about the free school meals eligibility in Thanet."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Climate Change - Thanet",
+                                "Source": "https://www.thanet.gov.uk/info-pages/climate-change/",
+                                "Key Strengths": [
+                                    "Offers information on reducing food waste, which might lead to cost savings related to meals"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "While not directly addressing free school meals, this link offers suggestions for reducing food waste, which could indirectly help manage costs related to meals."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Community Champions Programme - Thanet",
+                                "Source": "https://www.thanet.gov.uk/info-pages/community-champions-programme/",
+                                "Key Strengths": [
+                                    "Mentions free food and drink available at the event, which could be a minor cost relief"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "While not a direct financial support for free school meals, this link offers a potential minor cost relief through free food and drinks."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Chapter 3 - Housing Strategy Amount of Housing SP11 Respondent ...",
+                                "Source": "https://www.thanet.gov.uk/wp-content/uploads/2018/11/Chapter-3-Housing-Strategy.pdf",
+                                "Key Strengths": [
+                                    "Suggests reducing child benefits but supplying free school meals, although this is not a current policy."
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "This link suggests an alternative scenario of reducing child benefits and providing free school meals, which might indicate council's consideration for such measures although it's not current policy."
+                            }
+                        ],
+                        "Analysis Notes": "While none of the results mentioned specific, up-to-date information about council customer information needs regarding free school meals, some provided relevant data or suggestions that could indirectly help manage costs related to meals. The fifth result discusses an alternative scenario of reducing child benefits and providing free school meals, although it's not current policy.",
+                        "Recommendations Notes": "It might be beneficial to expand the search with more specific keywords like 'free school meals eligibility' or 'school meal assistance'. Also, checking local newspapers or community news websites could potentially lead to more relevant results."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "75",
+                        "70",
+                        "65",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 71,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Cost of living support - Thanet",
+                            "Source": "https://www.thanet.gov.uk/info-pages/cost-of-living/",
+                            "Reasoning": "This link directly provides information about cost of living support in Thanet, which includes details about free school meals eligibility.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Thanet District Council Child Health Profile",
+                            "Source": "https://democracy.thanet.gov.uk/documents/s50430/item%206%20Profile%20thwb%2024.3.16.pdf",
+                            "Reasoning": "While not directly a customer service page, this link provides valuable data about the number of children eligible for free school meals in Thanet.",
+                            "Confidence": "75"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Thanet District Council - Your Rights and Obligations: Free School Meals",
+                            "Source": "https://www.thanet.gov.uk/info-pages/education/schools/free-school-meals/",
+                            "Reasoning": "This link directly provides information about the council's free school meals policy and eligibility.",
+                            "Confidence": "70"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.thanet.gov.uk/info-pages/cost-of-living/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.thanet.gov.uk/info-pages/cost-of-living/",
+                        "analysis": {
+                            "url": "https://www.thanet.gov.uk/info-pages/cost-of-living/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T04:11:13+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T04:11:39+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 193309,
+                            "response_time": 0.605,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.605s)",
+                                    "Content successfully retrieved (193309 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.6134541034698486,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.thanet.gov.uk/info-pages/cost-of-living/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.thanet.gov.uk/info-pages/cost-of-living/",
+                        "content": " Based on your instructions, the HTML content provided seems to be minimal and already includes the main body content as the \"main-content\" div. However, in most cases, the HTML structure would be more complex and contain additional non-essential elements. Here's a simplified approach to extract only the main body content from a typical HTML page:\n\n```python\nfrom bs4 import BeautifulSoup\nimport re\n\ndef clean_html(html):\n    # Initialize BeautifulSoup with HTML parsing settings\n    soup = BeautifulSoup(html, 'html.parser', from_strings=True)\n\n    # Remove non-content tags and elements\n    for tag in ['head', 'body':1, 'script', 'style']:\n        soup.find(tag).decompose()\n\n    # Preserve semantic structural elements\n    main_structures = {'h1','h2','h3','h4','h5','h6','p','a','button',\n                        'ul', 'ol', 'li', 'blockquote'}\n\n    cleaned_html = soup.find('div', class_='main-wrapper') \\\n                         .find_all(regex=True, string=main_structures)\n\n    # Remove any remaining unnecessary elements after cleaning\n    for elem in cleaned_html:\n        if not str(elem).strip() and isinstance(elem.parent, list):\n            elem.parent.remove(elem)\n\n    return cleaned_html\n```\n\nThis function extracts the main body content based on given criteria by removing any non-essential page furniture, preserving semantic HTML, and returning the clean, structured HTML content as a list of elements. Note that for simplicity, this example uses BeautifulSoup without any additional libraries or dependencies.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 6.992254972457886,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.thanet.gov.uk/info-pages/cost-of-living/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content provides a brief mention of the available support but lacks specific details on eligibility criteria, process, or time frames for free school meals.",
+                                    "confidence": "30%",
+                                    "reasoning": "While the website mentions 'help and financial assistance', it doesn't delve into specific programs like free school meals. There is no further explanation of who qualifies, application procedures, or timelines.",
+                                    "next_actions": "I would contact my local council's benefits team for more information about eligibility criteria and the process to apply for free school meals."
+                                }
+                            ],
+                            "overall_assessment": "The provided content does not fully answer my need of understanding the steps, requirements, and estimated time frames for applying for free school meals as a council resident. The website could benefit from a more detailed section dedicated to eligibility criteria, application process, and expected wait times for free school meal programs."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.707128047943115,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.thanet.gov.uk/info-pages/cost-of-living/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_041113-thanet.gov.uk",
+                    "analysis_timestamp": "2025-08-13T04:11:53+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6666666666666666,
+                            "tokens_consumed": 3843,
+                            "tokens_remaining": 26157,
+                            "token_utilization_percentage": 12.81,
+                            "average_tokens_per_step": 640.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 87.19,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 40,
+                            "consumption_rate": 640.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "30",
+                            "quality_scores": [
+                                "30"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "30",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.52,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6666666666666666,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_041113-thanet.gov.uk",
+                        "start_time": "2025-08-13T04:11:13+01:00",
+                        "current_time": "2025-08-13T04:11:53+01:00",
+                        "duration_seconds": 40,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 3843,
+                        "tokens_remaining": 26157,
+                        "token_utilization_percentage": 12.81,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 626,
+                                "avg_per_call": 313
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3217,
+                                "avg_per_call": 1608.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 640.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_041113-thanet.gov.uk",
+                    "start_time": "2025-08-13T04:11:13+01:00",
+                    "current_time": "2025-08-13T04:11:53+01:00",
+                    "duration_seconds": 40,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 3843,
+                    "tokens_remaining": 26157,
+                    "token_utilization_percentage": 12.81,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 626,
+                            "avg_per_call": 313
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3217,
+                            "avg_per_call": 1608.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 640.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

@@ -1,0 +1,709 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T04:07:14+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "swansea.gov.uk",
+                "Council Name": "City and County of Swansea Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Planning Committee \u2013 5th March 2024",
+                        "link": "https://democracy.swansea.gov.uk/documents/s100218/SCHEDULE%20-%205TH%20MARCH%202024.pdf",
+                        "snippet": "Mar 5, 2024 ... Plan), and 10 (Sustainable Drainage System) of planning permission ... black/grey tiled roof with solar pv panels and composite front doors."
+                    },
+                    {
+                        "title": "WEEKLY LIST OF PLANNING APPLICATION DECISIONS",
+                        "link": "https://swansea.gov.uk/media/16596/Decisions-for-week-ending-15-March-2024/pdf/qrDecisions_for_week_ending_15_March_2024.pdf?m=1710942930227",
+                        "snippet": "Mar 15, 2024 ... Installation of Solar Panels to front and rear roof planes. 14-MAR-2024. Approve. Bay Area. Sketty. Application No: Responsibility: Location\u00a0..."
+                    },
+                    {
+                        "title": "Permitted development - Swansea",
+                        "link": "https://swansea.gov.uk/article/29875/Permitted-development",
+                        "snippet": "Jun 13, 2024 ... ... solar panels or the removal of a chimney), extension, loft ... Factors affecting planning permission: Nature and wildlife - Planning Portal\u00a0..."
+                    },
+                    {
+                        "title": "Swansea Council",
+                        "link": "https://www.swansea.gov.uk/media/22275/Applications-for-week-ending-2-May-2025/pdf/6mApplications_for_week_ending_2_May_2025.pdf?m=1746612816730",
+                        "snippet": "May 1, 2025 ... dwelling, rear solar panels, rear first floor Juliet balcony, front porch, ... of condition 2 of planning permission 2023/1692/FUL granted 25th."
+                    },
+                    {
+                        "title": "Planning application search - Swansea",
+                        "link": "https://www.swansea.gov.uk/article/5847/Planning-application-search",
+                        "snippet": "Apr 5, 2024 ... We will not share your data with third parties unless we are required or permitted to do so by law. Data protection law describes the legal\u00a0..."
+                    },
+                    {
+                        "title": "WEEKLY LIST OF PLANNING APPLICATION DECISIONS",
+                        "link": "https://swansea.gov.uk/media/18604/Decisions-for-week-ending-16-August-2024/pdf/j1Decisions_for_week_ending_16_August_2024.pdf?m=1724315976860",
+                        "snippet": "Aug 16, 2024 ... Variation to permission 2020/1362/FUL to provide an increase in the number of open market apartments from 6 to 7 with associated external\u00a0..."
+                    },
+                    {
+                        "title": "WEEKLY LIST OF PLANNING APPLICATION DECISIONS",
+                        "link": "https://www.swansea.gov.uk/media/16946/Decisions-for-week-ending-12-April-2024/pdf/cmDecisions_for_week_ending_12_April_2024.pdf?m=1713435947633",
+                        "snippet": "Apr 12, 2024 ... Pre-application enquiry - Remove existing porch and construct 2 storey extension with solar panels to ... condition 2 of planning permission\u00a0..."
+                    },
+                    {
+                        "title": "a design guide for householder development",
+                        "link": "https://democracy.swansea.gov.uk/documents/s35529/06%202%20of%202%20-%20APPENDIX%20A%20-%20Draft%20Updated%20Householder%20Design%20Guide%20SPG%20-%20for%20Public%20Consult.pdf",
+                        "snippet": "with the Planning Applicaons Secon whether planning permission is required. ... Solar water heating panels can provide 50% of your hot water requirements\u00a0..."
+                    },
+                    {
+                        "title": "SUPPLEMENTARY PLANNING GUIDANCE REVISED GOWER ...",
+                        "link": "https://swansea.gov.uk/media/2485/LB191---Map/pdf/LB191_-_Map.pdf",
+                        "snippet": "... planning permission. 1.16 This draft version of the Guide will be subject to ... solar design should be determined by assessing: \u2022. If this is an\u00a0..."
+                    },
+                    {
+                        "title": "WEEKLY LIST OF PLANNING APPLICATION DECISIONS",
+                        "link": "https://www.swansea.gov.uk/media/16703/Decisions-for-week-ending-22-March-2024/pdf/53Decisions_for_week_ending_22_March_2024.pdf?m=1711545121520",
+                        "snippet": "Mar 22, 2024 ... Installation of solar panels to the South West facing sloping roof ... Vehicle preparation building (Non Material Amendment to planning permission\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://swansea.gov.uk/media/16596/Decisions-for-week-ending-15-March-2024/pdf/qrDecisions_for_week_ending_15_March_2024.pdf?m=1710942930227",
+                        "title": "WEEKLY LIST OF PLANNING APPLICATION DECISIONS",
+                        "confidence": 85,
+                        "strengths": [
+                            "Includes recent decisions on applications related to solar panels installation",
+                            "Official source by Swansea Council"
+                        ],
+                        "reasoning": "This document clearly indicates an installation of Solar Panels in one of the planning application decisions. It is a weekly list published by Swansea council, which provides credible and up-to-date information related to various planning applications.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "4"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "WEEKLY LIST OF PLANNING APPLICATION DECISIONS",
+                                "Source": "https://swansea.gov.uk/media/16596/Decisions-for-week-ending-15-March-2024/pdf/qrDecisions_for_week_ending_15_March_2024.pdf?m=1710942930227",
+                                "Key Strengths": [
+                                    "Includes recent decisions on applications related to solar panels installation",
+                                    "Official source by Swansea Council"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This document clearly indicates an installation of Solar Panels in one of the planning application decisions. It is a weekly list published by Swansea council, which provides credible and up-to-date information related to various planning applications."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "WEEKLY LIST OF PLANNING APPLICATION DECISIONS",
+                                "Source": "https://www.swansea.gov.uk/media/18604/Decisions-for-week-ending-16-August-2024/pdf/j1Decisions_for_week_ending_16_August_2024.pdf?m=1724315976860",
+                                "Key Strengths": [
+                                    "Relevant search results for solar panel-related applications",
+                                    "Official source by Swansea Council"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This document includes a variation to permission involving an increase in the number of open market apartments and solar panels, suggesting information related to solar panel installations."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Permitted development - Swansea",
+                                "Source": "https://swansea.gov.uk/article/29875/Permitted-development",
+                                "Key Strengths": [
+                                    "Official information about planning permission and conditions for householder development which may include solar panel installation",
+                                    "Provides context on factors affecting planning permissions"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Although this document does not explicitly mention solar panels, it contains valuable information regarding planning permission. This can help in understanding the conditions and requirements for obtaining permission to install solar panels."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Planning application search - Swansea",
+                                "Source": "https://www.swansea.gov.uk/article/5847/Planning-application-search",
+                                "Key Strengths": [
+                                    "Official platform to search for planning applications related to the City and County of Swansea",
+                                    "Allows filtering applications by keywords such as 'Solar Panels'"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This resource allows you to search for Planning Applications in the city and county of Swansea. Entering keywords like 'Solar Panels' will likely bring up relevant results related to applications with solar panel installations."
+                            }
+                        ],
+                        "Analysis Notes": [
+                            "The search results contain multiple resources that could be valuable when seeking information about council customer needs, such as planning application decisions and guidance on householder development. However, some items are less relevant than others as they either don't explicitly include the keyword 'Solar Panels', or provide broader information unrelated to our specific requirement.",
+                            "It should be noted that while the first three recommendations are likely to have useful content regarding solar panel installations, users might find it beneficial to search for 'Solar Panels' within these resources to ensure they locate the most pertinent results."
+                        ],
+                        "Recommendations Notes": [
+                            "Our analysis of the provided list has identified valuable resources that are likely to provide useful information about council customer needs, specifically solar panel installations and related planning applications. However, keep in mind that further exploration of these recommendations may lead to even more relevant results.",
+                            "Remember to always verify and validate the information found before making important decisions."
+                        ]
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "75",
+                        "70",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 75,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "WEEKLY LIST OF PLANNING APPLICATION DECISIONS",
+                            "Source": "https://swansea.gov.uk/media/16596/Decisions-for-week-ending-15-March-2024/pdf/qrDecisions_for_week_ending_15_March_2024.pdf?m=1710942930227",
+                            "Reasoning": "This document clearly indicates an installation of Solar Panels in one of the planning application decisions. It is a weekly list published by Swansea council, which provides credible and up-to-date information related to various planning applications.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "WEEKLY LIST OF PLANNING APPLICATION DECISIONS",
+                            "Source": "https://www.swansea.gov.uk/media/18604/Decisions-for-week-ending-16-August-2024/pdf/j1Decisions_for_week_ending_16_August_2024.pdf?m=1724315976860",
+                            "Reasoning": "This document includes a variation to permission involving an increase in the number of open market apartments and solar panels, suggesting information related to solar panel installations.",
+                            "Confidence": "75"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "005_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://swansea.gov.uk/media/16596/Decisions-for-week-ending-15-March-2024/pdf/qrDecisions_for_week_ending_15_March_2024.pdf?m=1710942930227"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://swansea.gov.uk/media/16596/Decisions-for-week-ending-15-March-2024/pdf/qrDecisions_for_week_ending_15_March_2024.pdf?m=1710942930227",
+                        "analysis": {
+                            "url": "https://swansea.gov.uk/media/16596/Decisions-for-week-ending-15-March-2024/pdf/qrDecisions_for_week_ending_15_March_2024.pdf?m=1710942930227",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T04:07:14+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T04:08:06+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "application/pdf",
+                            "content_length": 375466,
+                            "response_time": 0.508,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.508s)",
+                                    "Content successfully retrieved (375466 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 40,
+                                "max_score": 100,
+                                "issues": [
+                                    "screen reader compatibility",
+                                    "mobile viewing",
+                                    "requires PDF viewer"
+                                ],
+                                "recommendations": [
+                                    "Consider providing alternative formats",
+                                    "Ensure content is truly necessary before linking"
+                                ],
+                                "content_type_assessment": {
+                                    "accessibility_score": 40,
+                                    "user_friendly": false,
+                                    "requires_plugin": true,
+                                    "mobile_compatible": false,
+                                    "recommendation": "caution",
+                                    "concerns": [
+                                        "screen reader compatibility",
+                                        "mobile viewing",
+                                        "requires PDF viewer"
+                                    ]
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 64,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 40,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content",
+                                    "Be prepared for potential accessibility challenges"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.5102369785308838,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "006_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://swansea.gov.uk/media/16596/Decisions-for-week-ending-15-March-2024/pdf/qrDecisions_for_week_ending_15_March_2024.pdf?m=1710942930227"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://swansea.gov.uk/media/16596/Decisions-for-week-ending-15-March-2024/pdf/qrDecisions_for_week_ending_15_March_2024.pdf?m=1710942930227",
+                        "content": " To extract the clean, readable body content from the HTML page you provided, we can use a combination of CSS and JavaScript. However, your provided HTML is not a standard web page but a PDF file in hexadecimal format which needs to be converted to an HTML file first using tools like \"pdftotext\" and then we can process it.\n\nAssuming that the converted HTML file has the following structure:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <!-- head elements -->\n</head>\n<body>\n    <h1>The Title</h1>\n    <div class=\"main-content\">\n        <!-- main content text and structure -->\n    </div>\n    <!-- footer, navigation menu, sidebar etc. -->\n</body>\n</html>\n```\n\nBy utilizing CSS `:nth-child()` selector and JavaScript to remove unnecessary elements and keep the main body content with semantic HTML, we can process the structured data as follows:\n\n```javascript\nconst mainContent = Array.from(document.querySelectorAll('.main-content > *'));\n\nlet cleanedContent = ['<h1>', ...mainContent.map(node => semantifyAndFilter(node)), '</h1>'];\n\nconsole.log(cleanedContent.join(''));\n\nfunction semantifyAndFilter(node) {\n    const nodeTypeMap = {\n        3: 'text',\n        1: semantifyElement,\n        4: semantifyElement,\n        5: semantifyElement\n    }\n\n    if (['script', 'style'].includes(node.tagName)) return null;\n\n    const isIgnored = [...node.classList].some(cls => ignoredElementsClasses.includes(cls));\n\n    function semantifyElement(el) {\n        switch (el.tagName.toLowerCase()) {\n            case 'p':\n                return `<p>${el.textContent || ''}</p>`;\n            case 'a':\n                // consider adding link validation or filtering here\n                return `<a href=\"${el.href}\">${el.textContent || ''}</a>`;\n            case 'ul':\n            case 'ol':\n                return semantifyList(el);\n            case 'blockquote':\n                return `<blockquote cite=\"${el.getAttribute('cite') || ''}\">${el.textContent || ''}</blockquote>`;\n            default:\n                // add more cases based on needed elements\n                throw new Error(`Unknown element ${el.tagName}`);\n        }\n    }\n\n    function semantifyList(list) {\n        const listType = list.tagName === 'UL' ? 'unordered' : 'ordered';\n        let itemsString = '';\n        for (let i = 0, childrenLen = list.children.length; i < childrenLen; i++) {\n            const item = semantifyElement(list.children[i]);\n            if (item) {\n                itemsString += `<${listType}>${item}</${listType}>`;\n            }\n        }\n        return itemsString;\n    }\n\n    const nodeText = `${nodeTypeMap[node.nodeType] || ''}${node.textContent || ''}`;\n    if (!isIgnored && nodeText) return nodeText;\n}\n```\nHere, `ignoredElementsClasses` is an array of classnames for the elements you want to exclude (e.g., [`ad`, `navbar`, `login_link`]). Adjust the code snippet according to your specific HTML structure and content needs.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 16.84548807144165,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "007_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://swansea.gov.uk/media/16596/Decisions-for-week-ending-15-March-2024/pdf/qrDecisions_for_week_ending_15_March_2024.pdf?m=1710942930227",
+                        "analysis": {
+                            "persona": "PERSONAL PERSPECTIVE",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "Partial: The text does mention planning permission for some extensions, but it does not explicitly state whether solar panels require planning permission.",
+                                    "confidence": "70%",
+                                    "reasoning": "The provided content discusses the need for planning permission for extensions and alterations to a property, but it does not specifically address solar panel installation. While it's possible that solar panels may fall under this category, there is no definitive statement to confirm this.",
+                                    "next_actions": "I would contact the local council's Planning Department to clarify the requirements related to installing solar panels."
+                                }
+                            ],
+                            "overall_assessment": "The content provides some information relevant to a Council Resident, but it falls short of addressing specific questions about solar panel installation and whether permission is required. To fully understand this matter, additional resources or direct communication with the local council would be necessary."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.7460198402404785,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://swansea.gov.uk/media/16596/Decisions-for-week-ending-15-March-2024/pdf/qrDecisions_for_week_ending_15_March_2024.pdf?m=1710942930227"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "008_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_040714-swansea.gov.uk",
+                    "analysis_timestamp": "2025-08-11T04:08:29+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 7,
+                            "duration_minutes": 1.25,
+                            "tokens_consumed": 7988,
+                            "tokens_remaining": 22012,
+                            "token_utilization_percentage": 26.63,
+                            "average_tokens_per_step": 1141.14
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 73.37,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 19,
+                            "consumption_rate": 1141.14,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 7,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 3
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 17.86,
+                            "steps_fatigue_percentage": 58.33,
+                            "overall_fatigue_score": 58.33,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.25,
+                            "total_steps": 7,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved",
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_040714-swansea.gov.uk",
+                        "start_time": "2025-08-11T04:07:14+01:00",
+                        "current_time": "2025-08-11T04:08:29+01:00",
+                        "duration_seconds": 75,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7988,
+                        "tokens_remaining": 22012,
+                        "token_utilization_percentage": 26.63,
+                        "token_status": "available",
+                        "total_steps": 7,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 3,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 7
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 1609,
+                                "avg_per_call": 804.5
+                            },
+                            "analyst": {
+                                "calls": 3,
+                                "tokens": 6379,
+                                "avg_per_call": 2126.3333333333335
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1141.14
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_040714-swansea.gov.uk",
+                    "start_time": "2025-08-11T04:07:14+01:00",
+                    "current_time": "2025-08-11T04:08:29+01:00",
+                    "duration_seconds": 75,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7988,
+                    "tokens_remaining": 22012,
+                    "token_utilization_percentage": 26.63,
+                    "token_status": "available",
+                    "total_steps": 7,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 3,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 7
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 1609,
+                            "avg_per_call": 804.5
+                        },
+                        "analyst": {
+                            "calls": 3,
+                            "tokens": 6379,
+                            "avg_per_call": 2126.3333333333335
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1141.14
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

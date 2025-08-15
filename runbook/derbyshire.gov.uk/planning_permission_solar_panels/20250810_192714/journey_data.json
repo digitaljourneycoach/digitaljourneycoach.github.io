@@ -1,0 +1,666 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T19:27:14+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "derbyshire.gov.uk",
+                "Council Name": "Derbyshire County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Obtaining planning permission for Derbyshire County Council ...",
+                        "link": "https://staff.derbyshire.gov.uk/site-elements/documents/people-places/property/obtaining-planning-permission-for-derbyshire-county-council-development.pdf",
+                        "snippet": "planning system was introduced. ... 11.2 Planning permission will be needed in almost all instances of installing viable photo voltaic panels, solar panels and."
+                    },
+                    {
+                        "title": "1 Solar Farm at Land at Former Williamthorpe Colliery Mansfield ...",
+                        "link": "https://democracy.derbyshire.gov.uk/documents/s28170/1%20Solar%20Farm%20at%20Land%20at%20Former%20Williamthorpe%20Colliery%20Mansfield%20Road%20Temple%20Normanton%20Chesterfield.pdf",
+                        "snippet": "Dec 2, 2024 ... 4.7 Planning Permission Reference Number: CD4/0615/37 for a Solar Farm. (Ground Mounted Solar PV Installation) was approved by the. Regulatory\u00a0..."
+                    },
+                    {
+                        "title": "Planning applications - Derbyshire County Council",
+                        "link": "https://www.derbyshire.gov.uk/environment/planning/planning-applications/planning-applications.aspx",
+                        "snippet": "We are responsible for ensuring that developments that have been approved are carried out in accordance with the requirements imposed on permissions and that\u00a0..."
+                    },
+                    {
+                        "title": "Climate change and planning guidance",
+                        "link": "https://www.derbyshire.gov.uk/site-elements/documents/pdf/environment/planning/planning-policy/planning-and-climate-change/climate-change-and-planning-guidance.pdf",
+                        "snippet": "including micro wind turbines, heat pumps, solar thermal and solar PV is permitted ... Photovoltaic panels built into a building or structure, not free standing."
+                    },
+                    {
+                        "title": "PRESENT",
+                        "link": "https://democracy.derbyshire.gov.uk/documents/s29028/Final%20Minutes%202-12-24.pdf",
+                        "snippet": "Dec 2, 2024 ... surroundings, proposed development of the solar panel array ... RESOLVED that planning permission for planning application code number."
+                    },
+                    {
+                        "title": "CP - Outstanding Apps",
+                        "link": "https://democracy.derbyshire.gov.uk/documents/s26530/Outstanding+Applications+Report.pdf",
+                        "snippet": "Aug 14, 2024 ... photovoltaic solar panels, inverter cabins, underground cabling ... planning permission CW8/0811/61 to extend the hours of working on\u00a0..."
+                    },
+                    {
+                        "title": "CP - Outstanding Apps",
+                        "link": "https://democracy.derbyshire.gov.uk/documents/s26963/2024%2009%2013%20Outstanding%20Applications%20List.pdf",
+                        "snippet": "photovoltaic solar panels, inverter cabins, underground cabling, perimeter ... planning permission CW8/0811/61 to extend the hours of working on the."
+                    },
+                    {
+                        "title": "Application for the Development of a Lateral Extension to the South ...",
+                        "link": "https://democracy.derbyshire.gov.uk/documents/s25137/2%20Application%20for%20the%20Development%20of%20a%20Lateral%20Extension%20to%20the%20South-West%20of%20the%20Existing%20Permitted.pdf",
+                        "snippet": "May 13, 2024 ... In 2013, planning permission CM3/0507/30 granted an extension of time to 2021 for the completion of the quarry development and to. 2032 for the\u00a0..."
+                    },
+                    {
+                        "title": "derbyshire-spatial-energy-study.pdf",
+                        "link": "https://www.derbyshire.gov.uk/site-elements/documents/pdf/environment/planning/derbyshire-spatial-energy-study.pdf",
+                        "snippet": "Sep 1, 2022 ... ... solar thermal and PV, the planning and ... Local planning authorities should adhere to building regulations, and energy efficiency."
+                    },
+                    {
+                        "title": "Vein minerals supporting paper",
+                        "link": "https://www.derbyshire.gov.uk/site-elements/documents/pdf/environment/planning/planning-policy/minerals-waste-development-framework/developing-the-minerals-local-plan/vein-minerals-supporting-paper.pdf",
+                        "snippet": "There are also some dormant vein mineral extraction sites at Ashover, Brassington,. Matlock, and some other areas where the planning permissions have been\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.derbyshire.gov.uk/environment/planning/planning-applications/planning-applications.aspx",
+                        "title": "Planning applications - Derbyshire County Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Provides information on all planning applications in Derbyshire County Council",
+                            "Includes solar panel installations among the listed developments"
+                        ],
+                        "reasoning": "This resource provides a comprehensive list of all planning applications in Derbyshire County Council, which includes solar panel installations. Users can search for specific applications or browse through the list to find information relevant to council customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Planning applications - Derbyshire County Council",
+                                "Source": "https://www.derbyshire.gov.uk/environment/planning/planning-applications/planning-applications.aspx",
+                                "Key Strengths": [
+                                    "Provides information on all planning applications in Derbyshire County Council",
+                                    "Includes solar panel installations among the listed developments"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This resource provides a comprehensive list of all planning applications in Derbyshire County Council, which includes solar panel installations. Users can search for specific applications or browse through the list to find information relevant to council customer information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Climate change and planning guidance",
+                                "Source": "https://www.derbyshire.gov.uk/site-elements/documents/pdf/environment/planning/planning-policy/planning-and-climate-change/climate-change-and-planning-guidance.pdf",
+                                "Key Strengths": [
+                                    "Contains guidelines for planning permissions related to renewable energy",
+                                    "Mentions solar PV systems specifically"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource contains guidance on planning policies and procedures for addressing climate change issues, such as the installation of renewable energy systems like solar PV. It is an excellent source for customers seeking information about planning permissions and regulations regarding solar panel installations."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Application for the Development of a Lateral Extension to the South ...",
+                                "Source": "https://democracy.derbyshire.gov.uk/documents/s25137/2%20Application%20for%20the%20Development%20of%20a%20Lateral%20Extension%20to%20the%20South-West%20of%20the%20Existing%20Permitted.pdf",
+                                "Key Strengths": [
+                                    "Includes planning permission details for solar panel installation",
+                                    "Relevant for customers seeking details about specific installations"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This resource contains the application and details of a solar panel installation project that has already received planning permission. It provides valuable insights into the process and requirements involved in obtaining planning permission for a solar panel installation."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "CP - Outstanding Apps",
+                                "Source": "https://democracy.derbyshire.gov.uk/documents/s26530/Outstanding+Applications+Report.pdf",
+                                "Key Strengths": [
+                                    "Provides information on ongoing planning applications",
+                                    "Includes solar panel installations among the listed developments"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This resource contains a list of outstanding (unresolved) planning applications, including those for solar panel installations. Customers can browse through this list to find more information about current solar panel installation projects in Derbyshire County Council."
+                            }
+                        ],
+                        "Analysis Notes": "The provided results are relevant to council customer needs, as they relate to planning permission and solar panel installations in Derbyshire County Council. The first four recommendations are most likely to provide the most helpful information to users seeking guidance or details about planning permissions and renewable energy installations.",
+                        "Recommendations Notes": "The first recommendation is a good starting point for users who want a comprehensive list of all planning applications in Derbyshire County Council. The second, third, and fourth recommendations focus on specific projects but may not contain all the information necessary for every user's needs. Therefore, users should consider browsing through multiple resources to gather the most complete information."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "data": [
+                        {
+                            "Number": "1",
+                            "Title": "Planning applications - Derbyshire County Council",
+                            "Source": "https://www.derbyshire.gov.uk/environment/planning/planning-applications/planning-applications.aspx",
+                            "Reasoning": "This resource provides a comprehensive list of all planning applications in Derbyshire County Council, which includes solar panel installations. Users can search for specific applications or browse through the list to find information relevant to council customer information needs.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Climate change and planning guidance",
+                            "Source": "https://www.derbyshire.gov.uk/site-elements/documents/pdf/environment/planning/planning-policy/planning-and-climate-change/climate-change-and-planning-guidance.pdf",
+                            "Reasoning": "This resource contains guidelines for planning permissions related to renewable energy, such as solar PV systems. It provides guidance on relevant policies and procedures, making it a valuable source for customers seeking information about planning permissions and regulations regarding solar panel installations.",
+                            "Confidence": "85"
+                        }
+                    ],
+                    "message": "3 recommendations found with minimum confidence score of 60."
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.derbyshire.gov.uk/environment/planning/planning-applications/planning-applications.aspx"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.derbyshire.gov.uk/environment/planning/planning-applications/planning-applications.aspx",
+                        "analysis": {
+                            "url": "https://www.derbyshire.gov.uk/environment/planning/planning-applications/planning-applications.aspx",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T19:27:14+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T19:27:41+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 46575,
+                            "response_time": 0.261,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.261s)",
+                                    "Content successfully retrieved (46575 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.261962890625,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.derbyshire.gov.uk/environment/planning/planning-applications/planning-applications.aspx"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.derbyshire.gov.uk/environment/planning/planning-applications/planning-applications.aspx",
+                        "content": " It seems like you've provided a large chunk of HTML code for a webpage. This webpage contains a form to collect feedback from users about the site, as well as content related to page updates, project information, and various hidden form fields used by browsers or ASP.NET to function properly.\n\nTo break it down:\n1. The body of the HTML document starts with a header section that includes the site's logo, search bar, navigation menus, and other components.\n2. There's a main section where the content is displayed. In this case, there's some text about page updates and a form to gather user feedback. The form contains several radio buttons for users to select why they are leaving feedback (e.g., \"I found what I wanted,\" \"It's hard to understand,\" etc.), as well as a \"Submit\" button.\n3. Finally, there's footer information and additional hidden fields used by the server and browser. These include ViewState, EventValidation, and other values specific to ASP.NET applications.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 7.92042088508606,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.derbyshire.gov.uk/environment/planning/planning-applications/planning-applications.aspx",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "0%",
+                                    "confidence": "5%",
+                                    "reasoning": "The evaluated webpage does not provide any information or guidelines about obtaining permissions for installing solar panels. The content is related to site updates and user feedback, which do not meet the need of a council resident seeking permission for a solar panel installation.",
+                                    "next_actions": "It would be necessary to contact the council's planning department directly to inquire about the permits required to install solar panels."
+                                }
+                            ],
+                            "overall_assessment": "The content does not answer or meet the needs provided; there is a key gap in informing council residents about the permit process for installing solar panels. Overall satisfaction level is low due to the lack of relevant information."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.60205602645874,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.derbyshire.gov.uk/environment/planning/planning-applications/planning-applications.aspx"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_192714-derbyshire.gov.uk",
+                    "analysis_timestamp": "2025-08-10T19:27:53+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.65,
+                            "tokens_consumed": 12396,
+                            "tokens_remaining": 17604,
+                            "token_utilization_percentage": 41.32,
+                            "average_tokens_per_step": 2066
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 58.68,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 8,
+                            "consumption_rate": 2066,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "5",
+                            "quality_scores": [
+                                "5"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "5",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.29,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.65,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_192714-derbyshire.gov.uk",
+                        "start_time": "2025-08-10T19:27:14+01:00",
+                        "current_time": "2025-08-10T19:27:53+01:00",
+                        "duration_seconds": 39,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 12396,
+                        "tokens_remaining": 17604,
+                        "token_utilization_percentage": 41.32,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 9064,
+                                "avg_per_call": 4532
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3332,
+                                "avg_per_call": 1666
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 2066
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_192714-derbyshire.gov.uk",
+                    "start_time": "2025-08-10T19:27:14+01:00",
+                    "current_time": "2025-08-10T19:27:53+01:00",
+                    "duration_seconds": 39,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 12396,
+                    "tokens_remaining": 17604,
+                    "token_utilization_percentage": 41.32,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 9064,
+                            "avg_per_call": 4532
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3332,
+                            "avg_per_call": 1666
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 2066
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

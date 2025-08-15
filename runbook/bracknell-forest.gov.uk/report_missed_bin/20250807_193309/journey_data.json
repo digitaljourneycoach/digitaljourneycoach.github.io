@@ -1,0 +1,686 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T19:33:09+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "bracknell-forest.gov.uk",
+                "Council Name": "Bracknell Forest Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed bin collection | Bracknell Forest Council",
+                        "link": "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-issues/report-missed-bin-collection",
+                        "snippet": "Jun 27, 2025 ... You can report a missed bin collection up to 3 days after your collection day. Report a missed general waste bin collection, report a missed recycling bin\u00a0..."
+                    },
+                    {
+                        "title": "Report a missing bin | Bracknell Forest Council",
+                        "link": "https://www.bracknell-forest.gov.uk/bins-and-recycling/report-missing-bin",
+                        "snippet": "If you have moved into a Bracknell Forest home and you are missing any bins you will need to fill out a form for each type of bin."
+                    },
+                    {
+                        "title": "Bin issues | Bracknell Forest Council",
+                        "link": "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-issues",
+                        "snippet": "Jun 27, 2025 ... Report any other missed bin collections. Report a missed collection for green, blue or brown bins. You can do this up to 3 days after your\u00a0..."
+                    },
+                    {
+                        "title": "Report a missed food waste collection | Bracknell Forest Council",
+                        "link": "https://www.bracknell-forest.gov.uk/bins-and-recycling/food-waste-collection/report-missed-food-waste-collection",
+                        "snippet": "Complete our online form to report a missed food waste collection by 5pm on the day after your collection day."
+                    },
+                    {
+                        "title": "General complaints | Bracknell Forest Council",
+                        "link": "https://www.bracknell-forest.gov.uk/council-and-democracy/get-in-touch/complaints/general-complaints",
+                        "snippet": "Jun 27, 2025 ... waste and recycling. If your enquiry is not a complaint but you need to report an issue, such as a missed bin, visit our report page. Before\u00a0..."
+                    },
+                    {
+                        "title": "Bin requests | Bracknell Forest Council",
+                        "link": "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-requests",
+                        "snippet": "Jun 27, 2025 ... a missed bin collection; a damaged bin that needs repairing or ... Report a bin issue \u00b7 Request the removal of a bin. Footer. Accessibility\u00a0..."
+                    },
+                    {
+                        "title": "General waste bin collection | Bracknell Forest Council",
+                        "link": "https://www.bracknell-forest.gov.uk/bins-and-recycling/general-waste-bin-collection",
+                        "snippet": "To report an issue, such as a missed bin, a broken bin, or a missing bin ... If you missed a bin collection, you may want to request an additional bin collection."
+                    },
+                    {
+                        "title": "Report | Bracknell Forest Council",
+                        "link": "https://www.bracknell-forest.gov.uk/council-and-democracy/get-in-touch/report",
+                        "snippet": "missing or broken road gully; the condition of existing road markings; flooding or drainage concern; obstruction on the road; gritting or salt bins issues. See\u00a0..."
+                    },
+                    {
+                        "title": "Garden waste collection | Bracknell Forest Council",
+                        "link": "https://www.bracknell-forest.gov.uk/bins-and-recycling/garden-waste-collection",
+                        "snippet": "Jun 27, 2025 ... To report an issue, such as a missed bin, a broken bin, or a missing bin, visit our bin issues page. Report an issue. Related links. Garden\u00a0..."
+                    },
+                    {
+                        "title": "Garden waste sacks | Bracknell Forest Council",
+                        "link": "https://www.bracknell-forest.gov.uk/bins-and-recycling/garden-waste-collection/garden-waste-sacks",
+                        "snippet": "Jun 27, 2025 ... You can also use the form to report a missed collection. If you can't book online, you can book a collection by calling Customer Services on\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-issues/report-missed-bin-collection",
+                        "title": "Report a missed bin collection | Bracknell Forest Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "This link specifically targets missed bin collection situations.",
+                            "The provided snippet indicates that users can report a missed bin collection up to 3 days after their collection day."
+                        ],
+                        "reasoning": "This resource is helpful for users who want to report a missed bin collection and it offers specific information about the reporting process, making it one of the most suitable options.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed bin collection | Bracknell Forest Council",
+                                "Source": "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-issues/report-missed-bin-collection",
+                                "Key Strengths": [
+                                    "This link specifically targets missed bin collection situations.",
+                                    "The provided snippet indicates that users can report a missed bin collection up to 3 days after their collection day."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This resource is helpful for users who want to report a missed bin collection and it offers specific information about the reporting process, making it one of the most suitable options."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Bin issues | Bracknell Forest Council",
+                                "Source": "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-issues",
+                                "Key Strengths": [
+                                    "This link provides information on various bin issues, allowing users to find the appropriate solution for their specific concerns.",
+                                    "The provided snippet indicates that users can report any other missed bin collections."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Although this resource doesn't focus specifically on reporting a missed bin collection, it offers information about various bin issues and contains clear instructions for reporting a missed collection, making it a strong recommendation."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Report a missed food waste collection | Bracknell Forest Council",
+                                "Source": "https://www.bracknell-forest.gov.uk/bins-and-recycling/food-waste-collection/report-missed-food-waste-collection",
+                                "Key Strengths": [
+                                    "This link focuses solely on food waste collection problems.",
+                                    "Users can report a missed food waste collection by 5pm on the day after their collection day."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Though it is more specific to food waste collections, this resource provides valuable information and addresses instances of missed bin collections directly, making it an appropriate recommendation."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Bin requests | Bracknell Forest Council",
+                                "Source": "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-requests",
+                                "Key Strengths": [
+                                    "This link offers users the opportunity to request services such as a missed bin collection.",
+                                    "The provided snippet mentions that users can report a damaged or missing bin."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "While not explicitly discussing missed bin collections, this resource provides information about service requests and addresses concerns about damaged or missing bins, offering users an alternative avenue to address their problems."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Garden waste collection | Bracknell Forest Council",
+                                "Source": "https://www.bracknell-forest.gov.uk/bins-and-recycling/garden-waste-collection",
+                                "Key Strengths": [
+                                    "This link offers information about garden waste collection issues.",
+                                    "The provided snippet indicates that users can report issues with missed, damaged, or missing garden bins."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Although its primary focus is on garden waste collections, this resource offers guidance on reporting various bin issues and can still help users address their concerns about missing bin collections."
+                            }
+                        ],
+                        "Analysis Notes": "The analyzed list consists of search results related to Bracknell Forest Council's waste management services. Although a few resources do not focus specifically on reporting missed bin collections, they provide valuable information regarding other bin issues allowing users to find an appropriate solution for their specific concerns.",
+                        "Recommendations Notes": "Based on the given instruction and search results, the most suitable options have been recommended with high confidence scores. The chosen recommendations cover a range of options, ensuring that different types of user needs are addressed."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Report a missed bin collection | Bracknell Forest Council",
+                            "Source": "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-issues/report-missed-bin-collection",
+                            "Reasoning": "This resource specifically targets missed bin collection situations, providing users with clear steps to report a missed bin collection up to 3 days after their collection day.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Bin issues | Bracknell Forest Council",
+                            "Source": "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-issues",
+                            "Reasoning": "Though not specifically for missed bin collection, this link offers information about various bin issues with instructions on how to report a missed Bin Collection.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Report a missed food waste collection | Bracknell Forest Council",
+                            "Source": "https://www.bracknell-forest.gov.uk/bins-and-recycling/food-waste-collection/report-missed-food-waste-collection",
+                            "Reasoning": "This resource, while specific to food waste collections, addresses instances of missed bin collections directly and offers valuable information.",
+                            "Confidence": "80"
+                        }
+                    ],
+                    "max_selected": 3
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-issues/report-missed-bin-collection"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-issues/report-missed-bin-collection",
+                        "analysis": {
+                            "url": "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-issues/report-missed-bin-collection",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T19:33:09+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T19:33:38+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 21143,
+                            "response_time": 0.573,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.573s)",
+                                    "Content successfully retrieved (21143 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.575718879699707,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-issues/report-missed-bin-collection"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-issues/report-missed-bin-collection",
+                        "content": " Here's the extracted clean, semantic HTML content from the provided HTML page:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<!-- Head elements omitted for brevity -->\n</head>\n<body>\n    <a id=\"main-content\" tabindex=\"0\"></a>\n    <div class=\"row\">\n        <h1 class=\"page-title\">Report a missed bin collection</h1>\n        <div class=\"region region-content\">\n            <article class=\"node node--type-form-page node--view-mode-full\">\n                <div class=\"node__content\">\n                    <div class=\"clearfix text-formatted field field--name-field-introduction field--type-text-long field--label-hidden\">\n                        <p>You can report a missed bin collection up to 3 days after your collection day.</p>\n                        <p><a class=\"button button--primary\" href=\"https://selfservice.mybfc.bracknell-forest.gov.uk/w/webpage/auth-service?service=core_bin_enquiries&amp;bintype=green&amp;request=missed\">Report a missed general waste bin collection</a></p>\n                        <p><a class=\"button button--primary\" href=\"https://selfservice.mybfc.bracknell-forest.gov.uk/w/webpage/auth-service?service=core_bin_enquiries&amp;bintype=blue&amp;request=missed\">Report a missed recycling bin collection</a></p>\n                        <p><a class=\"button button--primary\" href=\"https://selfservice.mybfc.bracknell-forest.gov.uk/w/webpage/auth-service?service=core_bin_enquiries&amp;bintype=brown&amp;request=missed\">Report a missed garden waste bin collection</a></p>\n                        <p><a class=\"button button--primary\" data-entity-substitution=\"canonical\" data-entity-type=\"node\" data-entity-uuid=\"39639959-cf85-42ba-bd20-cbe8ec656ace\" href=\"/bins-and-recycling/garden-waste-collection/garden-waste-sacks/book-garden-waste-sack-collection\" title=\"Book a garden waste sack collection\">Report a missed garden sack collection</a></p>\n                    </div>\n                    <div class=\"field field--name-field-link field--type-link field--label-hidden\">\n                        <a href=\"https://selfservice.mybfc.bracknell-forest.gov.uk/w/webpage/auth-service?service=core_bin_enquiries&amp;bintype=food&amp;request=missed\" class=\"button button--primary\">Report a missed food caddy collection</a>\n                    </div>\n                </div>\n            </article>\n        </div>\n    </div>\n</body>\n</html>\n```\n\nThis cleaned HTML is free of headers, footers, sidebars, navigation menus, and non-essential elements like the cookie banner. The remaining content consists only of the meaningful structural elements such as headings (<h1>), paragraphs (<p>), links (<a> and <button>), and lists if they were part of the main content on the page.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 16.484997034072876,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-issues/report-missed-bin-collection",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content partially addresses this need",
+                                    "confidence": "80%",
+                                    "reasoning": "The provided content offers links for reporting missed collections for all types of bins: general waste, recycling, garden waste, and food caddies. However, it doesn't explicitly state the procedure for reporting if a bin was not put out on the collection day.",
+                                    "next_actions": "I would proceed to click on the appropriate link provided according to my bin type."
+                                }
+                            ],
+                            "overall_assessment": "The content is useful in providing links for reporting missed bin collections and covering various types of bins. However, it could be more comprehensive by explicitly addressing the situation where residents forget to put their bins out on collection days."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.020550966262817,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.bracknell-forest.gov.uk/bins-and-recycling/bin-issues/report-missed-bin-collection"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_193309-bracknell-forest.gov.uk",
+                    "analysis_timestamp": "2025-08-07T19:34:00+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.85,
+                            "tokens_consumed": 5691,
+                            "tokens_remaining": 94309,
+                            "token_utilization_percentage": 5.69,
+                            "average_tokens_per_step": 948.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 94.31,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 99,
+                            "consumption_rate": 948.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "80",
+                            "quality_scores": [
+                                "80"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "80",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 12.14,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.85,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_193309-bracknell-forest.gov.uk",
+                        "start_time": "2025-08-07T19:33:09+01:00",
+                        "current_time": "2025-08-07T19:34:00+01:00",
+                        "duration_seconds": 51,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 5691,
+                        "tokens_remaining": 94309,
+                        "token_utilization_percentage": 5.69,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2016,
+                                "avg_per_call": 1008
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3675,
+                                "avg_per_call": 1837.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 948.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_193309-bracknell-forest.gov.uk",
+                    "start_time": "2025-08-07T19:33:09+01:00",
+                    "current_time": "2025-08-07T19:34:00+01:00",
+                    "duration_seconds": 51,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 5691,
+                    "tokens_remaining": 94309,
+                    "token_utilization_percentage": 5.69,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2016,
+                            "avg_per_call": 1008
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3675,
+                            "avg_per_call": 1837.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 948.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

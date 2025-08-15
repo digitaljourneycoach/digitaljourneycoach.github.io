@@ -1,0 +1,716 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T13:51:35+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "somerset.gov.uk",
+                "Council Name": "Somerset County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed collection",
+                        "link": "https://www.somerset.gov.uk/bins-recycling-and-waste/report-a-missed-household-collection/",
+                        "snippet": "You can report missed rubbish or garden waste on the same day or up to 5 working days later. You can report missed recycling on the same day or\u00a0..."
+                    },
+                    {
+                        "title": "Bins, recycling and waste",
+                        "link": "https://www.somerset.gov.uk/bins-recycling-and-waste/",
+                        "snippet": "Get information, advice and guidance. Do it online. Use our online forms to report missed collections, order new containers, set up an account and tell us\u00a0..."
+                    },
+                    {
+                        "title": "Waste contact and complaints",
+                        "link": "https://www.somerset.gov.uk/bins-recycling-and-waste/contact-and-complaints/",
+                        "snippet": "Jun 26, 2025 ... Types of complaint. A Service Failure Notification is a one-off contact about a problem, such as a missed collection or undelivered box, bin or\u00a0..."
+                    },
+                    {
+                        "title": "Login - Somerset Council",
+                        "link": "https://www.somerset.gov.uk/order-bins",
+                        "snippet": "My Council Services."
+                    },
+                    {
+                        "title": "Garden waste collections",
+                        "link": "https://www.somerset.gov.uk/bins-recycling-and-waste/garden-waste-collections/",
+                        "snippet": "Other services. Check your next collection day \u00b7 Request a garden sack collection \u00b7 Replace, remove, cancel or move garden bin \u00b7 Report a missed collection\u00a0..."
+                    },
+                    {
+                        "title": "Bulky Waste Pricing - What to do with your large items",
+                        "link": "https://www.somerset.gov.uk/bulky-waste",
+                        "snippet": "Fly-tipping is a crime punishable by fine or imprisonment and a blot on Somerset's lovely landscape. Please report fly tipping at somerset.gov.uk/bins-recycling\u00a0..."
+                    },
+                    {
+                        "title": "Contact us",
+                        "link": "https://www.somerset.gov.uk/contact-us/",
+                        "snippet": "Bin collection days. Collections for recycling ... It's quickest and easiest to report a missed waste collection online. Report a missed waste collection\u00a0..."
+                    },
+                    {
+                        "title": "Food waste collections",
+                        "link": "https://www.somerset.gov.uk/bins-recycling-and-waste/food-waste-collections/",
+                        "snippet": "Missed collections. If your collection has been missed, you can report it online within three working days (not including the initial collection day itself)\u00a0..."
+                    },
+                    {
+                        "title": "Bins out by 6am, as weather and Glastonbury Festival traffic heat up",
+                        "link": "https://www.somerset.gov.uk/news/bins-out-by-6am-as-weather-and-glastonbury-festival-traffic-heat-up/",
+                        "snippet": "Jun 28, 2024 ... Residents who have had a missed collection, and reported it in the last couple of days, should leave their bin, boxes and bag out for collection\u00a0..."
+                    },
+                    {
+                        "title": "Waste collections update",
+                        "link": "https://www.somerset.gov.uk/news/waste-collections-update/",
+                        "snippet": "May 16, 2025 ... There's no need to report a missed collection, crews will return the following day. If it's been more than 24 hours and your recycling has not\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.somerset.gov.uk/bins-recycling-and-waste/report-a-missed-household-collection/",
+                        "title": "Report a missed collection",
+                        "confidence": 90,
+                        "strengths": [
+                            "Specifically related to reporting missed collections for household waste",
+                            "Offers instant access by providing an online form"
+                        ],
+                        "reasoning": "The provided title and snippet indicate that this link is most relevant for council customer issues regarding missed household collections. The service offers immediate access through the provided online form, making it a convenient option for individuals needing assistance.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed collection",
+                                "Source": "https://www.somerset.gov.uk/bins-recycling-and-waste/report-a-missed-household-collection/",
+                                "Key Strengths": [
+                                    "Specifically related to reporting missed collections for household waste",
+                                    "Offers instant access by providing an online form"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The provided title and snippet indicate that this link is most relevant for council customer issues regarding missed household collections. The service offers immediate access through the provided online form, making it a convenient option for individuals needing assistance."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Bins, recycling and waste",
+                                "Source": "https://www.somerset.gov.uk/bins-recycling-and-waste/",
+                                "Key Strengths": [
+                                    "Comprehensive information source for all council waste services",
+                                    "Offers online forms for reporting missed collections and other waste-related tasks"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides a comprehensive listing of various waste services, including bins, recycling, and household waste management. It also offers the ability to report a missed collection online through provided forms."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Waste contact and complaints",
+                                "Source": "https://www.somerset.gov.uk/bins-recycling-and-waste/contact-and-complaints/",
+                                "Key Strengths": [
+                                    "Provides a specific section for handling wast\u0435 complaints",
+                                    "Allows users to report service failures such as missed collections"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The provided title and snippet indicate that this link can be used by waste customers to submit complaints. Additionally, the option for a Service Failure Notification suggests users can report issues such as missed collections."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Garden waste collections",
+                                "Source": "https://www.somerset.gov.uk/bins-recycling-and-waste/garden-waste-collections/",
+                                "Key Strengths": [
+                                    "Focuses on garden waste collection services",
+                                    "Provides information regarding replacing, removing, cancelling, or moving garden bins"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The provided title and snippet suggest that this link offers relevant content for council customers dealing with garden waste collections. Additional services such as reporting a missed collection and requesting a sack collection add to its value."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Contact us",
+                                "Source": "https://www.somerset.gov.uk/contact-us/",
+                                "Key Strengths": [
+                                    "Offers multiple options for contacting council services",
+                                    "Allows users to report missed waste collections online"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link provides various ways to contact council services, including an option to report a missed waste collection online. However, it may not offer as dedicated resources related to specific waste-related issues."
+                            }
+                        ],
+                        "Analysis Notes": "Each item in the provided JSON list was evaluated for relevance and quality based on their titles, snippets, and link URLs. The top five recommendations were chosen based on the highest confidence scores, focusing on resources that offer relevant waste-related services and provide a means to report missed collections.",
+                        "Recommendations Notes": "Four of the provided options appear to be focused on specific aspects such as reporting missed waste collections or handling complaints. The other six options were not suitable for council customer information needs, primarily due to their association with less-relevant topics like food waste collections, news articles, or login services."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Report a missed collection",
+                            "Source": "https://www.somerset.gov.uk/bins-recycling-and-waste/report-a-missed-household-collection/",
+                            "Reasoning": "The provided title and snippet indicate that this link is most relevant for council customer issues regarding missed household collections. The service offers immediate access through the provided online form, making it a convenient option for individuals needing assistance.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Bins, recycling and waste",
+                            "Source": "https://www.somerset.gov.uk/bins-recycling-and-waste/",
+                            "Reasoning": "This link provides a comprehensive listing of various waste services, including bins, recycling, and household waste management. It also offers the ability to report a missed collection online through provided forms.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Waste contact and complaints",
+                            "Source": "https://www.somerset.gov.uk/bins-recycling-and-waste/contact-and-complaints/",
+                            "Reasoning": "The provided title and snippet indicate that this link can be used by waste customers to submit complaints. Additionally, the option for a Service Failure Notification suggests users can report issues such as missed collections.",
+                            "Confidence": "80"
+                        }
+                    ],
+                    "selected_options": 3,
+                    "min_confidence": "0.6",
+                    "average_confidence": 85.33333333333334,
+                    "max_confidence": 90
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "005_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.somerset.gov.uk/bins-recycling-and-waste/report-a-missed-household-collection/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.somerset.gov.uk/bins-recycling-and-waste/report-a-missed-household-collection/",
+                        "analysis": {
+                            "url": "https://www.somerset.gov.uk/bins-recycling-and-waste/report-a-missed-household-collection/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T13:51:35+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T14:06:53+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 49853,
+                            "response_time": 0.305,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.305s)",
+                                    "Content successfully retrieved (49853 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.3056180477142334,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "006_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.somerset.gov.uk/bins-recycling-and-waste/report-a-missed-household-collection/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.somerset.gov.uk/bins-recycling-and-waste/report-a-missed-household-collection/",
+                        "content": " Here is the cleaned and structured HTML containing the central editorial content of the page, as per your request:\n\n```html\n<main class=\"main\" id=\"contents\">\n    <section class=\"primary\">\n        <div class=\"container\">\n            <div class=\"row\">\n                <div id=\"primary\" class=\"content col-lg-8\">\n                    <div class=\"content-area \">\n\n                        <!-- Your clean body content starts here -->\n\n                        <div id=\"Before reporting\" class=\"content__block\">\n                            <h2>Before reporting</h2>\n                            <p><strong>Before reporting a missed bin or recycling collection, please confirm:</strong></p>\n                            <ul>\n                                <li>Your bin or recycling containers were out for collection by 6am.</li>\n                                <li>Your bin or recycling box was put out on the correct day \u2013 <a href=\"https://www.somerset.gov.uk/bins-recycling-and-waste/check-my-collection-days/\">check your collection day</a> on our website.</li>\n                                <li>You put the right items in the right bin or recycling box \u2013 <a href=\"https://www.somerset.gov.uk/bins-recycling-and-waste/recycling-collections/\">check what goes into each container</a>.</li>\n                                <li>Your waste was fully contained in the bin or recycling box.</li>\n                                <li>You are reporting this to us after 7pm on your collection day. Delays can happen because of roadworks, lorry breakdowns, crew or route changes, or other unexpected events.</li>\n                                <li>Please check to see if your container has been tagged with a reason for non-collection.</li>\n                            </ul>\n                        </div>\n                        <div id=\"How to report a missed collection\" class=\"content__block\">\n                            <h2>How to report a missed collection</h2>\n                            <p>If you have already reported a missed collection this week and it has not been collected within two working days, we will ask you to provide the eight digit service request number.</p>\n\n                            <!-- Adding an important in-text link for your needs -->\n                            <a href=\"https://iportal.itouchvision.com/icustomer/?cuid=3C5B96889D0C211325CE605263AF500A8C0A7D89&amp;lang=en\">Report a missed collection</a>\n                        </div>\n                        <div id=\"Reasons for non-collection of containers\" class=\"content__block\">\n                            <h2>Reasons for non-collection of containers</h2>\n                            <ul>\n                                <li>The bin included commercial, business or industrial waste.</li>\n                                <li>The bin was too heavy.</li>\n                                <li>The bin included items that we do not currently collect.</li>\n                                <li>There was too much cardboard. More than two recycling containers filled with cardboard will not be collected. Cardboard that has not been flattened will not be collected. Very large pieces should be flattened and taken to a recycling centre. <a href=\"https://www.somerset.gov.uk/bins-recycling-and-waste/find-your-nearest-recycling-centre/\">Find details of your nearest recycling centre</a>.</li>\n                            </ul>\n                        </div>\n                        <div id=\"Reporting timescales\" class=\"content__block\">\n                            <h2>Reporting timescales</h2>\n                            <ul>\n                                <li>You can report missed rubbish or garden waste on the same day or up to 5 working days later.</li>\n                                <li>You can report missed recycling on the same day or up to 3 working days later.</li>\n                            </ul>\n                        </div>\n                        <!-- Your clean body content ends here -->\n\n                        <div class=\"content-area__page-meta\">\n                            <p class=\"page-meta__updated-date\">Last updated: August 5, 2025</p>\n                            <p class=\"page-meta__publish-date\">Next review due: February 5, 2026</p>\n                            <a class=\"page-meta__back-to-top\" href=\"#contents\">Back to top</a>\n                        </div>\n\n                    </div>\n                </div>\n            </div>\n        </div>\n    </section>\n</main>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 23.99193286895752,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "007_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.somerset.gov.uk/bins-recycling-and-waste/report-a-missed-household-collection/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content meets this need well. The webpage provides clear instructions on how to report a missed collection, which is the action needed in this situation.",
+                                    "confidence": "85%",
+                                    "reasoning": "The webpage provides a link specifically for reporting a missed collection: 'Report a missed collection' which seems targeted towards people who forgot to put their bin out. However, it does not explicitly cover what to do if the bin was not put out due to forgetfulness.",
+                                    "next_actions": "Follow the provided link and report the missed collection."
+                                }
+                            ],
+                            "overall_assessment": "This content serves my needs well. It provides clear instructions on reporting a missed collection, the reasons for non-collection, and reporting timescales. However, it could improve by providing explicit guidance for situations of forgetfulness to better serve residents in this specific scenario."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.624775171279907,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.somerset.gov.uk/bins-recycling-and-waste/report-a-missed-household-collection/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "008_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_135135-somerset.gov.uk",
+                    "analysis_timestamp": "2025-08-08T14:07:23+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 7,
+                            "duration_minutes": 15.8,
+                            "tokens_consumed": 9650,
+                            "tokens_remaining": 20350,
+                            "token_utilization_percentage": 32.17,
+                            "average_tokens_per_step": 1378.57
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 67.83,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 14,
+                            "consumption_rate": 1378.57,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 7,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 3
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "85",
+                            "quality_scores": [
+                                "85"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "85",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 225.71,
+                            "steps_fatigue_percentage": 58.33,
+                            "overall_fatigue_score": 225.71,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": true,
+                            "boredom_likely": true
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 15.8,
+                            "total_steps": 7,
+                            "boredom_indicators": {
+                                "excessive_duration": true,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 50,
+                            "user_likely_bored": false,
+                            "engagement_declining": true
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 35,
+                            "efficiency_factors": [
+                                "Slow completion time"
+                            ],
+                            "is_efficient": false,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved",
+                            "Persona patience thresholds exceeded",
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "User engagement declining - consider wrapping up"
+                        ],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_135135-somerset.gov.uk",
+                        "start_time": "2025-08-08T13:51:35+01:00",
+                        "current_time": "2025-08-08T14:07:23+01:00",
+                        "duration_seconds": 948,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 9650,
+                        "tokens_remaining": 20350,
+                        "token_utilization_percentage": 32.17,
+                        "token_status": "available",
+                        "total_steps": 7,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 3,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 7
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3598,
+                                "avg_per_call": 1799
+                            },
+                            "analyst": {
+                                "calls": 3,
+                                "tokens": 6052,
+                                "avg_per_call": 2017.3333333333333
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1378.57
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_135135-somerset.gov.uk",
+                    "start_time": "2025-08-08T13:51:35+01:00",
+                    "current_time": "2025-08-08T14:07:23+01:00",
+                    "duration_seconds": 948,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 9650,
+                    "tokens_remaining": 20350,
+                    "token_utilization_percentage": 32.17,
+                    "token_status": "available",
+                    "total_steps": 7,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 3,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 7
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3598,
+                            "avg_per_call": 1799
+                        },
+                        "analyst": {
+                            "calls": 3,
+                            "tokens": 6052,
+                            "avg_per_call": 2017.3333333333333
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1378.57
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

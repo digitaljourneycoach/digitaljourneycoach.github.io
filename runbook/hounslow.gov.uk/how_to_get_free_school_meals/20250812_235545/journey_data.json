@@ -1,0 +1,659 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-12T23:55:45+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "hounslow.gov.uk",
+                "Council Name": "Hounslow London Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Free school meals | London Borough of Hounslow",
+                        "link": "https://www.hounslow.gov.uk/schools-colleges/free-school-meals",
+                        "snippet": "All primary school children who attend state schools in London will receive free school meals for the full academic year starting September 2024."
+                    },
+                    {
+                        "title": "Free school meals for all primary school aged children in Hounslow ...",
+                        "link": "https://www.hounslow.gov.uk/news/article/2929/free_school_meals_for_all_primary_school_aged_children_in_hounslow",
+                        "snippet": "Aug 10, 2023 ... All children from state-funded primary schools in Hounslow will have access to free school meals from September 2023 for the full academic year."
+                    },
+                    {
+                        "title": "Holiday activities and food programme | London Borough of Hounslow",
+                        "link": "https://www.hounslow.gov.uk/schools-colleges/holiday-activities-food-programme",
+                        "snippet": "Universal infant free school meals: All children in reception, year 1 and year 2 in England's state-funded schools receive a free meal under the Department for\u00a0..."
+                    },
+                    {
+                        "title": "Schools, nurseries and education | London Borough of Hounslow",
+                        "link": "https://www.hounslow.gov.uk/education-schools-nurseries",
+                        "snippet": "Apply for free school meals \u00b7 School admissionsGetting a place for your child ... Information about attending school or college, including a directory of\u00a0..."
+                    },
+                    {
+                        "title": "Hounslow Family Service Directory.",
+                        "link": "https://fsd.hounslow.gov.uk/synergyweb/family_service_directory/HAFFAQ.aspx",
+                        "snippet": "HAF is for school aged children from reception to year 11 (inclusive) who receive benefits-related free school meals."
+                    },
+                    {
+                        "title": "HAF Information for parents and carers",
+                        "link": "https://fsd.hounslow.gov.uk/SynergyWeb/Family_Service_Directory/HAF2.aspx",
+                        "snippet": "Your child may be able to get free school meals if you get any of the following: ... Local authorities have discretion to use up to 15% of their funding to\u00a0..."
+                    },
+                    {
+                        "title": "Frequently asked questions | Elective home education | London ...",
+                        "link": "https://www.hounslow.gov.uk/school-admissions/elective-home-education/2",
+                        "snippet": "Will my child/children still be entitled to free school meals? If your child/ren received free school meals at their school, please check with hounslow\u00a0..."
+                    },
+                    {
+                        "title": "Holiday Playschemes",
+                        "link": "https://fsd.hounslow.gov.uk/SynergyWeb/Family_Service_Directory/HPS.aspx",
+                        "snippet": "If you qualify, you might be able to get help with the cost using Tax-Free Childcare or Universal Credit childcare. ... receive benefits-related free school meals\u00a0..."
+                    },
+                    {
+                        "title": "Household support, money and benefits",
+                        "link": "https://fsd.hounslow.gov.uk/SynergyWeb/Family_Service_Directory/MoneyMatters.aspx",
+                        "snippet": "Free School Meals (Opens in New Window) \u00b7 School clothing grants (Opens in New ... - Giving and getting stuff for free in your local area. Membership is\u00a0..."
+                    },
+                    {
+                        "title": "Holiday Activities and Food Programme (HAF)",
+                        "link": "https://fsd.hounslow.gov.uk/SynergyWeb/Family_Service_Directory/HAF_Programme.aspx",
+                        "snippet": "The Holiday Activities and Food Programme (HAF) is a great way for your child to have fun during the school holidays."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.hounslow.gov.uk/schools-colleges/free-school-meals",
+                        "title": "Free school meals | London Borough of Hounslow",
+                        "confidence": 95,
+                        "strengths": [
+                            "Provides accurate information about free school meals for children attending primary schools in Hounslow from September 2024",
+                            "Official London Borough of Hounslow website"
+                        ],
+                        "reasoning": "The link directly and clearly states that all primary school children in Hounslow will receive free school meals during the academic year starting from September 2024. This information is available on the official London Borough of Hounslow website.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Free school meals | London Borough of Hounslow",
+                                "Source": "https://www.hounslow.gov.uk/schools-colleges/free-school-meals",
+                                "Key Strengths": [
+                                    "Provides accurate information about free school meals for children attending primary schools in Hounslow from September 2024",
+                                    "Official London Borough of Hounslow website"
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "The link directly and clearly states that all primary school children in Hounslow will receive free school meals during the academic year starting from September 2024. This information is available on the official London Borough of Hounslow website."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Hounslow Family Service Directory.",
+                                "Source": "https://fsd.hounslow.gov.uk/synergyweb/family_service_directory/HAFFAQ.aspx",
+                                "Key Strengths": [
+                                    "Provides detailed information about eligibility for free school meals based on benefits",
+                                    "Clear and easy-to-understand format"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link provides comprehensive details about the eligibility criteria for free school meals, enabling families to quickly determine if they are eligible. The information is presented in an accessible manner on the Hounslow Family Service Directory."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "HAF Information for parents and carers",
+                                "Source": "https://fsd.hounslow.gov.uk/SynergyWeb/Family_Service_Directory/HAF2.aspx",
+                                "Key Strengths": [
+                                    "Offers detailed information about the Holiday Activities and Food (HAF) programme",
+                                    "Resource specifically targeted towards parents and carers"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link offers details about the Holiday Activities and Food Programme, which provides eligible school-aged children with access to activities and food during holidays. The resource is designed to provide the information directly to parents and carers."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Household support, money and benefits",
+                                "Source": "https://fsd.hounslow.gov.uk/SynergyWeb/Family_Service_Directory/MoneyMatters.aspx",
+                                "Key Strengths": [
+                                    "Provides information about various types of support for households, including free school meals",
+                                    "Link to the Family Service Directory enables easy navigation to relevant resources"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Although this link does not specifically focus on only free school meals, the included information about household support and benefits - including references to free school meals - can still be valuable for families."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Holiday Activities and Food Programme (HAF)",
+                                "Source": "https://fsd.hounslow.gov.uk/SynergyWeb/Family_Service_Directory/HAF_Programme.aspx",
+                                "Key Strengths": [
+                                    "Detailed information about the Holiday Activities and Food (HAF) programme",
+                                    "Link to the Family Service Directory enables easy navigation to relevant resources"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link offers details about the Holiday Activities and Food Programme, which provides eligible school-aged children with access to activities and food during holidays. The resource is accessed through the Family Service Directory."
+                            }
+                        ],
+                        "Analysis Notes": "The search results primarily focused on free school meals eligibility, the programmes available for school-aged children during holidays, and resources about household support and benefits. Several of the links offer detailed information specific to the Hounslow Council area.",
+                        "Recommendations Notes": "Links 1, 5, 6, 9, and 10 were found to be most relevant for providing useful, detailed information regarding council customer needs related to free school meals."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "95",
+                        "90",
+                        "85",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "95"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.hounslow.gov.uk/schools-colleges/free-school-meals"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.hounslow.gov.uk/schools-colleges/free-school-meals",
+                        "analysis": {
+                            "url": "https://www.hounslow.gov.uk/schools-colleges/free-school-meals",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-12T23:55:45+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-12T23:56:15+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 42132,
+                            "response_time": 2.802,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 80,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Acceptable response time (2.802s)",
+                                    "Content successfully retrieved (42132 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 70,
+                                "component_scores": {
+                                    "technical": 80,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 2.8045499324798584,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.hounslow.gov.uk/schools-colleges/free-school-meals"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.hounslow.gov.uk/schools-colleges/free-school-meals",
+                        "content": " The main body content (without any non-essential page furniture) of the provided HTML is:\n\n```html\n<div class=\"container\">\n\n        <div class=\"page-content\">\n            <div class=\"page-content-inner\">\n\n                <h1 class=\"page-heading\">\n    Free school meals\n</h1>\n                <p>All primary school children who attend state schools in London will receive free school meals for the full academic year&nbsp;starting September 2024.</p>\n                <p><strong>Your child in primary school will receive their<strong> </strong>free school meals automatically, and you <strong>do not</strong> need to apply.</p>\n                <p><strong>However, your child may also be eligible for extra funding for their school from the Government, worth &pound;1,300 per year. </strong>This is extra money to spend on enrichment activities, teacher development, and targeted support for the children that need it most. This may also entitle you to other benefits like food vouchers during the holidays.</p>\n                <p><strong>Additionally,</strong> if you are in receipt of benefit related free school meals your child would be eligible for <strong>Holiday activities (HAF)</strong> this a great way for your child to have fun during the school holidays. Eligible children will have the opportunity to make new friends, take part in a variety of exciting activities, and they will have a healthy meal each day. Each activity session last for a minimum of four hours a day and operates in the following school holidays.</p>\n                <ul>\n                    <li>Easter</li>\n                    <li>Summer</li>\n                    <li>Winter</li>\n                </ul>\n                <p>The entitlement for each eligible child is:</p>\n                <ul>\n                    <li>4 days for 4 hours during Easter</li>\n                    <li>16 days for 4 hours during Summer</li>\n                    <li>4 days for 4 hours during Winter</li>\n                </ul>\n                <p>You will need to register for Free school meals to receive your Holiday activities voucher approximately 5 weeks prior to the holiday events.</p>\n                <p>If your household receives one of the benefits below, please complete the application process below for this additional support:</p>\n                <ul>\n                    <li>Income Support</li>\n                    <li>Income-based Jobseeker's Allowance</li>\n                    <li>Income-related Employment and Support Allowance</li>\n                    <li>Universal Credit with a household income of less than &pound;7,400 per year after tax and not including any benefit you receive</li>\n                    <li>Child Tax Credit, provided you are not also entitled to Working Tax Credit and have an annual gross income of no more than &pound;16,190</li>\n                    <li>Guaranteed Element of State Pension Credit</li>\n                    <li>or are being supported by the National Asylum Support Service (NASS).</li>\n                </ul>\n                <p><strong>Please note:</strong></p>\n                <ul>\n                    <li>the form needs to be completed fully in a single visit, there is no way to save progress;</li>\n                    <li>you will need your National Insurance Number or National Asylum Support Service Number; and</li>\n                    <li>you will need names and date of births for each of your children you are applying for and the schools they attend;</li>\n                </ul>\n                <p><strong>If your child is already entitled to Free School Meals because you are receiving one of the qualifying benefits above, you do not need to reapply as your entitlement will continue until 31 August 2026. </strong></p>\n                <p>If your child is attending any of the following schools,&nbsp;<strong>you must enquire and&nbsp;apply directly to the school for this additional funding.</strong></p>\n                <ul>\n                    <li>Springwest Academy</li>\n                    <li>Rivers Academy</li>\n                    <li>Reach Academy</li>\n                    <li>Free schools and independent schools</li>\n                    <li>Richmond and&nbsp;Hillingdon schools</li>\n                </ul>\n                <p><a class=\"button\" href=\"https://forms.liberata.com/public-services/free-school-meals/hounslow\">Apply for free school meals</a></p>\n                <h2>Contact us</h2>\n                <p>All enquiries relating to the Mayor of London Free School Meals should be directed to your school as we cannot assist you with this.</p>\n\n            </div>\n        </div>\n    </div>\n```\n\nThis cleaned and structured HTML contains meaningful headings, paragraphs, and lists related to \"Free school meals\". The decorative or boilerplate elements like site-wide search, login links, social media footers, and cookie banners have been removed.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 25.606660842895508,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.hounslow.gov.uk/schools-colleges/free-school-meals",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reasons": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "Mostly addressed, but lacks specifics on turnaround time",
+                                    "confidence": "80%",
+                                    "reasoning": "The content provides a list of benefits that make a child eligible for free school meals. However, it doesn't explicitly state the process or timeline for receiving the eligibility decision.",
+                                    "next_actions": "Complete the application form linked on the website and follow up with the school to inquire about the status of the application"
+                                }
+                            ],
+                            "overall_assessment": "The content has a clear outline of who is eligible for free school meals, but it lacks details on the timeline and process following the application. Key gaps are an anticipated response time and guidance on what to expect after applying.",
+                            "satisfaction_level": "70%"
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.085403203964233,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.hounslow.gov.uk/schools-colleges/free-school-meals"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250812_235545-hounslow.gov.uk",
+                    "analysis_timestamp": "2025-08-12T23:56:50+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.0833333333333333,
+                            "tokens_consumed": 7791,
+                            "tokens_remaining": 22209,
+                            "token_utilization_percentage": 25.97,
+                            "average_tokens_per_step": 1298.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 74.03,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 17,
+                            "consumption_rate": 1298.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 15.48,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.0833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250812_235545-hounslow.gov.uk",
+                        "start_time": "2025-08-12T23:55:45+01:00",
+                        "current_time": "2025-08-12T23:56:50+01:00",
+                        "duration_seconds": 65,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7791,
+                        "tokens_remaining": 22209,
+                        "token_utilization_percentage": 25.97,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3607,
+                                "avg_per_call": 1803.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 4184,
+                                "avg_per_call": 2092
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1298.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250812_235545-hounslow.gov.uk",
+                    "start_time": "2025-08-12T23:55:45+01:00",
+                    "current_time": "2025-08-12T23:56:50+01:00",
+                    "duration_seconds": 65,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7791,
+                    "tokens_remaining": 22209,
+                    "token_utilization_percentage": 25.97,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3607,
+                            "avg_per_call": 1803.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 4184,
+                            "avg_per_call": 2092
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1298.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

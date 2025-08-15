@@ -1,0 +1,685 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T16:24:58+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "hackney.gov.uk",
+                "Council Name": "Hackney London Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed bin collection | Hackney Council",
+                        "link": "https://hackney.gov.uk/report-a-missed-collection/",
+                        "snippet": "You must report a missed collection within 2 days of your collection day. If not, we will collect your waste on your next collection day."
+                    },
+                    {
+                        "title": "Food waste recycling | Hackney Council",
+                        "link": "https://hackney.gov.uk/food-waste/",
+                        "snippet": "Nov 28, 2024 ... ... waste liners if you have a communal food waste service. Order recycling products. Report a missed collection. Report missed collection. Find\u00a0..."
+                    },
+                    {
+                        "title": "Missed collection - Viewing a problem :: Report A Problem",
+                        "link": "https://reportaproblem.hackney.gov.uk/report/38840",
+                        "snippet": "Log missed collections directly with the waste/recycling department using the online missed collection service https://hackney.gov.uk/ report-a-missed-\u00a0..."
+                    },
+                    {
+                        "title": "Feedback and complaints | Hackney Council",
+                        "link": "https://hackney.gov.uk/feedback-and-complaints/",
+                        "snippet": "Feb 13, 2025 ... missed rubbish collection; litter bins that have not been emptied; noise nuisance. Report a problem. Complaints. If you have a complaint, let us\u00a0..."
+                    },
+                    {
+                        "title": "Garden waste | Hackney Council",
+                        "link": "https://hackney.gov.uk/garden-waste/",
+                        "snippet": "Jun 17, 2025 ... If we do not collect your bin before 6pm on your collection day, report the missed collection. We will then collect your rubbish within 48 hours\u00a0..."
+                    },
+                    {
+                        "title": "Check your collection day | Hackney Council",
+                        "link": "https://hackney.gov.uk/rubbish/",
+                        "snippet": "May 27, 2025 ... Report collection crew behaviour \u00b7 Request ... it's inside the bin with the lid closed \u2013 we do not collect rubbish bags left next to the bin."
+                    },
+                    {
+                        "title": "A to Z",
+                        "link": "https://hackney.gov.uk/nav/",
+                        "snippet": "Order bins and bags for waste and recycling \u00b7 Organisations that help with ... Report a missed bin collection \u00b7 Report anti-social behaviour \u2013 council\u00a0..."
+                    },
+                    {
+                        "title": "Report a problem | Hackney Council",
+                        "link": "https://hackney.gov.uk/report-a-problem/",
+                        "snippet": "Aug 7, 2024 ... You can use the tool to report: cleanliness, bin or graffiti problems; dog poo; fly tipping; road, vehicle or parking problems; abandoned bikes\u00a0..."
+                    },
+                    {
+                        "title": "Waste collections | Hackney Council",
+                        "link": "https://hackney.gov.uk/waste-collections/",
+                        "snippet": "May 27, 2025 ... Use our postcode look up tool to find out what waste and recycling services your address should receive and your collection days."
+                    },
+                    {
+                        "title": "Street cleaning - Viewing a problem :: Report A Problem",
+                        "link": "https://reportaproblem.hackney.gov.uk/report/13605",
+                        "snippet": "(1) Lots of rubbish is sitting behind and on top of cable box lining on my property. Street cleaners always miss that. (2) Lots of glass from bottles on the\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://reportaproblem.hackney.gov.uk/report/38840",
+                        "title": "Missed collection - Viewing a problem :: Report A Problem",
+                        "confidence": 95,
+                        "strengths": [
+                            "Specifically designed for reporting missed collections",
+                            "Allows direct communication with the waste/recycling department"
+                        ],
+                        "reasoning": "The provided title and URL suggest that this link is directly related to reporting missed collections, which aligns with the search criteria. The 'Missed Collection' service can help residents track their garbage collection issues more efficiently.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed collection - Viewing a problem :: Report A Problem",
+                                "Source": "https://reportaproblem.hackney.gov.uk/report/38840",
+                                "Key Strengths": [
+                                    "Specifically designed for reporting missed collections",
+                                    "Allows direct communication with the waste/recycling department"
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "The provided title and URL suggest that this link is directly related to reporting missed collections, which aligns with the search criteria. The 'Missed Collection' service can help residents track their garbage collection issues more efficiently."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Report a problem | Hackney Council",
+                                "Source": "https://hackney.gov.uk/report-a-problem/",
+                                "Key Strengths": [
+                                    "Allows users to report various types of issues, including cleanliness and bin problems",
+                                    "Offers a comprehensive reporting system for various council concerns"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "While the title doesn't explicitly mention missed collections, the description mentions the ability to report problems related to bin issues. This suggests that it may be possible to report missed collections as part of these options."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Report a missed bin collection | Hackney Council",
+                                "Source": "https://hackney.gov.uk/report-a-missed-collection/",
+                                "Key Strengths": [
+                                    "Explicitly mentions missed bin collections in the title",
+                                    "Provides information on the reporting process within the snippet"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The provided title directly indicates that the link is related to reporting missed bin collections. The detailed information about the reporting process further strengthens its relevance."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Garden waste | Hackney Council",
+                                "Source": "https://hackney.gov.uk/garden-waste/",
+                                "Key Strengths": [
+                                    "Includes instructions for dealing with missed garden waste collections",
+                                    "Provides information on the collection process"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Although not as directly related to general waste collections, this resource can still be useful for residents who have specific issues with their garden waste."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Waste collections | Hackney Council",
+                                "Source": "https://hackney.gov.uk/waste-collections/",
+                                "Key Strengths": [
+                                    "Offers general information on the waste collection process",
+                                    "Allows users to look up their collection days"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Though it doesn't seem to offer a dedicated 'missed collections' reporting function, this resource provides valuable background knowledge about waste collections in Hackney. Knowing collection schedules can help users determine if they have indeed missed a collection."
+                            }
+                        ],
+                        "Analysis Notes": "Some resources listed do not appear to be directly related to missed bin collections but were included due to their potential usefulness in addressing council customer information needs.",
+                        "Recommendations Notes": "Multiple options existed that could help residents report or address missed bin collections. However, it's important to note that while some links offer reporting features, not all of them explicitly list missed collections in the title."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "95",
+                        "85",
+                        "90",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "95"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "3",
+                            "Title": "Report a missed bin collection | Hackney Council",
+                            "Source": "https://hackney.gov.uk/report-a-missed-collection/",
+                            "Reasoning": "The provided title directly indicates that the link is related to reporting missed bin collections. The detailed information about the reporting process further strengthens its relevance.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "1",
+                            "Title": "Missed collection - Viewing a problem :: Report A Problem",
+                            "Source": "https://reportaproblem.hackney.gov.uk/report/38840",
+                            "Reasoning": "The title and URL suggest that this link is directly related to reporting missed collections, which aligns with the search criteria.",
+                            "Confidence": "95"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Report a problem | Hackney Council",
+                            "Source": "https://hackney.gov.uk/report-a-problem/",
+                            "Reasoning": "While the title doesn't explicitly mention missed collections, the description mentions the ability to report problems related to bin issues, suggesting it may be possible to report missed collections as part of these options.",
+                            "Confidence": "85"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://reportaproblem.hackney.gov.uk/report/38840"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://reportaproblem.hackney.gov.uk/report/38840",
+                        "analysis": {
+                            "url": "https://reportaproblem.hackney.gov.uk/report/38840",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T16:24:58+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T16:25:22+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 23141,
+                            "response_time": 1.033,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (1.033s)",
+                                    "Content successfully retrieved (23141 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 1.0350761413574219,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://reportaproblem.hackney.gov.uk/report/38840"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://reportaproblem.hackney.gov.uk/report/38840",
+                        "content": " The webpage you provided appears to be a simple HTML document displaying a message stating that the site is temporarily unavailable due to maintenance. Here's a breakdown of what you can see:\n\n1. `<!DOCTYPE html>` - This line specifies that this is an HTML5 document.\n\n2. `<html lang=\"en\">` - The root element of the webpage, with an English language attribute.\n\n3. Meta tags like `<meta charset=\"UTF-8\">`, `<title>Site temporarily unavailable</title>` - These provide information about the character encoding and title of the page.\n\n4. `<head>` - This tag contains metadata for the webpage, such as the title.\n\n5. `<body>` - The body element contains all the content that users see on the webpage. In this case, it includes an image, a heading (h1), paragraphs (p), and links (a).\n\n6. The link (a) leads to another page: \"<https://status.societyworks.org/>\". This is where you can find more up-to-date information about the current status of Society Works' services.\n\n7. `<img src=\"data:image/png;base64,[long base64 encoded image data]\" alt=\"Site temporarily unavailable\">` - This is an image tag with a Base64-encoded image of a sad emoticon. Its alternative text (alt) states \"Site temporarily unavailable\".\n\n8. The paragraphs provide information about the maintenance and invite users to regularly check back for updates. They also suggest visiting the specified link for more detailed information.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 10.2815420627594,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://reportaproblem.hackney.gov.uk/report/38840",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "0%",
+                                    "confidence": "0%",
+                                    "reasoning": "The content provided does not answer this question or meet the specified need as it is related to a website maintenance message, with no information regarding bin collection services or reporting missed pickups.",
+                                    "next_actions": "Contact Hackney Council's customer service directly via phone or email, or visit their official website for more information on bin collection and reporting missed collections."
+                                }
+                            ],
+                            "overall_assessment": "The provided content does not serve the Council Resident's needs effectively. It provides no useful information regarding bin collection services or reporting missed collections. The content is related only to a website maintenance issue, leading to an overall satisfaction level of 0%."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.545403003692627,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://reportaproblem.hackney.gov.uk/report/38840"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_162458-hackney.gov.uk",
+                    "analysis_timestamp": "2025-08-08T16:25:38+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6666666666666666,
+                            "tokens_consumed": 5304,
+                            "tokens_remaining": 24696,
+                            "token_utilization_percentage": 17.68,
+                            "average_tokens_per_step": 884
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 82.32,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 27,
+                            "consumption_rate": 884,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.52,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6666666666666666,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_162458-hackney.gov.uk",
+                        "start_time": "2025-08-08T16:24:58+01:00",
+                        "current_time": "2025-08-08T16:25:38+01:00",
+                        "duration_seconds": 40,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 5304,
+                        "tokens_remaining": 24696,
+                        "token_utilization_percentage": 17.68,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2233,
+                                "avg_per_call": 1116.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3071,
+                                "avg_per_call": 1535.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 884
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_162458-hackney.gov.uk",
+                    "start_time": "2025-08-08T16:24:58+01:00",
+                    "current_time": "2025-08-08T16:25:38+01:00",
+                    "duration_seconds": 40,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 5304,
+                    "tokens_remaining": 24696,
+                    "token_utilization_percentage": 17.68,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2233,
+                            "avg_per_call": 1116.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3071,
+                            "avg_per_call": 1535.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 884
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

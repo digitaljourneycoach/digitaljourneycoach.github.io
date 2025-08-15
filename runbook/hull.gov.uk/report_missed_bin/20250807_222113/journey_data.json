@@ -1,0 +1,687 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T22:21:13+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "hull.gov.uk",
+                "Council Name": "Hull City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a Missed Bin - myAccount | Hull City Council",
+                        "link": "https://account.hull.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-13f67220-545e-4d5a-997b-d32be206c047/AF-Stage-5f559717-457f-4264-b0ce-c906ab8d6221/definition.json&redirectlink=%2Fen&cancelRedirectLink=%2Fen&consentMessage=yes",
+                        "snippet": "Sign up for an account to manage your service requests and accounts with Hull City Council. Creating an account saves you time with auto-completion of your\u00a0..."
+                    },
+                    {
+                        "title": "Missed bin collection | Hull",
+                        "link": "https://www.hull.gov.uk/household-collections/missed-bin-collection",
+                        "snippet": "You can report a missed bin collection online if it is - Missed bin collections are collected within 5 working days of your request. Mondays are not included\u00a0..."
+                    },
+                    {
+                        "title": "Missed assisted bin collections | Assisted bin collections | Hull",
+                        "link": "https://www.hull.gov.uk/household-collections/assisted-bin-collections/3",
+                        "snippet": "Missed assisted bin collections. If your assisted bin collection is missed you can follow the process of reporting a missed bin."
+                    },
+                    {
+                        "title": "Commercial waste collection problems | Hull",
+                        "link": "https://www.hull.gov.uk/trade-waste/commercial-waste-collection-problems",
+                        "snippet": "If you see wastes from business not being managed properly and you consider this is causing a nuisance or is detrimental to the locality, report this using the\u00a0..."
+                    },
+                    {
+                        "title": "Missed collections and other collections available | Commercial ...",
+                        "link": "https://www.hull.gov.uk/trade-waste/commercial-waste-recycling-collection-service/3",
+                        "snippet": "If we fail to collect waste as per the scheduled collection date and it is our fault, we aim to rectify this within 24 hours of notification. To report a\u00a0..."
+                    },
+                    {
+                        "title": "Household collections \u2013 Hull",
+                        "link": "https://www.hull.gov.uk/household-collections",
+                        "snippet": "Blue bins \u00b7 Missed bin collection \u00b7 Sharps collections from your home \u00b7 Clinical waste collection service \u00b7 Assisted bin collections \u00b7 Report unwanted or\u00a0..."
+                    },
+                    {
+                        "title": "Request a bulky item collection | Bulky collections | Hull",
+                        "link": "https://www.hull.gov.uk/household-collections/bulky-collections/6",
+                        "snippet": "Missed bulky collections. You can report a missed bulky collection online if it is -. after 4pm on your collection day; within 2 working days of the original\u00a0..."
+                    },
+                    {
+                        "title": "New, replacement and removal of bins | Hull",
+                        "link": "https://www.hull.gov.uk/household-collections/new-replacement-removal-bins",
+                        "snippet": "New and replacement bins. Waste collection while waiting for a new bin. If a new or replacement bin has been ordered and you are paying Council Tax and living\u00a0..."
+                    },
+                    {
+                        "title": "Bonfire Night: Remember, remember to keep your bins safe this ...",
+                        "link": "https://news.hull.gov.uk/01/11/2024/bonfire-night-remember-remember-to-keep-your-bins-safe-this-november/",
+                        "snippet": "Nov 1, 2024 ... To report a missed bin collection, visit Missed bin collection | Hull. ... waste and recycling centres for the safe disposal of any rubbish."
+                    },
+                    {
+                        "title": "Army of staff trained to offer support for bin collections - Hull CC News",
+                        "link": "https://news.hull.gov.uk/24/03/2020/army-of-staff-trained-to-offer-support-for-bin-collections/",
+                        "snippet": "Mar 24, 2020 ... Blue bin Hull City Council's recycling bins. Army of staff trained to ... Report any missed bin collections here. Find information on\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://account.hull.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-13f67220-545e-4d5a-997b-d32be206c047/AF-Stage-5f559717-457f-4264-b0ce-c906ab8d6221/definition.json&redirectlink=%2Fen&cancelRedirectLink=%2Fen&consentMessage=yes",
+                        "title": "Report a Missed Bin - myAccount | Hull City Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Direct link to report a missed bin collection",
+                            "Allows user to manage service requests and accounts"
+                        ],
+                        "reasoning": "The title directly indicates that this link is for reporting a missed bin collection, and the URL further confirms it. Additionally, the resource offers account management features, which could be beneficial for users looking to track or manage their service requests.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a Missed Bin - myAccount | Hull City Council",
+                                "Source": "https://account.hull.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-13f67220-545e-4d5a-997b-d32be206c047/AF-Stage-5f559717-457f-4264-b0ce-c906ab8d6221/definition.json&redirectlink=%2Fen&cancelRedirectLink=%2Fen&consentMessage=yes",
+                                "Key Strengths": [
+                                    "Direct link to report a missed bin collection",
+                                    "Allows user to manage service requests and accounts"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title directly indicates that this link is for reporting a missed bin collection, and the URL further confirms it. Additionally, the resource offers account management features, which could be beneficial for users looking to track or manage their service requests."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Missed bin collection | Hull",
+                                "Source": "https://www.hull.gov.uk/household-collections/missed-bin-collection",
+                                "Key Strengths": [
+                                    "Offers the ability to report a missed bin collection online",
+                                    "Informs about response time and excluded days"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title specifically mentions 'Missed bin collection' and points to a URL under Hull City Council's household collections section. The snippet also indicates that users can report a missed bin collection online, and the response time for such requests is mentioned."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Missed assisted bin collections | Assisted bin collections | Hull",
+                                "Source": "https://www.hull.gov.uk/household-collections/assisted-bin-collections/3",
+                                "Key Strengths": [
+                                    "Provides information on how to report a missed assisted bin collection",
+                                    "Relevant for residents with assistance needs"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title mentions 'Missed assisted bin collections' and leads to Hull City Council's household collections page. This resource would be particularly useful for those requiring special assistance."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Household collections \u2013 Hull",
+                                "Source": "https://www.hull.gov.uk/household-collections",
+                                "Key Strengths": [
+                                    "Central resource for all household waste collection information",
+                                    "Includes links to report missed bin collections"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title suggests that this link pertains to household waste collection in Hull, and the URL further supports that assumption. The resource is a comprehensive guide on various types of waste collections and includes links for reporting missed bin collections."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Request a bulky item collection | Bulky collections | Hull",
+                                "Source": "https://www.hull.gov.uk/household-collections/bulky-collections/6",
+                                "Key Strengths": [
+                                    "Allows users to request a bulky item collection",
+                                    "Includes information on eligibility and reporting missed collections"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title directly mentions 'Request a bulky item collection', which suggests that this resource is related to bulky waste management. The URL also supports its relevance, as it falls under the household collections section."
+                            }
+                        ],
+                        "Analysis Notes": "All items are from Hull City Council's official website and mainly pertain to various aspects of household waste collection. Items 9 and 10 are news articles rather than direct service links but still provide useful information related to bin collections.",
+                        "Recommendations Notes": "The top recommendations focus on providing specific services for reporting missed bin collections, as those were considered the most relevant to council customer information needs."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "90",
+                        "85",
+                        "80",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "data": [
+                        {
+                            "Number": "1",
+                            "Title": "Report a Missed Bin - myAccount | Hull City Council",
+                            "Source": "https://account.hull.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-13f67220-545e-4d5a-997b-d32be206c047/AF-Stage-5f559717-457f-4264-b0ce-c906ab8d6221/definition.json&redirectlink=%2Fen&cancelRedirectLink=%2Fen&consentMessage=yes",
+                            "Reasoning": "This resource boasts the highest confidence score at 90, is directly related to the user's search term, and offers the added benefit of account management features.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Missed bin collection | Hull",
+                            "Source": "https://www.hull.gov.uk/household-collections/missed-bin-collection",
+                            "Reasoning": "With a confidence score of 90, this link is directly relevant to the user's search term and includes details about missed bin collections, response times, and excluded days.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "6",
+                            "Title": "Household collections \u2013 Hull",
+                            "Source": "https://www.hull.gov.uk/household-collections",
+                            "Reasoning": "While this resource has a slightly lower confidence score of 85, it provides a centralized hub for all household waste collection information and includes links to report missed bin collections.",
+                            "Confidence": "85"
+                        }
+                    ],
+                    "max_selections": 3,
+                    "min_confidence": 0.6
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://account.hull.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-13f67220-545e-4d5a-997b-d32be206c047/AF-Stage-5f559717-457f-4264-b0ce-c906ab8d6221/definition.json&redirectlink=%2Fen&cancelRedirectLink=%2Fen&consentMessage=yes"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://account.hull.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-13f67220-545e-4d5a-997b-d32be206c047/AF-Stage-5f559717-457f-4264-b0ce-c906ab8d6221/definition.json&redirectlink=%2Fen&cancelRedirectLink=%2Fen&consentMessage=yes",
+                        "analysis": {
+                            "url": "https://account.hull.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-13f67220-545e-4d5a-997b-d32be206c047/AF-Stage-5f559717-457f-4264-b0ce-c906ab8d6221/definition.json&redirectlink=%2Fen&cancelRedirectLink=%2Fen&consentMessage=yes",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T22:21:13+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T22:21:44+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 21999,
+                            "response_time": 1.921,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (1.921s)",
+                                    "Content successfully retrieved (21999 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 1.9219157695770264,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://account.hull.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-13f67220-545e-4d5a-997b-d32be206c047/AF-Stage-5f559717-457f-4264-b0ce-c906ab8d6221/definition.json&redirectlink=%2Fen&cancelRedirectLink=%2Fen&consentMessage=yes"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://account.hull.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-13f67220-545e-4d5a-997b-d32be206c047/AF-Stage-5f559717-457f-4264-b0ce-c906ab8d6221/definition.json&redirectlink=%2Fen&cancelRedirectLink=%2Fen&consentMessage=yes",
+                        "content": " It appears you've provided HTML code for a webpage related to Hull City Council. This page includes various links and sections for newsletters, social media accounts, as well as terms and privacy notices. The page also contains a form for subscribing to the eNewsletter. However, this text doesn't necessarily correspond to a conversation with me, since I don't have the ability to browse or interact with webpages directly. Instead, I can help answer questions, generate text, and provide explanations based on the information you provide to me. If you have any specific inquiries related to the content of this page or would like assistance related to topics such as Hull City Council services, policies, or procedures, feel free to ask!",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 7.683207035064697,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://account.hull.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-13f67220-545e-4d5a-997b-d32be206c047/AF-Stage-5f559717-457f-4264-b0ce-c906ab8d6221/definition.json&redirectlink=%2Fen&cancelRedirectLink=%2Fen&consentMessage=yes",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "0%",
+                                    "confidence": "0%",
+                                    "reasoning": "The provided content doesn't contain any details about reporting missed bin collections or addressing this specific question. The page focuses on subscribing to newsletters and accessing various links, but lacks information related to bin collection issues.",
+                                    "next_actions": "Contact Hull City Council directly through their official methods such as phone, email, or social media inquiring about missed bin collections."
+                                }
+                            ],
+                            "overall_assessment": "The content does not meet the needs of a council resident who forgot to put out their bin and wants to report it for collection. There are no clear steps provided on the website for addressing this issue, nor is there any contact information related to bin collections. The content focuses primarily on newsletters, social media accounts, terms, and privacy notices."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.92987585067749,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://account.hull.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-13f67220-545e-4d5a-997b-d32be206c047/AF-Stage-5f559717-457f-4264-b0ce-c906ab8d6221/definition.json&redirectlink=%2Fen&cancelRedirectLink=%2Fen&consentMessage=yes"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_222113-hull.gov.uk",
+                    "analysis_timestamp": "2025-08-07T22:21:59+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7666666666666667,
+                            "tokens_consumed": 5932,
+                            "tokens_remaining": 94068,
+                            "token_utilization_percentage": 5.93,
+                            "average_tokens_per_step": 988.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 94.07,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 95,
+                            "consumption_rate": 988.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 10.95,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7666666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_222113-hull.gov.uk",
+                        "start_time": "2025-08-07T22:21:13+01:00",
+                        "current_time": "2025-08-07T22:21:59+01:00",
+                        "duration_seconds": 46,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 5932,
+                        "tokens_remaining": 94068,
+                        "token_utilization_percentage": 5.93,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2705,
+                                "avg_per_call": 1352.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3227,
+                                "avg_per_call": 1613.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 988.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_222113-hull.gov.uk",
+                    "start_time": "2025-08-07T22:21:13+01:00",
+                    "current_time": "2025-08-07T22:21:59+01:00",
+                    "duration_seconds": 46,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 5932,
+                    "tokens_remaining": 94068,
+                    "token_utilization_percentage": 5.93,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2705,
+                            "avg_per_call": 1352.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3227,
+                            "avg_per_call": 1613.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 988.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

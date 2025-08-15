@@ -1,0 +1,615 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T22:30:03+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "basingstoke.gov.uk",
+                "Council Name": "Basingstoke and Deane Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Information about solar panels",
+                        "link": "https://www.basingstoke.gov.uk/solar-panels",
+                        "snippet": "These are also known as photovoltaic (PV) solar panels. Solar panels ... Installing solar panels doesn't usually need planning permission. Solar\u00a0..."
+                    },
+                    {
+                        "title": "Article 4 advice",
+                        "link": "https://www.basingstoke.gov.uk/article4advice",
+                        "snippet": "installation of any solar panels, including to the roof; installation of roof ... Do I need planning permission to paint my building? In the Top of Town\u00a0..."
+                    },
+                    {
+                        "title": "Conservation areas",
+                        "link": "http://www.basingstoke.gov.uk/conservation-areas",
+                        "snippet": "The following demolition work may require a separate application for Planning Permission: ... The installation of solar panels on a front or side wall of a\u00a0..."
+                    },
+                    {
+                        "title": "View and comment on a planning application",
+                        "link": "http://www.basingstoke.gov.uk/view-planning-applications",
+                        "snippet": "You can: view current and historic planning applications by using a keyword, reference number, postcode or single line of an address; personal information such\u00a0..."
+                    },
+                    {
+                        "title": "BASINGSTOKE & DEANE BOROUGH COUNCIL DEVELOPMENT ...",
+                        "link": "https://democracy.basingstoke.gov.uk/documents/s37466/Update%2014.05.2025.pdf",
+                        "snippet": "May 14, 2025 ... planning permission relates\" means a planning permission which is the first in a ... solar panels are acknowledged as a benefit, however\u00a0..."
+                    },
+                    {
+                        "title": "Energy Efficiency Loans",
+                        "link": "http://www.basingstoke.gov.uk/energy-efficiency-loans-and-grants",
+                        "snippet": "... planning permission or listed building consent for energy efficiency measures ... renewable energy technologies, such as solar power or ground source heat pumps."
+                    },
+                    {
+                        "title": "Running a Business from Home",
+                        "link": "https://www.basingstoke.gov.uk/content/doclib/1491.pdf",
+                        "snippet": "It may be possible to run a business from your home without the need to obtain planning permission. However, it is always wise."
+                    },
+                    {
+                        "title": "AONBs and development",
+                        "link": "https://www.basingstoke.gov.uk/content/doclib/1294.pdf",
+                        "snippet": "A planning inspector granted planning permission for this 100 dwelling proposal after a public inquiry. ... 18,000 solar panels. A proposal for a change of\u00a0..."
+                    },
+                    {
+                        "title": "Basingstoke and Deane Borough Council - Community ...",
+                        "link": "https://www.basingstoke.gov.uk/content/doclib/2630.pdf",
+                        "snippet": "Jun 25, 2018 ... before 25 June 2018, but an approval of planning permission is made on or after 25 ... \u2022 Free-standing solar panels."
+                    },
+                    {
+                        "title": "Home Planning and environment Community Infrastructure Levy (CIL)",
+                        "link": "http://www.basingstoke.gov.uk/CIL",
+                        "snippet": "Applicants for full planning permission (including householder applications ... free-standing solar panels. Reductions for existing in-use floorspace. As CIL\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.basingstoke.gov.uk/solar-panels",
+                        "title": "Information about solar panels",
+                        "confidence": 85,
+                        "strengths": [
+                            "Provides information on the basics of solar panels, including installation without needing planning permission"
+                        ],
+                        "reasoning": "The title and snippet suggest that this link provides detailed, relevant information about solar panels which includes a mention about solar panels not usually requiring planning permission.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Information about solar panels",
+                                "Source": "https://www.basingstoke.gov.uk/solar-panels",
+                                "Key Strengths": [
+                                    "Provides information on the basics of solar panels, including installation without needing planning permission"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title and snippet suggest that this link provides detailed, relevant information about solar panels which includes a mention about solar panels not usually requiring planning permission."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "View and comment on a planning application",
+                                "Source": "http://www.basingstoke.gov.uk/view-planning-applications",
+                                "Key Strengths": [
+                                    "Allows users to view current and historic planning applications, including those related to solar panels"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title and snippet indicate that this resource can be used to view planning applications, making it a useful tool for checking whether or not a solar panel installation has planning permission."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "BASINGSTOKE & DEANE BOROUGH COUNCIL DEVELOPMENT ...",
+                                "Source": "https://democracy.basingstoke.gov.uk/documents/s37466/Update%2014.05.2025.pdf",
+                                "Key Strengths": [
+                                    "Directly discusses solar panels in relation to planning permission"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Although the document is a report, its title and mention of solar panels indicate that it may contain relevant information regarding planning permission for solar panel installations."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Energy Efficiency Loans",
+                                "Source": "http://www.basingstoke.gov.uk/energy-efficiency-loans-and-grants",
+                                "Key Strengths": [
+                                    "Mentions solar power as a renewable energy technology offered by loans"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "While this link doesn't explicitly provide information about council customer information needs related to planning permission, it may still be useful for customers seeking financial assistance with energy-efficient improvements, including solar panel installations."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Home Planning and environment Community Infrastructure Levy (CIL)",
+                                "Source": "http://www.basingstoke.gov.uk/CIL",
+                                "Key Strengths": [
+                                    "Mention of free-standing solar panels"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "Though it doesn't directly address council customer information needs regarding planning permission, the mention of free-standing solar panels in this resource suggests that customers may find additional information about planning requirements for such installations."
+                            }
+                        ],
+                        "Analysis Notes": "While some resources provided information on other topics like community infrastructure levy or running a business from home, they did not explicitly address council customer needs related to solar panel planning permission.",
+                        "Recommendations Notes": "The recommended resources contain relevant information regarding solar panels, including their installation process and the need (or lack) of planning permission."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "60",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 72,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Information about solar panels",
+                            "Source": "https://www.basingstoke.gov.uk/solar-panels",
+                            "Reasoning": "With a confidence score of 85, the highest among available options, and providing detailed, relevant information about solar panels including mentioned lack of planning permission requirement, it is the optimal choice.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "View and comment on a planning application",
+                            "Source": "http://www.basingstoke.gov.uk/view-planning-applications",
+                            "Reasoning": "The second best option (confidence score of 80) offers users the ability to view past and current planning applications, including those related to solar panels, making it a valuable tool for checking whether or not a solar panel installation has planning permission.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.basingstoke.gov.uk/solar-panels"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.basingstoke.gov.uk/solar-panels",
+                        "analysis": {
+                            "url": "https://www.basingstoke.gov.uk/solar-panels",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T22:30:03+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T22:30:24+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": false,
+                            "http_status": null,
+                            "content_type": null,
+                            "content_length": 0,
+                            "response_time": 0,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 10,
+                                "max_score": 100,
+                                "issues": [
+                                    "No HTTP response received",
+                                    "No content retrieved"
+                                ],
+                                "strengths": [
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": null
+                            },
+                            "accessibility_assessment": {
+                                "score": 0,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": null,
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "investigate",
+                                "confidence": 50,
+                                "reason": "Analysis incomplete",
+                                "overall_score": 24,
+                                "component_scores": {
+                                    "technical": 10,
+                                    "accessibility": 0,
+                                    "match": 50
+                                },
+                                "next_steps": [],
+                                "alternatives_needed": false
+                            },
+                            "fetch_error": "Failed to fetch URL: cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://www.basingstoke.gov.uk/solar-panels"
+                        },
+                        "processing_time": 0.32572102546691895,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [],
+                "content_types": [],
+                "retrieved_content": []
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analysis_skipped"
+            },
+            "output_data": {
+                "action": "content_analysis_skipped",
+                "reason": "no_retrieved_content",
+                "tokens_used": 25,
+                "metadata": {
+                    "next_state": "journey_decision",
+                    "step_skipped": true
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "next_state": "journey_decision",
+                "step_skipped": true
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_223003-basingstoke.gov.uk",
+                    "analysis_timestamp": "2025-08-10T22:30:25+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.36666666666666664,
+                            "tokens_consumed": 1925,
+                            "tokens_remaining": 28075,
+                            "token_utilization_percentage": 6.42,
+                            "average_tokens_per_step": 320.83
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 93.58,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 87,
+                            "consumption_rate": 320.83,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "no_content_data": true
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 5.24,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.36666666666666664,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_223003-basingstoke.gov.uk",
+                        "start_time": "2025-08-10T22:30:03+01:00",
+                        "current_time": "2025-08-10T22:30:25+01:00",
+                        "duration_seconds": 22,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 1925,
+                        "tokens_remaining": 28075,
+                        "token_utilization_percentage": 6.42,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 1925,
+                                "avg_per_call": 962.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 320.83
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_223003-basingstoke.gov.uk",
+                    "start_time": "2025-08-10T22:30:03+01:00",
+                    "current_time": "2025-08-10T22:30:25+01:00",
+                    "duration_seconds": 22,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 1925,
+                    "tokens_remaining": 28075,
+                    "token_utilization_percentage": 6.42,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 1925,
+                            "avg_per_call": 962.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 320.83
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

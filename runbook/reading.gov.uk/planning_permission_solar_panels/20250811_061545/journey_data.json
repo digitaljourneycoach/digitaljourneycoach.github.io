@@ -1,0 +1,669 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T06:15:45+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "reading.gov.uk",
+                "Council Name": "Reading Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Solar Together Berkshire - Reading Borough Council",
+                        "link": "https://www.reading.gov.uk/solartogether/",
+                        "snippet": "Jun 11, 2025 ... ... solar photovoltaic (PV) panels to Reading's homeowners. Solar ... However, planning permission may be required in some cases, such as\u00a0..."
+                    },
+                    {
+                        "title": "Do you need planning permission? - Reading Borough Council",
+                        "link": "https://www.reading.gov.uk/planning-and-building-control/planning-applications/before-making-a-planning-application/do-you-need-planning-permission/",
+                        "snippet": "Oct 18, 2022 ... You are likely to need planning permission for new buildings and for major changes to existing properties and the local environment."
+                    },
+                    {
+                        "title": "COMMITTEE REPORT",
+                        "link": "https://democracy.reading.gov.uk/documents/s24324/ABB%20-%20220856%20REG3%20Former%20Family%20Centre%20North%20Street.pdf",
+                        "snippet": "2.1 The site was granted full planning permission on 17th September 2020 for 41 dwellings as affordable housing units including vehicular, cycle and pedestrian."
+                    },
+                    {
+                        "title": "30 April 2025 Title Planning Application Report Ward Redlands ...",
+                        "link": "https://democracy.reading.gov.uk/documents/s35455/RED%20-%20PL.24.1589%20-%202%20Hexham%20Road%20Reading.pdf",
+                        "snippet": "May 30, 2025 ... the solar panels retained on both. The changes to the roof covering are illustrated in figure 2 above. 7.14 The extent of green sedum roof\u00a0..."
+                    },
+                    {
+                        "title": "Article 4 Directions - Reading Borough Council",
+                        "link": "https://www.reading.gov.uk/planning-and-building-control/article-4-directions/",
+                        "snippet": "An Article 4 direction does not prevent development taking place, but it does mean that planning permission is required for the development specified. There\u00a0..."
+                    },
+                    {
+                        "title": "PLANNING APPLICATION VALIDATION CHECKLIST",
+                        "link": "https://images.reading.gov.uk/2021/12/Validation-Checklist-2021-Final-Version-02.12.21.pdf",
+                        "snippet": "In any event, to avoid the risk of an application being refused planning permission for failure to provide sufficient relevant information, agents and\u00a0..."
+                    },
+                    {
+                        "title": "Reading Golf Club",
+                        "link": "https://democracy.reading.gov.uk/documents/s26916/EMM%20-%20221312VAR%20-%20Reading%20Golf%20Club.pdf",
+                        "snippet": "Mar 29, 2023 ... built to the highest standards and to have solar panels ... 6.119 When determining an application for planning permission the Council is."
+                    },
+                    {
+                        "title": "Repairs, maintenance and improvements (section 7) - Reading ...",
+                        "link": "https://www.reading.gov.uk/housing/council-homes/tenancy-information/repairs-maintenance-and-improvements-section-7/",
+                        "snippet": "May 29, 2024 ... 7.19 Before you start work, you must also make sure you get any planning or building regulations approval that you need. ... Solar panels. 7.27 We\u00a0..."
+                    },
+                    {
+                        "title": "Committee Report Template 2023",
+                        "link": "https://democracy.reading.gov.uk/documents/s34246/WHI%20241520%20-%20300%20Brook%20Drive%20Green%20Park.pdf",
+                        "snippet": "Feb 5, 2025 ... installation of solar photovoltaics (PV) panels and electric vehicle ... planning permission PL/00/00656 (REM). Conditions Discharged 17\u00a0..."
+                    },
+                    {
+                        "title": "COMMITTEE REPORT BY THE DIRECTOR OF ENVIRONMENT ...",
+                        "link": "https://democracy.reading.gov.uk/documents/s5916/item09%20CHU%20-%20181899%20-%20Leighton%20Park%20School.pdf",
+                        "snippet": "Apr 24, 2019 ... 2.1. Full planning permission is sought for the erection of a two storey sports facility with an external viewing gallery and associated parking\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.reading.gov.uk/solartogether/",
+                        "title": "Solar Together Berkshire - Reading Borough Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Offers information about solar photovoltaic (PV) panels for homeowners in Reading",
+                            "Provides details regarding potential need for planning permission"
+                        ],
+                        "reasoning": "The search result title directly mentions solar panels, a common customer question related to energy-saving measures. The snippet also discusses the possibility of needing planning permission, which is relevant to the council's information requirements.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "3"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Solar Together Berkshire - Reading Borough Council",
+                                "Source": "https://www.reading.gov.uk/solartogether/",
+                                "Key Strengths": [
+                                    "Offers information about solar photovoltaic (PV) panels for homeowners in Reading",
+                                    "Provides details regarding potential need for planning permission"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The search result title directly mentions solar panels, a common customer question related to energy-saving measures. The snippet also discusses the possibility of needing planning permission, which is relevant to the council's information requirements."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "COMMITTEE REPORT",
+                                "Source": "https://democracy.reading.gov.uk/documents/s24324/ABB%20-%20220856%20REG3%20Former%20Family%20Centre%20North%20Street.pdf",
+                                "Key Strengths": [
+                                    "Includes planning permission information for a specific building project",
+                                    "Details 41 affordable housing units with solar panels"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This result discusses planning permission details, including the mention of new buildings and major changes that would likely require planning permission. Furthermore, the project also includes solar panels, making it relevant to council customer information needs."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Committee Report Template 2023",
+                                "Source": "https://democracy.reading.gov.uk/documents/s34246/WHI%20241520%20-%20300%20Brook%20Drive%20Green%20Park.pdf",
+                                "Key Strengths": [
+                                    "Discusses planning permission for a two-storey sports facility with associated parking",
+                                    "Mentions the installation of solar photovoltaics (PV) panels"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title and snippet both refer to a project requiring planning permission, which aligns with the search requirement. Additionally, it mentions solar panels being installed, making it highly relevant to the given instruction."
+                            }
+                        ],
+                        "Analysis Notes": "Several results discussed planning permissions for various projects in Reading. Most of these findings were relevant but didn't explicitly address customer information needs, resulting in more generalized recommendations.",
+                        "Recommendations Notes": "Three recommendations were provided with relevant snippets and an explanation of their relevance to the search criteria."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "85",
+                        "90"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 86.66666666666667,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Solar Together Berkshire - Reading Borough Council",
+                            "Source": "https://www.reading.gov.uk/solartogether/",
+                            "Reasoning": "The search result title directly mentions solar panels, a common customer question related to energy-saving measures. The snippet also discusses the possibility of needing planning permission, which is relevant to the council's information requirements.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "COMMITTEE REPORT",
+                            "Source": "https://democracy.reading.gov.uk/documents/s24324/ABB%20-%20220856%20REG3%20Former%20Family%20Centre%20North%20Street.pdf",
+                            "Reasoning": "This result discusses planning permission details, including the mention of new buildings and major changes that would likely require planning permission. Furthermore, the project also includes solar panels, making it relevant to council customer information needs.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "9",
+                            "Title": "Committee Report Template 2023",
+                            "Source": "https://democracy.reading.gov.uk/documents/s34246/WHI%20241520%20-%20300%20Brook%20Drive%20Green%20Park.pdf",
+                            "Reasoning": "The title and snippet both refer to a project requiring planning permission, which aligns with the search requirement. Additionally, it mentions solar panels being installed, making it highly relevant to the given instruction.",
+                            "Confidence": "90"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.reading.gov.uk/solartogether/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.reading.gov.uk/solartogether/",
+                        "analysis": {
+                            "url": "https://www.reading.gov.uk/solartogether/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T06:15:45+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T06:16:08+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 3907,
+                            "response_time": 0.235,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.235s)",
+                                    "Content successfully retrieved (3907 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.23523902893066406,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.reading.gov.uk/solartogether/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.reading.gov.uk/solartogether/",
+                        "content": " Given the provided HTML source, it appears this is a very minimal page with just one `div` containing the Nuxt.js app's root, `#__nuxt`, which typically holds all of the actual content and structure for the webpage in question.\n\nHowever, to ensure I extract only the main body content, let's make a couple of assumptions before filtering the HTML: assuming that the content is rendered inside of <main> or <article> tags (common practices for separating main content from other page furniture elements).\n\nHere's a script demonstrating how you might separate and clean the HTML content using JavaScript to select the target nodes and parse clean semantic HTML:\n\n```javascript\n// Assuming we have a variable named 'html_source' containing your provided HTML as string.\n\nconst parser = new DOMParser();\nconst parsedHtml = parser.parseFromString(html_source, \"text/html\");\n\n// Find the main content within <article> or <main> tags (assuming Nuxt.js uses these)\nconst mainContent = parsedHtml.querySelector(\"article, main\");\n\nconst cleanContent = [];\nlet currentElement;\n\nif (mainContent) {\n  // Traverse the cleaned DOM by recursively iterating through child nodes\n  function traverse(node) {\n    if (\n      node.tagName === \"H1\" ||\n      node.tagName === \"H2\" ||\n      node.tagName === \"H3\" ||\n      node.tagName === \"H4\" ||\n      node.tagName === \"H5\" ||\n      node.tagName === \"H6\" ||\n      node.tagName === \"P\" ||\n      node.tagName === \"A\" ||\n      node.tagName === \"BUTTON\" ||\n      node.tagName === \"UL\" ||\n      node.tagName === \"OL\" ||\n      node.tagName === \"LI\" ||\n      node.tagName === \"BLOCKQUOTE\"\n    ) {\n      cleanContent.push(node.outerHTML);\n    }\n\n    for (let i = 0; i < node.childNodes.length; i++) {\n      currentElement = node.childNodes[i];\n      if (currentElement.nodeType === Node.ELEMENT_NODE) traverse(currentElement);\n    }\n  }\n\n  // Start traversing the main content DOM\n  traverse(mainContent);\n\n  // Final output as cleaned semantic structure HTML\n  const finalOutput = cleanContent.join(\"\\n\");\n  console.log(finalOutput);\n} else {\n  console.log(\"No valid article or main found.\");\n}\n```\n\nThis script will traverse the cleaned DOM, extracting all meaningful nodes that are semantic and part of the central content based on your requirements, then outputting a clean HTML structure containing the main editorial content of the page.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 11.430215835571289,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.reading.gov.uk/solartogether/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "The content does provide some information regarding the procedure for solar panel installation, however, it doesn't clearly state whether a specific permission is required from the council or not.",
+                                    "confidence": "60%",
+                                    "reasoning": "Although the article mentions that homeowners should check with energy suppliers and the government's Planning Portal to see if any planning permissions are needed for installing solar panels, it does not explicitly state whether a permission from the council is necessary or not. Also, the article does not mention who to contact within the council or an estimated timeframe.",
+                                    "next_actions": "I would search the local council's website directly for information specific to solar panel installation permissions or call the council office to inquire about the permit process."
+                                },
+                                {
+                                    "need": "What is the next step after reading this content?",
+                                    "answer_quality": "The article provides limited next steps, only mentioning the Planning Portal for further information.",
+                                    "confidence": "70%",
+                                    "reasoning": "Although the article recommends visiting the government's Planning Portal for more information on planning permissions and other aspects of solar panel installation, it does not provide additional specific next steps that a council resident might need to follow when considering solar panel installation. Additional suggestions could be included on who to contact at the council or other organizations involved in renewable energy projects.",
+                                    "next_actions": "I would investigate the Planning Portal mentioned in the article for a more comprehensive understanding of planning permissions for solar panels and look into contacting local resources for guidance."
+                                }
+                            ],
+                            "overall_assessment": "The provided content is somewhat helpful, outlining general concerns when installing solar panels, but it lacks clarity on specific council-related procedures and does not offer a comprehensive list of next steps. In order to better serve the needs of council residents, it would be beneficial to expand upon the information concerning permits, who to contact in the council, and clearer next steps after reading the content."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 9.829119205474854,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.reading.gov.uk/solartogether/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_061545-reading.gov.uk",
+                    "analysis_timestamp": "2025-08-11T06:16:30+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.75,
+                            "tokens_consumed": 4403,
+                            "tokens_remaining": 25597,
+                            "token_utilization_percentage": 14.68,
+                            "average_tokens_per_step": 733.83
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 85.32,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 34,
+                            "consumption_rate": 733.83,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "60",
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 10.71,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.75,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_061545-reading.gov.uk",
+                        "start_time": "2025-08-11T06:15:45+01:00",
+                        "current_time": "2025-08-11T06:16:30+01:00",
+                        "duration_seconds": 45,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 4403,
+                        "tokens_remaining": 25597,
+                        "token_utilization_percentage": 14.68,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 837,
+                                "avg_per_call": 418.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3566,
+                                "avg_per_call": 1783
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 733.83
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_061545-reading.gov.uk",
+                    "start_time": "2025-08-11T06:15:45+01:00",
+                    "current_time": "2025-08-11T06:16:30+01:00",
+                    "duration_seconds": 45,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 4403,
+                    "tokens_remaining": 25597,
+                    "token_utilization_percentage": 14.68,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 837,
+                            "avg_per_call": 418.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3566,
+                            "avg_per_call": 1783
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 733.83
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

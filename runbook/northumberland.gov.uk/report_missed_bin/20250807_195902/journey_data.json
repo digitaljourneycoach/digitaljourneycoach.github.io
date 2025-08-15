@@ -1,0 +1,684 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T19:59:02+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "northumberland.gov.uk",
+                "Council Name": "Northumberland County Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Northumberland County Council Online Form",
+                        "link": "https://online.northumberland.gov.uk/citizenportal/form.aspx?form=Res_Waste_MB",
+                        "snippet": "Residential Waste. This form is to be used by Northumberland residents to report a missed residential waste bin collection. If we have problems collecting bins\u00a0..."
+                    },
+                    {
+                        "title": "Report - Northumberland County Council",
+                        "link": "https://www.northumberland.gov.uk/SelfService/Report.aspx",
+                        "snippet": "Bin collection information. Report missed residential bin \u00b7 Report a missed trade waste collection. Business waste & recycling. Report a damaged trade waste bin\u00a0..."
+                    },
+                    {
+                        "title": "Bin collections for residents | Northumberland County Council",
+                        "link": "https://beta.northumberland.gov.uk/bins-recycling-waste/bin-collections-residents",
+                        "snippet": "Jul 23, 2025 ... Collection dates, report missed collections, request assistance, order new bins and check service disruptions."
+                    },
+                    {
+                        "title": "Bins, recycling and waste | Northumberland County Council",
+                        "link": "https://beta.northumberland.gov.uk/bins-recycling-waste",
+                        "snippet": "Services. Bin collections for residents. Collection dates, report missed collections, request assistance, order new bins and check service\u00a0..."
+                    },
+                    {
+                        "title": "Garden waste collection service | Northumberland County Council",
+                        "link": "https://beta.northumberland.gov.uk/bins-recycling-waste/garden-waste/garden-waste-collection-service",
+                        "snippet": "May 23, 2025 ... Missed collections. Before reporting a missed collection: make sure your garden waste bin was out by 7am on your collection day; make sure you\u00a0..."
+                    },
+                    {
+                        "title": "Northumberland County Council",
+                        "link": "https://online.northumberland.gov.uk/citizenportal/form.aspx?form=Trade_Waste_MB",
+                        "snippet": "Missed Collection. This form is to be used by existing Trade Waste customers of Northumberland County Council to report a missed Trade Waste collection. The\u00a0..."
+                    },
+                    {
+                        "title": "SelfService - Northumberland County Council",
+                        "link": "https://www.northumberland.gov.uk/Selfservice.aspx",
+                        "snippet": "apply for a service (e.g. bin collection, parking permits); report a problem (e.g. missed bin collection, potholes). If you need help with any of our online\u00a0..."
+                    },
+                    {
+                        "title": "Business waste collection service | Northumberland County Council",
+                        "link": "https://beta.northumberland.gov.uk/bins-recycling-waste/trade-waste/business-waste-collection-service",
+                        "snippet": "Jan 14, 2025 ... Your responsibilities \u00b7 Collection options \u00b7 Apply for a collection \u00b7 Report a missed collection \u00b7 Report a damaged bin \u00b7 Request delivery of bag and\u00a0..."
+                    },
+                    {
+                        "title": "Northumberland County Council - Home",
+                        "link": "http://www.northumberland.gov.uk/",
+                        "snippet": "Check Bin Collection Date \u00b7 Report missed residential bin \u00b7 Worried About an Adult or Child \u00b7 Report Shrub Maintenance Problem \u00b7 Report a Tree Problem \u00b7 Report\u00a0..."
+                    },
+                    {
+                        "title": "Home - Northumberland County Council",
+                        "link": "https://www.northumberland.gov.uk/Default.aspx?page=7991Vije%C4%87e",
+                        "snippet": "Top Tasks. Before reporting a problem, please check our Alerts (above) for updates. View all tasks \u00b7 Check Bin Collection Date \u00b7 Report missed residential\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://beta.northumberland.gov.uk/bins-recycling-waste/bin-collections-residents",
+                        "title": "Bin collections for residents | Northumberland County Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Comprehensive information about bin collections for residents, including collection dates, reporting missed collections and requesting assistance.",
+                            "User-friendly design with intuitive navigation."
+                        ],
+                        "reasoning": "The provided title and snippet indicate that this link offers information pertaining to bin collections for residents. It also mentions reporting missed collections, requesting assistance, and checking service disruptions which aligns with customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Bin collections for residents | Northumberland County Council",
+                                "Source": "https://beta.northumberland.gov.uk/bins-recycling-waste/bin-collections-residents",
+                                "Key Strengths": [
+                                    "Comprehensive information about bin collections for residents, including collection dates, reporting missed collections and requesting assistance.",
+                                    "User-friendly design with intuitive navigation."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The provided title and snippet indicate that this link offers information pertaining to bin collections for residents. It also mentions reporting missed collections, requesting assistance, and checking service disruptions which aligns with customer information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "SelfService - Northumberland County Council",
+                                "Source": "https://www.northumberland.gov.uk/Selfservice.aspx",
+                                "Key Strengths": [
+                                    "A centralized service portal for various council services, including bin collection and problem reporting.",
+                                    "Detailed description hinting at the ability to report problems such as missed bin collections."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Although not specific to bin collections, this link provides a service portal for multiple council services. Furthermore, it mentions reporting problems, which could include missed bin collections."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Report - Northumberland County Council",
+                                "Source": "https://www.northumberland.gov.uk/SelfService/Report.aspx",
+                                "Key Strengths": [
+                                    "An option to report various council-related problems, potentially including missed bin collections.",
+                                    "Clear and easy navigation."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title and snippet suggest that this link offers a problem reporting service. Although it doesn't specifically mention bin collections, the range of potential problems suggests that missed bin collections may be reported here as well."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Northumberland County Council - Home",
+                                "Source": "http://www.northumberland.gov.uk/",
+                                "Key Strengths": [
+                                    "Homepage of the Northumberland County Council, potentially containing various links related to council services and customer information.",
+                                    "Mention of checking bin collection dates."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "While not explicit in the provided snippet, the fact that this link is the homepage for Northumberland County Council suggests that it may contain multiple links related to council services and customer information. The mention of checking bin collection dates indicates a possibility of finding additional bin collection-related data."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Home - Northumberland County Council",
+                                "Source": "https://www.northumberland.gov.uk/Default.aspx?page=7991Vije%C4%87e",
+                                "Key Strengths": [
+                                    "Top tasks section potentially containing various links related to council services and customer information.",
+                                    "Mention of checking bin collection dates and reporting missed residential bins."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The snippet indicates that this link contains top tasks, which might include various links related to council services. It also mentions checking bin collection dates and reporting missed residential bins, suggesting that it could be a suitable recommendation."
+                            }
+                        ],
+                        "Analysis Notes": "It appears that the provided search results are highly relevant for finding information on bin collections in Northumberland County Council, with various links showing options to check collection dates and report missed collections.",
+                        "Recommendations Notes": "The top recommendations offer different entry points for finding information related to bin collections. Recommendation 1 directly addresses the user's needs by providing comprehensive information on bin collections. The other recommended links require some navigation or exploration but may still provide suitable information."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "70",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 79,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Bin collections for residents | Northumberland County Council",
+                            "Source": "https://beta.northumberland.gov.uk/bins-recycling-waste/bin-collections-residents",
+                            "Reasoning": "The provided title and snippet indicate that this link offers information pertaining to bin collections for residents, including collection dates, reporting missed collections, and requesting assistance. This meets the research objective directly and provides a comprehensive solution.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Report - Northumberland County Council",
+                            "Source": "https://www.northumberland.gov.uk/SelfService/Report.aspx",
+                            "Reasoning": "Although not explicit in the provided snippet, it offers an option to report various council-related problems, potentially including missed bin collections. While this requires some exploration within the site, it still meets the research objective.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "SelfService - Northumberland County Council",
+                            "Source": "https://www.northumberland.gov.uk/Selfservice.aspx",
+                            "Reasoning": "Although it doesn't specifically mention bin collections, this link provides a service portal for multiple council services. The ability to report problems could potentially be used for missed bin collections and meet the research objective.",
+                            "Confidence": "85"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://beta.northumberland.gov.uk/bins-recycling-waste/bin-collections-residents"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://beta.northumberland.gov.uk/bins-recycling-waste/bin-collections-residents",
+                        "analysis": {
+                            "url": "https://beta.northumberland.gov.uk/bins-recycling-waste/bin-collections-residents",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T19:59:02+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T19:59:30+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 31176,
+                            "response_time": 0.33,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.33s)",
+                                    "Content successfully retrieved (31176 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.3311889171600342,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://beta.northumberland.gov.uk/bins-recycling-waste/bin-collections-residents"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://beta.northumberland.gov.uk/bins-recycling-waste/bin-collections-residents",
+                        "content": " This is a HTML code for a webpage that provides information about waste management, specifically bin collections for residents in Northumberland, England. The page covers topics such as check bin collection day, collections available, on collection day, help to put your bin out, disrupted collections, missed bin collection, stolen, new, lost or damaged bins, change your bin, no space for a bin, table of contents, related topics and services, feedback form, and page last saved/updated.\n\nThe webpage also includes related content sections for mobile and desktop views, a table of contents section, and a feedback card where users can provide feedback on the content of the page to help improve the website. The HTML code also contains metadata like the title of the page and a link that refers to a hidden URL. The website is part of Northumberland County Council's digital services for its residents.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 6.925720930099487,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://beta.northumberland.gov.uk/bins-recycling-waste/bin-collections-residents",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content does not specifically address this need directly.",
+                                    "confidence": "60%",
+                                    "reasoning": "Although the webpage provides information on missed bin collections, there is no obvious process provided for residents who have forgotten to put their bin out and now want it collected. While the mention of 'missed bin collection' indicates that the system caters to this issue, there is no explicit step-by-step guide or reporting mechanism.",
+                                    "next_actions": "As a council resident, I would contact the Northumberland County Council customer service either through their official phone line or via email for assistance in reporting a missed bin collection due to forgetfulness."
+                                }
+                            ],
+                            "overall_assessment": "The content is informative and well-structured but does not effectively address several specific resident needs, such as reporting missed collections due to forgetfulness. Inclusion of an explicit step-by-step guide or easily accessible reporting mechanism for this scenario would be a valuable improvement."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.317681074142456,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://beta.northumberland.gov.uk/bins-recycling-waste/bin-collections-residents"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_195902-northumberland.gov.uk",
+                    "analysis_timestamp": "2025-08-07T19:59:43+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6833333333333333,
+                            "tokens_consumed": 7906,
+                            "tokens_remaining": 92094,
+                            "token_utilization_percentage": 7.91,
+                            "average_tokens_per_step": 1317.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 92.09,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 69,
+                            "consumption_rate": 1317.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.76,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_195902-northumberland.gov.uk",
+                        "start_time": "2025-08-07T19:59:02+01:00",
+                        "current_time": "2025-08-07T19:59:43+01:00",
+                        "duration_seconds": 41,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 7906,
+                        "tokens_remaining": 92094,
+                        "token_utilization_percentage": 7.91,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 4618,
+                                "avg_per_call": 2309
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3288,
+                                "avg_per_call": 1644
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1317.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_195902-northumberland.gov.uk",
+                    "start_time": "2025-08-07T19:59:02+01:00",
+                    "current_time": "2025-08-07T19:59:43+01:00",
+                    "duration_seconds": 41,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 7906,
+                    "tokens_remaining": 92094,
+                    "token_utilization_percentage": 7.91,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 4618,
+                            "avg_per_call": 2309
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3288,
+                            "avg_per_call": 1644
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1317.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

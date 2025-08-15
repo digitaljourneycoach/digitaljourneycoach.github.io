@@ -1,0 +1,672 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T01:17:19+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "haringey.gov.uk",
+                "Council Name": "London Borough of Haringey"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Do you need planning permission to install solar panels? What if my ...",
+                        "link": "https://haringey.gov.uk/sites/default/files/2024-12/solar-panels-planning-faq-new.pdf",
+                        "snippet": "A number of queries were raised regarding planning permission and permitted development rights at the Solar Together London information session. These have been\u00a0..."
+                    },
+                    {
+                        "title": "Works that need planning permission | Haringey Council",
+                        "link": "https://www.haringey.gov.uk/planning-building-control/planning/planning-policy/design-conservation/conservation-areas/conservation-areas/development-conservation-areas/works-that-need-planning-permission",
+                        "snippet": "installation of roof lights or solar panels that would protrude more than 150mm from the roof slope; the installation of solar panels on a wall which fronts a\u00a0..."
+                    },
+                    {
+                        "title": "Energy efficiency in conservation areas | Haringey Council",
+                        "link": "https://www.haringey.gov.uk/planning-building-control/planning/planning-policy/design-conservation/conservation-areas/conservation-areas/development-conservation-areas/energy-efficiency-conservation-areas",
+                        "snippet": "... planning permission. Care should be taken to provide enough ventilation to ... The installation of micro-generation technologies such as solar panels\u00a0..."
+                    },
+                    {
+                        "title": "Works where building regulations approval is required | Haringey ...",
+                        "link": "https://haringey.gov.uk/planning-building-control/building-control/building-regulations-inspections/building-regulations-approval/works-where-building-regulations-approval-required",
+                        "snippet": "Install solar panels on my roof. Approval is required as the adequacy of the existing roof to take the increased loads will need to be assessed, and some\u00a0..."
+                    },
+                    {
+                        "title": "Wards Application Type Planning Application: Planning Application ...",
+                        "link": "https://www.minutes.haringey.gov.uk/documents/s147694/8b%20Delegated%20decisions%2026.08.24%20-%2027.09.24.pdf",
+                        "snippet": "Sep 27, 2024 ... installation of solar panels and replacement of electric gate to match existing. Eunice Huang. Crouch End. Full planning permission. HGY/2024\u00a0..."
+                    },
+                    {
+                        "title": "2. How to retrofit | Haringey Council",
+                        "link": "https://haringey.gov.uk/environment/climate/retrofit-design-guide/2-how-to-retrofit",
+                        "snippet": "Dec 13, 2024 ... You will need to check if you need planning permission for installation of an ASHP, GSHP or solar panel system. Overheating. Homes can sometimes\u00a0..."
+                    },
+                    {
+                        "title": "HGY/2024/2279 25-27 Clarendon Road N8 0DD - Agenda item",
+                        "link": "https://www.minutes.haringey.gov.uk/mgAi.aspx?ID=81398",
+                        "snippet": "Jan 13, 2025 ... They were also planning on installing solar panels, and her view is that this development would interfere with them. The following was noted in\u00a0..."
+                    },
+                    {
+                        "title": "When you need planning permission | Haringey Council",
+                        "link": "https://www.haringey.gov.uk/planning-building-control/planning/planning-applications/pre-application-guidance/when-you-need-planning-permission",
+                        "snippet": "You're likely to require planning permission if you intend to: Some minor alterations and extensions, particularly to houses, are classed as 'permitted\u00a0..."
+                    },
+                    {
+                        "title": "ALEXANDRA PARK AND PALACE CHARITABLE TRUST BOARD ...",
+                        "link": "https://www.minutes.haringey.gov.uk/documents/s146452/12.%20Sports%20Club%20solar%20panels%20planning%20report.pdf",
+                        "snippet": "Jul 15, 2024 ... ... planning permission. A planning ... application for planning for the installation of 24no solar panels on the roof of the Cricket."
+                    },
+                    {
+                        "title": "HARINGEY COUNCIL",
+                        "link": "https://www.minutes.haringey.gov.uk/documents/s132623/Applications%20determined%20under%20delegated%20powers.pdf",
+                        "snippet": "May 20, 2022 ... Approval of details pursuant to condition 39 Part B (PV Panels) attached to planning permission. HGY/2019/2804. Ashley Gardens Ashley Road\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.haringey.gov.uk/planning-building-control/planning/planning-policy/design-conservation/conservation-areas/conservation-areas/development-conservation-areas/works-that-need-planning-permission",
+                        "title": "Works that need planning permission | Haringey Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Comprehensive information about what type of works need planning permission, including installation of solar panels.",
+                            "Link related to council customer's general information needs."
+                        ],
+                        "reasoning": "The title and snippet suggest that this link provides detailed information about which types of works require planning permission in Haringey Council, including installation of solar panels. This resource seems directly relevant to the customer's information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Works that need planning permission | Haringey Council",
+                                "Source": "https://www.haringey.gov.uk/planning-building-control/planning/planning-policy/design-conservation/conservation-areas/conservation-areas/development-conservation-areas/works-that-need-planning-permission",
+                                "Key Strengths": [
+                                    "Comprehensive information about what type of works need planning permission, including installation of solar panels.",
+                                    "Link related to council customer's general information needs."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title and snippet suggest that this link provides detailed information about which types of works require planning permission in Haringey Council, including installation of solar panels. This resource seems directly relevant to the customer's information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Do you need planning permission to install solar panels? What if my ...",
+                                "Source": "https://haringey.gov.uk/sites/default/files/2024-12/solar-panels-planning-faq-new.pdf",
+                                "Key Strengths": [
+                                    "FAQ guide specifically about planning permission for solar panels.",
+                                    "PDF format may provide a more concise and clear layout."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title and snippet suggest that this resource is a FAQ guide focusing on planning permission for solar panels, which aligns with the customer's question. Although not web-based, it still provides relevant information about their specific situation."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Works where building regulations approval is required | Haringey ...",
+                                "Source": "https://haringey.gov.uk/planning-building-control/building-control/building-regulations-inspections/building-regulations-approval/works-where-building-regulations-approval-required",
+                                "Key Strengths": [
+                                    "Discusses the need for building regulations approval for installing solar panels.",
+                                    "Link related to council customer's general information needs about different types of approval required."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Although not specifically focused on planning permission, this link provides information about the need for building regulations approval during installation solar panels. This may prove useful to the customer in understanding the permits they might need before embarking on any project."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "When you need planning permission | Haringey Council",
+                                "Source": "https://www.haringey.gov.uk/planning-building-control/planning/planning-applications/pre-application-guidance/when-you-need-planning-permission",
+                                "Key Strengths": [
+                                    "General information about what types of works require planning permission in Haringey, including solar panels.",
+                                    "Link related to council customer's general information needs."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This resource provides a general overview of what kind of works require planning permission in the Haringey area. It might not be as detailed as other resources, but it still covers solar panels installation as one of the examples."
+                            }
+                        ],
+                        "Analysis Notes": "Four out of ten links analyzed provide relevant information for the customer's search query related to council customer information needs about solar panel installations. The recommended list includes resources that cover planning permission, building regulations approval, and general guidelines.",
+                        "Recommendations Notes": "The top 5 recommendations were chosen based on their relevance and quality (comprehensiveness of the provided information), and the confidence scores reflect the degree of directness in addressing the customer's search query."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 77.5,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Works that need planning permission | Haringey Council",
+                            "Source": "https://www.haringey.gov.uk/planning-building-control/planning/planning-policy/design-conservation/conservation-areas/conservation-areas/development-conservation-areas/works-that-need-planning-permission",
+                            "Reasoning": "The title and snippet suggest that this link provides detailed information about which types of works require planning permission in Haringey Council, including installation of solar panels. This resource seems directly relevant to the customer's information needs with a confidence score of 85.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Do you need planning permission to install solar panels? What if my ...",
+                            "Source": "https://haringey.gov.uk/sites/default/files/2024-12/solar-panels-planning-faq-new.pdf",
+                            "Reasoning": "The title and snippet suggest that this resource is a FAQ guide focusing on planning permission for solar panels, which aligns with the customer's question. Although not web-based, it still provides relevant information about their specific situation.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Works where building regulations approval is required | Haringey ...",
+                            "Source": "https://haringey.gov.uk/planning-building-control/building-control/building-regulations-inspections/building-regulations-approval/works-where-building-regulations-approval-required",
+                            "Reasoning": "Although not specifically focused on planning permission, this link provides information about the need for building regulations approval during installation solar panels. This may prove useful to the customer in understanding permits they might need before embarking on any project.",
+                            "Confidence": "75"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.haringey.gov.uk/planning-building-control/planning/planning-policy/design-conservation/conservation-areas/conservation-areas/development-conservation-areas/works-that-need-planning-permission"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.haringey.gov.uk/planning-building-control/planning/planning-policy/design-conservation/conservation-areas/conservation-areas/development-conservation-areas/works-that-need-planning-permission",
+                        "analysis": {
+                            "url": "https://www.haringey.gov.uk/planning-building-control/planning/planning-policy/design-conservation/conservation-areas/conservation-areas/development-conservation-areas/works-that-need-planning-permission",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T01:17:19+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T01:17:48+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 67212,
+                            "response_time": 0.303,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.303s)",
+                                    "Content successfully retrieved (67212 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.30344390869140625,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.haringey.gov.uk/planning-building-control/planning/planning-policy/design-conservation/conservation-areas/conservation-areas/development-conservation-areas/works-that-need-planning-permission"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.haringey.gov.uk/planning-building-control/planning/planning-policy/design-conservation/conservation-areas/conservation-areas/development-conservation-areas/works-that-need-planning-permission",
+                        "content": " It appears you've provided an HTML code, but I don't have the capability to directly execute or display it as a webpage. However, I can still provide some context and point out elements within this source code.\n\nThis snippet is a simple HTML structure for a website with a language selector in the header and a disclaimer link at the bottom. The main content area (`<main>`) is currently empty as you haven't provided contents to be displayed there.\n\nThe language selector uses a `select` element where user can choose desired languages from a predefined list of options. These languages range from Spanish, German, French, Chinese, Japanese, and many more, all the way to Zulu.\n\nAt the bottom, there's a clickable link to a disclaimer page which opens in a new tab when clicked (`target=\"_blank\"`).",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 6.85871696472168,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.haringey.gov.uk/planning-building-control/planning/planning-policy/design-conservation/conservation-areas/conservation-areas/development-conservation-areas/works-that-need-planning-permission",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "This content does not address this need directly",
+                                    "confidence": "0%",
+                                    "reasoning": "The given HTML page is about planning permission in conservation areas. However, it doesn't mention or provide any information related to installing solar panels on houses, which might require a different kind of approval.",
+                                    "next_actions": "I would search for specific information regarding the installation of solar panels and their permissibility within my council area."
+                                }
+                            ],
+                            "overall_assessment": "The content is not helpful in addressing the specific question or need provided as it does not pertain to installing solar panels on houses in any way."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.2932000160217285,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.haringey.gov.uk/planning-building-control/planning/planning-policy/design-conservation/conservation-areas/conservation-areas/development-conservation-areas/works-that-need-planning-permission"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_011719-haringey.gov.uk",
+                    "analysis_timestamp": "2025-08-11T01:18:00+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6833333333333333,
+                            "tokens_consumed": 9733,
+                            "tokens_remaining": 20267,
+                            "token_utilization_percentage": 32.44,
+                            "average_tokens_per_step": 1622.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 67.56,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 12,
+                            "consumption_rate": 1622.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.76,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_011719-haringey.gov.uk",
+                        "start_time": "2025-08-11T01:17:19+01:00",
+                        "current_time": "2025-08-11T01:18:00+01:00",
+                        "duration_seconds": 41,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 9733,
+                        "tokens_remaining": 20267,
+                        "token_utilization_percentage": 32.44,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 6434,
+                                "avg_per_call": 3217
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3299,
+                                "avg_per_call": 1649.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1622.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_011719-haringey.gov.uk",
+                    "start_time": "2025-08-11T01:17:19+01:00",
+                    "current_time": "2025-08-11T01:18:00+01:00",
+                    "duration_seconds": 41,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 9733,
+                    "tokens_remaining": 20267,
+                    "token_utilization_percentage": 32.44,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 6434,
+                            "avg_per_call": 3217
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3299,
+                            "avg_per_call": 1649.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1622.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

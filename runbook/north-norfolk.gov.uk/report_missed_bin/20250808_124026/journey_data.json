@@ -1,0 +1,663 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T12:40:26+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "north-norfolk.gov.uk",
+                "Council Name": "North Norfolk District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed bin collection",
+                        "link": "https://www.north-norfolk.gov.uk/tasks/environmental-services/report-a-missed-bin-collection/",
+                        "snippet": "Missed collections for household recycling, waste and garden bins must be reported by midday on the second working day after your collection date."
+                    },
+                    {
+                        "title": "Home | Report a problem",
+                        "link": "https://www.north-norfolk.gov.uk/section/bins/report-a-problem/",
+                        "snippet": "Report a problem tasks. View bin collections days \u00b7 Report a nuisance \u00b7 Report broken glass, needles or bodily fluid \u00b7 Report a missed bin collection\u00a0..."
+                    },
+                    {
+                        "title": "Home | Bins",
+                        "link": "https://www.north-norfolk.gov.uk/section/bins/",
+                        "snippet": "Bins. Bins tasks. View bin collections days \u00b7 Report a missed bin collection \u00b7 Battery recycling service \u00b7 Small electrical item recycling service \u00b7 What goes\u00a0..."
+                    },
+                    {
+                        "title": "Home | Report",
+                        "link": "https://www.north-norfolk.gov.uk/task-tags/task-types/report/",
+                        "snippet": "Report a flood \u00b7 Report a found dog \u00b7 Report a housing condition complaint \u00b7 Report a lost dog \u00b7 Report a lost, stolen or damaged bin \u00b7 Report a missed bin\u00a0..."
+                    },
+                    {
+                        "title": "Home | Bins, collections and recycling",
+                        "link": "https://www.north-norfolk.gov.uk/section/bins/bins-collections-and-recycling/",
+                        "snippet": "Bins, collections and recycling. Bins, collections and recycling tasks. View bin collections days \u00b7 Report a missed bin collection \u00b7 Battery recycling service\u00a0..."
+                    },
+                    {
+                        "title": "Home | Environmental Services",
+                        "link": "https://www.north-norfolk.gov.uk/tasks/environmental-services/",
+                        "snippet": "Renew a brown garden bin \u00b7 Report a dead animal \u00b7 Report a missed bin collection \u00b7 Report a lost, stolen or damaged bin \u00b7 Report a stranded whale or dolphin\u00a0..."
+                    },
+                    {
+                        "title": "O&S Waste Update \u2013 February 2024 Executive Summary The Waste ...",
+                        "link": "https://modgov.north-norfolk.gov.uk/documents/s18393/2024%2001%2031%20-%20OS%20Report%20-%20Waste%20Update%20v3.pdf",
+                        "snippet": "A missed collection for these reporting purposes is one that is not collected within the rectification period set out in the contract. In general, Serco have\u00a0..."
+                    },
+                    {
+                        "title": "Report a problem with a litter bin",
+                        "link": "https://www.north-norfolk.gov.uk/tasks/environmental-protection/report-a-problem-with-a-litter-bin/",
+                        "snippet": "Damaged or missing bin? Call us on 0330 109 9220 if a litter or dog bin is missing or damaged. Still need help? Visit our contact us\u00a0..."
+                    },
+                    {
+                        "title": "Home | Bin collection days",
+                        "link": "https://www.north-norfolk.gov.uk/tasks/environmental-services/view-bin-collections-days/",
+                        "snippet": "Please always put your bins out by 7am on collection day, as collection times may change. ... Report a missed bin collection \u00b7 View local recycling centres\u00a0..."
+                    },
+                    {
+                        "title": "Home | Report a lost, stolen or damaged bin",
+                        "link": "https://www.north-norfolk.gov.uk/tasks/environmental-services/report-a-lost-stolen-or-damaged-bin/",
+                        "snippet": "If your bin is damaged, has gone missing, or been stolen, or you have moved into a new home and the bin's not there, you need to order a new one."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.north-norfolk.gov.uk/tasks/environmental-services/report-a-missed-bin-collection/",
+                        "title": "Report a missed bin collection",
+                        "confidence": 90,
+                        "strengths": [
+                            "Direct link to report a missed bin collection",
+                            "Clear instructions for reporting",
+                            "Provides relevant information about the deadline"
+                        ],
+                        "reasoning": "This item offers a simple and direct method for a customer to report a missed bin collection, with clear guidelines on the reporting process and deadline.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed bin collection",
+                                "Source": "https://www.north-norfolk.gov.uk/tasks/environmental-services/report-a-missed-bin-collection/",
+                                "Key Strengths": [
+                                    "Direct link to report a missed bin collection",
+                                    "Clear instructions for reporting",
+                                    "Provides relevant information about the deadline"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This item offers a simple and direct method for a customer to report a missed bin collection, with clear guidelines on the reporting process and deadline."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Home | Report a problem",
+                                "Source": "https://www.north-norfolk.gov.uk/section/bins/report-a-problem/",
+                                "Key Strengths": [
+                                    "Provides various options to report problems related to bins",
+                                    "Offers additional services such as reporting nuisance, broken glass, or missing bins"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This item provides customers with multiple ways to report issues related to bins, beyond just missed collection reports."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Home | Report",
+                                "Source": "https://www.north-norfolk.gov.uk/task-tags/task-types/report/",
+                                "Key Strengths": [
+                                    "Offers a wide range of reporting options including lost or damaged bins and housing condition complaints",
+                                    "Centralize location for all reporting tasks"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This item offers a centralized location for various types of reporting tasks, including those related to bins."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Home | Bins, collections and recycling",
+                                "Source": "https://www.north-norfolk.gov.uk/section/bins/bins-collections-and-recycling/",
+                                "Key Strengths": [
+                                    "Includes information about bin collections days",
+                                    "Offers battery recycling and small electrical item recycling services"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This item offers additional services such as recycling options, which may be of interest to council customers."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Home | Report a lost, stolen or damaged bin",
+                                "Source": "https://www.north-norfolk.gov.uk/tasks/environmental-services/report-a-lost-stolen-or-damaged-bin/",
+                                "Key Strengths": [
+                                    "Direct link to report a lost, stolen or damaged bin",
+                                    "Provides instructions for ordering a new one"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This item offers a direct method for customers to report a damaged, missing, or stolen bin and provides information on how to order a replacement."
+                            }
+                        ],
+                        "Analysis Notes": "The provided list includes various links related to bins, collections, recycling services, and reporting options offered by the North Norfolk Council. The analyzed items were chosen based on their relevance, quality, and directness in providing information or solutions for customer needs.",
+                        "Recommendations Notes": "This list provides council customers with multiple ways to address various issues related to bins, including missed collections, damaged bins, and recycling services."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.north-norfolk.gov.uk/tasks/environmental-services/report-a-missed-bin-collection/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.north-norfolk.gov.uk/tasks/environmental-services/report-a-missed-bin-collection/",
+                        "analysis": {
+                            "url": "https://www.north-norfolk.gov.uk/tasks/environmental-services/report-a-missed-bin-collection/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T12:40:26+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T12:40:56+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 21949,
+                            "response_time": 0.608,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.608s)",
+                                    "Content successfully retrieved (21949 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.6097860336303711,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.north-norfolk.gov.uk/tasks/environmental-services/report-a-missed-bin-collection/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.north-norfolk.gov.uk/tasks/environmental-services/report-a-missed-bin-collection/",
+                        "content": " Here is the cleaned and semantically structured HTML containing the central editorial content of the page:\n\n```html\n<main id=\"content\">\n\t<div class=\"global-breadcrumb\">\n    \t<!-- Breadcrumb -->\n\t</div>\n    <div class=\"taskpage-top contentpage-top\">\n    \t<!-- Top area containing information notice and related links -->\n\t</div>\n    <div class=\"article-container article-container-equalheight\">\n        <div class=\"content-block rich-text\">\n            <!-- Main body content -->\n            <h2 class=\"heading-secondary\">Tell us about a missed general, recyclable or garden waste collection</h2>\n            <p><a data-id=\"25549\" href=\"/tasks/environmental-services/bin-collection-service-announcements/\" title=\"Bin collection service announcements\">Bin collection service announcements</a>&nbsp;contain the latest updates about your bin collections.</p>\n            <p>Missed collections for household recycling, waste and garden bins&nbsp;<strong>must</strong>&nbsp;be reported by&nbsp;<strong>midday on the second working day</strong>&nbsp;after your collection date. For example, if your collection was due on a Monday, you must report the missed collection by midday on the following Wednesday.</p>\n            <p><a href=\"https://forms.north-norfolk.gov.uk/outreach/missedbin.ofml\" target=\"_blank\" class=\"btn btn-green-reverse\">Report a missed collection</a>&nbsp;</p>\n            <p>Please place your bins at your property edge, with the handles of the bin facing the road, by&nbsp;<strong>7am</strong>&nbsp;on the day the collection is due.</p>\n            <p>Bins will not be emptied if they are:</p>\n            <ul>\n            \t<!-- List -->\n                <li>overweight</li>\n                <li>contaminated, meaning inappropriate waste</li>\n                <li>not at the correct collection point</li>\n                <li>inaccessible to the crew</li>\n            </ul>\n            <p>If any of the above applies, you will be required to correct the problem before the next scheduled collection date, when the crew will collect the waste.</p>\n            <!-- Info notice -->\n            <div class=\"info-notice\">\n            \t<h2>Still need help?</h2>\n            \t<p>Visit our <a href=\"/contact-us/\">contact us page</a> for further assistance about our popular services and information.</p>\n            </div>\n        </div>\n        <!-- Related content -->\n        <div class=\"related-container\">\n        \t<!-- Related articles -->\n        </div>\n    </div>\n</main>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 13.49941611289978,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.north-norfolk.gov.uk/tasks/environmental-services/report-a-missed-bin-collection/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected. ",
+                                    "answer_quality": "The content meets this need partially.",
+                                    "confidence": "70%",
+                                    "reasoning": "The content provides instructions on how to report a missed bin collection, stating the timeframe for reporting (midday on the second working day after the collection date) and providing a link to report. However, it does not explicitly mention what to do if the bin was not put out on the day of the collection.",
+                                    "next_actions": "After reading this content, I would need to visit the Council's website again to find information about what to do when I forgot to put my bin out on the scheduled collection day."
+                                }
+                            ],
+                            "overall_assessment": "The content is useful in addressing some needs of a Council Resident who has missed their bin collection and wants to report it. However, it does not fully address the need when a resident forgets to put the bin out on the scheduled collection day. Key gaps include providing instructions on what to do in such cases."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.724401950836182,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.north-norfolk.gov.uk/tasks/environmental-services/report-a-missed-bin-collection/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_124026-north-norfolk.gov.uk",
+                    "analysis_timestamp": "2025-08-08T12:41:16+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8333333333333334,
+                            "tokens_consumed": 5294,
+                            "tokens_remaining": 24706,
+                            "token_utilization_percentage": 17.65,
+                            "average_tokens_per_step": 882.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 82.35,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 28,
+                            "consumption_rate": 882.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.9,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8333333333333334,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_124026-north-norfolk.gov.uk",
+                        "start_time": "2025-08-08T12:40:26+01:00",
+                        "current_time": "2025-08-08T12:41:16+01:00",
+                        "duration_seconds": 50,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 5294,
+                        "tokens_remaining": 24706,
+                        "token_utilization_percentage": 17.65,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 1891,
+                                "avg_per_call": 945.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3403,
+                                "avg_per_call": 1701.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 882.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_124026-north-norfolk.gov.uk",
+                    "start_time": "2025-08-08T12:40:26+01:00",
+                    "current_time": "2025-08-08T12:41:16+01:00",
+                    "duration_seconds": 50,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 5294,
+                    "tokens_remaining": 24706,
+                    "token_utilization_percentage": 17.65,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 1891,
+                            "avg_per_call": 945.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3403,
+                            "avg_per_call": 1701.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 882.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

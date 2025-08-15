@@ -1,0 +1,688 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T13:24:17+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "ambervalley.gov.uk",
+                "Council Name": "Amber Valley Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed bins and service disruptions",
+                        "link": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/missed-bins-and-service-disruptions/",
+                        "snippet": "Missed bins and service disruptions ... Sometimes we will be unable to collect your waste on your scheduled bin collection dates, this may be because our vehicles\u00a0..."
+                    },
+                    {
+                        "title": "Waste collection policy",
+                        "link": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/waste-collection-policy/",
+                        "snippet": "Please report missed collections by 12noon on the next working day. Bins ... Additional waste by the side of the refuse bin will not be collected apart from:."
+                    },
+                    {
+                        "title": "Comments and complaints",
+                        "link": "https://www.ambervalley.gov.uk/council/comments-and-complaints/",
+                        "snippet": "If you are complaining about a problem in your area (e.g. dog fouling, food complaint, missed bin) ... Please do not use our complaints or comments form to report\u00a0..."
+                    },
+                    {
+                        "title": "Rubbish, waste and recycling",
+                        "link": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling",
+                        "snippet": "My caddy/hessian bag is missing after my last recycling collection? ... If you have a general comment or complaint about the council's services, please visit our\u00a0..."
+                    },
+                    {
+                        "title": "Amber Valley Borough Council",
+                        "link": "https://www.ambervalley.gov.uk/",
+                        "snippet": "Missed bin collections > \u00b7 Request a new bin or repair > \u00b7 Social rented housing ... If you have a general comment or complaint about the council's services,\u00a0..."
+                    },
+                    {
+                        "title": "Garden waste",
+                        "link": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/garden-waste/",
+                        "snippet": "Missed collections of garden waste must be reported by 12 noon on the next working day. Extra bags of garden waste by the side of the bin will not be collected\u00a0..."
+                    },
+                    {
+                        "title": "Request a bin repair or replacement",
+                        "link": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/request-a-bin-repair-or-replacement/",
+                        "snippet": "To request a repair or replacement of refuse or recycling containers please complete the form below. Your information will be passed to our Environmental\u00a0..."
+                    },
+                    {
+                        "title": "Contact us",
+                        "link": "https://www.ambervalley.gov.uk/contact-us/",
+                        "snippet": "> Rubbish, waste and recycling. Our site search is powered by Google. If you ... If you have a general comment or complaint about the council's services, please\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/missed-bins-and-service-disruptions/",
+                        "title": "Missed bins and service disruptions",
+                        "confidence": 90,
+                        "strengths": [
+                            "Clear title indicating missed bin collections and service disruptions.",
+                            "Url refers to specific waste collection section of the council's website."
+                        ],
+                        "reasoning": "The provided link is about missed bin collections and service disruptions, which are directly related to council customer information needs. The URL also points towards a dedicated waste collection section of Amber Valley Borough Council's website.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "8",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed bins and service disruptions",
+                                "Source": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/missed-bins-and-service-disruptions/",
+                                "Key Strengths": [
+                                    "Clear title indicating missed bin collections and service disruptions.",
+                                    "Url refers to specific waste collection section of the council's website."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The provided link is about missed bin collections and service disruptions, which are directly related to council customer information needs. The URL also points towards a dedicated waste collection section of Amber Valley Borough Council's website."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Waste collection policy",
+                                "Source": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/waste-collection-policy/",
+                                "Key Strengths": [
+                                    "Clear title indicating waste collection policy.",
+                                    "Snippet mentions missed collections, which are relevant to customer information needs."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Though the title does not explicitly mention customer information, the content of the link (as stated in the snippet) covers the aspect of reporting missed collections, making it potentially useful for customers seeking council-related waste collection details."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Comments and complaints",
+                                "Source": "https://www.ambervalley.gov.uk/council/comments-and-complaints/",
+                                "Key Strengths": [
+                                    "Clear title indicating comments and complaints.",
+                                    "Snippet mentions reporting problems in the area, which could include missed bins."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The link's title and snippet suggest it may offer resources for reporting issues with waste collection (including missed bins), making it potentially helpful for customers seeking council-related information."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Rubbish, waste, and recycling",
+                                "Source": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling",
+                                "Key Strengths": [
+                                    "General title related to rubbish, waste, and recycling.",
+                                    "Url refers to the main waste collection section of the council's website."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Though not explicitly about customer information, this link could provide a comprehensive overview of waste management and related services provided by the council. Customers may find value in this resource when seeking general information regarding council services."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Contact us",
+                                "Source": "https://www.ambervalley.gov.uk/contact-us/",
+                                "Key Strengths": [
+                                    "Clear title indicating contact information.",
+                                    "Snippet mentions a general comment or complaint about the council's services, which may include waste collection issues."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though not directly related to specific waste collection information, this link could provide a route for customers to report missed bin collections or express other waste-related concerns to the council."
+                            }
+                        ],
+                        "Analysis Notes": "The search results have been ranked by relevance and quality based on their titles and snippets. The URLs' referral to specific sections of Amber Valley Borough Council's website strengthened confidence in their applicability for the given instruction.",
+                        "Recommendations Notes": "It is advised to browse through these resources and consult them as needed for understanding council customer information regarding waste management services."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Missed bins and service disruptions",
+                            "Source": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/missed-bins-and-service-disruptions/",
+                            "Reasoning": "The provided link is about missed bin collections and service disruptions, which are directly related to council customer information needs. The URL also points towards a dedicated waste collection section of Amber Valley Borough Council's website.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Waste collection policy",
+                            "Source": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/waste-collection-policy/",
+                            "Reasoning": "Though the title does not explicitly mention customer information, the content of the link (as stated in the snippet) covers the aspect of reporting missed collections, making it potentially useful for customers seeking council-related waste collection details.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Comments and complaints",
+                            "Source": "https://www.ambervalley.gov.uk/council/comments-and-complaints/",
+                            "Reasoning": "The link's title and snippet suggest it may offer resources for reporting issues with waste collection (including missed bins), making it potentially helpful for customers seeking council-related information.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Rubbish, waste, and recycling",
+                            "Source": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling",
+                            "Reasoning": "Though not explicitly about specific waste collection information, this link could provide a comprehensive overview of waste management and related services provided by the council. Customers may find value in this resource when seeking general information regarding council services.",
+                            "Confidence": "75"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Contact us",
+                            "Source": "https://www.ambervalley.gov.uk/contact-us/",
+                            "Reasoning": "Though not directly related to specific waste collection information, this link could provide a route for customers to report missed bin collections or express other waste-related concerns to the council.",
+                            "Confidence": "70"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/missed-bins-and-service-disruptions/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/missed-bins-and-service-disruptions/",
+                        "analysis": {
+                            "url": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/missed-bins-and-service-disruptions/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T13:24:17+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T13:24:50+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 44865,
+                            "response_time": 0.373,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.373s)",
+                                    "Content successfully retrieved (44865 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.37436795234680176,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/missed-bins-and-service-disruptions/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/missed-bins-and-service-disruptions/",
+                        "content": " The cleaned semantic HTML containing the central editorial content of the page is as follows:\n\n```html\n<h1>Missed bins and service disruptions</h1>\n<p>Sometimes we will be unable to collect your waste on your scheduled  <a data-udi=\"umb://document/3a15419984fa4a738fd99d50f8e3562b\" href=\"/rubbish-waste-and-recycling/bin-collection-dates/\" title=\"Bin collection dates\">bin collection dates</a>, this may be because  our vehicles cannot access a road due to parked cars, <a data-udi=\"umb://document/147db7acfb8441a0b4c9de1a384e1ec0\" href=\"/rubbish-waste-and-recycling/collections-over-christmas-and-adverse-weather/\" title=\"Collections over Christmas and adverse weather\">adverse weather</a> or there may be unforeseen delays to the service. <strong>You can find out your collection round by entering your address on our <a data-udi=\"umb://document/3a15419984fa4a738fd99d50f8e3562b\" href=\"/rubbish-waste-and-recycling/bin-collection-dates/\" title=\"Bin collection dates\">bin collection dates</a>&nbsp;page.</strong></p>\n<p><span>If your road is affected please leave your bin out and we will attempt to empty your bin within 48 hours of the normal collection day.&nbsp;</span>If we cannot collect within this time frame residents can put out:</p>\n<ul>\n    <li>Next refuse collection - three extra bags of refuse</li>\n    <li>Next recycling collection - extra recycling will be collected throughout the year</li>\n</ul>\n<h2><span>Affected areas or streets</span></h2>\n<!-- Table to display affected areas -->\n<div id=\"divDisruptions\">\n    <table id=\"refuseDisruptions\" class=\"simonDatatable table table-bordered\">\n        <thead>\n            <tr>\n                <th>Added date</th>\n                <th>Affected areas/streets</th>\n                <th>Issue</th>\n                <th>End date</th>\n            </tr>\n        </thead>\n    </table>\n</div>\n<p>If your street is not listed above but your bin has been missed, please contact our refuse team directly using the details below.</p>\n<!-- Additional content -->\n<div class=\"lgLinkContainer\">\n    <!-- Some additional elements and links for larger screens -->\n</div>\n<div class=\"furtherHelp\">Need further help or information?</div>\n<p>Contact the team directly on 01773 841326 or email <a href=\"mailto:refuse@ambervalley.gov.uk\">refuse@ambervalley.gov.uk</a></p>\n```\n\nThis code extracts only the main body content, excluding non-essential page furniture such as headers, footers, navigation menus, and sidebars. The resulting HTML contains semantic elements like headings (h1), paragraphs (p), links (<a>), unordered lists (ul), and blockquotes, if present within the main content.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 16.941354990005493,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/missed-bins-and-service-disruptions/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "Partial",
+                                    "confidence": "80%",
+                                    "reasoning": "The content mentions the 48-hour time frame for collecting missed bins, but it does not provide a clear process or contact information to report a missed bin for immediate collection.",
+                                    "next_actions": "Contact the refuse team directly using the provided email and phone number."
+                                }
+                            ],
+                            "overall_assessment": "The content partially meets the needs of a council resident who forgot to put their bin out by informing them about the time frame for collecting missed bins, but it lacks clarity on reporting a missed bin for immediate collection. To fully meet this need, clearer instructions or a contact method should be provided for such cases."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.871520042419434,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling/missed-bins-and-service-disruptions/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_132417-ambervalley.gov.uk",
+                    "analysis_timestamp": "2025-08-08T13:25:12+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.9166666666666666,
+                            "tokens_consumed": 6055,
+                            "tokens_remaining": 23945,
+                            "token_utilization_percentage": 20.18,
+                            "average_tokens_per_step": 1009.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 79.82,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 23,
+                            "consumption_rate": 1009.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "80",
+                            "quality_scores": [
+                                "80"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "80",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 13.1,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.9166666666666666,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_132417-ambervalley.gov.uk",
+                        "start_time": "2025-08-08T13:24:17+01:00",
+                        "current_time": "2025-08-08T13:25:12+01:00",
+                        "duration_seconds": 55,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6055,
+                        "tokens_remaining": 23945,
+                        "token_utilization_percentage": 20.18,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2747,
+                                "avg_per_call": 1373.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3308,
+                                "avg_per_call": 1654
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1009.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_132417-ambervalley.gov.uk",
+                    "start_time": "2025-08-08T13:24:17+01:00",
+                    "current_time": "2025-08-08T13:25:12+01:00",
+                    "duration_seconds": 55,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6055,
+                    "tokens_remaining": 23945,
+                    "token_utilization_percentage": 20.18,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2747,
+                            "avg_per_call": 1373.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3308,
+                            "avg_per_call": 1654
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1009.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

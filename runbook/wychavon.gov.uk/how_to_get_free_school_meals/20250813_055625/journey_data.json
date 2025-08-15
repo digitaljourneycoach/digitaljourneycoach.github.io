@@ -1,0 +1,686 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T05:56:25+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "wychavon.gov.uk",
+                "Council Name": "Wychavon District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Wychavon steps in to fund free school meals over half term ...",
+                        "link": "https://www.wychavon.gov.uk/?view=article&id=1117:wychavon-steps-in-to-fund-free-school-meals-over-half-term&catid=12",
+                        "snippet": "Cllr Chris Day, Executive Board Member for Housing, Health and Wellbeing on Wychavon District Council, said: \"Every child deserves to have healthy and\u00a0..."
+                    },
+                    {
+                        "title": "Social Mobility - Wychavon District Council",
+                        "link": "https://www.wychavon.gov.uk/community-and-living/social-mobility",
+                        "snippet": "The data showed that we have: a low number of children who are eligible for free school meals achieving good levels of development at Early Years. a low number\u00a0..."
+                    },
+                    {
+                        "title": "Cost of living support - Wychavon District Council",
+                        "link": "https://www.wychavon.gov.uk/cost-of-living-support",
+                        "snippet": "... school summer holidays for children receiving free school meals and vulnerable families. Go to the next section on this page information. Your local food\u00a0..."
+                    },
+                    {
+                        "title": "Universal Credit - Wychavon District Council",
+                        "link": "https://www.wychavon.gov.uk/benefits/new-benefits-claims/universal-credit",
+                        "snippet": "Apply for free school meals. You may also be entitled to free school meals if ... If you are having trouble paying your Council Tax bill then please get\u00a0..."
+                    },
+                    {
+                        "title": "Benefits and Council Tax - Wychavon District Council",
+                        "link": "https://www.wychavon.gov.uk/?view=category&id=14&start=10",
+                        "snippet": "Apply for free school meals. You may also be entitled to free school meals if ... What document you get depends on how many times you have missed your payment."
+                    },
+                    {
+                        "title": "Apply for it - Wychavon District Council",
+                        "link": "https://www.wychavon.gov.uk/request-it",
+                        "snippet": "Get started - using our online applications. Here, you can easily apply ... Free School Meals \u00b7 Copy of Birth, Death or Marriage Certificate (opens in a\u00a0..."
+                    },
+                    {
+                        "title": "Housing - Wychavon District Council",
+                        "link": "https://wychavon.gov.uk/?view=category&id=22&start=10",
+                        "snippet": "... school summer holidays for children receiving free school meals and vulnerable families. Go to the next section on this page information. Your local food\u00a0..."
+                    },
+                    {
+                        "title": "Signals of Success Performance Report",
+                        "link": "https://www.wychavon.gov.uk/component/fileman/?view=file&routed=1&itemless=1&name=Appendix%20A%20-%2023-24%20Q4%20promises%20performance.pdf&folder=Documents/About%20your%20council/Performance&container=fileman-files",
+                        "snippet": "Mar 31, 2024 ... pandemic and improve outcomes for free school meal eligible children and their ... and engaging with schools. 31/03/24. Ian Edwards. Tim Lewis."
+                    },
+                    {
+                        "title": "Signals of Success Performance Report",
+                        "link": "https://www.wychavon.gov.uk/component/fileman/?view=file&routed=1&itemless=1&name=Appendix%20B%20-%2023-24%20Q4%20success%20measures%20performance.pdf&folder=Documents/About%20your%20council/Performance&container=fileman-files",
+                        "snippet": "There is no new data this quarter. SM3. Proportion of Free School. Meals eligible children reaching age related expectation in speech and language. Minimise."
+                    },
+                    {
+                        "title": "We Are Wychavon Plan - Wychavon District Council",
+                        "link": "https://www.wychavon.gov.uk/about-wychavon-district-council/we-are-wychavon-plan",
+                        "snippet": "Jul 31, 2025 ... Work with schools and early years providers to deliver programmes so more free school meal eligible children reach a good level of development\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.wychavon.gov.uk/community-and-living/social-mobility",
+                        "title": "Social Mobility - Wychavon District Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Provides data regarding eligibility for free school meals and development levels of children in Wychavon",
+                            "Relevant to understanding the council's efforts towards social mobility issues"
+                        ],
+                        "reasoning": "This resource provides relevant information about the social mobility situation concerning children eligible for free school meals. It details the number of children achieving good development levels in Early Years and could help assess the effectiveness of council initiatives.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "3"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Social Mobility - Wychavon District Council",
+                                "Source": "https://www.wychavon.gov.uk/community-and-living/social-mobility",
+                                "Key Strengths": [
+                                    "Provides data regarding eligibility for free school meals and development levels of children in Wychavon",
+                                    "Relevant to understanding the council's efforts towards social mobility issues"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource provides relevant information about the social mobility situation concerning children eligible for free school meals. It details the number of children achieving good development levels in Early Years and could help assess the effectiveness of council initiatives."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Cost of living support - Wychavon District Council",
+                                "Source": "https://www.wychavon.gov.uk/cost-of-living-support",
+                                "Key Strengths": [
+                                    "Details information about school summer holidays support for children receiving free school meals and vulnerable families",
+                                    "Provides resources for local food banks"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This resource provides crucial information about cost of living support during the summer holidays, which can be particularly challenging for families who receive free school meals. It also lists available resources for local food banks, showing the council's efforts to address the issue."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Universal Credit - Wychavon District Council",
+                                "Source": "https://www.wychavon.gov.uk/benefits/new-benefits-claims/universal-credit",
+                                "Key Strengths": [
+                                    "Offers information on applying for free school meals under Universal Credit",
+                                    "Provides options for addressing difficulty with paying Council Tax bills"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This resource explains the application process for universal credit, helping families that might qualify for free school meals understand how to claim them. It also addresses potential difficulties in paying council tax bills."
+                            }
+                        ],
+                        "Analysis Notes": "Several items provided relevant information regarding customer needs about council services and support options, including data on social mobility, cost of living support and benefits. However, not all items were specifically dedicated to council customer information for free school meals, so the total number of suitable recommendations was limited.",
+                        "Recommendations Notes": "Ranking was based on relevance to the given instruction, quality of information provided, and ease of access."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "90",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "2",
+                            "Title": "Cost of living support - Wychavon District Council",
+                            "Source": "https://www.wychavon.gov.uk/cost-of-living-support",
+                            "Reasoning": "This resource provides crucial information about cost of living support during the summer holidays, which can be particularly challenging for families who receive free school meals. It also lists available resources for local food banks, showing the council's efforts to address the issue.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "1",
+                            "Title": "Social Mobility - Wychavon District Council",
+                            "Source": "https://www.wychavon.gov.uk/community-and-living/social-mobility",
+                            "Reasoning": "This resource provides relevant information about the social mobility situation concerning children eligible for free school meals. It details the number of children achieving good development levels in Early Years and could help assess the effectiveness of council initiatives.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Universal Credit - Wychavon District Council",
+                            "Source": "https://www.wychavon.gov.uk/benefits/new-benefits-claims/universal-credit",
+                            "Reasoning": "This resource explains the application process for universal credit, helping families that might qualify for free school meals understand how to claim them. It also addresses potential difficulties in paying council tax bills.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "005_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.wychavon.gov.uk/community-and-living/social-mobility"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.wychavon.gov.uk/community-and-living/social-mobility",
+                        "analysis": {
+                            "url": "https://www.wychavon.gov.uk/community-and-living/social-mobility",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T05:56:25+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T05:57:02+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 307,
+                            "content_type": "text/html",
+                            "content_length": 1463,
+                            "response_time": 0.173,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 80,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful redirect (307)",
+                                    "Fast response time (0.173s)",
+                                    "Content successfully retrieved (1463 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "unknown",
+                                    "action": "investigate",
+                                    "confidence": 50
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "investigate",
+                                "confidence": 50,
+                                "reason": "Analysis incomplete",
+                                "overall_score": 70,
+                                "component_scores": {
+                                    "technical": 80,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.1741170883178711,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "006_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.wychavon.gov.uk/community-and-living/social-mobility"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.wychavon.gov.uk/community-and-living/social-mobility",
+                        "content": " In the given HTML code, there doesn't seem to be any main body content as it's just a simple HTML structure with a title tag. However, I will show you an example of how to clean and extract essential elements from a more complex web page:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n\t<head>\n\t\t<title>Web Page Title</title>\n\t\t<!-- More meta tags, CSS links, JavaScript files here -->\n\t</head>\n\t<body>\n\t\t<header>\n\t\t\t<nav>\n\t\t\t\t<ul>\n\t\t\t\t\t<li><a href=\"#\">Home</a></li>\n\t\t\t\t\t<li><a href=\"#\">About</a></li>\n\t\t\t\t\t<!-- More navigation links here -->\n\t\t\t\t</ul>\n\t\t\t</nav>\n\t\t</header>\n\t\t<main>\n\t\t\t<h1>Main Title</h1>\n\t\t\t<p>This is the central editorial content of the page.</p>\n\t\t\t<blockquote>Quote goes here.</blockquote>\n\t\t\t<ul>\n\t\t\t\t<li>List item 1</li>\n\t\t\t\t<!-- More list items here -->\n\t\t\t</ul>\n\t\t\t<a href=\"#\">Important in-text link</a>\n\t\t\t<button>Central user action button</button>\n\n\t\t\t<aside id=\"newsletter\">\n\t\t\t\t<h2>Subscribe to our newsletter</h2>\n\t\t\t\t<!-- Newsletter sign-up form here -->\n\t\t\t</aside>\n\t\t</main>\n\t\t<footer>\n\t\t\t<p>&copy; 2023 Website Owner</p>\n\t\t</footer>\n\n\t\t<!-- Cookie banner, sidebar, site-wide search, login links, social media footers here -->\n\t</body>\n</html>\n```\n\nIn order to extract the main body content from this HTML page, first we remove all non-essential elements such as headers, footers, navigation menus, newsletter sign-up blocks, cookie banners, site-wide search, login links, and social media footers. Then, we keep only the semantically structured HTML containing the central editorial content of the page:\n\n```html\n<main>\n\t\t\t<h1>Main Title</h1>\n\t\t\t<p>This is the central editorial content of the page.</p>\n\t\t\t<blockquote>Quote goes here.</blockquote>\n\t\t\t<ul>\n\t\t\t\t<li>List item 1</li>\n\t\t\t\t<!-- More list items here -->\n\t\t\t</ul>\n\t\t\t<a href=\"#\">Important in-text link</a>\n\t\t\t<button>Central user action button</button>\n\t\t</main>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 12.010921955108643,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "007_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.wychavon.gov.uk/community-and-living/social-mobility",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "0",
+                                    "confidence": "0",
+                                    "reasoning": "The content provided does not contain information about applying for free school meals, criteria or the speed of approval. It only provides a general overview of social mobility services without specific details.",
+                                    "next_actions": "Visit the dedicated webpage for applying for free school meals or contact the local council's customer service for more detailed information."
+                                }
+                            ],
+                            "overall_assessment": "The provided content does not directly address the needs of a Council Resident who is looking to understand the steps, criteria, and time frame for applying for free school meals. Additional context or dedicated web pages need to be created to meet this specific need."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.111276149749756,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.wychavon.gov.uk/community-and-living/social-mobility"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "008_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_055625-wychavon.gov.uk",
+                    "analysis_timestamp": "2025-08-13T05:57:19+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_no_progress",
+                    "confidence": 80,
+                    "reasoning": "No progress detected - journey stagnating",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 7,
+                            "duration_minutes": 0.9,
+                            "tokens_consumed": 6024,
+                            "tokens_remaining": 23976,
+                            "token_utilization_percentage": 20.08,
+                            "average_tokens_per_step": 860.57
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 79.92,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 27,
+                            "consumption_rate": 860.57,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 7,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 3
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 12.86,
+                            "steps_fatigue_percentage": 58.33,
+                            "overall_fatigue_score": 58.33,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.9,
+                            "total_steps": 7,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy"
+                        ],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "try_chat",
+                        "optimize_strategy"
+                    ],
+                    "risk_factors": [
+                        "Wasted resources",
+                        "User frustration"
+                    ],
+                    "next_step_suggestions": [
+                        "Try ChatScout for AI-generated content",
+                        "Revise search terms"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_055625-wychavon.gov.uk",
+                        "start_time": "2025-08-13T05:56:25+01:00",
+                        "current_time": "2025-08-13T05:57:19+01:00",
+                        "duration_seconds": 54,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6024,
+                        "tokens_remaining": 23976,
+                        "token_utilization_percentage": 20.08,
+                        "token_status": "available",
+                        "total_steps": 7,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 3,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 7
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 691,
+                                "avg_per_call": 345.5
+                            },
+                            "analyst": {
+                                "calls": 3,
+                                "tokens": 5333,
+                                "avg_per_call": 1777.6666666666667
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 860.57
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_no_progress",
+                    "confidence": 80,
+                    "reasoning": "No progress detected - journey stagnating"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_055625-wychavon.gov.uk",
+                    "start_time": "2025-08-13T05:56:25+01:00",
+                    "current_time": "2025-08-13T05:57:19+01:00",
+                    "duration_seconds": 54,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6024,
+                    "tokens_remaining": 23976,
+                    "token_utilization_percentage": 20.08,
+                    "token_status": "available",
+                    "total_steps": 7,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 3,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 7
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 691,
+                            "avg_per_call": 345.5
+                        },
+                        "analyst": {
+                            "calls": 3,
+                            "tokens": 5333,
+                            "avg_per_call": 1777.6666666666667
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 860.57
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_no_progress"
+            }
+        }
+    }
+]

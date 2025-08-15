@@ -1,0 +1,621 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T03:56:58+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "tendringdc.gov.uk",
+                "Council Name": "Tendring District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Planning Application Forms",
+                        "link": "https://www.tendringdc.gov.uk/content/planning-application-forms",
+                        "snippet": "03 Householder application for planning permission for works or extension to a dwelling and listed building consent ... 050 Installation etc of a solar canopy on\u00a0..."
+                    },
+                    {
+                        "title": "Agenda item - REPORT A.4 - PLANNING APPLICATION 21/02181 ...",
+                        "link": "https://tdcdemocracy.tendringdc.gov.uk/mgAi.aspx?ID=14658",
+                        "snippet": "How many houses in the Linden Homes development had been built complete with solar panels? That information was not to hand though the Officer suspected not\u00a0..."
+                    },
+                    {
+                        "title": "Retrofitting Solar Panels",
+                        "link": "https://legacy.tendringdc.gov.uk/sites/default/files/documents/planning/building%20control/Retrofitting%20Solar%20Panels%20PDF%20V2.pdf",
+                        "snippet": "solar-thermal and photovoltaic installation. A company that is registered with a CPS does not submit an application for building regulation approval as they."
+                    },
+                    {
+                        "title": "Planning Applications Registered by Tendring District Council Week ...",
+                        "link": "https://legacy.tendringdc.gov.uk/sites/default/files/documents/planning/Applications%20Received%202024-10-04.pdf",
+                        "snippet": "Oct 4, 2024 ... Drawings) of application. 22/01371/FULHH to enable/allow for solar panels on the garage roof. 17 Third Avenue. Frinton On Sea. Essex. CO13 9EQ."
+                    },
+                    {
+                        "title": "DELEGATED DECISION OFFICER REPORT AN 06/11/23 ML 06/11 ...",
+                        "link": "https://tdcdemocracy.tendringdc.gov.uk/documents/s63413/23-01457-NMA%20-%20Delegated%20Report.pdf",
+                        "snippet": "Nov 6, 2023 ... have regard to the effect of the change on the planning permission as originally granted. ... Each plot also has solar panels added to the roof of\u00a0..."
+                    },
+                    {
+                        "title": "Planning & Building Control",
+                        "link": "https://www.tendringdc.gov.uk/services/planning",
+                        "snippet": "You can give us your consent for specific purposes by selecting the options below and you can always withdraw your consent. Only Essential Cookies Accept All\u00a0..."
+                    },
+                    {
+                        "title": "TENDRING DISTRICT COUNCIL",
+                        "link": "https://tdcdemocracy.tendringdc.gov.uk/documents/s75496/ML%2025.162%20VOC%20STANTON%20EUROPARK%20DN.pdf",
+                        "snippet": "Apr 25, 2025 ... 11. The solar photovoltaic panels and electric ... under the Building Regulations in many cases as well as a grant of planning permission."
+                    },
+                    {
+                        "title": "Agenda item - REPORT OF THE DIRECTOR (PLANNING) - A.1 ...",
+                        "link": "https://tdcdemocracy.tendringdc.gov.uk/mgAi.aspx?ID=15238",
+                        "snippet": "A member of the Committee asked if solar panels will be put on properties similarly to the Community Centre? ... planning permission on an application made in\u00a0..."
+                    },
+                    {
+                        "title": "Householder Pre-Application Enquiry Form",
+                        "link": "https://legacy.tendringdc.gov.uk/sites/default/files/documents/planning/planning%20applications/advice%20before%20making%20an%20application/Householder%20Pre-App%20Form%20A4%20doc.pdf",
+                        "snippet": "If planning permission is required and you do need to make a planning application for ... Are the solar panels to be installed on WALL or ROOF SLOPE or STAND\u00a0..."
+                    },
+                    {
+                        "title": "Planning Applications Registered by Tendring District Council Week ...",
+                        "link": "https://legacy.tendringdc.gov.uk/sites/default/files/documents/planning/Applications%20Received%202024-06-28.pdf",
+                        "snippet": "Jun 28, 2024 ... rooflights, solar PV panels and large rear gable window within new roof. St Osyth. Clacton On Sea. Essex. CO16 8JS. 24/00952/TCA. Mr Matt Bynoe\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.tendringdc.gov.uk/content/planning-application-forms",
+                        "title": "Planning Application Forms",
+                        "confidence": 90,
+                        "strengths": [
+                            "Provides access to different planning application forms, including extensions or solar panel installations"
+                        ],
+                        "reasoning": "The title implies that this resource contains the necessary application forms. Moreover, the snippet includes mentions of both householder applications for planning permission and solar canopy installation.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Planning Application Forms",
+                                "Source": "https://www.tendringdc.gov.uk/content/planning-application-forms",
+                                "Key Strengths": [
+                                    "Provides access to different planning application forms, including extensions or solar panel installations"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The title implies that this resource contains the necessary application forms. Moreover, the snippet includes mentions of both householder applications for planning permission and solar canopy installation."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Retrofitting Solar Panels",
+                                "Source": "https://legacy.tendringdc.gov.uk/sites/default/files/documents/planning/building%20control/Retrofitting%20Solar%20Panels%20PDF%20V2.pdf",
+                                "Key Strengths": [
+                                    "Offers guidance on the installation of solar panels for existing buildings"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title explicitly mentions retrofitting solar panels, which implies installation for existing properties. Given that this is a CPS registered document, it might not require further building regulation approval."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Planning Applications Registered by Tendring District Council Week ...",
+                                "Source": "https://legacy.tendringdc.gov.uk/sites/default/files/documents/planning/Applications%20Received%202024-10-04.pdf",
+                                "Key Strengths": [
+                                    "Shares information about recent planning applications, which may also include solar panel installations"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The PDF shares details of planning applications received within a particular week. Since the snippet mentions the application for solar panels on a garage roof, it demonstrates that the resource contains recent planning information."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Householder Pre-Application Enquiry Form",
+                                "Source": "https://legacy.tendringdc.gov.uk/sites/default/files/documents/planning/planning%20applications/advice%20before%20making%20an%20application/Householder%20Pre-App%20Form%20A4%20doc.pdf",
+                                "Key Strengths": [
+                                    "Offers a pre-application enquiry form to clarify specific planning queries, such as solar panel installations"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "The title suggests that this resource pertains to householder applications. The snippet mentions a pre-application enquiry form and questions about installation locations, which may be applicable to solar panels."
+                            }
+                        ],
+                        "Analysis Notes": "There were 10 search results from the 'google_search_results' source. To meet the criteria of relevance for council customer information needs, I focused on resources pertaining to planning applications and building control, which includes solar panel installations as well as providing pre-application enquiry forms or relevant guides. The top 5 recommendations are ranked based on their relevance and quality."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82.5,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Planning Application Forms",
+                            "Source": "https://www.tendringdc.gov.uk/content/planning-application-forms",
+                            "Reasoning": "The title implies that this resource contains the necessary application forms. Moreover, the snippet includes mentions of both householder applications for planning permission and solar canopy installation.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Retrofitting Solar Panels",
+                            "Source": "https://legacy.tendringdc.gov.uk/sites/default/files/documents/planning/building%20control/Retrofitting%20Solar%20Panels%20PDF%20V2.pdf",
+                            "Reasoning": "The title explicitly mentions retrofitting solar panels, which implies installation for existing properties. Given that this is a CPS registered document, it might not require further building regulation approval.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Planning Applications Registered by Tendring District Council Week ...",
+                            "Source": "https://legacy.tendringdc.gov.uk/sites/default/files/documents/planning/Applications%20Received%202024-10-04.pdf",
+                            "Reasoning": "The PDF shares details of planning applications received within a particular week. Since the snippet mentions the application for solar panels on a garage roof, it demonstrates that the resource contains recent planning information.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.tendringdc.gov.uk/content/planning-application-forms"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.tendringdc.gov.uk/content/planning-application-forms",
+                        "analysis": {
+                            "url": "https://www.tendringdc.gov.uk/content/planning-application-forms",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T03:56:58+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T03:57:24+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html",
+                            "content_length": 58196,
+                            "response_time": 0.355,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.355s)",
+                                    "Content successfully retrieved (58196 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.3559119701385498,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [],
+                "content_types": [],
+                "retrieved_content": []
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analysis_skipped"
+            },
+            "output_data": {
+                "action": "content_analysis_skipped",
+                "reason": "no_retrieved_content",
+                "tokens_used": 25,
+                "metadata": {
+                    "next_state": "journey_decision",
+                    "step_skipped": true
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "next_state": "journey_decision",
+                "step_skipped": true
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_035658-tendringdc.gov.uk",
+                    "analysis_timestamp": "2025-08-11T03:57:25+01:00",
+                    "analysis_duration": 0.002,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.45,
+                            "tokens_consumed": 2046,
+                            "tokens_remaining": 27954,
+                            "token_utilization_percentage": 6.82,
+                            "average_tokens_per_step": 341
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 93.18,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 81,
+                            "consumption_rate": 341,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "no_content_data": true
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 6.43,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.45,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_035658-tendringdc.gov.uk",
+                        "start_time": "2025-08-11T03:56:58+01:00",
+                        "current_time": "2025-08-11T03:57:25+01:00",
+                        "duration_seconds": 27,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 2046,
+                        "tokens_remaining": 27954,
+                        "token_utilization_percentage": 6.82,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 2046,
+                                "avg_per_call": 1023
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 341
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_035658-tendringdc.gov.uk",
+                    "start_time": "2025-08-11T03:56:58+01:00",
+                    "current_time": "2025-08-11T03:57:25+01:00",
+                    "duration_seconds": 27,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 2046,
+                    "tokens_remaining": 27954,
+                    "token_utilization_percentage": 6.82,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 2046,
+                            "avg_per_call": 1023
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 341
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

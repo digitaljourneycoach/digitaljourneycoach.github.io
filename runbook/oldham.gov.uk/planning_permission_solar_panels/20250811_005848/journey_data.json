@@ -1,0 +1,683 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T00:58:48+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "oldham.gov.uk",
+                "Council Name": "Oldham Metropolitan Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Planning permission | Oldham Council",
+                        "link": "https://www.oldham.gov.uk/info/200351/planning",
+                        "snippet": "Find out about strategic planning policies, information on if you need to apply for planning permission and what type of application you may need."
+                    },
+                    {
+                        "title": "Do I need planning permission? | Oldham Council",
+                        "link": "https://www.oldham.gov.uk/info/200399/applying_for_planning_permission/3040/do_i_need_planning_permission",
+                        "snippet": "Some types of development, in non-protected areas, may not need any planning permission. However, it is important to check with the Planning Team before\u00a0..."
+                    },
+                    {
+                        "title": "APPLICATION REPORT \u2013 FUL/348415/22 Planning Committee 8th ...",
+                        "link": "https://committees.oldham.gov.uk/documents/s132385/348415%20-%20Spindles%20FINAL%2030.05.2022.pdf",
+                        "snippet": "Jun 8, 2022 ... The proposed development incorporates an area of solar photovoltaic panels on the roof which, together with fabric first measures, will achieve\u00a0..."
+                    },
+                    {
+                        "title": "APPLICATION REPORT \u2013 FUL/353689/24 Planning Committee 26th ...",
+                        "link": "https://committees.oldham.gov.uk/documents/s150887/353689%20-%20Foxdenton%20R3%20-%20FINAL%2018.03.2025.pdf",
+                        "snippet": "Mar 26, 2025 ... of permission PA/334355/13 Hybrid planning application comprising A) Full planning ... provision for solar panels on each property. 12."
+                    },
+                    {
+                        "title": "Building Regulations Part P Electrical Safety",
+                        "link": "https://www.oldham.gov.uk/download/downloads/id/478/building_regulations_electrical_safety.pdf",
+                        "snippet": "Carrying out electrical work to a dwelling will not require planning permission unless your dwelling is a listed building or in a conservation area. In these\u00a0..."
+                    },
+                    {
+                        "title": "Joint Core Strategy and Development ... - Oldham Council",
+                        "link": "https://www.oldham.gov.uk/download/downloads/id/1453/appendices_part_iii.pdf",
+                        "snippet": "Nov 9, 2011 ... ... planning permission through Section 106 of the Town and Country Planning ... Solar Photovoltaic systems - Solar photovoltaic (PV) panels use\u00a0..."
+                    },
+                    {
+                        "title": "Oldham Local Plan",
+                        "link": "https://www.oldham.gov.uk/download/downloads/id/7825/draft_local_plan_december_2023.pdf",
+                        "snippet": "If planning permission is granted, planning obligations/conditions may be applied to remove permitted development rights where necessary. 17.53 For the\u00a0..."
+                    },
+                    {
+                        "title": "APPLICATION REPORT - PA/337710/15 Planning Committee \u2013 9 ...",
+                        "link": "https://committees.oldham.gov.uk/documents/s130283/337710%20-%20Hale%20Lane%20Failsworth%20ML%20EDIT%2028.02.2022.pdf",
+                        "snippet": "Mar 9, 2022 ... integrated southeast and southwest solar panels and rainwater harvesting. ... Planning. Authority. The statement shall set out how the\u00a0..."
+                    },
+                    {
+                        "title": "Request work on a Council owned tree | Oldham Council",
+                        "link": "https://www.oldham.gov.uk/info/200292/trees_and_hedges/1605/request_work_on_a_council_owned_tree",
+                        "snippet": "Planning and building \u00b7 Trees and hedges; Request work on a Council owned ... A small loss of light or shade, including for solar panels. Leaves, fruit\u00a0..."
+                    },
+                    {
+                        "title": "Residential Design Guide",
+                        "link": "https://www.oldham.gov.uk/download/downloads/id/1071/residential_design_guide_supplementary_planning_document.pdf",
+                        "snippet": "submitting planning applications. This Residential Design Guide is ... solar panels to pre-heat water;. \u2022 photovoltaics;. \u2022 wind; and. \u2022 micro CHP\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.oldham.gov.uk/info/200399/applying_for_planning_permission/3040/do_i_need_planning_permission",
+                        "title": "Do I need planning permission? | Oldham Council",
+                        "confidence": 100,
+                        "strengths": [
+                            "Provides clear information on whether planning permission is required and directs users to check with the Planning Team.",
+                            "Snippet explains that some types of development do not require planning permission, making it appropriate for homeowners who need quick clarification."
+                        ],
+                        "reasoning": "This resource directly addresses the customer's question on planning permissions in a clear and concise manner. It also indicates that they should consult with the Planning Team, which suggests relevant expertise is available.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "Up to 5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Do I need planning permission? | Oldham Council",
+                                "Source": "https://www.oldham.gov.uk/info/200399/applying_for_planning_permission/3040/do_i_need_planning_permission",
+                                "Key Strengths": [
+                                    "Provides clear information on whether planning permission is required and directs users to check with the Planning Team.",
+                                    "Snippet explains that some types of development do not require planning permission, making it appropriate for homeowners who need quick clarification."
+                                ],
+                                "Confidence": "100",
+                                "Reasoning": "This resource directly addresses the customer's question on planning permissions in a clear and concise manner. It also indicates that they should consult with the Planning Team, which suggests relevant expertise is available."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Request work on a Council owned tree | Oldham Council",
+                                "Source": "https://www.oldham.gov.uk/info/200292/trees_and_hedges/1605/request_work_on_a_council_owned_tree",
+                                "Key Strengths": [
+                                    "Provides an avenue for residents to request maintenance on Council-owned trees.",
+                                    "Includes specific details about different types of work on trees, such as small loss of light or shade."
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "This resource provides a straightforward process that citizens can access for addressing tree maintenance requests. The explicit mention of specific scenarios related to solar panels suggests it would be useful to homeowners with solar systems."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Building Regulations Part P Electrical Safety",
+                                "Source": "https://www.oldham.gov.uk/download/downloads/id/478/building_regulations_electrical_safety.pdf",
+                                "Key Strengths": [
+                                    "Provides guidelines for electrical work in dwellings, including the importance of electrical safety.",
+                                    "Useful for citizens who may be considering DIY electrical work or hiring contractors."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This resource shares crucial information on building regulations and electrical safety, which is essential for any homeowner making changes to their property. The guidance provided can contribute to safer DIY projects."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Residential Design Guide",
+                                "Source": "https://www.oldham.gov.uk/download/downloads/id/1071/residential_design_guide_supplementary_planning_document.pdf",
+                                "Key Strengths": [
+                                    "Offers a comprehensive guide to residential design, including sustainable technologies such as solar panels.",
+                                    "Provides additional resources focused on sustainable development."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While not necessarily focused solely on council customer information needs, this resource offers valuable guidance related to environmental and sustainable considerations for homeowners and builders in Oldham that align with the council's objectives. The inclusion of solar panels in their recommendations makes it a relevant and useful option."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "APPLICATION REPORT \u2013 FUL/353689/24 Planning Committee 26th ...",
+                                "Source": "https://committees.oldham.gov.uk/documents/s150887/353689%20-%20Foxdenton%20R3%20-%20FINAL%2018.03.2025.pdf",
+                                "Key Strengths": [
+                                    "Offers a detailed account of the planning committee's decision-making process and considerations for specific projects such as solar panel installation.",
+                                    "Provides examples of planning applications involving solar panels, giving citizens an idea of what to expect in their own applications."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This resource sheds light on the comprehensive review process employed by Oldham Council for planning applications. The specific details related to solar panel installations can help inform homeowners who are researching planning requirements before making such an investment."
+                            }
+                        ],
+                        "Analysis Notes": "Items 3, 6, 7, and 8 were not selected as they focused on planning application reports that provide information specific to individual projects. Item 9 was left out because it is not directly relevant to the initial query about council customer information.",
+                        "Recommendations Notes": "The recommendations prioritize resources that answer a user's immediate questions or needs (planning permission, tree maintenance, and electrical safety) and also include a resource that offers more extensive guidance on sustainable development practices."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "100",
+                        "95",
+                        "90",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 88,
+                    "max_confidence": "100"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "Do I need planning permission? | Oldham Council ",
+                        "Source": "https://www.oldham.gov.uk/info/200399/applying_for_planning_permission/3040/do_i_need_planning_permission",
+                        "Reasoning": "This resource directly addresses the customer's question on planning permissions in a clear and concise manner. It also indicates that they should consult with the Planning Team, which suggests relevant expertise is available.",
+                        "Confidence": "100"
+                    },
+                    {
+                        "Number": "2",
+                        "Title": "Request work on a Council owned tree | Oldham Council ",
+                        "Source": "https://www.oldham.gov.uk/info/200292/trees_and_hedges/1605/request_work_on_a_council_owned_tree",
+                        "Reasoning": "This resource provides a straightforward process that citizens can access for addressing tree maintenance requests.",
+                        "Confidence": "95"
+                    },
+                    {
+                        "Number": "3",
+                        "Title": " Building Regulations Part P Electrical Safety ",
+                        "Source": "https://www.oldham.gov.uk/download/downloads/id/478/building_regulations_electrical_safety.pdf",
+                        "Reasoning": "This resource shares crucial information on building regulations and electrical safety, which is essential for any homeowner making changes to their property.",
+                        "Confidence": "90"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.oldham.gov.uk/info/200399/applying_for_planning_permission/3040/do_i_need_planning_permission"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.oldham.gov.uk/info/200399/applying_for_planning_permission/3040/do_i_need_planning_permission",
+                        "analysis": {
+                            "url": "https://www.oldham.gov.uk/info/200399/applying_for_planning_permission/3040/do_i_need_planning_permission",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T00:58:48+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T00:59:27+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 27485,
+                            "response_time": 0.238,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.238s)",
+                                    "Content successfully retrieved (27485 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.23901104927062988,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.oldham.gov.uk/info/200399/applying_for_planning_permission/3040/do_i_need_planning_permission"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.oldham.gov.uk/info/200399/applying_for_planning_permission/3040/do_i_need_planning_permission",
+                        "content": " Here is the extracted semantic HTML content of the provided web page:\n\n```html\n<article class=\"page-article\" id=\"content\" tabindex=\"-1\" aria-label=\"Do I need planning permission?\">\n    <div class=\"editor\">\n        <p>Some types of development, in non-protected areas, may not need any planning permission.</p>\n\n        <p>However, it is important to check with the Planning Team before starting any work.&nbsp;</p>\n\n        <ul>\n            <li><a href=\"https://www.oldham.gov.uk/info/200399/applying_for_planning_permission/1824/contact_planning\">Contact the Planning Team</a></li>\n        </ul>\n\n        <p>For small-scale proposals, you are advised to submit a Lawful Development Certificate application for consideration or consult the Planning Portal</p>\n\n        <ul>\n            <li><a href=\"https://www.planningportal.co.uk/permission/what-to-do-next/lawful-development-certificate\" title=\"Lawful Development Certificate.\">Lawful Development Certificate</a></li>\n        </ul>\n\n        <h2>Single developments that don't require permission</h2>\n\n        ... (rest of the article)\n    </div>\n</article>\n```\n\nThis output removes non-essential page furniture such as headers, footers, navigation menus, sidebars, cookie banners, and newsletter sign-up blocks while preserving the main body content with meaningful structural elements. It also strips out decorative or boilerplate elements like site-wide search, login links, and social media footers to output only the cleaned, semantically structured HTML containing the central editorial content of the page.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 9.170669078826904,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.oldham.gov.uk/info/200399/applying_for_planning_permission/3040/do_i_need_planning_permission",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "Partial",
+                                    "confidence": "70%",
+                                    "reasoning": "The content provides information about contacting the Planning Team and submitting a Lawful Development Certificate application, which indirectly indicates that there might be a need for permission to install solar panels. However, it does not explicitly state whether solar panel installation is considered a single development that doesn't require planning permission.",
+                                    "next_actions": "Contact the Planning Team as suggested in the content for further clarification about the solar panel installation."
+                                }
+                            ],
+                            "overall_assessment": "The provided content offers relevant information pertaining to the need to consult the Planning Team before starting any work, submitting a Lawful Development Certificate application, and linking to the Planning Portal. However, there is a lack of explicit information about whether installing solar panels requires planning permission. Overall satisfaction level for a Council Resident seeking answers specific to their needs related to solar panel installation would be moderate."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.523672819137573,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.oldham.gov.uk/info/200399/applying_for_planning_permission/3040/do_i_need_planning_permission"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_005848-oldham.gov.uk",
+                    "analysis_timestamp": "2025-08-11T00:59:42+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.9,
+                            "tokens_consumed": 5602,
+                            "tokens_remaining": 24398,
+                            "token_utilization_percentage": 18.67,
+                            "average_tokens_per_step": 933.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 81.33,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 26,
+                            "consumption_rate": 933.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 12.86,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.9,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_005848-oldham.gov.uk",
+                        "start_time": "2025-08-11T00:58:48+01:00",
+                        "current_time": "2025-08-11T00:59:42+01:00",
+                        "duration_seconds": 54,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 5602,
+                        "tokens_remaining": 24398,
+                        "token_utilization_percentage": 18.67,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 1950,
+                                "avg_per_call": 975
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3652,
+                                "avg_per_call": 1826
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 933.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_005848-oldham.gov.uk",
+                    "start_time": "2025-08-11T00:58:48+01:00",
+                    "current_time": "2025-08-11T00:59:42+01:00",
+                    "duration_seconds": 54,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 5602,
+                    "tokens_remaining": 24398,
+                    "token_utilization_percentage": 18.67,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 1950,
+                            "avg_per_call": 975
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3652,
+                            "avg_per_call": 1826
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 933.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

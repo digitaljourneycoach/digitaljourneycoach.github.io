@@ -1,0 +1,681 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T05:05:02+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "tameside.gov.uk",
+                "Council Name": "Tameside Metropolitan Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "School Meals - Tameside MBC",
+                        "link": "https://www.tameside.gov.uk/schoolmeals",
+                        "snippet": "How to Apply for Free School Meals \u00b7 Universal Credit, provided they have an annual net earned income not exceeding \u00a37,400(\u00a3616.67 per month) \u00b7 Income Support\u00a0..."
+                    },
+                    {
+                        "title": "Household Support Fund - Tameside MBC",
+                        "link": "https://www.tameside.gov.uk/householdsupportfund",
+                        "snippet": "School holiday vouchers for children in receipt of free school meals ... If you have an immediate need for food, contact 0161 342 8355. For information on\u00a0..."
+                    },
+                    {
+                        "title": "School Bus Passes in Tameside - Tameside MBC",
+                        "link": "https://www.tameside.gov.uk/buspasses/schools",
+                        "snippet": "... school and will have to travel more than three miles to that school. NOTES. Low income is defined as pupils who are eligible for free school meals. The\u00a0..."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://www.tameside.gov.uk/TamesideMBC/media/education/PrimarySchoolMenu.pdf",
+                        "snippet": "FREE SCHOOL MEALS. FOR MY OLDER CHILDREN? YES... If you receive specific benefits or have a household income below the Government threshold\u00a0..."
+                    },
+                    {
+                        "title": "School Benefits",
+                        "link": "https://secure.tameside.gov.uk/forms/f231freemeals559.asp",
+                        "snippet": "Application form for free school meals or help with travel."
+                    },
+                    {
+                        "title": "Miss School - Miss Out! School Attendance Matters - Education ...",
+                        "link": "https://www.tameside.gov.uk/education/miss-school-miss-out!-school-attendance-matters",
+                        "snippet": "If you get income support or income based job seekers allowance, you will qualify for free school meals for your child/children - but you must complete an\u00a0..."
+                    },
+                    {
+                        "title": "NHS Children's Nutrition Team Supporting Tameside families during ...",
+                        "link": "https://www.tameside.gov.uk/TamesideMBC/media/PublicHealth/Fact-File-Applying-for-Free-School-Meals-pub.pdf",
+                        "snippet": "If you are eligible, your child will receive free school meals and the school will receive extra funding. For further information: Please speak to a member of\u00a0..."
+                    },
+                    {
+                        "title": "Grants and Benefits - Tameside MBC",
+                        "link": "https://www.tameside.gov.uk/education/grants",
+                        "snippet": "Information for parents and students on education grants and benefits that are available. ... Free School Meals \u00b7 Travel Pass. Related content. Children's\u00a0..."
+                    },
+                    {
+                        "title": "We must protect the public funds we handle and so we may use the ...",
+                        "link": "https://www.tameside.gov.uk/TamesideMBC/media/PublicHealth/bus-pass-application-form-2020-updated.pdf",
+                        "snippet": "SCHOOL. HOUSE MOVE. CHANGE IN ELIGIBILITY *. Date of Change. *i.e. Student has become eligible for Free School Meals or Parent now receiving Maximum Working Tax\u00a0..."
+                    },
+                    {
+                        "title": "Tameside Metropolitan Borough Council Equality Impact ...",
+                        "link": "https://www.tameside.gov.uk/getmedia/aace172c-4cd3-4989-a0ef-696fbc3dc261/Household-Support-Fund-Round-7-EIA-June-2025.pdf",
+                        "snippet": "Jun 25, 2025 ... ... eligible for free school meals or other bursary support using free school meals as an indicator. Care leavers have also been supported. 1d\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.tameside.gov.uk/schoolmeals",
+                        "title": "School Meals - Tameside MBC",
+                        "confidence": 80,
+                        "strengths": [
+                            "Direct link to information about free school meals eligibility",
+                            "Snippet mentions application process for free school meals"
+                        ],
+                        "reasoning": "The snippet suggests that individuals on specific benefits, including Universal Credit with a net monthly income of less than \u00a3616.67, or Income Support can apply for free school meals. Additionally, the title implies that this information is directly related to council services.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "School Meals - Tameside MBC",
+                                "Source": "https://www.tameside.gov.uk/schoolmeals",
+                                "Key Strengths": [
+                                    "Direct link to information about free school meals eligibility",
+                                    "Snippet mentions application process for free school meals"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The snippet suggests that individuals on specific benefits, including Universal Credit with a net monthly income of less than \u00a3616.67, or Income Support can apply for free school meals. Additionally, the title implies that this information is directly related to council services."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Household Support Fund - Tameside MBC",
+                                "Source": "https://www.tameside.gov.uk/householdsupportfund",
+                                "Key Strengths": [
+                                    "Direct link to information about Household Support Fund, which may include assistance for food provisions",
+                                    "Snippet mentions school holiday vouchers for children in receipt of free school meals"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The snippet explicitly states that individuals receiving free school meals can apply for help, and the fact that this service offers school holiday vouchers suggests it may be relevant to families who need food assistance. Additionally, the title implies that this information is directly related to council services."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "School Benefits",
+                                "Source": "https://secure.tameside.gov.uk/forms/f231freemeals559.asp",
+                                "Key Strengths": [
+                                    "Direct link to application form for free school meals or help with travel"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This directly provides an application form for free school meals, thereby making it highly relevant and useful for customers seeking this information. Additionally, the title of the URL indicates that this service is related to council benefits."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Miss School - Miss Out! School Attendance Matters - Education ...",
+                                "Source": "https://www.tameside.gov.uk/education/miss-school-miss-out!-school-attendance-matters",
+                                "Key Strengths": [
+                                    "Eligibility for free school meals mentioned in the snippet"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "While not a direct link to information about free school meals, the snippet notes that individuals who receive Income Support qualify for free school meals if they complete an application form. Additionally, the title indirectly suggests this resource is related to council services."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "NHS Children's Nutrition Team Supporting Tameside families during ...",
+                                "Source": "https://www.tameside.gov.uk/TamesideMBC/media/PublicHealth/Fact-File-Applying-for-Free-School-Meals-pub.pdf",
+                                "Key Strengths": [
+                                    "Provides information about eligibility for free school meals"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "The snippet mentions that eligible families will receive free school meals and additional funding, as well as directing users to speak to a member of staff. This implies this resource offers information on how to apply for free school meals."
+                            }
+                        ],
+                        "Analysis Notes": "Some sources were less relevant or useful due to their indirect connection to council customer information needs, such as source number 3 (School Bus Passes in Tameside), which only mentions low-income families vaguely and does not explicitly discuss free school meals.",
+                        "Recommendations Notes": "Not all sources explicitly addressed the topic of free school meals, but those with sufficient connections to the council's services were included in the recommendations."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "80",
+                        "85",
+                        "90",
+                        "65",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 79,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "School Meals - Tameside MBC",
+                            "Source": "https://www.tameside.gov.uk/schoolmeals",
+                            "Reasoning": "This recommendation has the highest relevance to free school meals, as it explicitly states that individuals on specific benefits can apply for free school meals. Additionally, it is directly related to council services.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "School Benefits",
+                            "Source": "https://secure.tameside.gov.uk/forms/f231freemeals559.asp",
+                            "Reasoning": "This recommendation provides a direct link to an application form for free school meals or help with travel, making it highly relevant and useful for customers seeking this information.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Household Support Fund - Tameside MBC",
+                            "Source": "https://www.tameside.gov.uk/householdsupportfund",
+                            "Reasoning": "While not explicitly related to free school meals, this service offers assistance for families receiving free school meals in the form of school holiday vouchers, making it likely relevant for those seeking food assistance.",
+                            "Confidence": "85"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.tameside.gov.uk/schoolmeals"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.tameside.gov.uk/schoolmeals",
+                        "analysis": {
+                            "url": "https://www.tameside.gov.uk/schoolmeals",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T05:05:02+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T05:05:28+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 17833,
+                            "response_time": 0.212,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.212s)",
+                                    "Content successfully retrieved (17833 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.21415090560913086,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.tameside.gov.uk/schoolmeals"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.tameside.gov.uk/schoolmeals",
+                        "content": "```html\n<h1>School Meals</h1>\n<h2>The Importance of School Meals</h2>\n<p>School meals offer a selection of freshly cooked main meals and desserts every day, often including pasta, salad, fresh fruit and yoghurt.</p>\n<p>A number of schools offer a pre-order system where you and your child can order the daily main course option in advance. All meals are nutritionally balanced and are served by friendly catering staff. Children can sit down together and enjoy their meal whilst at the same time developing social skills of eating together that are so important in later life. A well fed and happy child is more likely to be receptive to participating in the afternoon's activities. Convenience. Someone else preparing and cooking lunch for your child saves you worrying about a packed meal every day.</p>\n<p><strong>Universal Infant Free School Meals</strong></p>\n<p>From September schools will be offering all children in Reception, Year 1 and Year 2 a free school meal. The Government are introducing Infant Free School Meals following an independent review of school food which found that where all children had been given a free school meal they were months ahead of their peers in their school work. <a href=\"https://www.gov.uk/guidance/universal-infant-free-school-meals-guide-for-schools-and-local-authorities\" target=\"_blank\">Government website</a></p>\n<h2>How to Pay for Your Child's School Meals</h2>\n<p>You can now <a href=\"https://public.tameside.gov.uk/forms/f1005PaySchoolMeals559.asp\">pay for your school meals on-line here using a credit/debit card</a>.</p>\n<p>You can also pay by sending dinner money into school on a weekly basis. The school will advise which day of the week is most convenient (usually each Monday).</p>\n<h2>How to Apply for Free School Meals</h2>\n<p>Free School Meals can be claimed by Parents or Guardians of pupil's who are on a low income. All claims will be processed by your child\u2019s school.</p>\n<p>Eligible income includes:</p>\n<ul>\n    <li>Universal Credit, provided they have an annual net earned income not exceeding \u00a37,400(\u00a3616.67 per month)</li>\n    <li>Income Support</li>\n    <li>Income-based Jobseeker's Allowance</li>\n    <li>Income-related Employment and Support Allowance</li>\n    <li>Support under Part 6 of the Immigration and Asylum Act 1999</li>\n    <li>The guarantee element of Pension Credit</li>\n    <li>Child Tax Credit, provided they are not also entitled to Working Tax Credit and have an annual gross income of no more than \u00a316,190, as assessed by HMRC</li>\n    <li>Working Tax Credit run-on - paid 4 weeks after you stop qualifying for Working Tax Credit</li>\n</ul>\n<p><strong>Tameside Link:</strong> <a href=\"https://apply.cloudforedu.org.uk/ofsm/sims-tameside\">https://apply.cloudforedu.org.uk/ofsm/sims-tameside</a></p>\n<ul>\n    <li>Alder Community High School</li>\n    <li>All Saints Catholic College</li>\n    <li>Arlies Primary School</li>\n    <!-- Additional school names omitted for brevity -->\n</ul>\n<p><strong>SIMS Main Link:</strong> <a href=\"https://apply.cloudforedu.org.uk/ofsm/sims\">https://apply.cloudforedu.org.uk/ofsm/sims</a></p>\n<ul>\n    <li>Ashton West End Primary Academy</li>\n    <li>Audenshaw School</li>\n    <!-- Additional school names omitted for brevity -->\n</ul>\n<p><strong>Victorious Academies:</strong> <a href=\"https://apply.cloudforedu.org.uk/ofsm/victoriousacademies\">https://apply.cloudforedu.org.uk/ofsm/victoriousacademies</a></p>\n<ul>\n    <li>Aldwyn Primary School</li>\n    <li>Arundale Primary School</li>\n    <!-- Additional school names omitted for brevity -->\n</ul>\n<p><strong>Entrust Academies:</strong> <a href=\"https://apply.cloudforedu.org.uk/ofsm/entrust\">https://apply.cloudforedu.org.uk/ofsm/entrust</a></p>\n<ul>\n    <li>Oasis Academy, Broadoak</li>\n</ul>\n<p><strong>For</strong> Parochial Church of England Primary School enquire within school office to apply</p>\n<h2>If You Currently Don\u2019t Claim Free School Meals</h2>\n<p>Free School Meals can be claimed by Parents or Guardians of pupil's who are on a low income. All claims will be processed by your child\u2019s school. Eligible income includes:</p>\n<ul>\n    <li>Universal Credit, provided they have an annual net earned income not exceeding \u00a37,400(\u00a3616.67 per month)</li>\n    <li>Income Support</li>\n    <!-- Additional eligibility criteria omitted for brevity -->\n</ul>\n<h2>If You Currently Don\u2019t Claim Free School Meal</h2>\n<p>If you think you might be eligible for free school meals, submit a claim to your child\u2019s school. Your school should have a form you can use. The Information you provide will be used to check if you are in receipt of a qualifying benefit and, if you are on Universal Credit, that your earnings do not exceed the threshold. If you claim Universal Credit, your earnings will be assessed from up to three of your last Universal Credit assessment periods.</p>\n<p>If you are eligible, your child will receive free school meals and the school will receive extra funding.</p>\n<h2>If You Already Claim Free School Meal</h2>\n<p>Most people won't be affected by the new criteria. If you're currently claiming free school meals, but don't meet the new criteria, your child will continue to receive free school meals until the end of the Universal Credit rollout period. This will apply even if your earnings rise above the new threshold or if you stop being entitled to Universal Credit. The rollout period is currently scheduled to end March 2023. Once Universal Credit is fully rolled out, your child will keep their free school meal until the end of their current phase of education, i.e. primary or secondary.</p>\n<h2>Special diets</h2>\n<p>You should contact your school if you have any special dietary requirements. Medical diets can be provided. Please let your school know if your child has been prescribed a medical diet. Should you have any queries please do not hesitate to contact us so that we can help your child enjoy their lunch.</p>\n<p>On 13th December 2014, the Food Information for Consumers Regulation 1169/2011 (EU FIC) changes the way allergen information appears on labels and on food that is prepacked, sold loose or served out of home. From this date caterers must be able to answer any consumer queries regarding the 14 major food allergens that have been identified as issues for people living across Europe.</p>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 32.4626739025116,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.tameside.gov.uk/schoolmeals",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content partially answers this question. It provides the eligibility criteria for free school meals, including universal credit and other benefits. However, it does not specify the time it takes to process an application and find out if a person is eligible.",
+                                    "confidence": "70%",
+                                    "reasoning": "The content lists the eligibility criteria but does not provide specific information regarding processing times or how a person can check their status. It also mentions that applications are processed by schools, implying that the resident needs to go through their child's school for further assistance.",
+                                    "next_actions": "Contacting their child's school to obtain more information about application procedures and the estimated processing time."
+                                }
+                            ],
+                            "overall_assessment": "The content does a satisfactory job of answering the need about free school meals eligibility. However, it fails to provide detailed information regarding processing times and what actions to take next after submitting an application."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 7.109155893325806,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.tameside.gov.uk/schoolmeals"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_050502-tameside.gov.uk",
+                    "analysis_timestamp": "2025-08-13T05:06:08+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.1,
+                            "tokens_consumed": 9920,
+                            "tokens_remaining": 20080,
+                            "token_utilization_percentage": 33.07,
+                            "average_tokens_per_step": 1653.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 66.93,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 12,
+                            "consumption_rate": 1653.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 15.71,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.1,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_050502-tameside.gov.uk",
+                        "start_time": "2025-08-13T05:05:02+01:00",
+                        "current_time": "2025-08-13T05:06:08+01:00",
+                        "duration_seconds": 66,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 9920,
+                        "tokens_remaining": 20080,
+                        "token_utilization_percentage": 33.07,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 5370,
+                                "avg_per_call": 2685
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 4550,
+                                "avg_per_call": 2275
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1653.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_050502-tameside.gov.uk",
+                    "start_time": "2025-08-13T05:05:02+01:00",
+                    "current_time": "2025-08-13T05:06:08+01:00",
+                    "duration_seconds": 66,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 9920,
+                    "tokens_remaining": 20080,
+                    "token_utilization_percentage": 33.07,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 5370,
+                            "avg_per_call": 2685
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 4550,
+                            "avg_per_call": 2275
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1653.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

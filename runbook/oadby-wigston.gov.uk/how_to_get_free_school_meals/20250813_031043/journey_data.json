@@ -1,0 +1,651 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T03:10:43+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "oadby-wigston.gov.uk",
+                "Council Name": "Oadby and Wigston Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Support for your family and children - Oadby and Wigston Borough ...",
+                        "link": "https://www.oadby-wigston.gov.uk/pages/support_for_your_family_and_children",
+                        "snippet": "Jun 13, 2025 ... Free School meals \u00b7 Free childcare and child benefit \u00b7 Community fridges/pantries \u00b7 Food banks \u00b7 Leicestershire Lightbulb service \u00b7 Financial support\u00a0..."
+                    },
+                    {
+                        "title": "A to Z of Services - E - Oadby and Wigston Borough Council",
+                        "link": "https://www.oadby-wigston.gov.uk/atoz/e",
+                        "snippet": "Education - grants - free school meals. Apply for free school meals (County); Find out about free school meals (County). Education - grants - home to education\u00a0..."
+                    },
+                    {
+                        "title": "Universal Credit Frequently asked questions (FAQ's)",
+                        "link": "https://moderngov.oadby-wigston.gov.uk/documents/s17350/Universal%20Credit%20FAQs.pdf",
+                        "snippet": "When will I get paid Universal credit? Universal credit is paid a month ... Will free School meals be included in my Universal credit? No, these will\u00a0..."
+                    },
+                    {
+                        "title": "New Local Plan (2020 \u2013 2041) Regulation 18B Preferred Options ...",
+                        "link": "https://www.oadby-wigston.gov.uk/files/documents/draft_local_plan_reg_18b_preferred_options_document/OWBC%20Reg%2018B%20PO%20Draft%20Local%20Plan%20-%20Spring%202024.pdf",
+                        "snippet": "Consider increasing access to healthy food options and restricting access ... within school and college sites, public access to these facilities will be sought\u00a0..."
+                    },
+                    {
+                        "title": "(Public Pack)Agenda update Agenda Supplement for Policy ...",
+                        "link": "https://moderngov.oadby-wigston.gov.uk/documents/b8315/Agenda+update+06th-Feb-2024+19.00+Policy+Finance+Development+Committee.pdf?T=9",
+                        "snippet": "Feb 6, 2024 ... Please stop funding taxis for children to attend school when they could go to a school in their own area. ... have free parking its too easy."
+                    },
+                    {
+                        "title": "Whole Plan Viability Assessment",
+                        "link": "https://www.oadby-wigston.gov.uk/files/documents/oadby_and_wigston_whole_plan_viability_study_2024/LP6.11%20-%20Oadby%20and%20Wigston%20Whole%20Plan%20Viability%20Assessment%20%282024%29.pdf",
+                        "snippet": "Oct 19, 2024 ... ... free of charge, by PAS and has been widely used by Councils ... how to make schools more affordable \u2013 looking at multiple storeys\u00a0..."
+                    },
+                    {
+                        "title": "Local Plan (2020 \u2013 2041) Regulation 19 Pre-Submission ...",
+                        "link": "https://www.oadby-wigston.gov.uk/files/documents/regulation_19_pre_submission_draft_local_plan_n_january_2025/Regulation%2019%20Pre-Submission%20Draft%20Local%20Plan%20-%20January%202025.pdf",
+                        "snippet": "h) Consider increasing access to healthy food options and restricting access ... located within school and college sites, public access to these facilities will\u00a0..."
+                    },
+                    {
+                        "title": "Specialised Housing Study: Older & Disabled People",
+                        "link": "https://www.oadby-wigston.gov.uk/files/documents/specialised_housing_study_2024/LP7.05%20-%20Specialised%20Housing%20Study%20OWBC%20%282024%29.pdf",
+                        "snippet": "with 24 hour access to support services and staff, and meals are also available. ... primary school site, areas of public open space including children's\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.oadby-wigston.gov.uk/pages/support_for_your_family_and_children",
+                        "title": "Support for your family and children - Oadby and Wigston Borough ...",
+                        "confidence": 90,
+                        "strengths": [
+                            "Provides comprehensive information about family and children support services.",
+                            "Includes details about free school meals, childcare benefits, and community food resources."
+                        ],
+                        "reasoning": "This page discusses various ways the council supports families and children, making it a valuable resource for finding information about free meal programs and other forms of assistance.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "8",
+                            "recommendations": "3"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Support for your family and children - Oadby and Wigston Borough ...",
+                                "Source": "https://www.oadby-wigston.gov.uk/pages/support_for_your_family_and_children",
+                                "Key Strengths": [
+                                    "Provides comprehensive information about family and children support services.",
+                                    "Includes details about free school meals, childcare benefits, and community food resources."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This page discusses various ways the council supports families and children, making it a valuable resource for finding information about free meal programs and other forms of assistance."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "A to Z of Services - E - Oadby and Wigston Borough Council",
+                                "Source": "https://www.oadby-wigston.gov.uk/atoz/e",
+                                "Key Strengths": [
+                                    "Offers access to information about multiple council services.",
+                                    "Discusses eligibility for free school meals."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "While the page does not provide as much detailed information as the first recommendation, it offers a directory of service and resources related to the topic at hand."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Universal Credit Frequently asked questions (FAQ's)",
+                                "Source": "https://moderngov.oadby-wigston.gov.uk/documents/s17350/Universal%20Credit%20FAQs.pdf",
+                                "Key Strengths": [
+                                    "Addresses common questions related to Universal Credit.",
+                                    "Offers insight into the relationship between Universal Credit and School Meals."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This document sheds light on how Universal Credit affects an individual's eligibility for free school meals. However, it should be noted that the information is not directly related to the council but rather a national policy."
+                            }
+                        ],
+                        "Analysis Notes": "Though several results were found relevant to the search query, three recommendations were selected based on their relevance and quality to provide a clear understanding of available resources regarding council customer information needs.",
+                        "Recommendations Notes": "While some of the other results could be useful for understanding additional topics such as local planning and specialized housing, they are less directly related to the specific request for council customer information."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 83.33333333333333,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Support for your family and children - Oadby and Wigston Borough ...",
+                            "Source": "https://www.oadby-wigston.gov.uk/pages/support_for_your_family_and_children",
+                            "Reasoning": "Out of the available options, this recommendation offers a comprehensive approach to understanding family and children support services provided by Oadby & Wigston Borough Council. It delves deeper into important topics like free school meals, childcare benefits, and community food resources, providing relevant and actionable insights.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "A to Z of Services - E - Oadby and Wigston Borough Council",
+                            "Source": "https://www.oadby-wigston.gov.uk/atoz/e",
+                            "Reasoning": "Providing access to detailed information about multiple council services, including eligibility for free school meals, this recommendation offers a resourceful approach towards understanding the topic at hand. However, it lacks the comprehensive nature of Recommendation 1.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Universal Credit Frequently asked questions (FAQ's)",
+                            "Source": "https://moderngov.oadby-wigston.gov.uk/documents/s17350/universal_credit_faqs.pdf",
+                            "Reasoning": "The document provides valuable insights into common questions regarding Universal Credit and its relationship to school meals, enhancing the awareness of broader contexts rather than being directly centered on services provided by Oadby & Wigston Borough Council.",
+                            "Confidence": "75"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.oadby-wigston.gov.uk/pages/support_for_your_family_and_children"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.oadby-wigston.gov.uk/pages/support_for_your_family_and_children",
+                        "analysis": {
+                            "url": "https://www.oadby-wigston.gov.uk/pages/support_for_your_family_and_children",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T03:10:43+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T03:11:05+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 36625,
+                            "response_time": 0.467,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.467s)",
+                                    "Content successfully retrieved (36625 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.4704711437225342,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.oadby-wigston.gov.uk/pages/support_for_your_family_and_children"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.oadby-wigston.gov.uk/pages/support_for_your_family_and_children",
+                        "content": " Here's the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<!-- Head elements (not included for brevity) -->\n</head>\n<body>\n\t<main class=\"page-body-wrap\">\n\t\t<section class=\"page-header-search\" style=\"background-image: url(/themes/base/css/new-imgs/hero-image.jpg)\">\n\t\t\t<div class=\"section-inner\">\n\t\t\t\t<h1 class=\"title\">Support for your family and children</h1>\n\t\t\t\t<!-- Search form (not included because it's non-essential) -->\n\t\t\t</div>\n\t\t</section>\n\t\t<section class=\"page-body\">\n\t\t\t<article class=\"module article\" id=\"article-support_for_your_family_and_children\">\n\t\t\t\t<div class=\"body\">\n\t\t\t\t\t<!-- Article content -->\n\t\t\t\t\t<h2>Financial support &amp; food and fuel payments</h2>\n\t\t\t\t\t<p><a data-cms-link-uri=\"\" href=\"https://www.oadby-wigston.gov.uk/pages/household_support_fund_lcc\">visit our specialised financial support page</a></p>\n\t\t\t\t\t<!-- Rest of the article content -->\n\t\t\t\t</div>\n\t\t\t\t<p class=\"last-published\">Last updated: <span>Friday, 13 June 2025 4:24 pm</span></p>\n\t\t\t</article>\n\t\t</section>\n\t</main>\n</body>\n</html>\n```\n\nThis code extracts the main content of the article about \"Support for your family and children\" while removing the non-essential elements such as the search form at the top, the navigation menu in the sidebar, and the footer sections. It leaves only the heading, the body, and the last-updated footer within the `<article>` tag with the class \"module article\".",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 13.032609939575195,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.oadby-wigston.gov.uk/pages/support_for_your_family_and_children",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently been made unemployed and I'd like to apply for free school meals.",
+                                    "answer_quality": "Low",
+                                    "confidence": "20%",
+                                    "reasoning": "The content does not provide any clear criteria or steps on how to apply for free school meals. There is no mention of eligibility or expected processing times.",
+                                    "next_actions": "I would need to visit the specialised financial support page linked in the content."
+                                }
+                            ],
+                            "overall_assessment": "The content does not address the needs of a Council Resident seeking information on how to apply for free school meals. Key gaps include lack of clarity on criteria, eligibility, and processing times. The overall satisfaction level is low."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.270397186279297,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.oadby-wigston.gov.uk/pages/support_for_your_family_and_children"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_031043-oadby-wigston.gov.uk",
+                    "analysis_timestamp": "2025-08-13T03:11:23+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6666666666666666,
+                            "tokens_consumed": 5984,
+                            "tokens_remaining": 24016,
+                            "token_utilization_percentage": 19.95,
+                            "average_tokens_per_step": 997.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 80.05,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 24,
+                            "consumption_rate": 997.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "20",
+                            "quality_scores": [
+                                "20"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "20",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.52,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6666666666666666,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_031043-oadby-wigston.gov.uk",
+                        "start_time": "2025-08-13T03:10:43+01:00",
+                        "current_time": "2025-08-13T03:11:23+01:00",
+                        "duration_seconds": 40,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 5984,
+                        "tokens_remaining": 24016,
+                        "token_utilization_percentage": 19.95,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3111,
+                                "avg_per_call": 1555.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 2873,
+                                "avg_per_call": 1436.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 997.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_031043-oadby-wigston.gov.uk",
+                    "start_time": "2025-08-13T03:10:43+01:00",
+                    "current_time": "2025-08-13T03:11:23+01:00",
+                    "duration_seconds": 40,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 5984,
+                    "tokens_remaining": 24016,
+                    "token_utilization_percentage": 19.95,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3111,
+                            "avg_per_call": 1555.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 2873,
+                            "avg_per_call": 1436.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 997.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

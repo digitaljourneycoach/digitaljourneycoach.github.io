@@ -1,0 +1,220 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T12:06:43+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "lisburncastlereagh.gov.uk",
+                "Council Name": "Lisburn & Castlereagh City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Service updates or disruptions - lisburncastlereagh.gov.uk",
+                        "link": "https://www.lisburncastlereagh.gov.uk/w/service-updates-or-disruptions",
+                        "snippet": "Bins and recycling \u00b7 Household waste. Service updates or disruptions ... To report a missed collection, please email recycling@lisburncastlereagh.gov\u00a0..."
+                    },
+                    {
+                        "title": "Help with waste collections - lisburncastlereagh.gov.uk",
+                        "link": "https://www.lisburncastlereagh.gov.uk/w/help-with-waste-collections",
+                        "snippet": "Skip to Main Content. Menu. Close. Pay, report, apply \u00b7 Contact. Services. Close ... Missed bins or boxes. If your bin or box was not collected please check the\u00a0..."
+                    },
+                    {
+                        "title": "Report it - lisburncastlereagh.gov.uk",
+                        "link": "https://www.lisburncastlereagh.gov.uk/pay-report-apply/report-it",
+                        "snippet": "Report it. Tell us about a problem that needs our attention. Please report ... Missed Bin Collection \u00b7 Missing or Damaged Bin \u00b7 Noise Pollution \u00b7 Facilities\u00a0..."
+                    },
+                    {
+                        "title": "Reporting of damaged or missing nameplates - lisburncastlereagh ...",
+                        "link": "https://www.lisburncastlereagh.gov.uk/w/reporting-of-damaged-or-missing-nameplates",
+                        "snippet": "If you note or identify a missing or damaged nameplate, please report it to our Building Control service for its provision or replacement."
+                    },
+                    {
+                        "title": "Bins and recycling - lisburncastlereagh.gov.uk",
+                        "link": "https://www.lisburncastlereagh.gov.uk/bins-and-recycling",
+                        "snippet": "Skip to Main Content. Menu. Close. Pay, report, apply \u00b7 Contact. Services. Close. Services. Bins and recycling\u00a0..."
+                    },
+                    {
+                        "title": "Order a bin, box, caddy or composter - lisburncastlereagh.gov.uk",
+                        "link": "https://www.lisburncastlereagh.gov.uk/bins-and-recycling/household-waste/bins-and-boxes/order-a-bin-box-caddy-or-composter",
+                        "snippet": "Mixed dry recycling bin \u00b7 Food and garden waste bin \u00b7 Kitchen caddy and liners \u00b7 Landfill bin \u00b7 Kerbie boxes and wheelie boxes \u00b7 Home composter\u00a0..."
+                    },
+                    {
+                        "title": "Waste enquiries - lisburncastlereagh.gov.uk",
+                        "link": "https://www.lisburncastlereagh.gov.uk/bins-and-recycling/waste-enquiries",
+                        "snippet": "This form is for enquiries, requests and issue reporting to Waste & Operational Services. About Your Enquiry - Step 1 Your details - Step 2 Contact details -\u00a0..."
+                    },
+                    {
+                        "title": "Performance Improvement Report 2023/24 - Summary ...",
+                        "link": "https://www.lisburncastlereagh.gov.uk/w/performance-improvement-report-2023-24-summary",
+                        "snippet": "average processing time of local planning applications; percentage of household waste collected by district councils that is sent for recycling (including waste\u00a0..."
+                    },
+                    {
+                        "title": "Service updates - Adverse weather - lisburncastlereagh.gov.uk",
+                        "link": "https://www.lisburncastlereagh.gov.uk/w/service-updates",
+                        "snippet": "Skip to Main Content. Menu. Close. Pay, report, apply \u00b7 Contact. Services. Close. Services. Bins and recycling\u00a0..."
+                    },
+                    {
+                        "title": "Home - lisburncastlereagh.gov.uk",
+                        "link": "https://www.lisburncastlereagh.gov.uk/",
+                        "snippet": "Household waste \u00b7 Council and performance \u00b7 Report it. Council services. Bins and recycling. All your bins, recycling and waste needs including collection of\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Service updates or disruptions - lisburncastlereagh.gov.uk",
+                                "Source": "https://www.lisburncastlereagh.gov.uk/w/service-updates-or-disruptions",
+                                "Key Strengths": [
+                                    "Provides information about service updates or disruptions, possibly including waste collection schedules.",
+                                    "Offers an option to report missed collections."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title and snippet suggest that this link may contain relevant information for council customer's needs regarding waste collection services. Moreover, the provided email address (recycling@lisburncastlereagh.gov) at the end of the snippet points towards its relevance to waste management issues."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Help with waste collections - lisburncastlereagh.gov.uk",
+                                "Source": "https://www.lisburncastlereagh.gov.uk/w/help-with-waste-collections",
+                                "Key Strengths": [
+                                    "Targeted title and snippet mention contact for problems related to bins or boxes, which is an indication of waste collection assistance.",
+                                    "Mention of missed bins and boxes, implying it might include details on what to do when a bin is not collected."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title and snippet suggest that this link provides information about waste collection issues, focusing on contact information and missed bins. Although it does not explicitly state reporting missed collections, the context implies that it would help in such a scenario."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Report it - lisburncastlereagh.gov.uk",
+                                "Source": "https://www.lisburncastlereagh.gov.uk/pay-report-apply/report-it",
+                                "Key Strengths": [
+                                    "Direct reporting of issues, including missed bin collections.",
+                                    "Includes an option for reporting various problems such as noise pollution and facilities."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The title and the fact that 'Missed Bin Collection' is one of the options listed under reporting issues point towards its relevance to council customer information needs. Although it does not focus entirely on waste management, providing a reporting platform might be beneficial for customers."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Order a bin, box, caddy or composter - lisburncastlereagh.gov.uk",
+                                "Source": "https://www.lisburncastlereagh.gov.uk/bins-and-recycling/household-waste/bins-and-boxes/order-a-bin-box-caddy-or-composter",
+                                "Key Strengths": [
+                                    "Offers the ability to order new bins, boxes, caddies, or composters if a customer needs one.",
+                                    "Includes various types of bins and containers for different waste purposes."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "The title clearly indicates that it helps customers order new bins, boxes, caddies, or composters if they need one. Although not directly related to reporting issues or providing information about waste collection services, ordering a required bin could be useful for council customers."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Home - lisburncastlereagh.gov.uk",
+                                "Source": "https://www.lisburncastlereagh.gov.uk/",
+                                "Key Strengths": [
+                                    "Provides multiple services, including one for bins and recycling.",
+                                    "Offers a reporting option for problems related to bins or waste management."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Although it does not have an explicitly focused title, the mention of household waste along with reporting options suggests that it might contain information relevant to council customer's needs. Since it is the homepage, users can find various services or ways to report issues easily."
+                            }
+                        ],
+                        "Analysis Notes": "All search results provided relevant content related to the customer service needs of Council customers but were not entirely focused on waste collection information or methods of reporting missed collections.",
+                        "Recommendations Notes": "The provided links offer solutions for managing waste and contacting council services when needed, although some focus more broadly on various council topics."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 78,
+                    "max_confidence": "85"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

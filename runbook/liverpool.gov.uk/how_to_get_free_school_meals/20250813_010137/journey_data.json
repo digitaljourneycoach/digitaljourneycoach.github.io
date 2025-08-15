@@ -1,0 +1,715 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T01:01:37+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "liverpool.gov.uk",
+                "Council Name": "Liverpool City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Is my child eligible for free school meals?",
+                        "link": "https://liverpool.gov.uk/benefits/free-school-meals/",
+                        "snippet": "All children in Reception, year 1 and year 2 get free school meals regardless of your income. Your school will write to you about this."
+                    },
+                    {
+                        "title": "School travel pass: New application - Liverpool City Council",
+                        "link": "https://liverpool.gov.uk/benefits/school-travel-support/school-travel-pass-new/",
+                        "snippet": "If your children are entitled to income related free school meals, they will get free travel support if they are: aged 8 to 11 and go to their nearest school\u00a0..."
+                    },
+                    {
+                        "title": "Household Support Fund - Liverpool City Council",
+                        "link": "https://liverpool.gov.uk/benefits/help-in-a-crisis/household-support-fund/",
+                        "snippet": "... have indicated below that you need to make an application. 1. Support with food costs for families in receipt of free school meals. Families will be given a\u00a0..."
+                    },
+                    {
+                        "title": "Citizen Portal - Sign in",
+                        "link": "https://emsonline.liverpool.gov.uk/",
+                        "snippet": "... school place in Reception, Year 7 and In Year Transfers, or apply for school travel support and free school meals. If you have previously applied for a school\u00a0..."
+                    },
+                    {
+                        "title": "Benefits and support - Liverpool City Council",
+                        "link": "https://liverpool.gov.uk/benefits/",
+                        "snippet": "Advice and support on benefits managed by the council and its partners. Free school meals, how to apply for free school meals in term-time and check if you are\u00a0..."
+                    },
+                    {
+                        "title": "Holiday activity hub - Liverpool City Council",
+                        "link": "https://liverpool.gov.uk/children-and-families/holiday-activity-hub/",
+                        "snippet": "What's on offer this Summer? The Summer HAF programme is for children and young people from reception age to 16 who receive benefits-related free school meals,\u00a0..."
+                    },
+                    {
+                        "title": "Schools and learning - Liverpool City Council",
+                        "link": "https://liverpool.gov.uk/schools-and-learning/",
+                        "snippet": "School travel support \u00b7 Free school meals. Other websites. These links will take you away from this site and open in a new window. GOV.UK 16-19 Bursary Get help\u00a0..."
+                    },
+                    {
+                        "title": "Liverpool City Council: Resident",
+                        "link": "https://liverpool.gov.uk/",
+                        "snippet": "Benefits and support \u00b7 Free school meals \u00b7 School travel support \u00b7 Housing benefits \u00b7 Jobs and training \u00b7 Current vacancies \u00b7 Benefits \u00b7 Working practices\u00a0..."
+                    },
+                    {
+                        "title": "Universal Credit - Liverpool City Council",
+                        "link": "https://liverpool.gov.uk/benefits/universal-credit/",
+                        "snippet": "Oct 16, 2023 ... Remember to claim free school meals separately, as these are not included in Universal Credit payments. ... Your bank account details; Details of\u00a0..."
+                    },
+                    {
+                        "title": "Household Support Fund - Liverpool City Council",
+                        "link": "https://liverpool.gov.uk/housing/fuel-bills-and-energy-efficiency/household-support-fund/",
+                        "snippet": "have children who get free school meals because the household income is no more than \u00a37,300-\u00a37,900 each year; get Housing Benefit - this makes them only\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Options array cannot be empty",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "InvalidArgumentException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "InvalidArgumentException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://liverpool.gov.uk/benefits/free-school-meals/",
+                        "title": "Is my child eligible for free school meals?",
+                        "confidence": 85,
+                        "strengths": [
+                            "Direct information about eligibility for free school meals",
+                            "Clear guidance for families of children in Reception, Year 1 and Year 2"
+                        ],
+                        "reasoning": "This resource provides a direct answer to the searched question and is relevant to council customer information needs. It specifically mentions free school meals and offers clear guidance for families of children in Reception, Year 1, and Year 2.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Is my child eligible for free school meals?",
+                                "Source": "https://liverpool.gov.uk/benefits/free-school-meals/",
+                                "Key Strengths": [
+                                    "Direct information about eligibility for free school meals",
+                                    "Clear guidance for families of children in Reception, Year 1 and Year 2"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This resource provides a direct answer to the searched question and is relevant to council customer information needs. It specifically mentions free school meals and offers clear guidance for families of children in Reception, Year 1, and Year 2."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Household Support Fund - Liverpool City Council",
+                                "Source": "https://liverpool.gov.uk/benefits/help-in-a-crisis/household-support-fund/",
+                                "Key Strengths": [
+                                    "Information on support with food costs for families in receipt of free school meals",
+                                    "Mention of specific application process"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The resource offers information on assistance for food costs, which is a common concern, and explicitly mentions families that receive free school meals as eligible for support. However, it only mentions the application being given 'a' (not necessarily 'to') the families, so further exploration may be needed."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Benefits and support - Liverpool City Council",
+                                "Source": "https://liverpool.gov.uk/benefits/",
+                                "Key Strengths": [
+                                    "Broad range of benefits information including free school meals",
+                                    "Information on term-time free school meals"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "The resource provides a broad overview of various types of support offered by the council, including free school meals. While it does not explicitly address the specific question asked, it is one of few resources mentioning term-time free school meals, which may be relevant to some customers."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Universal Credit - Liverpool City Council",
+                                "Source": "https://liverpool.gov.uk/benefits/universal-credit/",
+                                "Key Strengths": [
+                                    "Information on Universal Credit including eligibility requirements and application",
+                                    "Reminder to claim free school meals separately"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The resource discusses Universal Credit and its eligibility, as well as the application process. It also includes a reminder that families should apply for free school meals separately from Universal Credit payments. However, it does not provide explicit information on how to apply for free school meals outside of Universal Credit."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Household Support Fund - Liverpool City Council",
+                                "Source": "https://liverpool.gov.uk/housing/fuel-bills-and-energy-efficiency/household-support-fund/",
+                                "Key Strengths": [
+                                    "Information on support for families with children who get free school meals",
+                                    "Mention of the income threshold"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This resource discusses a household support fund, including eligibility for families that receive free school meals and have a certain income level. However, it does not provide clear instructions on how to apply for the specific support."
+                            }
+                        ],
+                        "Analysis Notes": "The provided list included items with some relevance to council customer information needs regarding free school meals. Several resources provided broad overviews of various types of benefits or assistance while only a few directly addressed concerns related to eligibility, application, or term-time free school meals.",
+                        "Recommendations Notes": "Based on the provided instructions and list, I have identified five recommendations ranked by confidence scores. The first two resources seem to be the most relevant and of high confidence for answering council customer information needs regarding free school meals."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 76,
+                    "max_confidence": "85"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "Is my child eligible for free school meals?",
+                        "Source": "https://liverpool.gov.uk/benefits/free-school-meals/",
+                        "Reasoning": "This resource provides a direct answer to the searched question and is relevant to council customer information needs. It specifically mentions free school meals and offers clear guidance for families of children in Reception, Year 1, and Year 2.",
+                        "Confidence": "85"
+                    },
+                    {
+                        "Number": "3",
+                        "Title": "Household Support Fund - Liverpool City Council",
+                        "Source": "https://liverpool.gov.uk/benefits/help-in-a-crisis/household-support-fund/",
+                        "Reasoning": "The resource offers information on assistance for food costs, which is a common concern, and explicitly mentions families that receive free school meals as eligible for support. However, it only mentions the application being given 'a' (not necessarily 'to') the families.",
+                        "Confidence": "80"
+                    },
+                    {
+                        "Number": "5",
+                        "Title": "Benefits and support - Liverpool City Council",
+                        "Source": "https://liverpool.gov.uk/benefits/",
+                        "Reasoning": "The resource provides a broad overview of various types of benefits offered by the council, including free school meals. While it does not explicitly address the specific question asked, it is one of few resources mentioning term-time free school meals.",
+                        "Confidence": "75"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "005_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://liverpool.gov.uk/benefits/free-school-meals/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://liverpool.gov.uk/benefits/free-school-meals/",
+                        "analysis": {
+                            "url": "https://liverpool.gov.uk/benefits/free-school-meals/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T01:01:37+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T01:02:18+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 28642,
+                            "response_time": 0.182,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.182s)",
+                                    "Content successfully retrieved (28642 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.1849370002746582,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "006_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://liverpool.gov.uk/benefits/free-school-meals/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://liverpool.gov.uk/benefits/free-school-meals/",
+                        "content": " This is the HTML code for a webpage about free school meals in Liverpool, UK. The page explains who is eligible for free school meals and how to apply online, as well as providing information about the Pupil Premium funding that schools receive when a child is eligible for free school meals. The page also includes some additional resources and a live chat feature.\n\nAt the top of the page, there are navigation links for other sections of the website. Below that, there is a section called \"Is my child eligible for free school meals?\" with bullet points about children in different age groups and whether they are automatically eligible or need to apply.\n\n below that, there is a section called \"What are the qualifying benefits?\" which explains what benefits justify an application for free school meals. After that, there is a section called \"Before you apply\" that instructs applicants to have their National Insurance number or National Asylum Support Service (NASS) number handy, as these will be used to confirm eligibility with the Department of Work and Pensions.\n\nThere's a section called \"How to apply\" that explains how to apply online via the Citizen Portal using either an existing account or registering for a new one. The following sections provide information about what happens after the application is submitted, including the time period during which children will continue to receive free school meals regardless of changes in income, and what the Pupil Premium funding is used for.\n\nThe page also includes some additional sections such as a tip box about foster parents, a note on applying for further education students who do not attend school sixth form, links to the privacy notice, and footer section. At the bottom of the page there is a live chat feature which can be used to get in touch with someone for help with the application process.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 10.592023134231567,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "007_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://liverpool.gov.uk/benefits/free-school-meals/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "Understanding the criteria for free school meals as a recently unemployed individual with no income",
+                                    "answer_quality": "The content partially addresses this need. The criteria for eligibility are provided, including information about qualifying benefits.",
+                                    "confidence": "80%",
+                                    "reasoning": "Although the text does not specifically mention unemployment as a criterion, it does provide an explanation of the qualifying benefits that justify an application for free school meals. As a recently unemployed individual without income, they may potentially be eligible if they receive one of the listed benefits.",
+                                    "next_actions": "In this case, based on the content, I would review whether or not I qualify based on the specified benefits."
+                                },
+                                {
+                                    "need": "Understanding how quickly I will find out if I'm eligible",
+                                    "answer_quality": "The content does not directly address this need. There is no specific information provided about the time it takes to process applications or when applicants will be informed of their eligibility.",
+                                    "confidence": "50%",
+                                    "reasoning": "Though there is no explicit mention of how long the application approval process takes, applicants are instructed to continue receiving free school meals until a decision has been made.",
+                                    "next_actions": "I would contact the local council or use the live chat feature on the webpage for more information about expected processing times."
+                                }
+                            ],
+                            "overall_assessment": "Overall, the content meets some of my needs as a Council Resident by explaining eligibility criteria and how to apply. However, it lacks specific information about timeframes for processing applications and what to do if additional help is needed."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 7.836462020874023,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://liverpool.gov.uk/benefits/free-school-meals/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "008_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_010137-liverpool.gov.uk",
+                    "analysis_timestamp": "2025-08-13T01:02:37+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 7,
+                            "duration_minutes": 1,
+                            "tokens_consumed": 9904,
+                            "tokens_remaining": 20096,
+                            "token_utilization_percentage": 33.01,
+                            "average_tokens_per_step": 1414.86
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 66.99,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 14,
+                            "consumption_rate": 1414.86,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 7,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 3
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "80",
+                            "quality_scores": [
+                                "80",
+                                "50"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "80",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 14.29,
+                            "steps_fatigue_percentage": 58.33,
+                            "overall_fatigue_score": 58.33,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1,
+                            "total_steps": 7,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved",
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_010137-liverpool.gov.uk",
+                        "start_time": "2025-08-13T01:01:37+01:00",
+                        "current_time": "2025-08-13T01:02:37+01:00",
+                        "duration_seconds": 60,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 9904,
+                        "tokens_remaining": 20096,
+                        "token_utilization_percentage": 33.01,
+                        "token_status": "available",
+                        "total_steps": 7,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 3,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 7
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 4345,
+                                "avg_per_call": 2172.5
+                            },
+                            "analyst": {
+                                "calls": 3,
+                                "tokens": 5559,
+                                "avg_per_call": 1853
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1414.86
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_010137-liverpool.gov.uk",
+                    "start_time": "2025-08-13T01:01:37+01:00",
+                    "current_time": "2025-08-13T01:02:37+01:00",
+                    "duration_seconds": 60,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 9904,
+                    "tokens_remaining": 20096,
+                    "token_utilization_percentage": 33.01,
+                    "token_status": "available",
+                    "total_steps": 7,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 3,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 7
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 4345,
+                            "avg_per_call": 2172.5
+                        },
+                        "analyst": {
+                            "calls": 3,
+                            "tokens": 5559,
+                            "avg_per_call": 1853
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1414.86
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

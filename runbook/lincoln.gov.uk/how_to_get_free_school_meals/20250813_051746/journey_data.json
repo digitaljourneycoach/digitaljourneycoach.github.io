@@ -1,0 +1,630 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T05:17:46+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "lincoln.gov.uk",
+                "Council Name": "Lincoln City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Cost of Living Support \u2013 City of Lincoln Council",
+                        "link": "https://www.lincoln.gov.uk/benefits/cost-living-support/6",
+                        "snippet": "Food support \u00b7 Community Grocery \u00b7 Food Banks \u00b7 Lincolnshire Food Partnership (LFP) \u00b7 Free School Meals \u00b7 Holiday Activities and Food Programme \u00b7 Healthy Start Scheme."
+                    },
+                    {
+                        "title": "Statement of Intent for ECO4 and Great British Insulation Scheme",
+                        "link": "https://www.lincoln.gov.uk/downloads/file/1723/statement-of-intent-for-eco4-and-great-british-insulation-scheme-11-october-2024-signed-by-city-of-lincoln-council-and-neighbouring-councils-",
+                        "snippet": "Oct 11, 2024 ... Proxy 4) A child living at the premises is eligible for free school meals, due to low-income5. Proxy 5) A person living at the premises is\u00a0..."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://www.lincoln.gov.uk/downloads/file/1700/lincoln-city-profile-2023-to-2024-education",
+                        "snippet": "Figure 9 shows Lincoln had the 2nd highest percentage of students eligible for free school meals amongst its Lincolnshire neighbours at 30.9%. In comparison,\u00a0..."
+                    },
+                    {
+                        "title": "Revs-and-Bens Retention and Disposal Schedule - March 2019.xlsx",
+                        "link": "https://www.lincoln.gov.uk/downloads/file/648/revenues-and-benefits-data-retention-schedules",
+                        "snippet": "ensure that people can get information and advice about their legal ... Free school meals. All records relating to the administration of free school\u00a0..."
+                    },
+                    {
+                        "title": "Statement of Intent for ECO 4",
+                        "link": "https://www.lincoln.gov.uk/downloads/file/1385/city-of-lincoln-statement-of-intent-",
+                        "snippet": "Apr 21, 2023 ... Only one from the list can be used, excludes the proxy 'low income'. Proxy 4). A householder receiving free school meals due to low-income. 1\u00a0..."
+                    },
+                    {
+                        "title": "warm welcome spaces:lincoln north",
+                        "link": "https://www.lincoln.gov.uk/downloads/file/1488/warm-welcome-spaces",
+                        "snippet": "Providing breakfast, hot meals and hot drinks. 106, High Street, LN5 ... We have free Wi-Fi and our caf\u00e9 serves free tea and coffee all the time that\u00a0..."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://www.lincoln.gov.uk/downloads/file/1736/city-of-lincoln-council-business-rates-foi-all-accounts-october-2024",
+                        "snippet": "The Acorn Ebs Free School, Calder Road, Lincoln, Lincolnshire, LN5 9TL ... Holly'S Meals Limited, 44642, 10750000, 9300, 9300, 4640.7, Restaurant And Premises\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.lincoln.gov.uk/benefits/cost-living-support/6",
+                        "title": "Cost of Living Support \u2013 City of Lincoln Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly provides information on food support, community grocery, food banks, free school meals, holiday activities and food programme, and Healthy Start Scheme."
+                        ],
+                        "reasoning": "The page title and Google snippet both explicitly mention 'Cost of Living Support' and list numerous services related to food support, which aligns closely with the customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "7",
+                            "recommendations": "3"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Cost of Living Support \u2013 City of Lincoln Council",
+                                "Source": "https://www.lincoln.gov.uk/benefits/cost-living-support/6",
+                                "Key Strengths": [
+                                    "Directly provides information on food support, community grocery, food banks, free school meals, holiday activities and food programme, and Healthy Start Scheme."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "The page title and Google snippet both explicitly mention 'Cost of Living Support' and list numerous services related to food support, which aligns closely with the customer information needs."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Untitled",
+                                "Source": "https://www.lincoln.gov.uk/downloads/file/1700/lincoln-city-profile-2023-to-2024-education",
+                                "Key Strengths": [
+                                    "Provides education statistics, including percentage of students eligible for free school meals.",
+                                    "Offers insight into Lincoln's comparison with its Lincolnshire neighbors."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "While not a direct resource for getting help, this report can provide valuable context and statistics related to student eligibility for free school meals, which may be useful in addressing the customer's information needs."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "warm welcome spaces:lincoln north",
+                                "Source": "https://www.lincoln.gov.uk/downloads/file/1488/warm-welcome-spaces",
+                                "Key Strengths": [
+                                    "Offers free breakfast, hot meals and hot drinks.",
+                                    "Provides free Wi-Fi and has a caf\u00e9 that serves tea and coffee."
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "Though not explicitly stated, this resource may indirectly offer help through access to food services and internet connectivity, which could potentially support individuals in need. However, the connection is less direct compared to the top two recommendations."
+                            }
+                        ],
+                        "Analysis Notes": "Other items in the list provide information on topics such as council statement of intent for energy-efficient measures, business rates FOI all accounts, and revenue & benefits data retention schedules. These do not align closely with the customer's stated information needs and were therefore not recommended.",
+                        "Recommendations Notes": "The recommendations were prioritized based on their direct relevance and alignment to the customer's needs as well as the explicit mention of related services in their titles or snippets."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "75",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 76.66666666666667,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Cost of Living Support \u2013 City of Lincoln Council",
+                            "Source": "https://www.lincoln.gov.uk/benefits/cost-living-support/6",
+                            "Reasoning": "The page title and Google snippet both explicitly mention 'Cost of Living Support' and list numerous services related to food support, which aligns closely with the customer information needs, and has the highest confidence score.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Untitled",
+                            "Source": "https://www.lincoln.gov.uk/downloads/file/1700/lincoln-city-profile-2023-to-2024-education",
+                            "Reasoning": "The second most aligned recommendation provides valuable context and statistics related to student eligibility for free school meals, though indirectly.",
+                            "Confidence": "75"
+                        },
+                        {
+                            "Number": "6",
+                            "Title": "warm welcome spaces:lincoln north",
+                            "Source": "https://www.lincoln.gov.uk/downloads/file/1488/warm-welcome-spaces",
+                            "Reasoning": "Though not explicitly stated, this resource may indirectly offer help through access to food services and internet connectivity, which could potentially support individuals in need.",
+                            "Confidence": "65"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.lincoln.gov.uk/benefits/cost-living-support/6"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.lincoln.gov.uk/benefits/cost-living-support/6",
+                        "analysis": {
+                            "url": "https://www.lincoln.gov.uk/benefits/cost-living-support/6",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T05:17:46+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T05:18:06+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 30345,
+                            "response_time": 0.801,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.801s)",
+                                    "Content successfully retrieved (30345 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.8041031360626221,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.lincoln.gov.uk/benefits/cost-living-support/6"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.lincoln.gov.uk/benefits/cost-living-support/6",
+                        "content": " Here's the cleaned, semantically structured HTML containing the central editorial content of the page:\n\n```html\n<h1 class=\"page-heading\">Cost of Living Support</h1>\n<div class=\"page-content\">\n    <h2 class=\"page-subheading\">Food support</h2>\n    <div class=\"editor\">\n        <h3>Community Grocery</h3>\n        <p><a href=\"https://communitygrocery.org.uk/lincoln/\" rel=\"external\" target=\"_blank\" title=\"(Opens in a new window)\">Lincoln Community Grocery</a> is open for the people of Lincoln helping to keep families fed and give members access to support too.</p>\n        <h3>Food Banks</h3>\n        <p>Lincoln Foodbank can provide three days\u2019 nutritionally balanced emergency food and support to local people who are referred to them in crisis. Call them on <strong>01522 542 166</strong><br>\n        <br>\n        Lincoln larder is a registered charity which aims to relieve poverty in the Lincoln through the provision of basic nutritious food and other basic amenities to those in need of short-term help. Call them on 01522 569 291</p>\n        <p><a href=\"https://www.lincolnlarder.co.uk/\" rel=\"external\" target=\"_blank\" title=\"(Opens in a new window)\">Visit the Lincoln Larder website</a></p>\n        <h3>Lincolnshire Food Partnership (LFP)</h3>\n        <p>Lincolnshire has a range of community support charities, churches and organisations that can help with emergency food. Eligibility and referral processes vary.</p>\n        <p><a href=\"https://lincolnshirefoodpartnership.org/foodbanks-2/\" rel=\"external\" target=\"_blank\" title=\"(Opens in a new window)\">Food banks map and contact information</a><br>&nbsp;</p>\n        <h3>Free School Meals</h3>\n        <p>Children in low-income households may be entitled to free school meals and schools can benefit from 'pupil premium' to support extra-curricular activities.&nbsp; Call the free schools meal team on <strong>01522 782030.</strong></p>\n        <p><a href=\"https://www.lincolnshire.gov.uk/school-pupil-support/apply-free-school-meals\" rel=\"external\" target=\"_blank\" title=\"(Opens in a new window)\">Apply for free school meals</a></p>\n        <p>&nbsp;</p>\n        <h3>Holiday Activities and Food Programme</h3>\n        <p>A government funded programme to provide school-aged children eligible for Free School Meals with access to free healthy meals and activities in school holidays.</p>\n        <p><a href=\"https://www.lincolnshire.gov.uk/school-pupil-support/holiday-activities-food-programme\" rel=\"external\" target=\"_blank\" title=\"(Opens in a new window)\">Find out more about the Holiday Activities and Food Programme</a></p>\n        <p>&nbsp;</p>\n        <h3>Healthy Start Scheme</h3>\n        <p>Pre-paid card for pregnant women and parents of children under 4 to help buy milk, fruit and vegetables.</p>\n        <p><a href=\"https://www.healthystart.nhs.uk/\" rel=\"external\" target=\"_blank\" title=\"(Opens in a new window)\">Visit the NHS website for more info on the Healthy Start scheme</a></p>\n        <p>Call <strong>0300 330 7010.</strong><br>&nbsp;</p>\n        <h3>Lincoln Hygiene Bank</h3>\n        <p>The Lincoln Hygiene Bank is a local project for the national <a href=\"https://thehygienebank.com/\" rel=\"external\" target=\"_blank\" title=\"(Opens in a new window)\">The Hygiene Bank Charity</a>. The Hygiene Bank collects donated personal hygiene and household cleaning products from the community, and puts them together for those who are struggling.</p>\n    </div>\n</div>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 20.41922402381897,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.lincoln.gov.uk/benefits/cost-living-support/6",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 7.28387713432312,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.lincoln.gov.uk/benefits/cost-living-support/6"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_051746-lincoln.gov.uk",
+                    "analysis_timestamp": "2025-08-13T05:18:35+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8166666666666667,
+                            "tokens_consumed": 5942,
+                            "tokens_remaining": 24058,
+                            "token_utilization_percentage": 19.81,
+                            "average_tokens_per_step": 990.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 80.19,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 24,
+                            "consumption_rate": 990.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.67,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8166666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_051746-lincoln.gov.uk",
+                        "start_time": "2025-08-13T05:17:46+01:00",
+                        "current_time": "2025-08-13T05:18:35+01:00",
+                        "duration_seconds": 49,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 5942,
+                        "tokens_remaining": 24058,
+                        "token_utilization_percentage": 19.81,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2614,
+                                "avg_per_call": 1307
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3328,
+                                "avg_per_call": 1664
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 990.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_051746-lincoln.gov.uk",
+                    "start_time": "2025-08-13T05:17:46+01:00",
+                    "current_time": "2025-08-13T05:18:35+01:00",
+                    "duration_seconds": 49,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 5942,
+                    "tokens_remaining": 24058,
+                    "token_utilization_percentage": 19.81,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2614,
+                            "avg_per_call": 1307
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3328,
+                            "avg_per_call": 1664
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 990.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

@@ -1,0 +1,680 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T21:52:10+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "cotswold.gov.uk",
+                "Council Name": "Cotswold District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Find out if you need planning permission - Cotswold District Council",
+                        "link": "https://www.cotswold.gov.uk/planning-and-building/planning-permission/find-out-if-you-need-planning-permission/",
+                        "snippet": "Some types of development do not need planning permission. This is called permitted development. In some areas permitted development rights may be restricted,\u00a0..."
+                    },
+                    {
+                        "title": "Permitted Development - Cotswold District Council",
+                        "link": "https://www.cotswold.gov.uk/planning-and-building/historic-buildings-and-conservation-areas/retrofit-and-energy-efficiency/permissions/permitted-development/",
+                        "snippet": "... planning permission or listed building consent ... solar will not be installed within the curtilage of a listed building. e) The surface area of the solar panels\u00a0..."
+                    },
+                    {
+                        "title": "Prior Approval for the Installation of 676No. roof mounted solar PV ...",
+                        "link": "https://meetings.cotswold.gov.uk/documents/s10939/24-01915-SPANOT%20-%20Cirencester%20Leisure%20Centre%20Report.pdf",
+                        "snippet": "Sep 11, 2024 ... ... installation of solar panels on a non-domestic building does not require the benefit of planning permission subject to their installation\u00a0..."
+                    },
+                    {
+                        "title": "Permitted Development - pdf",
+                        "link": "https://www.cotswold.gov.uk/media/p23nefxe/permitted-development.pdf",
+                        "snippet": "Jun 16, 2025 ... a) The solar PV will not protrude more than 0.2 metres beyond the plane of the. Listed Buildings consent will be required. Planning permission."
+                    },
+                    {
+                        "title": "Decarbonisation - Cotswold District Council",
+                        "link": "https://www.cotswold.gov.uk/planning-and-building/historic-buildings-and-conservation-areas/retrofit-and-energy-efficiency/whole-house-retrofit/decarbonisation/",
+                        "snippet": "If your building is listed, or a building in a conservation area, then you may need listed building consent or planning permission to install low carbon\u00a0..."
+                    },
+                    {
+                        "title": "Search - Cotswold District Council",
+                        "link": "https://www.cotswold.gov.uk/Search/?query=neighbourhood+plan",
+                        "snippet": "Apply for planning permission or building regulations, the Local Plan and planning policy for the Cotswolds ... solar panels to harness renewable\u00a0..."
+                    },
+                    {
+                        "title": "Item No 02:- 21/02735/FUL Land At Grid Reference 398111 195688 ...",
+                        "link": "https://meetings.cotswold.gov.uk/documents/s3316/Item%2002%20-%20Land%20at%20Grid%20Ref%2039811%20195688%20Kemble%20Wick.pdf",
+                        "snippet": "Dec 8, 2021 ... On the 2 sites where they have got approval, this period is limited to 3 years. xxxiii) The solar panels will be 3m high, which is large. On all\u00a0..."
+                    },
+                    {
+                        "title": "COUNCIL PRIORITIES REPORT October - December 2024",
+                        "link": "https://cotswold.gov.uk/media/d2nnvroy/cotswold-priority-report-q3-2024-to-2025.pdf",
+                        "snippet": "A planning application ... Watermoor Point has been granted planning permission to install an additional 310 PV solar panels in addition to its existing 50kWh."
+                    },
+                    {
+                        "title": "Item No 02:- 22/02119/REM Land West Of Davies Road/Mosedale ...",
+                        "link": "https://meetings.cotswold.gov.uk/documents/s5986/Item%2002%20-%2022.02119.REM%20-%20Land%20West%20of%20Davies%20Road%20Mosedale%20Moreton-In-Marsh.pdf",
+                        "snippet": "Oct 12, 2022 ... As the applicant has included the installation of solar panels, it can be ... Planning permission is not permission to work in the highway."
+                    },
+                    {
+                        "title": "Cotswold District Local Plan Update Consultation Draft Policies ...",
+                        "link": "https://meetings.cotswold.gov.uk/documents/s9220/ANNEX%20C-%20Cotswold%20District%20Local%20Plan%20Update%20-%20Draft%20Policies%20Tracked%20Changes.pdf",
+                        "snippet": "Jan 6, 2024 ... ROOFTOP AND GROUND MOUNTED SOLAR PANELS. 1. Where planning permission is required for building mounted solar thermal and photovoltaics panels\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.cotswold.gov.uk/planning-and-building/planning-permission/find-out-if-you-need-planning-permission/",
+                        "title": "Find out if you need planning permission - Cotswold District Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Comprehensive guide to planning permission requirements",
+                            "Includes information on permitted development"
+                        ],
+                        "reasoning": "This link provides a clear and concise guide for users looking to find out if they need planning permission, including details about permitted development. With its detailed explanation it can help users avoid needing further guidance.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Find out if you need planning permission - Cotswold District Council",
+                                "Source": "https://www.cotswold.gov.uk/planning-and-building/planning-permission/find-out-if-you-need-planning-permission/",
+                                "Key Strengths": [
+                                    "Comprehensive guide to planning permission requirements",
+                                    "Includes information on permitted development"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides a clear and concise guide for users looking to find out if they need planning permission, including details about permitted development. With its detailed explanation it can help users avoid needing further guidance."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Permitted Development - pdf",
+                                "Source": "https://www.cotswold.gov.uk/media/p23nefxe/permitted-development.pdf",
+                                "Key Strengths": [
+                                    "Detailed document describing permitted development rights in the Cotswolds area",
+                                    "Provides specific information on solar panel installations"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This is a detailed guide to the rules around permitted development in the Cotswold District, specifically focusing on renewable energy installation and modifications to buildings. It contains specific sections referring to solar panels installation which would be useful for users looking to install solar panels."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Decarbonisation - Cotswold District Council",
+                                "Source": "https://www.cotswold.gov.uk/planning-and-building/historic-buildings-and-conservation-areas/retrofit-and-energy-efficiency/whole-house-retrofit/decarbonisation/",
+                                "Key Strengths": [
+                                    "Comprehensive guide to decarbonization and energy efficiency in the Cotswolds area",
+                                    "Information about planning permission and listed building consent requirements"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link provides a comprehensive overview of decarbonization and energy efficiency in the Cotswold District, including specific information related to planning permission and listed building consent. It is useful for users looking to understand the potential requirements and regulations before installing solar panels."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Cotswold District Local Plan Update Consultation Draft Policies ...",
+                                "Source": "https://meetings.cotswold.gov.uk/documents/s9220/ANNEX%20C-%20Cotswold%20District%20Local%20Plan%20Update%20-%20Draft%20Policies%20Tracked%20Changes.pdf",
+                                "Key Strengths": [
+                                    "Clear policies and guidelines for planning permission in the Cotswold area",
+                                    "Refers to building-mounted solar panels"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link provides an updated set of local policies for the Cotswold District, including clear information about planning permission requirements for installations like solar panels. While it might not be as comprehensive or user-friendly as other links, it still contains valuable information."
+                            }
+                        ],
+                        "Analysis Notes": "Some search results were more focused on specific planning application documents or council priorities reports rather than general customer information. However, the four recommended resources are relatively complete guides that address customer questions related to solar panel installations.",
+                        "Recommendations Notes": "The top recommendations provide comprehensive guides discussing various aspects of solar panel installation and relevant regulations in the Cotswold District. They include information about how solar panels can be installed without planning permission, permit requirements for listed building and energy efficiency retrofits, and local plan updates related to solar panels."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "90",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 82.5,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": "4",
+                            "Title": "Permitted Development - pdf",
+                            "Source": "https://www.cotswold.gov.uk/media/p23nefxe/permitted-development.pdf",
+                            "Reasoning": "This is a detailed guide to the rules around permitted development in the Cotswold District, specifically focusing on renewable energy installation and modifications to buildings. It contains specific sections referring to solar panels installation which would be useful for users looking to install solar panels.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "5",
+                            "Title": "Decarbonisation - Cotswold District Council",
+                            "Source": "https://www.cotswold.gov.uk/planning-and-building/historic-buildings-and-conservation-areas/retrofit-and-energy-efficiency/whole-house-retrofit/decarbonisation/",
+                            "Reasoning": "This link provides a comprehensive overview of decarbonization and energy efficiency in the Cotswold District, including specific information related to planning permission and listed building consent. It is useful for users looking to understand the potential requirements and regulations before installing solar panels.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "1",
+                            "Title": "Find out if you need planning permission - Cotswold District Council",
+                            "Source": "https://www.cotswold.gov.uk/planning-and-building/planning-permission/find-out-if-you-need-planning-permission/",
+                            "Reasoning": "This link provides a clear and concise guide for users looking to find out if they need planning permission, including details about permitted development. With its detailed explanation it can help users avoid needing further guidance.",
+                            "Confidence": "85"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.cotswold.gov.uk/planning-and-building/planning-permission/find-out-if-you-need-planning-permission/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.cotswold.gov.uk/planning-and-building/planning-permission/find-out-if-you-need-planning-permission/",
+                        "analysis": {
+                            "url": "https://www.cotswold.gov.uk/planning-and-building/planning-permission/find-out-if-you-need-planning-permission/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T21:52:10+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T21:52:39+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 20514,
+                            "response_time": 0.286,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.286s)",
+                                    "Content successfully retrieved (20514 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.28661298751831055,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.cotswold.gov.uk/planning-and-building/planning-permission/find-out-if-you-need-planning-permission/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.cotswold.gov.uk/planning-and-building/planning-permission/find-out-if-you-need-planning-permission/",
+                        "content": " Here's the cleaned and semantically structured HTML containing the central editorial content of the page:\n```perl\n<div class=\"govuk-width-container\" role=\"main\">\n    <main class=\"govuk-main-wrapper\" id=\"main-content\">\n        <div class=\"govuk-grid-row\">\n            <div class=\"govuk-grid-column-two-thirds\">\n                <h1 class=\"govuk-heading-xl\">Find out if you need planning permission</h1>\n                <p>Some types of development do not need planning permission. This is called <a rel=\"noopener\" href=\"https://www.planningportal.co.uk/info/200187/your_responsibilities/37/planning_permission/2\" target=\"_blank\" title=\"permitted development\">permitted development</a>.</p>\n                <p>In some areas permitted development rights may be restricted, for example, if you are in a <a href=\"/planning-and-building/historic-buildings-and-conservation-areas/conservation-area-maps/\" title=\"Conservation area maps\">conservation area</a>. If you are not sure email <a href=\"/cdn-cgi/l/email-protection#2f5f434e4141464148014e4b4246416f4c405b5c5840434b01484059015a44\"><span class=\"__cf_email__\" data-cfemail=\"78081419161611161f56191c151116381b170c0b0f17141c561f170e560d13\">[email&nbsp;protected]</span></a>.</p>\n                <p>Find out whether you need <a rel=\"noopener\" href=\"https://www.planningportal.co.uk/info/200130/common_projects\" target=\"_blank\" title=\"planning permission for common projects\">planning permission on some of the most common types of projects</a>. Common projects include, loft conversions, porches and smaller single storey house extensions.</p>\n                <p>You will need to apply for planning permission for most major changes to buildings or a change of use.</p>\n                <p><span class=\"govuk-panel--confirmation\">It is your responsibility to find out if you need planning permission or not.</span></p>\n                <p>If you would like advice before submitting your application we offer a pre-application advice service.</p>\n                <a href=\"/planning-and-building/planning-permission/get-advice-on-your-planning-application/\" alt=\"Get advice on your planning application\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--start\" data-module=\"govuk-button\">\n                    Get advice on your planning application<br />\n                    <svg class=\"govuk-button__start-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"17.5\" height=\"19\" viewbox=\"0 0 33 40\" role=\"presentation\" focusable=\"false\">\n                        <path fill=\"currentColor\" d=\"M0 0h13l20 20-20 20H0l20-20z\"></path>\n                    </svg>\n                </a>\n                <h2>If you don&rsquo;t need planning permission</h2>\n                <p>You may not need planning permission but you could still need <a href=\"/planning-and-building/building-regulations/apply-for-building-regulations-approval/\" title=\"Apply for building regulations approval\">building regulations approval</a>.</p>\n                <h3>Prior approval and notification</h3>\n                <p>You may need to let us know what you are going to do, this is known as <a rel=\"noopener\" href=\"https://www.planningportal.co.uk/info/200126/applications/60/consent_types/10\" target=\"_blank\" title=\"Prior approval\">prior approval,</a>&nbsp;which is required for:</p>\n                <ul>\n                    <li>larger home extensions</li>\n                    <li>agricultural or forestry developments</li>\n                    <li>demolition of buildings</li>\n                    <li>developments for electronic communications networks</li>\n                </ul>\n                <h3>Getting proof that your development is legal</h3>\n                <p>If your development is permitted development you can get proof by <a href=\"https://www.planningportal.co.uk/info/200187/your_responsibilities/37/planning_permission/3\" title=\"applying for a lawful development certificate\">applying for a lawful development certificate</a>. There are two kinds of certificate:</p>\n                <ul>\n                    <li>for proposed work&nbsp;</li>\n                    <li>for work which has already been done, including those in breach of a planning condition&nbsp;</li>\n                </ul>\n            </div>\n        </div>\n    </main>\n</div>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 27.69974398612976,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.cotswold.gov.uk/planning-and-building/planning-permission/find-out-if-you-need-planning-permission/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "The content partially answers this question.",
+                                    "confidence": "60%",
+                                    "reasoning": "The content does mention that some types of development do not need planning permission, referred to as 'permitted development'. However, it doesn't explicitly confirm or deny whether installing solar panels falls under this category. It also hints at the possibility of local restrictions on permitted development but no further details are provided.",
+                                    "next_actions": "In order to get a clear answer about permits for installing solar panels, I would need to contact the council directly by emailing [email protected] as suggested in the content. Additionally, investigating permitted development rights for specific projects on the Planning Portal (<a rel=\"noopener\" href=\"https://www.planningportal.co.uk/info/200130/common-projects\"/>) may provide more insight."
+                                },
+                                {
+                                    "need": "I want to understand the steps I should take, who to contact, and the time it will take if I do need permission.",
+                                    "answer_quality": "The content provides some guidance for these needs.",
+                                    "confidence": "70%",
+                                    "reasoning": "While the specific process for solar panel installation isn't covered, the general guidelines given regarding finding out if planning permission is needed, applying for it, and seeking pre-application advice can be applicable. For more detailed information about steps to take when needing planning permission or building regulations approval, visiting <a rel=\"noopener\" href=\"https://www.planningportal.co.uk/info/200130/common-projects\"/> may be helpful.",
+                                    "next_actions": "For a clear understanding of the steps to take for solar panel installation, I would contact the council directly as previously suggested, by emailing [email@ Protection][email&nbsp;protected]. Additionally, seeking pre-application advice from the council can help clarify any specific procedures required."
+                                }
+                            ],
+                            "overall_assessment": "The content provides some insight into understanding if planning permission is needed and offers some guidance on common projects. However, it does not explicitly address solar panel installation or provide detailed steps for obtaining permits/regulations approval when necessary. A more comprehensive resource would better serve council residents seeking to install solar panels."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 11.836907863616943,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.cotswold.gov.uk/planning-and-building/planning-permission/find-out-if-you-need-planning-permission/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_215210-cotswold.gov.uk",
+                    "analysis_timestamp": "2025-08-10T21:53:19+01:00",
+                    "analysis_duration": 0.003,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.15,
+                            "tokens_consumed": 7813,
+                            "tokens_remaining": 22187,
+                            "token_utilization_percentage": 26.04,
+                            "average_tokens_per_step": 1302.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 73.96,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 17,
+                            "consumption_rate": 1302.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "60",
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 16.43,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.15,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_215210-cotswold.gov.uk",
+                        "start_time": "2025-08-10T21:52:10+01:00",
+                        "current_time": "2025-08-10T21:53:19+01:00",
+                        "duration_seconds": 69,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7813,
+                        "tokens_remaining": 22187,
+                        "token_utilization_percentage": 26.04,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3286,
+                                "avg_per_call": 1643
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 4527,
+                                "avg_per_call": 2263.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1302.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_215210-cotswold.gov.uk",
+                    "start_time": "2025-08-10T21:52:10+01:00",
+                    "current_time": "2025-08-10T21:53:19+01:00",
+                    "duration_seconds": 69,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7813,
+                    "tokens_remaining": 22187,
+                    "token_utilization_percentage": 26.04,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3286,
+                            "avg_per_call": 1643
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 4527,
+                            "avg_per_call": 2263.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1302.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

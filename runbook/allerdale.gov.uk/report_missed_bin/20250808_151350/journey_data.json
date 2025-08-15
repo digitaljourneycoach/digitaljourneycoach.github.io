@@ -1,0 +1,650 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T15:13:50+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "allerdale.gov.uk",
+                "Council Name": "Allerdale Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed bins | Cumberland Council",
+                        "link": "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning/waste-collections/missed-bins",
+                        "snippet": "You can report a missed bin to us within two working days. Sometimes things like roadworks, parked vehicles, flooded or icy roads or much more rubbish to\u00a0..."
+                    },
+                    {
+                        "title": "Bins, recycling and street cleaning | Cumberland Council",
+                        "link": "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning",
+                        "snippet": "Check your bin collection day, how to report a missed bin, what goes in your bins, how to order a new or replacement bin and how to get help if you can't put\u00a0..."
+                    },
+                    {
+                        "title": "Cumberland Council: Welcome to Cumberland",
+                        "link": "https://www.allerdale.gov.uk/",
+                        "snippet": "Bins, recycling and street cleaning \u00b7 Report a missed bin \u00b7 Order a replacement bin ; Benefits and financial help \u00b7 Housing Benefit \u00b7 Council Tax Reduction\u00a0..."
+                    },
+                    {
+                        "title": "Request new bins, a bin repair or replacement bins | Cumberland ...",
+                        "link": "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning/waste-collections/request-new-bins-bin-repair-or-replacement-bins",
+                        "snippet": "... bins and containers. You can also report if your bin is damaged. Order replacement bins or containers. If your bins, bags or box are lost or damaged, or if\u00a0..."
+                    },
+                    {
+                        "title": "Report a problem with a street or road | Cumberland Council",
+                        "link": "https://www.allerdale.gov.uk/parking-roads-and-transport/streets-roads-and-pavements/road-maintenance-closures-and-improvements/report-problem-street-or-road",
+                        "snippet": "Report problems with potholes, road damage, flooding and drainage, traffic lights, street lights, pedestrian crossings, trees, vegetation, bollards,\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning/waste-collections/missed-bins",
+                        "title": "Missed bins | Cumberland Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Directly related to the council customer's information needs for bin-related issues.",
+                            "This link provides a means of reporting missed bins within two working days."
+                        ],
+                        "reasoning": "The title and snippet clearly indicate that this resource is specifically about missed bins, which aligns with the given requirements. Additionally, the option to report a missed bin within specified time frames further increases its relevance for council customer information needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "5",
+                            "recommendations": "4"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed bins | Cumberland Council",
+                                "Source": "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning/waste-collections/missed-bins",
+                                "Key Strengths": [
+                                    "Directly related to the council customer's information needs for bin-related issues.",
+                                    "This link provides a means of reporting missed bins within two working days."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title and snippet clearly indicate that this resource is specifically about missed bins, which aligns with the given requirements. Additionally, the option to report a missed bin within specified time frames further increases its relevance for council customer information needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Bins, recycling and street cleaning | Cumberland Council",
+                                "Source": "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning",
+                                "Key Strengths": [
+                                    "Comprehensive information resource for various bin-related services provided by the council.",
+                                    "It includes useful details about collections days, recycling guidelines, bin orders, and assistance for those with difficulties disposing of waste."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While not directly related to specific information needs for missed bins, this link offers a more in-depth overview of the different bin services offered by Cumberland Council which is beneficial for council customers seeking additional information."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Request new bins, a bin repair or replacement bins | Cumberland ...",
+                                "Source": "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning/waste-collections/request-new-bins-bin-repair-or-replacement-bins",
+                                "Key Strengths": [
+                                    "Offers resources for ordering new bins or requesting repairs, addressing situations where bin loss or damage occurred.",
+                                    "The option to report damaged bins makes this page relevant in case customers have issues with their existing bins."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Although not specifically about missed bin reports, the provided link still offers valuable resources for customers who require new or repaired bins due to various situations such as damage or loss."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Cumberland Council: Welcome to Cumberland",
+                                "Source": "https://www.allerdale.gov.uk/",
+                                "Key Strengths": [
+                                    "Provides an entry point and overview of various services offered by the council, including bins, recycling, road maintenance, etc.",
+                                    "While not directly related to missed bin information, it can serve as a starting point for customers seeking comprehensive information about the council."
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "Though valuable for getting an overview of Cumberland Council's services, this link does not offer specific resources tailored to missed bins or their related issues. It remains a broad and general resource that might not be directly relevant to a user seeking information on missed bins."
+                            }
+                        ],
+                        "Analysis Notes": "While all sources offer some insights about the council's services, only selected links are directly related to missed bin information and the specific needs of council customers. It's advisable for users to explore other available options from the provided list as well for a more comprehensive understanding.",
+                        "Recommendations Notes": "The top recommendations prioritize resources that directly address the needs of users seeking information on missed bins, making it easier for them to find appropriate solutions and contact the council when necessary."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "70",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 73.75,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Missed bins | Cumberland Council",
+                            "Source": "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning/waste-collections/missed-bins",
+                            "Reasoning": "The title and snippet clearly indicate that this resource is specifically about missed bins, which aligns with the given requirements. Additionally, the option to report a missed bin within specified time frames further increases its relevance for council customer information needs.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Bins, recycling and street cleaning | Cumberland Council",
+                            "Source": "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning",
+                            "Reasoning": "While not directly related to specific information needs for missed bins, this link offers a more in-depth overview of the different bin services offered by Cumberland Council which is beneficial for council customers seeking additional information.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Request new bins, a bin repair or replacement bins | Cumberland ...",
+                            "Source": "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning/waste-collections/request-new-bins-bin-repair-or-replacement-bins",
+                            "Reasoning": "Although not specifically about missed bin information, the provided link still offers valuable resources for customers who require new or repaired bins due to various situations such as damage or loss.",
+                            "Confidence": "70"
+                        }
+                    ],
+                    "max_selections": 3,
+                    "min_confidence": 0.6,
+                    "has_recommendations": true
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning/waste-collections/missed-bins"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning/waste-collections/missed-bins",
+                        "analysis": {
+                            "url": "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning/waste-collections/missed-bins",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T15:13:50+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T15:14:25+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 60093,
+                            "response_time": 0.623,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.623s)",
+                                    "Content successfully retrieved (60093 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.6253550052642822,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning/waste-collections/missed-bins"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning/waste-collections/missed-bins",
+                        "content": " Here is the cleaned-up HTML:\n\n```html\n<article class=\"localgov-services-page node node--type-localgov-services-page node--with-restricted-width node--view-mode-full signposting\">\n  <div>\n    <div class=\"node__restricted-width-section\">\n      <div class=\"localgov-services-page__content node__content\">\n        <!-- Reporting a missed bin -->\n        <div class=\"field field--name-body field--type-text-with-summary field--label-hidden field__item\">\n          <h2>Reporting a missed bin</h2>\n          <p>If your bin has not been collected you can report a missed bin to us within two working days.</p>\n          <p class=\"inset-text\">Sometimes things like roadworks, parked vehicles, flooded or icy roads or much more rubbish to collect than usual might stop us from collecting your bin.</p>\n          <ul>\n            <li>it was put out on the right day, <a href=\"/bins-recycling-and-street-cleaning/waste-collections/check-your-collection-dates-your-waste-and-recycling\" data-entity-type=\"node\" data-entity-uuid=\"2f85b8c8-fedc-41d5-ae8b-060f3828eae2\" data-entity-substitution=\"canonical\" title=\"Check your collection dates for your waste and recycling\">find your bin collection day</a></li>\n            <li>your neighbours' bins have been collected</li>\n            <li>it was placed at the kerbside and could be clearly seen</li>\n            <li>it contained the correct items, <a href=\"/bins-recycling-and-street-cleaning/waste-collections/what-goes-which-bin\" data-entity-type=\"node\" data-entity-uuid=\"be4bd48c-1877-4ed3-a365-9e1df2a5cd88\" data-entity-substitution=\"canonical\" title=\"What goes in which bin\">check what goes in each bin</a></li>\n            <li>if the crew has put a sticker on your bin explaining why it was not emptied</li>\n            <li>that the lid was closed.</li>\n            <li>If the bin is so full that the bin lid does not close properly it will not be collected</li>\n          </ul>\n          <p>We will aim to collect all waste (general and garden) and recycling on the scheduled day of collection. However, sometimes we are unable to make collections due to vehicle breakdown, access issues or weather conditions.</p>\n          <p>We will not return for one-off missed bins. However, if a street or large number of properties have been missed (or if there has been an access issue) a vehicle will return as soon as practically possible. We will not take excess garden waste.</p>\n          <p>If we are unable to return, and you have reported the missed collection, we may take up to four bags of excess general waste or excess recycling in two separate cardboard boxes (plastic, cans and glass in one, and paper and cardboard in the other) on the next collection.</p>\n        </div>\n        <!-- Signposting links -->\n        <div class=\"signposting-links\">\n          <p>Select your local area for more information:</p>\n          <p><a class=\"lgd-action-link\" aria-label=\"Allerdale \" data-area=\"allerdale\" href=\"https://abc-wrp.whitespacews.com/\">Allerdale</a></p>\n          <p><a class=\"lgd-action-link\" aria-label=\"Carlisle \" data-area=\"carlisle\" href=\"https://onlineservices.carlisle.gov.uk/sforms/WASTE_SERVICES_ENQUIRY.eb?ebd=0&amp;ebp=10&amp;ebz=1_1678701780535\">Carlisle</a></p>\n          <p><a class=\"lgd-action-link\" aria-label=\"Copeland \" data-area=\"copeland\" href=\"https://central.digital.cumberland.gov.uk/w/webpage/new-case-log-link?service=missed_bin_collection&amp;council=cumberland\">Copeland</a></p>\n        </div>\n        <!-- Signposting Finder -->\n        <div class=\"js-toggle-container signposting-finder inactive\">\n          <div class=\"disclosure-toggle\">\n            <button aria-expanded=\"false\" aria-controls=\"area-finder\" class=\"js-toggle-disclosure btn-disclosure\">\n              <svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 448 512\" fill=\"#2F837B\" alt=\"\"><path d=\"M246.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-9.2-9.2-22.9-11.9-34.9-6.9s-19.8 16.6-19.8 29.6l0 256c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l128-128z\"></path></svg>\n              Enter a postcode to find your local area\n            </button>\n          </div>\n          <div class=\"js-toggle__target inactive area-finder\" id=\"area-finder\">\n            <!-- Location Finder -->\n            <!-- ... -->\n          </div>\n        </div>\n        <!-- Signposting Notice -->\n        <div class=\"signposting-notice\">\n          <h2 class=\"h4\">Why you're going to a different website</h2>\n          <p>As a new council we are in the process of adding information to this website. To give you the information you need some pages will link back to the old council websites.</p>\n          <p><a href=\"/your-council/about-council-changes\">About the council changes</a></p>\n        </div>\n      </div>\n    </div>\n  </div>\n</article>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 34.29594612121582,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning/waste-collections/missed-bins",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "High",
+                                    "confidence": "85%",
+                                    "reasoning": "The content clearly explains how to report a missed bin within two working days and lists the criteria for collection, such as the bin being put out on the right day, neighbours' bins having been collected, the bin being placed at the kerbside and could be clearly seen, containing the correct items, no sticker explaining why it was not emptied, the lid being closed, and the bin not being too full. The content also provides information about when a vehicle will return to collect missed bins.",
+                                    "next_actions": "I would report the missed bin through the provided link or process based on the local area I reside in."
+                                }
+                            ],
+                            "overall_assessment": "The content meets my needs as it clearly explains how to report a missed bin and the criteria for collection. However, there are no explicit instructions on how to actually report a missed bin, nor does it provide information about the expected time frame for a response or collection."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.721450090408325,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.allerdale.gov.uk/bins-recycling-and-street-cleaning/waste-collections/missed-bins"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_151350-allerdale.gov.uk",
+                    "analysis_timestamp": "2025-08-08T15:15:07+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.2833333333333334,
+                            "tokens_consumed": 8135,
+                            "tokens_remaining": 21865,
+                            "token_utilization_percentage": 27.12,
+                            "average_tokens_per_step": 1355.83
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 72.88,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 16,
+                            "consumption_rate": 1355.83,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "85",
+                            "quality_scores": [
+                                "85"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "85",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 18.33,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.2833333333333334,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_151350-allerdale.gov.uk",
+                        "start_time": "2025-08-08T15:13:50+01:00",
+                        "current_time": "2025-08-08T15:15:07+01:00",
+                        "duration_seconds": 77,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 8135,
+                        "tokens_remaining": 21865,
+                        "token_utilization_percentage": 27.12,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 4391,
+                                "avg_per_call": 2195.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3744,
+                                "avg_per_call": 1872
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1355.83
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_151350-allerdale.gov.uk",
+                    "start_time": "2025-08-08T15:13:50+01:00",
+                    "current_time": "2025-08-08T15:15:07+01:00",
+                    "duration_seconds": 77,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 8135,
+                    "tokens_remaining": 21865,
+                    "token_utilization_percentage": 27.12,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 4391,
+                            "avg_per_call": 2195.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3744,
+                            "avg_per_call": 1872
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1355.83
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

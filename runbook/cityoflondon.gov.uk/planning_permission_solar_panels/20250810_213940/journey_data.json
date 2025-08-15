@@ -1,0 +1,634 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T21:39:40+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "cityoflondon.gov.uk",
+                "Council Name": "City of London Corporation"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Solar Glare - Planning Advice Note | City of London",
+                        "link": "https://www.cityoflondon.gov.uk/assets/Services-Environment/solar-glare-planning-advice-note.pdf",
+                        "snippet": "Photos are copyrighted to Paul Littlefair and should not be reproduced without permission. ... Photovoltaic panels tend to cause less glare because they are\u00a0..."
+                    },
+                    {
+                        "title": "CORPORATION of LONDON",
+                        "link": "https://democracy.cityoflondon.gov.uk/documents/s200567/2024-03-25%20Mon%2025%20Mar%202024.pdf",
+                        "snippet": "Apr 9, 2024 ... and Solar Panels; (vii) the installation of new insulation ... planning permission. 23/00072/FULL dated. 21/03/2023. 11/01/2024 HSBC."
+                    },
+                    {
+                        "title": "(Public Pack)INFORMATION PACK Agenda Supplement for ...",
+                        "link": "https://democracy.cityoflondon.gov.uk/documents/b81168/INFORMATION%20PACK%2020th-Nov-2023%2013.00%20Planning%20Applications%20Sub-Committee.pdf?T=9",
+                        "snippet": "Nov 20, 2023 ... 8(h) of planning permission. 19/01338/FULL dated. 03.06.2021. 02/08 ... solar shading panels to the rear elevation; (iii) details of the\u00a0..."
+                    },
+                    {
+                        "title": "Planning Applications Sub-Committee INFORMATION PACK",
+                        "link": "https://democracy.cityoflondon.gov.uk/documents/b81908/INFORMATION%20PACK%2009th-Apr-2024%2010.30%20Planning%20Applications%20Sub-Committee.pdf?T=9",
+                        "snippet": "Apr 9, 2024 ... and Solar Panels; (vii) the installation of new insulation;. (viii) ... planning permission 4165EA dated 25th July 2000. Condition Number\u00a0..."
+                    },
+                    {
+                        "title": "Planning Applications Sub-Committee INFORMATION PACK",
+                        "link": "https://democracy.cityoflondon.gov.uk/documents/b83918/Information+Pack+31st-Jan-2025+10.30+Planning+Applications+Sub-Committee.pdf?T=9",
+                        "snippet": "Jan 31, 2025 ... photovoltaic panels; and details, samples and particulars of ... 12 of planning permission. 23/01287/FULL dated. 11/06/2024. Approved. 31\u00a0..."
+                    },
+                    {
+                        "title": "CORPORATION of LONDON",
+                        "link": "https://democracy.cityoflondon.gov.uk/documents/s214151/15-01-2025%20-%20SQL%201.pdf",
+                        "snippet": "Jan 15, 2025 ... Photovoltaic Panels on the roof of the building. Prior. Approval ... planning permission. 20/00460/FULL dated. 23/12/2020. Approved. 06/01\u00a0..."
+                    },
+                    {
+                        "title": "CORPORATION of LONDON",
+                        "link": "https://democracy.cityoflondon.gov.uk/documents/s211856/06-12-2024%20-%20SQL%20002%201.pdf",
+                        "snippet": "Dec 6, 2024 ... and solar hot water panels and their positioning on East Wing ... Planning Act 1990 to planning permission 23/01287/FULL (dated. 12.06."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://democracy.cityoflondon.gov.uk/documents/s16023/52-54%20Lime%20Street%20EC3.pdf",
+                        "snippet": "Jan 15, 2013 ... \"Planning Law requires that applications for planning permission must be ... for the installation of photovoltaic panels where they would\u00a0..."
+                    },
+                    {
+                        "title": "CORPORATION of LONDON",
+                        "link": "https://democracy.cityoflondon.gov.uk/documents/s214150/2025-01-15%20Wed%2015%20Jan%202025%201.pdf",
+                        "snippet": "Jan 31, 2025 ... planning permission. 21/01065/FULL dated 14/06/2022. 12/12/2024 ... photovoltaic panels; and details, samples and particulars of."
+                    },
+                    {
+                        "title": "Planning and Transportation 1 February 2022 Subject: 61 - 65 ...",
+                        "link": "https://democracy.cityoflondon.gov.uk/documents/s165513/Item%204%20-%2021-00781-FULMAJ%20COMMITTEE%20REPORT.pdf",
+                        "snippet": "Feb 1, 2022 ... Planning permission is now sought for the redevelopment of the site for a new. 58.66m (AOD) high building comprising student accommodation and."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://democracy.cityoflondon.gov.uk/documents/b81168/INFORMATION%20PACK%2020th-Nov-2023%2013.00%20Planning%20Applications%20Sub-Committee.pdf?T=9",
+                        "title": "(Public Pack)INFORMATION PACK Agenda Supplement for ...",
+                        "confidence": 85,
+                        "strengths": [
+                            "Contains detailed planning information pack agenda supplement",
+                            "Includes planning applications related to solar panels and details about shading, installation, and positioning"
+                        ],
+                        "reasoning": "This document appears to provide a comprehensive overview of planning applications that pertain to the installation of various forms of solar panels (e.g., photovoltaic) with details about associated features such as their positioning.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "(Public Pack)INFORMATION PACK Agenda Supplement for ...",
+                                "Source": "https://democracy.cityoflondon.gov.uk/documents/b81168/INFORMATION%20PACK%2020th-Nov-2023%2013.00%20Planning%20Applications%20Sub-Committee.pdf?T=9",
+                                "Key Strengths": [
+                                    "Contains detailed planning information pack agenda supplement",
+                                    "Includes planning applications related to solar panels and details about shading, installation, and positioning"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This document appears to provide a comprehensive overview of planning applications that pertain to the installation of various forms of solar panels (e.g., photovoltaic) with details about associated features such as their positioning."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Planning Applications Sub-Committee INFORMATION PACK",
+                                "Source": "https://democracy.cityoflondon.gov.uk/documents/b81908/INFORMATION%20PACK%2009th-Apr-2024%2010.30%20Planning%20Applications%20Sub-Committee.pdf?T=9",
+                                "Key Strengths": [
+                                    "Provides detailed planning information pack for a subcommittee meeting on April 2024",
+                                    "Contains applications related to solar panels and their installation"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This document appears to offer thorough planning details pertinent to a subcommittee meeting in April 2024, featuring several proposed projects with solar panel installations."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Planning Applications Sub-Committee INFORMATION PACK",
+                                "Source": "https://democracy.cityoflondon.gov.uk/documents/b83918/Information+Pack+31st-Jan-2025+10.30+Planning+Applications+Sub-Committee.pdf?T=9",
+                                "Key Strengths": [
+                                    "Contains information pack for a January 2025 subcommittee meeting",
+                                    "Includes details about photovoltaic panel installation applications"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This document includes a planning information pack pertinent to an upcoming meeting in January 2025 that provides insights into various solar panel-related projects, such as those involving photovoltaic panels."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "CORPORATION of LONDON",
+                                "Source": "https://democracy.cityoflondon.gov.uk/documents/s214151/15-01-2025%20-%20SQL%201.pdf",
+                                "Key Strengths": [
+                                    "Covers an application for planning permission seeking to install photovoltaic panels on a building",
+                                    "Addresses approval, previous applications, and relevant dates"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This document appears to outline a request for planning permission to install photovoltaic panels atop a building along with pertinent information about the application's history, approval status, and various dates."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Untitled",
+                                "Source": "https://democracy.cityoflondon.gov.uk/documents/s16023/52-54%20Lime%20Street%20EC3.pdf",
+                                "Key Strengths": [
+                                    "Pertains to an application for planning permission concerning the installation of photovoltaic panels",
+                                    "Refers to requirements laid out by Planning Law"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "This document appears to reference a request for planning permission related to the installation of photovoltaic panels and cites relevant guidelines in Planning Law."
+                            }
+                        ],
+                        "Analysis Notes": [
+                            "The search results yielded 10 links, but not all contained detailed information regarding customer requests for council council customer information about solar panels. However, items 1-6 were chosen because they provided the most comprehensive information related to planning applications, approvals, and projects specific to solar panel installations.",
+                            "Items 7-10 were not recommended due to their lack of specificity towards solar panel projects."
+                        ],
+                        "Recommendations Notes": [
+                            "These recommendations focus on documents that provide detailed accounts of council planning permission procedures, applications, and relevant approvals for a variety of solar panel installations in the City of London area.",
+                            "The provided search results reveal a rich resource of valuable information for individuals seeking guidance when pursuing projects related to solar panels in their properties."
+                        ]
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70",
+                        "65"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 75,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "(Public Pack) INFORMATION PACK Agenda Supplement for ...",
+                            "Source": "https://democracy.cityoflondon.gov.uk/documents/b81168/INFORMATION%20PACK%2020th-Nov-2023%2013.00%20Planning%20Applications%20Sub-Committee.pdf?T=9",
+                            "Reasoning": "This document appears to provide a comprehensive overview of planning applications that pertain to the installation of various forms of solar panels (e.g., photovoltaic) with details about associated features such as their positioning.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "(Public Pack) Planning Applications Sub-Committee agenda for ...",
+                            "Source": "https://democracy.cityoflondon.gov.uk/documents/b83918/Information+Pack+31st-Jan-2025+10.30+Planning+Applications+Sub-Committee.pdf?T=9",
+                            "Reasoning": "This document includes a planning information pack pertinent to an upcoming meeting in January 2025 that provides insights into various solar panel-related projects, such as those involving photovoltaic panels.",
+                            "Confidence": "75"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "Planning Applications Sub-Committee INFORMATION PACK",
+                            "Source": "https://democracy.cityoflondon.gov.uk/documents/b81908/INFORMATION%20PACK%2009th-Apr-2024%2010.30%20Planning%20Applications%20Sub-Committee.pdf?T=9",
+                            "Reasoning": "This document appears to offer thorough planning details pertinent to a subcommittee meeting in April 2024, featuring several proposed projects with solar panel installations.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://democracy.cityoflondon.gov.uk/documents/b81168/INFORMATION%20PACK%2020th-Nov-2023%2013.00%20Planning%20Applications%20Sub-Committee.pdf?T=9"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://democracy.cityoflondon.gov.uk/documents/b81168/INFORMATION%20PACK%2020th-Nov-2023%2013.00%20Planning%20Applications%20Sub-Committee.pdf?T=9",
+                        "analysis": {
+                            "url": "https://democracy.cityoflondon.gov.uk/documents/b81168/INFORMATION%20PACK%2020th-Nov-2023%2013.00%20Planning%20Applications%20Sub-Committee.pdf?T=9",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T21:39:40+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T21:40:16+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": false,
+                            "http_status": null,
+                            "content_type": null,
+                            "content_length": 0,
+                            "response_time": 0,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 10,
+                                "max_score": 100,
+                                "issues": [
+                                    "No HTTP response received",
+                                    "No content retrieved"
+                                ],
+                                "strengths": [
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": null
+                            },
+                            "accessibility_assessment": {
+                                "score": 0,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": null,
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "investigate",
+                                "confidence": 50,
+                                "reason": "Analysis incomplete",
+                                "overall_score": 24,
+                                "component_scores": {
+                                    "technical": 10,
+                                    "accessibility": 0,
+                                    "match": 50
+                                },
+                                "next_steps": [],
+                                "alternatives_needed": false
+                            },
+                            "fetch_error": "Failed to fetch URL: cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://democracy.cityoflondon.gov.uk/documents/b81168/INFORMATION%20PACK%2020th-Nov-2023%2013.00%20Planning%20Applications%20Sub-Committee.pdf?T=9"
+                        },
+                        "processing_time": 0.1290590763092041,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [],
+                "content_types": [],
+                "retrieved_content": []
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analysis_skipped"
+            },
+            "output_data": {
+                "action": "content_analysis_skipped",
+                "reason": "no_retrieved_content",
+                "tokens_used": 25,
+                "metadata": {
+                    "next_state": "journey_decision",
+                    "step_skipped": true
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "next_state": "journey_decision",
+                "step_skipped": true
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_213940-cityoflondon.gov.uk",
+                    "analysis_timestamp": "2025-08-10T21:40:16+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6,
+                            "tokens_consumed": 2332,
+                            "tokens_remaining": 27668,
+                            "token_utilization_percentage": 7.77,
+                            "average_tokens_per_step": 388.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 92.23,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 71,
+                            "consumption_rate": 388.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "no_content_data": true
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 8.57,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_213940-cityoflondon.gov.uk",
+                        "start_time": "2025-08-10T21:39:40+01:00",
+                        "current_time": "2025-08-10T21:40:16+01:00",
+                        "duration_seconds": 36,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 2332,
+                        "tokens_remaining": 27668,
+                        "token_utilization_percentage": 7.77,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 2332,
+                                "avg_per_call": 1166
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 388.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_213940-cityoflondon.gov.uk",
+                    "start_time": "2025-08-10T21:39:40+01:00",
+                    "current_time": "2025-08-10T21:40:16+01:00",
+                    "duration_seconds": 36,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 2332,
+                    "tokens_remaining": 27668,
+                    "token_utilization_percentage": 7.77,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 2332,
+                            "avg_per_call": 1166
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 388.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

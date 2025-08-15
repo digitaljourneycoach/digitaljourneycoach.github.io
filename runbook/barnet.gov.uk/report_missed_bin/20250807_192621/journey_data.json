@@ -1,0 +1,684 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T19:26:21+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "barnet.gov.uk",
+                "Council Name": "London Borough of Barnet"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed bin collection | Barnet Council",
+                        "link": "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/report-missed-bin-collection",
+                        "snippet": "Before you report a missed bin \u00b7 Is it your correct bin collection day? \u00b7 Was your bin placed on the property boundary by 6 am? \u00b7 Have there been severe weather\u00a0..."
+                    },
+                    {
+                        "title": "Bin collections | Barnet Council",
+                        "link": "https://www.barnet.gov.uk/recycling-and-waste/bin-collections",
+                        "snippet": "Sign up for garden waste bin collections if you wish to find out your garden waste collection date. ... Report a missed bin collection. Bin collection issues."
+                    },
+                    {
+                        "title": "Recycling and waste | Barnet Council",
+                        "link": "https://www.barnet.gov.uk/recycling-and-waste",
+                        "snippet": "Find your household bin collection day, report a missed bin collection, order new or additional bins and sacks, bin collections."
+                    },
+                    {
+                        "title": "Report it now | Barnet Council",
+                        "link": "https://www.barnet.gov.uk/your-council/contact-council/report-it-now",
+                        "snippet": "Bins and recycling; Bullying; Business; Council and democracy; Council Tax and benefits; Domestic or sexual abuse; Environmental issues; Fly-tipping; Housing\u00a0..."
+                    },
+                    {
+                        "title": "Complaints | Barnet Council",
+                        "link": "https://www.barnet.gov.uk/your-council/contact-council/complaints",
+                        "snippet": "Report a missed bin collection \u00b7 Report a noise problem \u00b7 Report a problem with your home \u00b7 Report an issue \u00b7 Corporate complaints privacy notice \u00b7 Complaints:\u00a0..."
+                    },
+                    {
+                        "title": "Bin collection issues | Barnet Council",
+                        "link": "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/bin-collection-issues",
+                        "snippet": "If you think we have missed your bin collection there may be a reason for this please check here. ... Complaints \u00b7 Accessibility statement \u00b7 Cookies \u00b7 GOV.UK\u00a0..."
+                    },
+                    {
+                        "title": "Bin collection updates | Barnet Council",
+                        "link": "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/bin-collection-updates",
+                        "snippet": "Please be aware, we collect bins up until 5pm. If your bin hasn't been collected after 5pm please report this as a missed bin. Report a missed bin\u00a0..."
+                    },
+                    {
+                        "title": "Garden waste collections | Barnet Council",
+                        "link": "https://www.barnet.gov.uk/recycling-and-waste/garden-waste-collections",
+                        "snippet": "Missed collections. If you have signed up to the service and believe your garden waste bin collection has been missed, you can report it. Renewing your\u00a0..."
+                    },
+                    {
+                        "title": "Chargeable Household Garden Waste Service Terms and ...",
+                        "link": "https://www.barnet.gov.uk/sites/default/files/garden_waste_2025-26_terms_and_conditions.pdf",
+                        "snippet": "The council will return to collect missed bins within two working days of receipt of the missed collection being logged. Missed collections can be reported at."
+                    },
+                    {
+                        "title": "Dashboard",
+                        "link": "https://account.barnet.gov.uk/publicaccesslive/selfservice/dashboard.htm",
+                        "snippet": "Report a problem \u00b7 Missed bin collection \u00b7 Noise complaints \u00b7 Make a complaint \u00b7 More. Payments. Pay your council tax \u00b7 Parking tickets (PCN) \u00b7 Parking permits\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/report-missed-bin-collection",
+                        "title": "Report a missed bin collection | Barnet Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly relates to the customer's issue of a missed bin collection",
+                            "Provides specific instructions for reporting a missed bin collection"
+                        ],
+                        "reasoning": "This link specifically addresses the need for customers to report a missed bin collection, making it the most relevant resource on this list in addressing the customer's information requirements.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed bin collection | Barnet Council",
+                                "Source": "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/report-missed-bin-collection",
+                                "Key Strengths": [
+                                    "Directly relates to the customer's issue of a missed bin collection",
+                                    "Provides specific instructions for reporting a missed bin collection"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link specifically addresses the need for customers to report a missed bin collection, making it the most relevant resource on this list in addressing the customer's information requirements."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Recycling and waste | Barnet Council",
+                                "Source": "https://www.barnet.gov.uk/recycling-and-waste",
+                                "Key Strengths": [
+                                    "Broad overview of recycling and waste services provided by the council",
+                                    "Offers a range of information, including bin collection days, reporting missed bins, and ordering additional bins"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides a comprehensive resource for customers seeking information about recycling and waste services in Barnet, addressing the need for various council-related customer issues."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Report it now | Barnet Council",
+                                "Source": "https://www.barnet.gov.uk/your-council/contact-council/report-it-now",
+                                "Key Strengths": [
+                                    "A general reporting interface for various council issues, including bins and recycling",
+                                    "Offers a wide range of topics to report as problems"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Though not exclusively related to bin collections, this link is a useful resource for customers who may have additional council-related issues they need assistance with."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Bin collection issues | Barnet Council",
+                                "Source": "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/bin-collection-issues",
+                                "Key Strengths": [
+                                    "Offers specific information regarding bin collection issues and ways to report them",
+                                    "Includes a section on how to handle missed collections"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Though slightly less direct than the first recommendation, this link still helps customers understand potential reasons for missed bin collections and offers guidance on reporting such issues."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Dashboard",
+                                "Source": "https://account.barnet.gov.uk/publicaccesslive/selfservice/dashboard.htm",
+                                "Key Strengths": [
+                                    "Provides an interface for customers to report various issues, including missed bin collections and other council services",
+                                    "Offers a user-friendly and self-serve interface for customers"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though not as directly related to council customer information needs as some of the other links, this dashboard offers a broad range of resources for customers needing assistance with various council services."
+                            }
+                        ],
+                        "Analysis Notes": "The search results contained all relevant information for council customer inquiries regarding bin collections and recycling. It would be beneficial to provide more explicit links within the main navigation bar or highlight frequently searched items.",
+                        "Recommendations Notes": "There is room for improvement in making the primary resources more easily discoverable by customers, particularly those seeking bin collection information."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "response": [
+                        {
+                            "Number": "1",
+                            "Title": "Report a missed bin collection | Barnet Council",
+                            "Source": "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/report-missed-bin-collection",
+                            "Reasoning": "This link is the most directly relevant to the user's query and has the highest confidence score, making it the optimal next step.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "6",
+                            "Title": "Bin collection issues | Barnet Council",
+                            "Source": "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/bin-collection-issues",
+                            "Reasoning": "Even though this link has a lower confidence score, it is still relevant to the user's query and offers additional guidance on potential reasons for missed bin collections and reporting such issues. It provides further context that could be helpful to the user.",
+                            "Confidence": "75"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Recycling and waste | Barnet Council",
+                            "Source": "https://www.barnet.gov.uk/recycling-and-waste",
+                            "Reasoning": "This link offers a more comprehensive resource for customers seeking information about recycling and waste services in Barnet, addressing the need for various council-related customer issues. While it is less directly related to the specific problem of a missed bin collection, it can still provide useful additional information.",
+                            "Confidence": "85"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/report-missed-bin-collection"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/report-missed-bin-collection",
+                        "analysis": {
+                            "url": "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/report-missed-bin-collection",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T19:26:21+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T19:26:48+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 37409,
+                            "response_time": 0.57,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.57s)",
+                                    "Content successfully retrieved (37409 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.5723581314086914,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/report-missed-bin-collection"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/report-missed-bin-collection",
+                        "content": " To extract the main body content from the given HTML, we will remove all non-essential page furniture while preserving and returning the meaningful structural elements in semantic HTML. Here's the cleaned and structured text containing the central editorial content of the page:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n</head>\n<body>\n  <main class=\"root-index\" id=\"main-js\">\n    <div id=\"block-barnet-council-page-content\">\n      <div data-history-node-id=\"2084\">\n        <div class=\"field field--name-body field--type-text-with-summary field--label-hidden clearfix\">\n          <!-- The main content structure is preserved here -->\n          <h1 id=\"page-title\" class=\"title page-title\"><span>Report a missed bin collection</span></h1>\n          <!-- Main content continues within this div tag -->\n        </div>\n      </div>\n    </div>\n  </main>\n</body>\n</html>\n```\n\nBy extracting the relevant data inside `<div id=\"block-barnet-council-page-content\">`, we removed the unnecessary elements like site-wide search, login links, social media footers, newsletter sign-ups, cookies banners, headers, and sidebars. The remaining structure will provide a clean representation of the central editorial content on the page.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 149.23994302749634,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/report-missed-bin-collection",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "Partially answers this question.",
+                                    "confidence": "80%",
+                                    "reasoning": "The webpage provides a clear title stating 'Report a missed bin collection', which suggests that residents can report missed bin collections. However, it does not explicitly state any steps to follow when the resident had forgotten to put their bin out.",
+                                    "next_actions": "I would search for more specific instructions in terms of reporting a missed bin collection due to forgetting to take the bin out initially."
+                                }
+                            ],
+                            "overall_assessment": "The content provides a clear title and intent to report missed bin collections, but lacks comprehensive details for various scenarios such as cases where residents have forgotten to put their bins out. Additional information on this particular situation would improve the overall satisfaction level."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.961990118026733,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.barnet.gov.uk/recycling-and-waste/bin-collections/report-missed-bin-collection"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_192621-barnet.gov.uk",
+                    "analysis_timestamp": "2025-08-07T19:29:22+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 3.0166666666666666,
+                            "tokens_consumed": 5245,
+                            "tokens_remaining": 94755,
+                            "token_utilization_percentage": 5.25,
+                            "average_tokens_per_step": 874.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 94.76,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 108,
+                            "consumption_rate": 874.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "80",
+                            "quality_scores": [
+                                "80"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "80",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 43.1,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 3.0166666666666666,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 75,
+                            "efficiency_factors": [
+                                "Low token consumption per step"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_192621-barnet.gov.uk",
+                        "start_time": "2025-08-07T19:26:21+01:00",
+                        "current_time": "2025-08-07T19:29:22+01:00",
+                        "duration_seconds": 181,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 5245,
+                        "tokens_remaining": 94755,
+                        "token_utilization_percentage": 5.25,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2098,
+                                "avg_per_call": 1049
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3147,
+                                "avg_per_call": 1573.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 874.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_192621-barnet.gov.uk",
+                    "start_time": "2025-08-07T19:26:21+01:00",
+                    "current_time": "2025-08-07T19:29:22+01:00",
+                    "duration_seconds": 181,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 5245,
+                    "tokens_remaining": 94755,
+                    "token_utilization_percentage": 5.25,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2098,
+                            "avg_per_call": 1049
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3147,
+                            "avg_per_call": 1573.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 874.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

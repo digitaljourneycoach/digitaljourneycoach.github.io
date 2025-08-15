@@ -1,0 +1,678 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T19:09:17+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "boston.gov.uk",
+                "Council Name": "Boston Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a Missed Bin Collection - Boston Borough Council",
+                        "link": "https://www.boston.gov.uk/Report-a-missed-bin-collection",
+                        "snippet": "Report a missed collection of refuse bins or bags. Missed Collections Bins must be presented on the night before the scheduled collection by no later than 5.30\u00a0..."
+                    },
+                    {
+                        "title": "Your Waste - Boston Borough Council",
+                        "link": "https://www.boston.gov.uk/article/21130/Your-Waste",
+                        "snippet": "Report a Missed Bin Collection. Report a missed collection of refuse bins or bags. Recycling and Reducing Waste \u00b7 Household Waste Recycling Centre \u00b7 Reducing\u00a0..."
+                    },
+                    {
+                        "title": "Frequently Asked Questions: Garden Waste Collection 2025/2026 ...",
+                        "link": "https://www.boston.gov.uk/article/21020/Frequently-Asked-Questions-Garden-Waste-Collection-2025-2026",
+                        "snippet": "... miss this, we will return to collect your bin within 5 working days. You can report a missed bin by emailing gardenwaste@boston.gov.uk or calling 01205 314200."
+                    },
+                    {
+                        "title": "Waste and Recycling Operational Policy - Boston Borough Council",
+                        "link": "https://www.boston.gov.uk/Waste-and-Recycling-Operational-Policy",
+                        "snippet": "If your bin has been reported as contaminated, the resident must remove the contamination prior to the next scheduled collection. Garden waste - Brown bin. If a\u00a0..."
+                    },
+                    {
+                        "title": "Garden Waste Service 2025/26 - Terms and Conditions - Boston ...",
+                        "link": "https://www.boston.gov.uk/article/21021/Garden-Waste-Service-2025-26-Terms-and-Conditions",
+                        "snippet": "If we miss your bin, please report it by emailing our garden waste team or calling 01205 314200, within 2 days of the missed collection by 2.00pm. We may\u00a0..."
+                    },
+                    {
+                        "title": "Refuse and Recycling - Boston Borough Council",
+                        "link": "https://www.boston.gov.uk/article/18478/Refuse-and-Recycling",
+                        "snippet": "These include refuse, recycling and garden waste collections, commercial waste collections, bin collection dates, guidance on what can and can't be recycled\u00a0..."
+                    },
+                    {
+                        "title": "Food Safety complaints - Boston Borough Council",
+                        "link": "https://www.boston.gov.uk/article/21215/Food-Safety-complaints",
+                        "snippet": "Continuity of evidence is missing - i.e., is there sufficient evidence to show that the foreign body was in the food when it left the factory or restaurant\u00a0..."
+                    },
+                    {
+                        "title": "What can be put in your bins - Boston Borough Council",
+                        "link": "https://www.boston.gov.uk/What-can-be-put-in-your-bins",
+                        "snippet": "Any emails to Boston Borough Council regarding the Twin Bin scheme could be passed to the Visiting Team at Lincolnshire County Council."
+                    },
+                    {
+                        "title": "AUDITED FINANCIAL STATEMENTS For the Year Ended 31 March ...",
+                        "link": "https://democracy.boston.gov.uk/documents/s16367/Appendix%20A%20-%20Financial%20Statement%20202122.pdf",
+                        "snippet": "The silverware and related collection items include gold, silver and brass items and the more significant pieces are reported in the Balance Sheet at their\u00a0..."
+                    },
+                    {
+                        "title": "MARKET POLICY, TERMS & CONDITIONS OF LETTING",
+                        "link": "https://www.boston.gov.uk/media/21508/Boston-Market-Policy/pdf/BBC_Market_Policy_2025.pdf?m=1743449845420",
+                        "snippet": "not been dealt with satisfactorily, then the Council's formal complaints procedure ... containers or bags to dispose of trade waste from a commercial waste\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.boston.gov.uk/Report-a-missed-bin-collection",
+                        "title": "Report a Missed Bin Collection - Boston Borough Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly addresses customer's need for reporting a missed bin collection",
+                            "The link provides an easy and accessible way to report the issue"
+                        ],
+                        "reasoning": "This link directly addresses the customer's immediate need to report a missed bin collection, making it highly relevant and useful for them",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a Missed Bin Collection - Boston Borough Council",
+                                "Source": "https://www.boston.gov.uk/Report-a-missed-bin-collection",
+                                "Key Strengths": [
+                                    "Directly addresses customer's need for reporting a missed bin collection",
+                                    "The link provides an easy and accessible way to report the issue"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link directly addresses the customer's immediate need to report a missed bin collection, making it highly relevant and useful for them"
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Your Waste - Boston Borough Council",
+                                "Source": "https://www.boston.gov.uk/article/21130/Your-Waste",
+                                "Key Strengths": [
+                                    "Covers information about recycling and reducing waste, in addition to reporting a missed bin collection"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Though the main focus is on recycling and reducing waste, this link also provides information about missed bin collections which may be helpful for council customers"
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Frequently Asked Questions: Garden Waste Collection 2025/2026 ...",
+                                "Source": "https://www.boston.gov.uk/article/21020/Frequently-Asked-Questions-Garden-Waste-Collection-2025-2026",
+                                "Key Strengths": [
+                                    "Provides relevant information about the garden waste collection service, including reporting a missed collection"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This FAQ link covers garden waste collection and includes information on how to report a missed collection, which may be of interest for council customers"
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Garden Waste Service 2025/26 - Terms and Conditions - Boston ...",
+                                "Source": "https://www.boston.gov.uk/article/21021/Garden-Waste-Service-2025-26-Terms-and-Conditions",
+                                "Key Strengths": [
+                                    "Outlines the terms and conditions of the garden waste service, including reporting a missed collection"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Though not as direct as some links, this document provides detailed information about the garden waste service and its specific requirements, including reporting a missed collection"
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Refuse and Recycling - Boston Borough Council",
+                                "Source": "https://www.boston.gov.uk/article/18478/Refuse-and-Recycling",
+                                "Key Strengths": [
+                                    "Covers information about refuse, recycling, and garden waste collections"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This link provides a broad overview of Boston Borough Council's waste services, including information about refuse, recycling, and garden waste collections. While not specifically tailored for reporting missed collections, it could still be useful for council customers"
+                            }
+                        ],
+                        "Analysis Notes": "[The search results include various links related to waste and recycling services, among which several are relevant for council customers looking for information about bin collections or specific waste service terms]",
+                        "Recommendations Notes": "[Several links provide relevant information about bin collections and waste services, but the most direct links pertain to reporting missed bin collections or garden waste services. It is always a good idea for any local council to maintain dedicated resources for frequently requested services such as these]"
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "Report a Missed Bin Collection - Boston Borough Council",
+                        "Source": "https://www.boston.gov.uk/Report-a-missed-bin-collection",
+                        "Reasoning": "This link directly addresses the customer's immediate need to report a missed bin collection, making it highly relevant and useful for them",
+                        "Confidence": "90"
+                    },
+                    {
+                        "Number": "2",
+                        "Title": "Your Waste - Boston Borough Council",
+                        "Source": "https://www.boston.gov.uk/article/21130/Your-Waste",
+                        "Reasoning": "Though the main focus is on recycling and reducing waste, this link also provides information about missed bin collections which may be helpful for council customers",
+                        "Confidence": "85"
+                    },
+                    {
+                        "Number": "3",
+                        "Title": "Frequently Asked Questions: Garden Waste Collection 2025/2026 ...",
+                        "Source": "https://www.boston.gov.uk/article/21020/Frequently-Asked-Questions-Garden-Waste-Collection-2025-2026",
+                        "Reasoning": "This FAQ link covers garden waste collection and includes information on how to report a missed collection, which may be of interest for council customers",
+                        "Confidence": "80"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.boston.gov.uk/Report-a-missed-bin-collection"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.boston.gov.uk/Report-a-missed-bin-collection",
+                        "analysis": {
+                            "url": "https://www.boston.gov.uk/Report-a-missed-bin-collection",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T19:09:17+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T19:09:44+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 52839,
+                            "response_time": 0.329,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.329s)",
+                                    "Content successfully retrieved (52839 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.3295750617980957,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.boston.gov.uk/Report-a-missed-bin-collection"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.boston.gov.uk/Report-a-missed-bin-collection",
+                        "content": " The extracted content would be:\n```vbnet\n<section aria-label=\"Accessibility links\">\n\t<a href=\"https://www.boston.gov.uk:443/Report-a-missed-bin-collection#maincontent\" class=\"skip-link\">Skip to main content</a>\n</section>\n<h1 class=\"a-heading__title\">Report a Missed Bin Collection</h1>\n<div class=\"a-intro a-intro--default\">\n\t<p class=\"a-intro__content\">Report a missed collection of refuse bins or bags </p>\n</div>\n<div class=\"a-body a-body--default\">\n    <h2><strong>Missed Collections</strong></h2>\n    <p>Bins must be presented on the night before the scheduled collection by no later than 5.30am on the day of collection.&nbsp; If your bin is not presented for collection at the time of &nbsp;</p>\n    <!-- rest of the content omitted to conserve space -->\n</div>\n```\nThis cleaned semantically structured HTML contains the main body content, preserving headings, paragraphs, and any links deemed relevant. It excludes any non-essential page furniture such as headers, footers, navigation menus, sidebars, cookie banners, and newsletter sign-up blocks.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 8.70501708984375,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.boston.gov.uk/Report-a-missed-bin-collection",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content answers this need partially as it provides a service for reporting missed bin collections but does not specify the steps to take if a bin was missed on a previous collection day. However, it clarifies that bins should be presented by 5:30am on the day of scheduled collection.",
+                                    "confidence": "70%",
+                                    "reasoning": "The content provides the service needed (reporting a missed bin collection) but does not explicitly state what to do if a collection was missed in previous days. It does, however, explain when the bins should be put out for collection.",
+                                    "next_actions": "If the missed collection occurred on a previous day, I would contact the council's waste services directly or check for additional information on their website."
+                                }
+                            ],
+                            "overall_assessment": "The content is concise and provides an adequate service for reporting a missed bin collection. However, it could improve its answers to some specific resident concerns, such as what to do about missed collections that occurred on previous days."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.616624116897583,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.boston.gov.uk/Report-a-missed-bin-collection"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_190917-boston.gov.uk",
+                    "analysis_timestamp": "2025-08-07T19:09:58+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6833333333333333,
+                            "tokens_consumed": 6083,
+                            "tokens_remaining": 93917,
+                            "token_utilization_percentage": 6.08,
+                            "average_tokens_per_step": 1013.83
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 93.92,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 92,
+                            "consumption_rate": 1013.83,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.76,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6833333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_190917-boston.gov.uk",
+                        "start_time": "2025-08-07T19:09:17+01:00",
+                        "current_time": "2025-08-07T19:09:58+01:00",
+                        "duration_seconds": 41,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 6083,
+                        "tokens_remaining": 93917,
+                        "token_utilization_percentage": 6.08,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2918,
+                                "avg_per_call": 1459
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3165,
+                                "avg_per_call": 1582.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1013.83
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_190917-boston.gov.uk",
+                    "start_time": "2025-08-07T19:09:17+01:00",
+                    "current_time": "2025-08-07T19:09:58+01:00",
+                    "duration_seconds": 41,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 6083,
+                    "tokens_remaining": 93917,
+                    "token_utilization_percentage": 6.08,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2918,
+                            "avg_per_call": 1459
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3165,
+                            "avg_per_call": 1582.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1013.83
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

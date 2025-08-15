@@ -1,0 +1,646 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T12:18:18+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "folkestone-hythe.gov.uk",
+                "Council Name": "Folkestone and Hythe District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed bins | Folkestone & Hythe District Council",
+                        "link": "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/missed-bin",
+                        "snippet": "The quickest and easiest way to report a missed bin is via MyAccount, where you will be able to see if your collection has been rescheduled."
+                    },
+                    {
+                        "title": "Recycling waste and bins \u2013 Folkestone & Hythe District Council",
+                        "link": "https://www.folkestone-hythe.gov.uk/recycling-waste-bins",
+                        "snippet": "Report a missed bin Report a missed collection 24/7. Bin request. New or replacement bin \u00b7 Additional bin \u00b7 Purple sacks \u00b7 Bin request for property developer\u00a0..."
+                    },
+                    {
+                        "title": "Garden waste collection | Folkestone & Hythe District Council",
+                        "link": "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/garden-waste",
+                        "snippet": "The quickest and easiest way to report a missed bin is via MyAccount, where you will be able to see if your collection has been rescheduled."
+                    },
+                    {
+                        "title": "Council complaints, compliments or feedback | Folkestone & Hythe ...",
+                        "link": "https://www.folkestone-hythe.gov.uk/council-transparency/complaints-compliments-feedback",
+                        "snippet": "Report an issue such as fly-tipping, abandoned vehicles, dog issues or noise nuisance on our report it page. Report a missed bin."
+                    },
+                    {
+                        "title": "New or replacement bins | Folkestone & Hythe District Council",
+                        "link": "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/replacementbins",
+                        "snippet": "you have moved into the property and the bin/ were missing on arrival ... it has been damaged or lost on your designated collection day (you must report this\u00a0..."
+                    },
+                    {
+                        "title": "MyAccount information \u2013 Folkestone & Hythe District Council",
+                        "link": "https://www.folkestone-hythe.gov.uk/myaccount-information",
+                        "snippet": "Recycling, waste and bins: You can view your collection schedule, request new or replacement bins, request additional bins, report missed bins, and much more."
+                    },
+                    {
+                        "title": "Report it \u2013 Folkestone & Hythe District Council",
+                        "link": "https://www.folkestone-hythe.gov.uk/report",
+                        "snippet": "Full litter/dog waste bin \u00b7 Leaf clearance \u00b7 Light nuisance \u00b7 Noise - commercial ... Street nameplate missing or damaged \u00b7 Street weed clearance \u00b7 Unauthorised\u00a0..."
+                    },
+                    {
+                        "title": "Quarter 3 Performance Report 2018-19",
+                        "link": "https://www.folkestone-hythe.gov.uk/downloads/file/2714/quarter-3-performance-report-2018-19-october-to-december-2018",
+                        "snippet": "This equates in real terms to approximately 78 bins or containers missed in total within the quarter. From this a further 90% were then subsequently collected\u00a0..."
+                    },
+                    {
+                        "title": "Garden waste collection service terms and conditions | Folkestone ...",
+                        "link": "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/garden-waste-terms-conditions",
+                        "snippet": "Reports of a missed collection must be reported to the Council within 24-hours in order for us to investigate and/or instruct the contractor to return to make\u00a0..."
+                    },
+                    {
+                        "title": "Report a dead animal",
+                        "link": "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/report-dead-animal",
+                        "snippet": "Please do not place deceased pets in a public litter bin if found in a public space. If a dead animal is washed up on the beach (porpoise or seal) we will\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/missed-bin",
+                        "title": "Missed bins | Folkestone & Hythe District Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Direct link to report a missed bin",
+                            "Offers online option for reporting a missed bin"
+                        ],
+                        "reasoning": "This link provides a direct, specific address for reporting a missed bin, making it the most relevant and straightforward solution for council customers seeking information about their waste collection.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed bins | Folkestone & Hythe District Council",
+                                "Source": "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/missed-bin",
+                                "Key Strengths": [
+                                    "Direct link to report a missed bin",
+                                    "Offers online option for reporting a missed bin"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link provides a direct, specific address for reporting a missed bin, making it the most relevant and straightforward solution for council customers seeking information about their waste collection."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Recycling waste and bins \u2013 Folkestone & Hythe District Council",
+                                "Source": "https://www.folkestone-hythe.gov.uk/recycling-waste-bins",
+                                "Key Strengths": [
+                                    "Covers various waste management resources",
+                                    "Offers an opportunity to report a missed collection 24/7"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Although not as direct as option 1 for reporting a missed bin, this page covers general recycling and waste topics with the possibility of reporting missed collections."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Council complaints, compliments or feedback | Folkestone & Hythe ...",
+                                "Source": "https://www.folkestone-hythe.gov.uk/council-transparency/complaints-compliments-feedback",
+                                "Key Strengths": [
+                                    "Covers both complaints and compliments as well as feedback",
+                                    "Offers options to report various issues, including missed bins"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link connects users with a wider array of concerns related to the council, making it an appropriate resource for those seeking more than just waste-specific information."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "New or replacement bins | Folkestone & Hythe District Council",
+                                "Source": "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/replacementbins",
+                                "Key Strengths": [
+                                    "Offers instructions on getting new or replacement bins for customers who have recently moved into a property or have lost their bins",
+                                    "Addresses specific issues with damaged or lost bins"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "While it doesn't offer an immediate solution for missed bin collection, this page provides relevant information related to obtaining new or replacement bins when needed."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "MyAccount information \u2013 Folkestone & Hythe District Council",
+                                "Source": "https://www.folkestone-hythe.gov.uk/myaccount-information",
+                                "Key Strengths": [
+                                    "Provides various resources for accessing and managing personal accounts with the council, including recycling, waste, and bin collections"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "MyAccount offers a centralized system where users can easily manage their accounts and access multiple services, making it a relevant resource for customers seeking convenient ways to interact with the council."
+                            }
+                        ],
+                        "Analysis Notes": "Given the specific search criteria of 'council customer information needs', items 1-6 were seen as most relevant. Items such as Performance Reports and terms & conditions are more appropriate for internal uses rather than being readily accessible information for customers.",
+                        "Recommendations Notes": "In our evaluation, we focused on the most direct, convenient, and customer-friendly means of accessing council services related to waste management. As seen above, some items such as report it or MyAccount offer a broader range of resources and were included to provide users with additional options when seeking information about council services."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/missed-bin"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/missed-bin",
+                        "analysis": {
+                            "url": "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/missed-bin",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T12:18:18+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T12:18:49+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 25179,
+                            "response_time": 0.319,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.319s)",
+                                    "Content successfully retrieved (25179 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.32146787643432617,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/missed-bin"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/missed-bin",
+                        "content": " Here's the cleaned HTML content, which contains only the central editorial content of the given web page:\n\n```html\n<main class=\"site-main\" id=\"content\">\n        <div class=\"container\">\n            <h1 class=\"page-heading\">\n    Missed bins\n</h1>\n            <div class=\"page-content-inner\">\n                <div class=\"editor\">\n                    <p>If your bin has not been collected by 5pm on your collection day you will need to report it as a missed collection within 24 hours, please use the link below to report it to us 24/7. Once you have reported it, please leave your bin out for collection and the crew will return within 24 hours.</p>\n                    <p>The quickest and easiest way to report a missed bin is via MyAccount, where you will be able to see if your collection has been rescheduled and report the bin being missed without the need to complete a form. You can also check your new waste collection calendar.</p>\n                    <p>You will need to log into your MyAccount (or create an account if you don't already have one).</p>\n                    <p>MyAccount is an easier and quicker way to interact with us and is available 24/7. For information about MyAccount visit the find out more page.</p>\n                    <p><a class=\"button\" href=\"https://folkestonehythedc.my.site.com/resident3/s/bins\" target=\"_self\">Report a missed bin</a></p>\n                    <h2>You can't report a missed bin if:</h2>\n                    <ul>\n                        <li>the bin was not placed out for collection by 7am on the correct day</li>\n                        <li>the bin contains the incorrect items or materials for disposal/recycling (What can be recycled from home)</li>\n                        <li>you report after one working day of your collection</li>\n                    </ul>\n                    <h2>Your collection may have been missed for the following reasons:</h2>\n                    <ul>\n                        <li>you need to put your rubbish/recycling on the boundary of your property by 7am on your collection day. If you put it out later, you may miss the collection and the operatives will not return if this is the case. You can check your collection day through our MyAccount service.</li>\n                        <li>&nbsp;if the rubbish for the rest of your street hasn't been collected, the collection may be running late. Please wait until the end of the working day to report a missed collection</li>\n                        <li>&nbsp;the bin contains the incorrect items or material for disposal/recycling</li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n    </main>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 13.15877890586853,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/missed-bin",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 5.59387993812561,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.folkestone-hythe.gov.uk/recycling-waste-bins/missed-bin"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_121818-folkestone-hythe.gov.uk",
+                    "analysis_timestamp": "2025-08-08T12:19:08+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.8333333333333334,
+                            "tokens_consumed": 5626,
+                            "tokens_remaining": 24374,
+                            "token_utilization_percentage": 18.75,
+                            "average_tokens_per_step": 937.67
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 81.25,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 25,
+                            "consumption_rate": 937.67,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 11.9,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.8333333333333334,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_121818-folkestone-hythe.gov.uk",
+                        "start_time": "2025-08-08T12:18:18+01:00",
+                        "current_time": "2025-08-08T12:19:08+01:00",
+                        "duration_seconds": 50,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 5626,
+                        "tokens_remaining": 24374,
+                        "token_utilization_percentage": 18.75,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2028,
+                                "avg_per_call": 1014
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3598,
+                                "avg_per_call": 1799
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 937.67
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_121818-folkestone-hythe.gov.uk",
+                    "start_time": "2025-08-08T12:18:18+01:00",
+                    "current_time": "2025-08-08T12:19:08+01:00",
+                    "duration_seconds": 50,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 5626,
+                    "tokens_remaining": 24374,
+                    "token_utilization_percentage": 18.75,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2028,
+                            "avg_per_call": 1014
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3598,
+                            "avg_per_call": 1799
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 937.67
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

@@ -1,0 +1,684 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T18:18:01+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "barnsley.gov.uk",
+                "Council Name": "Barnsley Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed bin",
+                        "link": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-missed-bin/",
+                        "snippet": "If your street has been missed but isn't listed as a known disruption, you can report the missed collection using our online form below."
+                    },
+                    {
+                        "title": "Disruptions to bin collections",
+                        "link": "https://www.barnsley.gov.uk/alerts/disruptions-to-bin-collections/",
+                        "snippet": "... report a missed bin online. Current disruptions. If your bin has been missed and your street is listed below, please leave it out and we'll come back for\u00a0..."
+                    },
+                    {
+                        "title": "Bins, rubbish and recycling",
+                        "link": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/",
+                        "snippet": "Order a bin \u00b7 Get an extra grey, blue or brown bin \u00b7 Bulky waste collections \u00b7 Ask for a new bin collection \u00b7 Report a missed bin \u00b7 Report a spilled bin."
+                    },
+                    {
+                        "title": "Tell us about it",
+                        "link": "https://www.barnsley.gov.uk/tell-us-about-it/",
+                        "snippet": "Report something to us. This could be things such as child or adult abuse, missed bins, fly-tipping or potholes."
+                    },
+                    {
+                        "title": "Report a spilled bin",
+                        "link": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-spilled-bin/",
+                        "snippet": "Report a spilled bin if we've spilled any waste when we were emptying your bins."
+                    },
+                    {
+                        "title": "Home Services Contact us",
+                        "link": "https://www.barnsley.gov.uk/services/contact-us/",
+                        "snippet": "(Please don't use this form to tell us about a missed bin collection, as these reports won't be actioned or responded to. Visit our bins, rubbish and recycling\u00a0..."
+                    },
+                    {
+                        "title": "Putting your bin out for collection",
+                        "link": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/putting-your-bin-out-for-collection/",
+                        "snippet": "bin is damaged \u2013 bins that are cracked, have missing wheels or a broken ... report a missed bin. See also... Report a spilled bin \u00b7 What goes in your bin\u00a0..."
+                    },
+                    {
+                        "title": "Site map",
+                        "link": "https://www.barnsley.gov.uk/site-map/",
+                        "snippet": "Get help to put your bins out \u00b7 Order a bin \u00b7 Get an extra grey, blue or brown bin \u00b7 Report a missed bin \u00b7 Report a spilled bin \u00b7 Report an abandoned bin\u00a0..."
+                    },
+                    {
+                        "title": "Barnsley \u2013 the place of possibilities",
+                        "link": "https://www.barnsley.gov.uk/",
+                        "snippet": "Bulky waste collections. Tell us about it Speech bubble icon \u00b7 Change Council Tax details Missed bin collections Report a pothole Report fly-tipping. A - Z of\u00a0..."
+                    },
+                    {
+                        "title": "Order a bin",
+                        "link": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/order-a-bin/",
+                        "snippet": "... missing bins. What you can order. Grey or green bin - if yours is damaged ... If you've ordered a bin to replace one you've reported as damaged, we'll\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-missed-bin/",
+                        "title": "Report a missed bin",
+                        "confidence": 90,
+                        "strengths": [
+                            "Direct link for reporting a missed bin collection",
+                            "Official council website"
+                        ],
+                        "reasoning": "This item provides the user with a direct link to report a missed bin collection, which is the most relevant action a customer might need to take in relation to their council services.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed bin",
+                                "Source": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-missed-bin/",
+                                "Key Strengths": [
+                                    "Direct link for reporting a missed bin collection",
+                                    "Official council website"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This item provides the user with a direct link to report a missed bin collection, which is the most relevant action a customer might need to take in relation to their council services."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Disruptions to bin collections",
+                                "Source": "https://www.barnsley.gov.uk/alerts/disruptions-to-bin-collections/",
+                                "Key Strengths": [
+                                    "Official council website",
+                                    "Information about disruptions in bin collections"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Though not a direct link for reporting a missed bin, this resource provides information about current disruptions which may help customers understand any delays or issues with their bin collection."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Bins, rubbish and recycling",
+                                "Source": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/",
+                                "Key Strengths": [
+                                    "Overview of bin services offered by the council",
+                                    "Links to various related services"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This item offers an overview of bin services and provides links to other related services such as reporting a spilled bin or ordering an extra bin."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Report a spilled bin",
+                                "Source": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-spilled-bin/",
+                                "Key Strengths": [
+                                    "Direct link for reporting a spilled bin",
+                                    "Official council website"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This item allows customers to report spills caused by the council during bin collections."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Order a bin",
+                                "Source": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/order-a-bin/",
+                                "Key Strengths": [
+                                    "Direct link for ordering an extra bin",
+                                    "Provides information about ordering a replacement bin"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Though less likely, some customers may need to order an extra or replacement bin."
+                            }
+                        ],
+                        "Analysis Notes": "All items relate to the council's bin services, with direct links for commonly needed actions such as reporting a missed or spilled bin. However, some of the items offer general overviews or additional related services that may not be directly related to what a customer is looking for.",
+                        "Recommendations Notes": "Based on the analysis, I have prioritized the recommendations by their potential relevance and the likelihood customers will need to use these services."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Report a missed bin",
+                            "Source": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-missed-bin/",
+                            "Reasoning": "This recommendation has the highest relevance to reporting a missed bin collection, making it the optimal next step for the user who needs this service.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "Disruptions to bin collections",
+                            "Source": "https://www.barnsley.gov.uk/alerts/disruptions-to-bin-collections/",
+                            "Reasoning": "Though not the most direct way to report a missed bin, this resource provides information about current disruptions and may help customers understand any delays or issues with their bin collection.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Bins, rubbish and recycling",
+                            "Source": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/",
+                            "Reasoning": "This resource offers an overview of bin services and provides links to other related actions such as ordering a replacement bin.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-missed-bin/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-missed-bin/",
+                        "analysis": {
+                            "url": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-missed-bin/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T18:18:01+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T18:18:42+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 36894,
+                            "response_time": 0.278,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.278s)",
+                                    "Content successfully retrieved (36894 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.2814638614654541,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-missed-bin/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-missed-bin/",
+                        "content": " Here is the extracted clean and semantically structured HTML containing central editorial content of the given web page:\n\n```\n<article>\n    <div class=\"container container--page\">\n        <!-- breadcrumbs -->\n        <div class=\"breadcrumbs\" aria-label=\"breadcrumb\" role=\"navigation\">\n            <h1 id=\"breadcrumbLabel\" class=\"breadcrumbs__heading\">You are here:</h1>\n        </div>\n\n        <!-- content container -->\n        <div class=\"container container--content container--content-main\" role=\"main\">\n            <!-- start -->\n            <a name=\"start\" id=\"start\"></a>\n\n            <!-- back button -->\n            <div class=\"media__item heading__media mobile-back-button\">\n                <a class=\"heading__back\" href=\"/services/bins-rubbish-and-recycling/\" aria-label=\"Back\">\n                    <span class=\"i-arrow-left\"></span>\n                    <span class=\"heading-text\">Go back</span>\n                </a>\n            </div>\n\n            <!-- Save for offline -->\n            <!--<div class=\"page--meta\">-->\n                <!--<a class=\"button--toggle--link toggle--offline\">Save for offline</a>-->\n            <!--</div>-->\n\n            <p>If your bin hasn't been emptied on your scheduled collection day, you can report this to us.</p>\n            <h2>If all the bins on your street have been missed</h2>\n            <p>If we&rsquo;ve not emptied the bins on your street, this may be because:</p>\n            <ul>\n                <li>the bin lorry wasn't able to get down your street due to parked vehicles&nbsp;</li>\n                <li>roadworks on your street prevented us from accessing your road</li>\n                <li>one of our vehicles broke down</li>\n                <li>adverse weather affected our ability to complete all our collection rounds</li>\n                <li>staff illness or availability of staff meant we weren't able to deploy all the teams scheduled to work</li>\n                <li>other operational issues affected a round from being completed, such as traffic congestion</li>\n            </ul>\n            <p>The waste collection industry is one of the most dangerous industries in the UK, <a href=\"/services/bins-rubbish-and-recycling/how-we-work-to-keep-our-bin-collection-crews-safe/\" title=\"How we work to keep our bin collection crews safe\">find out how we keep our bin collection crews safe</a>.</p>\n            <p>We list any service problems we know about on our<span> </span><a href=\"/alerts/disruptions-to-bin-collections/\" title=\"Disruptions to bin collections\">disruptions to bin collections</a> page, with details of when we intend to return.</p>\n            <p>If your street has been missed but <strong>isn't</strong> listed as a known disruption, you can report the missed collection using our online form below.</p>\n            <h2><span>If just your bin has been missed</span></h2>\n            <p>If your neighbours' bins have been emptied but yours hasn't, it may be that it's been missed. We're sorry, but we can't return to pick up individual bins. We'll empty your bin on your <a href=\"/apply-for-it/check-your-bin-days/\" title=\"Check your bin days\">next scheduled collection day</a>.</p>\n            <p>If your bin is full, you can take extra waste to one of our <a href=\"/services/bins-rubbish-and-recycling/find-a-household-waste-recycling-centre/\" title=\"Find a household waste recycling centre\">household waste recycling centres</a>. If you have extra<span> cardboard, you can leave this at the side of your blue bin on your next blue bin collection day. You need to tear the card into smaller pieces and place it inside one small or medium sized box. This box must be small enough to fit back inside your bin, as the crew will refill the bin to empty it again. You can put the box out on the morning of your collection, as long as the weather's dry.</span></p>\n            <h2><span>How to make a report</span></h2>\n            <p><span>You can tell us about a missed bin using our online form below. Please <strong>d</strong></span><strong>on't </strong>use this form to report a missed bin if:</p>\n            <ul>\n                <li>it's <strong>before 2:30pm</strong> on your bin collection day - we could still be on our way to empty your bin</li>\n                <li>you didn't <a data-id=\"01b8a382-51d5-4685-8f50-e94c2855f588\" href=\"/services/bins-rubbish-and-recycling/putting-your-bin-out-for-collection/\" title=\"Putting your bin out for collection\">put your bin out on time</a></li>\n                <li>you put the wrong bin out - <a href=\"/apply-for-it/check-your-bin-days/\" title=\"Check your bin days\">check your bin day</a> to find your collection dates</li>\n                <li>your property is empty or unoccupied (we don't collect bins from unoccupied properties)</li>\n                <li>your bin lid wasn't closed - you need to take some items out so we can collect your bin next time</li>\n                <li>your bin is contaminated with <a href=\"/services/bins-rubbish-and-recycling/what-goes-in-your-bin/\" title=\"What goes in your bin\">items that shouldn't go in the bin</a> (such as general waste in a recycling bin) - you need to take those items out so we can collect your bin next time</li>\n                <li>your bin is split, broken, has a wheel missing, doesn't have a lid, or we've placed a red tag on it advising that the bin is not suitable for collection - please order a new one here: <a href=\"https://www.barnsley.gov.uk/environment-and-waste/bins-and-recycling/\" title=\"Order a new bin\">Order a new bin</a></li>\n                <li>your bin is full before the scheduled collection day - we will not collect bins that are overflowing and advise you to put your waste in strong bags or boxes, making sure they weigh no more than 20kg (44lbs) to avoid injury.</li>\n            </ul>\n\n            <!-- report a missed bin form -->\n            <div>\n                <div class=\"form__actions\">\n                    <a class=\"button button--main button--default button--primary\" href=\"https://my.barnsley.gov.uk/form/report-a-missed-bin?id=4376\">Report a missed bin</a>\n                </div>\n            </div>\n        </div>\n    </div>\n</article>\n```\n\nThis output includes headings, paragraphs, and lists of the content within the article section that was present in the given HTML.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 47.71785092353821,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-missed-bin/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "The content partially addresses this need. However, it does not provide a specific step on what to do if you forgot to put your bin out for collection.",
+                                    "confidence": "70%",
+                                    "reasoning": "While the page explains how to report a missed bin, it does not mention anything about reporting if you forgot to put it out. It only discusses reasons why a bin might have been missed (such as collection crew issues or roadworks) and what to do if your entire street's bins haven't been collected.",
+                                    "next_actions": "Contact the local council directly to inquire about reporting a late bin when you forgot to put it out."
+                                }
+                            ],
+                            "overall_assessment": "The content provides a comprehensive explanation of how to report missed bins and details potential issues causing the miss. However, it lacks information on specific situations such as forgetting to put the bin out on time. Overall satisfaction level is high for addressing commonly occurring needs but requires additional details for other rare scenarios."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 28.747195959091187,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.barnsley.gov.uk/services/bins-rubbish-and-recycling/report-a-missed-bin/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_181801-barnsley.gov.uk",
+                    "analysis_timestamp": "2025-08-07T18:19:59+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.9666666666666666,
+                            "tokens_consumed": 7800,
+                            "tokens_remaining": 92200,
+                            "token_utilization_percentage": 7.8,
+                            "average_tokens_per_step": 1300
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 92.2,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 70,
+                            "consumption_rate": 1300,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 28.1,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.9666666666666666,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_181801-barnsley.gov.uk",
+                        "start_time": "2025-08-07T18:18:01+01:00",
+                        "current_time": "2025-08-07T18:19:59+01:00",
+                        "duration_seconds": 118,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 7800,
+                        "tokens_remaining": 92200,
+                        "token_utilization_percentage": 7.8,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 1200,
+                                "avg_per_call": 600
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 4500,
+                                "avg_per_call": 2250
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 2100,
+                                "avg_per_call": 1050
+                            }
+                        },
+                        "average_tokens_per_step": 1300
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_181801-barnsley.gov.uk",
+                    "start_time": "2025-08-07T18:18:01+01:00",
+                    "current_time": "2025-08-07T18:19:59+01:00",
+                    "duration_seconds": 118,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 7800,
+                    "tokens_remaining": 92200,
+                    "token_utilization_percentage": 7.8,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 1200,
+                            "avg_per_call": 600
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 4500,
+                            "avg_per_call": 2250
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 2100,
+                            "avg_per_call": 1050
+                        }
+                    },
+                    "average_tokens_per_step": 1300
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

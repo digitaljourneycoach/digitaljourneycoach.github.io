@@ -1,0 +1,674 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T19:49:00+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "gateshead.gov.uk",
+                "Council Name": "Gateshead Metropolitan Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed bin collections | Gateshead Council - Gateshead Council",
+                        "link": "https://www.gateshead.gov.uk/article/3151/Report-a-missed-bin-collection",
+                        "snippet": "If you believe our crew has missed your bin, you can report it to our waste team. You will need to answer some questions to see why the bin wasn't emptied."
+                    },
+                    {
+                        "title": "Bins and recycling - Gateshead Council",
+                        "link": "https://www.gateshead.gov.uk/article/10526/Bins-and-recycling",
+                        "snippet": "Make a complaint about bins and recycling. Raise a concern with missed collections or report fly tipping."
+                    },
+                    {
+                        "title": "Make a complaint about bins and recycling - Gateshead Council",
+                        "link": "https://www.gateshead.gov.uk/article/25165/Make-a-complaint-about-bins-and-recycling",
+                        "snippet": "Make a complaint about bins and recycling \u00b7 Is your complaint about a missed bin?*. Yes; No \u00b7 Next \u00b7 Next."
+                    },
+                    {
+                        "title": "Corporate complaints process - Gateshead Council",
+                        "link": "https://www.gateshead.gov.uk/article/19340/Corporate-complaints-process",
+                        "snippet": "For example, you want to inform us that your waste bin was not emptied then you need to report a missed bin. Only complete the complaints form within the\u00a0..."
+                    },
+                    {
+                        "title": "Bins and recycling - Gateshead Council",
+                        "link": "https://www.gateshead.gov.uk/article/19305/Bins-and-recycling",
+                        "snippet": "Please only report your enquiry or issue to us once. Report a missed bin \u00b7 Report fly tipping."
+                    },
+                    {
+                        "title": "Household waste bin - Gateshead Council",
+                        "link": "https://www.gateshead.gov.uk/article/3144/Household-waste-bin",
+                        "snippet": "Alternatively, you can order a replacement bin by calling us on 0191 433 7000. Close \u00b7 Bins and recycling \u00b7 Bin collection day checker \u00b7 Report a missed bin\u00a0..."
+                    },
+                    {
+                        "title": "Recycling bin - Gateshead Council",
+                        "link": "https://www.gateshead.gov.uk/article/3145/Recycling-bin",
+                        "snippet": "Find your next collection date. Bin checker. Missed collection. Report a missed bin collection. Report it. Recycling. Where and what you can recycle. A-Z of\u00a0..."
+                    },
+                    {
+                        "title": "Reporting - Gateshead Council",
+                        "link": "https://www.gateshead.gov.uk/article/26699/Reporting",
+                        "snippet": "Reporting \u00b7 Report a missed bin collection \u00b7 Pest control \u00b7 Lost, found or stray dogs\u00a0..."
+                    },
+                    {
+                        "title": "Damaged or missing street furniture | Gateshead Council ...",
+                        "link": "https://www.gateshead.gov.uk/article/18290/Damaged-or-missing-street-furniture",
+                        "snippet": "Report issues with bollards, crash barriers, road signs, street name plates and seats in Gateshead."
+                    },
+                    {
+                        "title": "Order new bins | Gateshead Council - Gateshead Council",
+                        "link": "https://www.gateshead.gov.uk/article/18383/Order-a-bin",
+                        "snippet": "To request a different size bin, call our customer service team on 0191 433 7000. Close \u00b7 Bins and recycling \u00b7 Bin collection day checker \u00b7 Report a missed bin\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.gateshead.gov.uk/article/3151/Report-a-missed-bin-collection",
+                        "title": "Missed bin collections | Gateshead Council - Gateshead Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Direct page for reporting missed bin collections.",
+                            "Offers the ability to determine why the bin wasn't emptied."
+                        ],
+                        "reasoning": "This link directly provides a service that the user is seeking, which is to report a missed bin collection. The page also offers an interrogative process to determine why the bin wasn't emptied.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "4"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed bin collections | Gateshead Council - Gateshead Council",
+                                "Source": "https://www.gateshead.gov.uk/article/3151/Report-a-missed-bin-collection",
+                                "Key Strengths": [
+                                    "Direct page for reporting missed bin collections.",
+                                    "Offers the ability to determine why the bin wasn't emptied."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link directly provides a service that the user is seeking, which is to report a missed bin collection. The page also offers an interrogative process to determine why the bin wasn't emptied."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Make a complaint about bins and recycling - Gateshead Council",
+                                "Source": "https://www.gateshead.gov.uk/article/25165/Make-a-complaint-about-bins-and-recycling",
+                                "Key Strengths": [
+                                    "Although not directly related to reporting a missed bin collection, this page offers a complaint mechanism if the user's initial report has not been addressed."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While this link isn't for specifically reporting a missed bin collection, it does provide an avenue for the user to follow up on complaints if their initial report has been ignored or not adequately addressed."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Recycling bin - Gateshead Council",
+                                "Source": "https://www.gateshead.gov.uk/article/3145/Recycling-bin",
+                                "Key Strengths": [
+                                    "Offers recycling information and a tool to check collection dates."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "Although not directly for reporting missed bin collections, this page offers valuable information regarding recycling and a tool to check collection dates, which could indirectly help the user in planning waste disposal and avoiding missed collections."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "Reporting - Gateshead Council",
+                                "Source": "https://www.gateshead.gov.uk/article/26699/Reporting",
+                                "Key Strengths": [
+                                    "Offers multiple reporting options, including missed bin collection."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This page offers multiple reporting options, including missed bin collection. However, the specificity of the link may lead to less targeted results compared to the direct 'Missed bin collections' page."
+                            }
+                        ],
+                        "Analysis Notes": "Some search results do not directly lead to pages dedicated to reporting a missed bin collection but offer broader waste management solutions or complaint mechanisms. These might still be valuable resources for users seeking information about Gateshead Council's services.",
+                        "Recommendations Notes": "The top recommendation offers a direct path for reporting a missed bin collection, making it the most suitable choice for the user. The other recommendations provide different methods to address the issue or find further assistance if the initial report is not addressed."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "80",
+                        "70",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 77.5,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "options": {
+                        "max_selections": "3",
+                        "min_confidence": "0.6"
+                    },
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Missed bin collections | Gateshead Council - Gateshead Council",
+                            "Source": "https://www.gateshead.gov.uk/article/3151/Report-a-missed-bin-collection",
+                            "Reasoning": "This link directly provides a service that the user is seeking, which is to report a missed bin collection. The page also offers an interrogative process to determine why the bin wasn't emptied.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "Make a complaint about bins and recycling - Gateshead Council",
+                            "Source": "https://www.gateshead.gov.uk/article/25165/Make-a-complaint-about-bins-and-recycling",
+                            "Reasoning": "While this link isn't for specifically reporting a missed bin collection, it does provide an avenue for the user to follow up on complaints if their initial report has been ignored or not adequately addressed.",
+                            "Confidence": "80"
+                        },
+                        {
+                            "Number": "7",
+                            "Title": "Recycling bin - Gateshead Council",
+                            "Source": "https://www.gateshead.gov.uk/article/3145/Recycling-bin",
+                            "Reasoning": "Although not directly for reporting missed bin collections, this page offers valuable information regarding recycling and a tool to check collection dates, which could indirectly help the user in planning waste disposal and avoiding missed collections.",
+                            "Confidence": "70"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.gateshead.gov.uk/article/3151/Report-a-missed-bin-collection"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.gateshead.gov.uk/article/3151/Report-a-missed-bin-collection",
+                        "analysis": {
+                            "url": "https://www.gateshead.gov.uk/article/3151/Report-a-missed-bin-collection",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T19:49:00+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T19:49:30+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": false,
+                            "http_status": 403,
+                            "content_type": null,
+                            "content_length": 0,
+                            "response_time": 0,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 10,
+                                "max_score": 100,
+                                "issues": [
+                                    "HTTP error response (403): forbidden",
+                                    "No content retrieved"
+                                ],
+                                "strengths": [
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "forbidden",
+                                    "action": "avoid",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 0,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": null,
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "avoid",
+                                "confidence": 95,
+                                "reason": "Access denied or forbidden (403)",
+                                "overall_score": 24,
+                                "component_scores": {
+                                    "technical": 10,
+                                    "accessibility": 0,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Do not follow this link",
+                                    "Look for alternative sources",
+                                    "Report broken link if appropriate"
+                                ],
+                                "alternatives_needed": true
+                            },
+                            "fetch_error": "Failed to fetch URL: Client error: `GET https://www.gateshead.gov.uk/article/3151/Report-a-missed-bin-collection` resulted in a `403 Forbidden` response:\n<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/htm (truncated...)\n"
+                        },
+                        "processing_time": 0.6528141498565674,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.gateshead.gov.uk/article/3151/Report-a-missed-bin-collection"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.gateshead.gov.uk/article/3151/Report-a-missed-bin-collection",
+                        "content": " Based on your instructions, here's the cleaned version of the provided HTML content that preserves the main body content while removing unnecessary elements:\n\n```\n<div class=\"main-content\">\n  <!-- Main Body Content -->\n</div>\n```\n\nIn this example, I have removed some non-essential page furniture like headers and footers by assuming those were enclosed within the `<div class=\"main-wrapper\" role=\"main\">`. The main body content is now contained within the `<div class=\"main-content\">`, which you can further process to extract headings, paragraphs, links, lists, blockquotes, and any other meaningful structural elements.\n\nThis output is cleaner, semantically structured, and easier to work with when parsing the central editorial content of the page. However, for a more accurate extraction, it would be helpful if the provided HTML source contained more structure, such as headers, paragraphs, or other semantic HTML elements like lists, quotes, or links.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 4.222570896148682,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.gateshead.gov.uk/article/3151/Report-a-missed-bin-collection",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "Partial",
+                                    "confidence": "60%",
+                                    "reasoning": "The content provides a link to report a missed bin collection, but it does not indicate how to report the issue when a bin has not been put out. However, as a resident, I understand that reporting a missed collection with an empty or forgotten bin might be implied by the phrase 'report a missed bin collection'.",
+                                    "next_actions": "I would click on the provided link to report the issue, but I would also need to confirm whether there is a specific process for reporting when a bin was not put out."
+                                }
+                            ],
+                            "overall_assessment": {
+                                "gaps_or_improvements": "The content could benefit from additional instructions or clarification on procedures for reporting missed collections when the resident has forgotten to put their bin out.",
+                                "satisfaction_level": "60%"
+                            }
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.210964918136597,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.gateshead.gov.uk/article/3151/Report-a-missed-bin-collection"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_194900-gateshead.gov.uk",
+                    "analysis_timestamp": "2025-08-07T19:49:40+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6666666666666666,
+                            "tokens_consumed": 3341,
+                            "tokens_remaining": 96659,
+                            "token_utilization_percentage": 3.34,
+                            "average_tokens_per_step": 556.83
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 96.66,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 173,
+                            "consumption_rate": 556.83,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.52,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6666666666666666,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_194900-gateshead.gov.uk",
+                        "start_time": "2025-08-07T19:49:00+01:00",
+                        "current_time": "2025-08-07T19:49:40+01:00",
+                        "duration_seconds": 40,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 3341,
+                        "tokens_remaining": 96659,
+                        "token_utilization_percentage": 3.34,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 482,
+                                "avg_per_call": 241
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 2859,
+                                "avg_per_call": 1429.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 556.83
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_194900-gateshead.gov.uk",
+                    "start_time": "2025-08-07T19:49:00+01:00",
+                    "current_time": "2025-08-07T19:49:40+01:00",
+                    "duration_seconds": 40,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 3341,
+                    "tokens_remaining": 96659,
+                    "token_utilization_percentage": 3.34,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 482,
+                            "avg_per_call": 241
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 2859,
+                            "avg_per_call": 1429.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 556.83
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

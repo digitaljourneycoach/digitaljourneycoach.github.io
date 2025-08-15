@@ -1,0 +1,224 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-12T22:15:02+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "barnsley.gov.uk",
+                "Council Name": "Barnsley Metropolitan Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Free school meals",
+                        "link": "https://www.barnsley.gov.uk/services/schools-and-education/free-school-meals/",
+                        "snippet": "Your child may also be entitled to a free school meal because of a benefit they receive in their own right. How to apply. If you live in Barnsley. If you live\u00a0..."
+                    },
+                    {
+                        "title": "Household Support Fund",
+                        "link": "https://www.barnsley.gov.uk/services/benefits/more-money-in-your-pocket-cost-of-living-support/household-support-fund/",
+                        "snippet": "Free school meal vouchers. For children who receive benefits-related free school meals, we're providing a \u00a315 voucher for the May 2025 half term holidays."
+                    },
+                    {
+                        "title": "School meals",
+                        "link": "https://www.barnsley.gov.uk/services/schools-and-education/school-meals/",
+                        "snippet": "Unless your child qualifies for free school meals, or is an infant-age pupil in reception, year 1 or year 2, you'll have to pay for their school lunch. How\u00a0..."
+                    },
+                    {
+                        "title": "Online Forms Viewer - Victoria Forms",
+                        "link": "https://www.barnsley.gov.uk/free-school-meals-form",
+                        "snippet": "Go To Page. Form reference: Comment. Uploading Files.... cancel ... Free School Meals (1.1). Continue previously saved form. Form is being created\u00a0..."
+                    },
+                    {
+                        "title": "Healthy Holidays - school holiday activities and food programme",
+                        "link": "https://www.barnsley.gov.uk/services/health-and-wellbeing/children-and-young-peoples-health/healthy-holidays/",
+                        "snippet": "Children who get free school meals as you/they receive a certain benefit can get a free place at our Healthy Holidays clubs. Every club gives each child a\u00a0..."
+                    },
+                    {
+                        "title": "Free School Meals",
+                        "link": "https://www.barnsley.gov.uk/media/oeqf0rz5/free-school-meals-leaflet.pdf",
+                        "snippet": "Your child will qualify for free school meals if they're in full-time education and you receive one of the following benefits: Income Support."
+                    },
+                    {
+                        "title": "Healthy Holidays clubs",
+                        "link": "https://www.barnsley.gov.uk/services/health-and-wellbeing/children-and-young-peoples-health/healthy-holidays/healthy-holidays-clubs/",
+                        "snippet": "Each club includes a healthy meal too! Children who receive benefit-related (means-tested) free school meals are entitled to a free place at all the clubs and\u00a0..."
+                    },
+                    {
+                        "title": "Review of childcare facilities and school meals service",
+                        "link": "https://www.barnsley.gov.uk/news/review-of-childcare-facilities-and-school-meals-service/",
+                        "snippet": "Feb 13, 2025 ... This expansion increased the free entitlement for eligible children ... Many schools have already turned to other providers\u00a0..."
+                    },
+                    {
+                        "title": "More Money in Your Pocket - cost of living support",
+                        "link": "https://www.barnsley.gov.uk/services/benefits/more-money-in-your-pocket-cost-of-living-support/",
+                        "snippet": "Children who receive means-tested free school meals are eligible for a free place at our Healthy Holidays clubs. There are amazing activities available, and\u00a0..."
+                    },
+                    {
+                        "title": "Book to attend a Healthy Holidays club",
+                        "link": "https://www.barnsley.gov.uk/services/health-and-wellbeing/children-and-young-peoples-health/healthy-holidays/book-to-attend-a-healthy-holidays-club/",
+                        "snippet": "Our Summer Healthy Holidays clubs run from Monday 28 July to Friday 22 August 2025. Children who receive benefit-related (means-tested) free school meals are\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Free school meals",
+                                "Source": "https://www.barnsley.gov.uk/services/schools-and-education/free-school-meals/",
+                                "Key Strengths": [
+                                    "Official council website link",
+                                    "Specifically provides information on free school meals"
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "This link directly leads to the council's website and specifically discusses free school meals. It seems to be the most relevant resource for customers seeking information about council-supported free school meals."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Online Forms Viewer - Victoria Forms (Free School Meals form)",
+                                "Source": "https://www.barnsley.gov.uk/free-school-meals-form",
+                                "Key Strengths": [
+                                    "Provides direct access to the online application form for free school meals",
+                                    "Official council website link"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link directly leads customers to the official online application form for free school meals, making it an ideal resource for those looking to apply."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Free School Meals",
+                                "Source": "https://www.barnsley.gov.uk/media/oeqf0rz5/free-school-meals-leaflet.pdf",
+                                "Key Strengths": [
+                                    "Official council resource in PDF format",
+                                    "Details eligibility criteria and benefits for free school meals"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "While not a webpage, this resource provides comprehensive details on free school meals from the council, including eligibility criteria, making it valuable for customers seeking information."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Healthy Holidays - school holiday activities and food programme",
+                                "Source": "https://www.barnsley.gov.uk/services/health-and-wellbeing/children-and-young-peoples-health/healthy-holidays/",
+                                "Key Strengths": [
+                                    "Official council website link",
+                                    "Discusses free places for children who receive benefit-related free school meals"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "While not specifically focused on free school meals, this resource discusses a program that offers free places to children who receive benefit-related free school meals, making it a useful reference for customers seeking information."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "Healthy Holidays clubs",
+                                "Source": "https://www.barnsley.gov.uk/services/health-and-wellbeing/children-and-young-peoples-health/healthy-holidays/healthy-holidays-clubs/",
+                                "Key Strengths": [
+                                    "Official council website link",
+                                    "Mentions free places for children who receive benefit-related free school meals"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This resource discusses a program that offers free places to children who receive benefit-related free school meals, although it is not as clearly focused on council-supported resources as some other options."
+                            }
+                        ],
+                        "Analysis Notes": [
+                            "All ten items are relevant to some extent, but the first five have significantly stronger connections to the customer's information needs regarding council services and free school meals."
+                        ],
+                        "Recommendations Notes": [
+                            "While item 10 discusses Healthy Holidays clubs for children who receive benefit-related free school meals, it is more focused on booking rather than providing detailed information about the service. Although relevant, other recommendations are considered more suitable for customers seeking council-supported resources."
+                        ]
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "95",
+                        "90",
+                        "85",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "95"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

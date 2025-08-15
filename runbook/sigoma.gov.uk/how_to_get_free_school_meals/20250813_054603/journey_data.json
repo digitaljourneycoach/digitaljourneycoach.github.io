@@ -1,0 +1,601 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T05:46:03+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "sigoma.gov.uk",
+                "Council Name": "Barnsley Metropolitan Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "SIGOMA - \"Cut to winter fuel payments have been a mistake\"",
+                        "link": "https://www.sigoma.gov.uk/news/cut-to-winter-fuel-payments-have-been-a-mistake",
+                        "snippet": "May 13, 2025 ... ... access free school meals. These measures will provide immediate relief to families and communities in need. I am increasingly concerned by\u00a0..."
+                    },
+                    {
+                        "title": "For a sustainable and fairer future",
+                        "link": "https://www.sigoma.gov.uk/public-documents/SIGOMA-Manifesto.pdf",
+                        "snippet": "the UK in order to get the 'best ... And in Knowsley, the Household Support Fund has been used to provide vouchers to households who receive Free School. Meals,\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.sigoma.gov.uk/news/cut-to-winter-fuel-payments-have-been-a-mistake",
+                        "title": "SIGOMA - \"Cut to winter fuel payments have been a mistake\"",
+                        "confidence": 85,
+                        "strengths": [
+                            "Addresses council customer information need on welfare benefits",
+                            "Potential for providing immediate relief to families in need"
+                        ],
+                        "reasoning": "The article discusses the potential negative impact of cuts to winter fuel payments and how these measures aim to provide relief to families. This is relevant to council customers who may be concerned about welfare benefits.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "2",
+                            "recommendations": "2"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "SIGOMA - \"Cut to winter fuel payments have been a mistake\"",
+                                "Source": "https://www.sigoma.gov.uk/news/cut-to-winter-fuel-payments-have-been-a-mistake",
+                                "Key Strengths": [
+                                    "Addresses council customer information need on welfare benefits",
+                                    "Potential for providing immediate relief to families in need"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The article discusses the potential negative impact of cuts to winter fuel payments and how these measures aim to provide relief to families. This is relevant to council customers who may be concerned about welfare benefits."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "For a sustainable and fairer future",
+                                "Source": "https://www.sigoma.gov.uk/public-documents/SIGOMA-Manifesto.pdf",
+                                "Key Strengths": [
+                                    "Addresses council's commitment to sustainability and fairness",
+                                    "Mention of the use of funds for households who receive free school meals"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The document discusses SIGOMA's stance on creating a sustainable and fairer future in the UK, with a mention of using funds to provide vouchers to households who receive free school meals. Though not directly related to customer information needs, it provides additional context about the council's initiatives."
+                            }
+                        ],
+                        "Analysis Notes": "Both items provide some level of relevance to council customer information needs, but the first item is more directly pertinent as it discusses a welfare benefit and its potential impact.",
+                        "Recommendations Notes": "While the second recommendation does not address the specific question on council customer information needs, it provides insight into the council's broader initiatives. It may be useful for stakeholder or policy research."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 77.5,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "SIGOMA - \"Cut to winter fuel payments have been a mistake\"",
+                            "Source": "https://www.sigoma.gov.uk/news/cut-to-winter-fuel-payments-have-been-a-mistake",
+                            "Reasoning": "The article discusses the potential negative impact of cuts to winter fuel payments and how these measures aim to provide relief to families. This is relevant to council customers who may be concerned about welfare benefits.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "For a sustainable and fairer future",
+                            "Source": "https://www.sigoma.gov.uk/public-documents/SIGOMA-Manifesto.pdf",
+                            "Reasoning": "The document discusses SIGOMA's stance on creating a sustainable and fairer future in the UK, with a mention of using funds to provide vouchers to households who receive free school meals. However, it does not directly address customer information needs about welfare benefits.",
+                            "Confidence": "70"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.sigoma.gov.uk/news/cut-to-winter-fuel-payments-have-been-a-mistake"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.sigoma.gov.uk/news/cut-to-winter-fuel-payments-have-been-a-mistake",
+                        "analysis": {
+                            "url": "https://www.sigoma.gov.uk/news/cut-to-winter-fuel-payments-have-been-a-mistake",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "How to get free school meals",
+                                    "persona": "council_customer",
+                                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                                    "started_at": "2025-08-13T05:46:03+01:00",
+                                    "search_parameters": {
+                                        "query": "How to get free school meals",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-13T05:46:18+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 22259,
+                            "response_time": 0.717,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.717s)",
+                                    "Content successfully retrieved (22259 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.719761848449707,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.sigoma.gov.uk/news/cut-to-winter-fuel-payments-have-been-a-mistake"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.sigoma.gov.uk/news/cut-to-winter-fuel-payments-have-been-a-mistake",
+                        "content": " Here's the cleaned and semantically structured HTML content of the webpage:\n\n```html\n<article>\n    <div class=\"news-image\" align=\"center\">\n        <img src=\"https://sigoma-gov.transforms.svdcdn.com/production/images/news/yp.png?w=500&amp;h=500&amp;q=82&amp;fit=clip&amp;dm=1676044105&amp;s=620aca00657639e57f6fee659d50ba88\" alt=\"Yp\">\n    </div>\n    <h1>\"Cut to winter fuel payments have been a mistake\"</h1>\n    <p>Posted on May 13, 2025</p>\n    <p><strong>The results of the local elections have been a sobering moment for our party. The optimism that followed last year&rsquo;s landslide victory has been met with a reality check, as voters have sent us a clear message: Labour must urgently address the pressing issues that affect people&rsquo;s lives, or we risk losing seats to a resurgent Reform Party.</strong></p>\n    <p><i><strong>By&nbsp;Sir Stephen Houghton</strong></i></p>\n    <p>The cuts to winter fuel payments, in my opinion, have been a mistake and are the antithesis of what we stand for as a party - giving people the support they need to help improve their lives.</p>\n    <p>During campaigning on the doorsteps in&nbsp;Doncaster, it was clear that it&rsquo;s not just pensioners who are upset; it&rsquo;s whole families, their kids and grandkids who say the decision is not fair. About 10 million pensioners lost up to &pound;300 a year after the Chancellor opted to means-test winter fuel payments.</p>\n    <p>This decision has become totemic, allowing political opponents to portray the government as insensitive to the struggles of working-class people. It was the first major decision taken by the government after 14 years of austerity, and it stuck out like a sore thumb. This policy set a tone for public attitudes towards the government, overshadowing much of the good work&nbsp;Labour&nbsp;has achieved under the Prime Minister&rsquo;s leadership in the first 10 months, including the beginning of positive changes to the local government finance system and improvements in the National Health Service.</p>\n    <p>In councils across the country, everyone says the same thing: this issue is not going away. There are four more winters before the election and this will come back to damage Labour every year. The cut is particularly significant in more deprived areas like Barnsley, but it affects every family, every community. We&rsquo;ve had people ringing us up in the town hall saying they will never vote Labour again because of the decision. In Barnsley, we&rsquo;ve stepped in to provide support for 2,000 local pensioners, but it is clear that a national solution is needed.</p>\n    <p>Despite the good work on the NHS, consistently reducing waiting times each month, providing more vital funding to the most deprived councils through the Recovery Grant, and the Prime Minister's leading work on supporting Ukraine and securing new trade deals, these results show that the outcome of next year&rsquo;s local elections will be even worse if things don't change and the government doesn&rsquo;t do more to help councils and communities in need.</p>\n    <p>The Reform Party's success in local elections is a clear indication that they are vocalising the concerns that people in our constituencies have, while Labour is not answering those concerns fast enough. Reform won the by-election in Runcorn &amp; Helsby, won a majority of councillors in Doncaster and Durham, and came within 400 votes of winning the North Tyneside mayoralty. Nigel Farage&rsquo;s party swept to power in 10 councils across the country, as well as winning the new mayoralties in Hull and East Yorkshire and Greater Lincolnshire on both banks of the Humber. These are all historically Labour strongholds, so this is a worrying indication for the party of what could come in next year&rsquo;s local elections.</p>\n    <p>There are several key areas - most notably the Government&rsquo;s commitment to reform council funding to fix the foundations of local government, which we expect imminently &ndash; that will give local councils the support they need to make significant investment and point to tangible benefits they have created to voters by the time of the next election.</p>\n    <p>I applaud the Government&rsquo;s ambition for big capital expenditure projects to achieve economic growth. However, capital spending takes time to have a political effect: time the government simply doesn't have. Delivering support on immediate problems, such as the cost-of-living crisis, and rethinking cuts to the benefit system and the winter fuel allowance, is pivotal if Labour wants to hold off Reform and get a second term.</p>\n    <p>The current thresholds implemented for winter fuel payments leave vulnerable households struggling to keep warm during the winter months and should be raised. One option would be to increase the eligibility threshold to &pound;30k, the average national income for pensioner couples, or to a higher threshold of &pound;37k, the national median for household disposable income.</p>\n    <p>Additionally, the government should consider supporting free bus travel for under-18s. There are a number of councils now trying to make transport cheaper and easier to access for young people.</p>\n    <p>The government should enter into joint schemes with those authorities. There is also an opportunity to review the threshold for free school meals, which should be raised to ensure that more children are able to access free school meals.</p>\n    <p>These measures will provide immediate relief to families and communities in need. I am increasingly concerned by reports this week that the Government is not taking another look at these points, and I hope the government rethinks its position.</p>\n    <p><i><strong>Cllr Sir Stephen Houghton is the leader of Barnsley Metropolitan Borough Council.</strong></i></p>\n    <p>You can access the full article <a href=\"https://www.yorkshirepost.co.uk/news/opinion/columnists/cuts-to-winter-fuel-payments-have-been-a-mistake-and-are-the-antithesis-of-what-labour-stands-for-sir-stephen-houghton-5120116\">here</a>.</p>\n</article>\n```\n\nThis HTML structure preserves headings (`<h1>`), paragraphs (`<p>`), links (`<a>`), and a single `<button>` hidden within the article markup. Non-essential page furniture such as headers, footers, navigation menus, sidebars, cookie banners, and newsletter sign-up blocks have been removed.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 34.1866250038147,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.sigoma.gov.uk/news/cut-to-winter-fuel-payments-have-been-a-mistake",
+                        "analysis": {
+                            "persona": "PERSONAL PERSPECTIVE",
+                            "Reason": [
+                                {
+                                    "need": "I'm recently unemployed and I'd like to apply for free school meals",
+                                    "answer_quality": "The content does not directly answer this specific need as it focuses on the topic of winter fuel payments and their impact, not school meals",
+                                    "confidence": "30%",
+                                    "reasoning": "The article is about a politician's viewpoint on the winter fuel payment cuts and doesn't provide any information related to free school meals eligibility.",
+                                    "next_actions": "I would need to visit the local council's website, find their section on education benefits, and look for information about applying for free school meals."
+                                }
+                            ],
+                            "overall_assessment": "While the content is informative regarding the politician's stance on winter fuel payments, it does not meet my needs for understanding how to apply for free school meals or the criteria required. There are no key gaps in terms of providing information related to the topic at hand, but the lack of information specific to free school meals leaves me unsatisfied."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.481742858886719,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.sigoma.gov.uk/news/cut-to-winter-fuel-payments-have-been-a-mistake"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250813_054603-sigoma.gov.uk",
+                    "analysis_timestamp": "2025-08-13T05:47:00+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.95,
+                            "tokens_consumed": 6813,
+                            "tokens_remaining": 23187,
+                            "token_utilization_percentage": 22.71,
+                            "average_tokens_per_step": 1135.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 77.29,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 20,
+                            "consumption_rate": 1135.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "30",
+                            "quality_scores": [
+                                "30"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "30",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 13.57,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.95,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250813_054603-sigoma.gov.uk",
+                        "start_time": "2025-08-13T05:46:03+01:00",
+                        "current_time": "2025-08-13T05:47:00+01:00",
+                        "duration_seconds": 57,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6813,
+                        "tokens_remaining": 23187,
+                        "token_utilization_percentage": 22.71,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3416,
+                                "avg_per_call": 1708
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3397,
+                                "avg_per_call": 1698.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1135.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250813_054603-sigoma.gov.uk",
+                    "start_time": "2025-08-13T05:46:03+01:00",
+                    "current_time": "2025-08-13T05:47:00+01:00",
+                    "duration_seconds": 57,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6813,
+                    "tokens_remaining": 23187,
+                    "token_utilization_percentage": 22.71,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3416,
+                            "avg_per_call": 1708
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3397,
+                            "avg_per_call": 1698.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1135.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

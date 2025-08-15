@@ -1,0 +1,220 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "How to get free school meals",
+                    "persona": "council_customer",
+                    "need": "I'm recently been made unemployed and I do not have an income, I'd like to apply for free school meals. I'm keen to know what is the criteria and how quickly I will find out if I'm eligible",
+                    "started_at": "2025-08-13T05:51:24+01:00",
+                    "search_parameters": {
+                        "query": "How to get free school meals",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "peterborough.gov.uk",
+                "Council Name": "Peterborough City Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "How to get free school meals",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "How to apply for free school meals",
+                        "link": "https://www.peterborough.gov.uk/residents/schools-and-education/free-school-meals",
+                        "snippet": "All children in Reception, Year 1 and Year 2 are entitled to Universal free school meals. If you receive certain benefits, your child may be entitled to free\u00a0..."
+                    },
+                    {
+                        "title": "Free school meals | Cambridgeshire County Council",
+                        "link": "http://www.peterborough.gov.uk/freeschoolmeals",
+                        "snippet": "Many schools have systems which mean it is impossible for other pupils to know who is receiving free school meals. School children who are eligible for free\u00a0..."
+                    },
+                    {
+                        "title": "Holiday Voucher Scheme | Peterborough City Council",
+                        "link": "https://www.peterborough.gov.uk/residents/here-to-help-cost-of-living/holiday-voucher-scheme",
+                        "snippet": "Aged 19 to 25 and have an Education, Health and Care Plan (EHCP) and accesses the bursary scheme or free school meals in their college. We provide a supermarket\u00a0..."
+                    },
+                    {
+                        "title": "Peterborough City Council Free School Meals",
+                        "link": "https://fis.peterborough.gov.uk/kb5/peterborough/directory/service.page?id=HDtwUlc8p5A",
+                        "snippet": "Free School Meals Applications All children in Reception, Year 1 and Year 2 are entitled to infant free school meals. If you receive certain benefits your\u00a0..."
+                    },
+                    {
+                        "title": "Free School Meal Checking",
+                        "link": "https://learntogether.peterborough.gov.uk/peterborough-services-to-schools/peterborough-schools-and-settings-finance-team/schools/free-school-meal-checking",
+                        "snippet": "This change means more low-income working families will be entitled. From 1st April 2018 a child will be able to receive free school meals if the parent/child\u00a0..."
+                    },
+                    {
+                        "title": "School transport | Peterborough City Council",
+                        "link": "https://www.peterborough.gov.uk/residents/schools-and-education/school-transport",
+                        "snippet": "Jul 31, 2025 ... ... free school meals or their parents are in receipt of the appropriate benefits ... benefits you get). Please provide print outs or screen\u00a0..."
+                    },
+                    {
+                        "title": "Holiday Activities and Food (HAF) Programme | Peterborough City ...",
+                        "link": "https://www.peterborough.gov.uk/residents/here-to-help-cost-of-living/peterborough-holiday-activities-and-food-haf-programme",
+                        "snippet": "Jun 23, 2025 ... ... Meals, your child will not be eligible for income-related free school meals unless you make a successful claim via the Free School Meals webpage\u00a0..."
+                    },
+                    {
+                        "title": "Holiday Activities and Food programme",
+                        "link": "https://learntogether.peterborough.gov.uk/early-years-and-childcare/funding-and-sufficiency/haf",
+                        "snippet": "Benefits-related free school meals (FSM) are available to pupils if their parents are in receipt of one of the qualifying benefits, and have a claim verified by\u00a0..."
+                    },
+                    {
+                        "title": "Supermarket vouchers to be issued for half-term | Peterborough City ...",
+                        "link": "https://www.peterborough.gov.uk/engagement-hub/supermarket-vouchers-to-be-issued-for-half-term",
+                        "snippet": "Feb 5, 2025 ... Vouchers will be distributed to families with children and young people who receive: Income-related Free School Meals (children and young people\u00a0..."
+                    },
+                    {
+                        "title": "Supermarket vouchers available for summer holidays ...",
+                        "link": "https://www.peterborough.gov.uk/engagement-hub/supermarket-vouchers-available-for-summer-holidays-1",
+                        "snippet": "Jun 30, 2025 ... Vouchers will be distributed to families with children and young people who receive: Income based free school meals (pupils in reception to year\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": null,
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "How to apply for free school meals",
+                                "Source": "https://www.peterborough.gov.uk/residents/schools-and-education/free-school-meals",
+                                "Key Strengths": [
+                                    "Detailed guide on how to apply for free school meals",
+                                    "Direct link to the application process"
+                                ],
+                                "Confidence": "100",
+                                "Reasoning": "This item directly addresses the user's question about applying for free school meals and provides a detailed guide as well as a direct link to the application process."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Free school meals | Cambridgeshire County Council",
+                                "Source": "http://www.peterborough.gov.uk/freeschoolmeals",
+                                "Key Strengths": [
+                                    "Information about free school meals eligibility and privacy",
+                                    "Clear explanation about schools' meal system"
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "This item provides information about eligibility for free school meals, along with a clear explanation of how schools' systems ensure privacy for families benefiting from this program."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Peterborough City Council Free School Meals",
+                                "Source": "https://fis.peterborough.gov.uk/kb5/peterborough/directory/service.page?id=HDtwUlc8p5A",
+                                "Key Strengths": [
+                                    "Application process for free school meals",
+                                    "Information about eligibility"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This item links to the application process and provides information about eligibility criteria for free school meals."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Free School Meal Checking",
+                                "Source": "https://learntogether.peterborough.gov.uk/peterborough-services-to-schools/peterborough-schools-and-settings-finance-team/schools/free-school-meal-checking",
+                                "Key Strengths": [
+                                    "Information about changes to free school meals eligibility",
+                                    "Guidelines for schools' meal checking"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This item discusses changes in the criteria for receiving free school meals and provides guidelines for schools' meal checking."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Supermarket vouchers to be issued for half-term | Peterborough City ...",
+                                "Source": "https://www.peterborough.gov.uk/engagement-hub/supermarket-vouchers-to-be-issued-for-half-term",
+                                "Key Strengths": [
+                                    "Information about supermarket voucher distribution during half-terms",
+                                    "Eligibility requirements"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This item provides information about the distribution of supermarket vouchers during half-terms for families receiving free school meals."
+                            }
+                        ],
+                        "Analysis Notes": "The search results included both direct links to applying or learning more about free school meals, as well as resources discussing meal eligibility and distribution of supermarket vouchers. The top recommendations were selected based on their relevance, quality of information provided, and clarity in helping users find council customer information regarding free school meals.",
+                        "Recommendations Notes": "Given the high percentage of relevant search results, additional resources for educational purposes may be available by exploring related queries."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "100",
+                        "95",
+                        "90",
+                        "85",
+                        "80"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 90,
+                    "max_confidence": "100"
+                },
+                "pilot_output": null
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "stopped_error"
+            }
+        }
+    }
+]

@@ -1,0 +1,665 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-07T21:53:53+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "bridgend.gov.uk",
+                "Council Name": "Bridgend County Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Report a missed collection",
+                        "link": "https://www.bridgend.gov.uk/residents/recycling-and-waste/report-a-missed-collection/",
+                        "snippet": "You can report a missed waste or recycling collection online. Enter your postcode and, when prompted, select your address from the drop-down menu."
+                    },
+                    {
+                        "title": "Recycling and waste",
+                        "link": "https://www.bridgend.gov.uk/residents/recycling-and-waste/",
+                        "snippet": "You can request new recycling containers and food waste bags online. Report a missed collection. You can report a missed waste or recycling collection online."
+                    },
+                    {
+                        "title": "Report an issue",
+                        "link": "https://www.bridgend.gov.uk/council/customer-services/report-an-issue/",
+                        "snippet": "Report a missed collection. You can report a missed recycling or waste collection online via the Plan B website. Report issue on the road or pavement. Report\u00a0..."
+                    },
+                    {
+                        "title": "Collection updates",
+                        "link": "https://www.bridgend.gov.uk/residents/recycling-and-waste/collection-updates/",
+                        "snippet": "Report a missed collection \u00b7 Enter your postcode and select 'Look up property' \u00b7 Select your address \u00b7 Select 'Recycling collection' or 'Refuse sacks collection'\u00a0..."
+                    },
+                    {
+                        "title": "Absorbent Hygiene Product collections",
+                        "link": "https://www.bridgend.gov.uk/residents/recycling-and-waste/absorbent-hygiene-product-collections/",
+                        "snippet": "Recycling and waste; Absorbent Hygiene Product collections. Absorbent ... Report a missed collection \u00b7 Trade and commercial waste \u00b7 What happens to your\u00a0..."
+                    },
+                    {
+                        "title": "Garden waste collections",
+                        "link": "https://www.bridgend.gov.uk/residents/recycling-and-waste/garden-waste-collections/",
+                        "snippet": "Please note: Your garden waste collection day will be advised with the delivery of your sacks. ... Report a missed collection \u00b7 Trade and commercial waste \u00b7 What\u00a0..."
+                    },
+                    {
+                        "title": "Refuse collections",
+                        "link": "https://www.bridgend.gov.uk/residents/recycling-and-waste/refuse-collections/",
+                        "snippet": "Find out your waste and recycling collection day ... Recycling centres \u00b7 Recycling collections \u00b7 Recycling in flats and high density estates \u00b7 Report a missed\u00a0..."
+                    },
+                    {
+                        "title": "Bulky waste collections",
+                        "link": "https://www.bridgend.gov.uk/residents/recycling-and-waste/bulky-waste-collections/",
+                        "snippet": "Please note: The bulky waste collection service is not available for businesses or landlords as this is trade waste. ... Report a missed collection \u00b7 Trade and\u00a0..."
+                    },
+                    {
+                        "title": "Recycling collections",
+                        "link": "https://www.bridgend.gov.uk/residents/recycling-and-waste/recycling-collections/",
+                        "snippet": "If you need additional recycling bags or containers, you can order these online - Order recycling containers ... Report a missed collection \u00b7 Trade and commercial\u00a0..."
+                    },
+                    {
+                        "title": "Green bag deliveries",
+                        "link": "https://www.bridgend.gov.uk/residents/recycling-and-waste/green-bag-deliveries/",
+                        "snippet": "We deliver green food waste recycling bags to households in the county borough annually. The table below shows when we will finish delivering bags in each area."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.bridgend.gov.uk/residents/recycling-and-waste/report-a-missed-collection/",
+                        "title": "Report a missed collection",
+                        "confidence": 95,
+                        "strengths": [
+                            "Directly allows the user to report a missed waste or recycling collection online."
+                        ],
+                        "reasoning": "The provided item title and snippet both indicate that this link allows residents to report a missed collection online, which corresponds to the customer information need.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Report a missed collection",
+                                "Source": "https://www.bridgend.gov.uk/residents/recycling-and-waste/report-a-missed-collection/",
+                                "Key Strengths": [
+                                    "Directly allows the user to report a missed waste or recycling collection online."
+                                ],
+                                "Confidence": "95",
+                                "Reasoning": "The provided item title and snippet both indicate that this link allows residents to report a missed collection online, which corresponds to the customer information need."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Report an issue",
+                                "Source": "https://www.bridgend.gov.uk/council/customer-services/report-an-issue/",
+                                "Key Strengths": [
+                                    "Includes options to report a missed recycling or waste collection via the Plan B website.",
+                                    "Offers additional issue reporting on the road or pavement."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "Although not specifically focused on reporting a missed collection, this link offers an alternative avenue to report issues related to waste and recycling which can potentially include information about missed collections."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Collection updates",
+                                "Source": "https://www.bridgend.gov.uk/residents/recycling-and-waste/collection-updates/",
+                                "Key Strengths": [
+                                    "Offers detailed steps to report a missed waste or recycling collection."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "Provides instructions on how to report a missed collection and the specific locations of these collections, making it potentially one of the most helpful options for customers."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "Recycling collections",
+                                "Source": "https://www.bridgend.gov.uk/residents/recycling-and-waste/recycling-collections/",
+                                "Key Strengths": [
+                                    "Allows users to order additional recycling bags or containers online.",
+                                    "Offers information about recycling collections for flats and high-density estates."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "Includes useful resources like ordering additional recycling containers, which may help customers manage their waste more effectively. The focus on different types of recycling collections suggests broad relevance to the customer information need."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Green bag deliveries",
+                                "Source": "https://www.bridgend.gov.uk/residents/recycling-and-waste/green-bag-deliveries/",
+                                "Key Strengths": [
+                                    "Provides information about the schedule and locations for the delivery of green recycling bags to households."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Although primarily focused on the delivery of green food waste bags, it provides relevant and helpful information about the collection of green waste from residents."
+                            }
+                        ],
+                        "Analysis Notes": "All provided items were related to recycling or waste collections in some way, but not all directly addressed reporting a missed collection. A thorough exploration of each link revealed the above recommendations.",
+                        "Recommendations Notes": "While Item 2 also includes an option for reporting a missed collection, it offers less detailed instructions than Item 4, hence ranked lower."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "95",
+                        "90",
+                        "85",
+                        "80",
+                        "75"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 85,
+                    "max_confidence": "95"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "Report a missed collection",
+                        "Source": "https://www.bridgend.gov.uk/residents/recycling-and-waste/report-a-missed-collection/",
+                        "Reasoning": " This link is explicitly about reporting a missed waste or recycling collection, directly meeting the customer's information need and possessing a high confidence score.",
+                        "Confidence": "95"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.bridgend.gov.uk/residents/recycling-and-waste/report-a-missed-collection/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.bridgend.gov.uk/residents/recycling-and-waste/report-a-missed-collection/",
+                        "analysis": {
+                            "url": "https://www.bridgend.gov.uk/residents/recycling-and-waste/report-a-missed-collection/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-07T21:53:53+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-07T21:54:13+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 17055,
+                            "response_time": 1.358,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (1.358s)",
+                                    "Content successfully retrieved (17055 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 1.3599519729614258,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.bridgend.gov.uk/residents/recycling-and-waste/report-a-missed-collection/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.bridgend.gov.uk/residents/recycling-and-waste/report-a-missed-collection/",
+                        "content": " Here is the cleaned and semantically structured HTML containing the central editorial content of the page:\n\n```html\n<body>\n    <main id=\"main-content\">\n        <div class=\"container mt-4 mb-md-3\">\n            <div class=\"row mt-4 mb-md-3\">\n                <div class=\"col\">\n                    <h1>Report a missed collection</h1>\n                </div>\n            </div>\n        </div>\n    </main>\n    <!-- Other non-essential page furniture (e.g. headers, footers, navigation menus, sidebars, cookie banners, and newsletter sign-up blocks) removed for brevity -->\n</body>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 5.588854074478149,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.bridgend.gov.uk/residents/recycling-and-waste/report-a-missed-collection/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "0%",
+                                    "confidence": "0",
+                                    "reasoning": "The provided content does not give any information or steps on how a council resident can report a missed collection. There is no contact information, online form, or guidance on actions to take in case of forgetting to put a bin out.",
+                                    "next_actions": "I would first search the council's website for more specific information about reporting a missed collection. If I cannot find it, I might reach out directly to the council via phone or email."
+                                }
+                            ],
+                            "overall_assessment": "The content is very brief and lacks essential details. It provides no guidance on steps, who to contact, or expected response time for reporting a missed collection. Key areas for improvement include adding information about online reporting options, contact details, and estimated response times."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.657359838485718,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.bridgend.gov.uk/residents/recycling-and-waste/report-a-missed-collection/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250807_215353-bridgend.gov.uk",
+                    "analysis_timestamp": "2025-08-07T21:54:25+01:00",
+                    "analysis_duration": 0.004,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.5333333333333333,
+                            "tokens_consumed": 5184,
+                            "tokens_remaining": 94816,
+                            "token_utilization_percentage": 5.18,
+                            "average_tokens_per_step": 864
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 94.82,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 109,
+                            "consumption_rate": 864,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "0",
+                            "quality_scores": [
+                                "0"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "0",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 7.62,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.5333333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250807_215353-bridgend.gov.uk",
+                        "start_time": "2025-08-07T21:53:53+01:00",
+                        "current_time": "2025-08-07T21:54:25+01:00",
+                        "duration_seconds": 32,
+                        "status": "active",
+                        "token_allocation": 100000,
+                        "tokens_consumed": 5184,
+                        "tokens_remaining": 94816,
+                        "token_utilization_percentage": 5.18,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2286,
+                                "avg_per_call": 1143
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 2898,
+                                "avg_per_call": 1449
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 864
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250807_215353-bridgend.gov.uk",
+                    "start_time": "2025-08-07T21:53:53+01:00",
+                    "current_time": "2025-08-07T21:54:25+01:00",
+                    "duration_seconds": 32,
+                    "status": "active",
+                    "token_allocation": 100000,
+                    "tokens_consumed": 5184,
+                    "tokens_remaining": 94816,
+                    "token_utilization_percentage": 5.18,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2286,
+                            "avg_per_call": 1143
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 2898,
+                            "avg_per_call": 1449
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 864
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

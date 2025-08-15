@@ -1,0 +1,651 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T23:46:51+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "lbbd.gov.uk",
+                "Council Name": "London Borough of Barking and Dagenham"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Find out if you need planning permission | London Borough of ...",
+                        "link": "https://www.lbbd.gov.uk/planning-building-control-and-local-land-charges/planning/step-by-step/make-planning-application-6",
+                        "snippet": "Visit the Planning Portal, which provides clear guidance on what changes you can make without planning permission and when planning permission is required."
+                    },
+                    {
+                        "title": "Planning guidance and policies | London Borough of Barking and ...",
+                        "link": "https://www.lbbd.gov.uk/planning-building-control-and-local-land-charges/planning-guidance-and-policies",
+                        "snippet": "You may need to seek planning permission to carry out building work in these areas. ... The panel aims to improve the quality of buildings and places for\u00a0..."
+                    },
+                    {
+                        "title": "LONDON BOROUGH OF BARKING AND DAGENHAM LOCAL ...",
+                        "link": "https://www.lbbd.gov.uk/sites/default/files/2024-10/B%26D_LocalPlan_A4_SEP24_digital.pdf",
+                        "snippet": "Sep 24, 2024 ... planning permission which allow certain building works and changes of use to be carried out without having to make a planning application."
+                    },
+                    {
+                        "title": "Home energy upgrades | London Borough of Barking and Dagenham",
+                        "link": "https://www.lbbd.gov.uk/housing/home-energy-upgrades",
+                        "snippet": "Some homes may also qualify for renewables such as solar PV and air source heat pumps. We're talking \u00a31,000s worth of free upgrades, and you don't have to be an\u00a0..."
+                    },
+                    {
+                        "title": "Complaints and compliments | London Borough of Barking and ...",
+                        "link": "https://www.lbbd.gov.uk/council-and-democracy/complaints-and-compliments",
+                        "snippet": "How to complain, what happens after you complain and how to compliment one of our services."
+                    },
+                    {
+                        "title": "Notice of Meeting CABINET",
+                        "link": "https://www.lbbd.gov.uk/sites/default/files/2024-09/Cabinet%20170924%20%28public%29.pdf",
+                        "snippet": "Sep 17, 2024 ... \u27a2 Increase in Panel top-up payment applications from schools. ... obligation to constitute a reason for granting planning permission it must be:."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.lbbd.gov.uk/planning-building-control-and-local-land-charges/planning/step-by-step/make-planning-application-6",
+                        "title": "Find out if you need planning permission | London Borough of ...",
+                        "confidence": 85,
+                        "strengths": [
+                            "Links directly to council's website for planning permission requirements",
+                            "Offers clear guidance on when planning permission is needed"
+                        ],
+                        "reasoning": "This resource provides a step-by-step guide that helps users determine if they need planning permission for certain projects. The resource's location on the council's website and its clarity suggest that it could be very helpful to a user looking for this information.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": 6,
+                            "recommendations": 4
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": 1,
+                                "Title": "Find out if you need planning permission | London Borough of ...",
+                                "Source": "https://www.lbbd.gov.uk/planning-building-control-and-local-land-charges/planning/step-by-step/make-planning-application-6",
+                                "Key Strengths": [
+                                    "Links directly to council's website for planning permission requirements",
+                                    "Offers clear guidance on when planning permission is needed"
+                                ],
+                                "Confidence": 85,
+                                "Reasoning": "This resource provides a step-by-step guide that helps users determine if they need planning permission for certain projects. The resource's location on the council's website and its clarity suggest that it could be very helpful to a user looking for this information."
+                            },
+                            {
+                                "Number": 2,
+                                "Title": "Planning guidance and policies | London Borough of Barking and ...",
+                                "Source": "https://www.lbbd.gov.uk/planning-building-control-and-local-land-charges/planning-guidance-and-policies",
+                                "Key Strengths": [
+                                    "Links to council's website with planning guidance and policies",
+                                    "Includes information about requirements for building work and improving quality of buildings and places"
+                                ],
+                                "Confidence": 80,
+                                "Reasoning": "The title and the content snippet suggest that this resource provides a comprehensive overview of planning guidance and policies. This could be very useful to someone searching for council customer information related to building or development projects."
+                            },
+                            {
+                                "Number": 4,
+                                "Title": "Home energy upgrades | London Borough of Barking and Dagenham",
+                                "Source": "https://www.lbbd.gov.uk/housing/home-energy-upgrades",
+                                "Key Strengths": [
+                                    "Provides information about home energy upgrades and potential financial benefits",
+                                    "Easy to understand language and clear eligibility guidelines"
+                                ],
+                                "Confidence": 90,
+                                "Reasoning": "The title of the resource suggests that it aims to inform residents about available home energy upgrades, which aligns with a user's interest in council customer information. The fact that it offers potential financial benefits and uses easy-to-understand language increases its relevance and usefulness."
+                            },
+                            {
+                                "Number": 5,
+                                "Title": "Complaints and compliments | London Borough of Barking and ...",
+                                "Source": "https://www.lbbd.gov.uk/council-and-democracy/complaints-and-compliments",
+                                "Key Strengths": [
+                                    "Directly addresses process for making complaints or compliments about council services"
+                                ],
+                                "Confidence": 70,
+                                "Reasoning": "While the title of this resource directly relates to the user's interest in council customer information, the content seems to be more focused on complaints and compliments. The relevance may be somewhat reduced compared to other alternatives."
+                            }
+                        ],
+                        "Analysis Notes": "All search results are related to services offered by London Borough of Barking and Dagenham, directly addressing the council customer information request. However, one item had a lower confidence score due to its narrow focus on complaints and compliments rather than comprehensive council customer service.",
+                        "Recommendations Notes": "To further improve relevance and quality of recommendations, consider adding filters for specific types of services (e.g., housing, planning, etc.) or weighting results based on the closeness of the search terms to the resource titles."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        85,
+                        80,
+                        90,
+                        70
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 81.25,
+                    "max_confidence": 90
+                },
+                "pilot_output": {
+                    "Recommendations": [
+                        {
+                            "Number": 1,
+                            "Title": "Find out if you need planning permission | London Borough of ...",
+                            "Source": "https://www.lbbd.gov.uk/planning-building-control-and-local-land-charges/planning/step-by-step/make-planning-application-6",
+                            "Reasoning": "This resource provides a comprehensive step-by-step guide that helps users easily determine if they need planning permission, which is directly related to the analysis context and offers valuable information.",
+                            "Confidence": 85
+                        },
+                        {
+                            "Number": 4,
+                            "Title": "Home energy upgrades | London Borough of Barking and Dagenham",
+                            "Source": "https://www.lbbd.gov.uk/housing/home-energy-upgrades",
+                            "Reasoning": "This resource guides users through available home energy upgrades with potential financial benefits and easy-to-understand language, making it highly relevant to the analysis context.",
+                            "Confidence": 90
+                        },
+                        {
+                            "Number": 2,
+                            "Title": "Planning guidance and policies | London Borough of Barking and ...",
+                            "Source": "https://www.lbbd.gov.uk/planning-building-control-and-local-land-charges/planning-guidance-and-policies",
+                            "Reasoning": "Although this resource offers a comprehensive overview of planning guidance and policies, it may not provide the immediate answer users are seeking regarding council customer information for building or development projects.",
+                            "Confidence": 80
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.lbbd.gov.uk/planning-building-control-and-local-land-charges/planning/step-by-step/make-planning-application-6"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.lbbd.gov.uk/planning-building-control-and-local-land-charges/planning/step-by-step/make-planning-application-6",
+                        "analysis": {
+                            "url": "https://www.lbbd.gov.uk/planning-building-control-and-local-land-charges/planning/step-by-step/make-planning-application-6",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T23:46:51+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T23:47:16+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 206556,
+                            "response_time": 0.732,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.732s)",
+                                    "Content successfully retrieved (206556 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.734288215637207,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.lbbd.gov.uk/planning-building-control-and-local-land-charges/planning/step-by-step/make-planning-application-6"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.lbbd.gov.uk/planning-building-control-and-local-land-charges/planning/step-by-step/make-planning-application-6",
+                        "content": " This is a HTML code for a webpage that provides step-by-step guidance on making a planning application in the context of building control and local land charges. The page explains the first step: visiting the Planning Portal for clear guidance on what changes can be made without planning permission and when it's required.\n\nThe sidebar navigation shows an overview of all the steps involved in the process, including pre-application advice, community infrastructure levy, submission of the application, and what happens next after submission. The footer contains a feedback tool, likely for users to provide feedback on the content.\n\nThere is also a banner at the top that displays alerts, notices, or promotions related to the website. In this example, there seems to be an alert about changes due to the COVID-19 pandemic.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 7.341242790222168,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.lbbd.gov.uk/planning-building-control-and-local-land-charges/planning/step-by-step/make-planning-application-6",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "Partially Answered",
+                                    "confidence": "70%",
+                                    "reasoning": "The content provides a general guidance to visit the Planning Portal for clear guidance on what changes can be made without planning permission. However, it does not specify if solar panel installation requires planning permission or not.",
+                                    "next_actions": "Visit the Planning Portal as suggested for more specific information regarding installing solar panels."
+                                }
+                            ],
+                            "overall_assessment": "The content serves a purpose of guiding residents through the process of making a planning application but falls short in providing clear answers to specific questions such as installing solar panels on houses. Key gaps include lacking detailed information and specific examples for various home renovation projects."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.438835859298706,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.lbbd.gov.uk/planning-building-control-and-local-land-charges/planning/step-by-step/make-planning-application-6"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_234651-lbbd.gov.uk",
+                    "analysis_timestamp": "2025-08-10T23:47:29+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.6333333333333333,
+                            "tokens_consumed": 6501,
+                            "tokens_remaining": 23499,
+                            "token_utilization_percentage": 21.67,
+                            "average_tokens_per_step": 1083.5
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 78.33,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 21,
+                            "consumption_rate": 1083.5,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "70",
+                            "quality_scores": [
+                                "70"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "70",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 9.05,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.6333333333333333,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_234651-lbbd.gov.uk",
+                        "start_time": "2025-08-10T23:46:51+01:00",
+                        "current_time": "2025-08-10T23:47:29+01:00",
+                        "duration_seconds": 38,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6501,
+                        "tokens_remaining": 23499,
+                        "token_utilization_percentage": 21.67,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3766,
+                                "avg_per_call": 1883
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 2735,
+                                "avg_per_call": 1367.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1083.5
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_234651-lbbd.gov.uk",
+                    "start_time": "2025-08-10T23:46:51+01:00",
+                    "current_time": "2025-08-10T23:47:29+01:00",
+                    "duration_seconds": 38,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6501,
+                    "tokens_remaining": 23499,
+                    "token_utilization_percentage": 21.67,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3766,
+                            "avg_per_call": 1883
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 2735,
+                            "avg_per_call": 1367.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1083.5
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

@@ -1,0 +1,686 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T21:26:39+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "colchester.gov.uk",
+                "Council Name": "Colchester Borough Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "What you need \u00b7 Colchester City Council",
+                        "link": "https://www.colchester.gov.uk/planning/apply/what-you-need/",
+                        "snippet": "We encourage you to seek pre-application advice or enter into a Planning Performance Agreement (PPA). Without a PPA, we will not provide progress updates."
+                    },
+                    {
+                        "title": "WAM Planning - Applications received filtered \u00b7 Colchester City ...",
+                        "link": "https://www.colchester.gov.uk/WAM-received-list/?id=5",
+                        "snippet": "Application to determine if prior approval is required for a proposed:Installation of Solar Photovoltaics (PV) panels on an existing agricultural building."
+                    },
+                    {
+                        "title": "WAM Planning - Applications received filtered \u00b7 Colchester City ...",
+                        "link": "https://www.colchester.gov.uk/wam-received-list/?id=7",
+                        "snippet": "Application for a Lawful Development Certificate for a proposed installation of 12 solar panels ... planning permission 222120, 18/06/2025. 251297, Rear\u00a0..."
+                    },
+                    {
+                        "title": "Heritage \u00b7 Colchester City Council",
+                        "link": "https://www.colchester.gov.uk/planning/planning-guidance/heritage/",
+                        "snippet": "We will confirm full compliance with the planning condition when the final report is submitted and reviewed. Historic Environment Record (HER). The Colchester\u00a0..."
+                    },
+                    {
+                        "title": "WAM Planning - Applications received filtered \u00b7 Colchester City ...",
+                        "link": "https://www.colchester.gov.uk/wam-received-list/?id=3",
+                        "snippet": "Application for prior approval of the installation of solar PV equipment on the roof of a non domestic building. 17/07/2025. 251536, land to the east of,\u00a0..."
+                    },
+                    {
+                        "title": "WAM Planning - Applications decided filtered \u00b7 Colchester City Council",
+                        "link": "https://www.colchester.gov.uk/wam-decided-list/?id=12",
+                        "snippet": "This proposal seeks planning permission and advertisement consent ... The south facing roof elevation to site solar panels to supply green energy to the annexe\u00a0..."
+                    },
+                    {
+                        "title": "WAM Planning - Applications decided filtered \u00b7 Colchester City Council",
+                        "link": "https://www.colchester.gov.uk/wam-decided-list/?id=4",
+                        "snippet": "... planning permission 242493 (relating to Application for approval of ... Roof-mounted integrated photovoltaic panels to the existing south-facing roof slope\u00a0..."
+                    },
+                    {
+                        "title": "Planning App details page \u00b7 Colchester City Council",
+                        "link": "https://www.colchester.gov.uk/planning-app-details/?id=19378e7a-b767-f011-bec3-000d3ab8b1c8",
+                        "snippet": "Please note \u2013 by submitting comments online you are granting us permission ... Application for prior approval of the installation of solar PV equipment on the\u00a0..."
+                    },
+                    {
+                        "title": "WAM Planning - Applications decided filtered \u00b7 Colchester City Council",
+                        "link": "https://www.colchester.gov.uk/wam-decided-list/?id=8",
+                        "snippet": "... planning permission. (180057), 08/06/2025. 250991, 16 Meadow ... Application to determine if prior approval is required for a proposed:Installation Solar\u00a0..."
+                    },
+                    {
+                        "title": "WAM Planning - Applications decided filtered \u00b7 Colchester City Council",
+                        "link": "https://www.colchester.gov.uk/wam-decided-list/?id=19",
+                        "snippet": "Application to discharge condition 6 of planning permission 240751, 23 ... BT Street Hub Unit and associated advertisement panels on either side of the unit\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.colchester.gov.uk/planning/apply/what-you-need/",
+                        "title": "What you need \u00b7 Colchester City Council",
+                        "confidence": 85,
+                        "strengths": [
+                            "Provides comprehensive information on what is needed for various planning applications",
+                            "Encourages pre-application advice and Planning Performance Agreement (PPA)",
+                            "Clear instructions about the lack of progress updates without a PPA"
+                        ],
+                        "reasoning": "This link provides a general guide for applicants on what they need to submit during planning applications. The encouragement of pre-application advice or entering into a Planning Performance Agreement is beneficial as it can help streamline the process and ensure all necessary information is provided upfront. The clarification that there will be no progress updates without a PPA is valuable in allowing applicants to understand the implications of not following this advice.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "What you need \u00b7 Colchester City Council",
+                                "Source": "https://www.colchester.gov.uk/planning/apply/what-you-need/",
+                                "Key Strengths": [
+                                    "Provides comprehensive information on what is needed for various planning applications",
+                                    "Encourages pre-application advice and Planning Performance Agreement (PPA)",
+                                    "Clear instructions about the lack of progress updates without a PPA"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link provides a general guide for applicants on what they need to submit during planning applications. The encouragement of pre-application advice or entering into a Planning Performance Agreement is beneficial as it can help streamline the process and ensure all necessary information is provided upfront. The clarification that there will be no progress updates without a PPA is valuable in allowing applicants to understand the implications of not following this advice."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "WAM Planning - Applications received filtered \u00b7 Colchester City ...",
+                                "Source": "https://www.colchester.gov.uk/wam-received-list/?id=5",
+                                "Key Strengths": [
+                                    "Provides a detailed description of the proposed installation of solar photovoltaics on an existing agricultural building",
+                                    "Includes the necessary planning permission number and date"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This link offers specific information about an application for prior approval for a solar PV panel installation on an agricultural building. The planning permission number and date are included, making it easy to find more details if needed."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "WAM Planning - Applications received filtered \u00b7 Colchester City ...",
+                                "Source": "https://www.colchester.gov.uk/wam-received-list/?id=7",
+                                "Key Strengths": [
+                                    "Application for a Lawful Development Certificate for a proposed installation of 12 solar panels with supporting information",
+                                    "Includes the planning permission number and date"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This link provides detailed information about an application for a Lawful Development Certificate related to a solar panel installation. The planning permission number and date are included, making it easy to find more details if needed."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "WAM Planning - Applications decided filtered \u00b7 Colchester City Council",
+                                "Source": "https://www.colchester.gov.uk/wam-decided-list/?id=12",
+                                "Key Strengths": [
+                                    "Application for planning permission and advertisement consent for a south facing roof solar panel installation",
+                                    "Provides brief description of the proposal"
+                                ],
+                                "Confidence": "65",
+                                "Reasoning": "This link offers information about an application that seeks both planning permission and advertisement consent for a solar panel installation on a south-facing roof. The brief description makes it clear what the intended project involves."
+                            },
+                            {
+                                "Number": "7",
+                                "Title": "WAM Planning - Applications decided filtered \u00b7 Colchester City Council",
+                                "Source": "https://www.colchester.gov.uk/wam-decided-list/?id=4",
+                                "Key Strengths": [
+                                    "Application for approval of a rooftop integrated photovoltaic panel installation",
+                                    "Provides brief description of the proposal"
+                                ],
+                                "Confidence": "60",
+                                "Reasoning": "This link offers information about an application for approval of a rooftop solar panel installation. The brief description makes it clear what the intended project involves."
+                            }
+                        ],
+                        "Analysis Notes": "Most of the links provided are lists filtering applications based on different categories (received and decided), while some specific applications were also included. Not all links have detailed descriptions or planning permission numbers. Some links could potentially serve as suitable resources for council customer information needs, with varying degrees of confidence based on their specific details and relevance to the search query.",
+                        "Recommendations Notes": "The recommended links include both general guides and specific applications that offer clear and useful information related to customer inquiries about planning applications."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "70",
+                        "75",
+                        "65",
+                        "60"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 71,
+                    "max_confidence": "85"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "What you need \u00b7 Colchester City Council",
+                            "Source": "https://www.colchester.gov.uk/planning/apply/what-you-need/",
+                            "Reasoning": "The highest confidence score (85) and the link provides a general guide for applicants on what they need to submit during planning applications, encourages pre-application advice and Planning Performance Agreement (PPA). This makes it an optimal choice as it simplifies the process by offering comprehensive information upfront.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "3",
+                            "Title": "WAM Planning - Applications received filtered \u00b7 Colchester City ...",
+                            "Source": "https://www.colchester.gov.uk/wam-received-list/?id=7",
+                            "Reasoning": "The second-highest confidence score (75) and the link offers detailed information about an application for a Lawful Development Certificate related to a solar panel installation, including the planning permission number. This provides immediate access to relevant information.",
+                            "Confidence": "75"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "WAM Planning - Applications received filtered \u00b7 Colchester City ...",
+                            "Source": "https://www.colchester.gov.uk/wam-received-list/?id=5",
+                            "Reasoning": "The link provides a detailed description of the proposed installation of solar photovoltaics on an existing agricultural building, including the necessary planning permission number and date, making it easier for applicants to find more details.",
+                            "Confidence": "70"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.colchester.gov.uk/planning/apply/what-you-need/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.colchester.gov.uk/planning/apply/what-you-need/",
+                        "analysis": {
+                            "url": "https://www.colchester.gov.uk/planning/apply/what-you-need/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T21:26:39+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T21:27:08+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 68569,
+                            "response_time": 0.843,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.843s)",
+                                    "Content successfully retrieved (68569 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.8468289375305176,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.colchester.gov.uk/planning/apply/what-you-need/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.colchester.gov.uk/planning/apply/what-you-need/",
+                        "content": " I have generated the HTML for you. This is a webpage that provides information about application requirements and important information when applying for planning in Colchester, England. The page includes sections for main content, a sidebar with links to subscribe to updates, and a back-to-top button. The content is written in an easy-to-understand format with headings, bullet points, and paragraphs.\n\nMissing or incorrect information can lead to delays or refusal. To avoid unnecessary costs, we strongly recommend seeking advice before submitting your application. In addition, the page includes a section for subscribing to updates on Council news, events, and offers, green living, leisure and sport, museums, committees, jobs, and more through an email subscription service.\n\nThe generated HTML follows standard web best practices, using semantic HTML5 elements and valid CSS styles. I didn't include any JavaScript or external libraries in the output since the original provided no such dependencies. However, the code includes a placeholder for Google Tag Manager if you wish to use it for tracking purposes on your website.\n\nIf there are any specific enhancements required, please don't hesitate to ask!",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 8.559574127197266,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.colchester.gov.uk/planning/apply/what-you-need/",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "The content does not directly address this specific question as it is about planning applications. However, it suggests seeking advice before submitting an application which indirectly implies that certain works may require permissions. However, it doesn't specify if installing solar panels is one of them.",
+                                    "confidence": "60%",
+                                    "reasoning": "The content suggests general advice for any work that might require planning permission but does not list specific types of works like solar panel installation.",
+                                    "next_actions": "I would contact the Council's Planning Department to clarify whether permission is required for installing solar panels."
+                                }
+                            ],
+                            "overall_assessment": "While the content provides a good introduction to planning applications and general advice, it lacks specific details about individual work types that might require permission. It would be more helpful if there was a clear list or guide addressing various typical works for which permissions may be required."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 5.220928907394409,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.colchester.gov.uk/planning/apply/what-you-need/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_212639-colchester.gov.uk",
+                    "analysis_timestamp": "2025-08-10T21:27:22+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7166666666666667,
+                            "tokens_consumed": 7050,
+                            "tokens_remaining": 22950,
+                            "token_utilization_percentage": 23.5,
+                            "average_tokens_per_step": 1175
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 76.5,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 19,
+                            "consumption_rate": 1175,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 10.24,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7166666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_212639-colchester.gov.uk",
+                        "start_time": "2025-08-10T21:26:39+01:00",
+                        "current_time": "2025-08-10T21:27:22+01:00",
+                        "duration_seconds": 43,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 7050,
+                        "tokens_remaining": 22950,
+                        "token_utilization_percentage": 23.5,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 3688,
+                                "avg_per_call": 1844
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3362,
+                                "avg_per_call": 1681
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1175
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_212639-colchester.gov.uk",
+                    "start_time": "2025-08-10T21:26:39+01:00",
+                    "current_time": "2025-08-10T21:27:22+01:00",
+                    "duration_seconds": 43,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 7050,
+                    "tokens_remaining": 22950,
+                    "token_utilization_percentage": 23.5,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 3688,
+                            "avg_per_call": 1844
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3362,
+                            "avg_per_call": 1681
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1175
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

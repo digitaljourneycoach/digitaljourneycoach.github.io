@@ -1,0 +1,662 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-11T02:55:02+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "lichfielddc.gov.uk",
+                "Council Name": "Lichfield District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Apply for planning permission \u2013 Useful forms and links",
+                        "link": "https://www.lichfielddc.gov.uk/planning-developers-business/apply-planning-permission/6",
+                        "snippet": "The best way to apply for planning permission is through the government's planning portal website."
+                    },
+                    {
+                        "title": "Advice on works to a home in a conservation area \u2013 Renewable ...",
+                        "link": "https://www.lichfielddc.gov.uk/conservation-listed-buildings/common-works-home/3",
+                        "snippet": "Renewable energy system/solar panels/air source heat pumps. Solar Panels. If ... planning permission to install a renewable energy system. Previous page\u00a0..."
+                    },
+                    {
+                        "title": "Planning enquiry tool \u2013 Lichfield District Council",
+                        "link": "https://www.lichfielddc.gov.uk/xfp/form/367",
+                        "snippet": "Use our interactive planning enquiry tool to find out if you need planning permission ... Install a renewable energy system/solar panels. Next. Stay connected."
+                    },
+                    {
+                        "title": "Do I need planning permission?",
+                        "link": "https://www.lichfielddc.gov.uk/planning-householders/i-need-planning-permission",
+                        "snippet": "The laws governing whether or not planning permission is required are complex, therefore it is always advisable to consult us prior to undertaking\u00a0..."
+                    },
+                    {
+                        "title": "Apply for planning permission",
+                        "link": "https://www.lichfielddc.gov.uk/planning-developers-business/apply-planning-permission",
+                        "snippet": "The best way to apply for permission is through the government's Planning Portal which is designed to help you complete an application and create a\u00a0..."
+                    },
+                    {
+                        "title": "Advice on works to a home in a conservation area",
+                        "link": "https://www.lichfielddc.gov.uk/planning/common-works-home",
+                        "snippet": "Renewable energy system/solar panels/air source heat pumps \u00b7 Walls, fences and ... planning permission. If you would like us to look at your plans before\u00a0..."
+                    },
+                    {
+                        "title": "Advice on works to a home in a conservation area \u2013 Walls, fences ...",
+                        "link": "https://www.lichfielddc.gov.uk/conservation-listed-buildings/common-works-home/4",
+                        "snippet": "If your property is in a conservation area/ an area covered by an Article 4 Direction, you will need to apply for planning permission to install new walls,\u00a0..."
+                    },
+                    {
+                        "title": "Advice on works to a home in a conservation area \u2013 Windows and ...",
+                        "link": "https://www.lichfielddc.gov.uk/conservation-listed-buildings/common-works-home/2",
+                        "snippet": "If your property is in a conservation area/ an area covered by an Article 4 Direction, you will need to apply for planning permission to install new windows\u00a0..."
+                    },
+                    {
+                        "title": "Report to Planning Committee Report of the Director of Place and ...",
+                        "link": "https://democracy.lichfielddc.gov.uk/documents/s6909/Rugeley%20Power%20Station%20-%2019%2000753%20outmei%20-%20Issues%20Paper-Agenda%20Item%205.pdf",
+                        "snippet": "Jun 20, 2019 ... space, ground mounted solar panels and key infrastructure including new adoptable roads within ... In summary, the application seeks outline\u00a0..."
+                    },
+                    {
+                        "title": "Agenda item - Planning Applications",
+                        "link": "https://democracy.lichfielddc.gov.uk/mgAi.aspx?ID=3563",
+                        "snippet": "RESOLVED: Planning Committee had previously resolved to approve this planning application ... solar photovoltaic panels (PV) (92,595 modules) with a generating\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.lichfielddc.gov.uk/planning-householders/i-need-planning-permission",
+                        "title": "Do I need planning permission?",
+                        "confidence": 85,
+                        "strengths": [
+                            "Offer guidance on the complexity of planning permission requirements",
+                            "Provides advisability to consult Lichfield District Council prior to undertaking work"
+                        ],
+                        "reasoning": "This link offers clear guidance for homeowners seeking information on whether they need planning permission. The content emphasizes the complexity of the laws governing such permissions and encourages readers to consult Lichfield District Council directly, showing relevance to the user's needs.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "4"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Do I need planning permission?",
+                                "Source": "https://www.lichfielddc.gov.uk/planning-householders/i-need-planning-permission",
+                                "Key Strengths": [
+                                    "Offer guidance on the complexity of planning permission requirements",
+                                    "Provides advisability to consult Lichfield District Council prior to undertaking work"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "This link offers clear guidance for homeowners seeking information on whether they need planning permission. The content emphasizes the complexity of the laws governing such permissions and encourages readers to consult Lichfield District Council directly, showing relevance to the user's needs."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Apply for planning permission \u2013 Useful forms and links",
+                                "Source": "https://www.lichfielddc.gov.uk/planning-developers-business/apply-planning-permission/6",
+                                "Key Strengths": [
+                                    "Link to the best way of applying for planning permission through a government website",
+                                    "Offer helpful forms and resources"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link provides information on how to apply for planning permission, directing users to the Planning Portal. It also offers useful forms and resources, making it beneficial for those searching for council customer information."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Apply for planning permission",
+                                "Source": "https://www.lichfielddc.gov.uk/planning-developers-business/apply-planning-permission",
+                                "Key Strengths": [
+                                    "Link to guide on applying for planning permission through Lichfield District Council",
+                                    "Resources to help complete an application"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "Although less specific than the other two recommendations, this link still provides a helpful resource for users who wish to apply for planning permission directly with Lichfield District Council."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Advice on works to a home in a conservation area",
+                                "Source": "https://www.lichfielddc.gov.uk/planning/common-works-home",
+                                "Key Strengths": [
+                                    "Offer advice on requirements for work in conservation areas",
+                                    "Gives guidance on needing planning permission for new walls, fences and other works"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This link offers advice on what requirements are needed when working in a conservation area. Although the information is primarily about various works such as walls or windows, it does mention the need for planning permission, making it slightly relevant."
+                            }
+                        ],
+                        "Analysis Notes": [
+                            "Some items provided duplicate info and were excluded",
+                            "All results focus on planning permissions related to Lichfield District Council"
+                        ],
+                        "Recommendations Notes": [
+                            "The first three recommendations were the most explicit in offering guidance or resources for applying or learning about planning permission and other relevant council information.",
+                            "Although not as relevant, option 4 was included due to mentioning planning permission."
+                        ]
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 77.5,
+                    "max_confidence": "85"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "Do I need planning permission?",
+                        "Source": "https://www.lichfielddc.gov.uk/planning-householders/i-need-planning-permission",
+                        "Reasoning": "This link offers clear guidance for homeowners seeking information on whether they need planning permission. The content emphasizes the complexity of the laws governing such permissions and encourages readers to consult Lichfield District Council directly, showing relevance to the user's needs.",
+                        "Confidence": "85"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.lichfielddc.gov.uk/planning-householders/i-need-planning-permission"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.lichfielddc.gov.uk/planning-householders/i-need-planning-permission",
+                        "analysis": {
+                            "url": "https://www.lichfielddc.gov.uk/planning-householders/i-need-planning-permission",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-11T02:55:02+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-11T02:55:21+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=UTF-8",
+                            "content_length": 51402,
+                            "response_time": 0.396,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.396s)",
+                                    "Content successfully retrieved (51402 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.39635396003723145,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.lichfielddc.gov.uk/planning-householders/i-need-planning-permission"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.lichfielddc.gov.uk/planning-householders/i-need-planning-permission",
+                        "content": " Here is the extracted main body content with semantic HTML and essential structure preserved:\n\n```html\n<html lang=\"en\">\n<body>\n  <main id=\"content\">\n\n    <div class=\"editor\">\n      <p>You'll probably need planning permission if you want to build something new, make a major change to your building or change the use of a building.</p>\n      <p>We've created an interactive online form that gives detailed guidance on whether or not you will need planning permission for a wide range of projects - from a rear extension through to a loft conversion.</p>\n      <p>It also gives guidance on what you need to think about if you want to carry out works to a property in a conservation area, an area with an Article 4 Direction or a listed building.</p>\n      <p><a class=\"button\" data-inline=\"true\" data-role=\"button\" href=\"https://www.lichfielddc.gov.uk/xfp/form/367\">Visit our interactive planning enquiry form</a></p>\n      <h2>Get further advice</h2>\n      <p>If you can't find the answer you are looking for, or want our team to look at your plans and give more detailed advice, we can help.</p>\n      <p>If you have a general enquiry (not related to specific plans), why not submit a<a href=\"https://www.lichfielddc.gov.uk/xfp/form/348\" rel=\"noreferrer noopener\" target=\"_self\"> planning enquiry</a><sup>1</sup></p>\n      <p>If you want our team to look at your plans and give advice on whether or not they are likely to get planning permission, why not submit a pre-application which start at just \u00a375.60 (inc. vat) for householders.</p>\n      <p><a class=\"button\" data-inline=\"true\" data-role=\"button\" href=\"https://www.lichfielddc.gov.uk/pre-application-guidance-1/pre-application-protocol/3\">Apply for pre-application advice</a></p>\n      <h2>Don't forget about building control advice</h2>\n      <p>Whether or not you need planning permission, you will still need <a href=\"https://centralbc.org.uk/\">building control advice</a><sup>2</sup> to ensure your build meets required building control regulations.</p>\n      <h2>Further guidance</h2>\n      <p>The Planning Portal's<a href=\"https://www.planningportal.co.uk/info/200125/do_you_need_permission\"> guidance for householders</a><sup>3</sup> is designed to help you understand what needs planning permission. It also has guidance on planning and building regulations for a list of<a href=\"https://www.planningportal.co.uk/info/200130/common_projects\" title=\"Common Projects - Planning Portal\"> common development projects</a><sup>4</sup>.</p>\n    </div>\n\n  </main>\n</body>\n</html>\n```\n\nIn this output, I've removed unnecessary elements and non-content elements to focus on the main body content. The preserved structure includes <h2>, <p>, and <a> elements representing headings, paragraphs, and links respectively. Additionally, I inserted superscript numbers to reference the footnotes that were present in the original HTML but not included in this output due to being extra non-essential components of the page content.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 16.288821935653687,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.lichfielddc.gov.uk/planning-householders/i-need-planning-permission",
+                        "analysis": {
+                            "persona": "COUNCIL RESIDENT",
+                            "Reason": [
+                                {
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "answer_quality": "The content provides a general guidance that planning permission might be required for major changes, but it doesn't mention specific scenarios or types of construction such as solar panel installation. As a result, the answer quality is medium.",
+                                    "confidence": 60,
+                                    "reasoning": "While the text provides an introduction to planning permissions and a link to an interactive online form for detailed guidance, it doesn't explicitly explain whether solar panels require specific permission. However, since the content includes a reference to the Planning Portal's guidance for householders, one can infer that additional information on specific projects like solar panel installations may be found there.",
+                                    "next_actions": "I would first visit the link provided in the content to explore the interactive online form and check if solar panels are listed as a project requiring planning permission. If not found, I would then refer to the Planning Portal's guidance for householders."
+                                }
+                            ],
+                            "overall_assessment": "The content is helpful in providing an introduction to planning permissions and offering a detailed online resource for understanding if planning permission is required. However, the lack of specific information on solar panel installation leads to some ambiguity, resulting in a moderate overall satisfaction level."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 6.848577976226807,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.lichfielddc.gov.uk/planning-householders/i-need-planning-permission"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250811_025502-lichfielddc.gov.uk",
+                    "analysis_timestamp": "2025-08-11T02:55:45+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7166666666666667,
+                            "tokens_consumed": 6032,
+                            "tokens_remaining": 23968,
+                            "token_utilization_percentage": 20.11,
+                            "average_tokens_per_step": 1005.33
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 79.89,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 23,
+                            "consumption_rate": 1005.33,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "60",
+                            "quality_scores": [
+                                "60"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": true,
+                            "consistent_good_content": "60",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 10.24,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7166666666666667,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250811_025502-lichfielddc.gov.uk",
+                        "start_time": "2025-08-11T02:55:02+01:00",
+                        "current_time": "2025-08-11T02:55:45+01:00",
+                        "duration_seconds": 43,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 6032,
+                        "tokens_remaining": 23968,
+                        "token_utilization_percentage": 20.11,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2361,
+                                "avg_per_call": 1180.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3671,
+                                "avg_per_call": 1835.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 1005.33
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250811_025502-lichfielddc.gov.uk",
+                    "start_time": "2025-08-11T02:55:02+01:00",
+                    "current_time": "2025-08-11T02:55:45+01:00",
+                    "duration_seconds": 43,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 6032,
+                    "tokens_remaining": 23968,
+                    "token_utilization_percentage": 20.11,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2361,
+                            "avg_per_call": 1180.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3671,
+                            "avg_per_call": 1835.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 1005.33
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]

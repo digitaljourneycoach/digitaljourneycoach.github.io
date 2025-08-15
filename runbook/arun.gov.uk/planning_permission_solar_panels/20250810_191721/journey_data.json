@@ -1,0 +1,689 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T19:17:21+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "arun.gov.uk",
+                "Council Name": "Arun District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Find out if you need planning permission | Arun District Council",
+                        "link": "https://www.arun.gov.uk/do-you-need-planning-permission/",
+                        "snippet": "Some minor alterations and extensions, particularly to houses, can be carried out without planning permission. This is called permitted development. There are\u00a0..."
+                    },
+                    {
+                        "title": "Appendix A - Local Development Order | Arun District Council",
+                        "link": "https://www.arun.gov.uk/appendix-a-local-development-order/",
+                        "snippet": "... planning permission is hereby granted for the development listed below. 3 ... The addition of Solar Panels, including Photovoltaic's to the roof of any\u00a0..."
+                    },
+                    {
+                        "title": "Apply for planning permission | Arun District Council",
+                        "link": "https://www.arun.gov.uk/making-a-planning-application/",
+                        "snippet": "Apply for planning permission. For your planning application to be valid, it must include: the completed planning application form; any relevant supporting\u00a0..."
+                    },
+                    {
+                        "title": "OcellaWeb",
+                        "link": "https://www1.arun.gov.uk/aplanning/OcellaWeb/ArunSiteSearch?site=BR-130-50&from=ArunSiteSearch&action=showApplicationsL",
+                        "snippet": "... planning permission BR/255/12, Planning Approval Of Conds, DOC Approved. BR/47/13/A, Tesco Superstore Shripney Road Bognor Regis PO22 9ND, Tesco Stores Ltd, 25-\u00a0..."
+                    },
+                    {
+                        "title": "OcellaWeb",
+                        "link": "https://www1.arun.gov.uk/aplanning/OcellaWeb/ArunSiteSearch?site=200002699896&action=showApplicationsL",
+                        "snippet": "Lawful development certificate for the proposed installation of solar panels on the roof of the existing Out of Bounds building. ... planning permission A\u00a0..."
+                    },
+                    {
+                        "title": "Conservation areas | Arun District Council",
+                        "link": "https://www.arun.gov.uk/conservation-areas/",
+                        "snippet": "... planning permission is required before starting any work on your property. If you have any questions about planning permission or permitted development, you\u00a0..."
+                    },
+                    {
+                        "title": "Building control and regulations | Arun District Council",
+                        "link": "https://www.arun.gov.uk/buildingcontrol/",
+                        "snippet": "Apply for building regulation approval, book a site inspection, advice on demolitions or report a dangerous structure."
+                    },
+                    {
+                        "title": "LU/299/22/PL - Land North of Littlehampton Academy Littlehampton",
+                        "link": "https://democracy.arun.gov.uk/documents/s15387/LU29922PL%20-%20Land%20North%20of%20Littlehampton%20Academy%20Littlehampton.pdf",
+                        "snippet": "Jun 17, 2022 ... (2) in dealing with an application for planning permission the authority shall have regard to - ... The Town Council previously requested solar\u00a0..."
+                    },
+                    {
+                        "title": "P/37/19/PL",
+                        "link": "https://democracy.arun.gov.uk/documents/s1712/P3719PL%2010%20Harbour%20Road%20Pagham%20PO21%204TG.pdf",
+                        "snippet": "consisting of a green roof and solar panels. The front ... permission is granted by the Local Planning Authority on an application in that behalf."
+                    },
+                    {
+                        "title": "Untitled",
+                        "link": "https://www1.arun.gov.uk/aplanning/OcellaWeb/ArunPlanningLatestList?days=14",
+                        "snippet": "Removal of solar panels and retiling of pitched roofs on Flint House. This application may affect the setting of a listed building and is in CIL zone 4 (zero\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_failed"
+            },
+            "output_data": {
+                "action": "list_analysis_failed",
+                "error": "Error invoking model response: cURL error 7: Failed to connect to 192.168.2.170 port 11434 after 8703 ms: Couldn't connect to server (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://192.168.2.170:11434/v1/chat/completions",
+                "tokens_used": 50,
+                "metadata": {
+                    "error_type": "Drupal\\ai\\Exception\\AiRequestErrorException",
+                    "execution_failed": true
+                },
+                "results_count": 10
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "error_type": "Drupal\\ai\\Exception\\AiRequestErrorException",
+                "execution_failed": true
+            }
+        }
+    },
+    {
+        "step_id": "004_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.arun.gov.uk/do-you-need-planning-permission/",
+                        "title": "Find out if you need planning permission | Arun District Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Provides general information on planning permissions"
+                        ],
+                        "reasoning": "This link provides a clear overview of when planning permission is required, and what permitted development allows. It's a good starting point for understanding the basics.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Find out if you need planning permission | Arun District Council",
+                                "Source": "https://www.arun.gov.uk/do-you-need-planning-permission/",
+                                "Key Strengths": [
+                                    "Provides general information on planning permissions"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link provides a clear overview of when planning permission is required, and what permitted development allows. It's a good starting point for understanding the basics."
+                            },
+                            {
+                                "Number": "3",
+                                "Title": "Apply for planning permission | Arun District Council",
+                                "Source": "https://www.arun.gov.uk/making-a-planning-application/",
+                                "Key Strengths": [
+                                    "Offers assistance in making a planning application"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "If you are planning on undertaking a project that requires planning permission, this link will guide you through the process of submitting your application."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "Conservation areas | Arun District Council",
+                                "Source": "https://www.arun.gov.uk/conservation-areas/",
+                                "Key Strengths": [
+                                    "Informs about conservation areas and the need for planning permission"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This link provides information on conservation areas, which are often subject to specific planning regulations. It is useful in understanding if your property falls within one."
+                            },
+                            {
+                                "Number": "8",
+                                "Title": "LU/299/22/PL - Land North of Littlehampton Academy Littlehampton",
+                                "Source": "https://democracy.arun.gov.uk/documents/s15387/LU29922PL%20-%20Land%20North%20of%20Littlehampton%20Academy%20Littlehampton.pdf",
+                                "Key Strengths": [
+                                    "Provides specific planning permission details for a certain locale"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "While this link is for a specific planned development, it demonstrates the level of detail provided in Arun District Council's planning permission documents."
+                            },
+                            {
+                                "Number": "9",
+                                "Title": "P/37/19/PL",
+                                "Source": "https://democracy.arun.gov.uk/documents/s1712/P3719PL%2010%20Harbour%20Road%20Pagham%20PO21%204TG.pdf",
+                                "Key Strengths": [
+                                    "Offers a case study of a planning permission application with solar panels"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This document provides specific details about an application that includes solar panels, giving further insight into the planning process involving such applications."
+                            }
+                        ],
+                        "Analysis Notes": "Most results were not directly related to council customer information needs for understanding council services. However, they do provide valuable insights into planning permission and development processes.",
+                        "Recommendations Notes": "While there are many links discussing planning permissions and applications in various contexts, only a few offered general overviews and specific cases that can help users understand the local council's procedures related to solar panels installations (a common customer need)."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "Find out if you need planning permission | Arun District Council",
+                        "Source": "https://www.arun.gov.uk/do-you-need-planning-permission/",
+                        "Reasoning": "This link provides a clear overview of when planning permission is required, and what permitted development allows. It's a good starting point for understanding the basics.",
+                        "Confidence": "90"
+                    },
+                    {
+                        "Number": "3",
+                        "Title": "Apply for planning permission | Arun District Council",
+                        "Source": "https://www.arun.gov.uk/making-a-planning-application/",
+                        "Reasoning": "If you are planning on undertaking a project that requires planning permission, this link will guide you through the process of submitting your application.",
+                        "Confidence": "85"
+                    },
+                    {
+                        "Number": "6",
+                        "Title": "Conservation areas | Arun District Council",
+                        "Source": "https://www.arun.gov.uk/conservation-areas/",
+                        "Reasoning": "This link provides information on conservation areas, which are often subject to specific planning regulations. It is useful in understanding if your property falls within one.",
+                        "Confidence": "80"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "005_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.arun.gov.uk/do-you-need-planning-permission/"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.arun.gov.uk/do-you-need-planning-permission/",
+                        "analysis": {
+                            "url": "https://www.arun.gov.uk/do-you-need-planning-permission/",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T19:17:21+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T19:18:09+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html;charset=UTF-8",
+                            "content_length": 58399,
+                            "response_time": 0.711,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.711s)",
+                                    "Content successfully retrieved (58399 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.7233960628509521,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "006_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.arun.gov.uk/do-you-need-planning-permission/"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.arun.gov.uk/do-you-need-planning-permission/",
+                        "content": "```html\n<h1>Find out if you need planning permission</h1>\n\n<p>Have your say on the future of local government in West Sussex - please complete this survey: <a href=\"https://www.shapingwestsussex.org\">www.shapingwestsussex.org</a></p>\n\n<ol>\n    <li><a href=\"/do-you-need-planning-permission\">Find out if you need permission</a></li>\n    <li><a href=\"/making-a-planning-application\">Apply for planning permission</a></li>\n    <li><a href=\"/other-things-to-consider\">Other things to consider</a></li>\n    <li><a href=\"/what-happens-next\">What happens next</a></li>\n</ol>\n\n<p>You may need planning permission to make improvements or changes to a property.</p>\n<p>It is important to find out whether you need planning permission before you make any changes. If you go ahead without permission, you may end up having to put things back to how they were.</p>\n<p>Some minor alterations and extensions, particularly to houses, can be carried out without planning permission. This is called permitted development.</p>\n<p>There are no permitted development rights for flats.</p>\n<p>This step by step list will help you find out if the work you have in mind can be carried out without planning permission:</p>\n\n<h3>Visit the Planning Portal</h3>\n<p>Check the <a href=\"https://www.planningportal.co.uk/permission\">guidance on the Planning Portal</a></p>\n<p>If this shows that your project comes under permitted development you still need to complete steps 2 and 3 below.</p>\n<p>If you do need planning permission, make sure you read <a href=\"/making-a-planning-application\">Apply for planning permission</a>.</p>\n\n<h3>Check for planning conditions and constraints on your property</h3>\n<p>Even if your proposal is covered by permitted development you must also check if the permitted development rights have been removed or restricted by us. This can be by either conditions or constraints. If this is the case, you may still have to apply for planning permission.</p>\n\n<h4>Planning conditions on your property</h4>\n<p>What you can build under permitted development may be affected:</p>\n<ul>\n    <li>by any existing planning conditions relating to your property</li>\n    <li>if the permitted development rights have been removed or restricted</li>\n</ul>\n<p>Use our planning history search to check the planning history for your property.</p>\n<p><a class=\"cta\" href=\"/planning-building-control-site-searches\">Check planning history</a></p>\n\n<h4>Planning constraints on your property</h4>\n<p>Your permitted development rights may be affected if your property is:</p>\n<ul>\n    <li>in a conservation area</li>\n    <li>a listed building</li>\n    <li>in an area where there is an Article 4 Direction</li>\n</ul>\n<p><a class=\"cta\" href=\"https://www1.arun.gov.uk/check-planning-constraints\">Check for planning constraints</a></p>\n<p>You will need to make additional checks if you have to <a href=\"/making-a-planning-application\">apply for planning permission</a>.</p>\n\n<h3>Next steps</h3>\n<p>If you believe your proposal is:</p>\n\n<h4>Permitted development without any conditions or constraints</h4>\n<p>If your proposal is covered by permitted development and there are no planning conditions, Article 4 Directions, and the property is not a listed building or in a conservation area you do not need to apply for planning permission.</p>\n<p>If you would like proof that this is the case you can apply for a <a href=\"/do-you-need-planning-permission#LDC\">Lawful Development Certificate</a>.</p>\n<p>Before you start your project you should check if you need to submit an application for <a href=\"/buildingcontrol\">building regulations</a> - you may still need to do this even though you do not require planning permission.</p>\n\n<h4>Permitted development but with constraints</h4>\n<p>If your proposal is covered by permitted development but it:</p>\n<ul>\n    <li>affects a <strong>listed building</strong> you\u2019ll need to apply for <a href=\"https://www.planningportal.co.uk/applications\">listed building consent</a></li>\n    <li>involves demolition in a <strong>conservation area</strong> you\u2019ll need to apply for <a href=\"https://www.planningportal.co.uk/applications\">conservation area consent</a></li>\n    <li>is covered by an <strong>Article 4 Direction</strong> you need to check if this is relevant to your proposal. If it is you\u2019ll need to make a planning application. If you are unsure if it is relevant contact <a href=\"mailto:planning@arun.gov.uk\">planning@arun.gov.uk</a>.</li>\n</ul>\n<p>For all of the above you\u2019ll also need to check if an application for <a href=\"/buildingcontrol\">building regulations</a> is required.</p>\n\n<h4>Not permitted development or there are planning conditions restricting what you can do</h4>\n<p>You can either:</p>\n<ul>\n    <li><a href=\"/making-a-planning-application\">apply for planning permission</a></li>\n    <li>request <a href=\"/pre-application-advice\">pre-application advice</a></li>\n</ul>\n<p>You\u2019ll also need to check if an application for <a href=\"/buildingcontrol\">building regulations</a> is required.</p>\n<p>In addition, if it affects a listed building or involves demolition in a conservation area, as part of your planning permission you\u2019ll need to apply for:</p>\n<ul>\n    <li>listed building consent</li>\n    <li>conservation area consent</li>\n</ul>\n\n<h3>If you are still unsure</h3>\n<p>Ask us to advise whether planning permission is required by applying for a <a href=\"/do-you-need-planning-permission#LDC\">Lawful Development Certificate</a>. There is a fee for this service.</p>\n\n<h3>Prior approval</h3>\n<p>For some work which is permitted development, including larger householder extensions and some change of use, you\u2019ll still need to notify us through the prior approvals process.</p>\n<p>The prior approvals process is simpler than applying for full planning permission.</p>\n\n<h4>Large single storey extensions</h4>\n<p>Large single storey extensions may be permitted development, but you\u2019ll need to notify us if you are going to build one. This applies to extensions of between 4 and 8 metres for a detached house, or between 3 and 6 metres for all other houses. See more information on the Planning Portal on <a href=\"https://www.planningportal.co.uk/info/200130/common_projects/17/extensions/2\">prior approval for large single storey extensions</a>.</p>\n\n<h4>Change of use</h4>\n<p>You\u2019ll also need to notify us for some changes of use. See the Planning Portal for details of which <a href=\"https://www.planningportal.co.uk/info/200130/common_projects/9/change_of_use/2\">types of change of use are subject to prior approval.</a></p>\n\n<h4>Forestry, agricultural, telecommunications and demolitions</h4>\n<p>See the Planning Portal guidance notes on <a href=\"https://www.planningportal.co.uk/info/200126/applications/60/consent_types/10\">prior approval for forestry, agricultural, telecommunications or demolitions work</a>.</p>\n\n<h3>Lawful Development Certificate</h3>\n<p>You can apply for a Lawful Development Certificate to get proof that your proposed use or development of a building does not require planning permission.</p>\n<p>This is useful if you should later sell your property as it can answer questions raised by potential buyers or their legal representatives.</p>\n<p>We are unable to offer this advice over the telephone or via email. You must make an application.</p>\n<p>After receiving your application we aim to get back to you within 8 weeks.</p>\n<p>If permission is not required you\u2019ll be issued with a certificate confirming this. If planning permission is required, you\u2019ll then need to continue onto a formal application.</p>\n<p><strong>How to apply for a Lawful Development Certificate</strong></p>\n<p>Go to <a href=\"/making-a-planning-application\">apply for planning permission</a>. Please make sure you include all the supporting information shown in the relevant validation requirements.</p>\n\n<h3>Other types of permission</h3>\n\n<p>To find out if a tree is protected or when you need permission to work on a protected tree see <a href=\"/tpo\">tree works and preservation</a>.</p>\n<p>A dropped kerb is the lowered kerb that allows you to access your property from the road by driving across the pavement. It is also known as a vehicle crossover.</p>\n<p>You must apply for planning permission from us for a dropped kerb that is joining an A, B or C classified road, for example A259, B2140, C546.</p>\n<p>All classifications of roads will need approval from West Sussex County Council for a dropped kerb.</p>\n<p>If your road is private (P) you'll also need permission from all owners of the road (either residents or developers depending on circumstances).</p>\n<p>If you do not own the property you'll also need consent from the owner.</p>\n\n<h4>To apply for a dropped kerb:</h4>\n<ol>\n    <li><a href=\"http://www.westsussex.gov.uk/planning/local-land-charges/local-land-charges-map/\">Check the classification of your road by visiting WSCC</a> (select Local Information/Road Status on the left).</li>\n    <li>If your road is A, B or C classification you must apply for planning permission using either the <a href=\"https://www.planningportal.co.uk/applications\">standard householder application form</a> or, for flats or businesses, the <a href=\"https://www.planningportal.co.uk/applications\">full planning application form</a>. Please also check the <a class=\"media-download media-ext-pdf\" title=\"download this document in a new window\" href=\"/download.cfm?doc=docm93jijm4n18414.pdf&amp;ver=27458\">householder planning validation requirements[pdf] 210KB</a> in particular the information on visibility splays.</li>\n    <li>Request approval from <a href=\"https://www.westsussex.gov.uk/roads-and-travel/highway-network-permits-and-licences/highway-licences/west-sussex-county-council-licences/dropped-kerbs-or-vehicle-crossovers-for-driveways/\">West Sussex County Council Highways</a> (for all road classifications).</li>\n</ol>\n\n<p>If you are making an application for a site that lies within the <a href=\"https://www.southdowns.gov.uk/\">South Downs National Park</a> you\u2019ll need to make your application directly to them.</p>\n\n<h3>Using a planning agent</h3>\n<p>The planning process can be complex and you may want to appoint a planning agent to act on your behalf. If you do appoint an agent all communication will be with them. We cannot recommend agents but you can find a list of registered agents at <a href=\"http://www.rtpiconsultants.co.uk\">Royal Town Planning Institute (RTPI)</a>.</p>\n<p>For further advice see <a href=\"/choosing-an-agent\">choosing an agent</a>.</p>\n\n<h3>Contact</h3>\n<p>The Planning Duty Officer is no longer available. Helpful advice can be found in the <a class=\"media-download media-ext-pdf\" href=\"/download.cfm?doc=docm93jijm4n19317.pdf&amp;ver=24076\" title=\"download this document in a new window\">duty planner guidance [pdf] 3MB</a>. Some advice can be obtained from our contact centre.</p>\n<p>Phone 01903 737756</p>\n\n<p>You can get 15 minutes of free planning advice for communities and members of the public (not businesses) from <a href=\"https://www.rtpi.org.uk/planning-advice/\">Planning Aid</a>.</p>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 24.972603797912598,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "007_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.arun.gov.uk/do-you-need-planning-permission/",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 9.203702926635742,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.arun.gov.uk/do-you-need-planning-permission/"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "008_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_191721-arun.gov.uk",
+                    "analysis_timestamp": "2025-08-10T19:18:44+01:00",
+                    "analysis_duration": 0.001,
+                    "recommendation": "stopped_no_progress",
+                    "confidence": 80,
+                    "reasoning": "No progress detected - journey stagnating",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 7,
+                            "duration_minutes": 1.3833333333333333,
+                            "tokens_consumed": 14662,
+                            "tokens_remaining": 15338,
+                            "token_utilization_percentage": 48.87,
+                            "average_tokens_per_step": 2094.57
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 51.13,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 7,
+                            "consumption_rate": 2094.57,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 7,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 3
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "analyst",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 3,
+                            "shows_progress": false,
+                            "stagnation_detected": true
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 19.76,
+                            "steps_fatigue_percentage": 58.33,
+                            "overall_fatigue_score": 58.33,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.3833333333333333,
+                            "total_steps": 7,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 65,
+                            "efficiency_factors": [
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "No progress detected - journey stagnating"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy"
+                        ],
+                        "optimization_suggestions": [
+                            "Try different search approach to break repetitive pattern"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "try_chat",
+                        "optimize_strategy"
+                    ],
+                    "risk_factors": [
+                        "Wasted resources",
+                        "User frustration"
+                    ],
+                    "next_step_suggestions": [
+                        "Try ChatScout for AI-generated content",
+                        "Revise search terms"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_191721-arun.gov.uk",
+                        "start_time": "2025-08-10T19:17:21+01:00",
+                        "current_time": "2025-08-10T19:18:44+01:00",
+                        "duration_seconds": 83,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 14662,
+                        "tokens_remaining": 15338,
+                        "token_utilization_percentage": 48.87,
+                        "token_status": "available",
+                        "total_steps": 7,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 3,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 7
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 8965,
+                                "avg_per_call": 4482.5
+                            },
+                            "analyst": {
+                                "calls": 3,
+                                "tokens": 5697,
+                                "avg_per_call": 1899
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 2094.57
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_no_progress",
+                    "confidence": 80,
+                    "reasoning": "No progress detected - journey stagnating"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_191721-arun.gov.uk",
+                    "start_time": "2025-08-10T19:17:21+01:00",
+                    "current_time": "2025-08-10T19:18:44+01:00",
+                    "duration_seconds": 83,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 14662,
+                    "tokens_remaining": 15338,
+                    "token_utilization_percentage": 48.87,
+                    "token_status": "available",
+                    "total_steps": 7,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 3,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 7
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 8965,
+                            "avg_per_call": 4482.5
+                        },
+                        "analyst": {
+                            "calls": 3,
+                            "tokens": 5697,
+                            "avg_per_call": 1899
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 2094.57
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_no_progress"
+            }
+        }
+    }
+]

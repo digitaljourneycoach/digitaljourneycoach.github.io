@@ -1,0 +1,669 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "planning permission solar panels",
+                    "persona": "council_customer",
+                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                    "started_at": "2025-08-10T23:13:26+01:00",
+                    "search_parameters": {
+                        "query": "planning permission solar panels",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "fenland.gov.uk",
+                "Council Name": "Fenland District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "planning permission solar panels",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Planning forms, fees and validation checklists - Fenland District ...",
+                        "link": "https://www.fenland.gov.uk/article/15144/Planning-forms-fees-and-validation-checklists",
+                        "snippet": "Applications for full planning permission and changes of use. Ref. Application form, Validation - National and local requirements where applicable. PF04."
+                    },
+                    {
+                        "title": "How to apply for Planning Permission - Fenland District Council",
+                        "link": "https://fenland.gov.uk/applyingforplanningpermission",
+                        "snippet": "You will need to provide certain information when you make an application."
+                    },
+                    {
+                        "title": "Districtwide 'Fenland Inspire!' investment campaign progress ...",
+                        "link": "https://fenland.gov.uk/article/18575/Districtwide-Fenland-Inspire-investment-campaign-progress",
+                        "snippet": "ceiling painting works and cleaning of solar PV panels and external skylights to maintain performance. ... planning permission in place. Additional seating\u00a0..."
+                    },
+                    {
+                        "title": "ECO Flexible Eligibility Scheme - Fenland District Council",
+                        "link": "https://www.fenland.gov.uk/article/14276/ECO-Flexible-Eligibility-Scheme",
+                        "snippet": "Solar PV panels; High performance external doors; Window glazing; Draught ... Do you need planning permission or building regulations approval: Certain\u00a0..."
+                    },
+                    {
+                        "title": "- 1 - Fenland Citizen - 23 November 2022 PLANNING (LISTED ...",
+                        "link": "https://www.fenland.gov.uk/media/19215/Publicity-23-November-2022/pdf/Publicity_23_November_2022.pdf?m=1669208344297",
+                        "snippet": "Nov 23, 2022 ... install solar panels to roof and cladding to exterior of existing ... Hybrid application: Full planning permission for the erection of. 325\u00a0..."
+                    },
+                    {
+                        "title": "A \u2013 Z FAQ's \u2013 Development Control & Building Control",
+                        "link": "https://www.fenland.gov.uk/media/5945/Planning--Building-Control-FAQs/doc/FAQs_BC___Planning_-_hyperlinked.doc",
+                        "snippet": "Can I put solar panels on my building/would I get permission? Domestic ... A Give customer a Did I Require Planning Permission or Building Regulation Approval for\u00a0..."
+                    },
+                    {
+                        "title": "- 1 - Fenland Citizen - 19 June 2024 PLANNING (LISTED ...",
+                        "link": "https://www.fenland.gov.uk/media/21193/Publicity-19-June-2024/pdf/Publicity_19_June_2024.pdf?m=1718797570390",
+                        "snippet": "Jun 19, 2024 ... Plan) and 18 (Archaeological Work) of planning permission. F ... Installation of 49.9MW ground mounted solar photovoltaic panels with\u00a0..."
+                    },
+                    {
+                        "title": "Agenda item - Fenland District Council",
+                        "link": "https://www.fenland.gov.uk/localgov/mgAi.aspx?ID=3794",
+                        "snippet": "... solar panels on the top and the proposal will be raised up and the ... planning permission at that time. He expressed the opinion that given that a\u00a0..."
+                    },
+                    {
+                        "title": "Coates",
+                        "link": "https://www.fenland.gov.uk/media/18915/Site-Submission-Coates/pdf/5_Coates.pdf?m=1662369777730",
+                        "snippet": "F/YR18/0987/PLANOB: Modification of Planning Obligation attached to planning permission F/YR13/0360/... ... F/YR15/0268/LB: Installation of 12no solar\u00a0..."
+                    },
+                    {
+                        "title": "Net Zero Villages Grant - Grant Information Guidance - Fenland ...",
+                        "link": "https://www.fenland.gov.uk/article/18273/Net-Zero-Villages-Grant-Grant-Information-Guidance",
+                        "snippet": "For example, a proposal which simply seeks PV solar panels will not be supported unless evidence is provided to demonstrate why this is the best option for the\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.fenland.gov.uk/article/15144/Planning-forms-fees-and-validation-checklists",
+                        "title": "Planning forms, fees and validation checklists - Fenland District ...",
+                        "confidence": 90,
+                        "strengths": [
+                            "Provides planning application forms",
+                            "Includes validation checklists for national and local requirements"
+                        ],
+                        "reasoning": "This link offers planning application forms and validation checklists, which are essential for initiating a planning project. The snippet indicates that it covers both national and local requirements.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Planning forms, fees and validation checklists - Fenland District ...",
+                                "Source": "https://www.fenland.gov.uk/article/15144/Planning-forms-fees-and-validation-checklists",
+                                "Key Strengths": [
+                                    "Provides planning application forms",
+                                    "Includes validation checklists for national and local requirements"
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This link offers planning application forms and validation checklists, which are essential for initiating a planning project. The snippet indicates that it covers both national and local requirements."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "How to apply for Planning Permission - Fenland District Council",
+                                "Source": "https://fenland.gov.uk/applyingforplanningpermission",
+                                "Key Strengths": [
+                                    "Guidance on how to make a planning application"
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "The title and snippet suggest that this link provides guidance on applying for planning permission, which is relevant for council customer information needs."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "ECO Flexible Eligibility Scheme - Fenland District Council",
+                                "Source": "https://www.fenland.gov.uk/article/14276/ECO-Flexible-Eligibility-Scheme",
+                                "Key Strengths": [
+                                    "Lists eligible energy efficiency measures for financing"
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "The snippet mentions solar PV panels and other energy efficiency measures, which could be of interest to council customers."
+                            },
+                            {
+                                "Number": "6",
+                                "Title": "A \u2013 Z FAQ's \u2013 Development Control & Building Control",
+                                "Source": "https://www.fenland.gov.uk/media/5945/Planning--Building-Control-FAQs/doc/FAQs_BC___Planning_-_hyperlinked.doc",
+                                "Key Strengths": [
+                                    "Answers FAQs related to planning and building control"
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "The title suggests that this link provides answers to frequently asked questions about development control and building control, which might be relevant for council customers."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Net Zero Villages Grant - Grant Information Guidance - Fenland ...",
+                                "Source": "https://www.fenland.gov.uk/article/18273/Net-Zero-Villages-Grant-Grant-Information-Guidance",
+                                "Key Strengths": [
+                                    "Guidance on applying for a grant to fund net-zero initiatives"
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "The title indicates that this link provides grant information guidance for net-zero initiatives. While not directly related to planning, it could help council customers reduce their carbon footprint."
+                            }
+                        ],
+                        "Analysis Notes": "Although many links were found in the provided list, some do not seem to be directly related to council customer needs for information on planning or building matters. For example, items 3 and 7 appear to discuss district-wide investments, while item 8 seems to be an agenda item from a council meeting. Item 9 provides site-specific planning information but lacks the context needed for general usage.",
+                        "Recommendations Notes": "The top recommendations are more generally relevant to council customers who might need assistance with initiating or understanding planning projects (items 1-2), obtaining financing for energy efficiency measures (item 4), and exploring grant opportunities (item 10). Item 6 offers FAQs that may provide valuable information on various planning and building control topics."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": {
+                    "recommendations": [
+                        {
+                            "Number": "1",
+                            "Title": "Planning forms, fees and validation checklists - Fenland District ...",
+                            "Source": "https://www.fenland.gov.uk/article/15144/Planning-forms-fees-and-validation-checklists",
+                            "Reasoning": "This link offers planning application forms and validation checklists, which are essential for initiating a planning project, aligning with the objective of providing information on council customer's planning needs.",
+                            "Confidence": "90"
+                        },
+                        {
+                            "Number": "2",
+                            "Title": "How to apply for Planning Permission - Fenland District Council",
+                            "Source": "https://fenland.gov.uk/applyingforplanningpermission",
+                            "Reasoning": "The title and snippet suggest that this link provides guidance on applying for planning permission, which is relevant for council customers.",
+                            "Confidence": "85"
+                        },
+                        {
+                            "Number": "4",
+                            "Title": "ECO Flexible Eligibility Scheme - Fenland District Council",
+                            "Source": "https://www.fenland.gov.uk/article/14276/ECO-Flexible-Eligibility-Scheme",
+                            "Reasoning": "The link provides information on energy efficiency measures for financing, which could be of interest to council customers.",
+                            "Confidence": "80"
+                        }
+                    ]
+                }
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.fenland.gov.uk/article/15144/Planning-forms-fees-and-validation-checklists"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.fenland.gov.uk/article/15144/Planning-forms-fees-and-validation-checklists",
+                        "analysis": {
+                            "url": "https://www.fenland.gov.uk/article/15144/Planning-forms-fees-and-validation-checklists",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "planning permission solar panels",
+                                    "persona": "council_customer",
+                                    "need": "I'd like to install solar panels on my house and want to know if I need permission to have someone undertake this work.",
+                                    "started_at": "2025-08-10T23:13:26+01:00",
+                                    "search_parameters": {
+                                        "query": "planning permission solar panels",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-10T23:13:56+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 79823,
+                            "response_time": 0.246,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.246s)",
+                                    "Content successfully retrieved (79823 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.24654793739318848,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.fenland.gov.uk/article/15144/Planning-forms-fees-and-validation-checklists"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.fenland.gov.uk/article/15144/Planning-forms-fees-and-validation-checklists",
+                        "content": "```html\n<h1>Planning forms, fees and validation checklists</h1>\n<p>View planning application forms, validation checklists and other guidance</p>\n\n<ul>\n    <li><a href=\"https://www.fenland.gov.uk/planningforms#Pre-Application\">Planning pre-application service</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/planningforms#Fees\">Planning fees</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/planningforms#General\">General guidance: checklists and pro-forma</a>\n        <ul>\n            <li><a href=\"https://www.fenland.gov.uk/planningforms#Active\">Active Travel Toolkit for new developments</a></li>\n            <li><a href=\"https://www.fenland.gov.uk/planningforms#Biodiversity\">Biodiversity checklists and BNG requirements</a></li>\n            <li><a href=\"https://www.fenland.gov.uk/planningforms#Newts\">Great crested newts</a></li>\n            <li><a href=\"https://www.fenland.gov.uk/planningforms#Flood\">Surface flood and water</a></li>\n        </ul>\n    </li>\n    <li><a href=\"https://www.fenland.gov.uk/planningforms#Householder\">Householder applications</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/planningforms#FullPlanning\">Applications for full planning permission and change of use</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/planningforms#Outline\">Applications for outline planning permission and reserved matters</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/planningforms#Conditions\">Applications relating to conditions on planning permissions</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/planningforms#Listed\">Listed buildings, conservation and works to trees</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/planningforms#Advertisement\">Advertisement consent</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/planningforms#LawfulDevelopment\">Lawful development certificate applications</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/planningforms#Amendments\">Amendments and time limits</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/planningforms#Prior\">Prior notifications</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/planningforms#Ownership\">Ownership certificates</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/planningforms#Miscellaneous\">Miscellaneous</a></li>\n</ul>\n\n<h2><a id=\"Pre-Application\">Planning pre-application service</a></h2>\n<p>We offer a <a href=\"https://www.fenland.gov.uk/planningpreapplication\">planning pre-application service</a>. For a small fee, we are able to offer advice on your planning application before you submit it to us.</p>\n\n<h2><a id=\"Fees\">Planning fees</a></h2>\n<p><a href=\"https://www.fenland.gov.uk/media/21954/Planning-Fees-1-April-2025/doc/Planning_Fees_2025.docx?m=1742291802787\">View current planning fees.</a></p>\n\n<h3>Charges for invalid applications</h3>\n<p>The Local Planning Authority (LPA) deal with a very high number of invalid applications. The LPA has published guidance on information required to be submitted with applications, which has been available on this webpage, for a number of years. Dealing with such a high percentage of invalid applications uses a significant amount of time and resources. This affects the timescales for processing applications, results in delays for the customer and puts pressure on existing staff.</p>\n<p>Administration charges are being introduced for the process of dealing with invalid applications. This is aimed at improving the quality of applications submitted to us and significantly increasing the number of applications valid at first submission. This will enable the planning support team to focus resources on the processing of applications rather than managing invalid applications.</p>\n<p>This new process, together with the LPA's recent review of the pre-application advice service, is expected to improve the overall customer experience for our clients.</p>\n<p>A new charge for invalid planning applications will come into effect from 9am on 2 December 2024. Invalid fees are as follows:</p>\n\n<table>\n    <thead>\n        <tr>\n            <th>Application type</th>\n            <th>Invalid fee per attempt</th>\n            <th>Maximum attempts</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Householder</td>\n            <td>\u00a326</td>\n            <td>Three</td>\n        </tr>\n        <tr>\n            <td>Other Planning Applications</td>\n            <td>\u00a363</td>\n            <td>Three</td>\n        </tr>\n    </tbody>\n</table>\n\n<p>This charge will also apply if an invalid application is withdrawn after notification that it is invalid. This charge will be deducted from any fee refund.</p>\n<p>To avoid a charge for an invalid planning application, it is highly recommended that you consult the Council's Local Validation List prior to the submission of your application. The Council's <a href=\"https://www.fenland.gov.uk/media/21609/Local-List-Requirements/pdf/Local_Validation_List_December_2024.pdf?m=1732793936937\">Local Validation List</a> sets out the general requirements for planning applications. It has been updated to provide a clearer guide to what the Council needs for an application to be valid first time. If further advice is required, you will be able to utilize the Council's existing services to establish the complete range of documentation required.</p>\n\n<h2><a id=\"General\">General guidance: checklists and pro-forma</a></h2>\n<ul>\n    <li><a href=\"https://www.fenland.gov.uk/media/16936/Cambridgeshire-County-Council-Drainage-Strategy-checklist/pdf/Drainage_strategy_checklist_-_Cambs_County_Council.pdf?m=1593090549977\">Cambridgeshire County Council Drainage Strategy checklist</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/media/15117/Ciria-SuDS-Manual-Sustainable-Drainage/pdf/CIRIA_-_The_SuDS_Manual_Sustainable_Drainage.pdf?m=1541761723433\">Ciria - The SuDs Manual (Sustainable Drainage)</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/media/16937/Waste-collection-requirements-for-domestic-properties/pdf/Waste_Planning_Guidance_for_Domestic_Properties_2022.pdf?m=1668078780977\">Waste collection requirements for domestic properties</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/media/17797/Fire-statement-form/doc/Fire_statement_form.docx?m=1628261780773\">Fire statement form</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/media/19285/Construction-Environmental-Management-Plan-Template/pdf/Construction_Environmental_Management_Plan_Template.pdf?m=1675855765807\">Construction Environmental Management Plan Template</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/article/18283/Self-Build-Declaration-form\">Demonstrating your scheme is self-build or custom-build housing form</a></li>\n</ul>\n\n<h3><a id=\"Active\">Active Travel Toolkit for new developments</a></h3>\n<p>The Toolkit helps planning authorities, the County Council, and developers make decisions about prioritizing active travel for all scales of new developments in Cambridgeshire. It sets out 13 key principles for a developer to consider when planning new developments. View <a href=\"https://scanner.topsec.com/?d=1978&amp;r=show&amp;u=https%3A%2F%2Fwww.cambridgeshire.gov.uk%2Fasset-library%2FActive-Travel-Toolkit.pdf&amp;t=9e4d2cd1ce4c6524e9c2aefecaaaaa6864c1e685\">Cambridgeshire's Active Travel Toolkit for new developments</a>.</p>\n<p>Developers will need to fill out a <a href=\"https://scanner.topsec.com/?d=1978&amp;r=show&amp;u=https%3A%2F%2Fview.officeapps.live.com%2Fop%2Fview.aspx%3Fsrc%3Dhttps%253A%252F%252Fwww.cambridgeshire.gov.uk%252Fasset-library%252FActive-Travel-Response-Form.docx%26wdOrigin%3DBROWSELINK&amp;t=039faab2d1924826e5796e8a9117ad5760d75d5e\">design checklist</a> and send it in with their Transport Assessment or as part of their Design and Access Statement.</p>\n\n<h3><a id=\"Biodiversity\">Biodiversity checklist and BNG requirements</a></h3>\n<ul>\n    <li><a href=\"https://www.fenland.gov.uk/media/17312/Biodiversity-checklist-Major-applications/pdf/Biodiversity_Major_Applications_March_25.pdf?m=1741870550127\">Biodiversity checklist - Major applications</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/media/17311/Biodiversity-Checklist-Minor-and-Other-applications/pdf/Biodiversity_Minor_and_Other_Applications_March_25.pdf?m=1741870573233\">Biodiversity Checklist - Minor and Other applications</a></li>\n    <li><a href=\"https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fassets.publishing.service.gov.uk%2Fmedia%2F669e4670ab418ab055592a23%2FThe_Statutory_Biodiversity_Metric_Calculation_Tool_-_Macro_enabled_tool_23.07.2024.xlsm\">BNG - Major Metric Calculation Tool</a></li>\n    <li><a href=\"https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fassets.publishing.service.gov.uk%2Fmedia%2F66a103efa3c2a28abb50d668%2F24724Small_Sites_Metric__Statutory_Biodiversity_Metric__Calculation_Tool_24.07.24.xlsm\">BNG - Minor Metric Calculation Tool</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/media/20904/Biodiversity-Net-Gain-supporting-statement/doc/Biodiversity_Net_Gain_supporting_statement.docx?m=1710934309463\">BNG - Supporting statement to submit with applications</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/media/21459/BNGP-Supporting-statement-to-submit-post-application-decision/pdf/Statement_-_BNGP_post_decision_stage_PDF.pdf?m=1726844305017\">BNGP Supporting statement to submit post application/decision</a></li>\n</ul>\n\n<h3><a id=\"Newts\">Great crested newts</a></h3>\n<ul>\n    <li><a href=\"https://www.fenland.gov.uk/GCN\">Great Crested Newts - surveys and district level licenses</a></li>\n    <li><a href=\"https://environment.data.gov.uk/explore/1770dacf-0b13-43b1-8695-2115a400c005?download=true\">Great Crested Newts Protection Zones</a></li>\n</ul>\n\n<h3><a id=\"Flood\">Surface flood and water</a></h3>\n<ul>\n    <li><a href=\"https://www.cambridgeshire.gov.uk/business/planning-and-development/flood-and-water/flood-planning-and-development/sustainable-drainage-systems-suds\">Surface Water Drainage Guidance for developers</a></li>\n    <li><a href=\"https://www.cambridgeshire.gov.uk/asset-library/imported-assets/SWGFD%20FINAL%20-%20November%202019.pdf\">Flood and Water Supplementary Planning Document</a></li>\n    <li><a href=\"https://www.cambridgeshire.gov.uk/business/planning-and-development/flood-and-water/flood-planning-and-development/sustainable-drainage-systems-suds\">Surface water and sustainable drainage systems (SuDS) planning</a></li>\n</ul>\n\n<h2><a id=\"Householder\">Householder applications</a></h2>\n<p>View <a href=\"https://www.planningportal.co.uk/info/200126/applications/61/paper_forms/2\">application forms on the Planning Portal</a>.</p>\n<p>Use these forms when applying for works to your existing dwelling. Examples of works include extensions, conservatories, fences, sheds, and garages.</p>\n\n<h3><a id=\"FullPlanning\">Applications for full planning permission and changes of use</a></h3>\n<p>Use this form when applying for new dwellings, commercial retail or industrial applications, change of use, shop fronts, erection of fences, and detached buildings that don't come within a residential curtilage.</p>\n\n<h3><a id=\"Outline\">Applications for outline permission and reserved matters</a></h3>\n<p>Use this form when applying for outline permission. This means you want to agree the permission in principle (for example, a new dwelling) but only want to submit some (not all) details such as the vehicular access information. This cannot be used for change of use applications, householder applications, advertisements or trees.</p>\n\n<h3><a id=\"Conditions\">Applications relating to conditions on planning permissions</a></h3>\n<p>Use this form when you want to vary or remove a condition that has been put on a previous application decision.</p>\n\n<h3><a id=\"Listed\">Listed buildings, conservation and works to trees</a></h3>\n<p>Use separate forms for application for listed building consent for alterations, extension or demolition of a listed building plus advertisement consent.</p>\n\n<h3><a id=\"Advertisement\">Advertisement consent</a></h3>\n<p>For use when applying to erect an advertisement on a building or on land.</p>\n\n<h3><a id=\"LawfulDevelopment\">Lawful development certificate applications</a></h3>\n<p>Use this form to find out if you need planning permission.</p>\n\n<h3><a id=\"Amendments\">Amendments and time limits</a></h3>\n<p>Use this form if you want to make some amendments to an approved application and need to know if a further planning application is required. This type of application will determine whether the amendments can go ahead without a further full planning application or if an application is required.</p>\n\n<h3><a id=\"Prior\">Prior notifications</a></h3>\n<p>Prior notification applications vary depending on the development type, such as agricultural or forestry developments, proposed roads, and changes of use.</p>\n\n<h2><a id=\"Ownership\">Ownership certificates</a></h2>\n<ul>\n    <li><a href=\"https://www.fenland.gov.uk/media/15155/Article-13-Notice/doc/Article_13_Notice.DOC?m=1542037201037\">Article 13 Notice</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/media/15156/Article-13-Notice-Householder-development/doc/Article_13_Notice_-_Householder_Development.doc?m=1542037256920\">Article 13 Notice - Householder development</a></li>\n</ul>\n\n<h2><a id=\"Miscellaneous\">Miscellaneous</a></h2>\n<ul>\n    <li><a href=\"https://www.planningportal.co.uk/planning/planning-applications/buy-a-planning-map\">Planning Portal - Buy a Plan</a></li>\n    <li><a href=\"https://www.fenland.gov.uk/media/15157/Facilitating-growth-in-Fenland-guidance/pdf/Facilitating_growth_in_Fenland_-_guidance.pdf?m=1542037502603\">Facilitating growth in Fenland - guidance</a></li>\n</ul>\n```",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 48.75537085533142,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.fenland.gov.uk/article/15144/Planning-forms-fees-and-validation-checklists",
+                        "analysis": null,
+                        "content_type": "html",
+                        "analysis_time": 11.311035871505737,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.fenland.gov.uk/article/15144/Planning-forms-fees-and-validation-checklists"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250810_231326-fenland.gov.uk",
+                    "analysis_timestamp": "2025-08-10T23:14:56+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 1.5,
+                            "tokens_consumed": 24738,
+                            "tokens_remaining": 5262,
+                            "token_utilization_percentage": 82.46,
+                            "average_tokens_per_step": 4123
+                        },
+                        "token_analysis": {
+                            "status": "conservative",
+                            "remaining_percentage": 17.54,
+                            "urgency_score": 60,
+                            "estimated_remaining_steps": 1,
+                            "consumption_rate": 4123,
+                            "should_conserve": true,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 0,
+                            "average_quality_score": 0,
+                            "max_quality_score": 0,
+                            "quality_scores": [],
+                            "quality_trend": "error",
+                            "unique_sources_count": 0,
+                            "has_good_content": 0,
+                            "consistent_good_content": 0,
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 21.43,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 1.5,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 50,
+                            "efficiency_factors": [
+                                "High token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": false,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Poor content quality - consider changing strategy",
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": [
+                            "Use more selective search strategies to conserve tokens"
+                        ]
+                    },
+                    "alternative_actions": [
+                        "continue_google",
+                        "stopped_no_progress"
+                    ],
+                    "risk_factors": [
+                        "AI content may lack specificity",
+                        "Token consumption"
+                    ],
+                    "next_step_suggestions": [
+                        "Use ChatScout for conceptual information",
+                        "Combine AI content with found sources"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250810_231326-fenland.gov.uk",
+                        "start_time": "2025-08-10T23:13:26+01:00",
+                        "current_time": "2025-08-10T23:14:56+01:00",
+                        "duration_seconds": 90,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 24738,
+                        "tokens_remaining": 5262,
+                        "token_utilization_percentage": 82.46,
+                        "token_status": "low",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 18139,
+                                "avg_per_call": 9069.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 6599,
+                                "avg_per_call": 3299.5
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 4123
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "try_chat",
+                    "confidence": 75,
+                    "reasoning": "Poor Google search results quality - ChatScout may provide better content"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250810_231326-fenland.gov.uk",
+                    "start_time": "2025-08-10T23:13:26+01:00",
+                    "current_time": "2025-08-10T23:14:56+01:00",
+                    "duration_seconds": 90,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 24738,
+                    "tokens_remaining": 5262,
+                    "token_utilization_percentage": 82.46,
+                    "token_status": "low",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 18139,
+                            "avg_per_call": 9069.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 6599,
+                            "avg_per_call": 3299.5
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 4123
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "try_chat"
+            }
+        }
+    }
+]

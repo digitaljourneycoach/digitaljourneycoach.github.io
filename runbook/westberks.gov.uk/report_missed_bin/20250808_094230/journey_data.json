@@ -1,0 +1,683 @@
+[
+    {
+        "step_id": "001_custom",
+        "data": {
+            "input_data": {
+                "step_name": "initialization",
+                "action": "journey_initialized"
+            },
+            "output_data": {
+                "persona": "council_customer",
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "search_context": {
+                    "search_topic": "Report missed bin",
+                    "persona": "council_customer",
+                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                    "started_at": "2025-08-08T09:42:30+01:00",
+                    "search_parameters": {
+                        "query": "Report missed bin",
+                        "max_results": 5,
+                        "language": "en",
+                        "country": "uk"
+                    }
+                },
+                "domain": "westberks.gov.uk",
+                "Council Name": "West Berkshire District Council"
+            },
+            "metadata": {
+                "step_name": "initialization",
+                "state_transition": "INITIALIZING -> GOOGLE_SEARCH",
+                "search_context_created": true
+            }
+        }
+    },
+    {
+        "step_id": "002_scout",
+        "data": {
+            "input_data": {
+                "step_name": "google_search",
+                "action": "google_search_executed"
+            },
+            "output_data": {
+                "search_parameters": {
+                    "query": "Report missed bin",
+                    "max_results": 5,
+                    "language": "en",
+                    "country": "uk"
+                },
+                "results": [
+                    {
+                        "title": "Missed rubbish or recycling collection - West Berkshire Council",
+                        "link": "https://www.westberks.gov.uk/article/38586/Missed-rubbish-or-recycling-collection",
+                        "snippet": "Updates on rubbish, recycling, garden waste or weekly food waste collections and how to report a missed collection."
+                    },
+                    {
+                        "title": "Report a problem with rubbish and recycling - West Berkshire Council",
+                        "link": "https://www.westberks.gov.uk/article/42679/Report-a-problem-with-rubbish-and-recycling",
+                        "snippet": "Updates on rubbish, recycling, garden waste or weekly food waste collections and how to report a missed collection. Report an abandoned vehicle."
+                    },
+                    {
+                        "title": "Rubbish and waste reduction - West Berkshire Council",
+                        "link": "https://www.westberks.gov.uk/article/35554/Rubbish-and-waste-reduction",
+                        "snippet": "Updates on rubbish, recycling, garden waste or weekly food waste collections and how to report a missed collection. Clinical household waste. Our clinical waste\u00a0..."
+                    },
+                    {
+                        "title": "Garden waste collection service - West Berkshire Council",
+                        "link": "https://www.westberks.gov.uk/article/38629/Garden-waste-collection-service",
+                        "snippet": "If you didn't receive a bin hanger, please check the list below before reporting a missed collection. Some of the common issues include: there are issues\u00a0..."
+                    },
+                    {
+                        "title": "Report a problem - West Berkshire Council",
+                        "link": "https://www.westberks.gov.uk/reportaproblem",
+                        "snippet": "Missed rubbish or recycling collection \u00b7 Report an abandoned vehicle \u00b7 Report ... Report a problem with a dog waste bin \u00b7 Report a dead animal for removal\u00a0..."
+                    },
+                    {
+                        "title": "Ask about bins or recycling - West Berkshire Council",
+                        "link": "https://www.westberks.gov.uk/article/35796/Ask-about-bins-or-recycling",
+                        "snippet": "- report a missed bin collection; - report a problem with your rubbish or recycling collections. Before you start. We have specific online forms to: - find\u00a0..."
+                    },
+                    {
+                        "title": "Complaints - West Berkshire Council",
+                        "link": "https://www.westberks.gov.uk/complaints",
+                        "snippet": "Most concerns that are raised with the council can be resolved without the need to make a formal complaint. These include service requests such as missed bins\u00a0..."
+                    },
+                    {
+                        "title": "Council Offices - West Berkshire Council",
+                        "link": "https://www.westberks.gov.uk/counciloffices",
+                        "snippet": "When the Council offices are closed do not use this number for non-emergencies, please Report a Noise Nuisance, Report a Missed Bin Collection, and other non-\u00a0..."
+                    },
+                    {
+                        "title": "Complain about a council service - West Berkshire Council",
+                        "link": "https://www.westberks.gov.uk/article/35971/Complain-about-a-council-service",
+                        "snippet": "report a problem that you'd like us to fix here (including grass cutting, potholes, streetlights, high hedges); - report a missed bin collection here\u00a0..."
+                    },
+                    {
+                        "title": "Apply for garden waste collection - West Berkshire Council",
+                        "link": "https://www.westberks.gov.uk/article/35833/Apply-for-garden-waste-collection",
+                        "snippet": "... report the missed collection of your bin(s). Our policy on reporting missed collections can be found at: www.westberks.gov.uk/missedbin. If our records\u00a0..."
+                    }
+                ],
+                "persona_applied": "council_customer"
+            },
+            "metadata": {
+                "step_name": "google_search",
+                "search_successful": true,
+                "next_state": "list_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "003_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "list_analysis",
+                "action": "list_analysis_completed"
+            },
+            "output_data": {
+                "analysis_result": {
+                    "summary": "Analysis completed"
+                },
+                "pilot_decision": {
+                    "action": "continue",
+                    "confidence": 0.8,
+                    "selected_links": {
+                        "id": "rec_1",
+                        "url": "https://www.westberks.gov.uk/article/38586/Missed-rubbish-or-recycling-collection",
+                        "title": "Missed rubbish or recycling collection - West Berkshire Council",
+                        "confidence": 90,
+                        "strengths": [
+                            "Directly addresses the user's council customer information need related to missed rubbish or recycling collections.",
+                            "Offers a clear and specific process for reporting missed collections."
+                        ],
+                        "reasoning": "This result is relevant as it provides answers to the user's query about missed rubbish and recycling collections, and also offers a straightforward way to report such issues.",
+                        "rank": 1
+                    }
+                },
+                "analysis_output": {
+                    "raw_result": {
+                        "Summary": {
+                            "status": "RECOMMENDATIONS FOUND",
+                            "totalItems": "10",
+                            "recommendations": "5"
+                        },
+                        "Recommendations": [
+                            {
+                                "Number": "1",
+                                "Title": "Missed rubbish or recycling collection - West Berkshire Council",
+                                "Source": "https://www.westberks.gov.uk/article/38586/Missed-rubbish-or-recycling-collection",
+                                "Key Strengths": [
+                                    "Directly addresses the user's council customer information need related to missed rubbish or recycling collections.",
+                                    "Offers a clear and specific process for reporting missed collections."
+                                ],
+                                "Confidence": "90",
+                                "Reasoning": "This result is relevant as it provides answers to the user's query about missed rubbish and recycling collections, and also offers a straightforward way to report such issues."
+                            },
+                            {
+                                "Number": "2",
+                                "Title": "Report a problem with rubbish and recycling - West Berkshire Council",
+                                "Source": "https://www.westberks.gov.uk/article/42679/Report-a-problem-with-rubbish-and-recycling",
+                                "Key Strengths": [
+                                    "Expands the information provided in recommendation 1, offering a broader range of potential issues related to rubbish and recycling.",
+                                    "Allows users to report abandoned vehicles along with missed collections."
+                                ],
+                                "Confidence": "85",
+                                "Reasoning": "While this result is still relevant, it falls just short of being the top recommendation due to its focus on reporting a wider range of issues and not specifically addressing the user's query about missed collections."
+                            },
+                            {
+                                "Number": "4",
+                                "Title": "Garden waste collection service - West Berkshire Council",
+                                "Source": "https://www.westberks.gov.uk/article/38629/Garden-waste-collection-service",
+                                "Key Strengths": [
+                                    "Deals with specific information about garden waste collections, a subcategory of the user's query.",
+                                    "Provides information on common issues that might cause missed collections."
+                                ],
+                                "Confidence": "80",
+                                "Reasoning": "This result is relevant because it addresses a specific aspect of the user's question and provides valuable information about garden waste collections, which is pertinent to some users."
+                            },
+                            {
+                                "Number": "5",
+                                "Title": "Report a problem - West Berkshire Council",
+                                "Source": "https://www.westberks.gov.uk/reportaproblem",
+                                "Key Strengths": [
+                                    "Offers a one-stop reporting solution for various council-related problems, including missed rubbish or recycling collections.",
+                                    "Comprehensive and easy to use."
+                                ],
+                                "Confidence": "75",
+                                "Reasoning": "This result is relevant because it offers users a convenient way to report multiple issues, but its broad focus makes it less specifically applicable to the user's initial query than other options."
+                            },
+                            {
+                                "Number": "10",
+                                "Title": "Apply for garden waste collection - West Berkshire Council",
+                                "Source": "https://www.westberks.gov.uk/article/35833/Apply-for-garden-waste-collection",
+                                "Key Strengths": [
+                                    "Provides information on how to apply for garden waste collections, a specific aspect of the user's query.",
+                                    "Offers additional context, such as how to report missed collections."
+                                ],
+                                "Confidence": "70",
+                                "Reasoning": "This result is relevant because it offers useful information about obtaining garden waste collection services, though its focus is slightly more on the application process than addressing missed collections directly."
+                            }
+                        ],
+                        "Analysis Notes": "All search results were found to be related to rubbish and recycling services provided by West Berkshire Council. Some items offered broader solutions involving multiple issues, while others focused specifically on the user's initial query about missed bin collections.",
+                        "Recommendations Notes": "While several options provided relevant information, the top recommendations were chosen based on their direct relevance to the user's question and the clarity of their processes."
+                    },
+                    "has_recommendations": "RECOMMENDATIONS FOUND",
+                    "confidence_scores": [
+                        "90",
+                        "85",
+                        "80",
+                        "75",
+                        "70"
+                    ],
+                    "options": {
+                        "max_recommendations": 5,
+                        "min_confidence": 60,
+                        "include_reasoning": true,
+                        "output_format": "structured"
+                    },
+                    "average_confidence": 80,
+                    "max_confidence": "90"
+                },
+                "pilot_output": [
+                    {
+                        "Number": "1",
+                        "Title": "Missed rubbish or recycling collection - West Berkshire Council",
+                        "Source": "https://www.westberks.gov.uk/article/38586/Missed-rubbish-or-recycling-collection",
+                        "Reasoning": "This result is most optimal as it directly addresses the user's concern about missed rubbish and recycling collections, offers a clear process for reporting them, and has a high confidence score.",
+                        "Confidence": "90"
+                    },
+                    {
+                        "Number": "2",
+                        "Title": "Report a problem with rubbish and recycling - West Berkshire Council",
+                        "Source": "https://www.westberks.gov.uk/article/42679/Report-a-problem-with-rubbish-and-recycling",
+                        "Reasoning": "This recommendation is of high quality, expands upon the information provided in the top recommendation, and allows users to report a broader range of rubbish issues. However, it falls short of the first as it doesn't specifically address missed collections.",
+                        "Confidence": "85"
+                    },
+                    {
+                        "Number": "5",
+                        "Title": "Report a problem - West Berkshire Council",
+                        "Source": "https://www.westberks.gov.uk/reportaproblem",
+                        "Reasoning": "While this result is relevant and provides users with a convenient one-stop solution for reporting multiple council issues, its broad focus makes it less specifically applicable to the user's initial query about missed bin collections.",
+                        "Confidence": "75"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "list_analysis",
+                "analyst_used": "ListAnalyst",
+                "pilot_used": "ListPilot",
+                "next_state": "link_processing"
+            }
+        }
+    },
+    {
+        "step_id": "004_custom",
+        "data": {
+            "input_data": {
+                "step_name": "link_processing",
+                "action": "links_processed"
+            },
+            "output_data": {
+                "processed_links": [
+                    "https://www.westberks.gov.uk/article/38586/Missed-rubbish-or-recycling-collection"
+                ],
+                "failed_links": [],
+                "process_output": [
+                    {
+                        "url": "https://www.westberks.gov.uk/article/38586/Missed-rubbish-or-recycling-collection",
+                        "analysis": {
+                            "url": "https://www.westberks.gov.uk/article/38586/Missed-rubbish-or-recycling-collection",
+                            "context": {
+                                "user_need": "access information",
+                                "accessibility_priority": "medium",
+                                "user_personas": [],
+                                "fallback_required": true,
+                                "context": {
+                                    "search_topic": "Report missed bin",
+                                    "persona": "council_customer",
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "started_at": "2025-08-08T09:42:30+01:00",
+                                    "search_parameters": {
+                                        "query": "Report missed bin",
+                                        "max_results": 5,
+                                        "language": "en",
+                                        "country": "uk"
+                                    }
+                                },
+                                "persona": {
+                                    "persona_type": "council_customer",
+                                    "expertise_level": "intermediate",
+                                    "patience_level": "medium",
+                                    "search_intent": "find_council_services_information",
+                                    "time_constraints": "moderate",
+                                    "quality_expectations": "high",
+                                    "accessibility_priority": "high",
+                                    "content_preferences": [
+                                        "official_sources",
+                                        "accessible_formats",
+                                        "current_information"
+                                    ],
+                                    "personas": [
+                                        "general_public",
+                                        "accessibility_aware"
+                                    ]
+                                }
+                            },
+                            "timestamp": "2025-08-08T09:42:59+01:00",
+                            "fetch_attempted": true,
+                            "fetch_successful": true,
+                            "http_status": 200,
+                            "content_type": "text/html; charset=utf-8",
+                            "content_length": 53627,
+                            "response_time": 0.295,
+                            "redirects": [],
+                            "technical_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "strengths": [
+                                    "Successful HTTP response (200)",
+                                    "Fast response time (0.295s)",
+                                    "Content successfully retrieved (53627 bytes)",
+                                    "Direct access (no redirects)"
+                                ],
+                                "status_interpretation": {
+                                    "status": "success",
+                                    "action": "proceed",
+                                    "confidence": 95
+                                }
+                            },
+                            "accessibility_assessment": {
+                                "score": 90,
+                                "max_score": 100,
+                                "issues": [],
+                                "recommendations": [],
+                                "content_type_assessment": {
+                                    "accessibility_score": 90,
+                                    "user_friendly": true,
+                                    "requires_plugin": false,
+                                    "mobile_compatible": true,
+                                    "recommendation": "proceed"
+                                },
+                                "user_persona_impacts": []
+                            },
+                            "recommendation": {
+                                "action": "proceed",
+                                "confidence": 95,
+                                "reason": "Link appears suitable for user needs",
+                                "overall_score": 74,
+                                "component_scores": {
+                                    "technical": 90,
+                                    "accessibility": 90,
+                                    "match": 50
+                                },
+                                "next_steps": [
+                                    "Follow the link to access the content"
+                                ],
+                                "alternatives_needed": false
+                            }
+                        },
+                        "processing_time": 0.29531288146972656,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "link_processing",
+                "batch_size": 2,
+                "analyst_used": "LinkAnalyst",
+                "has_remaining_links": false
+            }
+        }
+    },
+    {
+        "step_id": "005_scout",
+        "data": {
+            "input_data": {
+                "step_name": "content_retrieval",
+                "action": "content_retrieved"
+            },
+            "output_data": {
+                "retrieved_urls": [
+                    "https://www.westberks.gov.uk/article/38586/Missed-rubbish-or-recycling-collection"
+                ],
+                "content_types": {
+                    "html": 1
+                },
+                "retrieved_content": [
+                    {
+                        "url": "https://www.westberks.gov.uk/article/38586/Missed-rubbish-or-recycling-collection",
+                        "content": " Below is the cleaned semantically structured HTML containing the central editorial content of the page:\n\n```html\n<main id=\"maincontent\" class=\"maincontent\">\n    <div class=\"container\">\n        <div class=\"a-heading a-heading--default\">\n            <h1 class=\"a-heading__title\">Missed rubbish or recycling collection</h1>\n        </div>\n        <div class=\"maincolumns\">\n            <div class=\"maincontent__left\">\n                <div class=\"a-body a-body--default\">\n                    <h2>Collection updates</h2>\n                    <p class=\"alert-block green-alert\">We are pleased to confirm that all of todays collections completed successfully.</p>\n                    <!-- Removed the rest of the content as it consists of an unordered list and other decorative/boilerplate elements -->\n                </div>\n            </div>\n        </div>\n    </div>\n</main>\n```\n\nThis contains only the main body content, with semantic HTML structure preserved. The <h1>, <h2>, and <p> elements are present along with a few class attributes to maintain the original formatting and semantics for accessibility purposes. The extraneous header, footer, navigation menu, sidebar, cookie banners, newsletter sign-up blocks, and other decorative/boilerplate elements have been removed from the output HTML.",
+                        "content_type": "html",
+                        "scout_used": "HTMLScout",
+                        "retrieval_time": 8.569960117340088,
+                        "status": "success"
+                    }
+                ]
+            },
+            "metadata": {
+                "step_name": "content_retrieval",
+                "scouts_used": [
+                    "HTMLScout"
+                ],
+                "next_state": "content_analysis"
+            }
+        }
+    },
+    {
+        "step_id": "006_analyst",
+        "data": {
+            "input_data": {
+                "step_name": "content_analysis",
+                "action": "content_analyzed"
+            },
+            "output_data": {
+                "analyzed_content": [
+                    {
+                        "url": "https://www.westberks.gov.uk/article/38586/Missed-rubbish-or-recycling-collection",
+                        "analysis": {
+                            "persona": "Council Resident",
+                            "Reason": [
+                                {
+                                    "need": "I forgot to put my bin out and need to report that I would like it collected.",
+                                    "answer_quality": "0",
+                                    "confidence": "20",
+                                    "reasoning": "The content does not contain any information about reporting a missed collection or what to do when you have forgotten to put your bin out. It only provides an update on the successful completion of today's collections.",
+                                    "next_actions": "Contact the council via telephone or email to report a missed collection."
+                                }
+                            ],
+                            "overall_assessment": "The content fails to address the needs of a Council Resident who has forgotten to put their bin out for collection. The content only provides updates on successful collections, with no information about reporting missed collections or actions to take in such situations. Overall satisfaction level is low."
+                        },
+                        "content_type": "html",
+                        "analysis_time": 4.332098007202148,
+                        "status": "success"
+                    }
+                ],
+                "analyzed_urls": [
+                    "https://www.westberks.gov.uk/article/38586/Missed-rubbish-or-recycling-collection"
+                ],
+                "content_types_analyzed": {
+                    "html": 1
+                }
+            },
+            "metadata": {
+                "step_name": "content_analysis",
+                "analyst_used": "ContentAnalyst",
+                "persona_applied": "council_customer",
+                "next_state": "journey_decision"
+            }
+        }
+    },
+    {
+        "step_id": "007_pilot",
+        "data": {
+            "input_data": {
+                "step_name": "journey_decision",
+                "action": "journey_decision_completed"
+            },
+            "output_data": {
+                "journey_analysis_summary": {
+                    "summary": "Analysis completed"
+                },
+                "journey_analysis": {
+                    "journey_id": "20250808_094230-westberks.gov.uk",
+                    "analysis_timestamp": "2025-08-08T09:43:12+01:00",
+                    "analysis_duration": 0,
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved",
+                    "metrics": {
+                        "basic": {
+                            "total_steps": 6,
+                            "duration_minutes": 0.7,
+                            "tokens_consumed": 5557,
+                            "tokens_remaining": 24443,
+                            "token_utilization_percentage": 18.52,
+                            "average_tokens_per_step": 926.17
+                        },
+                        "token_analysis": {
+                            "status": "comfortable",
+                            "remaining_percentage": 81.48,
+                            "urgency_score": 0,
+                            "estimated_remaining_steps": 26,
+                            "consumption_rate": 926.17,
+                            "should_conserve": false,
+                            "emergency_stop_recommended": false
+                        },
+                        "progression_analysis": {
+                            "total_steps": 6,
+                            "step_types_distribution": {
+                                "custom": 2,
+                                "scout": 2,
+                                "analyst": 2
+                            },
+                            "recent_steps_count": 5,
+                            "recent_step_types": [
+                                "scout",
+                                "analyst",
+                                "custom",
+                                "scout",
+                                "analyst"
+                            ],
+                            "successful_steps": 0,
+                            "failed_steps": 0,
+                            "success_rate": 0,
+                            "repetitive_pattern_score": 2,
+                            "shows_progress": false,
+                            "stagnation_detected": false
+                        },
+                        "content_quality": {
+                            "content_steps_count": 1,
+                            "average_quality_score": 1,
+                            "max_quality_score": "20",
+                            "quality_scores": [
+                                "20"
+                            ],
+                            "quality_trend": "stable",
+                            "unique_sources_count": 1,
+                            "has_good_content": false,
+                            "consistent_good_content": "20",
+                            "content_diversity": 1
+                        },
+                        "persona_analysis": {
+                            "persona_type": "council_customer",
+                            "expertise_level": "intermediate",
+                            "patience_level": "medium",
+                            "duration_fatigue_percentage": 10,
+                            "steps_fatigue_percentage": 50,
+                            "overall_fatigue_score": 50,
+                            "expected_quality_threshold": 60,
+                            "patience_exceeded": false,
+                            "boredom_likely": false
+                        },
+                        "engagement_analysis": {
+                            "duration_minutes": 0.7,
+                            "total_steps": 6,
+                            "boredom_indicators": {
+                                "excessive_duration": false,
+                                "too_many_steps": false,
+                                "no_recent_progress": true,
+                                "repetitive_failures": false
+                            },
+                            "boredom_score": 25,
+                            "user_likely_bored": false,
+                            "engagement_declining": false
+                        },
+                        "efficiency_analysis": {
+                            "efficiency_score": 90,
+                            "efficiency_factors": [
+                                "Low token consumption per step",
+                                "Fast completion time"
+                            ],
+                            "is_efficient": true,
+                            "needs_optimization": false
+                        }
+                    },
+                    "analysis_results": {
+                        "stop_factors": [
+                            "Sufficient high-quality content found - goal achieved"
+                        ],
+                        "continue_factors": [],
+                        "risk_factors": [
+                            "Limited progress - may need strategy change"
+                        ],
+                        "optimization_suggestions": []
+                    },
+                    "alternative_actions": [
+                        "continue_google"
+                    ],
+                    "risk_factors": [
+                        "Diminishing returns",
+                        "Token waste"
+                    ],
+                    "next_step_suggestions": [
+                        "Review and compile found content",
+                        "Consider content synthesis"
+                    ],
+                    "journey_summary": {
+                        "journey_id": "20250808_094230-westberks.gov.uk",
+                        "start_time": "2025-08-08T09:42:30+01:00",
+                        "current_time": "2025-08-08T09:43:12+01:00",
+                        "duration_seconds": 42,
+                        "status": "active",
+                        "token_allocation": 30000,
+                        "tokens_consumed": 5557,
+                        "tokens_remaining": 24443,
+                        "token_utilization_percentage": 18.52,
+                        "token_status": "available",
+                        "total_steps": 6,
+                        "call_statistics": {
+                            "scout": 2,
+                            "analyst": 2,
+                            "pilot": 0,
+                            "custom": 2,
+                            "total": 6
+                        },
+                        "token_statistics": {
+                            "scout": {
+                                "calls": 2,
+                                "tokens": 2329,
+                                "avg_per_call": 1164.5
+                            },
+                            "analyst": {
+                                "calls": 2,
+                                "tokens": 3228,
+                                "avg_per_call": 1614
+                            },
+                            "pilot": {
+                                "calls": 0,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            },
+                            "custom": {
+                                "calls": 2,
+                                "tokens": 0,
+                                "avg_per_call": 0
+                            }
+                        },
+                        "average_tokens_per_step": 926.17
+                    }
+                },
+                "final_decision": {
+                    "recommendation": "stopped_success",
+                    "confidence": 95,
+                    "reasoning": "Sufficient high-quality content found - goal achieved"
+                },
+                "journey_statistics": {
+                    "journey_id": "20250808_094230-westberks.gov.uk",
+                    "start_time": "2025-08-08T09:42:30+01:00",
+                    "current_time": "2025-08-08T09:43:12+01:00",
+                    "duration_seconds": 42,
+                    "status": "active",
+                    "token_allocation": 30000,
+                    "tokens_consumed": 5557,
+                    "tokens_remaining": 24443,
+                    "token_utilization_percentage": 18.52,
+                    "token_status": "available",
+                    "total_steps": 6,
+                    "call_statistics": {
+                        "scout": 2,
+                        "analyst": 2,
+                        "pilot": 0,
+                        "custom": 2,
+                        "total": 6
+                    },
+                    "token_statistics": {
+                        "scout": {
+                            "calls": 2,
+                            "tokens": 2329,
+                            "avg_per_call": 1164.5
+                        },
+                        "analyst": {
+                            "calls": 2,
+                            "tokens": 3228,
+                            "avg_per_call": 1614
+                        },
+                        "pilot": {
+                            "calls": 0,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        },
+                        "custom": {
+                            "calls": 2,
+                            "tokens": 0,
+                            "avg_per_call": 0
+                        }
+                    },
+                    "average_tokens_per_step": 926.17
+                }
+            },
+            "metadata": {
+                "step_name": "journey_decision",
+                "analyst_used": "JourneyAnalyst",
+                "pilot_used": "JourneyPilot",
+                "journey_completed": true,
+                "next_state": "stopped_success"
+            }
+        }
+    }
+]
